@@ -34,3 +34,9 @@ Mockup snapshot:
 ---
 
 Nimblenomicon is based on **Nimble Core Rules 2.0.2** and **Creator’s Kit 1.2**. The vault and tooling are intended to complement the official books, not replace them.
+
+---
+
+## Links
+- [Contributing](CONTRIBUTING.md)
+- [Code of Conduct](CONTRIBUTING.md#code-of-conduct)
