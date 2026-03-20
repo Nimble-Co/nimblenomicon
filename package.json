@@ -1,0 +1,34 @@
+{
+  "name": "Nimblenomicon",
+  "version": "0.0.1",
+  "description": "An online, searchable repository of all published Nimble content",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "cspell": "cspell lint --config ./cspell.json --gitignore --no-progress ."
+  },
+  "repository": {
+		"type": "git",
+		"url": "git+https://github.com/Nimble-Co/nimblenomicon.git"
+	},
+  "bugs": {
+		"url": "https://github.com/Nimble-Co/nimblenomicon/issues"
+	},
+	"homepage": "https://github.com/Nimble-Co/nimblenomicon#readme",
+  "engines": {
+		"node": ">=22.1.0",
+		"pnpm": ">=10.0.0"
+	},
+  "keywords": [
+    "Nimble",
+    "TTRPG",
+    "Rules",
+    "Builder",
+    "Tracker"
+  ],
+  "author": "Nimble Co.",
+  "license": "ISC",
+  "packageManager": "pnpm@10.29.1",
+  "devDependencies": {
+    "cspell": "^9.7.0"
+  }
+}

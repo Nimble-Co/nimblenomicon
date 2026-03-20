@@ -1,0 +1,33 @@
+{
+    "caseSensitive": false,
+    "dictionaries": [
+      "en_US",
+      "softwareTerms",
+      "game-terms",
+      "technical-terms",
+    ],
+    "dictionaryDefinitions": [
+        {
+            "name": "game-terms",
+            "path": "./.cspell/game-terms.txt",
+            "addWords": true,
+            "supportNonStrictSearches": true
+        },
+        {
+            "name": "technical-terms",
+            "path": "./.cspell/technical-terms.txt",
+            "addWords": true,
+            "supportNonStrictSearches": true
+        },
+    ],
+    "ignoreRegExpList": [],
+    "ignorePaths": [
+      "dist/**",
+      "build/**",
+      "node_modules/**",
+      "pnpm-lock.yaml"
+    ],
+    "ignoreWords": [],
+    "words": []
+  }
+  
