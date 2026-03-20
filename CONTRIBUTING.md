@@ -3,7 +3,8 @@
 Thanks for taking the time to contribute to **Nimblenomicon**. This repository is currently **early WIP / exploratory**—please treat it as living documentation as the project evolves.
 
 Coordinating with the team:
-- Discord: https://discord.com/channels/1163603714565734400/1483596090929451128
+
+- Discord: <https://discord.com/channels/1163603714565734400/1483596090929451128>
 
 ## How to Contribute
 
@@ -30,7 +31,13 @@ If you find a bug (incorrect behavior, broken layout, missing content, etc.):
 
 ### 3) Pull Requests (PRs must link to an Issue first)
 
-We’re open to PRs, but please follow these rules:
+To get started, create a feature branch from `main`:
+
+```bash
+git checkout -b feature/your-feature
+```
+
+We're open to PRs, but please follow these rules:
 
 - **Every PR must be linked to an existing GitHub issue first.** If the issue does not exist yet, open it before submitting a PR.
 - If your PR is still in progress, open it as a **Draft** PR and link it to the issue.
@@ -48,14 +55,33 @@ In your PR description, please include:
 - Testing performed (or a note if tests aren’t available yet)
 - Any extra context a reviewer might need (edge cases, trade-offs, screenshots, etc.)
 
+#### PRs that will be rejected
+
+- **Overly large PRs without prior discussion** - If your PR touches many files or adds significant new functionality, please discuss it with the team first. We prefer smaller, reviewable PRs.
+- **Complex infrastructure changes** - PRs that introduce Docker setups, Playwright automation, CI/CD changes, or other infrastructure without prior team discussion will be closed.
+- **AI-generated bulk changes** - Large PRs that appear AI-generated without human review are difficult to evaluate and will be rejected. This includes bulk config files, automated test suites, or agent-style setups.
+- **Security risks** - PRs with potential security vulnerabilities, including prompt injection risks in config files, won't be merged.
+
+#### Best practices
+
+- Keep your PRs focused and reasonably sized
+- If you're using AI tools to help with code, please review and understand all changes before submitting
+
 ## Local Development
 
 Right now, this repo appears to be documentation/mockups focused (no app/tooling has been added yet).
 
 If you’re contributing code once the project’s tooling lands, please update this section in your PR to document:
+
 - How to set up dependencies
 - How to run the app
 - How to run tests / linters
+
+## Development Guidelines
+
+- Follow the existing code style and patterns in the repo
+- Test your changes before submitting
+- Please update documentation if your changes affect it
 
 ## Code of Conduct
 
@@ -66,7 +92,7 @@ If something is unclear, ask—prefer clarification over “guessing” silently
 ## Questions / Unsure Where It Belongs?
 
 If you’re not sure whether something should be a Discussion, an Issue, or a PR:
+
 - Start in **Discussions**
 - Then coordinate on Discord
 - Once it’s well-scoped, convert it into an **Issue**
-
