@@ -1,0 +1,44 @@
+---
+import { attachRouteDataAndRunMiddleware } from '../../node_modules/@astrojs/starlight/utils/routing/middleware';
+import { generateStarlightPageRouteData } from '../../node_modules/@astrojs/starlight/utils/starlight-page';
+import NimbleHomePage from '../components/NimbleHomePage.astro';
+import HomeLanding from '../components/HomeLanding.astro';
+
+const routeData = await generateStarlightPageRouteData({
+	props: {
+		...Astro.props,
+		frontmatter: {
+			title: 'Home',
+			description: 'The Nimblenomicon — Nimble tabletop RPG reference.',
+			template: 'splash',
+			tableOfContents: false,
+			prev: false,
+			next: false,
+			head: [
+				{
+					tag: 'link',
+					attrs: {
+						rel: 'preconnect',
+						href: 'https://fonts.googleapis.com',
+					},
+				},
+				{
+					tag: 'link',
+					attrs: {
+						rel: 'stylesheet',
+						href: 'https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,700;1,700&display=swap',
+					},
+				},
+			],
+		},
+		hasSidebar: false,
+	},
+	context: Astro,
+});
+
+await attachRouteDataAndRunMiddleware(Astro, routeData);
+---
+
+<NimbleHomePage>
+	<HomeLanding />
+</NimbleHomePage>

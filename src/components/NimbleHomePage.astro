@@ -1,0 +1,88 @@
+---
+/**
+ * Starlight home shell — same idea as VGV’s `VgvPage`: full HTML document with header + main slot,
+ * without the doc layout (`ContentPanel`, `PageTitle`, `MarkdownContent`, `TwoColumnContent`).
+ */
+import 'virtual:starlight/user-css';
+import '../../node_modules/@astrojs/starlight/style/layers.css';
+import '../../node_modules/@astrojs/starlight/style/props.css';
+import '../../node_modules/@astrojs/starlight/style/reset.css';
+import '../../node_modules/@astrojs/starlight/style/asides.css';
+import '../../node_modules/@astrojs/starlight/style/util.css';
+import 'virtual:starlight/optional-css';
+
+import Banner from 'virtual:starlight/components/Banner';
+import Footer from 'virtual:starlight/components/Footer';
+import Head from 'virtual:starlight/components/Head';
+import Header from 'virtual:starlight/components/Header';
+import PageFrame from 'virtual:starlight/components/PageFrame';
+import Sidebar from 'virtual:starlight/components/Sidebar';
+import SkipLink from 'virtual:starlight/components/SkipLink';
+import ThemeProvider from 'virtual:starlight/components/ThemeProvider';
+
+import printHref from '../../node_modules/@astrojs/starlight/style/print.css?url&no-inline';
+
+const { starlightRoute } = Astro.locals;
+
+const pagefindEnabled =
+	starlightRoute.entry.id !== '404' &&
+	!starlightRoute.entry.id.endsWith('/404') &&
+	starlightRoute.entry.data.pagefind !== false;
+
+const htmlDataAttributes: DOMStringMap = { 'data-theme': 'dark' };
+if (Boolean(starlightRoute.toc)) htmlDataAttributes['data-has-toc'] = '';
+if (starlightRoute.hasSidebar) htmlDataAttributes['data-has-sidebar'] = '';
+if (Boolean(starlightRoute.entry.data.hero)) htmlDataAttributes['data-has-hero'] = '';
+
+const mainDataAttributes: DOMStringMap = {};
+if (pagefindEnabled) mainDataAttributes['data-pagefind-body'] = '';
+---
+
+<html lang={starlightRoute.lang} dir={starlightRoute.dir} {...htmlDataAttributes}>
+	<head>
+		<Head />
+		<style>
+			html:not([data-has-toc]) {
+				--sl-mobile-toc-height: 0rem;
+			}
+			html:not([data-has-sidebar]) {
+				--sl-content-width: 67.5rem;
+			}
+			html {
+				scroll-padding-top: calc(1.5rem + var(--sl-nav-height) + var(--sl-mobile-toc-height));
+			}
+			main.nimble-home-main {
+				padding: var(--sl-main-pad);
+			}
+			@media (min-width: 50em) {
+				[data-has-sidebar] {
+					--sl-content-inline-start: var(--sl-sidebar-width);
+				}
+			}
+			@media (min-width: 72em) {
+				html {
+					scroll-padding-top: calc(1.5rem + var(--sl-nav-height));
+				}
+			}
+		</style>
+		<ThemeProvider />
+		<link rel="stylesheet" href={printHref} media="print" />
+	</head>
+	<body>
+		<SkipLink />
+		<PageFrame>
+			<Header slot="header" />
+			{starlightRoute.hasSidebar && <Sidebar slot="sidebar" />}
+			<main
+				class="nimble-home-main"
+				{...mainDataAttributes}
+				lang={starlightRoute.entryMeta.lang}
+				dir={starlightRoute.entryMeta.dir}
+			>
+				<Banner />
+				<slot />
+				<Footer />
+			</main>
+		</PageFrame>
+	</body>
+</html>

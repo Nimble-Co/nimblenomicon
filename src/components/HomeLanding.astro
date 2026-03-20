@@ -1,0 +1,299 @@
+---
+import bookIcon from '../assets/nimblenomicon_icon.svg';
+import coreRulesIcon from '../assets/core_rules.svg';
+import herosIcon from '../assets/heros.svg';
+import gameMasterGuideIcon from '../assets/game_master_guide.svg';
+import adventuresIcon from '../assets/adventures.svg';
+import monstersAndMoreIcon from '../assets/monsters_and_more.svg';
+import creatorsKitIcon from '../assets/creators_kit.svg';
+
+/** Resolves a site-root path for Starlight / GitHub Pages `base`. */
+function withBase(path: string): string {
+	const base = import.meta.env.BASE_URL;
+	const normalized = path.startsWith('/') ? path.slice(1) : path;
+	return base + normalized;
+}
+
+const navItems = [
+	{
+		label: 'Core Rules',
+		href: withBase('/core-rules/'),
+		icon: coreRulesIcon,
+		iconWidth: 20,
+		iconHeight: 23,
+	},
+	{
+		label: 'Heroes',
+		href: withBase('/heroes/'),
+		icon: herosIcon,
+		iconWidth: 17,
+		iconHeight: 25,
+	},
+	{
+		label: "Game Master's Guide",
+		href: withBase('/game-masters-guide/'),
+		icon: gameMasterGuideIcon,
+		iconWidth: 21,
+		iconHeight: 18,
+	},
+	{
+		label: 'Adventures',
+		href: withBase('/adventures/'),
+		icon: adventuresIcon,
+		iconWidth: 20,
+		iconHeight: 18,
+	},
+	{
+		label: 'Monsters & More',
+		href: withBase('/monsters-and-more/'),
+		icon: monstersAndMoreIcon,
+		iconWidth: 20,
+		iconHeight: 21,
+	},
+	{
+		label: "Creator's Kit",
+		href: withBase('/creators-kit/'),
+		icon: creatorsKitIcon,
+		iconWidth: 17,
+		iconHeight: 23,
+	},
+];
+---
+
+<section class="home-landing" aria-label="Home">
+	<div class="home-landing__brand">
+		<img
+			class="home-landing__book"
+			src={bookIcon.src}
+			width="168"
+			height="210"
+			alt=""
+			aria-hidden="true"
+		/>
+		<div class="home-landing__title-stack">
+			<span class="home-landing__the">THE</span>
+			<span class="home-landing__name">NIMBLENOMICON</span>
+		</div>
+	</div>
+
+	<div class="home-landing__search" role="search">
+		<button
+			type="button"
+			class="home-landing__search-trigger"
+			aria-label="Search for anything..."
+			aria-keyshortcuts="Control+K"
+		>
+			<svg class="home-landing__search-icon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+				<path
+					fill="currentColor"
+					d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+				/>
+			</svg>
+			<span class="home-landing__search-placeholder">Search for anything...</span>
+		</button>
+	</div>
+
+	<ul class="home-landing__grid" role="list">
+		{
+			navItems.map(({ label, href, icon, iconWidth, iconHeight }) => (
+				<li>
+					<a class="home-landing__tile" href={href}>
+						<img
+							class="home-landing__tile-img"
+							src={icon.src}
+							width={iconWidth}
+							height={iconHeight}
+							alt=""
+							aria-hidden="true"
+						/>
+						<span class="home-landing__tile-label">{label}</span>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</section>
+
+<script>
+	function openHeaderSearch() {
+		const openBtn = document.querySelector<HTMLButtonElement>('site-search button[data-open-modal]');
+		openBtn?.click();
+	}
+
+	function wireHomeSearch() {
+		document.querySelector('.home-landing__search-trigger')?.addEventListener('click', openHeaderSearch);
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', wireHomeSearch);
+	} else {
+		wireHomeSearch();
+	}
+</script>
+
+<style>
+	.home-landing {
+		--home-fg: #252b42;
+		--home-muted: #707070;
+		--home-border: #c8c8c8;
+		--home-surface: #ebebeb;
+		--home-input-bg: #ffffff;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		min-height: calc(100vh - var(--sl-nav-height) - 3rem);
+		max-width: 40rem;
+		margin-inline: auto;
+		padding-block: 2rem 3rem;
+		gap: clamp(1.75rem, 4vw, 2.5rem);
+		color: var(--home-fg);
+	}
+
+	.home-landing__brand {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.25rem;
+	}
+
+	.home-landing__book {
+		width: clamp(7rem, 22vw, 10.5rem);
+		height: auto;
+		display: block;
+	}
+
+	.home-landing__title-stack {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.15em;
+		text-transform: uppercase;
+	}
+
+	.home-landing__the {
+		font-family: var(--nimble-search-trigger-font);
+		font-size: clamp(0.75rem, 2vw, 0.9375rem);
+		font-weight: 700;
+		font-style: italic;
+		letter-spacing: 0.2em;
+	}
+
+	.home-landing__name {
+		font-family: 'Cinzel', 'Times New Roman', Times, serif;
+		font-size: clamp(1.5rem, 5vw, 2.35rem);
+		font-weight: 700;
+		font-style: italic;
+		letter-spacing: 0.08em;
+		line-height: 1.05;
+	}
+
+	.home-landing__search {
+		width: 100%;
+	}
+
+	.home-landing__search-trigger {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		width: 100%;
+		padding: 0.65rem 1rem;
+		border: 1px solid var(--home-border);
+		border-radius: 999px;
+		background: var(--home-input-bg);
+		box-sizing: border-box;
+		cursor: pointer;
+		font: inherit;
+		text-align: left;
+		color: inherit;
+	}
+
+	.home-landing__search-trigger:focus-visible {
+		outline: 2px solid var(--sl-color-accent-high, var(--color-accent-500));
+		outline-offset: 2px;
+	}
+
+	.home-landing__search-icon {
+		flex-shrink: 0;
+		color: var(--home-muted);
+		opacity: 0.85;
+	}
+
+	.home-landing__search-placeholder {
+		flex: 1;
+		min-width: 0;
+		font-family: var(--nimble-search-trigger-font);
+		font-size: 0.9375rem;
+		font-style: italic;
+		color: var(--home-muted);
+	}
+
+	.home-landing__grid {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.65rem 0.75rem;
+	}
+
+	.home-landing__tile {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		min-height: 3.25rem;
+		padding: 0.65rem 0.85rem;
+		border: 1px solid var(--home-border);
+		border-radius: 0.625rem;
+		background: var(--home-surface);
+		text-align: left;
+		box-sizing: border-box;
+		text-decoration: none;
+		color: inherit;
+		transition: background-color 0.08s ease, border-color 0.08s ease;
+	}
+
+	.home-landing__tile:hover {
+		background-color: color-mix(in srgb, var(--home-surface) 85%, var(--home-fg));
+		border-color: color-mix(in srgb, var(--home-border) 70%, var(--home-fg));
+	}
+
+	.home-landing__tile:focus-visible {
+		outline: 2px solid var(--sl-color-accent-high, var(--color-accent-500));
+		outline-offset: 2px;
+	}
+
+	.home-landing__tile-img {
+		flex-shrink: 0;
+		width: 22px;
+		height: auto;
+		object-fit: contain;
+		display: block;
+	}
+
+	:global(:root[data-theme='dark']) .home-landing {
+		--home-fg: var(--sl-color-text);
+		--home-muted: var(--sl-color-gray-3);
+		--home-border: var(--sl-color-hairline);
+		--home-surface: color-mix(in srgb, var(--sl-color-bg) 88%, var(--sl-color-gray-5));
+		--home-input-bg: var(--sl-color-bg-nav);
+	}
+
+	.home-landing__tile-label {
+		font-family: var(--nimble-search-trigger-font);
+		font-size: 0.8125rem;
+		font-weight: 700;
+		font-style: italic;
+		line-height: 1.25;
+		letter-spacing: 0.02em;
+	}
+
+	@media (min-width: 30rem) {
+		.home-landing__tile-label {
+			font-size: 0.875rem;
+		}
+	}
+</style>
