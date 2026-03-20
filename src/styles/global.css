@@ -6,12 +6,160 @@
 
 @theme {
 	/*
-	Configure your Tailwind theme that will be used by Starlight.
-	https://starlight.astro.build/guides/css-and-tailwind/#styling-starlight-with-tailwind
-	*/
+	 * Nimble light theme — wired into Starlight via @astrojs/starlight-tailwind
+	 * (see node_modules/@astrojs/starlight-tailwind/tailwind.css :root mappings).
+	 */
+	--color-accent-50: #fffbeb;
+	--color-accent-100: #fef3c7;
+	--color-accent-200: #fde68a;
+	--color-accent-300: #fcd34d;
+	--color-accent-400: #e5c045;
+	--color-accent-500: #d4a90c;
+	--color-accent-600: #d4a90c;
+	--color-accent-700: #b8940a;
+	--color-accent-800: #977c08;
+	--color-accent-900: #4a3d03;
+	--color-accent-950: #292205;
+
+	--color-gray-50: #fafafa;
+	--color-gray-100: #f4f4f4;
+	--color-gray-200: #e5e5e5;
+	--color-gray-300: #d4d4d4;
+	--color-gray-400: #a3a3a3;
+	--color-gray-500: #737373;
+	--color-gray-600: #525252;
+	--color-gray-700: #858585;
+	--color-gray-800: #3d3d3d;
+	--color-gray-900: #000000;
+	--color-gray-950: #0a0a0a;
+}
+
+:root {
+	/* Header wordmark — base size for “NIMBLENOMICON”; “THE” is a fraction via em in SiteTitle. */
+	--nimble-site-title-name-size: clamp(0.8125rem, 2.2vw, 1.125rem);
+	/* Search trigger — light pill (Pagefind modal keeps Starlight defaults). */
+	--nimble-search-trigger-bg: #ebebeb;
+	--nimble-search-trigger-fg: #707070;
+	--nimble-search-trigger-radius: 0.625rem;
+	--nimble-search-trigger-min-width: 400px;
+	--nimble-search-trigger-max-width: 40rem;
+	--nimble-search-trigger-font:
+		ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 /*
-Add additional Tailwind styles to this file:
-https://tailwindcss.com/docs/adding-custom-styles#using-custom-css
-*/
+ * Unlayered overrides win over Starlight + Tailwind layers so we can set exact brand colors.
+ * Light mode only — dark theme left on defaults until it is designed.
+ */
+:root[data-theme='light'] {
+	--sl-site-title-color: var(--color-gray-900);
+	--sl-color-bg: #f4f4f4;
+	--sl-color-bg-nav: #ffffff;
+	--sl-color-bg-sidebar: #f4f4f4;
+	--sl-color-text: #252b42;
+	--sl-color-bg-inline-code: #e5e5e5;
+	--sl-color-hairline-light: #e8e8e8;
+	--sl-color-hairline: #dedede;
+	--sl-color-hairline-shade: #e0e0e0;
+}
+
+/* Mobile drawer: Starlight uses --sl-color-black here; keep it aligned with the sidebar surface. */
+:root[data-theme='light'] nav.sidebar .sidebar-pane {
+	background-color: #f4f4f4;
+}
+
+/* Header site title + logo — theme-driven (not accent color). */
+:root[data-theme='dark'] {
+	--sl-site-title-color: var(--sl-color-text);
+	--nimble-search-trigger-bg: #2e2e2e;
+	--nimble-search-trigger-fg: #b5b5b5;
+}
+
+a.site-title {
+	color: var(--sl-site-title-color);
+}
+
+/*
+ * Header search trigger — wide pill, no border, sans placeholder styling.
+ * Overrides Starlight’s layered `button[data-open-modal]` rules (unlayered).
+ */
+.header button[data-open-modal] {
+	font-family: var(--nimble-search-trigger-font);
+	font-size: 0.9375rem;
+	font-weight: 400;
+	border: none;
+	border-radius: var(--nimble-search-trigger-radius);
+	background-color: var(--nimble-search-trigger-bg);
+	color: var(--nimble-search-trigger-fg);
+	box-shadow: none;
+	min-height: 2.5rem;
+	padding-inline: 0.75rem;
+}
+
+.header button[data-open-modal]:hover {
+	color: var(--nimble-search-trigger-fg);
+	background-color: color-mix(in srgb, var(--nimble-search-trigger-bg) 88%, var(--nimble-search-trigger-fg));
+}
+
+.header button[data-open-modal]:focus-visible {
+	outline: 2px solid var(--sl-color-accent-high, var(--color-accent-500));
+	outline-offset: 2px;
+}
+
+@media (min-width: 50rem) {
+	/*
+	 * True optical center for search: Starlight’s default grid uses a wide middle `1fr` column,
+	 * so “centering” there still looks offset. `1fr auto 1fr` balances left/right and places the
+	 * search in the viewport center.
+	 * Scope to `header > div.header` — Starlight wraps the inner bar in `<header class="header">`.
+	 */
+	header.header > div.header {
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		align-items: center;
+		gap: var(--sl-nav-gap);
+	}
+
+	header.header > div.header > .title-wrapper {
+		justify-self: start;
+		min-width: 0;
+	}
+
+	header.header > div.header > .sl-flex:nth-child(2) {
+		justify-content: center;
+		justify-self: center;
+		width: auto;
+		max-width: 100%;
+	}
+
+	header.header > div.header > .right-group {
+		justify-self: end;
+	}
+
+	header.header > div.header button[data-open-modal] {
+		box-sizing: border-box;
+		min-width: var(--nimble-search-trigger-min-width);
+		width: min(100%, var(--nimble-search-trigger-max-width));
+		max-width: var(--nimble-search-trigger-max-width);
+		padding-inline: 1rem;
+		padding-block: 0.5rem;
+		height: auto;
+		gap: 0.5rem;
+	}
+}
+
+/* Sidebar uses --sl-color-gray-2 for links; body copy uses --sl-color-text (set above). */
+:root[data-theme='light'] nav.sidebar a[aria-current='page'],
+:root[data-theme='light'] nav.sidebar a[aria-current='page']:hover,
+:root[data-theme='light'] nav.sidebar a[aria-current='page']:focus {
+	color: #000000;
+	background-color: #d4a90c;
+}
+
+/* Callouts / asides — neutral surface; colored borders from Starlight variants remain. */
+:root[data-theme='light'] .starlight-aside.starlight-aside--note,
+:root[data-theme='light'] .starlight-aside.starlight-aside--tip,
+:root[data-theme='light'] .starlight-aside.starlight-aside--caution,
+:root[data-theme='light'] .starlight-aside.starlight-aside--danger {
+	background-color: #e5e5e5;
+}

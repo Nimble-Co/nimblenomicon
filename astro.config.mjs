@@ -1,4 +1,3 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import tailwindcss from '@tailwindcss/vite';
@@ -17,21 +16,16 @@ export default defineConfig({
 	base,
 	integrations: [
 		starlight({
-			title: 'Docs with Tailwind',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
-			sidebar: [
-				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
-				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
-			],
+			title: 'The Nimble Nomicon',
+			logo: {
+				src: './src/assets/nimblenomicon_icon.svg',
+				alt: 'The Nimble Nomicon',
+			},
+			components: {
+				SiteTitle: './src/components/SiteTitle.astro',
+				Search: './src/components/Search.astro',
+			},
+			sidebar: [],
 			customCss: ['./src/styles/global.css'],
 		}),
 	],

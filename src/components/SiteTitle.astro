@@ -1,0 +1,89 @@
+---
+import { logos } from 'virtual:starlight/user-images';
+import config from 'virtual:starlight/user-config';
+
+const { siteTitle, siteTitleHref } = Astro.locals.starlightRoute;
+---
+
+<a href={siteTitleHref} class="site-title site-title--nimble sl-flex">
+	{
+		config.logo && logos.dark && (
+			<>
+				<img
+					class:list={{ 'light:sl-hidden print:hidden': !('src' in config.logo) }}
+					alt={config.logo.alt}
+					src={logos.dark.src}
+					width={logos.dark.width}
+					height={logos.dark.height}
+				/>
+				{!('src' in config.logo) && (
+					<img
+						class="dark:sl-hidden print:block"
+						alt={config.logo.alt}
+						src={logos.light?.src}
+						width={logos.light?.width}
+						height={logos.light?.height}
+					/>
+				)}
+			</>
+		)
+	}
+	{
+		config.logo?.replacesTitle ? (
+			<span class="sr-only">{siteTitle}</span>
+		) : (
+			<span class="site-title__stack" translate="no">
+				<span class="site-title__the">THE</span>
+				<span class="site-title__name">NIMBLENOMICON</span>
+			</span>
+		)
+	}
+</a>
+
+<style>
+	@layer starlight.core {
+		.site-title--nimble {
+			align-items: center;
+			gap: var(--sl-nav-gap);
+			font-weight: 600;
+			color: var(--sl-site-title-color, var(--sl-color-text-accent));
+			text-decoration: none;
+			white-space: nowrap;
+			min-width: 0;
+		}
+
+		.site-title__stack {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: center;
+			font-size: var(--nimble-site-title-name-size);
+			text-transform: uppercase;
+			line-height: 1.02;
+			overflow: hidden;
+			min-width: 0;
+		}
+
+		.site-title__the {
+			font-size: 0.48em;
+			font-weight: 700;
+			letter-spacing: 0.14em;
+		}
+
+		.site-title__name {
+			font-size: 1em;
+			font-weight: 700;
+			letter-spacing: 0.06em;
+			margin-top: 0.03em;
+		}
+
+		img {
+			height: calc(var(--sl-nav-height) - 2 * var(--sl-nav-pad-y));
+			width: auto;
+			max-width: 100%;
+			object-fit: contain;
+			object-position: 0 50%;
+			flex-shrink: 0;
+		}
+	}
+</style>
