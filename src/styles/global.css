@@ -156,6 +156,32 @@ a.site-title {
 	background-color: #d4a90c;
 }
 
+/*
+ * Table of contents moved into the left Sidebar (custom component).
+ * No mobile “On this page” strip — outline is in the drawer with the rest of the nav.
+ */
+:root[data-has-toc] {
+	--sl-mobile-toc-height: 0rem;
+}
+
+/* Core Rules index — edge-to-edge hero above prose column */
+.nimble-full-bleed-hero {
+	width: 100vw;
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+	margin-bottom: 1.5rem;
+	height: 667px;
+	overflow: hidden;
+}
+
+.nimble-full-bleed-hero img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
 /* Callouts / asides — neutral surface; colored borders from Starlight variants remain. */
 :root[data-theme='light'] .starlight-aside.starlight-aside--note,
 :root[data-theme='light'] .starlight-aside.starlight-aside--tip,

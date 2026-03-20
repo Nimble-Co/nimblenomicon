@@ -1,0 +1,26 @@
+---
+import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
+import NavSidebarPersister from './NavSidebarPersister.astro';
+import SectionSidebarBrand from './SectionSidebarBrand.astro';
+import SidebarSublist from './SidebarSublist.astro';
+import { resolveSectionSidebar } from '../utils/section-sidebar';
+
+const { toc } = Astro.locals.starlightRoute;
+const pathname = Astro.url.pathname;
+const { sidebar, bookChrome, sectionKey } = resolveSectionSidebar(Astro.locals.starlightRoute, pathname);
+---
+
+<NavSidebarPersister sidebar={sidebar}>
+	{sectionKey && <SectionSidebarBrand sectionKey={sectionKey} />}
+	<div class:list={{ 'nimble-book-shell': bookChrome }}>
+		<SidebarSublist sublist={sidebar} toc={toc} bookChrome={bookChrome} />
+	</div>
+</NavSidebarPersister>
+
+<div class="md:sl-hidden">
+	<MobileMenuFooter />
+</div>
+
+<script>
+	import '../../node_modules/@astrojs/starlight/components-internals/TableOfContents/starlight-toc.ts';
+</script>

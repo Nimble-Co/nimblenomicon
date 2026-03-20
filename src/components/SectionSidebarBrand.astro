@@ -1,0 +1,101 @@
+---
+/**
+ * Section icon + title above the sidebar nav (matches home tile artwork in `HomeLanding.astro`).
+ */
+import type { SectionKey } from '../config/section-sidebars';
+import coreRulesIcon from '../assets/core_rules.svg';
+import herosIcon from '../assets/heros.svg';
+import gameMasterGuideIcon from '../assets/game_master_guide.svg';
+import adventuresIcon from '../assets/adventures.svg';
+import monstersAndMoreIcon from '../assets/monsters_and_more.svg';
+import creatorsKitIcon from '../assets/creators_kit.svg';
+
+interface Props {
+	sectionKey: SectionKey;
+}
+
+const { sectionKey } = Astro.props;
+
+const brands: Record<
+	SectionKey,
+	{ src: string; title: string; width: number; height: number }
+> = {
+	'core-rules': {
+		src: coreRulesIcon.src,
+		title: 'Core Rules',
+		width: 40,
+		height: 46,
+	},
+	heroes: {
+		src: herosIcon.src,
+		title: 'Heroes',
+		width: 34,
+		height: 50,
+	},
+	'game-masters-guide': {
+		src: gameMasterGuideIcon.src,
+		title: "Game Master's Guide",
+		width: 42,
+		height: 36,
+	},
+	adventures: {
+		src: adventuresIcon.src,
+		title: 'Adventures',
+		width: 40,
+		height: 36,
+	},
+	'monsters-and-more': {
+		src: monstersAndMoreIcon.src,
+		title: 'Monsters & More',
+		width: 40,
+		height: 42,
+	},
+	'creators-kit': {
+		src: creatorsKitIcon.src,
+		title: "Creator's Kit",
+		width: 34,
+		height: 46,
+	},
+};
+
+const brand = brands[sectionKey];
+---
+
+<div class="nimble-section-brand">
+	<img
+		class="nimble-section-brand__icon"
+		src={brand.src}
+		width={brand.width}
+		height={brand.height}
+		alt=""
+		aria-hidden="true"
+	/>
+	<p class="nimble-section-brand__title">{brand.title}</p>
+</div>
+
+<style>
+	.nimble-section-brand {
+		padding: 0.5rem 0.75rem 1rem;
+		text-align: center;
+		border-bottom: 1px solid var(--sl-color-hairline-shade);
+		margin-bottom: 0.75rem;
+	}
+
+	.nimble-section-brand__icon {
+		display: block;
+		margin: 0 auto 0.5rem;
+		width: 2.5rem;
+		height: auto;
+	}
+
+	.nimble-section-brand__title {
+		margin: 0;
+		font-family: ui-sans-serif, system-ui, sans-serif;
+		font-size: 0.8125rem;
+		font-weight: 700;
+		font-style: italic;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--color-gray-800, #3d3d3d);
+	}
+</style>
