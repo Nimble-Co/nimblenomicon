@@ -187,10 +187,16 @@ const { sublist, nested, toc, bookChrome = false } = Astro.props;
 			margin-top: 0.25rem;
 		}
 
+		/*
+		 * Preserve Starlight TableOfContentsList depth indentation (## vs ###): each nested `ul`
+		 * sets `--depth` on links; a flat `padding` shorthand would wipe that.
+		 */
 		.nimble-inline-toc :global(a) {
+			--pad-inline: var(--sl-sidebar-item-padding-inline);
 			font-size: var(--sl-text-sm);
 			color: var(--sl-color-gray-600);
-			padding: 0.25em var(--sl-sidebar-item-padding-inline);
+			padding-block: 0.25em;
+			padding-inline: calc(1rem * var(--depth, 0) + var(--pad-inline)) var(--pad-inline);
 		}
 
 		.nimble-inline-toc :global(a:hover),

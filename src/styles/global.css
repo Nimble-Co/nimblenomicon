@@ -188,6 +188,15 @@ body {
   background-color: #d4a90c;
 }
 
+/* Sidebar + mobile drawer: no link underlines (Tailwind preflight / defaults win otherwise). */
+nav.sidebar a,
+nav.sidebar a:visited,
+nav.sidebar a:hover,
+nav.sidebar a:focus,
+nav.sidebar a:focus-visible {
+  text-decoration: none;
+}
+
 /*
  * Table of contents moved into the left Sidebar (custom component).
  * No mobile “On this page” strip — outline is in the drawer with the rest of the nav.

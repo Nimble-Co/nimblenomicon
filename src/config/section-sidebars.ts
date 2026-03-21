@@ -15,28 +15,7 @@ export type SectionKey = (typeof SECTION_KEYS)[number];
 
 /** Starlight manual sidebar shape (same as `starlight.sidebar` in astro.config). */
 export const SECTION_SIDEBAR_CONFIG = {
-	'core-rules': [
-		{
-			label: 'Start Here',
-			collapsed: false,
-			items: [{ label: 'Core Rules', link: '/core-rules/' }],
-		},
-		{
-			label: 'COMBAT',
-			collapsed: true,
-			items: [{ label: 'Combat', link: '/core-rules/combat/' }],
-		},
-		{
-			label: 'EQUIPMENT',
-			collapsed: true,
-			items: [{ label: 'Equipment', link: '/core-rules/equipment/' }],
-		},
-		{
-			label: 'MAGIC',
-			collapsed: true,
-			items: [{ label: 'Spells', link: '/core-rules/spells/' }],
-		},
-	],
+	'core-rules': [{ label: 'Core Rules', link: '/core-rules/' }],
 	heroes: [
 		{ label: 'Heroes', link: '/heroes/' },
 	],

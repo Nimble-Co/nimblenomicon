@@ -8,8 +8,8 @@ banner:
     <p>This is free to use for anyone who already owns the content, is trying the system out, or cannot afford to buy it right now. If you enjoy Nimble and are able, please support the game by purchasing the official content at <a href="https://nimbleRPG.com">nimbleRPG.com</a>.</p>
 ---
 
-import manticor from "../../../assets/manticor.webp";
-import HeroCallout from "../../../components/HeroCallout.astro";
+import manticor from "../../assets/manticor.webp";
+import HeroCallout from "../../components/HeroCallout.astro";
 
 <div class="nimble-full-bleed-hero">
   <img
@@ -23,12 +23,14 @@ import HeroCallout from "../../../components/HeroCallout.astro";
   />
   <div class="nimble-full-bleed-hero__gradient" aria-hidden="true"></div>
   <div class="nimble-full-bleed-hero__bottom">
-    <h1 id="_top" class="nimble-full-bleed-hero__title">Core Rules</h1>
+    <h1 id="_top" class="nimble-full-bleed-hero__title">
+      Core Rules
+    </h1>
     <HeroCallout />
   </div>
 </div>
 
-## Start Here
+# Start Here
 
 Nimble is a fast-paced, heroic fantasy TTRPG where bold choices and epic stories take center stage. At least one player should familiarize themselves with the base rules in this book (no need for every-one to read through unless they really want to). The adventure included in the GM's Guide is designed to introduce the rules as you play.
 
@@ -40,7 +42,7 @@ Nimble is a fast-paced, heroic fantasy TTRPG where bold choices and epic stories
 
 Visit https://nimbleRPG.com/start for everything you need to jump into the game: pre-made characters, step-by-step instructional videos, answers to FAQs, and other handy downloadable resources!
 
-### How to Be a Good Player
+## How to Be a Good Player
 
 **Be heroic.** Create a hero eager to dive into the adventure with the party. Reluctant, anti-social loners can drag down everyone's fun. Your games will shine when you lean into the shared adventure.
 
@@ -71,52 +73,82 @@ Visit https://nimbleRPG.com/start for everything you need to jump into the game:
 
 **Be gracious to the GM.** They put a lot of effort into running the game; avoid arguing over rulings. Give them a break sometimes and offer to run a ses-sion for them! **Bring snacks.**
 
-## Core Rules
+# Core Rules
 
-### Stats
+## Stats
 
 Heroes have 4 stats that impact their effectiveness in various tasks: 2 Key Stats crucial to their class and 2 Secondary Stats. The maximum a hero's stat can typically go is +5 .
 
-> **KEY.** When an ability or spell references “KEY,” use one of your Key Stats. If a stat is listed before a die roll, roll a number of dice equal to the stat. For example, “WIL d8” means that if your WIL is 2, you roll 2d8 (two eight-sided dice).
+> ### KEY
+>
+> When an ability or spell references “KEY,” use one of your Key Stats. If a stat is listed before a die roll, roll a number of dice equal to the stat. For example, “WIL d8” means that if your WIL is 2, you roll 2d8 (two eight-sided dice).
 
-**Strength (STR).** Your raw physical power and resilience, endurance, and resistance to harm. Affects STR weapon damage, resistance to Wounds, HP recovery, Concentration, STR saves, carrying capacity, Grappling, and the Might skill.
+### Strength (STR)
 
-**Dexterity (DEX).** Your agility, reflexes, and precision with blades or bows. Affects DEX weapon damage, Initiative, DEX saves, Grappling, and can contribute to Armor, as well as the Stealth and Finesse skills.
+Your raw physical power and resilience, endurance, and resistance to harm. Affects STR weapon damage, resistance to Wounds, HP recovery, Concentration, STR saves, carrying capacity, Grappling, and the Might skill.
 
-**Intelligence (INT).** Your Intelligence reflects knowledge and reasoning across fields like the arcane, tactics, or street smarts. Affects languages, spellcasting, use of wands, spell scrolls, INT saves, as well as the Arcana, Examination, and Lore skills.
+### Dexterity (DEX)
 
-**Will (WIL).** Your force of personality, courage, and wisdom. Will shapes your interactions with both nature and society. Affects spellcasting and WIL saves, as well as the Insight, Influence, Naturecraft, and Perception skills.
+Your agility, reflexes, and precision with blades or bows. Affects DEX weapon damage, Initiative, DEX saves, Grappling, and can contribute to Armor, as well as the Stealth and Finesse skills.
 
-### Skills
+### Intelligence (INT)
+
+Your Intelligence reflects knowledge and reasoning across fields like the arcane, tactics, or street smarts. Affects languages, spellcasting, use of wands, spell scrolls, INT saves, as well as the Arcana, Examination, and Lore skills.
+
+### Will (WIL)
+
+Your force of personality, courage, and wisdom. Will shapes your interactions with both nature and society. Affects spellcasting and WIL saves, as well as the Insight, Influence, Naturecraft, and Perception skills.
+
+## Skills
 
 Skills gauge how well your hero interacts with the world. Whenever you tell the GM what you are doing,
 they may ask you to use one of your skills.
 
-**Arcana (INT).** Your understanding of magical phenomena, spells, and enchantments. With Arcana, you can identify magical effects, decipher arcane symbols, and discern the properties of magical items. It also grants insights into the abilities and weaknesses of magical beings like Aberrations, Elementals, and Oozes.
+### Arcana (INT)
 
-**Examination (INT).** Your aptitude for thorough analysis and deduction. Use Examination to diagnose injuries, determine causes of death, uncover clues, and unravel the workings of traps or mechanical devices. It also grants insights into the abilities and weaknesses of Constructs.
+Your understanding of magical phenomena, spells, and enchantments. With Arcana, you can identify magical effects, decipher arcane symbols, and discern the properties of magical items. It also grants insights into the abilities and weaknesses of magical beings like Aberrations, Elementals, and Oozes.
 
-**Finesse (DEX).** Your ability to use your hands and feet in careful ways. Use Finesse for activities such as picking locks, disarming traps, piloting vehicles, tinkering, card tricks, stealing or planting items, climbing a mossy wall, or any other task that requires precise, careful movement.
+### Examination (INT)
 
-**Influence (WIL).** Your persuasiveness, charm, and ability to influence others through charisma or cunning. Use Influence to convince or deceive people, negotiate deals, build trust, win allies to your cause, or put on a captivating performance.
+Your aptitude for thorough analysis and deduction. Use Examination to diagnose injuries, determine causes of death, uncover clues, and unravel the workings of traps or mechanical devices. It also grants insights into the abilities and weaknesses of Constructs.
 
-**Insight (WIL).** Your ability to understand people and situations beyond the obvious. Use Insight to sense motives, detect lies, read hidden emotions, make sense of clues, and when faced with uncertainty—you can think ahead or just “get” what is happening. Insight can be used to retroactively change situations:
+### Finesse (DEX)
+
+Your ability to use your hands and feet in careful ways. Use Finesse for activities such as picking locks, disarming traps, piloting vehicles, tinkering, card tricks, stealing or planting items, climbing a mossy wall, or any other task that requires precise, careful movement.
+
+### Influence (WIL)
+
+Your persuasiveness, charm, and ability to influence others through charisma or cunning. Use Influence to convince or deceive people, negotiate deals, build trust, win allies to your cause, or put on a captivating performance.
+
+### Insight (WIL)
+
+Your ability to understand people and situations beyond the obvious. Use Insight to sense motives, detect lies, read hidden emotions, make sense of clues, and when faced with uncertainty—you can think ahead or just “get” what is happening. Insight can be used to retroactively change situations:
 
 > **Player:** “Oh no! I forgot to buy rope back in town!”
 >
 > **GM:** “Give me an Insight check; maybe your hero would have thought about it.”
 
-**Might (STR).** Your ability to apply strength effectively. Use Might for lifting heavy objects, breaking through obstacles, climbing, swimming, jumping, or performing feats of strength.
+### Might (STR)
 
-**Lore (INT).** Your understanding of the history of civilization, kingdoms, and religions. Use Lore to recall historical events and grasp the significance of cultural practices. It extends to knowledge of the abilities and behavior of Celestials, Dragons, Fey, Fiends, Giants, Humanoids, and Undead.
+Your ability to apply strength effectively. Use Might for lifting heavy objects, breaking through obstacles, climbing, swimming, jumping, or performing feats of strength.
 
-**Naturecraft (WIL).** Your expertise in wilderness survival, navigation, tracking, and the handling of animals. Use Naturecraft to thrive in the wild, identify flora, fauna, and track creatures with precision. It encompasses knowledge of Beasts, Monstrosities, and Plants, providing insights into their behavior, habitats, and characteristics.
+### Lore (INT)
 
-**Perception (WIL).** Your overall ability to notice subtle details in your surroundings. Use Perception to spot hidden objects, detect secret passages, sense subtle environmental changes, and sense when you're being followed or observed. It encompasses your ability to pick up on non-obvious cues, and hidden threats.
+Your understanding of the history of civilization, kingdoms, and religions. Use Lore to recall historical events and grasp the significance of cultural practices. It extends to knowledge of the abilities and behavior of Celestials, Dragons, Fey, Fiends, Giants, Humanoids, and Undead.
 
-**Stealth (DEX).** Your proficiency in staying unseen and moving quietly. Use Stealth to hide, slip past guards, evade detection, and move without drawing attention.
+### Naturecraft (WIL)
 
-### Skill Checks & Saves
+Your expertise in wilderness survival, navigation, tracking, and the handling of animals. Use Naturecraft to thrive in the wild, identify flora, fauna, and track creatures with precision. It encompasses knowledge of Beasts, Monstrosities, and Plants, providing insights into their behavior, habitats, and characteristics.
+
+### Perception (WIL)
+
+Your overall ability to notice subtle details in your surroundings. Use Perception to spot hidden objects, detect secret passages, sense subtle environmental changes, and sense when you're being followed or observed. It encompasses your ability to pick up on non-obvious cues, and hidden threats.
+
+### Stealth (DEX)
+
+Your proficiency in staying unseen and moving quietly. Use Stealth to hide, slip past guards, evade detection, and move without drawing attention.
+
+## Skill Checks & Saves
 
 When you want to affect the _world_ (convince an NPC, spot a trap, pick a lock, etc.), the GM may call for a skill check. Roll 1d20 and add your skill (the max bonus a skill can ever have is +12). If the total meets or exceeds the Difficulty Challenge (DC), you succeed; otherwise, you fail. A roll of 1 always fails regardless of any other bonuses, while a roll of 20 always succeeds. The DC varies based on the task:
 
@@ -126,21 +158,23 @@ When you want to affect the _world_ (convince an NPC, spot a trap, pick a lock, 
 - **Very Difficult:** Intuiting the true intentions of a trained Spy may be a **DC 18** Insight check.
 - **Extremely Difficult:** Disarming an ancient legendary trap may be a **DC 20+** Finesse check.
 
-**Saves.** When the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 and add the relevant stat. A roll of 1 always fails, 20 always saves. You can choose to fail any save instead of rolling.
+### Saves
+
+When the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 and add the relevant stat. A roll of 1 always fails, 20 always saves. You can choose to fail any save instead of rolling.
 
 - **STR Save.** When your overall fitness and physicality is tested. STR helps resist forced movement,restraint, poison, and extreme temperatures.
 - **DEX Save.** When your agility or speed is tested. DEX helps you dive for cover in an explosion or stay on your feet while running across icy terrain.
 - **INT Save.** When your intelligence is tested. INT helps you see though tricks and illusions.
 - **WIL Save.** When your courage or personality is tested. WIL helps you resist charm or fear effects.
 
-**Heroes and Saves**
+### Heroes and Saves
 
 - Unless otherwise noted, the DC for effects a hero causes is **10+KEY**.
 - When making saves, each hero has 1 advantaged save (+), 1 disadvantaged save (-), and 2 neutral saves.
 
 > **Example.** A Berserker (STR+, INT-) would roll all of his STR saves with advantage and all of his INT saves with disadvantage (see next page).
 
-### Size
+## Size
 
 Some spells and abilities affect differently sized objects or creatures. For size, use the following guidelines:
 
@@ -151,7 +185,7 @@ Some spells and abilities affect differently sized objects or creatures. For siz
 - **Huge** is roughly the size of a small house (1 can comfortably fit in a 3x3 area).
 - **Gargantuan** can be as large as a castle keep (1 can fill a 4x4 area or greater).
 
-### Advantage & Disadvantage
+## Advantage & Disadvantage
 
 If you are ever in a favorable situation, the GM may allow you to roll with advantage. To do this, roll 1 additional die of the same type and remove the lowest (see examples below). Alternatively, if the situation is grim or your idea is a long shot, you may have to roll with disadvantage (removing the highest die instead).
 
@@ -161,25 +195,79 @@ If you have multiple instances of advantage or disadvantage, for each one, roll 
 
 > **Example 2.** _Greataxe (2d6) with disadvantage 2. Roll 2 additional dice, remove the 2 highest. If there is a tie, always remove dice from left to right. You miss!_
 
-### Hit Points & Dying
+## Hit Points & Dying
 
 Hit Points (HP) represent your ability to endure damage. Damage reduces your HP (which can't go below 0). When reduced to 0 HP, gain 1 Wound; you also gain the **Dying** condition until you regain HP. While Dying, actions are limited to 1, Concentration is broken, and you are at risk of further serious harm:
 
 - Attacking/casting spells causes **1** Wound unless you make a **DC 10 STR save**.
 - Taking damage while Dying causes **2** Wounds; a crit causes **3** instead.
 
-#### Wounds
+### Wounds
 
 Wounds are serious injuries you've taken; they are a long term gauge of how close you are to death. HP can usually be recovered quickly, but Wounds may take many days of resting to fully recover from (usually 1/Safe Rest).
 
-#### Death
+### Death
 
 You die when you have taken 6 Wounds (unless you have an ability that changes this number). There are ways to revive a hero who has died, but they are rare and often come at a very steep cost.
 
-#### Temporary HP
+### Temporary HP
 
 Some abilities or effects may grant temporary HP (temp HP); these are reduced first when taking damage. Temp HP do not combine: If a hero has temp HP and would gain more, they instead choose which amount to keep. They expire after a Safe Rest.
 
-#### Hit Dice
+### Hit Dice
 
 Hit Dice (HD) represent your ability to quickly recuperate from minor injuries and are spent to regain HP. Heroes start with a max of 1 Hit Die at level 1, and this limit increases by 1 each time they level up. Hit Dice are recovered during a Safe Rest.
+
+## Speed & Range
+
+A character's Speed is how fast they can move, which, unless otherwise noted, is **6**. Often play is done on a grid with 1 inch squares or hexagons representing roughly 5 ft. or 1 meter each. So a hero with a speed of 6 can travel up to 6 spaces horizontally or diagonally.
+
+You can move through spaces occupied by allies (or enemies as difficult terrain: half speed), as long as you don't end movement in an occupied space.
+
+> #### Alternate Options.
+>
+> For a quicker, more loose game, you can forego counting spaces and measure typical movement roughly from pinkie to thumb. Slightly less for players with large hands (or slower characters), a bit more for our tiny-handed friends (or faster characters).
+
+### Range & Reach
+
+Certain abilities, weapons, and spells have a specified Range or Reach, which determines how far away your target can be affected. If none is specified, default to Reach 1.
+
+- **In Melee.** If _any_ enemy is adjacent to you, your Ranged attacks are made with disadvantage (Reach attacks are not so affected).
+- **Long Range.** You can gain disadvantage 1 to gain +2 Range on any Ranged attack (max +6).
+
+### Falling & Forced Movement
+
+When a character is forcibly moved but stopped by an obstacle, they take **1d6** bludgeoning damage for every space this movement is shortened. If they hit another creature, both creatures split this damage. Falling inflicts **1d6** bludgeoning damage for every 10 ft. fallen (2 spaces).
+
+> #### Abstracted Distances.
+>
+> If preferred, you can use a more abstracted system of distance just as well. Use **Close**, **Midrange**, and **Far**. A move from Midrange can traverse to Close or Far. Close creatures can be affected Reach/Range 4; Midrange, up to 6; beyond that is Far. As always, the GM will adjudicate unclear situations and which creatures are affected by abilities with an area of effect.
+
+## Concentration
+
+Some activities require Concentration to maintain. A character can only concentrate on one activity at a time. Whenever a character is **crit** while concentrating, they must make a **DC 10 STR save**. Failing this means Concentration is broken and the activity fails. Concentration is automatically broken whenever a character drops to 0 HP or is incapacitated.
+
+## Cover & Hiding
+
+A creature mostly obscured from line of sight (standing behind a tree, a larger ally, a knocked over table, in poor lighting, etc.) has **Cover** and imposes disadvantage on attacks against them. A creature completely obscured from view has **Full Cover** and cannot typically be targeted by an attack.
+
+To hide in combat, you must have Cover from the creatures you are attempting to hide from and use an action to make a **DC 15 Stealth** check (if you have Full Cover, you succeed automatically). The first attack you make while hidden is made with advantage, then you are no longer hidden. If this attack kills the enemy and no other enemy can see you, you may remain hidden instead.
+
+> **Monsters Are Smart!** They may catch on to heroes using the same tactics over and over again!
+
+## Grappling
+
+You can attempt to grab another creature provided you are within Reach and have at least 1 arm free (or some other way to grab them). On a failed STR or DEX save (DC 10+STR or DEX), a target:
+
+- your size or smaller, is Grappled.
+- larger than you, you gain the Riding condition.
+
+Forced movement (pushing a grappler away), incapacitation, or spending an action and succeeding on a STR or DEX save can end it.
+
+> ### Restrained.
+>
+> Functions like Grappled, but is caused by objects (e.g., chains, rope, roots) and ignores size restrictions. It can also be ended through any logical means, such as picking a lock or cutting/burning rope.
+
+## Conditions
+
+Some attacks, traps, spells, or other effects can also inflict conditions—usually negative effects other than damage. Some conditions are temporary, lasting as little as a single round; others may last until cured in some way, and some can be ended by using an action to make an appropriate save.

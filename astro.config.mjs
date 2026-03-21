@@ -41,6 +41,11 @@ export default defineConfig({
         PageTitle: './src/components/PageTitle.astro',
         Banner: './src/components/Banner.astro',
       },
+      /** Sidebar “On this page” outline: include `#`–`###` only (omit `####` and deeper). */
+      tableOfContents: {
+        minHeadingLevel: 1,
+        maxHeadingLevel: 2,
+      },
       /** Fallback / global index; each section’s nav is `src/config/section-sidebars.ts` + `resolveSectionSidebar`. */
       sidebar: [
         { label: 'Core Rules', link: '/core-rules/' },
