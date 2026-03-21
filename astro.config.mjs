@@ -18,6 +18,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'The Nimble Nomicon',
+      favicon: '/favicon.png',
       logo: {
         src: './src/assets/nimblenomicon_icon.svg',
         alt: 'The Nimble Nomicon',
@@ -28,10 +29,11 @@ export default defineConfig({
         Sidebar: './src/components/Sidebar.astro',
         TwoColumnContent: './src/components/TwoColumnContent.astro',
         Footer: './src/components/Footer.astro',
+        PageTitle: './src/components/PageTitle.astro',
+        Banner: './src/components/Banner.astro',
       },
       /** Fallback / global index; each section’s nav is `src/config/section-sidebars.ts` + `resolveSectionSidebar`. */
       sidebar: [
-        { label: 'Home', link: '/' },
         { label: 'Core Rules', link: '/core-rules/' },
         { label: 'Heroes', link: '/heroes/' },
         { label: "Game Master's Guide", link: '/game-masters-guide/' },

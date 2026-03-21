@@ -1,0 +1,23 @@
+---
+import heartIcon from '../assets/heart.svg';
+
+const { banner, bannerInHero } = Astro.locals.starlightRoute.entry.data;
+---
+
+{
+	banner && bannerInHero && (
+		<div class="nimble-full-bleed-hero__callout not-content" data-pagefind-ignore>
+			<img
+				class="nimble-full-bleed-hero__callout-icon"
+				src={heartIcon.src}
+				width={heartIcon.width}
+				height={heartIcon.height}
+				alt=""
+				aria-hidden="true"
+				loading="eager"
+				decoding="async"
+			/>
+			<div class="nimble-full-bleed-hero__callout-body" set:html={banner.content} />
+		</div>
+	)
+}

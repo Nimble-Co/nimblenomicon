@@ -20,13 +20,16 @@
 				width: 100%;
 			}
 
+			/*
+			 * Default Starlight sets a reduced `main-pane` width when a right-hand TOC column exists.
+			 * We only render the main column (TOC is in the left sidebar), so that width leaves a
+			 * blank strip on the right. Fill the row and center the `sl-container` column.
+			 */
 			:global([data-has-sidebar][data-has-toc]) .main-pane {
-				--sl-content-margin-inline: auto 0;
+				--sl-content-margin-inline: auto;
 
 				order: 1;
-				width: calc(
-					var(--sl-content-width) + (100% - var(--sl-content-width) - var(--sl-sidebar-width)) / 2
-				);
+				width: 100%;
 			}
 		}
 	}

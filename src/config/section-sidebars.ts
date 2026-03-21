@@ -16,7 +16,6 @@ export type SectionKey = (typeof SECTION_KEYS)[number];
 /** Starlight manual sidebar shape (same as `starlight.sidebar` in astro.config). */
 export const SECTION_SIDEBAR_CONFIG = {
 	'core-rules': [
-		{ label: 'Home', link: '/' },
 		{
 			label: 'Start Here',
 			collapsed: false,
@@ -39,23 +38,18 @@ export const SECTION_SIDEBAR_CONFIG = {
 		},
 	],
 	heroes: [
-		{ label: 'Home', link: '/' },
 		{ label: 'Heroes', link: '/heroes/' },
 	],
 	'game-masters-guide': [
-		{ label: 'Home', link: '/' },
 		{ label: "Game Master's Guide", link: '/game-masters-guide/' },
 	],
 	adventures: [
-		{ label: 'Home', link: '/' },
 		{ label: 'Adventures', link: '/adventures/' },
 	],
 	'monsters-and-more': [
-		{ label: 'Home', link: '/' },
 		{ label: 'Monsters & More', link: '/monsters-and-more/' },
 	],
 	'creators-kit': [
-		{ label: 'Home', link: '/' },
 		{ label: "Creator's Kit", link: '/creators-kit/' },
 	],
 } as const satisfies Record<SectionKey, readonly unknown[]>;

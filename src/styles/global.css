@@ -1,82 +1,83 @@
 @layer base, starlight, theme, components, utilities;
 
-@import '@astrojs/starlight-tailwind';
-@import 'tailwindcss/theme.css' layer(theme);
-@import 'tailwindcss/utilities.css' layer(utilities);
+@import "@astrojs/starlight-tailwind";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
 
 @theme {
-	/*
+  /*
 	 * Nimble light theme — wired into Starlight via @astrojs/starlight-tailwind
 	 * (see node_modules/@astrojs/starlight-tailwind/tailwind.css :root mappings).
 	 */
-	--color-accent-50: #fffbeb;
-	--color-accent-100: #fef3c7;
-	--color-accent-200: #fde68a;
-	--color-accent-300: #fcd34d;
-	--color-accent-400: #e5c045;
-	--color-accent-500: #d4a90c;
-	--color-accent-600: #d4a90c;
-	--color-accent-700: #b8940a;
-	--color-accent-800: #977c08;
-	--color-accent-900: #4a3d03;
-	--color-accent-950: #292205;
+  --color-accent-50: #fffbeb;
+  --color-accent-100: #fef3c7;
+  --color-accent-200: #fde68a;
+  --color-accent-300: #fcd34d;
+  --color-accent-400: #e5c045;
+  --color-accent-500: #d4a90c;
+  --color-accent-600: #d4a90c;
+  --color-accent-700: #b8940a;
+  --color-accent-800: #977c08;
+  --color-accent-900: #4a3d03;
+  --color-accent-950: #292205;
 
-	--color-gray-50: #fafafa;
-	--color-gray-100: #f4f4f4;
-	--color-gray-200: #e5e5e5;
-	--color-gray-300: #d4d4d4;
-	--color-gray-400: #a3a3a3;
-	--color-gray-500: #737373;
-	--color-gray-600: #525252;
-	--color-gray-700: #858585;
-	--color-gray-800: #3d3d3d;
-	--color-gray-900: #000000;
-	--color-gray-950: #0a0a0a;
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f4f4f4;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #858585;
+  --color-gray-800: #3d3d3d;
+  --color-gray-900: #000000;
+  --color-gray-950: #0a0a0a;
 }
 
 :root {
-	/* Header wordmark — base size for “NIMBLENOMICON”; “THE” is a fraction via em in SiteTitle. */
-	--nimble-site-title-name-size: clamp(0.8125rem, 2.2vw, 1.125rem);
-	/* Search trigger — light pill (Pagefind modal keeps Starlight defaults). */
-	--nimble-search-trigger-bg: #ebebeb;
-	--nimble-search-trigger-fg: #707070;
-	--nimble-search-trigger-radius: 0.625rem;
-	--nimble-search-trigger-min-width: 400px;
-	--nimble-search-trigger-max-width: 40rem;
-	--nimble-search-trigger-font:
-		ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* Header wordmark — base size for “NIMBLENOMICON”; “THE” is a fraction via em in SiteTitle. */
+  --nimble-site-title-name-size: clamp(0.8125rem, 2.2vw, 1.125rem);
+  /* Search trigger — light pill (Pagefind modal keeps Starlight defaults). */
+  --nimble-search-trigger-bg: #ebebeb;
+  --nimble-search-trigger-fg: #707070;
+  --nimble-search-trigger-radius: 0.625rem;
+  --nimble-search-trigger-min-width: 400px;
+  --nimble-search-trigger-max-width: 40rem;
+  --nimble-search-trigger-font:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 }
 
 /*
  * Unlayered overrides win over Starlight + Tailwind layers so we can set exact brand colors.
  * Light mode only — dark theme left on defaults until it is designed.
  */
-:root[data-theme='light'] {
-	--sl-site-title-color: var(--color-gray-900);
-	--sl-color-bg: #f4f4f4;
-	--sl-color-bg-nav: #ffffff;
-	--sl-color-bg-sidebar: #f4f4f4;
-	--sl-color-text: #252b42;
-	--sl-color-bg-inline-code: #e5e5e5;
-	--sl-color-hairline-light: #e8e8e8;
-	--sl-color-hairline: #dedede;
-	--sl-color-hairline-shade: #e0e0e0;
+:root[data-theme="light"] {
+  --sl-site-title-color: var(--color-gray-900);
+  --sl-color-bg: #f4f4f4;
+  --sl-color-bg-nav: #ffffff;
+  --sl-color-bg-sidebar: #f4f4f4;
+  --sl-color-text: #252b42;
+  --sl-color-bg-inline-code: #e5e5e5;
+  --sl-color-hairline-light: #e8e8e8;
+  --sl-color-hairline: #dedede;
+  --sl-color-hairline-shade: #e0e0e0;
 }
 
 /* Mobile drawer: Starlight uses --sl-color-black here; keep it aligned with the sidebar surface. */
-:root[data-theme='light'] nav.sidebar .sidebar-pane {
-	background-color: #f4f4f4;
+:root[data-theme="light"] nav.sidebar .sidebar-pane {
+  background-color: #f4f4f4;
 }
 
 /* Header site title + logo — theme-driven (not accent color). */
-:root[data-theme='dark'] {
-	--sl-site-title-color: var(--sl-color-text);
-	--nimble-search-trigger-bg: #2e2e2e;
-	--nimble-search-trigger-fg: #b5b5b5;
+:root[data-theme="dark"] {
+  --sl-site-title-color: var(--sl-color-text);
+  --nimble-search-trigger-bg: #2e2e2e;
+  --nimble-search-trigger-fg: #b5b5b5;
 }
 
 a.site-title {
-	color: var(--sl-site-title-color);
+  color: var(--sl-site-title-color);
 }
 
 /*
@@ -84,76 +85,80 @@ a.site-title {
  * Overrides Starlight’s layered `button[data-open-modal]` rules (unlayered).
  */
 .header button[data-open-modal] {
-	font-family: var(--nimble-search-trigger-font);
-	font-size: 0.9375rem;
-	font-weight: 400;
-	border: none;
-	border-radius: var(--nimble-search-trigger-radius);
-	background-color: var(--nimble-search-trigger-bg);
-	color: var(--nimble-search-trigger-fg);
-	box-shadow: none;
-	min-height: 2.5rem;
-	padding-inline: 0.75rem;
+  font-family: var(--nimble-search-trigger-font);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  border: none;
+  border-radius: var(--nimble-search-trigger-radius);
+  background-color: var(--nimble-search-trigger-bg);
+  color: var(--nimble-search-trigger-fg);
+  box-shadow: none;
+  min-height: 2.5rem;
+  padding-inline: 0.75rem;
 }
 
 .header button[data-open-modal]:hover {
-	color: var(--nimble-search-trigger-fg);
-	background-color: color-mix(in srgb, var(--nimble-search-trigger-bg) 88%, var(--nimble-search-trigger-fg));
+  color: var(--nimble-search-trigger-fg);
+  background-color: color-mix(
+    in srgb,
+    var(--nimble-search-trigger-bg) 88%,
+    var(--nimble-search-trigger-fg)
+  );
 }
 
 .header button[data-open-modal]:focus-visible {
-	outline: 2px solid var(--sl-color-accent-high, var(--color-accent-500));
-	outline-offset: 2px;
+  outline: 2px solid var(--sl-color-accent-high, var(--color-accent-500));
+  outline-offset: 2px;
 }
 
 @media (min-width: 50rem) {
-	/*
+  /*
 	 * True optical center for search: Starlight’s default grid uses a wide middle `1fr` column,
 	 * so “centering” there still looks offset. `1fr auto 1fr` balances left/right and places the
 	 * search in the viewport center.
 	 * Scope to `header > div.header` — Starlight wraps the inner bar in `<header class="header">`.
 	 */
-	header.header > div.header {
-		display: grid;
-		grid-template-columns: 1fr auto 1fr;
-		align-items: center;
-		gap: var(--sl-nav-gap);
-	}
+  header.header > div.header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: var(--sl-nav-gap);
+  }
 
-	header.header > div.header > .title-wrapper {
-		justify-self: start;
-		min-width: 0;
-	}
+  header.header > div.header > .title-wrapper {
+    justify-self: start;
+    min-width: 0;
+  }
 
-	header.header > div.header > .sl-flex:nth-child(2) {
-		justify-content: center;
-		justify-self: center;
-		width: auto;
-		max-width: 100%;
-	}
+  header.header > div.header > .sl-flex:nth-child(2) {
+    justify-content: center;
+    justify-self: center;
+    width: auto;
+    max-width: 100%;
+  }
 
-	header.header > div.header > .right-group {
-		justify-self: end;
-	}
+  header.header > div.header > .right-group {
+    justify-self: end;
+  }
 
-	header.header > div.header button[data-open-modal] {
-		box-sizing: border-box;
-		min-width: var(--nimble-search-trigger-min-width);
-		width: min(100%, var(--nimble-search-trigger-max-width));
-		max-width: var(--nimble-search-trigger-max-width);
-		padding-inline: 1rem;
-		padding-block: 0.5rem;
-		height: auto;
-		gap: 0.5rem;
-	}
+  header.header > div.header button[data-open-modal] {
+    box-sizing: border-box;
+    min-width: var(--nimble-search-trigger-min-width);
+    width: min(100%, var(--nimble-search-trigger-max-width));
+    max-width: var(--nimble-search-trigger-max-width);
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    height: auto;
+    gap: 0.5rem;
+  }
 }
 
 /* Sidebar uses --sl-color-gray-2 for links; body copy uses --sl-color-text (set above). */
-:root[data-theme='light'] nav.sidebar a[aria-current='page'],
-:root[data-theme='light'] nav.sidebar a[aria-current='page']:hover,
-:root[data-theme='light'] nav.sidebar a[aria-current='page']:focus {
-	color: #000000;
-	background-color: #d4a90c;
+:root[data-theme="light"] nav.sidebar a[aria-current="page"],
+:root[data-theme="light"] nav.sidebar a[aria-current="page"]:hover,
+:root[data-theme="light"] nav.sidebar a[aria-current="page"]:focus {
+  color: #000000;
+  background-color: #d4a90c;
 }
 
 /*
@@ -161,31 +166,153 @@ a.site-title {
  * No mobile “On this page” strip — outline is in the drawer with the rest of the nav.
  */
 :root[data-has-toc] {
-	--sl-mobile-toc-height: 0rem;
+  --sl-mobile-toc-height: 0rem;
+}
+
+/*
+ * Hero-led pages: Starlight still renders an empty first `content-panel` (no PageTitle) and
+ * adds a sibling hairline + padding. Remove both so the hero sits flush under the header.
+ */
+main .content-panel:first-child:not(:has(.sl-container > *)) {
+  display: none;
+}
+
+main .content-panel:has(.nimble-full-bleed-hero) {
+  border-top: none;
+  padding-top: 0;
 }
 
 /* Core Rules index — edge-to-edge hero above prose column */
 .nimble-full-bleed-hero {
-	width: 100vw;
-	margin-left: calc(50% - 50vw);
-	margin-right: calc(50% - 50vw);
-	margin-bottom: 1.5rem;
-	height: 667px;
-	overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-bottom: 0;
+  min-height: 380px;
+  /* Allow the callout to extend past the hero and overlap the prose below */
+  overflow: visible;
 }
 
-.nimble-full-bleed-hero img {
-	display: block;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	object-position: center;
+.nimble-full-bleed-hero__img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Bottom + edge darkening so white title reads on busy art */
+.nimble-full-bleed-hero__gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.35) 42%, transparent 72%),
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.45) 0%,
+      transparent 28%,
+      transparent 72%,
+      rgba(0, 0, 0, 0.45) 100%
+    );
+}
+
+.nimble-full-bleed-hero__bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 40rem;
+  padding: 0 1rem 1rem;
+  margin-top: auto;
+}
+
+.nimble-full-bleed-hero__title {
+  margin: 0;
+  text-align: center;
+  font-family: var(--__sl-font);
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: clamp(1.625rem, 4.2vw, 2.625rem);
+  line-height: 1.1;
+  color: #ffffff;
+  text-shadow:
+    0 2px 20px rgba(0, 0, 0, 0.75),
+    0 0 1px rgba(0, 0, 0, 0.9);
+}
+
+.nimble-full-bleed-hero__callout {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background-color: rgba(248, 248, 248, 0.96);
+  color: #525252;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.35),
+    0 1px 2px rgba(0, 0, 0, 0.08);
+  /* Half of the card sits on the image, half on the page body below */
+  margin-bottom: -3rem;
+}
+
+/* Restore vertical rhythm after the hero + overlapping callout */
+.sl-markdown-content:has(> .nimble-full-bleed-hero:first-child) > .nimble-full-bleed-hero + * {
+  margin-top: 3.5rem;
+}
+
+.nimble-full-bleed-hero__callout-icon {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: auto;
+  display: block;
+  /* Align with first line of copy (avoid centering on the full wrapped paragraph) */
+  margin-top: 0.2em;
+}
+
+.nimble-full-bleed-hero__callout-body {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.8125rem;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.nimble-full-bleed-hero__callout-body :global(p) {
+  margin: 0;
+}
+
+.nimble-full-bleed-hero__callout-body :global(a) {
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.nimble-full-bleed-hero__callout-body :global(a:hover),
+.nimble-full-bleed-hero__callout-body :global(a:focus-visible) {
+  color: #000000;
 }
 
 /* Callouts / asides — neutral surface; colored borders from Starlight variants remain. */
-:root[data-theme='light'] .starlight-aside.starlight-aside--note,
-:root[data-theme='light'] .starlight-aside.starlight-aside--tip,
-:root[data-theme='light'] .starlight-aside.starlight-aside--caution,
-:root[data-theme='light'] .starlight-aside.starlight-aside--danger {
-	background-color: #e5e5e5;
+:root[data-theme="light"] .starlight-aside.starlight-aside--note,
+:root[data-theme="light"] .starlight-aside.starlight-aside--tip,
+:root[data-theme="light"] .starlight-aside.starlight-aside--caution,
+:root[data-theme="light"] .starlight-aside.starlight-aside--danger {
+  background-color: #e5e5e5;
 }
