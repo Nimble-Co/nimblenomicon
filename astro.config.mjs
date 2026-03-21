@@ -17,7 +17,16 @@ export default defineConfig({
   base,
   integrations: [
     starlight({
-      title: 'The Nimble Nomicon',
+      title: 'The Nimblenomicon',
+      head: [
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'stylesheet',
+            href: 'https://use.typekit.net/gsn8vvv.css',
+          },
+        },
+      ],
       favicon: '/favicon.png',
       logo: {
         src: './src/assets/nimblenomicon_icon.svg',

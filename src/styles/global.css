@@ -9,6 +9,8 @@
 	 * Nimble light theme — wired into Starlight via @astrojs/starlight-tailwind
 	 * (see node_modules/@astrojs/starlight-tailwind/tailwind.css :root mappings).
 	 */
+  /* Body / UI — Adobe Fonts (Typekit); drives `--sl-font` via Starlight Tailwind. */
+  --font-sans: "avenir-next-lt-pro-condensed", sans-serif;
   --color-accent-50: #fffbeb;
   --color-accent-100: #fef3c7;
   --color-accent-200: #fde68a;
@@ -35,6 +37,10 @@
 }
 
 :root {
+  /* Adobe Fonts (Typekit) — Beaufort Pro for headings & title UI; loaded via Starlight `head`. */
+  --nimble-font-heading: "beaufort-pro", serif;
+  /* Body copy & UI sans — alias for `--font-sans` (Typekit). */
+  --nimble-font-body: var(--font-sans);
   /* Header wordmark — base size for “NIMBLENOMICON”; “THE” is a fraction via em in SiteTitle. */
   --nimble-site-title-name-size: clamp(0.8125rem, 2.2vw, 1.125rem);
   /* Search trigger — light pill (Pagefind modal keeps Starlight defaults). */
@@ -43,9 +49,7 @@
   --nimble-search-trigger-radius: 0.625rem;
   --nimble-search-trigger-min-width: 400px;
   --nimble-search-trigger-max-width: 40rem;
-  --nimble-search-trigger-font:
-    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  --nimble-search-trigger-font: var(--nimble-font-body);
 }
 
 /*
@@ -78,6 +82,29 @@
 
 a.site-title {
   color: var(--sl-site-title-color);
+}
+
+/* Headings & primary titles — Beaufort Pro (Typekit). */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--nimble-font-heading);
+}
+
+.site-title--nimble .site-title__stack {
+  font-family: var(--nimble-font-heading);
+}
+
+/*
+ * Default body text — Avenir Next LT Pro Condensed (Typekit); headings override with Beaufort.
+ */
+body {
+  font-family: var(--nimble-font-body);
+  font-weight: 400;
+  font-style: normal;
 }
 
 /*
@@ -240,7 +267,7 @@ main .content-panel:has(.nimble-full-bleed-hero) {
 .nimble-full-bleed-hero__title {
   margin: 0;
   text-align: center;
-  font-family: var(--__sl-font);
+  font-family: var(--nimble-font-heading);
   font-weight: 700;
   font-style: italic;
   text-transform: uppercase;
