@@ -85,7 +85,9 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 				document.body.toggleAttribute('data-search-modal-open', true);
 				this.querySelector('input')?.focus();
 				event?.stopPropagation();
-				window.addEventListener('click', onClick);
+				// Defer so the opening click (e.g. home search) can finish bubbling; otherwise
+				// `onClick` runs in the same tick, sees target outside `.dialog-frame`, and closes.
+				queueMicrotask(() => window.addEventListener('click', onClick));
 			};
 
 			const closeModal = () => dialog.close();
