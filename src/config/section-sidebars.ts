@@ -2,6 +2,14 @@
  * Per-section Starlight sidebar configs. Each home tile / book gets its own nav tree;
  * other sections’ links do not appear in the sidebar.
  */
+import type { ImageMetadata } from 'astro';
+import coreRulesIcon from '../assets/core_rules.svg';
+import herosIcon from '../assets/heros.svg';
+import gameMasterGuideIcon from '../assets/game_master_guide.svg';
+import adventuresIcon from '../assets/adventures.svg';
+import monstersAndMoreIcon from '../assets/monsters_and_more.svg';
+import creatorsKitIcon from '../assets/creators_kit.svg';
+
 export const SECTION_KEYS = [
 	'core-rules',
 	'heroes',
@@ -13,25 +21,81 @@ export const SECTION_KEYS = [
 
 export type SectionKey = (typeof SECTION_KEYS)[number];
 
+export type SectionPresentation = {
+	label: string;
+	path: string;
+	icon: ImageMetadata;
+	home: { width: number; height: number };
+	sidebar: { width: number; height: number };
+};
+
+/** Single source for section labels, routes, icons, and image dimensions (home tiles + sidebar brand). */
+export const SECTION_METADATA = {
+	'core-rules': {
+		label: 'Core Rules',
+		path: '/core-rules/',
+		icon: coreRulesIcon,
+		home: { width: 20, height: 23 },
+		sidebar: { width: 40, height: 46 },
+	},
+	heroes: {
+		label: 'Heroes',
+		path: '/heroes/',
+		icon: herosIcon,
+		home: { width: 17, height: 25 },
+		sidebar: { width: 34, height: 50 },
+	},
+	'game-masters-guide': {
+		label: "Game Master's Guide",
+		path: '/game-masters-guide/',
+		icon: gameMasterGuideIcon,
+		home: { width: 21, height: 18 },
+		sidebar: { width: 42, height: 36 },
+	},
+	adventures: {
+		label: 'Adventures',
+		path: '/adventures/',
+		icon: adventuresIcon,
+		home: { width: 20, height: 18 },
+		sidebar: { width: 40, height: 36 },
+	},
+	'monsters-and-more': {
+		label: 'Monsters & More',
+		path: '/monsters-and-more/',
+		icon: monstersAndMoreIcon,
+		home: { width: 20, height: 21 },
+		sidebar: { width: 40, height: 42 },
+	},
+	'creators-kit': {
+		label: "Creator's Kit",
+		path: '/creators-kit/',
+		icon: creatorsKitIcon,
+		home: { width: 17, height: 23 },
+		sidebar: { width: 34, height: 46 },
+	},
+} as const satisfies Record<SectionKey, SectionPresentation>;
+
+/**
+ * Starlight `sidebar` in `astro.config` (global fallback index). Same order and labels/paths as
+ * `SECTION_KEYS` / `SECTION_METADATA` — import this from the Astro config instead of duplicating.
+ */
+export const STARLIGHT_GLOBAL_SIDEBAR = SECTION_KEYS.map((key) => ({
+	label: SECTION_METADATA[key].label,
+	link: SECTION_METADATA[key].path,
+}));
+
 /** Starlight manual sidebar shape (same as `starlight.sidebar` in astro.config). */
-export const SECTION_SIDEBAR_CONFIG = {
-	'core-rules': [{ label: 'Core Rules', link: '/core-rules/' }],
-	heroes: [
-		{ label: 'Heroes', link: '/heroes/' },
-	],
-	'game-masters-guide': [
-		{ label: "Game Master's Guide", link: '/game-masters-guide/' },
-	],
-	adventures: [
-		{ label: 'Adventures', link: '/adventures/' },
-	],
-	'monsters-and-more': [
-		{ label: 'Monsters & More', link: '/monsters-and-more/' },
-	],
-	'creators-kit': [
-		{ label: "Creator's Kit", link: '/creators-kit/' },
-	],
-} as const satisfies Record<SectionKey, readonly unknown[]>;
+export const SECTION_SIDEBAR_CONFIG = Object.fromEntries(
+	SECTION_KEYS.map(
+		(key) =>
+			[
+				key,
+				[{ label: SECTION_METADATA[key].label, link: SECTION_METADATA[key].path }],
+			] as const
+	)
+) as {
+	readonly [K in SectionKey]: readonly [{ readonly label: string; readonly link: string }];
+};
 
 /** First path segment for multi-file sections, or the slug for top-level docs. */
 export function getSectionKey(entryId: string): SectionKey | null {

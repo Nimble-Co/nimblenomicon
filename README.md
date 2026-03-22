@@ -51,7 +51,7 @@ The docs app lives under [`.app/`](.app/). It uses Starlight with [Tailwind CSS]
 │   ├── styles/
 │   │   └── global.css
 │   └── content.config.ts
-├── astro.config.mjs
+├── astro.config.ts
 ├── package.json
 └── tsconfig.json
 ```

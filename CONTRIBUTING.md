@@ -41,6 +41,22 @@ Other useful commands:
 
 There are no project test or lint scripts in `package.json` yet. If we add them later, this section will list them.
 
+## Upgrading `@astrojs/starlight`
+
+When bumping Starlight (and often `astro`):
+
+1. Note the **previous and new** `@astrojs/starlight` version in your changelog or PR description.
+2. Search the repo for **deep imports** into Starlight’s package (these can break on upgrades):
+
+   ```bash
+   grep -r 'node_modules/@astrojs/starlight' src
+   # or: rg 'node_modules/@astrojs/starlight' src
+   ```
+
+3. **Smoke-test** locally after `npm install` and `npm run build`: site search (header + modal), sidebar open/close and scroll restore, section prev/next footer links, home page tiles and fake search trigger.
+4. Global Starlight **`sidebar`** is **`STARLIGHT_GLOBAL_SIDEBAR`** from `src/config/section-sidebars.ts` (wired in `astro.config.ts`). If you add a section, update that module once; no separate sidebar list in config.
+5. Optional: pin or range `@astrojs/starlight` in `package.json` explicitly if the team wants stricter upgrade control.
+
 ## Code of Conduct
 
 Be kind and constructive in **GitHub Discussions** and **Discord**. We’re all building something together, and respectful collaboration goes a long way.

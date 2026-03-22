@@ -1,11 +1,7 @@
 ---
 import bookIcon from '../assets/nimblenomicon_icon.svg';
-import coreRulesIcon from '../assets/core_rules.svg';
-import herosIcon from '../assets/heros.svg';
-import gameMasterGuideIcon from '../assets/game_master_guide.svg';
-import adventuresIcon from '../assets/adventures.svg';
-import monstersAndMoreIcon from '../assets/monsters_and_more.svg';
-import creatorsKitIcon from '../assets/creators_kit.svg';
+import { SECTION_KEYS, SECTION_METADATA } from '../config/section-sidebars';
+import { SEARCH_PLACEHOLDER } from '../config/search';
 
 /** Resolves a site-root path for Starlight / GitHub Pages `base`. */
 function withBase(path: string): string {
@@ -14,50 +10,16 @@ function withBase(path: string): string {
 	return base + normalized;
 }
 
-const navItems = [
-	{
-		label: 'Core Rules',
-		href: withBase('/core-rules/'),
-		icon: coreRulesIcon,
-		iconWidth: 20,
-		iconHeight: 23,
-	},
-	{
-		label: 'Heroes',
-		href: withBase('/heroes/'),
-		icon: herosIcon,
-		iconWidth: 17,
-		iconHeight: 25,
-	},
-	{
-		label: "Game Master's Guide",
-		href: withBase('/game-masters-guide/'),
-		icon: gameMasterGuideIcon,
-		iconWidth: 21,
-		iconHeight: 18,
-	},
-	{
-		label: 'Adventures',
-		href: withBase('/adventures/'),
-		icon: adventuresIcon,
-		iconWidth: 20,
-		iconHeight: 18,
-	},
-	{
-		label: 'Monsters & More',
-		href: withBase('/monsters-and-more/'),
-		icon: monstersAndMoreIcon,
-		iconWidth: 20,
-		iconHeight: 21,
-	},
-	{
-		label: "Creator's Kit",
-		href: withBase('/creators-kit/'),
-		icon: creatorsKitIcon,
-		iconWidth: 17,
-		iconHeight: 23,
-	},
-];
+const navItems = SECTION_KEYS.map((key) => {
+	const m = SECTION_METADATA[key];
+	return {
+		label: m.label,
+		href: withBase(m.path),
+		icon: m.icon,
+		iconWidth: m.home.width,
+		iconHeight: m.home.height,
+	};
+});
 ---
 
 <section class="home-landing" aria-label="Home">
@@ -80,7 +42,7 @@ const navItems = [
 		<button
 			type="button"
 			class="home-landing__search-trigger"
-			aria-label="Search for anything..."
+			aria-label={SEARCH_PLACEHOLDER}
 			aria-keyshortcuts="Control+K"
 		>
 			<svg class="home-landing__search-icon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
@@ -89,7 +51,7 @@ const navItems = [
 					d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
 				/>
 			</svg>
-			<span class="home-landing__search-placeholder">Search for anything...</span>
+			<span class="home-landing__search-placeholder">{SEARCH_PLACEHOLDER}</span>
 		</button>
 	</div>
 

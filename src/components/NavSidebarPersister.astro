@@ -2,6 +2,9 @@
 /**
  * Like Starlight’s SidebarPersister, but takes the resolved `sidebar` so session hash matches
  * section-scoped nav from `resolveSectionSidebar`.
+ *
+ * After upgrading `@astrojs/starlight`, re-test: open/close sidebar `<details>`, scroll position
+ * restore, and session persistence — upstream DOM or storage behavior may change.
  */
 import type { SidebarEntry } from '../../node_modules/@astrojs/starlight/utils/routing/types.ts';
 import { getSidebarHash } from '../../node_modules/@astrojs/starlight/utils/navigation.ts';
