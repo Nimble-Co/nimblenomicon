@@ -77,13 +77,17 @@ const navItems = SECTION_KEYS.map((key) => {
 </section>
 
 <script>
-	function openHeaderSearch() {
+	function openHeaderSearch(event: Event) {
 		const siteSearch = document.querySelector('site-search');
-		const open = siteSearch && 'openSearchModal' in siteSearch
-			? (siteSearch as HTMLElement & { openSearchModal: () => void }).openSearchModal
-			: undefined;
-		if (typeof open === 'function') {
+		const open =
+			siteSearch && typeof (siteSearch as HTMLElement & { openSearchModal?: () => void }).openSearchModal === 'function'
+				? (siteSearch as HTMLElement & { openSearchModal: () => void }).openSearchModal
+				: undefined;
+		if (open) {
 			open();
+			// Same issue as Search.astro: without this, the opening click can bubble to `window`
+			// and hit the outside-click closer (timing varies by browser).
+			event.stopPropagation();
 			return;
 		}
 		document.querySelector<HTMLButtonElement>('site-search button[data-open-modal]')?.click();
