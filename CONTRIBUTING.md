@@ -1,72 +1,52 @@
 # Contributing to Nimblenomicon
 
-Thanks for taking the time to contribute to **Nimblenomicon**. This repository is currently **early WIP / exploratory**—please treat it as living documentation as the project evolves.
+We’re glad you’re here. **Nimblenomicon** is in **Phase 0** right now (early, exploratory, still taking shape). Think of this repo as living documentation that will grow with the project.
 
-Coordinating with the team:
-- Discord: https://discord.com/channels/1163603714565734400/1483596090929451128
+## Phase 0: PRs and issues on pause
 
-## How to Contribute
+For the moment, we’re **not taking pull requests or GitHub issues**. We’re not trying to shut out community involvement. We just don’t have the **bandwidth** right now to review PRs and work through issues the way we’d want to. This is also very much **work in progress**. You’ll run into rough edges and bugs, and that’s expected while we’re still building. We’re iterating internally rather than turning every quirk into a tracked issue.
 
-### 1) Ideas and proposals (start in Discussions first)
+Once **Phase 1** ships and we can make room for that kind of collaboration, we plan to open up PRs and issues. We’ll update this page when we do.
 
-If you have an idea for new features, directions, or improvements:
+In the meantime, we’d love to hear from you here:
 
-1. Start a thread in the GitHub **Discussions** tab first (search existing discussions to avoid duplicates).
-2. Coordinate/clarify in Discord using the link above.
-3. Once the idea is scoped and agreed upon, it can be turned into one or more GitHub issues.
+- **Discord:** https://discord.com/channels/1163603714565734400/1483596090929451128 (say hi, swap ideas, chat with the team and community)
+- **GitHub Discussions:** questions, suggestions, and threads. Peek at existing topics first so we don’t duplicate conversations.
 
-### 2) Bugs (use Issues)
-
-If you find a bug (incorrect behavior, broken layout, missing content, etc.):
-
-1. Check whether there is already an open issue for it.
-2. Open a new GitHub issue if needed.
-3. Include:
-   - What you expected to happen
-   - What actually happened
-   - Steps to reproduce (as detailed as possible)
-   - Screenshots / logs (if applicable)
-   - Any relevant environment notes (browser/device/version)
-
-### 3) Pull Requests (PRs must link to an Issue first)
-
-We’re open to PRs, but please follow these rules:
-
-- **Every PR must be linked to an existing GitHub issue first.** If the issue does not exist yet, open it before submitting a PR.
-- If your PR is still in progress, open it as a **Draft** PR and link it to the issue.
-- In the PR description, include an issue reference using GitHub’s keywords, for example:
-  - `Closes #123`
-  - `Fixes #123`
-  - `Resolves #123`
-
-#### PR description checklist
-
-In your PR description, please include:
-
-- A short summary of what the PR changes and why
-- The linked issue(s)
-- Testing performed (or a note if tests aren’t available yet)
-- Any extra context a reviewer might need (edge cases, trade-offs, screenshots, etc.)
+Thanks for your patience while we focus on getting Phase 1 out the door.
 
 ## Local Development
 
-Right now, this repo appears to be documentation/mockups focused (no app/tooling has been added yet).
+The site is an **Astro** + **Starlight** documentation app at the **repository root** (not a separate subfolder).
 
-If you’re contributing code once the project’s tooling lands, please update this section in your PR to document:
-- How to set up dependencies
-- How to run the app
-- How to run tests / linters
+1. Install [Node.js](https://nodejs.org/) (use a current LTS release).
+2. From the repo root, install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the dev server:
+
+   ```bash
+   npm run dev
+   ```
+
+   Then open the URL it prints (by default [http://localhost:4321](http://localhost:4321)).
+
+Other useful commands:
+
+- `npm run build` — production build to `dist/`
+- `npm run preview` — serve the built site locally
+
+There are no project test or lint scripts in `package.json` yet. If we add them later, this section will list them.
 
 ## Code of Conduct
 
-Please be kind and constructive in GitHub Discussions, GitHub Issues, and Discord. We expect respectful collaboration from everyone.
+Be kind and constructive in **GitHub Discussions** and **Discord**. We’re all building something together, and respectful collaboration goes a long way.
 
-If something is unclear, ask—prefer clarification over “guessing” silently.
+If something’s fuzzy, just ask. A quick question beats a quiet guess.
 
-## Questions / Unsure Where It Belongs?
+## Not sure where to post?
 
-If you’re not sure whether something should be a Discussion, an Issue, or a PR:
-- Start in **Discussions**
-- Then coordinate on Discord
-- Once it’s well-scoped, convert it into an **Issue**
-
+**GitHub Discussions** or **Discord** (links above) are the right spots. The issue tracker stays closed during Phase 0 for the same reasons we called out above.
