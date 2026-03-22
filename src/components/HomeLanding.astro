@@ -78,8 +78,15 @@ const navItems = SECTION_KEYS.map((key) => {
 
 <script>
 	function openHeaderSearch() {
-		const openBtn = document.querySelector<HTMLButtonElement>('site-search button[data-open-modal]');
-		openBtn?.click();
+		const siteSearch = document.querySelector('site-search');
+		const open = siteSearch && 'openSearchModal' in siteSearch
+			? (siteSearch as HTMLElement & { openSearchModal: () => void }).openSearchModal
+			: undefined;
+		if (typeof open === 'function') {
+			open();
+			return;
+		}
+		document.querySelector<HTMLButtonElement>('site-search button[data-open-modal]')?.click();
 	}
 
 	function wireHomeSearch() {

@@ -59,6 +59,8 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 	import { pagefindUserConfig } from 'virtual:starlight/pagefind-config';
 
 	class SiteSearch extends HTMLElement {
+		openSearchModal!: () => void;
+
 		constructor() {
 			super();
 			const openBtn = this.querySelector<HTMLButtonElement>('button[data-open-modal]')!;
@@ -87,6 +89,12 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 			};
 
 			const closeModal = () => dialog.close();
+
+			/**
+			 * Call from another control’s click handler (same synchronous user gesture).
+			 * `openBtn.click()` does not preserve activation, so `showModal()` can be blocked.
+			 */
+			this.openSearchModal = () => openModal();
 
 			openBtn.addEventListener('click', openModal);
 			openBtn.disabled = false;
