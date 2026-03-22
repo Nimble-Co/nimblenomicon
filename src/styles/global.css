@@ -141,28 +141,38 @@ body {
 
 @media (min-width: 50rem) {
   /*
-	 * True optical center for search: Starlight’s default grid uses a wide middle `1fr` column,
-	 * so “centering” there still looks offset. `1fr auto 1fr` balances left/right and places the
-	 * search in the viewport center.
-	 * Scope to `header > div.header` — Starlight wraps the inner bar in `<header class="header">`.
+	 * `1fr | auto | 1fr` + a wide search min-width let the center column paint past its track
+	 * (100vw ignores header padding / menu offset). `auto | minmax(0,1fr) | auto` reserves full
+	 * width for the wordmark and right chrome; the search only uses space that’s actually left.
 	 */
   header.header > div.header {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
     gap: var(--sl-nav-gap);
   }
 
   header.header > div.header > .title-wrapper {
     justify-self: start;
-    min-width: 0;
+    overflow: visible;
+  }
+
+  header.header .site-title.site-title--nimble {
+    min-width: min-content;
+  }
+
+  header.header .site-title.site-title--nimble .site-title__stack {
+    min-width: min-content;
+    overflow: visible;
   }
 
   header.header > div.header > .sl-flex:nth-child(2) {
+    display: flex;
     justify-content: center;
-    justify-self: center;
-    width: auto;
-    max-width: 100%;
+    justify-self: stretch;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
   }
 
   header.header > div.header > .right-group {
@@ -171,9 +181,9 @@ body {
 
   header.header > div.header button[data-open-modal] {
     box-sizing: border-box;
-    min-width: var(--nimble-search-trigger-min-width);
-    width: min(100%, var(--nimble-search-trigger-max-width));
-    max-width: var(--nimble-search-trigger-max-width);
+    width: 100%;
+    min-width: min(var(--nimble-search-trigger-min-width), 100%);
+    max-width: min(var(--nimble-search-trigger-max-width), 100%);
     padding-inline: 1rem;
     padding-block: 0.5rem;
     height: auto;
