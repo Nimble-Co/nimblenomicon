@@ -261,7 +261,12 @@ main .content-panel:has(.nimble-full-bleed-hero) {
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.35) 42%, transparent 72%),
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.92) 0%,
+      rgba(0, 0, 0, 0.35) 42%,
+      transparent 72%
+    ),
     linear-gradient(
       to right,
       rgba(0, 0, 0, 0.45) 0%,
@@ -320,7 +325,9 @@ main .content-panel:has(.nimble-full-bleed-hero) {
 }
 
 /* Restore vertical rhythm after the hero + overlapping callout */
-.sl-markdown-content:has(> .nimble-full-bleed-hero:first-child) > .nimble-full-bleed-hero + * {
+.sl-markdown-content:has(> .nimble-full-bleed-hero:first-child)
+  > .nimble-full-bleed-hero
+  + * {
   margin-top: 3.5rem;
 }
 

@@ -1,0 +1,15 @@
+---
+/**
+ * Wraps Starlight’s default head output and adds favicon links some clients expect:
+ * - `rel="icon"` (HTML standard; `shortcut icon` alone can be ignored)
+ * - `apple-touch-icon` (iOS / Safari tab switcher)
+ */
+import DefaultHead from '@astrojs/starlight/components/Head.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const faviconHref = base ? `${base}/favicon.png` : '/favicon.png';
+---
+
+<DefaultHead />
+<link rel="icon" href={faviconHref} type="image/png" />
+<link rel="apple-touch-icon" href={faviconHref} />
