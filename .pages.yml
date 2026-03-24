@@ -1,0 +1,56 @@
+# Pages CMS — https://pagescms.org/docs/configuration
+media: media
+
+content:
+  - name: stats
+    label: Stats
+    type: file
+    path: src/data/stats.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: stat
+        label: Stat code
+        type: string
+        required: true
+        description: Any short code you use for this stat (e.g. STR). Skills link to this value.
+      - name: body
+        type: text
+        required: true
+
+  - name: skills
+    label: Skills
+    type: file
+    path: src/data/skills.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: stat
+        label: Stat
+        type: reference
+        required: true
+        description: Must match a stat entry in Stats (uses that row’s stat code in JSON).
+        options:
+          collection: stats
+          search: "name,stat"
+          value: "{fields.stat}"
+          label: "{fields.name} ({fields.stat})"
+      - name: body
+        type: text
+        required: true
+      - name: callout
+        label: Callout
+        type: text
+        required: false
+        description: Optional note with HTML (e.g. Insight example boxes).
+
+  - name: core-rules-start-here
+    label: Core Rules — Start Here
+    type: file
+    path: src/data/core-rules/start-here.md
