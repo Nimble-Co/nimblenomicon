@@ -1,5 +1,10 @@
 # Pages CMS — https://pagescms.org/docs/configuration
-media: media
+# Media: https://pagescms.org/docs/configuration/media/
+media:
+  label: Assets
+  input: src/assets
+  output: /assets
+  extensions: [avif, gif, jpeg, jpg, png, svg, webp]
 
 content:
   - name: stats
@@ -21,6 +26,20 @@ content:
         type: text
         required: true
 
+  - name: sizes
+    label: Sizes
+    type: file
+    path: src/data/sizes.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: body
+        type: text
+        required: true
+
   - name: skills
     label: Skills
     type: file
@@ -35,7 +54,7 @@ content:
         label: Stat
         type: reference
         required: true
-        description: Must match a stat entry in Stats (uses that row’s stat code in JSON).
+        description: Must match a stat entry in Stats (uses that row's stat code in JSON).
         options:
           collection: stats
           search: "name,stat"

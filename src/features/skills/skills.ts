@@ -1,9 +1,7 @@
-import { z } from "zod";
+import { z } from "astro/zod";
 import rawSkills from "../../data/skills.json";
 
-export { default as Skill } from "./Skill.astro";
-
-export const skillSchema = z
+const skillSchema = z
   .object({
     name: z.string().min(1),
     stat: z.string().min(1),
@@ -11,9 +9,5 @@ export const skillSchema = z
     callout: z.string().optional(),
   })
   .strict();
-
-export const skillsSchema = z.array(skillSchema);
-
 export type SkillData = z.infer<typeof skillSchema>;
-
-export const skills: SkillData[] = skillsSchema.parse(rawSkills);
+export const skills: SkillData[] = z.array(skillSchema).parse(rawSkills);

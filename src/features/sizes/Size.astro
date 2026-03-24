@@ -1,0 +1,14 @@
+---
+import type { SizeData } from "./sizes";
+
+interface Props {
+  size: SizeData;
+}
+
+const { size } = Astro.props;
+---
+
+<li>
+  <strong>{size.name}</strong>
+  {size.body}
+</li>

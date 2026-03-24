@@ -42,7 +42,8 @@ Heroes have 4 stats that impact their effectiveness in various tasks: 2 Key Stat
 
 > **KEY.** When an ability or spell references “KEY,” use one of your Key Stats. If a stat is listed before a die roll, roll a number of dice equal to the stat. For example, “WIL d8” means that if your WIL is 2, you roll 2d8 (two eight-sided dice).
 
-import { Stat, stats } from "../../features/stats/stats";
+import Stat from "../../features/stats/Stat.astro";
+import { stats } from "../../features/stats/stats";
 
 {stats.map((stat) => (
 
@@ -54,7 +55,8 @@ import { Stat, stats } from "../../features/stats/stats";
 Skills gauge how well your hero interacts with the world. Whenever you tell the GM what you are doing,
 they may ask you to use one of your skills.
 
-import { Skill, skills } from "../../features/skills/skill";
+import Skill from "../../features/skills/Skill.astro";
+import { skills } from "../../features/skills/skills";
 
 {skills.map((skill) => (
 
@@ -91,12 +93,14 @@ When the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 
 
 Some spells and abilities affect differently sized objects or creatures. For size, use the following guidelines:
 
-- **Tiny** can be carried in a typical pocket (many can comfortably fit in 1 space).
-- **Small** can be carried in a backpack (2 can comfortably fit in 1 space).
-- **Medium** is the average human size (1 can comfortably fit in 1 space).
-- **Large** is roughly the size of a bear (1 can comfortably fit in a 2x2 area).
-- **Huge** is roughly the size of a small house (1 can comfortably fit in a 3x3 area).
-- **Gargantuan** can be as large as a castle keep (1 can fill a 4x4 area or greater).
+import Size from "../../features/sizes/Size.astro";
+import { sizes } from "../../features/sizes/sizes";
+
+<ul>
+  {sizes.map((size) => (
+    <Size size={size} />
+  ))}
+</ul>
 
 ## Advantage & Disadvantage
 
