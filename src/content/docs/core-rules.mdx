@@ -30,48 +30,9 @@ import HeroCallout from "../../components/HeroCallout.astro";
   </div>
 </div>
 
-# Start Here
+import StartHere from "../../data/core-rules/start-here.md";
 
-Nimble is a fast-paced, heroic fantasy TTRPG where bold choices and epic stories take center stage. At least one player should familiarize themselves with the base rules in this book (no need for every-one to read through unless they really want to). The adventure included in the GM's Guide is designed to introduce the rules as you play.
-
-**If you're new to TTRPGs**, use one of the pre-made heroes (included in your digital downloads or at https://nimbleRPG.com/start). Level 1 for all of the classes is designed to be easy to pick up, giving a small flavor of the class and introducing the rules gradually without being overwhelming. Complexity and tactical depth is layered on as you level up and progress through an adventure.
-
-**If you're experienced with RPGs**, feel free to create your own hero from scratch (see “Character Creation” on pg. 18). When building your hero, perhaps what will have the largest impact on how you interact with the world is your hero's class. Start there. Then you can flesh out other important aspects of your character's ancestry, background, and what languages you know, as well as your stats and any equipment you have. You can do these steps in any order, filling out your character sheet as you go. **Now, go start playing!**
-
-**Videos, Digital Downloads, FAQ, and More**
-
-Visit https://nimbleRPG.com/start for everything you need to jump into the game: pre-made characters, step-by-step instructional videos, answers to FAQs, and other handy downloadable resources!
-
-## How to Be a Good Player
-
-**Be heroic.** Create a hero eager to dive into the adventure with the party. Reluctant, anti-social loners can drag down everyone's fun. Your games will shine when you lean into the shared adventure.
-
-**Pay attention. Ask questions. Take notes.** The more questions you ask, the more information you'll have to work with, and you'll be able to make more interesting decisions.
-
-**Be creative!** Frequently, the answer to a prob-lem isn't found on your character sheet. A hammer (or anything else) can be used in lots of ways!
-
-**Embrace failure.** You shouldn't try to fail, but some of the best moments in a game can come from a failed roll or bad decision. Go with it!
-
-**Respect everyone else's time.** Swift, subop-timal decisions are better than slow, optimal ones. They will tend to be more fun anyway! If you can't decide what to do on your turn, attack and pass. Think when everyone else isn't waiting on you. Also, arrive on time.
-
-**Share the spotlight.** If you've been rolling or talking more than everyone else, call on your par-tymates to help you; shine the spotlight on them. Sneaky characters shouldn't spend a bunch of time sneaking around a dungeon without the rest of the party. A charismatic hero might be taking the lead in a negotiation (that's fine!), but he may want to call on his Berserker pal for a bit of extra leverage. “Ragnar, would you like to have a word with this stubborn gentleman while the rest of us step outside?”
-
-**Treat the world realistically.** If you insult (or kill) other characters you come across, expect consequences! If you negotiate and haggle with every merchant, your reputation as penny pinch-ers will likely become widespread. If you do some-thing foolish in front of a king, expect to be jailed (or worse). If you heal an ally, deal lots of damage, or always use the same tactics, expect the bad guys to catch on and adapt.
-
-**Describe your actions, not mechanics.** The Game Master (GM, the player running the game) will tell you if you need to roll any dice. If your idea is good enough, you may not need to!
-
-**No:** “Can I make an Examination check?”<br />
-**Yes:** “I want to search the books and paintings on the walls, looking for a secret door.”
-
-**No:** “I make an attack roll.”<br />
-**Yes:** “I smack that goblin with my sword!”
-
-**No:** “Save your reaction, I'm only at 2 Wounds, I can take three more.”<br />
-**Yes:** “Leave me be, I can take the hit!”
-
-> **Note.** If these examples don't mean anything to you, that's okay, you'll get the hang of it after playing once or twice.
-
-**Be gracious to the GM.** They put a lot of effort into running the game; avoid arguing over rulings. Give them a break sometimes and offer to run a ses-sion for them! **Bring snacks.**
+<StartHere />
 
 # Core Rules
 
@@ -79,74 +40,26 @@ Visit https://nimbleRPG.com/start for everything you need to jump into the game:
 
 Heroes have 4 stats that impact their effectiveness in various tasks: 2 Key Stats crucial to their class and 2 Secondary Stats. The maximum a hero's stat can typically go is +5 .
 
-> ### KEY
->
-> When an ability or spell references “KEY,” use one of your Key Stats. If a stat is listed before a die roll, roll a number of dice equal to the stat. For example, “WIL d8” means that if your WIL is 2, you roll 2d8 (two eight-sided dice).
+> **KEY.** When an ability or spell references “KEY,” use one of your Key Stats. If a stat is listed before a die roll, roll a number of dice equal to the stat. For example, “WIL d8” means that if your WIL is 2, you roll 2d8 (two eight-sided dice).
 
-### Strength (STR)
+import { Stat, stats } from "../../features/stats/stats";
 
-Your raw physical power and resilience, endurance, and resistance to harm. Affects STR weapon damage, resistance to Wounds, HP recovery, Concentration, STR saves, carrying capacity, Grappling, and the Might skill.
+{stats.map((stat) => (
 
-### Dexterity (DEX)
-
-Your agility, reflexes, and precision with blades or bows. Affects DEX weapon damage, Initiative, DEX saves, Grappling, and can contribute to Armor, as well as the Stealth and Finesse skills.
-
-### Intelligence (INT)
-
-Your Intelligence reflects knowledge and reasoning across fields like the arcane, tactics, or street smarts. Affects languages, spellcasting, use of wands, spell scrolls, INT saves, as well as the Arcana, Examination, and Lore skills.
-
-### Will (WIL)
-
-Your force of personality, courage, and wisdom. Will shapes your interactions with both nature and society. Affects spellcasting and WIL saves, as well as the Insight, Influence, Naturecraft, and Perception skills.
+  <Stat stat={stat} />
+))}
 
 ## Skills
 
 Skills gauge how well your hero interacts with the world. Whenever you tell the GM what you are doing,
 they may ask you to use one of your skills.
 
-### Arcana (INT)
+import { Skill, skills } from "../../features/skills/skill";
 
-Your understanding of magical phenomena, spells, and enchantments. With Arcana, you can identify magical effects, decipher arcane symbols, and discern the properties of magical items. It also grants insights into the abilities and weaknesses of magical beings like Aberrations, Elementals, and Oozes.
+{skills.map((skill) => (
 
-### Examination (INT)
-
-Your aptitude for thorough analysis and deduction. Use Examination to diagnose injuries, determine causes of death, uncover clues, and unravel the workings of traps or mechanical devices. It also grants insights into the abilities and weaknesses of Constructs.
-
-### Finesse (DEX)
-
-Your ability to use your hands and feet in careful ways. Use Finesse for activities such as picking locks, disarming traps, piloting vehicles, tinkering, card tricks, stealing or planting items, climbing a mossy wall, or any other task that requires precise, careful movement.
-
-### Influence (WIL)
-
-Your persuasiveness, charm, and ability to influence others through charisma or cunning. Use Influence to convince or deceive people, negotiate deals, build trust, win allies to your cause, or put on a captivating performance.
-
-### Insight (WIL)
-
-Your ability to understand people and situations beyond the obvious. Use Insight to sense motives, detect lies, read hidden emotions, make sense of clues, and when faced with uncertainty—you can think ahead or just “get” what is happening. Insight can be used to retroactively change situations:
-
-> **Player:** “Oh no! I forgot to buy rope back in town!”
->
-> **GM:** “Give me an Insight check; maybe your hero would have thought about it.”
-
-### Might (STR)
-
-Your ability to apply strength effectively. Use Might for lifting heavy objects, breaking through obstacles, climbing, swimming, jumping, or performing feats of strength.
-
-### Lore (INT)
-
-Your understanding of the history of civilization, kingdoms, and religions. Use Lore to recall historical events and grasp the significance of cultural practices. It extends to knowledge of the abilities and behavior of Celestials, Dragons, Fey, Fiends, Giants, Humanoids, and Undead.
-
-### Naturecraft (WIL)
-
-Your expertise in wilderness survival, navigation, tracking, and the handling of animals. Use Naturecraft to thrive in the wild, identify flora, fauna, and track creatures with precision. It encompasses knowledge of Beasts, Monstrosities, and Plants, providing insights into their behavior, habitats, and characteristics.
-
-### Perception (WIL)
-
-Your overall ability to notice subtle details in your surroundings. Use Perception to spot hidden objects, detect secret passages, sense subtle environmental changes, and sense when you're being followed or observed. It encompasses your ability to pick up on non-obvious cues, and hidden threats.
-
-### Stealth (DEX)
-
-Your proficiency in staying unseen and moving quietly. Use Stealth to hide, slip past guards, evade detection, and move without drawing attention.
+  <Skill skill={skill} />
+))}
 
 ## Skill Checks & Saves
 

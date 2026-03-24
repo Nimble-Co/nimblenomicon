@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Strength",
+    "stat": "STR",
+    "body": "Your raw physical power and resilience, endurance, and resistance to harm. Affects STR weapon damage, resistance to Wounds, HP recovery, Concentration, STR saves, carrying capacity, Grappling, and the Might skill."
+  },
+  {
+    "name": "Dexterity",
+    "stat": "DEX",
+    "body": "Your agility, reflexes, and precision with blades or bows. Affects DEX weapon damage, Initiative, DEX saves, Grappling, and can contribute to Armor, as well as the Stealth and Finesse skills."
+  },
+  {
+    "name": "Intelligence",
+    "stat": "INT",
+    "body": "Your Intelligence reflects knowledge and reasoning across fields like the arcane, tactics, or street smarts. Affects languages, spellcasting, use of wands, spell scrolls, INT saves, as well as the Arcana, Examination, and Lore skills."
+  },
+  {
+    "name": "Will",
+    "stat": "WIL",
+    "body": "Your force of personality, courage, and wisdom. Will shapes your interactions with both nature and society. Affects spellcasting and WIL saves, as well as the Insight, Influence, Naturecraft, and Perception skills."
+  }
+]

@@ -1,0 +1,19 @@
+---
+import { marked } from 'marked';
+import type { SkillData } from './skill';
+
+interface Props {
+  skill: SkillData;
+}
+
+const { skill } = Astro.props;
+
+
+const calloutHtml = skill.callout
+  ? await marked.parse(skill.callout)
+  : '';
+---
+
+<p><strong>{skill.name}</strong> ({skill.stat}) {skill.body}</p>
+
+{calloutHtml && <blockquote set:html={calloutHtml} />}

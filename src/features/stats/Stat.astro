@@ -1,0 +1,12 @@
+---
+import type { StatData } from "./stats";
+
+interface Props {
+  stat: StatData;
+}
+
+const { stat } = Astro.props;
+
+---
+
+<p><strong>{stat.name}</strong> ({stat.stat}) {stat.body}</p>
