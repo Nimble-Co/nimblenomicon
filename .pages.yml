@@ -64,6 +64,20 @@ content:
         required: false
         description: Optional note with HTML (e.g. Insight example boxes).
 
+  - name: conditions
+    label: Conditions
+    type: file
+    path: src/data/conditions.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: body
+        type: text
+        required: true
+
   - name: core-rules-start-here
     label: Core Rules — Start Here
     type: file

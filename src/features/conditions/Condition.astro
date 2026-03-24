@@ -1,0 +1,16 @@
+---
+import type { ConditionData } from "./conditions";
+
+interface Props {
+  condition: ConditionData;
+}
+
+const { condition } = Astro.props;
+---
+
+<li>
+  <p>
+    <strong>{condition.name}</strong> {condition.body}
+  </p>
+</li>
+
