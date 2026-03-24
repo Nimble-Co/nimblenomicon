@@ -4,7 +4,7 @@ description: Extracts repeatable blocks from src/content/docs/core-rules.mdx int
 license: MIT
 metadata:
   author: nimblenomicon
-  version: "1.2"
+  version: "1.3"
 ---
 
 # Core Rules — data-driven extraction
@@ -72,7 +72,7 @@ Follow `src/features/sizes/`, `src/features/stats/`, and `src/features/skills/` 
   - `path:` pointing at `src/data/<name>.json`
   - `format: json` and `list: true` when the file is a **top-level array** of records
   - `fields:` aligned with the JSON keys and Zod shape (`type: string`, `type: text`, `required`, `options.minlength` / `options.maxlength` when useful — see [string field](https://pagescms.org/docs/configuration/string-field/) / [text field](https://pagescms.org/docs/configuration/text-field/))
-- For a field that must match another collection (e.g. skill → stat code), use `type: reference` like `skills` → `stats` in the current file.
+- For a field that must match another collection stored as **`file` + `list: true`** (e.g. skill → stat code → `stats.json`), use `type: string` and document the match in `description`. Pages CMS `reference` does not populate options for single-file JSON lists yet ([pages-cms#311](https://github.com/pages-cms/pages-cms/issues/311)); rely on Zod (e.g. `.refine` against parsed stats) for validation.
 - Mirror live examples: `stats`, `sizes`, and `skills` blocks in `.pages.yml`.
 
 ## Reference paths

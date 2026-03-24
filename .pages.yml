@@ -51,15 +51,10 @@ content:
         type: string
         required: true
       - name: stat
-        label: Stat
-        type: reference
+        label: Stat code
+        type: string
         required: true
-        description: Must match a stat entry in Stats (uses that row's stat code in JSON).
-        options:
-          collection: stats
-          search: "name,stat"
-          value: "{fields.stat}"
-          label: "{fields.name} ({fields.stat})"
+        description: Must exactly match the Stat code on a row in Stats (e.g. STR). Pages CMS cannot reference file+list collections yet; the build fails if the code is not in stats.json.
       - name: body
         type: text
         required: true
