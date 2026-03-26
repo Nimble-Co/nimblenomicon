@@ -15,6 +15,139 @@ Apply when the user wants a **structured** Core Rules block (repeated rows, list
 
 **Repo note:** This workflow is authored under `.agents/skills/core-rules-data-driven/` (nimblenomicon agent skills), not under `.cursor/skills/`.
 
+## Stats
+
+### Zod + parsed data (`src/features/stats.ts`)
+
+```ts
+import { z } from "astro/zod";
+import rawStats from "../data/stats.json";
+
+const statSchema = z
+  .object({
+    name: z.string().min(1),
+    stat: z.string().min(1),
+    body: z.string(),
+  })
+  .strict();
+export type StatData = z.infer<typeof statSchema>;
+export const stats: StatData[] = z.array(statSchema).parse(rawStats);
+```
+
+### MDX wiring (`src/content/docs/core-rules.mdx`)
+
+```mdx
+import { stats } from "../../features/stats";
+
+{stats.map((stat) => (
+  <p><strong>{stat.name}</strong> ({stat.stat}) {stat.body}</p>
+))}
+```
+
+## Skills
+
+### Zod + parsed data (`src/features/skills.ts`)
+
+```ts
+import { z } from "astro/zod";
+import rawSkills from "../data/skills.json";
+import { stats } from "./stats";
+
+const statCodes = new Set(stats.map((s) => s.stat));
+
+const skillSchema = z
+  .object({
+    name: z.string().min(1),
+    stat: z
+      .string()
+      .min(1)
+      .refine((code) => statCodes.has(code), {
+        message: "stat must match a Stat code from stats.json",
+      }),
+    body: z.string(),
+    callout: z.string().optional(),
+  })
+  .strict();
+export type SkillData = z.infer<typeof skillSchema>;
+export const skills: SkillData[] = z.array(skillSchema).parse(rawSkills);
+```
+
+### MDX wiring (`src/content/docs/core-rules.mdx`)
+
+```mdx
+import { skills } from "../../features/skills";
+
+{skills.map((skill) => (
+  <p><strong>{skill.name}</strong> ({skill.stat}) {skill.body}</p>
+))}
+```
+
+## Size
+
+### Zod + parsed data (`src/features/sizes.ts`)
+
+```ts
+import { z } from "astro/zod";
+import rawSizes from "../data/sizes.json";
+
+const sizeSchema = z
+  .object({
+    name: z.string().min(1),
+    body: z.string(),
+  })
+  .strict();
+export type SizeData = z.infer<typeof sizeSchema>;
+export const sizes: SizeData[] = z.array(sizeSchema).parse(rawSizes);
+```
+
+### MDX wiring (`src/content/docs/core-rules.mdx`)
+
+```mdx
+import { sizes } from "../../features/sizes";
+
+<ul>
+  {sizes.map((size) => (
+    <li>
+      <strong>{size.name}</strong> {size.body}
+    </li>
+  ))}
+</ul>
+```
+
+## Conditions
+
+### Zod + parsed data (`src/features/conditions.ts`)
+
+```ts
+import { z } from "astro/zod";
+import rawConditions from "../data/conditions.json";
+
+const conditionSchema = z
+  .object({
+    name: z.string().min(1),
+    body: z.string(),
+  })
+  .strict();
+export type ConditionData = z.infer<typeof conditionSchema>;
+export const conditions: ConditionData[] = z
+  .array(conditionSchema)
+  .parse(rawConditions);
+```
+
+### MDX wiring (`src/content/docs/core-rules.mdx`)
+
+```mdx
+import { conditions } from "../../features/conditions";
+
+<ul>
+  {conditions.map((condition) => (
+    <li>
+      <strong>{condition.name}</strong> {condition.body}
+    </li>
+  ))}
+</ul>
+```
+
 ## Discovery (before implementation)
 
 1. Open `src/content/docs/core-rules.mdx` and mark the **exact** block to replace.
@@ -23,7 +156,8 @@ Apply when the user wants a **structured** Core Rules block (repeated rows, list
 
 ## Implementation order
 
-Follow `src/features/sizes/`, `src/features/stats/`, and `src/features/skills/` (see [examples.md](examples.md)): one plural `*.ts` file with private Zod schema + exported type and parsed array, plus one `*.astro` component.
+Follow the existing pipeline in `src/features/sizes/`, `src/features/stats/`, and `src/features/skills/` (see [examples.md](examples.md)):
+one plural `*.ts` file with private Zod schema + exported type and parsed array, plus one `*.astro` component.
 
 ### 1. Data
 
@@ -34,18 +168,19 @@ Follow `src/features/sizes/`, `src/features/stats/`, and `src/features/skills/` 
 ### 2. Feature folder
 
 - Create `src/features/<folder>/`.
-- **Naming (this repo):** plural folder and matching data module: `sizes/sizes.ts` + `Size.astro`, `stats/stats.ts` + `Stat.astro`, `skills/skills.ts` + `Skill.astro`.
+- **Naming (this repo):** plural folder + matching data module: `sizes/sizes.ts` + `Size.astro`, `stats/stats.ts` + `Stat.astro`, `skills/skills.ts` + `Skill.astro`, `conditions/conditions.ts` + `Condition.astro`.
 
 ### 3. Zod + parsed data (`<name>.ts`)
 
 - Use `import { z } from "astro/zod"`.
-- `const itemSchema = z.object(...).strict()` (not exported unless you need it elsewhere).
-- `export type XData = z.infer<typeof itemSchema>`.
-- `export const items: XData[] = z.array(itemSchema).parse(rawJson)`.
+- Keep the schema local (`const <name>Schema = z.object(...).strict()`), then export:
+  - `export type <Name>Data = z.infer<typeof <name>Schema>`
+  - `export const <names>: <Name>Data[] = z.array(<name>Schema).parse(rawJson)`
 
 ### 4. No Astro barrel
 
-- Do **not** re-export the component from the `.ts` file. Import the default component from `*.astro` and `{ data }` from `*.ts` in MDX (see [examples.md](examples.md)).
+- Do **not** re-export the component from the `.ts` file.
+- Import the default component from `*.astro` and `{ data }` from `*.ts` in MDX (see [examples.md](examples.md)).
 
 ### 5. Astro
 
@@ -57,7 +192,7 @@ Follow `src/features/sizes/`, `src/features/stats/`, and `src/features/skills/` 
 
 - Remove the old markdown for that block.
 - Add `import Component from "../../features/<folder>/Component.astro"` and `import { items } from "../../features/<folder>/<name>.ts"` (fix depth if the doc moves).
-- Use `.map()` like existing Stats/Skills; include outer `<ul>`, `<table>`, etc., when the original was a list or table.
+- Use `.map()` like the examples above; include outer `<ul>`, `<table>`, etc., when the original was a list or table.
 
 ### 7. Verify
 
@@ -73,17 +208,7 @@ Follow `src/features/sizes/`, `src/features/stats/`, and `src/features/skills/` 
   - `format: json` and `list: true` when the file is a **top-level array** of records
   - `fields:` aligned with the JSON keys and Zod shape (`type: string`, `type: text`, `required`, `options.minlength` / `options.maxlength` when useful — see [string field](https://pagescms.org/docs/configuration/string-field/) / [text field](https://pagescms.org/docs/configuration/text-field/))
 - For a field that must match another collection stored as **`file` + `list: true`** (e.g. skill → stat code → `stats.json`), use `type: string` and document the match in `description`. Pages CMS `reference` does not populate options for single-file JSON lists yet ([pages-cms#311](https://github.com/pages-cms/pages-cms/issues/311)); rely on Zod (e.g. `.refine` against parsed stats) for validation.
-- Mirror live examples: `stats`, `sizes`, and `skills` blocks in `.pages.yml`.
-
-## Reference paths
-
-| Role          | Example                                                                                       |
-| ------------- | --------------------------------------------------------------------------------------------- |
-| Data          | `src/data/sizes.json`, `src/data/stats.json`, `src/data/skills.json`                          |
-| Data + schema | `src/features/sizes/sizes.ts`, `src/features/stats/stats.ts`, `src/features/skills/skills.ts`   |
-| Component     | `src/features/sizes/Size.astro`, `src/features/stats/Stat.astro`, `src/features/skills/Skill.astro` |
-| MDX           | `src/content/docs/core-rules.mdx` — search `features/sizes`, `features/stats`, `features/skills`   |
-| Pages CMS     | `.pages.yml` — `content` entries for each `src/data/*.json` list you want editable in the CMS      |
+- Mirror live examples: `stats`, `sizes`, `skills`, and `conditions` blocks in `.pages.yml`.
 
 ## Anti-patterns
 

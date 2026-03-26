@@ -11,6 +11,11 @@ banner:
 import manticor from "../../assets/manticor.webp";
 import HeroCallout from "../../components/HeroCallout.astro";
 
+import { conditions } from "../../features/conditions";
+import { sizes } from "../../features/sizes";
+import { skills } from "../../features/skills";
+import { stats } from "../../features/stats";
+
 <div class="nimble-full-bleed-hero">
   <img
     class="nimble-full-bleed-hero__img"
@@ -42,12 +47,9 @@ Heroes have 4 stats that impact their effectiveness in various tasks: 2 Key Stat
 
 > **KEY.** When an ability or spell references “KEY,” use one of your Key Stats. If a stat is listed before a die roll, roll a number of dice equal to the stat. For example, “WIL d8” means that if your WIL is 2, you roll 2d8 (two eight-sided dice).
 
-import Stat from "../../features/stats/Stat.astro";
-import { stats } from "../../features/stats/stats";
-
 {stats.map((stat) => (
 
-  <Stat stat={stat} />
+  <p><strong>{stat.name}</strong> ({stat.stat}) {stat.body}</p>
 ))}
 
 ## Skills
@@ -55,12 +57,9 @@ import { stats } from "../../features/stats/stats";
 Skills gauge how well your hero interacts with the world. Whenever you tell the GM what you are doing,
 they may ask you to use one of your skills.
 
-import Skill from "../../features/skills/Skill.astro";
-import { skills } from "../../features/skills/skills";
-
 {skills.map((skill) => (
 
-  <Skill skill={skill} />
+  <p><strong>{skill.name}</strong> ({skill.stat}) {skill.body}</p>
 ))}
 
 ## Skill Checks & Saves
@@ -93,12 +92,11 @@ When the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 
 
 Some spells and abilities affect differently sized objects or creatures. For size, use the following guidelines:
 
-import Size from "../../features/sizes/Size.astro";
-import { sizes } from "../../features/sizes/sizes";
-
 <ul>
   {sizes.map((size) => (
-    <Size size={size} />
+    <li>
+      <strong>{size.name}</strong> {size.body}
+    </li>
   ))}
 </ul>
 
@@ -189,12 +187,11 @@ Forced movement (pushing a grappler away), incapacitation, or spending an action
 
 Some attacks, traps, spells, or other effects can also inflict conditions—usually negative effects other than damage. Some conditions are temporary, lasting as little as a single round; others may last until cured in some way, and some can be ended by using an action to make an appropriate save.
 
-import Condition from "../../features/conditions/Condition.astro";
-import { conditions } from "../../features/conditions/conditions";
-
 <ul>
   {conditions.map((condition) => (
-    <Condition condition={condition} />
+    <li>
+      <strong>{condition.name}</strong> {condition.body}
+    </li>
   ))}
 </ul>
 

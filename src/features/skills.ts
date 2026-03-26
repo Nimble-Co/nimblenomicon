@@ -1,6 +1,6 @@
 import { z } from "astro/zod";
-import rawSkills from "../../data/skills.json";
-import { stats } from "../stats/stats";
+import rawSkills from "../data/skills.json";
+import { stats } from "./stats";
 
 const statCodes = new Set(stats.map((s) => s.stat));
 

@@ -1,5 +1,5 @@
 import { z } from "astro/zod";
-import rawSizes from "../../data/sizes.json";
+import rawSizes from "../data/sizes.json";
 
 const sizeSchema = z
   .object({

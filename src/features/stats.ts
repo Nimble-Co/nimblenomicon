@@ -1,5 +1,5 @@
 import { z } from "astro/zod";
-import rawStats from "../../data/stats.json";
+import rawStats from "../data/stats.json";
 
 const statSchema = z
   .object({

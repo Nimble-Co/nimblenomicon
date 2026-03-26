@@ -1,5 +1,5 @@
 import { z } from "astro/zod";
-import rawConditions from "../../data/conditions.json";
+import rawConditions from "../data/conditions.json";
 
 const conditionSchema = z
   .object({
