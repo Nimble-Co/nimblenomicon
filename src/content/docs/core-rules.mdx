@@ -11,10 +11,13 @@ banner:
 import manticor from "../../assets/manticor.webp";
 import HeroCallout from "../../components/HeroCallout.astro";
 
-import { conditions } from "../../features/conditions";
-import { sizes } from "../../features/sizes";
-import { skills } from "../../features/skills";
-import { stats } from "../../features/stats";
+import { conditions } from "../../models/conditions";
+import { miscAdventuringEquipment } from "../../models/misc-adventuring-equipment";
+import { sizes } from "../../models/sizes";
+import { skills } from "../../models/skills";
+import { stats } from "../../models/stats";
+import { weaponProperties } from "../../models/weapon-properties";
+import { weapons } from "../../models/weapons";
 
 <div class="nimble-full-bleed-hero">
   <img
@@ -57,9 +60,11 @@ Heroes have 4 stats that impact their effectiveness in various tasks: 2 Key Stat
 Skills gauge how well your hero interacts with the world. Whenever you tell the GM what you are doing,
 they may ask you to use one of your skills.
 
-{skills.map((skill) => (
+{skills.map((skill) => (<>
 
   <p><strong>{skill.name}</strong> ({skill.stat}) {skill.body}</p>
+  {skill.callout && <blockquote dangerouslySetInnerHTML={{ __html: skill.callout }} />}
+  </>
 ))}
 
 ## Skill Checks & Saves
@@ -845,14 +850,18 @@ Armor represents your hero's ability to dodge or block damage when you use the D
 
 ## Weapon Properties
 
-- **2-handed.** Can be held in a single hand, but must be wielded in 2 hands to attack with it.
-- **Load.** Some weapons require extra actions to load before each shot.
-- **Reach.** How close an enemy must be to be affected by this attack. If unspecified, Reach 1.
-- **Range.** Attacks can be made from afar. If any enemy is adjacent to you, your Ranged attacks are made with disadvantage. Add 1 die of disadvantage to gain +2 Range.
-- **Thrown.** Treat a melee weapon as if it had Range. Once thrown, you no longer have it!
-- **Vicious.** Roll 1 additional die whenever you roll crit damage.
-
-> **Remember!** Only the Primary Die (the leftmost one) is used for determining whether an attack crits. Every time you roll crit damage, roll the additional Vicious die as well!
+<ul>
+  {weaponProperties.map((weaponProperty) => (
+    <>
+      <li>
+        <strong>{weaponProperty.name}.</strong> {weaponProperty.body}
+      </li>
+      {weaponProperty.callout && (
+        <blockquote set:html={weaponProperty.callout}></blockquote>
+      )}
+    </>
+  ))}
+</ul>
 
 ### Dual Wielding
 
@@ -876,35 +885,85 @@ Can you reflavor a staff as a greatclub? Sure! A sai instead of a dagger? Of cou
 
 ### Melee Weapons
 
-| **_ITEM_**  | **_DAMAGE_**              | **_PROPERTIES_**                | **_COST_** |
-| ----------- | ------------------------- | ------------------------------- | ---------- |
-| Dagger      | 1d4+DEX Piercing          | Light, Thrown 4                 | 3 gp       |
-| Sickle      | 1d4+DEX Slashing          | Vicious                         | 10 gp      |
-| Club/Mace   | 1d6+STR Bludgeoning       |                                 | 2 gp       |
-| Hand Axe    | 1d6+STR Slashing          | Thrown 4                        | 8 gp       |
-| Short Sword | 1d6+DEX Piercing          | Light                           | 10 gp      |
-| Rapier      | 2d4+DEX Piercing          |                                 | 60 gp      |
-| Staff       | 1d8+STR Bludgeoning       | 2-handed                        | 8 gp       |
-| Longsword   | 1d8+STR Slashing          | 2-handed (1-handed: Req. 2 STR) | 60 gp      |
-| Battleaxe   | 1d10+STR Slashing         | 2-handed                        | 30 gp      |
-| Pole Hammer | 1d10+STR Bludgeoning      | 2-handed, Reach 2               | 60 gp      |
-| Glaive      | 1d10+STR Slashing         | 2-handed, Reach 2               | 60 gp      |
-| Spear       | 1d10+STR Piercing         | 2-handed, Reach 2               | 60 gp      |
-| Greatmaul   | 1d12+STR Bludgeoning      | 2-handed (Req. 2 STR)           | 80 gp      |
-| Greataxe    | 2d6+STR Slashing          | 2-handed (Req. 2 STR)           | 100 gp     |
-| Greatsword  | 3d4+STR Slashing/Piercing | 2-handed (Req. 2 STR)           | 120 gp     |
+<table>
+  <thead>
+    <tr>
+      <th>
+        <strong>
+          <em>ITEM</em>
+        </strong>
+      </th>
+      <th>
+        <strong>
+          <em>DAMAGE</em>
+        </strong>
+      </th>
+      <th>
+        <strong>
+          <em>PROPERTIES</em>
+        </strong>
+      </th>
+      <th>
+        <strong>
+          <em>COST</em>
+        </strong>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {weapons
+      .filter((w) => w.category === "melee")
+      .map((w) => (
+        <tr>
+          <td>{w.item}</td>
+          <td>{w.damage}</td>
+          <td>{w.properties.map((p) => p.text).join(", ")}</td>
+          <td>{w.cost}</td>
+        </tr>
+      ))}
+  </tbody>
+</table>
 
 ### Ranged Weapons
 
-| **_ITEM_**        | **_DAMAGE_**        | **_PROPERTIES_**                                | **_COST_** |
-| ----------------- | ------------------- | ----------------------------------------------- | ---------- |
-| Sling             | 1d4+DEX Bludgeoning | 2-handed, Range 12, Vicious                     | 4 gp       |
-| Javelins          | 1d6+STR Piercing    | Range 8, Stack of 4                             | 20 gp      |
-| Throwing Hammers  | 1d8+STR Bludgeoning | Range 4, Stack of 3                             | 25 gp      |
-| Shortbow          | 1d6+DEX Piercing    | 2-handed, Range 12                              | 25 gp      |
-| Longbow           | 1d8+DEX Piercing    | 2-handed, Range 16 (Req. 1 STR)                 | 30 gp      |
-| Crossbow          | 4d4+DEX Piercing    | 2-handed, Load: 1 action, Range 8               | 60 gp      |
-| Handheld Ballista | 1d20+DEX Piercing   | 2-handed, Load: 2 actions, Range 8 (Req. 2 STR) | 120 gp     |
+<table>
+  <thead>
+    <tr>
+      <th>
+        <strong>
+          <em>ITEM</em>
+        </strong>
+      </th>
+      <th>
+        <strong>
+          <em>DAMAGE</em>
+        </strong>
+      </th>
+      <th>
+        <strong>
+          <em>PROPERTIES</em>
+        </strong>
+      </th>
+      <th>
+        <strong>
+          <em>COST</em>
+        </strong>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {weapons
+      .filter((w) => w.category === "ranged")
+      .map((w) => (
+        <tr>
+          <td>{w.item}</td>
+          <td>{w.damage}</td>
+          <td>{w.properties.map((p) => p.text).join(", ")}</td>
+          <td>{w.cost}</td>
+        </tr>
+      ))}
+  </tbody>
+</table>
 
 ## Key Equipment
 
@@ -926,41 +985,36 @@ Costs for mundane items typically range from a few silver pieces to a few gold p
 
 ## Misc Adventuring Equipment
 
-| **_ITEM_**                      | **_PROPERTIES_**                              | **_COST_** |
-| ------------------------------- | --------------------------------------------- | ---------- |
-| Healing Potion (action)         | Heal 2d4+4 HP.                                | 50 gp      |
-| Greater Healing Potion (action) | Heal 3d6+6 HP.                                | 150 gp     |
-| Supreme Healing Potion (action) | Heal 4d8+8 HP.                                | 450 gp     |
-| Torch (stack of 2)              | For when it’s dark. 1 use each.               | 5 sp       |
-| Lantern & Oil                   | Like a torch, but not as cool (refill: 1 gp). | 10 gp      |
-| Vial of Pitch                   | Sticky, and VERY flammable.                   | 2 gp       |
-| Rope (50 ft.)                   | You always need rope.                         | 10 gp      |
-| Chain (10 ft.)                  | Like rope, but stronger (and heavy).          | 50 gp      |
-| Bucket                          | Also works as a hat in a pinch!               | 1 gp       |
-| Padlock & Key                   | Lock it or lose it.                           | 3 gp       |
-| Mirror                          | For medusas AND spinach teeth.                | 4 gp       |
-| Telescope                       | Arrr.                                         | 10 gp      |
-| Magnifying Glass                | Make the small, big.                          | 5 gp       |
-| Chalk                           | Not JUST for kids.                            | 1 sp       |
-| Shovel                          | Sometimes you need a hole dug.                | 3 gp       |
-| Pulley                          | Pull down, go up.                             | 3 gp       |
-| Grappling Hook                  | For climbing or catching BIG fish.            | 4 gp       |
-| Quiver & Ammo                   | Don’t leave home without it.                  | 10 gp      |
-| Saw                             | For cutting lumber.                           | 4 gp       |
-| Soap                            | Useless.                                      | 1 sp       |
-| Strange Plant                   | Who knows?                                    | 5 sp       |
-| Shiny Object                    | Worthless, but VERY pretty.                   | 1 sp       |
-| Lock Pick                       | It’s not mine, honest!                        | 5 gp       |
-| Bell                            | For service.                                  | 2 gp       |
-| Dice                            | LOTS of fun.                                  | 5 sp       |
-| Blanket                         | Warm & fuzzy.                                 | 1 gp       |
-| Hunting Trap                    | Snap snap, don't lose a finger!               | 10 gp      |
-| Camping Supplies                | Bedroll, rations, simple tent.                | 5 gp       |
-| Crowbar                         | It's LIKE a key.                              | 2 gp       |
-| Pitons                          | Metal spikes, for sealing doors.              | 5 gp       |
-| Manacles                        | For when someone has been bad.                | 3 gp       |
-| Large Sack                      | Like a BIG pocket.                            | 5 sp       |
-| Instrument                      | Drums, Horn, Lyre, Flute, etc.                | 5-50 gp    |
+<table>
+  <thead>
+    <tr>
+      <th>
+        <strong>
+          <em>ITEM</em>
+        </strong>
+      </th>
+      <th>
+        <strong>
+          <em>PROPERTIES</em>
+        </strong>
+      </th>
+      <th>
+        <strong>
+          <em>COST</em>
+        </strong>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {miscAdventuringEquipment.map((row) => (
+      <tr>
+        <td>{row.item}</td>
+        <td>{row.properties}</td>
+        <td>{row.cost}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
 
 > **What About…?** These are not **all** of the items available for purchase, merely a sampling. If you can think of it, you can likely buy it!
 

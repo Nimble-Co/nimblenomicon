@@ -60,9 +60,11 @@ content:
         required: true
       - name: callout
         label: Callout
-        type: text
+        type: rich-text
         required: false
-        description: Optional note with HTML (e.g. Insight example boxes).
+        description: Optional note.
+        options:
+          format: html
 
   - name: conditions
     label: Conditions
@@ -76,6 +78,89 @@ content:
         required: true
       - name: body
         type: text
+        required: true
+
+  - name: weapon-properties
+    label: Weapon Properties
+    type: file
+    path: src/data/weapon-properties.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: body
+        type: text
+        required: true
+      - name: callout
+        label: Callout
+        type: rich-text
+        required: false
+        description: Optional note.
+        options:
+          format: html
+
+  - name: misc-adventuring-equipment
+    label: Misc Adventuring Equipment
+    type: file
+    path: src/data/misc-adventuring-equipment.json
+    format: json
+    list: true
+    fields:
+      - name: item
+        label: Item
+        type: string
+        required: true
+      - name: properties
+        label: Properties
+        type: text
+        required: true
+      - name: cost
+        label: Cost
+        type: string
+        required: true
+
+  - name: weapons
+    label: Weapons (tables)
+    type: file
+    path: src/data/weapons.json
+    format: json
+    list: true
+    fields:
+      - name: category
+        label: Category
+        type: select
+        required: true
+        description: Which weapons table this row belongs to.
+        options:
+          values:
+            - name: melee
+              label: Melee
+            - name: ranged
+              label: Ranged
+      - name: item
+        label: Item
+        type: string
+        required: true
+      - name: damage
+        label: Damage
+        type: string
+        required: true
+      - name: properties
+        label: Properties
+        type: object
+        list: true
+        required: false
+        description: One row per property; shown comma-separated in the table. Leave empty if none.
+        fields:
+          - name: text
+            label: Text
+            type: string
+            required: true
+      - name: cost
+        label: Cost
+        type: string
         required: true
 
   - name: core-rules-start-here

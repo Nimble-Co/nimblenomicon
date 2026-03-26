@@ -1,0 +1,167 @@
+[
+  {
+    "item": "Healing Potion (action)",
+    "properties": "Heal 2d4+4 HP.",
+    "cost": "50 gp"
+  },
+  {
+    "item": "Greater Healing Potion (action)",
+    "properties": "Heal 3d6+6 HP.",
+    "cost": "150 gp"
+  },
+  {
+    "item": "Supreme Healing Potion (action)",
+    "properties": "Heal 4d8+8 HP.",
+    "cost": "450 gp"
+  },
+  {
+    "item": "Torch (stack of 2)",
+    "properties": "For when it's dark. 1 use each.",
+    "cost": "5 sp"
+  },
+  {
+    "item": "Lantern & Oil",
+    "properties": "Like a torch, but not as cool (refill: 1 gp).",
+    "cost": "10 gp"
+  },
+  {
+    "item": "Vial of Pitch",
+    "properties": "Sticky, and VERY flammable.",
+    "cost": "2 gp"
+  },
+  {
+    "item": "Rope (50 ft.)",
+    "properties": "You always need rope.",
+    "cost": "10 gp"
+  },
+  {
+    "item": "Chain (10 ft.)",
+    "properties": "Like rope, but stronger (and heavy).",
+    "cost": "50 gp"
+  },
+  {
+    "item": "Bucket",
+    "properties": "Also works as a hat in a pinch!",
+    "cost": "1 gp"
+  },
+  {
+    "item": "Padlock & Key",
+    "properties": "Lock it or lose it.",
+    "cost": "3 gp"
+  },
+  {
+    "item": "Mirror",
+    "properties": "For medusas AND spinach teeth.",
+    "cost": "4 gp"
+  },
+  {
+    "item": "Telescope",
+    "properties": "Arrr.",
+    "cost": "10 gp"
+  },
+  {
+    "item": "Magnifying Glass",
+    "properties": "Make the small, big.",
+    "cost": "5 gp"
+  },
+  {
+    "item": "Chalk",
+    "properties": "Not JUST for kids.",
+    "cost": "1 sp"
+  },
+  {
+    "item": "Shovel",
+    "properties": "Sometimes you need a hole dug.",
+    "cost": "3 gp"
+  },
+  {
+    "item": "Pulley",
+    "properties": "Pull down, go up.",
+    "cost": "3 gp"
+  },
+  {
+    "item": "Grappling Hook",
+    "properties": "For climbing or catching BIG fish.",
+    "cost": "4 gp"
+  },
+  {
+    "item": "Quiver & Ammo",
+    "properties": "Don't leave home without it.",
+    "cost": "10 gp"
+  },
+  {
+    "item": "Saw",
+    "properties": "For cutting lumber.",
+    "cost": "4 gp"
+  },
+  {
+    "item": "Soap",
+    "properties": "Useless.",
+    "cost": "1 sp"
+  },
+  {
+    "item": "Strange Plant",
+    "properties": "Who knows?",
+    "cost": "5 sp"
+  },
+  {
+    "item": "Shiny Object",
+    "properties": "Worthless, but VERY pretty.",
+    "cost": "1 sp"
+  },
+  {
+    "item": "Lock Pick",
+    "properties": "It's not mine, honest!",
+    "cost": "5 gp"
+  },
+  {
+    "item": "Bell",
+    "properties": "For service.",
+    "cost": "2 gp"
+  },
+  {
+    "item": "Dice",
+    "properties": "LOTS of fun.",
+    "cost": "5 sp"
+  },
+  {
+    "item": "Blanket",
+    "properties": "Warm & fuzzy.",
+    "cost": "1 gp"
+  },
+  {
+    "item": "Hunting Trap",
+    "properties": "Snap snap, don't lose a finger!",
+    "cost": "10 gp"
+  },
+  {
+    "item": "Camping Supplies",
+    "properties": "Bedroll, rations, simple tent.",
+    "cost": "5 gp"
+  },
+  {
+    "item": "Crowbar",
+    "properties": "It's LIKE a key.",
+    "cost": "2 gp"
+  },
+  {
+    "item": "Pitons",
+    "properties": "Metal spikes, for sealing doors.",
+    "cost": "5 gp"
+  },
+  {
+    "item": "Manacles",
+    "properties": "For when someone has been bad.",
+    "cost": "3 gp"
+  },
+  {
+    "item": "Large Sack",
+    "properties": "Like a BIG pocket.",
+    "cost": "5 sp"
+  },
+  {
+    "item": "Instrument",
+    "properties": "Drums, Horn, Lyre, Flute, etc.",
+    "cost": "5-50 gp"
+  }
+]

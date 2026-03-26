@@ -1,6 +1,6 @@
 ---
 name: core-rules-data-driven
-description: Extracts repeatable blocks from src/content/docs/core-rules.mdx into verbatim JSON under src/data, Zod + parsed data in src/features/<feature>/*.ts, Astro components, MDX wiring, and Pages CMS (.pages.yml) so JSON can be edited in the CMS. Use when asked to make Core Rules data-driven, add a Zod-backed rules section, refactor MDX into components, or follow the sizes/stats/skills pipeline in nimblenomicon.
+description: Extracts repeatable blocks from src/content/docs/core-rules.mdx into verbatim JSON under src/data, Zod + parsed data in src/features/*.ts, inline MDX rendering, and Pages CMS (.pages.yml) so JSON can be edited in the CMS. Use when asked to make Core Rules data-driven, add a Zod-backed rules section, or follow the sizes/stats/skills pipeline in nimblenomicon.
 license: MIT
 metadata:
   author: nimblenomicon
@@ -11,7 +11,7 @@ metadata:
 
 ## When to read this skill
 
-Apply when the user wants a **structured** Core Rules block (repeated rows, list items, or table-like content) moved into typed data and components. Skip for one-off narrative paragraphs with no repeating shape.
+Apply when the user wants a **structured** Core Rules block (repeated rows, list items, or table-like content) moved into typed data and inline MDX rendering. Skip for one-off narrative paragraphs with no repeating shape.
 
 **Repo note:** This workflow is authored under `.agents/skills/core-rules-data-driven/` (nimblenomicon agent skills), not under `.cursor/skills/`.
 
@@ -151,13 +151,13 @@ import { conditions } from "../../features/conditions";
 ## Discovery (before implementation)
 
 1. Open `src/content/docs/core-rules.mdx` and mark the **exact** block to replace.
-2. Decide record fields so JSON + Astro can reproduce the same DOM (paragraphs, lists, tables, blockquotes).
+2. Decide record fields so JSON + MDX can reproduce the same DOM (paragraphs, lists, tables, blockquotes).
 3. If the section could be modeled multiple ways, **ask** which shape to use — do not pick arbitrarily.
 
 ## Implementation order
 
-Follow the existing pipeline in `src/features/sizes/`, `src/features/stats/`, and `src/features/skills/` (see [examples.md](examples.md)):
-one plural `*.ts` file with private Zod schema + exported type and parsed array, plus one `*.astro` component.
+Follow the existing pipeline in `src/features/sizes.ts`, `src/features/stats.ts`, and `src/features/skills.ts` (see [examples.md](examples.md)):
+one plural `*.ts` file with private Zod schema + exported type and parsed array, then render the repeating block inline in `src/content/docs/core-rules.mdx` (no per-feature Astro component).
 
 ### 1. Data
 
@@ -165,10 +165,10 @@ one plural `*.ts` file with private Zod schema + exported type and parsed array,
 - Use a **top-level array** when every row shares the same fields (`src/data/skills.json`).
 - **Copy text verbatim** from `core-rules.mdx` — no rewording or typo fixes in rule text.
 
-### 2. Feature folder
+### 2. Feature module (no folder)
 
-- Create `src/features/<folder>/`.
-- **Naming (this repo):** plural folder + matching data module: `sizes/sizes.ts` + `Size.astro`, `stats/stats.ts` + `Stat.astro`, `skills/skills.ts` + `Skill.astro`, `conditions/conditions.ts` + `Condition.astro`.
+- Create a top-level module at `src/features/<name>.ts` (no per-feature folder).
+- **Naming (this repo):** match the `src/data/<name>.json` filename, e.g. `sizes.ts`, `stats.ts`, `skills.ts`, `conditions.ts`, `weapon-properties.ts`.
 
 ### 3. Zod + parsed data (`<name>.ts`)
 
@@ -177,24 +177,20 @@ one plural `*.ts` file with private Zod schema + exported type and parsed array,
   - `export type <Name>Data = z.infer<typeof <name>Schema>`
   - `export const <names>: <Name>Data[] = z.array(<name>Schema).parse(rawJson)`
 
-### 4. No Astro barrel
+### 4. Inline rendering (no Astro component)
 
-- Do **not** re-export the component from the `.ts` file.
-- Import the default component from `*.astro` and `{ data }` from `*.ts` in MDX (see [examples.md](examples.md)).
-
-### 5. Astro
-
-- One component per record unless a single wrapper is clearly better.
+- Render the repeating rows/lists/tables directly in `src/content/docs/core-rules.mdx` using `.map()` over the parsed array.
 - Match markdown semantics: `<p>`, `<li>`, `<th>`/`<td>`, etc.
-- Use `marked.parse` only for fields that contain markdown/HTML (pattern: `src/features/skills/Skill.astro`).
+- If record variants need different markup (e.g. `weaponProperties` has `kind: "property" | "remember"`), branch inside the `.map()` and render the correct element for each variant.
+- If any field contains markdown/HTML, parse it at render-time in `core-rules.mdx` following whatever safe pattern the repo already uses; avoid creating new Astro components just for rendering.
 
-### 6. MDX
+### 5. MDX
 
 - Remove the old markdown for that block.
-- Add `import Component from "../../features/<folder>/Component.astro"` and `import { items } from "../../features/<folder>/<name>.ts"` (fix depth if the doc moves).
+- Add `import { items } from "../../features/<name>"` (fix depth if the doc moves).
 - Use `.map()` like the examples above; include outer `<ul>`, `<table>`, etc., when the original was a list or table.
 
-### 7. Verify
+### 6. Verify
 
 - `npm run build` succeeds.
 - Zod parse passes at runtime; visually compare to prior markdown output.
@@ -214,6 +210,7 @@ one plural `*.ts` file with private Zod schema + exported type and parsed array,
 
 - Flattening narrative prose into JSON without a repeated structure.
 - Editing rule wording during extraction.
+- Creating `src/features/<folder>/...` Astro components for each extracted block instead of inline rendering in `core-rules.mdx`.
 - Dropping list/table wrappers so the rendered DOM diverges from markdown.
 - Shipping new `src/data/*.json` without a matching `.pages.yml` entry when editors are expected to use Pages CMS.
 

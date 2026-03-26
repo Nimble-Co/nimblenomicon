@@ -23,7 +23,7 @@
     "name": "Insight",
     "stat": "WIL",
     "body": "Your ability to understand people and situations beyond the obvious. Use Insight to sense motives, detect lies, read hidden emotions, make sense of clues, and when faced with uncertainty—you can think ahead or just “get” what is happening.",
-    "callout": "Insight can be used to retroactively change situations:<br>**Player:** “Oh no! I forgot to buy rope back in town!”<br>**GM:** “Give me an Insight check; maybe your hero would have thought about it.”"
+    "callout": "<strong>Remember!</strong> Insight can be used to retroactively change situations:<br><strong>Player:</strong> “Oh no! I forgot to buy rope back in town!”<br><strong>GM:</strong> “Give me an Insight check; maybe your hero would have thought about it.”"
   },
   {
     "name": "Might",

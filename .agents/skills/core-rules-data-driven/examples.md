@@ -33,42 +33,23 @@ export type SizeData = z.infer<typeof sizeSchema>;
 export const sizes: SizeData[] = z.array(sizeSchema).parse(rawSizes);
 ```
 
-## `Size.astro` (list item)
-
-```astro
----
-import type { SizeData } from "./sizes";
-
-interface Props {
-  size: SizeData;
-}
-
-const { size } = Astro.props;
----
-
-<li>
-  <strong>{size.name}</strong> {size.body}
-</li>
-```
-
-## MDX fragment
-
-Default import: Astro component. Named import: parsed data from the matching `*.ts` file.
+## Inline MDX fragment (no Astro component)
 
 ```mdx
-import Size from "../../features/sizes/Size.astro";
-import { sizes } from "../../features/sizes/sizes";
+import { sizes } from "../../features/sizes";
 
 <ul>
   {sizes.map((size) => (
-    <Size size={size} />
+    <li>
+      <strong>{size.name}</strong> {size.body}
+    </li>
   ))}
 </ul>
 ```
 
 ## Optional field with inline markup
 
-When a bullet needs `<br>` or bold inside the extra text, store a string and parse with `marked` in the component (see `src/features/skills/Skill.astro` and `callout` in `skills.json`).
+When a bullet needs `<br>` or bold inside the extra text, store a string and parse with `marked` at render-time in `core-rules.mdx` (avoid new Astro components for rendering).
 
 ## Pages CMS — `.pages.yml` (last step)
 
