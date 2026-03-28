@@ -851,9 +851,8 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
           set:html={renderMarkdown(
             spellMetaMarkdown(
                 spell.level,
-                spell.actions,
+                spell.castingTime,
                 spell.target,
-                spell.castingNote,
               ) + (spell.body?.trim() ? "\n\n" + spell.body : ""),
           )}
         />
@@ -877,9 +876,8 @@ Some classes can choose from among these additional spells as they level up.
             set:html={renderMarkdown(
               spellMetaMarkdown(
                 s.level,
-                s.actions,
+                s.castingTime,
                 s.target,
-                s.castingNote,
               ) + (s.body?.trim() ? "\n\n" + s.body : ""),
             )}
           />
@@ -896,9 +894,8 @@ Some classes can choose from among these additional spells as they level up.
             set:html={renderMarkdown(
               spellMetaMarkdown(
                 spell.level,
-                spell.actions,
+                spell.castingTime,
                 spell.target,
-                spell.castingNote,
               ) + (spell.body?.trim() ? "\n\n" + spell.body : ""),
             )}
           />

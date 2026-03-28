@@ -449,8 +449,8 @@ content:
               - name: schoolId
                 label: School
                 type: select
-                required: false
-                description: Set for main-school spells; leave empty for utility spells.
+                required: true
+                description: Same school for main spells and utility spells (e.g. Ice utility spells use Ice). Tempest's Command only appears under Utility Spells.
                 options:
                   values:
                     - name: fire-spells
@@ -465,36 +465,13 @@ content:
                       label: Radiant
                     - name: necrotic-spells
                       label: Necrotic
-              - name: schoolName
-                label: School name
-                type: string
-                required: false
-                description: e.g. Fire (same as Spell schools). Page headings add “Spells”.
-              - name: utilityGroupId
-                label: Utility group
-                type: select
-                required: false
-                description: Set for utility spells; leave empty for main-school spells.
-                options:
-                  values:
-                    - name: utility-ice
-                      label: Ice
-                    - name: utility-fire
-                      label: Fire
-                    - name: utility-lightning
-                      label: Lightning
-                    - name: utility-tempest-s-command
+                    - name: tempest-s-command
                       label: Tempest's Command
-                    - name: utility-wind
-                      label: Wind
-                    - name: utility-radiant
-                      label: Radiant
-                    - name: utility-necrotic
-                      label: Necrotic
-              - name: utilityGroupName
-                label: Utility group name
-                type: string
-                required: false
+              - name: utility
+                label: Utility spell
+                type: boolean
+                required: true
+                description: On = listed under Utility Spells for this school; off = main school list.
               - name: name
                 label: Spell name
                 type: string
@@ -506,18 +483,12 @@ content:
                 options:
                   min: 0
                   max: 9
-              - name: actions
-                label: Actions
-                type: number
-                required: false
-                description: Heroic actions required. Omit only if using Casting note (e.g. 1 minute, 24 hours).
-                options:
-                  min: 1
-              - name: castingNote
-                label: Casting note
-                type: text
-                required: false
-                description: Use when Actions is omitted (non-action cast time).
+              - name: castingTime
+                label: Casting time
+                type: string
+                required: true
+                description: >
+                  e.g. "1 Action", "2 Actions", "24 hours", "Casting Time: 1 minute".
               - name: target
                 label: Target
                 type: select

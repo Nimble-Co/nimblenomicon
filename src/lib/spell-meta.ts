@@ -22,33 +22,14 @@ export function formatSpellTarget(target: SpellTarget): string {
   return TARGET_LABEL[target];
 }
 
-/** "1 Action" or "2 Actions" from a positive integer */
-export function formatActionCount(actions: number): string {
-  return `${actions} ${actions === 1 ? "Action" : "Actions"}`;
-}
-
-/**
- * Middle segment after level: either action count, casting note, or both implied by castingNote only.
- * Examples: "1 Action", "2 Actions", "Casting Time: 1 minute", "24 hours"
- */
-export function formatSpellCasting(
-  actions: number | null,
-  castingNote: string | undefined,
-): string {
-  if (actions !== null) return formatActionCount(actions);
-  if (castingNote) return castingNote;
-  return "";
-}
-
 /** Italic meta line as in the original Core Rules (markdown). */
 export function spellMetaMarkdown(
   level: number,
-  actions: number | null,
+  castingTime: string,
   target: SpellTarget,
-  castingNote?: string,
 ): string {
   const tier = formatSpellLevel(level);
-  const cast = formatSpellCasting(actions, castingNote);
+  const cast = castingTime.trim();
   const tgt = formatSpellTarget(target);
   const middle = cast ? `${tier}, ${cast}, ${tgt}` : `${tier}, ${tgt}`;
   return `_${middle}_`;

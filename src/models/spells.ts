@@ -12,28 +12,34 @@ export const spellTargetSchema = z.enum([
 ]);
 export type SpellTarget = z.infer<typeof spellTargetSchema>;
 
+const spellSchoolIdSchema = z.enum([
+  "fire-spells",
+  "ice-spells",
+  "lightning-spells",
+  "wind-spells",
+  "radiant-spells",
+  "necrotic-spells",
+  "tempest-s-command",
+]);
+
 const spellEntryFields = {
   name: z.string().min(1),
   level: z.number().int().min(0).max(9),
-  actions: z.union([z.number().int().positive(), z.null()]),
+  castingTime: z.string().min(1),
   target: spellTargetSchema,
   body: z.string(),
-  castingNote: z.string().optional(),
 };
 
-const spellEntrySchema = z
-  .object(spellEntryFields)
-  .strict()
-  .refine(
-    (s) =>
-      (s.actions === null && s.castingNote && s.castingNote.length > 0) ||
-      (s.actions !== null && s.castingNote === undefined),
-    { message: "actions must be a positive integer, or null with castingNote set" },
-  );
+const spellEntrySchema = z.object(spellEntryFields).strict();
 
-/** Row input: actions optional when castingNote supplies cast time (CMS may omit actions). */
 function emptyToUndef(s: unknown): unknown {
   return s === "" ? undefined : s;
+}
+
+function coerceUtility(v: unknown): unknown {
+  if (v === true || v === "true") return true;
+  if (v === false || v === "false") return false;
+  return v;
 }
 
 const spellRowBaseSchema = z.preprocess(
@@ -43,64 +49,23 @@ const spellRowBaseSchema = z.preprocess(
     return {
       ...o,
       schoolId: emptyToUndef(o.schoolId),
-      schoolName: emptyToUndef(o.schoolName),
-      utilityGroupId: emptyToUndef(o.utilityGroupId),
-      utilityGroupName: emptyToUndef(o.utilityGroupName),
+      utility: coerceUtility(o.utility),
     };
   },
-  z.object({
-    name: z.string().min(1),
-    level: z.number().int().min(0).max(9),
-    actions: z.union([z.number().int().positive(), z.null()]).optional(),
-    target: spellTargetSchema,
-    body: z.string(),
-    castingNote: z.string().optional(),
-    schoolId: z.string().min(1).optional(),
-    schoolName: z.string().min(1).optional(),
-    utilityGroupId: z.string().min(1).optional(),
-    utilityGroupName: z.string().min(1).optional(),
-  }).strict(),
+  z
+    .object({
+      schoolId: spellSchoolIdSchema,
+      utility: z.boolean(),
+      name: z.string().min(1),
+      level: z.number().int().min(0).max(9),
+      castingTime: z.string().min(1),
+      target: spellTargetSchema,
+      body: z.string(),
+    })
+    .strict(),
 );
 
-const spellRowSchema = spellRowBaseSchema
-  .refine(
-    (row) =>
-      row.actions !== undefined ||
-      (row.castingNote !== undefined && row.castingNote.length > 0),
-    {
-      message:
-        "Set actions (heroic action count) or fill castingNote for non-action cast times",
-    },
-  )
-  .transform((row) => {
-    let actions: number | null | undefined = row.actions;
-    if (
-      actions === undefined &&
-      row.castingNote !== undefined &&
-      row.castingNote.length > 0
-    ) {
-      actions = null;
-    }
-    return { ...row, actions: actions! };
-  })
-  .refine(
-    (r) =>
-      (r.schoolId !== undefined &&
-        r.schoolName !== undefined &&
-        r.utilityGroupId === undefined &&
-        r.utilityGroupName === undefined) ||
-      (r.utilityGroupId !== undefined &&
-        r.utilityGroupName !== undefined &&
-        r.schoolId === undefined &&
-        r.schoolName === undefined),
-    { message: "row must be either a school spell or a utility spell" },
-  )
-  .refine(
-    (s) =>
-      (s.actions === null && s.castingNote && s.castingNote.length > 0) ||
-      (s.actions !== null && s.castingNote === undefined),
-    { message: "actions must be a positive integer, or null with castingNote set" },
-  );
+const spellRowSchema = spellRowBaseSchema;
 
 export type SpellEntryData = z.infer<typeof spellEntrySchema>;
 export type SpellRowData = z.infer<typeof spellRowSchema>;
@@ -116,7 +81,7 @@ const flatPayloadSchema = z.union([
 
 export const spellRows: SpellRowData[] = flatPayloadSchema.parse(rawSpells);
 
-/** Document order for Core Rules spell schools */
+/** Document order for Core Rules main spell schools (non-utility). */
 const SCHOOL_ORDER = [
   "fire-spells",
   "ice-spells",
@@ -126,16 +91,40 @@ const SCHOOL_ORDER = [
   "necrotic-spells",
 ] as const;
 
-/** Document order for utility spell subsections */
-const UTILITY_GROUP_ORDER = [
-  "utility-ice",
-  "utility-fire",
-  "utility-lightning",
-  "utility-tempest-s-command",
-  "utility-wind",
-  "utility-radiant",
-  "utility-necrotic",
+/** Short title for headings (from spell-schools data / Core Rules). */
+const SCHOOL_SHORT_NAME: Record<(typeof SCHOOL_ORDER)[number], string> = {
+  "fire-spells": "Fire",
+  "ice-spells": "Ice",
+  "lightning-spells": "Lightning",
+  "wind-spells": "Wind",
+  "radiant-spells": "Radiant",
+  "necrotic-spells": "Necrotic",
+};
+
+/** Utility subsection order; keys match `schoolId` on utility rows. */
+const UTILITY_SECTION_ORDER = [
+  "ice-spells",
+  "fire-spells",
+  "lightning-spells",
+  "tempest-s-command",
+  "wind-spells",
+  "radiant-spells",
+  "necrotic-spells",
 ] as const;
+
+/** h3 titles under Utility Spells (Tempest is not a main school). */
+const UTILITY_SECTION_TITLE: Record<
+  (typeof UTILITY_SECTION_ORDER)[number],
+  string
+> = {
+  "ice-spells": "Ice",
+  "fire-spells": "Fire",
+  "lightning-spells": "Lightning",
+  "tempest-s-command": "Tempest's Command",
+  "wind-spells": "Wind",
+  "radiant-spells": "Radiant",
+  "necrotic-spells": "Necrotic",
+};
 
 export type SpellSchoolBlock = {
   id: string;
@@ -152,29 +141,25 @@ export type UtilitySpellGroupBlock = {
 };
 
 function entryFromRow(row: SpellRowData): SpellEntryData {
-  const { schoolId, schoolName, utilityGroupId, utilityGroupName, ...spell } =
-    row;
+  const { schoolId, utility, ...spell } = row;
   void schoolId;
-  void schoolName;
-  void utilityGroupId;
-  void utilityGroupName;
+  void utility;
   return spell;
 }
 
 export function buildSpellSchools(rows: SpellRowData[]): SpellSchoolBlock[] {
   const bySchool = new Map<string, SpellRowData[]>();
   for (const row of rows) {
-    if (!row.schoolId) continue;
+    if (row.utility) continue;
     const list = bySchool.get(row.schoolId) ?? [];
     list.push(row);
     bySchool.set(row.schoolId, list);
   }
   return SCHOOL_ORDER.filter((id) => bySchool.has(id)).map((id) => {
     const group = bySchool.get(id)!;
-    const name = group[0]!.schoolName!;
     return {
       id,
-      name,
+      name: SCHOOL_SHORT_NAME[id],
       spells: group.map(entryFromRow),
     };
   });
@@ -183,16 +168,16 @@ export function buildSpellSchools(rows: SpellRowData[]): SpellSchoolBlock[] {
 export function buildUtilitySpellGroups(
   rows: SpellRowData[],
 ): UtilitySpellGroupBlock[] {
-  const byGroup = new Map<string, SpellRowData[]>();
+  const bySection = new Map<string, SpellRowData[]>();
   for (const row of rows) {
-    if (!row.utilityGroupId) continue;
-    const list = byGroup.get(row.utilityGroupId) ?? [];
+    if (!row.utility) continue;
+    const list = bySection.get(row.schoolId) ?? [];
     list.push(row);
-    byGroup.set(row.utilityGroupId, list);
+    bySection.set(row.schoolId, list);
   }
-  return UTILITY_GROUP_ORDER.filter((id) => byGroup.has(id)).map((id) => {
-    const group = byGroup.get(id)!;
-    const name = group[0]!.utilityGroupName!;
+  return UTILITY_SECTION_ORDER.filter((id) => bySection.has(id)).map((id) => {
+    const group = bySection.get(id)!;
+    const name = UTILITY_SECTION_TITLE[id];
     const spells = group.map(entryFromRow);
     const flat =
       spells.length === 1 && spells[0]!.name.trim() === name.trim();
