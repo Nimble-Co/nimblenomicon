@@ -1,6 +1,16 @@
 import { z } from "astro/zod";
 import rawSpells from "../data/spells.json";
 
+/** Stable URL segment for spell detail pages; unique per spell. */
+export function slugifySpellId(name: string): string {
+  return name
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "spell";
+}
+
 export const spellTargetSchema = z.enum([
   "single-target",
   "self",
@@ -22,6 +32,7 @@ const spellSchoolIdSchema = z.enum([
 ]);
 
 const spellEntryFields = {
+  id: z.string().min(1),
   name: z.string().min(1),
   tier: z.number().int().min(0).max(9),
   castingTime: z.string().min(1),
@@ -53,8 +64,15 @@ const spellRowBaseSchema = z.preprocess(
   (raw) => {
     if (!raw || typeof raw !== "object") return raw;
     const o = raw as Record<string, unknown>;
+    const name = typeof o.name === "string" ? o.name : "";
+    const idRaw = o.id;
+    const id =
+      typeof idRaw === "string" && idRaw.trim() !== ""
+        ? idRaw.trim()
+        : slugifySpellId(name);
     const out = {
       ...o,
+      id,
       schoolId: emptyToUndef(o.schoolId),
       utility: coerceUtility(o.utility),
       tier: coerceTier(o.tier ?? o.level),
@@ -64,6 +82,7 @@ const spellRowBaseSchema = z.preprocess(
   },
   z
     .object({
+      id: z.string().min(1),
       schoolId: spellSchoolIdSchema,
       utility: z.boolean(),
       name: z.string().min(1),
@@ -89,7 +108,25 @@ const flatPayloadSchema = z.union([
     .transform((o) => o.spells),
 ]);
 
-export const spellRows: SpellRowData[] = flatPayloadSchema.parse(rawSpells);
+export const spellRows: SpellRowData[] = flatPayloadSchema
+  .pipe(
+    z.array(spellRowSchema).superRefine((rows, ctx) => {
+      const seen = new Map<string, number>();
+      for (let i = 0; i < rows.length; i++) {
+        const id = rows[i]!.id;
+        if (seen.has(id)) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: `Duplicate spell id "${id}" (rows ${seen.get(id)} and ${i})`,
+            path: [i, "id"],
+          });
+        } else {
+          seen.set(id, i);
+        }
+      }
+    }),
+  )
+  .parse(rawSpells);
 
 /** Document order for Core Rules main spell schools (non-utility). */
 const SCHOOL_ORDER = [
@@ -110,6 +147,12 @@ const SCHOOL_SHORT_NAME: Record<(typeof SCHOOL_ORDER)[number], string> = {
   "radiant-spells": "Radiant",
   "necrotic-spells": "Necrotic",
 };
+
+export function spellSchoolShortName(
+  schoolId: SpellRowData["schoolId"],
+): string {
+  return SCHOOL_SHORT_NAME[schoolId];
+}
 
 /** Utility subsection order; keys match `schoolId` on utility rows. */
 const UTILITY_SECTION_ORDER = [
@@ -153,6 +196,11 @@ function entryFromRow(row: SpellRowData): SpellEntryData {
   void schoolId;
   void utility;
   return spell;
+}
+
+/** Relative URL from the Core Rules doc to a spell detail page (respects `base`). */
+export function spellDetailHrefFromCoreRules(id: string): string {
+  return `spells/${id}/`;
 }
 
 export function buildSpellSchools(rows: SpellRowData[]): SpellSchoolBlock[] {
