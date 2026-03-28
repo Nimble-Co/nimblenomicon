@@ -430,10 +430,9 @@ content:
             list: true
             fields:
               - name: name
-                label: School
+                label: Name
                 type: string
                 required: true
-                description: Short name only; the page adds the word Spells in headings.
               - name: description
                 label: Description
                 type: rich-text
