@@ -345,6 +345,105 @@ content:
         options:
           format: html
 
+  - name: armor
+    label: Core Rules — Armor (tables)
+    type: file
+    path: src/data/armor.json
+    format: json
+    list: true
+    fields:
+      - name: category
+        label: Table section
+        type: select
+        required: true
+        options:
+          values:
+            - name: cloth
+              label: Cloth
+            - name: leather
+              label: Leather
+            - name: plate
+              label: Plate
+            - name: mail
+              label: Mail
+            - name: shields
+              label: Shields
+      - name: item
+        label: Item
+        type: string
+        required: true
+      - name: armor
+        label: Armor
+        type: string
+        required: true
+      - name: cost
+        type: string
+        required: true
+
+  - name: ancestries
+    label: Core Rules — Ancestries
+    type: file
+    path: src/data/ancestries.json
+    format: json
+    list: true
+    fields:
+      - name: section
+        type: select
+        required: true
+        options:
+          values:
+            - name: common
+              label: Common
+            - name: exotic
+              label: Exotic
+      - name: name
+        type: string
+        required: true
+      - name: sizeLine
+        label: Size line
+        type: string
+        required: true
+      - name: flavor
+        type: text
+        required: true
+      - name: trait
+        label: Trait (markdown)
+        type: text
+        required: true
+      - name: callout
+        label: Callout
+        type: rich-text
+        required: false
+        options:
+          format: html
+
+  - name: backgrounds
+    label: Core Rules — Background segments
+    type: file
+    path: src/data/backgrounds.json
+    format: json
+    list: true
+    fields:
+      - name: body
+        label: Markdown block
+        type: text
+        required: true
+        description: One background or callout segment; order matches Core Rules.
+
+  - name: magical-items
+    label: Core Rules — Magical items & wands
+    type: file
+    path: src/data/magical-items.json
+    format: json
+    description: Array of standard items (paragraphs, bullets, callout) and wands (recharge). Edit as structured JSON.
+
+  - name: spells
+    label: Core Rules — Spells (full JSON)
+    type: file
+    path: src/data/spells.json
+    format: json
+    description: Nested schools + utility schools; edit in raw JSON or regenerate from scripts/extract-spells-from-mdx.mjs.
+
   - name: core-rules-start-here
     label: Core Rules — Start Here
     type: file

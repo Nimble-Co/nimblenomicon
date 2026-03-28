@@ -1,0 +1,217 @@
+[
+  {
+    "kind": "standard",
+    "name": "Weapon of Many Hands",
+    "subtitle": "_(Rarity varies)_",
+    "paragraphs": [
+      "While equipped, this weapon grants the wearer additional arms. The wearer can use the extra arms to perform any task their normal hands can do (wield equipment, Grapple enemies, climb, etc.) but does not allow the wearer to perform actions any faster. These extra appendages may be horrifying to people in polite society. A weapon that grants 1 extra hand is likely to be uncommon; 4 extra hands, legendary."
+    ],
+    "callout": "<p><strong>Extra Arms?!</strong> Yes, you can dual wield 2-handed weapons or wear more than 1 shield, or Grapple 2 different creatures while hitting them both at the same time! Or any number of creative things, provided you have the arms to perform the task.</p>"
+  },
+  {
+    "kind": "standard",
+    "name": "Harbinger & Sovereign, Abyssal's Claim",
+    "subtitle": "_(Legendary Glaives)_",
+    "paragraphs": [
+      "Set of 2 matching glaives, +4 extra arms while both are equipped."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Weapon of Animosity",
+    "paragraphs": [
+      "Whenever you attack with this weapon, roll an additional animosity die. The weapon deals that much additional damage to your target on a hit. Whenever this weapon misses, you take that damage instead. A weapon that adds 1d4 is likely to be uncommon; 1d10 or greater, legendary."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Weapon of Slaying",
+    "paragraphs": [
+      "Whenever you attack with this weapon, it deals an additional die of damage against a particular creature type. Those creatures may try to kill you first. A 1d4 weapon of slaying is likely to be uncommon; +1d10 or more, legendary."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Gnatbane Weapon",
+    "subtitle": "_(Uncommon)_",
+    "paragraphs": [
+      "Does not miss Small or Tiny creatures (they may hate you for it and attack you first)."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Weapon of Wounding",
+    "subtitle": "_(Uncommon)_",
+    "paragraphs": [
+      "When you land a hit with this weapon, you may suffer 1d6 damage to deal twice that much additional damage to your target."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Trinket of Ill Omen",
+    "subtitle": "_(Rare)_",
+    "paragraphs": [
+      "While equipped, you have –1 to saves you roll and +1 to your save DC."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Mindlink Daggers",
+    "subtitle": "_(Rare)_",
+    "paragraphs": [
+      "A matched pair of slender, silver daggers with intertwining runes. Enables the sharing of thoughts between any who holds (or is stabbed by) one."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Bloodstained Quill",
+    "subtitle": "_(Uncommon)_",
+    "paragraphs": [
+      "If you dip this quill into the blood of a dead intelligent creature, the quill animates and writes the last words spoken by that creature."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Eyes of the Street",
+    "subtitle": "_(Uncommon)_",
+    "paragraphs": [
+      "A pair of goggles covered in muck that you can’t ever clean off completely. While wearing them, you can look at a rat or a pigeon to gain the ability to see and hear through its senses for 10 minutes. Once you use this ability, you must whisper a secret to the goggles before you can use them again. That secret always seems to become a local rumor before too long…."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Handwraps of Force",
+    "subtitle": "_(Rare)_",
+    "paragraphs": [
+      "While wearing these wraps, whenever you make an unarmed strike, you may push your target up to 2 spaces and yourself the same distance in the opposite direction. You may instead make an attack with no target, striking the air to propel yourself 4 spaces in any direction."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Resolute Fangs, Golden Bastion",
+    "subtitle": "_(Legendary Shield)_",
+    "paragraphs": [
+      "+8 Armor. **Reaction:** When you reduce damage from a melee attack with this shield, it may Grapple the attacker regardless of its size (escape DC 20 STR, max 1 creature). **Action:** Speak this shield’s command word to make it immovable, fixed in place, until it is spoken again."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Key of Doors",
+    "subtitle": "_(Very Rare)_",
+    "paragraphs": [
+      "Insert this key into any locked door to open it, not to the room beyond, but to any doorway you’ve previously walked through while holding this item."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Grim Coronet",
+    "subtitle": "_(Rare)_",
+    "paragraphs": [
+      "When you would die while wearing this crown, gain 3 actions and take a turn immediately. You die at the end of your turn."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Vindication",
+    "subtitle": "_(Legendary Weapon of Animosity)_",
+    "paragraphs": [
+      "A jagged blade marred by scorch marks and dark stains, radiating a bitter, vengeful energy that punishes both wielder and foe alike. +1d12 damage. You take this damage on a miss."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Pocket Cauldron",
+    "subtitle": "_(Rare)_",
+    "paragraphs": [
+      "While Safe Resting, use this to brew your choice of 1 potion, to be consumed immediately:"
+    ],
+    "bullets": [
+      "**Elixir of Futuresight:** This potion grants the drinker a brief, cryptic vision of a future event.",
+      "**Elixir of Requiem:** This potion allows the drinker to relive a crucial memory from their past.",
+      "**Elixir of Time:** Once every 100 years, the cauldron can brew a potion that can take the drinker back in time 1 day."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Phoenix Helm",
+    "subtitle": "_(Legendary)_",
+    "paragraphs": [
+      "If you die while wearing this golden helm, your body explodes in flames and hot ash. You rise anew from the ashes... (see pg. 19 of the _GM’s Guide_ for more)."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Ball of Spiders",
+    "subtitle": "_(Uncommon)_",
+    "paragraphs": [
+      "A black, palm-sized ball with faintly writhing patterns etched into its surface. **Action:** Throw this ball up to 6 spaces. Upon impact, it shatters, releasing a swarm of harmless but horrifyingly realistic spectral spiders that cover a 2x2 area. Creatures in the area must make a WIL save or be Frightened until the end of their next turn. Once used, the ball reforms at the next Safe Rest."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Skitter Shoes",
+    "subtitle": "_(Rare)_",
+    "paragraphs": [
+      "While wearing these shoes, you can walk on vertical surfaces or ceilings as if they were flat ground, but only at half your normal Speed. If you end your turn upside down or on a vertical surface, you must make a DC 10 STR save or fall down, landing prone."
+    ]
+  },
+  {
+    "kind": "standard",
+    "name": "Button of Protection",
+    "subtitle": "_(Rare)_",
+    "paragraphs": [
+      "A small, unassuming button etched with a faintly glowing sigil. When sewn onto an outfit, as a reaction when you are attacked, you may pull the button off and throw it into the air. The button emits a sudden, dazzling flash of light and a high-pitched whistle. The attacker must make a WIL save or be distracted, causing the attack to miss you.",
+      "After use, the button becomes inert. It can be sewn back onto a garment during a Safe Rest by an experienced seamstress or tailor with silver thread, which reactivates its power."
+    ]
+  },
+  {
+    "kind": "wand",
+    "name": "Wand of Firestep",
+    "subtitle": "_(Uncommon wand, Cantrip (3 charges))_",
+    "recharge": "Heat the wand in a blacksmiths forge until it glows, then quench it in oil."
+  },
+  {
+    "kind": "wand",
+    "name": "Wand of Dread Visage",
+    "subtitle": "_(Uncommon wand, Tier 2 (2 charges))_",
+    "recharge": "Place the wand in a freshly slain corpse. Leave it until only bones remain."
+  },
+  {
+    "kind": "wand",
+    "name": "Wand of Glacier Strike",
+    "subtitle": "_(Very Rare wand, Tier 8 (1 charge))_",
+    "recharge": "Leave the wand at the bottom of a lake until it freezes over and thaws naturally."
+  },
+  {
+    "kind": "wand",
+    "name": "Wand of Ride the Lightning",
+    "subtitle": "_(Very Rare wand, Tier 6 (2 charges))_",
+    "recharge": "Place at the highest point within 1 mile. Retrieve after 3 thunderstorms."
+  },
+  {
+    "kind": "wand",
+    "name": "Wand of Barrier of Wind",
+    "subtitle": "_(Rare wand, Tier 2 (3 charges))_",
+    "recharge": "Hang the wand with wind chimes in a breezy area. Let it ring for 3 days."
+  },
+  {
+    "kind": "wand",
+    "name": "Wand of Sacrifice",
+    "subtitle": "_(Very Rare wand, Tier 6 (1 charge))_",
+    "recharge": "Plant it in a new garden, leave it undisturbed until the flowers bloom."
+  },
+  {
+    "kind": "wand",
+    "name": "Elderwyrm’s Majesty",
+    "subtitle": "_(Legendary wand, Tier 9 (1 charge))_",
+    "body": "This wand can cast Dragonform, turning into the type of dragon that last charged it.",
+    "recharge": "Give an ancient dragon a gift it truly desires."
+  },
+  {
+    "kind": "wand",
+    "name": "Heartwood, Splinter of the Tree of Life",
+    "subtitle": "_(Legendary wand, Tier 9 (1 charge))_",
+    "body": "Cast Redeem with no required components.",
+    "recharge": "A sacred hymn must be sung over it ceaselessly for 100 years."
+  }
+]
