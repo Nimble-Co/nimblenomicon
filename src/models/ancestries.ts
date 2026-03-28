@@ -5,7 +5,7 @@ const ancestrySchema = z
   .object({
     section: z.enum(["common", "exotic"]),
     name: z.string().min(1),
-    sizeLine: z.string().min(1),
+    size: z.string().min(1),
     flavor: z.string(),
     trait: z.string(),
   })

@@ -244,7 +244,7 @@ content:
                 label: Name
                 type: string
                 required: true
-              - name: sizeLine
+              - name: size
                 label: Size
                 type: string
                 required: true
