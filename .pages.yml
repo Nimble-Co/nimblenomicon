@@ -489,6 +489,11 @@ content:
             format: json
             list: true
             fields:
+              - name: id
+                label: Id
+                type: string
+                required: true
+                description: Stable URL slug for the spell’s detail page (lowercase, hyphens). Must be unique.
               - name: schoolId
                 label: School
                 type: select

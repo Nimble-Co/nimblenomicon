@@ -33,7 +33,10 @@ import { optionalVariantRules } from "../../models/optional-variant-rules";
 import { saveTypes } from "../../models/save-types";
 import { sizes } from "../../models/sizes";
 import { skills } from "../../models/skills";
-import { spellsData } from "../../models/spells";
+import {
+  spellsData,
+  spellDetailHrefFromCoreRules,
+} from "../../models/spells";
 import { spellSchools } from "../../models/spell-schools";
 import { spellScrollCosts } from "../../models/spell-scroll-costs";
 import { statArrays } from "../../models/stat-arrays";
@@ -850,7 +853,9 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
     <h2>{school.name} Spells</h2>
     {school.spells.map((spell) => (
       <>
-        <h3>{spell.name}</h3>
+        <h3>
+          <a href={spellDetailHrefFromCoreRules(spell.id)}>{spell.name}</a>
+        </h3>
         <div
           set:html={renderMarkdown(
             spellMetaMarkdown(
@@ -869,31 +874,34 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
 
 Some classes can choose from among these additional spells as they level up.
 
-{spellsData.utilitySchools.map((us) =>
-  "flat" in us && us.flat ? (
+{spellsData.utilitySchools.map((us) => {
+  const flatFirst = us.spells[0];
+  return "flat" in us && us.flat && flatFirst ? (
     <>
-      <h3>{us.name}</h3>
-      {(() => {
-        const s = us.spells[0];
-        return (
-          <div
-            set:html={renderMarkdown(
-              spellMetaMarkdown(
-                s.tier,
-                s.castingTime,
-                s.target,
-              ) + (s.description?.trim() ? "\n\n" + s.description : ""),
-            )}
-          />
-        );
-      })()}
+      <h3>
+        <a href={spellDetailHrefFromCoreRules(flatFirst.id)}>{us.name}</a>
+      </h3>
+      <div
+        set:html={renderMarkdown(
+          spellMetaMarkdown(
+            flatFirst.tier,
+            flatFirst.castingTime,
+            flatFirst.target,
+          ) +
+            (flatFirst.description?.trim()
+              ? "\n\n" + flatFirst.description
+              : ""),
+        )}
+      />
     </>
   ) : (
     <>
       <h3>{us.name}</h3>
       {us.spells.map((spell) => (
         <>
-          <h4>{spell.name}</h4>
+          <h4>
+            <a href={spellDetailHrefFromCoreRules(spell.id)}>{spell.name}</a>
+          </h4>
           <div
             set:html={renderMarkdown(
               spellMetaMarkdown(
@@ -906,8 +914,8 @@ Some classes can choose from among these additional spells as they level up.
         </>
       ))}
     </>
-  ),
-)}
+  );
+})}
 
 # Optional Variant Rules
 
