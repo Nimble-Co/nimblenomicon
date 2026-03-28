@@ -1,0 +1,22 @@
+# Project, stack, and code-adjacent terms
+astrojs
+Astro
+cliffside
+Cpath
+Csvg
+frontmatter
+greatclub
+halfling
+hrefs
+longsword
+MDX
+Pagefind
+scroller
+smithing
+spellcaster
+Starlight
+stonecraft
+Sublist
+sublist
+tailwindcss
+Zod

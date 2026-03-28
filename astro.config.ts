@@ -9,7 +9,7 @@ const repo = process.env.GITHUB_REPOSITORY?.split('/')[1];
 const isUserSite = Boolean(owner && repo && repo === `${owner}.github.io`);
 
 /** GitHub Pages (CI): correct absolute URLs and asset paths. Local dev: defaults. */
-/** Trailing slash on `base` is required so `import.meta.env.BASE_URL` matches Astro/Vite rules; otherwise Starlight can emit broken hrefs like `/repocore-rules/` on project pages. */
+/** Trailing slash on `base` is required so `import.meta.env.BASE_URL` matches Astro/Vite rules; otherwise Starlight can emit broken hrefs like `/repo/core-rules/` on project pages. */
 const site = owner && repo ? `https://${owner}.github.io` : undefined;
 const base = owner && repo ? (isUserSite ? '/' : `/${repo}/`) : undefined;
 
