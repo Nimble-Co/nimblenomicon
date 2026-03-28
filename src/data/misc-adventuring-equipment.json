@@ -1,167 +1,167 @@
 [
   {
-    "properties": "Heal 2d4+4 HP.",
     "cost": "50 gp",
-    "name": "Healing Potion (action)"
+    "name": "Healing Potion (action)",
+    "description": "Heal 2d4+4 HP."
   },
   {
-    "properties": "Heal 3d6+6 HP.",
     "cost": "150 gp",
-    "name": "Greater Healing Potion (action)"
+    "name": "Greater Healing Potion (action)",
+    "description": "Heal 3d6+6 HP."
   },
   {
-    "properties": "Heal 4d8+8 HP.",
     "cost": "450 gp",
-    "name": "Supreme Healing Potion (action)"
+    "name": "Supreme Healing Potion (action)",
+    "description": "Heal 4d8+8 HP."
   },
   {
-    "properties": "For when it's dark. 1 use each.",
     "cost": "5 sp",
-    "name": "Torch (stack of 2)"
+    "name": "Torch (stack of 2)",
+    "description": "For when it's dark. 1 use each."
   },
   {
-    "properties": "Like a torch, but not as cool (refill: 1 gp).",
     "cost": "10 gp",
-    "name": "Lantern & Oil"
+    "name": "Lantern & Oil",
+    "description": "Like a torch, but not as cool (refill: 1 gp)."
   },
   {
-    "properties": "Sticky, and VERY flammable.",
     "cost": "2 gp",
-    "name": "Vial of Pitch"
+    "name": "Vial of Pitch",
+    "description": "Sticky, and VERY flammable."
   },
   {
-    "properties": "You always need rope.",
     "cost": "10 gp",
-    "name": "Rope (50 ft.)"
+    "name": "Rope (50 ft.)",
+    "description": "You always need rope."
   },
   {
-    "properties": "Like rope, but stronger (and heavy).",
     "cost": "50 gp",
-    "name": "Chain (10 ft.)"
+    "name": "Chain (10 ft.)",
+    "description": "Like rope, but stronger (and heavy)."
   },
   {
-    "properties": "Also works as a hat in a pinch!",
     "cost": "1 gp",
-    "name": "Bucket"
+    "name": "Bucket",
+    "description": "Also works as a hat in a pinch!"
   },
   {
-    "properties": "Lock it or lose it.",
     "cost": "3 gp",
-    "name": "Padlock & Key"
+    "name": "Padlock & Key",
+    "description": "Lock it or lose it."
   },
   {
-    "properties": "For medusas AND spinach teeth.",
     "cost": "4 gp",
-    "name": "Mirror"
+    "name": "Mirror",
+    "description": "For medusas AND spinach teeth."
   },
   {
-    "properties": "Arrr.",
     "cost": "10 gp",
-    "name": "Telescope"
+    "name": "Telescope",
+    "description": "Arrr."
   },
   {
-    "properties": "Make the small, big.",
     "cost": "5 gp",
-    "name": "Magnifying Glass"
+    "name": "Magnifying Glass",
+    "description": "Make the small, big."
   },
   {
-    "properties": "Not JUST for kids.",
     "cost": "1 sp",
-    "name": "Chalk"
+    "name": "Chalk",
+    "description": "Not JUST for kids."
   },
   {
-    "properties": "Sometimes you need a hole dug.",
     "cost": "3 gp",
-    "name": "Shovel"
+    "name": "Shovel",
+    "description": "Sometimes you need a hole dug."
   },
   {
-    "properties": "Pull down, go up.",
     "cost": "3 gp",
-    "name": "Pulley"
+    "name": "Pulley",
+    "description": "Pull down, go up."
   },
   {
-    "properties": "For climbing or catching BIG fish.",
     "cost": "4 gp",
-    "name": "Grappling Hook"
+    "name": "Grappling Hook",
+    "description": "For climbing or catching BIG fish."
   },
   {
-    "properties": "Don't leave home without it.",
     "cost": "10 gp",
-    "name": "Quiver & Ammo"
+    "name": "Quiver & Ammo",
+    "description": "Don't leave home without it."
   },
   {
-    "properties": "For cutting lumber.",
     "cost": "4 gp",
-    "name": "Saw"
+    "name": "Saw",
+    "description": "For cutting lumber."
   },
   {
-    "properties": "Useless.",
     "cost": "1 sp",
-    "name": "Soap"
+    "name": "Soap",
+    "description": "Useless."
   },
   {
-    "properties": "Who knows?",
     "cost": "5 sp",
-    "name": "Strange Plant"
+    "name": "Strange Plant",
+    "description": "Who knows?"
   },
   {
-    "properties": "Worthless, but VERY pretty.",
     "cost": "1 sp",
-    "name": "Shiny Object"
+    "name": "Shiny Object",
+    "description": "Worthless, but VERY pretty."
   },
   {
-    "properties": "It's not mine, honest!",
     "cost": "5 gp",
-    "name": "Lock Pick"
+    "name": "Lock Pick",
+    "description": "It's not mine, honest!"
   },
   {
-    "properties": "For service.",
     "cost": "2 gp",
-    "name": "Bell"
+    "name": "Bell",
+    "description": "For service."
   },
   {
-    "properties": "LOTS of fun.",
     "cost": "5 sp",
-    "name": "Dice"
+    "name": "Dice",
+    "description": "LOTS of fun."
   },
   {
-    "properties": "Warm & fuzzy.",
     "cost": "1 gp",
-    "name": "Blanket"
+    "name": "Blanket",
+    "description": "Warm & fuzzy."
   },
   {
-    "properties": "Snap snap, don't lose a finger!",
     "cost": "10 gp",
-    "name": "Hunting Trap"
+    "name": "Hunting Trap",
+    "description": "Snap snap, don't lose a finger!"
   },
   {
-    "properties": "Bedroll, rations, simple tent.",
     "cost": "5 gp",
-    "name": "Camping Supplies"
+    "name": "Camping Supplies",
+    "description": "Bedroll, rations, simple tent."
   },
   {
-    "properties": "It's LIKE a key.",
     "cost": "2 gp",
-    "name": "Crowbar"
+    "name": "Crowbar",
+    "description": "It's LIKE a key."
   },
   {
-    "properties": "Metal spikes, for sealing doors.",
     "cost": "5 gp",
-    "name": "Pitons"
+    "name": "Pitons",
+    "description": "Metal spikes, for sealing doors."
   },
   {
-    "properties": "For when someone has been bad.",
     "cost": "3 gp",
-    "name": "Manacles"
+    "name": "Manacles",
+    "description": "For when someone has been bad."
   },
   {
-    "properties": "Like a BIG pocket.",
     "cost": "5 sp",
-    "name": "Large Sack"
+    "name": "Large Sack",
+    "description": "Like a BIG pocket."
   },
   {
-    "properties": "Drums, Horn, Lyre, Flute, etc.",
     "cost": "5-50 gp",
-    "name": "Instrument"
+    "name": "Instrument",
+    "description": "Drums, Horn, Lyre, Flute, etc."
   }
 ]

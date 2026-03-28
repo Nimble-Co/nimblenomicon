@@ -4,7 +4,7 @@ import rawDcExamples from "../data/dc-examples.json";
 const dcExampleSchema = z
   .object({
     name: z.string().min(1),
-    body: z.string().min(1),
+    description: z.string().min(1),
   })
   .strict();
 

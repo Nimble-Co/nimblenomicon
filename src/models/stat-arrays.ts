@@ -4,7 +4,7 @@ import rawStatArrays from "../data/stat-arrays.json";
 const statArraySchema = z
   .object({
     name: z.string().min(1),
-    body: z.string(),
+    description: z.string(),
   })
   .strict();
 

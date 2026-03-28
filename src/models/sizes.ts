@@ -4,7 +4,7 @@ import rawSizes from "../data/sizes.json";
 const sizeSchema = z
   .object({
     name: z.string().min(1),
-    body: z.string(),
+    description: z.string(),
   })
   .strict();
 export type SizeData = z.infer<typeof sizeSchema>;

@@ -1,5 +1,5 @@
 # Pages CMS — https://pagescms.org/docs/configuration/
-# Groups organize the sidebar. Rich-text content uses markdown (`format: markdown`) and is rendered with `renderMarkdown` in MDX.
+# Groups organize the sidebar. Rich-text uses format: markdown; MDX renders with renderMarkdown.
 
 media:
   label: Assets
@@ -17,12 +17,12 @@ content:
         type: group
         items:
           - name: core-rules-start-here
-            label: Start here
+            label: Start Here
             type: file
             path: src/data/core-rules/start-here.md
 
       - name: core-rules-stats-skills
-        label: Stats & skills
+        label: Stats & Skills
         type: group
         items:
           - name: stats
@@ -33,14 +33,16 @@ content:
             list: true
             fields:
               - name: name
+                label: Name
                 type: string
                 required: true
               - name: stat
-                label: Stat code
+                label: Stat Code
                 type: string
                 required: true
                 description: Short code (e.g. STR). Skills must use the same value.
-              - name: body
+              - name: description
+                label: Description
                 type: rich-text
                 required: true
                 options:
@@ -54,14 +56,16 @@ content:
             list: true
             fields:
               - name: name
+                label: Name
                 type: string
                 required: true
               - name: stat
-                label: Stat code
+                label: Stat Code
                 type: string
                 required: true
                 description: Must match a row in Stats. Build validates; CMS cannot link lists.
-              - name: body
+              - name: description
+                label: Description
                 type: rich-text
                 required: true
                 options:
@@ -75,9 +79,11 @@ content:
             list: true
             fields:
               - name: name
+                label: Name
                 type: string
                 required: true
-              - name: body
+              - name: description
+                label: Description
                 type: rich-text
                 required: true
                 options:
@@ -91,9 +97,11 @@ content:
             list: true
             fields:
               - name: name
+                label: Name
                 type: string
                 required: true
-              - name: body
+              - name: description
+                label: Description
                 type: rich-text
                 required: true
                 options:
@@ -104,18 +112,18 @@ content:
         type: group
         items:
           - name: dc-examples
-            label: DC examples
+            label: DC Examples
             type: file
             path: src/data/dc-examples.json
             format: json
             list: true
             fields:
               - name: name
-                label: Difficulty label
+                label: Difficulty Label
                 type: string
                 required: true
-              - name: body
-                label: Example
+              - name: description
+                label: Description
                 type: rich-text
                 required: true
                 options:
@@ -129,9 +137,11 @@ content:
             list: true
             fields:
               - name: name
+                label: Name
                 type: string
                 required: true
-              - name: body
+              - name: description
+                label: Description
                 type: rich-text
                 required: true
                 options:
@@ -145,9 +155,11 @@ content:
             list: true
             fields:
               - name: name
+                label: Name
                 type: string
                 required: true
-              - name: body
+              - name: description
+                label: Description
                 type: rich-text
                 required: true
                 options:
@@ -158,16 +170,18 @@ content:
         type: group
         items:
           - name: stat-arrays
-            label: Stat arrays
+            label: Stat Arrays
             type: file
             path: src/data/stat-arrays.json
             format: json
             list: true
             fields:
               - name: name
+                label: Name
                 type: string
                 required: true
-              - name: body
+              - name: description
+                label: Description
                 type: rich-text
                 required: true
                 options:
@@ -181,9 +195,11 @@ content:
             list: true
             fields:
               - name: name
+                label: Name
                 type: string
                 required: true
-              - name: body
+              - name: description
+                label: Description
                 type: rich-text
                 required: true
                 options:
@@ -197,9 +213,11 @@ content:
             list: true
             fields:
               - name: name
+                label: Name
                 type: string
                 required: true
-              - name: body
+              - name: description
+                label: Description
                 type: rich-text
                 required: true
                 options:
@@ -213,6 +231,7 @@ content:
             list: true
             fields:
               - name: section
+                label: Section
                 type: select
                 required: true
                 options:
@@ -222,6 +241,7 @@ content:
                     - name: exotic
                       label: Exotic
               - name: name
+                label: Name
                 type: string
                 required: true
               - name: sizeLine
@@ -229,6 +249,7 @@ content:
                 type: string
                 required: true
               - name: flavor
+                label: Flavor
                 type: rich-text
                 required: true
                 options:
@@ -251,7 +272,7 @@ content:
                 label: Title
                 type: string
                 required: true
-              - name: body
+              - name: description
                 label: Description
                 type: rich-text
                 required: true
@@ -270,7 +291,7 @@ content:
                 label: Hook
                 type: string
                 required: true
-              - name: body
+              - name: description
                 label: Prompts
                 type: rich-text
                 required: true
@@ -299,35 +320,41 @@ content:
                     - name: ranged
                       label: Ranged
               - name: name
-                label: Weapon
+                label: Name
                 type: string
                 required: true
               - name: damage
+                label: Damage
                 type: string
                 required: true
-              - name: properties
+              - name: propertyLines
+                label: Property Lines
                 type: object
                 list: true
                 required: false
                 fields:
-                  - name: text
+                  - name: description
+                    label: Description
                     type: string
                     required: true
               - name: cost
+                label: Cost
                 type: string
                 required: true
 
           - name: weapon-properties
-            label: Weapon properties
+            label: Weapon Properties
             type: file
             path: src/data/weapon-properties.json
             format: json
             list: true
             fields:
               - name: name
+                label: Name
                 type: string
                 required: true
-              - name: body
+              - name: description
+                label: Description
                 type: rich-text
                 required: true
                 options:
@@ -357,34 +384,37 @@ content:
                     - name: shields
                       label: Shields
               - name: name
-                label: Item
+                label: Name
                 type: string
                 required: true
               - name: armor
-                label: Armor value
+                label: Armor Value
                 type: string
                 required: true
               - name: cost
+                label: Cost
                 type: string
                 required: true
 
           - name: misc-adventuring-equipment
-            label: Misc. gear
+            label: Misc. Gear
             type: file
             path: src/data/misc-adventuring-equipment.json
             format: json
             list: true
             fields:
               - name: name
-                label: Item
+                label: Name
                 type: string
                 required: true
-              - name: properties
+              - name: description
+                label: Description
                 type: rich-text
                 required: true
                 options:
                   format: markdown
               - name: cost
+                label: Cost
                 type: string
                 required: true
 
@@ -393,24 +423,26 @@ content:
         type: group
         items:
           - name: spell-schools
-            label: Spell schools
+            label: Spell Schools
             type: file
             path: src/data/spell-schools.json
             format: json
             list: true
             fields:
               - name: name
-                label: School (short name; page adds "Spells")
+                label: School
                 type: string
                 required: true
-              - name: body
+                description: Short name only; the page adds the word Spells in headings.
+              - name: description
+                label: Description
                 type: rich-text
                 required: true
                 options:
                   format: markdown
 
           - name: spell-scroll-costs
-            label: Scroll costs
+            label: Scroll Costs
             type: file
             path: src/data/spell-scroll-costs.json
             format: json
@@ -421,11 +453,12 @@ content:
                 type: string
                 required: true
               - name: cost
+                label: Cost
                 type: string
                 required: true
 
           - name: wand-costs
-            label: Wand costs
+            label: Wand Costs
             type: file
             path: src/data/wand-costs.json
             format: json
@@ -436,6 +469,7 @@ content:
                 type: string
                 required: true
               - name: cost
+                label: Cost
                 type: string
                 required: true
 
@@ -450,7 +484,7 @@ content:
                 label: School
                 type: select
                 required: true
-                description: Same school for main spells and utility spells (e.g. Ice utility spells use Ice). Tempest's Command only appears under Utility Spells.
+                description: Same school for main spells and utility spells. Tempest's Command appears only under Utility Spells.
                 options:
                   values:
                     - name: fire-spells
@@ -468,27 +502,27 @@ content:
                     - name: tempest-s-command
                       label: Tempest's Command
               - name: utility
-                label: Utility spell
+                label: Utility Spell
                 type: boolean
                 required: true
-                description: On = listed under Utility Spells for this school; off = main school list.
+                description: When enabled, the spell is listed under Utility Spells for this school.
               - name: name
-                label: Spell name
+                label: Name
                 type: string
                 required: true
               - name: level
-                label: Level (0 = cantrip)
+                label: Level
                 type: number
                 required: true
+                description: 0 = Cantrip; 1–9 = Spell Tier.
                 options:
                   min: 0
                   max: 9
               - name: castingTime
-                label: Casting time
+                label: Casting Time
                 type: string
                 required: true
-                description: >
-                  e.g. "1 Action", "2 Actions", "24 hours", "Casting Time: 1 minute".
+                description: Examples — 1 Action, 2 Actions, 24 Hours, Casting Time — 1 Minute.
               - name: target
                 label: Target
                 type: select
@@ -496,28 +530,28 @@ content:
                 options:
                   values:
                     - name: single-target
-                      label: Single target
+                      label: Single Target
                     - name: self
                       label: Self
                     - name: aoe
                       label: AoE
                     - name: two-targets
-                      label: 2 targets
+                      label: 2 Targets
                     - name: multi-target
-                      label: Multi-target
+                      label: Multi-Target
                     - name: single-target-plus
-                      label: Single target+
+                      label: Single Target+
                     - name: single-target-or-self
-                      label: Single target / self
-              - name: body
-                label: Rules
+                      label: Single Target / Self
+              - name: description
+                label: Description
                 type: rich-text
                 required: true
                 options:
                   format: markdown
 
       - name: core-rules-magic-items
-        label: Magic items
+        label: Magic Items
         type: group
         items:
           - name: magical-item-rarities
@@ -528,13 +562,15 @@ content:
             list: true
             fields:
               - name: name
-                label: Rarity
+                label: Name
                 type: string
                 required: true
               - name: availability
+                label: Availability
                 type: text
                 required: true
               - name: cost
+                label: Cost
                 type: string
                 required: true
 
@@ -552,34 +588,38 @@ content:
                 options:
                   values:
                     - name: standard
-                      label: Standard item
+                      label: Standard Item
                     - name: wand
                       label: Wand
               - name: name
+                label: Name
                 type: string
                 required: true
               - name: subtitle
-                label: Rarity / tier line
+                label: Rarity Or Tier Line
                 type: string
                 required: false
-              - name: body
-                label: Rules (markdown; use > for blockquotes)
+              - name: description
+                label: Description
                 type: rich-text
                 required: true
+                description: Markdown; use blockquotes for asides.
                 options:
                   format: markdown
 
   - name: optional-variant-rules
-    label: Optional variant rules
+    label: Optional Variant Rules
     type: file
     path: src/data/optional-variant-rules.json
     format: json
     list: true
     fields:
       - name: name
+        label: Name
         type: string
         required: true
-      - name: body
+      - name: description
+        label: Description
         type: rich-text
         required: true
         options:

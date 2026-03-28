@@ -72,7 +72,7 @@ Heroes have 4 stats that impact their effectiveness in various tasks: 2 Key Stat
 
 {stats.map((stat) => (
 
-  <p><strong>{stat.name}</strong> ({stat.stat}) {stat.body}</p>
+  <p><strong>{stat.name}</strong> ({stat.stat}) {stat.description}</p>
 ))}
 
 ## Skills
@@ -83,7 +83,7 @@ they may ask you to use one of your skills.
 {skills.map((skill) => (
   <div
     set:html={renderMarkdown(
-      `**${skill.name}** (${skill.stat}) ${skill.body}`,
+      `**${skill.name}** (${skill.stat}) ${skill.description}`,
     )}
   />
 ))}
@@ -96,7 +96,7 @@ When you want to affect the _world_ (convince an NPC, spot a trap, pick a lock, 
   {dcExamples.map((row) => (
     <li
       set:html={renderMarkdown(
-        `**${listLabel(row.name, ":")}** ${row.body}`,
+        `**${listLabel(row.name, ":")}** ${row.description}`,
       )}
     />
   ))}
@@ -109,7 +109,7 @@ When the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 
 <ul>
   {saveTypes.map((saveType) => (
     <li>
-      <strong>{listLabel(saveType.name)}</strong> {saveType.body}
+      <strong>{listLabel(saveType.name)}</strong> {saveType.description}
     </li>
   ))}
 </ul>
@@ -128,7 +128,7 @@ Some spells and abilities affect differently sized objects or creatures. For siz
 <ul>
   {sizes.map((size) => (
     <li>
-      <strong>{size.name}</strong> {size.body}
+      <strong>{size.name}</strong> {size.description}
     </li>
   ))}
 </ul>
@@ -223,7 +223,7 @@ Some attacks, traps, spells, or other effects can also inflict conditions—usua
 <ul>
   {conditions.map((condition) => (
     <li>
-      <strong>{listLabel(condition.name)}</strong> {condition.body}
+      <strong>{listLabel(condition.name)}</strong> {condition.description}
     </li>
   ))}
 </ul>
@@ -387,7 +387,7 @@ The time you aren't out adventuring is called **Downtime**. You can spend Downti
 <ul>
   {downtimeActivities.map((activity) => (
     <li>
-      <strong>{listLabel(activity.name)}</strong> {activity.body}
+      <strong>{listLabel(activity.name)}</strong> {activity.description}
     </li>
   ))}
 </ul>
@@ -404,7 +404,7 @@ This will have the largest impact on the other character choices you make and ho
 <ul>
   {characterClasses.map((heroClass) => (
     <li>
-      <strong>{listLabel(heroClass.name)}</strong> {heroClass.body}
+      <strong>{listLabel(heroClass.name)}</strong> {heroClass.description}
     </li>
   ))}
 </ul>
@@ -428,7 +428,7 @@ Fill in your character details: Name, Ancestry, Class, Level, Height, and Weight
 <ul>
   {statArrays.map((arr) => (
     <li>
-      <strong>{listLabel(arr.name, ":")}</strong> {arr.body}
+      <strong>{listLabel(arr.name, ":")}</strong> {arr.description}
     </li>
   ))}
 </ul>
@@ -458,7 +458,7 @@ All heroes speak Common by default. Each point of INT grants you an additional l
 <ul>
   {languages.map((language) => (
     <li>
-      <strong>{listLabel(language.name)}</strong> {language.body}
+      <strong>{listLabel(language.name)}</strong> {language.description}
     </li>
   ))}
 </ul>
@@ -533,7 +533,7 @@ Backgrounds provide a glimpse into your character's past—how they were raised,
 
 {backgrounds.map((segment) => (
   <div
-    set:html={renderMarkdown(`**${segment.name}** ${segment.body}`)}
+    set:html={renderMarkdown(`**${segment.name}** ${segment.description}`)}
   />
 ))}
 
@@ -544,7 +544,7 @@ The world is a dangerous place—people don't usually just “go adventuring” 
 {adventuringMotivations.map((motivation) => (
   <p
     set:html={renderMarkdown(
-      `**${motivation.name}** ${motivation.body}`,
+      `**${motivation.name}** ${motivation.description}`,
     )}
   />
 ))}
@@ -609,7 +609,7 @@ Armor represents your hero's ability to dodge or block damage when you use the D
   {weaponProperties.map((weaponProperty) => (
     <li
       set:html={renderMarkdown(
-        `**${listLabel(weaponProperty.name)}** ${weaponProperty.body}`,
+        `**${listLabel(weaponProperty.name)}** ${weaponProperty.description}`,
       )}
     />
   ))}
@@ -669,7 +669,7 @@ Can you reflavor a staff as a greatclub? Sure! A sai instead of a dagger? Of cou
         <tr>
           <td>{w.name}</td>
           <td>{w.damage}</td>
-          <td>{w.properties.map((p) => p.text).join(", ")}</td>
+          <td>{w.propertyLines.map((p) => p.description).join(", ")}</td>
           <td>{w.cost}</td>
         </tr>
       ))}
@@ -710,7 +710,7 @@ Can you reflavor a staff as a greatclub? Sure! A sai instead of a dagger? Of cou
         <tr>
           <td>{w.name}</td>
           <td>{w.damage}</td>
-          <td>{w.properties.map((p) => p.text).join(", ")}</td>
+          <td>{w.propertyLines.map((p) => p.description).join(", ")}</td>
           <td>{w.cost}</td>
         </tr>
       ))}
@@ -761,7 +761,7 @@ Costs for mundane items typically range from a few silver pieces to a few gold p
     {miscAdventuringEquipment.map((row) => (
       <tr>
         <td>{row.name}</td>
-        <td>{row.properties}</td>
+        <td>{row.description}</td>
         <td>{row.cost}</td>
       </tr>
     ))}
@@ -813,7 +813,7 @@ Though some magical items can be purchased, most cannot. Some special shops may 
   <>
     <h3>{item.name}</h3>
     {item.subtitle && <div set:html={renderMarkdown(item.subtitle)} />}
-    <div set:html={renderMarkdown(item.body)} />
+    <div set:html={renderMarkdown(item.description)} />
   </>
 ))}
 
@@ -834,7 +834,7 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
 <ul>
   {spellSchools.map((school) => (
     <li>
-      <strong>{listLabel(`${school.name} Spells`)}</strong> {school.body}
+      <strong>{listLabel(`${school.name} Spells`)}</strong> {school.description}
     </li>
   ))}
 </ul>
@@ -853,7 +853,7 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
                 spell.level,
                 spell.castingTime,
                 spell.target,
-              ) + (spell.body?.trim() ? "\n\n" + spell.body : ""),
+              ) + (spell.description?.trim() ? "\n\n" + spell.description : ""),
           )}
         />
       </>
@@ -878,7 +878,7 @@ Some classes can choose from among these additional spells as they level up.
                 s.level,
                 s.castingTime,
                 s.target,
-              ) + (s.body?.trim() ? "\n\n" + s.body : ""),
+              ) + (s.description?.trim() ? "\n\n" + s.description : ""),
             )}
           />
         );
@@ -896,7 +896,7 @@ Some classes can choose from among these additional spells as they level up.
                 spell.level,
                 spell.castingTime,
                 spell.target,
-              ) + (spell.body?.trim() ? "\n\n" + spell.body : ""),
+              ) + (spell.description?.trim() ? "\n\n" + spell.description : ""),
             )}
           />
         </>
@@ -912,7 +912,7 @@ If your playgroup likes extra little tactical nuggets, your GM can allow you to 
 {optionalVariantRules.map((rule) => (
   <>
     <h3>{rule.name}</h3>
-    <div set:html={renderMarkdown(rule.body)} />
+    <div set:html={renderMarkdown(rule.description)} />
   </>
 ))}
 

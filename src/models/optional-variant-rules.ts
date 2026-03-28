@@ -4,7 +4,7 @@ import rawOptionalVariantRules from "../data/optional-variant-rules.json";
 const optionalVariantRuleSchema = z
   .object({
     name: z.string().min(1),
-    body: z.string(),
+    description: z.string(),
   })
   .strict();
 

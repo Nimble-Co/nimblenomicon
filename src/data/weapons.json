@@ -2,277 +2,277 @@
   {
     "category": "melee",
     "damage": "1d4+DEX Piercing",
-    "properties": [
+    "cost": "3 gp",
+    "name": "Dagger",
+    "propertyLines": [
       {
-        "text": "Light"
+        "description": "Light"
       },
       {
-        "text": "Thrown 4"
+        "description": "Thrown 4"
       }
-    ],
-    "cost": "3 gp",
-    "name": "Dagger"
+    ]
   },
   {
     "category": "melee",
     "damage": "1d4+DEX Slashing",
-    "properties": [
-      {
-        "text": "Vicious"
-      }
-    ],
     "cost": "10 gp",
-    "name": "Sickle"
+    "name": "Sickle",
+    "propertyLines": [
+      {
+        "description": "Vicious"
+      }
+    ]
   },
   {
     "category": "melee",
     "damage": "1d6+STR Bludgeoning",
-    "properties": [],
     "cost": "2 gp",
-    "name": "Club/Mace"
+    "name": "Club/Mace",
+    "propertyLines": []
   },
   {
     "category": "melee",
     "damage": "1d6+STR Slashing",
-    "properties": [
-      {
-        "text": "Thrown 4"
-      }
-    ],
     "cost": "8 gp",
-    "name": "Hand Axe"
+    "name": "Hand Axe",
+    "propertyLines": [
+      {
+        "description": "Thrown 4"
+      }
+    ]
   },
   {
     "category": "melee",
     "damage": "1d6+DEX Piercing",
-    "properties": [
-      {
-        "text": "Light"
-      }
-    ],
     "cost": "10 gp",
-    "name": "Short Sword"
+    "name": "Short Sword",
+    "propertyLines": [
+      {
+        "description": "Light"
+      }
+    ]
   },
   {
     "category": "melee",
     "damage": "2d4+DEX Piercing",
-    "properties": [],
     "cost": "60 gp",
-    "name": "Rapier"
+    "name": "Rapier",
+    "propertyLines": []
   },
   {
     "category": "melee",
     "damage": "1d8+STR Bludgeoning",
-    "properties": [
-      {
-        "text": "2-handed"
-      }
-    ],
     "cost": "8 gp",
-    "name": "Staff"
+    "name": "Staff",
+    "propertyLines": [
+      {
+        "description": "2-handed"
+      }
+    ]
   },
   {
     "category": "melee",
     "damage": "1d8+STR Slashing",
-    "properties": [
-      {
-        "text": "2-handed (1-handed: Req. 2 STR)"
-      }
-    ],
     "cost": "60 gp",
-    "name": "Longsword"
+    "name": "Longsword",
+    "propertyLines": [
+      {
+        "description": "2-handed (1-handed: Req. 2 STR)"
+      }
+    ]
   },
   {
     "category": "melee",
     "damage": "1d10+STR Slashing",
-    "properties": [
-      {
-        "text": "2-handed"
-      }
-    ],
     "cost": "30 gp",
-    "name": "Battleaxe"
+    "name": "Battleaxe",
+    "propertyLines": [
+      {
+        "description": "2-handed"
+      }
+    ]
   },
   {
     "category": "melee",
     "damage": "1d10+STR Bludgeoning",
-    "properties": [
+    "cost": "60 gp",
+    "name": "Pole Hammer",
+    "propertyLines": [
       {
-        "text": "2-handed"
+        "description": "2-handed"
       },
       {
-        "text": "Reach 2"
+        "description": "Reach 2"
       }
-    ],
-    "cost": "60 gp",
-    "name": "Pole Hammer"
+    ]
   },
   {
     "category": "melee",
     "damage": "1d10+STR Slashing",
-    "properties": [
+    "cost": "60 gp",
+    "name": "Glaive",
+    "propertyLines": [
       {
-        "text": "2-handed"
+        "description": "2-handed"
       },
       {
-        "text": "Reach 2"
+        "description": "Reach 2"
       }
-    ],
-    "cost": "60 gp",
-    "name": "Glaive"
+    ]
   },
   {
     "category": "melee",
     "damage": "1d10+STR Piercing",
-    "properties": [
+    "cost": "60 gp",
+    "name": "Spear",
+    "propertyLines": [
       {
-        "text": "2-handed"
+        "description": "2-handed"
       },
       {
-        "text": "Reach 2"
+        "description": "Reach 2"
       }
-    ],
-    "cost": "60 gp",
-    "name": "Spear"
+    ]
   },
   {
     "category": "melee",
     "damage": "1d12+STR Bludgeoning",
-    "properties": [
-      {
-        "text": "2-handed (Req. 2 STR)"
-      }
-    ],
     "cost": "80 gp",
-    "name": "Greatmaul"
+    "name": "Greatmaul",
+    "propertyLines": [
+      {
+        "description": "2-handed (Req. 2 STR)"
+      }
+    ]
   },
   {
     "category": "melee",
     "damage": "2d6+STR Slashing",
-    "properties": [
-      {
-        "text": "2-handed (Req. 2 STR)"
-      }
-    ],
     "cost": "100 gp",
-    "name": "Greataxe"
+    "name": "Greataxe",
+    "propertyLines": [
+      {
+        "description": "2-handed (Req. 2 STR)"
+      }
+    ]
   },
   {
     "category": "melee",
     "damage": "3d4+STR Slashing/Piercing",
-    "properties": [
-      {
-        "text": "2-handed (Req. 2 STR)"
-      }
-    ],
     "cost": "120 gp",
-    "name": "Greatsword"
+    "name": "Greatsword",
+    "propertyLines": [
+      {
+        "description": "2-handed (Req. 2 STR)"
+      }
+    ]
   },
   {
     "category": "ranged",
     "damage": "1d4+DEX Bludgeoning",
-    "properties": [
-      {
-        "text": "2-handed"
-      },
-      {
-        "text": "Range 12"
-      },
-      {
-        "text": "Vicious"
-      }
-    ],
     "cost": "4 gp",
-    "name": "Sling"
+    "name": "Sling",
+    "propertyLines": [
+      {
+        "description": "2-handed"
+      },
+      {
+        "description": "Range 12"
+      },
+      {
+        "description": "Vicious"
+      }
+    ]
   },
   {
     "category": "ranged",
     "damage": "1d6+STR Piercing",
-    "properties": [
+    "cost": "20 gp",
+    "name": "Javelins",
+    "propertyLines": [
       {
-        "text": "Range 8"
+        "description": "Range 8"
       },
       {
-        "text": "Stack of 4"
+        "description": "Stack of 4"
       }
-    ],
-    "cost": "20 gp",
-    "name": "Javelins"
+    ]
   },
   {
     "category": "ranged",
     "damage": "1d8+STR Bludgeoning",
-    "properties": [
+    "cost": "25 gp",
+    "name": "Throwing Hammers",
+    "propertyLines": [
       {
-        "text": "Range 4"
+        "description": "Range 4"
       },
       {
-        "text": "Stack of 3"
+        "description": "Stack of 3"
       }
-    ],
-    "cost": "25 gp",
-    "name": "Throwing Hammers"
+    ]
   },
   {
     "category": "ranged",
     "damage": "1d6+DEX Piercing",
-    "properties": [
+    "cost": "25 gp",
+    "name": "Shortbow",
+    "propertyLines": [
       {
-        "text": "2-handed"
+        "description": "2-handed"
       },
       {
-        "text": "Range 12"
+        "description": "Range 12"
       }
-    ],
-    "cost": "25 gp",
-    "name": "Shortbow"
+    ]
   },
   {
     "category": "ranged",
     "damage": "1d8+DEX Piercing",
-    "properties": [
+    "cost": "30 gp",
+    "name": "Longbow",
+    "propertyLines": [
       {
-        "text": "2-handed"
+        "description": "2-handed"
       },
       {
-        "text": "Range 16 (Req. 1 STR)"
+        "description": "Range 16 (Req. 1 STR)"
       }
-    ],
-    "cost": "30 gp",
-    "name": "Longbow"
+    ]
   },
   {
     "category": "ranged",
     "damage": "4d4+DEX Piercing",
-    "properties": [
-      {
-        "text": "2-handed"
-      },
-      {
-        "text": "Load: 1 action"
-      },
-      {
-        "text": "Range 8"
-      }
-    ],
     "cost": "60 gp",
-    "name": "Crossbow"
+    "name": "Crossbow",
+    "propertyLines": [
+      {
+        "description": "2-handed"
+      },
+      {
+        "description": "Load: 1 action"
+      },
+      {
+        "description": "Range 8"
+      }
+    ]
   },
   {
     "category": "ranged",
     "damage": "1d20+DEX Piercing",
-    "properties": [
-      {
-        "text": "2-handed"
-      },
-      {
-        "text": "Load: 2 actions"
-      },
-      {
-        "text": "Range 8 (Req. 2 STR)"
-      }
-    ],
     "cost": "120 gp",
-    "name": "Handheld Ballista"
+    "name": "Handheld Ballista",
+    "propertyLines": [
+      {
+        "description": "2-handed"
+      },
+      {
+        "description": "Load: 2 actions"
+      },
+      {
+        "description": "Range 8 (Req. 2 STR)"
+      }
+    ]
   }
 ]

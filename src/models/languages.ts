@@ -4,7 +4,7 @@ import rawLanguages from "../data/languages.json";
 const languageSchema = z
   .object({
     name: z.string().min(1),
-    body: z.string(),
+    description: z.string(),
   })
   .strict();
 

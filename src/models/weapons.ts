@@ -3,7 +3,7 @@ import rawWeapons from "../data/weapons.json";
 
 const weaponPropertyLineSchema = z
   .object({
-    text: z.string().min(1),
+    description: z.string().min(1),
   })
   .strict();
 
@@ -12,7 +12,7 @@ const weaponSchema = z
     category: z.enum(["melee", "ranged"]),
     name: z.string().min(1),
     damage: z.string().min(1),
-    properties: z.array(weaponPropertyLineSchema).default([]),
+    propertyLines: z.array(weaponPropertyLineSchema).default([]),
     cost: z.string().min(1),
   })
   .strict();

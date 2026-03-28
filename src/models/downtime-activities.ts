@@ -4,7 +4,7 @@ import rawDowntimeActivities from "../data/downtime-activities.json";
 const downtimeActivitySchema = z
   .object({
     name: z.string().min(1),
-    body: z.string(),
+    description: z.string(),
   })
   .strict();
 

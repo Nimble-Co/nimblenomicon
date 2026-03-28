@@ -4,7 +4,7 @@ import rawCharacterClasses from "../data/character-classes.json";
 const characterClassSchema = z
   .object({
     name: z.string().min(1),
-    body: z.string(),
+    description: z.string(),
   })
   .strict();
 

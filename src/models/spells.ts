@@ -27,7 +27,7 @@ const spellEntryFields = {
   level: z.number().int().min(0).max(9),
   castingTime: z.string().min(1),
   target: spellTargetSchema,
-  body: z.string(),
+  description: z.string(),
 };
 
 const spellEntrySchema = z.object(spellEntryFields).strict();
@@ -60,7 +60,7 @@ const spellRowBaseSchema = z.preprocess(
       level: z.number().int().min(0).max(9),
       castingTime: z.string().min(1),
       target: spellTargetSchema,
-      body: z.string(),
+      description: z.string(),
     })
     .strict(),
 );

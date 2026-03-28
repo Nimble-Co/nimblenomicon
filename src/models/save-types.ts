@@ -4,7 +4,7 @@ import rawSaveTypes from "../data/save-types.json";
 const saveTypeSchema = z
   .object({
     name: z.string().min(1),
-    body: z.string(),
+    description: z.string(),
   })
   .strict();
 

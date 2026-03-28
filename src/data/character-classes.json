@@ -1,46 +1,46 @@
 [
   {
     "name": "BERSERKER",
-    "body": "An unstoppable force of wrath and ruin."
+    "description": "An unstoppable force of wrath and ruin."
   },
   {
     "name": "THE CHEAT",
-    "body": "Sneaky, backstabbing, dirty-fighting rogue."
+    "description": "Sneaky, backstabbing, dirty-fighting rogue."
   },
   {
     "name": "COMMANDER",
-    "body": "A battlefield tactician, leader, and weapon master."
+    "description": "A battlefield tactician, leader, and weapon master."
   },
   {
     "name": "HUNTER",
-    "body": "Resourceful survivalist, bow master, and skilled tracker."
+    "description": "Resourceful survivalist, bow master, and skilled tracker."
   },
   {
     "name": "MAGE",
-    "body": "Wield and shape the elements of fire, ice, and lightning."
+    "description": "Wield and shape the elements of fire, ice, and lightning."
   },
   {
     "name": "OATHSWORN",
-    "body": "Faithful guardian, protector, and avenger of the weak."
+    "description": "Faithful guardian, protector, and avenger of the weak."
   },
   {
     "name": "SHADOWMANCER",
-    "body": "Summon hordes of expendable minions."
+    "description": "Summon hordes of expendable minions."
   },
   {
     "name": "SHEPHERD",
-    "body": "Master life and death. Lead a faithful companion."
+    "description": "Master life and death. Lead a faithful companion."
   },
   {
     "name": "SONGWEAVER",
-    "body": "Inspiring presence, sharp wit, sharper tongue."
+    "description": "Inspiring presence, sharp wit, sharper tongue."
   },
   {
     "name": "STORMSHIFTER",
-    "body": "Master of weather, beast, and nature."
+    "description": "Master of weather, beast, and nature."
   },
   {
     "name": "ZEPHYR",
-    "body": "A disciplined martial artist with swift hands and swift feet."
+    "description": "A disciplined martial artist with swift hands and swift feet."
   }
 ]
