@@ -3,7 +3,8 @@ import rawAdventuringMotivations from "../data/adventuring-motivations.json";
 
 const adventuringMotivationSchema = z
   .object({
-    html: z.string().min(1),
+    name: z.string().min(1),
+    body: z.string().min(1),
   })
   .strict();
 

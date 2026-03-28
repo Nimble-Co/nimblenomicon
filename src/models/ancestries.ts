@@ -8,7 +8,6 @@ const ancestrySchema = z
     sizeLine: z.string().min(1),
     flavor: z.string(),
     trait: z.string(),
-    callout: z.string().optional(),
   })
   .strict();
 

@@ -105,13 +105,16 @@ const spellRowSchema = spellRowBaseSchema
 export type SpellEntryData = z.infer<typeof spellEntrySchema>;
 export type SpellRowData = z.infer<typeof spellRowSchema>;
 
-const flatPayloadSchema = z
-  .object({
-    spells: z.array(spellRowSchema),
-  })
-  .strict();
+/** Root is a flat array (Pages CMS list editor); legacy `{ spells: [...] }` still parses. */
+const flatPayloadSchema = z.union([
+  z.array(spellRowSchema),
+  z
+    .object({ spells: z.array(spellRowSchema) })
+    .strict()
+    .transform((o) => o.spells),
+]);
 
-export const spellRows: SpellRowData[] = flatPayloadSchema.parse(rawSpells).spells;
+export const spellRows: SpellRowData[] = flatPayloadSchema.parse(rawSpells);
 
 /** Document order for Core Rules spell schools */
 const SCHOOL_ORDER = [

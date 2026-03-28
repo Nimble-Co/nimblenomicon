@@ -1,5 +1,5 @@
 # Pages CMS — https://pagescms.org/docs/configuration/
-# Groups organize the sidebar. Rich-text uses format: markdown or html per field.
+# Groups organize the sidebar. Rich-text content uses markdown (`format: markdown`) and is rendered with `renderMarkdown` in MDX.
 
 media:
   label: Assets
@@ -66,12 +66,6 @@ content:
                 required: true
                 options:
                   format: markdown
-              - name: callout
-                label: Callout
-                type: rich-text
-                required: false
-                options:
-                  format: html
 
           - name: sizes
             label: Sizes
@@ -116,12 +110,16 @@ content:
             format: json
             list: true
             fields:
-              - name: html
-                label: Row
+              - name: name
+                label: Difficulty label
+                type: string
+                required: true
+              - name: body
+                label: Example
                 type: rich-text
                 required: true
                 options:
-                  format: html
+                  format: markdown
 
           - name: save-types
             label: Saves
@@ -241,11 +239,6 @@ content:
                 required: true
                 options:
                   format: markdown
-              - name: callout
-                type: rich-text
-                required: false
-                options:
-                  format: html
 
           - name: backgrounds
             label: Backgrounds
@@ -254,11 +247,15 @@ content:
             format: json
             list: true
             fields:
+              - name: name
+                label: Title
+                type: string
+                required: true
               - name: body
-                label: Segment
+                label: Description
                 type: rich-text
                 required: true
-                description: One segment in document order.
+                description: Markdown; use blockquotes for tips.
                 options:
                   format: markdown
 
@@ -269,12 +266,16 @@ content:
             format: json
             list: true
             fields:
-              - name: html
-                label: Paragraph
+              - name: name
+                label: Hook
+                type: string
+                required: true
+              - name: body
+                label: Prompts
                 type: rich-text
                 required: true
                 options:
-                  format: html
+                  format: markdown
 
       - name: core-rules-equipment
         label: Equipment
@@ -330,11 +331,6 @@ content:
                 required: true
                 options:
                   format: markdown
-              - name: callout
-                type: rich-text
-                required: false
-                options:
-                  format: html
 
           - name: armor
             label: Armor
@@ -568,32 +564,45 @@ content:
             label: Items
             type: file
             path: src/data/magical-items.json
-            format: code
-            description: >
-              Standard items and wands (kind, paragraphs, bullets, wands with recharge).
-              Structured JSON; invalid JSON breaks the build.
-
-      - name: core-rules-options
-        label: Options
-        type: group
-        items:
-          - name: optional-variant-rules
-            label: Variants
-            type: file
-            path: src/data/optional-variant-rules.json
             format: json
             list: true
             fields:
+              - name: kind
+                label: Type
+                type: select
+                required: true
+                options:
+                  values:
+                    - name: standard
+                      label: Standard item
+                    - name: wand
+                      label: Wand
               - name: name
                 type: string
                 required: true
+              - name: subtitle
+                label: Rarity / tier line
+                type: string
+                required: false
               - name: body
+                label: Rules (markdown; use > for blockquotes)
                 type: rich-text
                 required: true
                 options:
                   format: markdown
-              - name: callout
-                type: rich-text
-                required: false
-                options:
-                  format: html
+
+  - name: optional-variant-rules
+    label: Optional variant rules
+    type: file
+    path: src/data/optional-variant-rules.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: body
+        type: rich-text
+        required: true
+        options:
+          format: markdown

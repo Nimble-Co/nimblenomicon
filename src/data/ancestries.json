@@ -18,8 +18,7 @@
     "name": "Elf",
     "sizeLine": "(Medium)",
     "flavor": "Elves epitomize swiftness and grace. Their tall, slender forms belie their innate speed, grace, and wit. Formidable in both diplomacy and combat, elves strike swiftly, often preventing the worst by acting first.",
-    "trait": "**Lithe.** Advantage on Initiative, +1 Speed. You know Elvish if your INT is not negative.",
-    "callout": "<p><strong>What About Half-Elves?</strong> Mix the ancestries however makes sense in your world. You can pick one ancestral bonus and use it instead of both, or use both half as effectively or half as often.</p>"
+    "trait": "**Lithe.** Advantage on Initiative, +1 Speed. You know Elvish if your INT is not negative.\n\n> **What About Half-Elves?** Mix the ancestries however makes sense in your world. You can pick one ancestral bonus and use it instead of both, or use both half as effectively or half as often."
   },
   {
     "section": "common",
@@ -33,8 +32,7 @@
     "name": "Gnome",
     "sizeLine": "(Small)",
     "flavor": "Eccentric, curious, and perpetually optimistic, gnomes are cheerful—especially when compared to their typically grumpier and larger kin, the dwarves. Known for their tinkering, spreading cheer, and playful antics, gnomes pursue their passions with a scatterbrained enthusiasm.",
-    "trait": "**Optimistic.** Allow an ally within Reach 6 to reroll any single die, resets when healed to your max HP. -1 Speed. You know Dwarvish if your INT is not negative (but you call it Gnomish,of course).",
-    "callout": "<p><strong>Flavor Is Free.</strong> Want to play a Stout Halfling instead of an Elusive one? An Optimistic Human instead of Tenacious? As long as it makes sense and the GM is on board, go for it!</p>"
+    "trait": "**Optimistic.** Allow an ally within Reach 6 to reroll any single die, resets when healed to your max HP. -1 Speed. You know Dwarvish if your INT is not negative (but you call it Gnomish,of course).\n\n> **Flavor Is Free.** Want to play a Stout Halfling instead of an Elusive one? An Optimistic Human instead of Tenacious? As long as it makes sense and the GM is on board, go for it!"
   },
   {
     "section": "exotic",
@@ -167,7 +165,6 @@
     "name": "Wyrdling",
     "sizeLine": "(Small)",
     "flavor": "Unpredictable and chaotic, Wyrdlings are the result of magic gone awry. Their bodies pulse with raw arcane energy, and their mere presence often disturbs the balance of magic around them.",
-    "trait": "**Chaotic Surge.** Whenever you or a willing ally within Reach 6 casts a tiered spell, you may allow them to roll on the Chaos Table. 1/encounter.",
-    "callout": "<p><strong>Flavor Is Free.</strong> Want to be a leaping Frogfolk instead of a Bunbun? A Flameborn Kobold? A winged Fairy instead of a Birdfolk? A Badgerfolk instead of a Stoatling? As long as it makes sense and your GM is game, go for it!</p>"
+    "trait": "**Chaotic Surge.** Whenever you or a willing ally within Reach 6 casts a tiered spell, you may allow them to roll on the Chaos Table. 1/encounter.\n\n> **Flavor Is Free.** Want to be a leaping Frogfolk instead of a Bunbun? A Flameborn Kobold? A winged Fairy instead of a Birdfolk? A Badgerfolk instead of a Stoatling? As long as it makes sense and your GM is game, go for it!"
   }
 ]

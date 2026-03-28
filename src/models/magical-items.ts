@@ -6,9 +6,7 @@ const magicalItemStandardSchema = z
     kind: z.literal("standard"),
     name: z.string().min(1),
     subtitle: z.string().optional(),
-    paragraphs: z.array(z.string()),
-    bullets: z.array(z.string()).optional(),
-    callout: z.string().optional(),
+    body: z.string().min(1),
   })
   .strict();
 
@@ -17,8 +15,7 @@ const magicalItemWandSchema = z
     kind: z.literal("wand"),
     name: z.string().min(1),
     subtitle: z.string().optional(),
-    body: z.string().optional(),
-    recharge: z.string().min(1),
+    body: z.string().min(1),
   })
   .strict();
 

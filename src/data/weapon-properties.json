@@ -21,7 +21,6 @@
   },
   {
     "name": "Vicious",
-    "body": "Roll 1 additional die whenever you roll crit damage.",
-    "callout": "<strong>Remember!</strong> Only the Primary Die (the leftmost one) is used for determining whether an attack crits. Every time you roll crit damage, roll the additional Vicious die as well!"
+    "body": "Roll 1 additional die whenever you roll crit damage.\n\n> **Remember!** Only the Primary Die (the leftmost one) is used for determining whether an attack crits. Every time you roll crit damage, roll the additional Vicious die as well!"
   }
 ]

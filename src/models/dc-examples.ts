@@ -3,7 +3,8 @@ import rawDcExamples from "../data/dc-examples.json";
 
 const dcExampleSchema = z
   .object({
-    html: z.string().min(1),
+    name: z.string().min(1),
+    body: z.string().min(1),
   })
   .strict();
 

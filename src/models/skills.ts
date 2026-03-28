@@ -14,7 +14,6 @@ const skillSchema = z
         message: "stat must match a Stat code from stats.json",
       }),
     body: z.string(),
-    callout: z.string().optional(),
   })
   .strict();
 export type SkillData = z.infer<typeof skillSchema>;

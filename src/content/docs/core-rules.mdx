@@ -80,11 +80,12 @@ Heroes have 4 stats that impact their effectiveness in various tasks: 2 Key Stat
 Skills gauge how well your hero interacts with the world. Whenever you tell the GM what you are doing,
 they may ask you to use one of your skills.
 
-{skills.map((skill) => (<>
-
-  <p><strong>{skill.name}</strong> ({skill.stat}) {skill.body}</p>
-  {skill.callout && <blockquote dangerouslySetInnerHTML={{ __html: skill.callout }} />}
-  </>
+{skills.map((skill) => (
+  <div
+    set:html={renderMarkdown(
+      `**${skill.name}** (${skill.stat}) ${skill.body}`,
+    )}
+  />
 ))}
 
 ## Skill Checks & Saves
@@ -93,7 +94,11 @@ When you want to affect the _world_ (convince an NPC, spot a trap, pick a lock, 
 
 <ul>
   {dcExamples.map((row) => (
-    <li set:html={row.html} />
+    <li
+      set:html={renderMarkdown(
+        `**${listLabel(row.name, ":")}** ${row.body}`,
+      )}
+    />
   ))}
 </ul>
 
@@ -504,7 +509,6 @@ Your kin, lineage, heritage, or race—this is how your character was born and h
       <p>{a.sizeLine}</p>
       <p>{a.flavor}</p>
       <div set:html={renderMarkdown(a.trait)} />
-      {a.callout && <blockquote set:html={a.callout} />}
     </>
   ))}
 
@@ -520,7 +524,6 @@ Your setting may or may not support these choices—check with your GM first bef
       <p>{a.sizeLine}</p>
       <p>{a.flavor}</p>
       <div set:html={renderMarkdown(a.trait)} />
-      {a.callout && <blockquote set:html={a.callout} />}
     </>
   ))}
 
@@ -529,7 +532,9 @@ Your setting may or may not support these choices—check with your GM first bef
 Backgrounds provide a glimpse into your character's past—how they were raised, the skills they honed before becoming an adventurer, or even their defining personality traits. Feel free to adapt or reimagine these backgrounds to suit your character's story. Choose 1 background:
 
 {backgrounds.map((segment) => (
-  <div set:html={renderMarkdown(segment.body)} />
+  <div
+    set:html={renderMarkdown(`**${segment.name}** ${segment.body}`)}
+  />
 ))}
 
 ## Adventuring Motivation
@@ -537,7 +542,11 @@ Backgrounds provide a glimpse into your character's past—how they were raised,
 The world is a dangerous place—people don't usually just “go adventuring” without a reason. Your motivation should make your character want to work with the rest of the group.
 
 {adventuringMotivations.map((motivation) => (
-  <p set:html={motivation.html} />
+  <p
+    set:html={renderMarkdown(
+      `**${motivation.name}** ${motivation.body}`,
+    )}
+  />
 ))}
 
 > **Or Make Your Own!** A great character background has connections with the world, its people, your fellow heroes, or even the bad guys. Work with your GM and fellow players to find a motivation that will cross paths with where the story goes. Every good hero has a desire. What's yours?
@@ -598,14 +607,11 @@ Armor represents your hero's ability to dodge or block damage when you use the D
 
 <ul>
   {weaponProperties.map((weaponProperty) => (
-    <>
-      <li>
-        <strong>{listLabel(weaponProperty.name)}</strong> {weaponProperty.body}
-      </li>
-      {weaponProperty.callout && (
-        <blockquote set:html={weaponProperty.callout}></blockquote>
+    <li
+      set:html={renderMarkdown(
+        `**${listLabel(weaponProperty.name)}** ${weaponProperty.body}`,
       )}
-    </>
+    />
   ))}
 </ul>
 
@@ -803,34 +809,13 @@ Though some magical items can be purchased, most cannot. Some special shops may 
   </tbody>
 </table>
 
-{magicalItems.map((item) =>
-  item.kind === "standard" ? (
-    <>
-      <h3>{item.name}</h3>
-      {item.subtitle && <div set:html={renderMarkdown(item.subtitle)} />}
-      {item.paragraphs.map((para) => (
-        <div set:html={renderMarkdown(para)} />
-      ))}
-      {item.bullets && item.bullets.length > 0 && (
-        <div
-          set:html={renderMarkdown(
-            item.bullets.map((b) => "- " + b).join(String.fromCharCode(10)),
-          )}
-        />
-      )}
-      {item.callout && <blockquote set:html={item.callout} />}
-    </>
-  ) : (
-    <>
-      <h3>{item.name}</h3>
-      {item.subtitle && <div set:html={renderMarkdown(item.subtitle)} />}
-      {item.body && <div set:html={renderMarkdown(item.body)} />}
-      <p>
-        <strong>Recharge:</strong> {item.recharge}
-      </p>
-    </>
-  ),
-)}
+{magicalItems.map((item) => (
+  <>
+    <h3>{item.name}</h3>
+    {item.subtitle && <div set:html={renderMarkdown(item.subtitle)} />}
+    <div set:html={renderMarkdown(item.body)} />
+  </>
+))}
 
 # Spells
 
@@ -930,8 +915,7 @@ If your playgroup likes extra little tactical nuggets, your GM can allow you to 
 {optionalVariantRules.map((rule) => (
   <>
     <h3>{rule.name}</h3>
-    <p>{rule.body}</p>
-    {rule.callout && <blockquote set:html={rule.callout} />}
+    <div set:html={renderMarkdown(rule.body)} />
   </>
 ))}
 

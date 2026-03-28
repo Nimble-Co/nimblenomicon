@@ -5,7 +5,6 @@ const optionalVariantRuleSchema = z
   .object({
     name: z.string().min(1),
     body: z.string(),
-    callout: z.string().optional(),
   })
   .strict();
 
