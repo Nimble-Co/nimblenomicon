@@ -85,12 +85,22 @@ export const STARLIGHT_GLOBAL_SIDEBAR = SECTION_KEYS.map((key) => ({
 }));
 
 /** Starlight manual sidebar shape (same as `starlight.sidebar` in astro.config). */
+/** Root nav label in the section sidebar (book chrome). Core Rules matches mockup “Start Here”. */
+export const SECTION_SIDEBAR_ROOT_LABEL: Record<SectionKey, string> = {
+	'core-rules': 'Start Here',
+	heroes: SECTION_METADATA.heroes.label,
+	'game-masters-guide': SECTION_METADATA['game-masters-guide'].label,
+	adventures: SECTION_METADATA.adventures.label,
+	'monsters-and-more': SECTION_METADATA['monsters-and-more'].label,
+	'creators-kit': SECTION_METADATA['creators-kit'].label,
+};
+
 export const SECTION_SIDEBAR_CONFIG = Object.fromEntries(
 	SECTION_KEYS.map(
 		(key) =>
 			[
 				key,
-				[{ label: SECTION_METADATA[key].label, link: SECTION_METADATA[key].path }],
+				[{ label: SECTION_SIDEBAR_ROOT_LABEL[key], link: SECTION_METADATA[key].path }],
 			] as const
 	)
 ) as {

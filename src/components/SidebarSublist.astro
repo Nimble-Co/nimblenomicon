@@ -30,7 +30,12 @@ const { sublist, nested, toc, bookChrome = false } = Astro.props;
 						<a
 							href={entry.href}
 							aria-current={entry.isCurrent ? 'page' : undefined}
-							class:list={[{ large: !nested }, entry.attrs.class]}
+							class:list={[
+								{ large: !nested },
+								{ 'nimble-book-root-link': bookChrome && !nested },
+								{ 'nimble-book-root-link--current': bookChrome && !nested && entry.isCurrent },
+								entry.attrs.class,
+							]}
 							{...entry.attrs}
 						>
 							<span>{entry.label}</span>
@@ -105,32 +110,51 @@ const { sublist, nested, toc, bookChrome = false } = Astro.props;
 			padding-inline-start: 0.5rem;
 		}
 
-		/* Book: top “current book” link — home-tile treatment */
-		.nimble-book-tree.top-level > li > a.large {
+		/* Book: root “Start Here” row — mockup gold bar when this page */
+		.nimble-book-tree.top-level > li > a.nimble-book-root-link {
+			position: relative;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-family: var(--nimble-font-body);
 			font-size: 0.875rem;
 			font-weight: 700;
-			font-style: italic;
+			font-style: normal;
 			letter-spacing: 0.02em;
-			color: var(--nimble-book-sidebar-fg, #252b42) !important;
-			background: var(--nimble-book-sidebar-tile-bg, #ebebeb) !important;
-			border: 1px solid var(--nimble-book-sidebar-border, #c8c8c8);
-			border-radius: var(--nimble-book-sidebar-radius, 0.625rem);
-			padding: 0.65rem 0.85rem;
+			border-radius: var(--nimble-book-sidebar-radius, 4px);
+			border: 1px solid var(--nimble-book-sidebar-border, #d1d5db);
+			padding: 0.55rem 0.75rem 0.55rem 0.65rem;
 		}
 
-		.nimble-book-tree.top-level > li > a.large:hover,
-		.nimble-book-tree.top-level > li > a.large:focus-visible {
+		.nimble-book-tree.top-level > li > a.nimble-book-root-link:not(.nimble-book-root-link--current) {
+			color: var(--nimble-book-sidebar-fg, #252b42) !important;
+			background: var(--nimble-book-sidebar-tile-bg, #ebebeb) !important;
+		}
+
+		.nimble-book-tree.top-level > li > a.nimble-book-root-link:not(.nimble-book-root-link--current):hover,
+		.nimble-book-tree.top-level > li > a.nimble-book-root-link:not(.nimble-book-root-link--current):focus-visible {
 			background: color-mix(
 				in srgb,
-				var(--nimble-book-sidebar-tile-bg, #ebebeb) 85%,
+				var(--nimble-book-sidebar-tile-bg, #ebebeb) 88%,
 				var(--nimble-book-sidebar-fg, #252b42)
 			) !important;
-			border-color: color-mix(
-				in srgb,
-				var(--nimble-book-sidebar-border, #c8c8c8) 70%,
-				var(--nimble-book-sidebar-fg, #252b42)
-			) !important;
-			color: var(--nimble-book-sidebar-fg, #252b42) !important;
+		}
+
+		.nimble-book-tree.top-level > li > a.nimble-book-root-link--current {
+			color: #ffffff !important;
+			background: var(--nimble-book-sidebar-gold-active, #eab308) !important;
+			border-color: color-mix(in srgb, var(--nimble-book-sidebar-gold-active, #eab308) 85%, #000) !important;
+		}
+
+		.nimble-book-root-link--current::before {
+			content: '';
+			flex-shrink: 0;
+			width: 0;
+			height: 0;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-top: 6px solid #ffffff;
+			border-bottom: none;
 		}
 
 		.large {
@@ -139,12 +163,16 @@ const { sublist, nested, toc, bookChrome = false } = Astro.props;
 			color: var(--sl-color-white);
 		}
 
+		.nimble-book-tree.top-level > li > a.nimble-book-root-link.large {
+			color: inherit;
+		}
+
 		.top-level > li + li {
 			margin-top: 0.75rem;
 		}
 
 		.nimble-book-tree.top-level > li + li {
-			margin-top: 0.5rem;
+			margin-top: 0.65rem;
 		}
 
 		summary {
@@ -206,9 +234,6 @@ const { sublist, nested, toc, bookChrome = false } = Astro.props;
 			.large {
 				font-size: var(--sl-text-base);
 			}
-			.nimble-book-tree.top-level > li > a.large {
-				font-size: 0.875rem;
-			}
 			a {
 				font-size: var(--sl-text-sm);
 			}
@@ -224,41 +249,41 @@ const { sublist, nested, toc, bookChrome = false } = Astro.props;
 		 */
 		.nimble-inline-toc :global(a) {
 			--pad-inline: var(--sl-sidebar-item-padding-inline);
-			font-size: var(--sl-text-sm);
+			font-size: 0.8125rem;
 			font-family: var(--nimble-font-body);
-			font-style: italic;
-			color: var(--nimble-book-sidebar-muted, #707070);
-			padding-block: 0.3em;
+			font-weight: 400;
+			font-style: normal;
+			color: var(--nimble-book-sidebar-muted, #4b5563);
+			padding-block: 0.35em;
 			padding-inline: calc(1rem * var(--depth, 0) + var(--pad-inline)) var(--pad-inline);
-			border-radius: 0.35rem;
+			border-radius: 2px;
 		}
 
 		.nimble-inline-toc :global(a:hover),
 		.nimble-inline-toc :global(a:focus) {
 			color: var(--nimble-book-sidebar-fg, #252b42);
-			background-color: color-mix(in srgb, var(--nimble-book-sidebar-fg, #252b42) 6%, transparent);
+			background-color: transparent;
 		}
 
 		.nimble-inline-toc :global(a[aria-current='true']) {
-			color: var(--nimble-book-sidebar-gold, #d4a90c);
+			color: var(--nimble-book-sidebar-gold-accent, #d4a90c);
 			font-weight: 700;
 			background-color: transparent;
 		}
 
-		/* --- Nimble book accordion (Core Rules pages) — tile + panel (design/mockups palette) --- */
+		/* --- Chapter accordions: grey bordered boxes, grey carets (mockup — not gold when open) --- */
 		.nimble-book-section {
-			border-radius: var(--nimble-book-sidebar-radius, 0.625rem);
+			border-radius: var(--nimble-book-sidebar-radius, 4px);
 			overflow: hidden;
 		}
 
 		.nimble-book-summary {
 			align-items: center;
 			gap: 0.5rem;
-			padding: 0.55rem 0.75rem;
-			border-radius: var(--nimble-book-sidebar-radius, 0.625rem);
-			border: 1px solid var(--nimble-book-sidebar-border, #c8c8c8);
+			padding: 0.5rem 0.65rem;
+			border-radius: var(--nimble-book-sidebar-radius, 4px);
+			border: 1px solid var(--nimble-book-sidebar-border, #d1d5db);
 			background: var(--nimble-book-sidebar-tile-bg, #ebebeb);
-			font-style: italic;
 		}
 
 		.nimble-book-summary .group-label {
@@ -270,10 +295,11 @@ const { sublist, nested, toc, bookChrome = false } = Astro.props;
 		.nimble-book-chapter {
 			display: block;
 			font-family: var(--nimble-font-body) !important;
-			font-size: 0.8125rem !important;
+			font-size: 0.6875rem !important;
 			font-weight: 700 !important;
 			font-style: italic !important;
-			letter-spacing: 0.02em;
+			letter-spacing: 0.04em;
+			text-transform: uppercase;
 			color: var(--nimble-book-sidebar-fg, #252b42) !important;
 			white-space: nowrap;
 			text-overflow: ellipsis;
@@ -289,65 +315,53 @@ const { sublist, nested, toc, bookChrome = false } = Astro.props;
 			border-right: 5px solid transparent;
 		}
 
+		/* Collapsed: caret points up (grey) */
 		.nimble-book-section:not([open]) > .nimble-book-summary::before {
-			border-bottom: 6px solid var(--nimble-book-sidebar-fg, #252b42);
+			border-bottom: 6px solid #6b7280;
 			border-top: none;
-			opacity: 0.65;
 		}
 
+		/* Open: caret points down (grey) */
 		.nimble-book-section[open] > .nimble-book-summary::before {
-			border-top: 6px solid #fff;
+			border-top: 6px solid #6b7280;
 			border-bottom: none;
-			opacity: 1;
-		}
-
-		.nimble-book-section[open] > .nimble-book-summary {
-			border-color: var(--nimble-book-sidebar-gold, #d4a90c);
-			background: var(--nimble-book-sidebar-gold, #d4a90c);
-			color: #fff;
-		}
-
-		.nimble-book-section[open] > .nimble-book-summary .nimble-book-chapter {
-			color: #fff !important;
 		}
 
 		.nimble-book-section > ul {
-			margin-top: 0.4rem;
-			padding: 0.4rem 0.35rem 0.55rem;
+			margin-top: 0.35rem;
+			padding: 0.35rem 0.3rem 0.45rem;
 			background: var(--nimble-book-sidebar-panel-bg, #ffffff);
-			border: 1px solid var(--nimble-book-sidebar-border, #c8c8c8);
+			border: 1px solid var(--nimble-book-sidebar-border, #d1d5db);
 			border-top: none;
-			border-radius: 0 0 var(--nimble-book-sidebar-radius, 0.625rem) var(--nimble-book-sidebar-radius, 0.625rem);
-		}
-
-		.nimble-book-section[open] > ul {
-			border-color: var(--nimble-book-sidebar-border, #c8c8c8);
+			border-radius: 0 0 var(--nimble-book-sidebar-radius, 4px) var(--nimble-book-sidebar-radius, 4px);
 		}
 
 		.nimble-book-section a {
 			background: transparent !important;
-			color: var(--nimble-book-sidebar-fg, #252b42) !important;
-			font-weight: 600;
-			font-style: italic;
+			color: var(--nimble-book-sidebar-muted, #4b5563) !important;
+			font-family: var(--nimble-font-body) !important;
+			font-weight: 400 !important;
+			font-style: normal !important;
 		}
 
 		.nimble-book-section a:hover,
 		.nimble-book-section a:focus {
 			color: var(--nimble-book-sidebar-fg, #252b42) !important;
-			background: color-mix(in srgb, var(--nimble-book-sidebar-fg, #252b42) 6%, transparent) !important;
+			background: transparent !important;
 		}
 
 		.nimble-book-section a[aria-current='page'] {
-			background: var(--nimble-book-sidebar-gold, #d4a90c) !important;
-			color: #000000 !important;
+			background: var(--nimble-book-sidebar-gold-active, #eab308) !important;
+			color: #ffffff !important;
+			font-weight: 700 !important;
 		}
 
 		.nimble-book-tree .nimble-inline-toc :global(a) {
-			color: var(--nimble-book-sidebar-muted, #707070);
+			color: var(--nimble-book-sidebar-muted, #4b5563);
 		}
 
 		.nimble-book-tree .nimble-inline-toc :global(a[aria-current='true']) {
-			color: var(--nimble-book-sidebar-gold, #d4a90c);
+			color: var(--nimble-book-sidebar-gold-accent, #d4a90c);
 		}
 	}
 </style>
