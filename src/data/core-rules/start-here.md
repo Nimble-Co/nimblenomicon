@@ -1,6 +1,6 @@
 # Start Here
 
-Nimble is a fast-paced, heroic fantasy TTRPG where bold choices and epic stories take center stage. At least one player should familiarize themselves with the base rules in this book (no need for every-one to read through unless they really want to). The adventure included in the GM's Guide is designed to introduce the rules as you play.
+Nimble is a fast-paced, heroic fantasy TTRPG where bold choices and epic stories take center stage. At least one player should familiarize themselves with the base rules in this book (no need for everyone to read through unless they really want to). The adventure included in the GM's Guide is designed to introduce the rules as you play.
 
 **If you're new to TTRPGs**, use one of the pre-made heroes (included in your digital downloads or at [nimbleRPG.com/start](https://nimbleRPG.com/start)). Level 1 for all of the classes is designed to be easy to pick up, giving a small flavor of the class and introducing the rules gradually without being overwhelming. Complexity and tactical depth is layered on as you level up and progress through an adventure.
 
@@ -16,15 +16,15 @@ Visit [nimbleRPG.com/start](https://nimbleRPG.com/start) for everything you need
 
 **Pay attention. Ask questions. Take notes.** The more questions you ask, the more information you'll have to work with, and you'll be able to make more interesting decisions.
 
-**Be creative!** Frequently, the answer to a prob-lem isn't found on your character sheet. A hammer (or anything else) can be used in lots of ways!
+**Be creative!** Frequently, the answer to a problem isn't found on your character sheet. A hammer (or anything else) can be used in lots of ways!
 
 **Embrace failure.** You shouldn't try to fail, but some of the best moments in a game can come from a failed roll or bad decision. Go with it!
 
-**Respect everyone else's time.** Swift, subop-timal decisions are better than slow, optimal ones. They will tend to be more fun anyway! If you can't decide what to do on your turn, attack and pass. Think when everyone else isn't waiting on you. Also, arrive on time.
+**Respect everyone else's time.** Swift, suboptimal decisions are better than slow, optimal ones. They will tend to be more fun anyway! If you can't decide what to do on your turn, attack and pass. Think when everyone else isn't waiting on you. Also, arrive on time.
 
-**Share the spotlight.** If you've been rolling or talking more than everyone else, call on your par-tymates to help you; shine the spotlight on them. Sneaky characters shouldn't spend a bunch of time sneaking around a dungeon without the rest of the party. A charismatic hero might be taking the lead in a negotiation (that's fine!), but he may want to call on his Berserker pal for a bit of extra leverage. “Ragnar, would you like to have a word with this stubborn gentleman while the rest of us step outside?”
+**Share the spotlight.** If you've been rolling or talking more than everyone else, call on your party mates to help you; shine the spotlight on them. Sneaky characters shouldn't spend a bunch of time sneaking around a dungeon without the rest of the party. A charismatic hero might be taking the lead in a negotiation (that's fine!), but he may want to call on his Berserker pal for a bit of extra leverage. “Ragnar, would you like to have a word with this stubborn gentleman while the rest of us step outside?”
 
-**Treat the world realistically.** If you insult (or kill) other characters you come across, expect consequences! If you negotiate and haggle with every merchant, your reputation as penny pinch-ers will likely become widespread. If you do some-thing foolish in front of a king, expect to be jailed (or worse). If you heal an ally, deal lots of damage, or always use the same tactics, expect the bad guys to catch on and adapt.
+**Treat the world realistically.** If you insult (or kill) other characters you come across, expect consequences! If you negotiate and haggle with every merchant, your reputation as penny pinchers will likely become widespread. If you do something foolish in front of a king, expect to be jailed (or worse). If you heal an ally, deal lots of damage, or always use the same tactics, expect the bad guys to catch on and adapt.
 
 **Describe your actions, not mechanics.** The Game Master (GM, the player running the game) will tell you if you need to roll any dice. If your idea is good enough, you may not need to!
 
