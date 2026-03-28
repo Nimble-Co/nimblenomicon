@@ -31,7 +31,7 @@ content:
         options:
           format: markdown
 
-  - name: core-rules-stats-skills
+  - name: stats-skills
     label: Stats & Skills
     type: group
     items:
@@ -117,7 +117,7 @@ content:
             options:
               format: markdown
 
-  - name: core-rules-checks
+  - name: checks
     label: Checks
     type: group
     items:
@@ -175,7 +175,7 @@ content:
             options:
               format: markdown
 
-  - name: core-rules-character
+  - name: character
     label: Character
     type: group
     items:
@@ -323,7 +323,7 @@ content:
             options:
               format: markdown
 
-  - name: core-rules-equipment
+  - name: equipment
     label: Equipment
     type: group
     items:
@@ -443,7 +443,7 @@ content:
             type: string
             required: true
 
-  - name: core-rules-spells
+  - name: spells
     label: Spells
     type: group
     items:
@@ -596,7 +596,7 @@ content:
             options:
               format: markdown
 
-  - name: core-rules-magic-items
+  - name: magic-items
     label: Magic Items
     type: group
     items:
