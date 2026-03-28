@@ -1,42 +1,42 @@
 [
-  {
-    "cost": "50 gp",
-    "name": "Cantrip"
-  },
-  {
-    "cost": "175 gp",
-    "name": "Tier 1 Spell"
-  },
-  {
-    "cost": "500 gp",
-    "name": "Tier 2 Spell"
-  },
-  {
-    "cost": "1,500 gp",
-    "name": "Tier 3 Spell"
-  },
-  {
-    "cost": "5,000 gp",
-    "name": "Tier 4 Spell"
-  },
-  {
-    "cost": "15,000 gp",
-    "name": "Tier 5 Spell"
-  },
-  {
-    "cost": "50,000 gp",
-    "name": "Tier 6 Spell"
-  },
-  {
-    "cost": "125,000+ gp",
-    "name": "Tier 7 Spell"
-  },
-  {
-    "cost": "375,000+ gp",
-    "name": "Tier 8 Spell"
-  },
-  {
-    "cost": "1,000,000+ gp",
-    "name": "Tier 9 Spell"
-  }
+	{
+		"cost": "50 gp",
+		"name": "Cantrip"
+	},
+	{
+		"cost": "175 gp",
+		"name": "Tier 1 Spell"
+	},
+	{
+		"cost": "500 gp",
+		"name": "Tier 2 Spell"
+	},
+	{
+		"cost": "1,500 gp",
+		"name": "Tier 3 Spell"
+	},
+	{
+		"cost": "5,000 gp",
+		"name": "Tier 4 Spell"
+	},
+	{
+		"cost": "15,000 gp",
+		"name": "Tier 5 Spell"
+	},
+	{
+		"cost": "50,000 gp",
+		"name": "Tier 6 Spell"
+	},
+	{
+		"cost": "125,000+ gp",
+		"name": "Tier 7 Spell"
+	},
+	{
+		"cost": "375,000+ gp",
+		"name": "Tier 8 Spell"
+	},
+	{
+		"cost": "1,000,000+ gp",
+		"name": "Tier 9 Spell"
+	}
 ]

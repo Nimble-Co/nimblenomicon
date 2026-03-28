@@ -10,12 +10,15 @@ const pagefindTranslations = {
 	...Object.fromEntries(
 		Object.entries(Astro.locals.t.all())
 			.filter(([key]) => key.startsWith('pagefind.'))
-			.map(([key, value]) => [key.replace('pagefind.', ''), value])
+			.map(([key, value]) => [key.replace('pagefind.', ''), value]),
 	),
 };
 
-const dataAttributes: DOMStringMap = { 'data-translations': JSON.stringify(pagefindTranslations) };
-if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash'] = '';
+const dataAttributes: Record<string, string> = {
+	'data-translations': JSON.stringify(pagefindTranslations),
+};
+if (project.trailingSlash === 'never')
+	dataAttributes['data-strip-trailing-slash'] = '';
 ---
 
 <site-search class={Astro.props.class} {...dataAttributes}>
@@ -26,7 +29,9 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 		aria-keyshortcuts="Control+K"
 	>
 		<Icon name="magnifier" />
-		<span class="sl-hidden md:sl-block" aria-hidden="true">{searchPlaceholder}</span>
+		<span class="sl-hidden md:sl-block" aria-hidden="true"
+			>{searchPlaceholder}</span
+		>
 		<kbd class="sl-hidden" aria-hidden="true">
 			<kbd>{Astro.locals.t('search.ctrlKey')}</kbd><kbd>K</kbd>
 		</kbd>
@@ -42,7 +47,10 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 			</button>
 			{
 				import.meta.env.DEV ? (
-					<div style="margin: auto; text-align: center; white-space: pre-line;" dir="ltr">
+					<div
+						style="margin: auto; text-align: center; white-space: pre-line;"
+						dir="ltr"
+					>
 						<p>{Astro.locals.t('search.devWarning')}</p>
 					</div>
 				) : (
@@ -63,8 +71,12 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 
 		constructor() {
 			super();
-			const openBtn = this.querySelector<HTMLButtonElement>('button[data-open-modal]')!;
-			const closeBtn = this.querySelector<HTMLButtonElement>('button[data-close-modal]')!;
+			const openBtn = this.querySelector<HTMLButtonElement>(
+				'button[data-open-modal]',
+			)!;
+			const closeBtn = this.querySelector<HTMLButtonElement>(
+				'button[data-close-modal]',
+			)!;
 			const dialog = this.querySelector('dialog')!;
 			const dialogFrame = this.querySelector('.dialog-frame')!;
 
@@ -110,7 +122,8 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 			// Listen for `ctrl + k` and `cmd + k` keyboard shortcuts.
 			window.addEventListener('keydown', (e) => {
 				if ((e.metaKey === true || e.ctrlKey === true) && e.key === 'k') {
-					dialog.open ? closeModal() : openModal();
+					if (dialog.open) closeModal();
+					else openModal();
 					e.preventDefault();
 				}
 			});
@@ -118,15 +131,21 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 			let translations = {};
 			try {
 				translations = JSON.parse(this.dataset.translations || '{}');
-			} catch {}
+			} catch {
+				void 0;
+			}
 
 			const shouldStrip = this.dataset.stripTrailingSlash !== undefined;
-			const stripTrailingSlash = (path: string) => path.replace(/(.)\/(#.*)?$/, '$1$2');
-			const formatURL = shouldStrip ? stripTrailingSlash : (path: string) => path;
+			const stripTrailingSlash = (path: string) =>
+				path.replace(/(.)\/(#.*)?$/, '$1$2');
+			const formatURL = shouldStrip
+				? stripTrailingSlash
+				: (path: string) => path;
 
 			window.addEventListener('DOMContentLoaded', () => {
 				if (import.meta.env.DEV) return;
-				const onIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
+				const onIdle =
+					window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
 				onIdle(async () => {
 					// @ts-expect-error — Missing types for @pagefind/default-ui package.
 					const { PagefindUI } = await import('@pagefind/default-ui');
@@ -134,11 +153,15 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 						...pagefindUserConfig,
 						element: '#starlight__search',
 						baseUrl: import.meta.env.BASE_URL,
-						bundlePath: import.meta.env.BASE_URL.replace(/\/$/, '') + '/pagefind/',
+						bundlePath:
+							import.meta.env.BASE_URL.replace(/\/$/, '') + '/pagefind/',
 						showImages: false,
 						translations,
 						showSubResults: true,
-						processResult: (result: { url: string; sub_results: Array<{ url: string }> }) => {
+						processResult: (result: {
+							url: string;
+							sub_results: Array<{ url: string }>;
+						}) => {
 							result.url = formatURL(result.url);
 							result.sub_results = result.sub_results.map((sub_result) => {
 								sub_result.url = formatURL(sub_result.url);
@@ -294,18 +317,32 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 
 		#starlight__search {
 			--sl-search-result-spacing: calc(1.25rem * var(--pagefind-ui-scale));
-			--sl-search-result-pad-inline-start: calc(3.75rem * var(--pagefind-ui-scale));
-			--sl-search-result-pad-inline-end: calc(1.25rem * var(--pagefind-ui-scale));
+			--sl-search-result-pad-inline-start: calc(
+				3.75rem * var(--pagefind-ui-scale)
+			);
+			--sl-search-result-pad-inline-end: calc(
+				1.25rem * var(--pagefind-ui-scale)
+			);
 			--sl-search-result-pad-block: calc(0.9375rem * var(--pagefind-ui-scale));
-			--sl-search-result-nested-pad-block: calc(0.625rem * var(--pagefind-ui-scale));
+			--sl-search-result-nested-pad-block: calc(
+				0.625rem * var(--pagefind-ui-scale)
+			);
 			--sl-search-corners: calc(0.3125rem * var(--pagefind-ui-scale));
 			--sl-search-page-icon-size: calc(1.875rem * var(--pagefind-ui-scale));
 			--sl-search-page-icon-inline-start: calc(
-				(var(--sl-search-result-pad-inline-start) - var(--sl-search-page-icon-size)) / 2
+				(
+						var(--sl-search-result-pad-inline-start) -
+							var(--sl-search-page-icon-size)
+					) /
+					2
 			);
 			--sl-search-tree-diagram-size: calc(2.5rem * var(--pagefind-ui-scale));
 			--sl-search-tree-diagram-inline-start: calc(
-				(var(--sl-search-result-pad-inline-start) - var(--sl-search-tree-diagram-size)) / 2
+				(
+						var(--sl-search-result-pad-inline-start) -
+							var(--sl-search-tree-diagram-size)
+					) /
+					2
 			);
 		}
 
@@ -356,26 +393,35 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 
 		#starlight__search .pagefind-ui__result-nested {
 			position: relative;
-			padding: var(--sl-search-result-nested-pad-block) var(--sl-search-result-pad-inline-end);
+			padding: var(--sl-search-result-nested-pad-block)
+				var(--sl-search-result-pad-inline-end);
 			padding-inline-start: var(--sl-search-result-pad-inline-start);
 		}
 
-		#starlight__search .pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)),
+		#starlight__search
+			.pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)),
 		#starlight__search .pagefind-ui__result-nested {
 			position: relative;
 			background-color: var(--sl-color-black);
 		}
 
-		#starlight__search .pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)):hover,
 		#starlight__search
-			.pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)):focus-within,
+			.pagefind-ui__result-title:not(
+				:where(.pagefind-ui__result-nested *)
+			):hover,
+		#starlight__search
+			.pagefind-ui__result-title:not(
+				:where(.pagefind-ui__result-nested *)
+			):focus-within,
 		#starlight__search .pagefind-ui__result-nested:hover,
 		#starlight__search .pagefind-ui__result-nested:focus-within {
 			outline: 1px solid var(--sl-color-accent-high);
 		}
 
 		#starlight__search
-			.pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)):focus-within,
+			.pagefind-ui__result-title:not(
+				:where(.pagefind-ui__result-nested *)
+			):focus-within,
 		#starlight__search .pagefind-ui__result-nested:focus-within {
 			background-color: var(--sl-color-accent-low);
 		}
@@ -393,10 +439,13 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 		}
 
 		#starlight__search .pagefind-ui__result-inner > .pagefind-ui__result-title {
-			padding: var(--sl-search-result-pad-block) var(--sl-search-result-pad-inline-end);
+			padding: var(--sl-search-result-pad-block)
+				var(--sl-search-result-pad-inline-end);
 			padding-inline-start: var(--sl-search-result-pad-inline-start);
 		}
-		#starlight__search .pagefind-ui__result-inner > .pagefind-ui__result-title::before {
+		#starlight__search
+			.pagefind-ui__result-inner
+			> .pagefind-ui__result-title::before {
 			content: '';
 			position: absolute;
 			inset-block: 0;
@@ -424,7 +473,9 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 			text-decoration: none;
 		}
 
-		#starlight__search .pagefind-ui__result-nested .pagefind-ui__result-link::before {
+		#starlight__search
+			.pagefind-ui__result-nested
+			.pagefind-ui__result-link::before {
 			content: unset;
 		}
 
@@ -475,7 +526,8 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 		#starlight__search .pagefind-ui__result-tags {
 			background-color: var(--sl-color-black);
 			margin-top: 0;
-			padding: var(--sl-search-result-nested-pad-block) var(--sl-search-result-pad-inline-end);
+			padding: var(--sl-search-result-nested-pad-block)
+				var(--sl-search-result-pad-inline-end);
 		}
 	}
 </style>

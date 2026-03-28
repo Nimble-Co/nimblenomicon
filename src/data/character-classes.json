@@ -1,46 +1,46 @@
 [
-  {
-    "name": "berserker",
-    "description": "An unstoppable force of wrath and ruin."
-  },
-  {
-    "name": "the cheat",
-    "description": "Sneaky, backstabbing, dirty-fighting rogue."
-  },
-  {
-    "name": "commander",
-    "description": "A battlefield tactician, leader, and weapon master."
-  },
-  {
-    "name": "hunter",
-    "description": "Resourceful survivalist, bow master, and skilled tracker."
-  },
-  {
-    "name": "mage",
-    "description": "Wield and shape the elements of fire, ice, and lightning."
-  },
-  {
-    "name": "oathsworn",
-    "description": "Faithful guardian, protector, and avenger of the weak."
-  },
-  {
-    "name": "shadowmancer",
-    "description": "Summon hordes of expendable minions."
-  },
-  {
-    "name": "shepherd",
-    "description": "Master life and death. Lead a faithful companion."
-  },
-  {
-    "name": "songweaver",
-    "description": "Inspiring presence, sharp wit, sharper tongue."
-  },
-  {
-    "name": "stormshifter",
-    "description": "Master of weather, beast, and nature."
-  },
-  {
-    "name": "zephyr",
-    "description": "A disciplined martial artist with swift hands and swift feet."
-  }
+	{
+		"name": "berserker",
+		"description": "An unstoppable force of wrath and ruin."
+	},
+	{
+		"name": "the cheat",
+		"description": "Sneaky, backstabbing, dirty-fighting rogue."
+	},
+	{
+		"name": "commander",
+		"description": "A battlefield tactician, leader, and weapon master."
+	},
+	{
+		"name": "hunter",
+		"description": "Resourceful survivalist, bow master, and skilled tracker."
+	},
+	{
+		"name": "mage",
+		"description": "Wield and shape the elements of fire, ice, and lightning."
+	},
+	{
+		"name": "oathsworn",
+		"description": "Faithful guardian, protector, and avenger of the weak."
+	},
+	{
+		"name": "shadowmancer",
+		"description": "Summon hordes of expendable minions."
+	},
+	{
+		"name": "shepherd",
+		"description": "Master life and death. Lead a faithful companion."
+	},
+	{
+		"name": "songweaver",
+		"description": "Inspiring presence, sharp wit, sharper tongue."
+	},
+	{
+		"name": "stormshifter",
+		"description": "Master of weather, beast, and nature."
+	},
+	{
+		"name": "zephyr",
+		"description": "A disciplined martial artist with swift hands and swift feet."
+	}
 ]

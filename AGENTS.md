@@ -10,15 +10,19 @@ The Nimblenomicon is a static documentation site for the Nimble tabletop RPG, bu
 
 Standard commands from the repo root (see `CONTRIBUTING.md` § Local Development):
 
-| Command           | Purpose                              |
-|-------------------|--------------------------------------|
-| `npm run dev`     | Dev server at `localhost:4321`       |
-| `npm run build`   | Production build to `dist/`          |
-| `npm run preview` | Serve production build locally       |
+| Command                | Purpose                                   |
+| ---------------------- | ----------------------------------------- |
+| `npm run dev`          | Dev server at `localhost:4321`            |
+| `npm run build`        | Production build to `dist/`               |
+| `npm run preview`      | Serve production build locally            |
+| `npm run format`       | Apply Prettier to the repo                |
+| `npm run format:check` | Check formatting (same as CI)             |
+| `npm run lint`         | ESLint (TS/Astro) + markdownlint (md/mdx) |
 
 ### Caveats
 
-- **No lint or test scripts** exist in `package.json` yet. Do not attempt to run `npm test` or `npm run lint` — they will fail.
+- **No test script** exists in `package.json` yet. Do not attempt to run `npm test` — it will fail.
+- **Lint and format** run in CI (`.github/workflows/lint.yml`). Before pushing substantive edits, run `npm run format:check` and `npm run lint` locally. Markdownlint targets repo docs and `src/**`; `.agents/**` and `docs/**` are ignored so agent-skill and ideation markdown does not block the build.
 - **Search (Pagefind)** only works in production builds. In the dev server, the search bar is present but nonfunctional. To test search: `npm run build && npm run preview`, then use the preview server.
 - The `site` option in `astro.config.ts` is **not set** (it is computed from GitHub environment variables during CI). This causes a harmless `@astrojs/sitemap` warning during local builds. Ignore it.
 - **No environment variables or secrets** are required for local development.

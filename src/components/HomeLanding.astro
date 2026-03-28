@@ -38,11 +38,17 @@ const navItems = SECTION_KEYS.map((key) => {
 			aria-label={SEARCH_PLACEHOLDER}
 			aria-keyshortcuts="Control+K"
 		>
-			<svg class="home-landing__search-icon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+			<svg
+				class="home-landing__search-icon"
+				width="20"
+				height="20"
+				viewBox="0 0 24 24"
+				aria-hidden="true"
+			>
 				<path
 					fill="currentColor"
 					d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-				/>
+				></path>
 			</svg>
 			<span class="home-landing__search-placeholder">{SEARCH_PLACEHOLDER}</span>
 		</button>
@@ -73,8 +79,11 @@ const navItems = SECTION_KEYS.map((key) => {
 	function openHeaderSearch(event: Event) {
 		const siteSearch = document.querySelector('site-search');
 		const open =
-			siteSearch && typeof (siteSearch as HTMLElement & { openSearchModal?: () => void }).openSearchModal === 'function'
-				? (siteSearch as HTMLElement & { openSearchModal: () => void }).openSearchModal
+			siteSearch &&
+			typeof (siteSearch as HTMLElement & { openSearchModal?: () => void })
+				.openSearchModal === 'function'
+				? (siteSearch as HTMLElement & { openSearchModal: () => void })
+						.openSearchModal
 				: undefined;
 		if (open) {
 			open();
@@ -83,11 +92,15 @@ const navItems = SECTION_KEYS.map((key) => {
 			event.stopPropagation();
 			return;
 		}
-		document.querySelector<HTMLButtonElement>('site-search button[data-open-modal]')?.click();
+		document
+			.querySelector<HTMLButtonElement>('site-search button[data-open-modal]')
+			?.click();
 	}
 
 	function wireHomeSearch() {
-		document.querySelector('.home-landing__search-trigger')?.addEventListener('click', openHeaderSearch);
+		document
+			.querySelector('.home-landing__search-trigger')
+			?.addEventListener('click', openHeaderSearch);
 	}
 
 	if (document.readyState === 'loading') {
@@ -219,11 +232,17 @@ const navItems = SECTION_KEYS.map((key) => {
 		box-sizing: border-box;
 		text-decoration: none;
 		color: inherit;
-		transition: background-color 0.08s ease, border-color 0.08s ease;
+		transition:
+			background-color 0.08s ease,
+			border-color 0.08s ease;
 	}
 
 	.home-landing__tile:hover {
-		background-color: color-mix(in srgb, var(--home-surface) 85%, var(--home-fg));
+		background-color: color-mix(
+			in srgb,
+			var(--home-surface) 85%,
+			var(--home-fg)
+		);
 		border-color: color-mix(in srgb, var(--home-border) 70%, var(--home-fg));
 	}
 
@@ -244,7 +263,11 @@ const navItems = SECTION_KEYS.map((key) => {
 		--home-fg: var(--sl-color-text);
 		--home-muted: var(--sl-color-gray-3);
 		--home-border: var(--sl-color-hairline);
-		--home-surface: color-mix(in srgb, var(--sl-color-bg) 88%, var(--sl-color-gray-5));
+		--home-surface: color-mix(
+			in srgb,
+			var(--sl-color-bg) 88%,
+			var(--sl-color-gray-5)
+		);
 		--home-input-bg: var(--sl-color-bg-nav);
 	}
 

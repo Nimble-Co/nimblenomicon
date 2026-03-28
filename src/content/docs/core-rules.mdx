@@ -8,64 +8,61 @@ banner:
     <p>This is free to use for anyone who already owns the content, is trying the system out, or cannot afford to buy it right now. If you enjoy Nimble and are able, please support the game by purchasing the official content at <a href="https://nimbleRPG.com">nimbleRPG.com</a>.</p>
 ---
 
-import manticor from "../../assets/manticor.webp";
-import HeroCallout from "../../components/HeroCallout.astro";
-import { renderMarkdown } from "../../lib/render-markdown";
-import { listLabel } from "../../lib/list-label";
-import { spellMetaMarkdown } from "../../lib/spell-meta";
+import manticor from '../../assets/manticor.webp';
+import HeroCallout from '../../components/HeroCallout.astro';
+import { renderMarkdown } from '../../lib/render-markdown';
+import { listLabel } from '../../lib/list-label';
+import { spellMetaMarkdown } from '../../lib/spell-meta';
 
-import { adventuringMotivations } from "../../models/adventuring-motivations";
+import { adventuringMotivations } from '../../models/adventuring-motivations';
 import {
-  ancestryDetailHrefFromCoreRules,
-  ancestries,
-  formatAncestrySize,
-} from "../../models/ancestries";
-import { armorRows, armorTableSections } from "../../models/armor";
-import { characterClasses } from "../../models/character-classes";
-import { conditions } from "../../models/conditions";
-import { dcExamples } from "../../models/dc-examples";
-import { downtimeActivities } from "../../models/downtime-activities";
-import { backgrounds } from "../../models/backgrounds";
-import { languages } from "../../models/languages";
-import { magicalItems } from "../../models/magical-items";
-import { magicalItemRarities } from "../../models/magical-item-rarities";
-import { miscAdventuringEquipment } from "../../models/misc-adventuring-equipment";
-import { optionalVariantRules } from "../../models/optional-variant-rules";
-import { saveTypes } from "../../models/save-types";
-import { sizes } from "../../models/sizes";
-import { skills } from "../../models/skills";
-import {
-  spellsData,
-  spellDetailHrefFromCoreRules,
-} from "../../models/spells";
-import { spellSchools } from "../../models/spell-schools";
-import { spellScrollCosts } from "../../models/spell-scroll-costs";
-import { statArrays } from "../../models/stat-arrays";
-import { stats } from "../../models/stats";
-import { wandCosts } from "../../models/wand-costs";
-import { weaponProperties } from "../../models/weapon-properties";
-import { weapons } from "../../models/weapons";
+	ancestryDetailHrefFromCoreRules,
+	ancestries,
+	formatAncestrySize,
+} from '../../models/ancestries';
+import { armorRows, armorTableSections } from '../../models/armor';
+import { characterClasses } from '../../models/character-classes';
+import { conditions } from '../../models/conditions';
+import { dcExamples } from '../../models/dc-examples';
+import { downtimeActivities } from '../../models/downtime-activities';
+import { backgrounds } from '../../models/backgrounds';
+import { languages } from '../../models/languages';
+import { magicalItems } from '../../models/magical-items';
+import { magicalItemRarities } from '../../models/magical-item-rarities';
+import { miscAdventuringEquipment } from '../../models/misc-adventuring-equipment';
+import { optionalVariantRules } from '../../models/optional-variant-rules';
+import { saveTypes } from '../../models/save-types';
+import { sizes } from '../../models/sizes';
+import { skills } from '../../models/skills';
+import { spellsData, spellDetailHrefFromCoreRules } from '../../models/spells';
+import { spellSchools } from '../../models/spell-schools';
+import { spellScrollCosts } from '../../models/spell-scroll-costs';
+import { statArrays } from '../../models/stat-arrays';
+import { stats } from '../../models/stats';
+import { wandCosts } from '../../models/wand-costs';
+import { weaponProperties } from '../../models/weapon-properties';
+import { weapons } from '../../models/weapons';
 
 <div class="nimble-full-bleed-hero">
-  <img
-    class="nimble-full-bleed-hero__img"
-    src={manticor.src}
-    width={manticor.width}
-    height={manticor.height}
-    alt="Manticore illustration — heroes battling a winged beast"
-    loading="eager"
-    decoding="async"
-  />
-  <div class="nimble-full-bleed-hero__gradient" aria-hidden="true"></div>
-  <div class="nimble-full-bleed-hero__bottom">
-    <h1 id="_top" class="nimble-full-bleed-hero__title">
-      Core Rules
-    </h1>
-    <HeroCallout />
-  </div>
+	<img
+		class="nimble-full-bleed-hero__img"
+		src={manticor.src}
+		width={manticor.width}
+		height={manticor.height}
+		alt="Manticore illustration — heroes battling a winged beast"
+		loading="eager"
+		decoding="async"
+	/>
+	<div class="nimble-full-bleed-hero__gradient" aria-hidden="true"></div>
+	<div class="nimble-full-bleed-hero__bottom">
+		<h1 id="_top" class="nimble-full-bleed-hero__title">
+			Core Rules
+		</h1>
+		<HeroCallout />
+	</div>
 </div>
 
-import StartHere from "../../data/core-rules/start-here.md";
+import StartHere from '../../data/core-rules/start-here.md';
 
 <StartHere />
 
@@ -88,6 +85,7 @@ Skills gauge how well your hero interacts with the world. Whenever you tell the 
 they may ask you to use one of your skills.
 
 {skills.map((skill) => (
+
   <div
     set:html={renderMarkdown(
       `**${skill.name}** (${skill.stat}) ${skill.description}`,
@@ -100,13 +98,13 @@ they may ask you to use one of your skills.
 When you want to affect the _world_ (convince an NPC, spot a trap, pick a lock, etc.), the GM may call for a skill check. Roll 1d20 and add your skill (the max bonus a skill can ever have is +12). If the total meets or exceeds the Difficulty Challenge (DC), you succeed; otherwise, you fail. A roll of 1 always fails regardless of any other bonuses, while a roll of 20 always succeeds. The DC varies based on the task:
 
 <ul>
-  {dcExamples.map((row) => (
-    <li
-      set:html={renderMarkdown(
-        `**${listLabel(row.name, ":")}** ${row.description}`,
-      )}
-    />
-  ))}
+	{dcExamples.map((row) => (
+		<li
+			set:html={renderMarkdown(
+				`**${listLabel(row.name, ':')}** ${row.description}`,
+			)}
+		/>
+	))}
 </ul>
 
 ### Saves
@@ -114,11 +112,12 @@ When you want to affect the _world_ (convince an NPC, spot a trap, pick a lock, 
 When the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 and add the relevant stat. A roll of 1 always fails, 20 always saves. You can choose to fail any save instead of rolling.
 
 <ul>
-  {saveTypes.map((saveType) => (
-    <li>
-      <strong>{listLabel(`${saveType.name} Save`)}</strong> {saveType.description}
-    </li>
-  ))}
+	{saveTypes.map((saveType) => (
+		<li>
+			<strong>{listLabel(`${saveType.name} Save`)}</strong>{' '}
+			{saveType.description}
+		</li>
+	))}
 </ul>
 
 ### Heroes and Saves
@@ -133,11 +132,11 @@ When the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 
 Some spells and abilities affect differently sized objects or creatures. For size, use the following guidelines:
 
 <ul>
-  {sizes.map((size) => (
-    <li>
-      <strong>{size.name}</strong> {size.description}
-    </li>
-  ))}
+	{sizes.map((size) => (
+		<li>
+			<strong>{size.name}</strong> {size.description}
+		</li>
+	))}
 </ul>
 
 ## Advantage & Disadvantage
@@ -228,11 +227,11 @@ Forced movement (pushing a grappler away), incapacitation, or spending an action
 Some attacks, traps, spells, or other effects can also inflict conditions—usually negative effects other than damage. Some conditions are temporary, lasting as little as a single round; others may last until cured in some way, and some can be ended by using an action to make an appropriate save.
 
 <ul>
-  {conditions.map((condition) => (
-    <li>
-      <strong>{listLabel(condition.name)}</strong> {condition.description}
-    </li>
-  ))}
+	{conditions.map((condition) => (
+		<li>
+			<strong>{listLabel(condition.name)}</strong> {condition.description}
+		</li>
+	))}
 </ul>
 
 > ### Other Minor Statuses.
@@ -392,11 +391,11 @@ The time you aren't out adventuring is called **Downtime**. You can spend Downti
 **Example Downtime Activities:**
 
 <ul>
-  {downtimeActivities.map((activity) => (
-    <li>
-      <strong>{listLabel(activity.name)}</strong> {activity.description}
-    </li>
-  ))}
+	{downtimeActivities.map((activity) => (
+		<li>
+			<strong>{listLabel(activity.name)}</strong> {activity.description}
+		</li>
+	))}
 </ul>
 
 # Character Creation
@@ -409,12 +408,12 @@ you can make your own hero:
 This will have the largest impact on the other character choices you make and how you interact with the world:
 
 <ul>
-  {characterClasses.map((heroClass) => (
-    <li>
-      <strong>{listLabel(heroClass.name.toUpperCase())}</strong>{" "}
-      {heroClass.description}
-    </li>
-  ))}
+	{characterClasses.map((heroClass) => (
+		<li>
+			<strong>{listLabel(heroClass.name.toUpperCase())}</strong>{' '}
+			{heroClass.description}
+		</li>
+	))}
 </ul>
 
 ### Step 2: Choose Your Ancestry & Background
@@ -434,11 +433,11 @@ This handy sheet of paper helps you track your stats, abilities, loot, and other
 Fill in your character details: Name, Ancestry, Class, Level, Height, and Weight. Fill in the arrow for your advantaged (+) and disadvantaged (-) Saves, and choose a stat array (recommended: place the highest numbers in the KEY stats for your class).
 
 <ul>
-  {statArrays.map((arr) => (
-    <li>
-      <strong>{listLabel(arr.name, ":")}</strong> {arr.description}
-    </li>
-  ))}
+	{statArrays.map((arr) => (
+		<li>
+			<strong>{listLabel(arr.name, ':')}</strong> {arr.description}
+		</li>
+	))}
 </ul>
 
 > **Example.** The Cheat has DEX and INT as their KEY stats. With the Min-Max array, you might put +3 in DEX, +1 in INT, and -1 in WIL and STR. You'd also mark ▲ for DEX saves and ▼ for WIL saves.
@@ -464,11 +463,11 @@ Heroes start at level 1 with the equipment listed for their class and background
 All heroes speak Common by default. Each point of INT grants you an additional language known. These languages are typically spoken by:
 
 <ul>
-  {languages.map((language) => (
-    <li>
-      <strong>{listLabel(language.name)}</strong> {language.description}
-    </li>
-  ))}
+	{languages.map((language) => (
+		<li>
+			<strong>{listLabel(language.name)}</strong> {language.description}
+		</li>
+	))}
 </ul>
 
 > **GROFWINT DRAZLON!** Speaking another creature's
@@ -510,40 +509,43 @@ The GM may allow you to gain a level (LVL) whenever you complete an appropriatel
 Your kin, lineage, heritage, or race—this is how your character was born and how others see you at first glance. You may be a dwarf raised in the mines under the mountain with countless other dwarves, or you may be an elf raised by goblins! It's up to you to choose how your character began. Choose 1 ancestry and add its bonus to your character sheet.
 
 {ancestries
-  .filter((a) => a.section === "common")
-  .map((a) => (
-    <>
-      <h3 id={a.id}>
-        <a href={ancestryDetailHrefFromCoreRules(a.id)}>{a.name}</a>
-      </h3>
-      <p>({formatAncestrySize(a.size)})</p>
-      <p>{a.flavor}</p>
-      <div set:html={renderMarkdown(a.trait)} />
-    </>
-  ))}
+.filter((a) => a.section === "common")
+.map((a) => (
+
+<>
+<h3 id={a.id}>
+<a href={ancestryDetailHrefFromCoreRules(a.id)}>{a.name}</a>
+</h3>
+<p>({formatAncestrySize(a.size)})</p>
+<p>{a.flavor}</p>
+<div set:html={renderMarkdown(a.trait)} />
+</>
+))}
 
 ## Exotic Ancestries
 
 Your setting may or may not support these choices—check with your GM first before selecting one.
 
 {ancestries
-  .filter((a) => a.section === "exotic")
-  .map((a) => (
-    <>
-      <h3 id={a.id}>
-        <a href={ancestryDetailHrefFromCoreRules(a.id)}>{a.name}</a>
-      </h3>
-      <p>({formatAncestrySize(a.size)})</p>
-      <p>{a.flavor}</p>
-      <div set:html={renderMarkdown(a.trait)} />
-    </>
-  ))}
+.filter((a) => a.section === "exotic")
+.map((a) => (
+
+<>
+<h3 id={a.id}>
+<a href={ancestryDetailHrefFromCoreRules(a.id)}>{a.name}</a>
+</h3>
+<p>({formatAncestrySize(a.size)})</p>
+<p>{a.flavor}</p>
+<div set:html={renderMarkdown(a.trait)} />
+</>
+))}
 
 ## Backgrounds
 
 Backgrounds provide a glimpse into your character's past—how they were raised, the skills they honed before becoming an adventurer, or even their defining personality traits. Feel free to adapt or reimagine these backgrounds to suit your character's story. Choose 1 background:
 
 {backgrounds.map((segment) => (
+
   <div
     set:html={renderMarkdown(`**${segment.name}** ${segment.description}`)}
   />
@@ -554,6 +556,7 @@ Backgrounds provide a glimpse into your character's past—how they were raised,
 The world is a dangerous place—people don't usually just “go adventuring” without a reason. Your motivation should make your character want to work with the rest of the group.
 
 {adventuringMotivations.map((motivation) => (
+
   <p
     set:html={renderMarkdown(
       `**${motivation.name}** ${motivation.description}`,
@@ -576,6 +579,7 @@ Armor represents your hero's ability to dodge or block damage when you use the D
 > **Defend Yourself!** If you're standing right next to a baddie with an axe and you're not doing anything to defend yourself, chances are, you're going to get axed!
 
 {armorTableSections.map(({ category: cat, label }) => (
+
   <>
     <h3>{label}</h3>
     <table>
@@ -618,13 +622,13 @@ Armor represents your hero's ability to dodge or block damage when you use the D
 ## Weapon Properties
 
 <ul>
-  {weaponProperties.map((weaponProperty) => (
-    <li
-      set:html={renderMarkdown(
-        `**${listLabel(weaponProperty.name)}** ${weaponProperty.description}`,
-      )}
-    />
-  ))}
+	{weaponProperties.map((weaponProperty) => (
+		<li
+			set:html={renderMarkdown(
+				`**${listLabel(weaponProperty.name)}** ${weaponProperty.description}`,
+			)}
+		/>
+	))}
 </ul>
 
 ### Dual Wielding
@@ -650,83 +654,83 @@ Can you reflavor a staff as a greatclub? Sure! A sai instead of a dagger? Of cou
 ### Melee Weapons
 
 <table>
-  <thead>
-    <tr>
-      <th>
-        <strong>
-          <em>ITEM</em>
-        </strong>
-      </th>
-      <th>
-        <strong>
-          <em>DAMAGE</em>
-        </strong>
-      </th>
-      <th>
-        <strong>
-          <em>PROPERTIES</em>
-        </strong>
-      </th>
-      <th>
-        <strong>
-          <em>COST</em>
-        </strong>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    {weapons
-      .filter((w) => w.category === "melee")
-      .map((w) => (
-        <tr>
-          <td>{w.name}</td>
-          <td>{w.damage}</td>
-          <td>{w.propertyLines.map((p) => p.description).join(", ")}</td>
-          <td>{w.cost}</td>
-        </tr>
-      ))}
-  </tbody>
+	<thead>
+		<tr>
+			<th>
+				<strong>
+					<em>ITEM</em>
+				</strong>
+			</th>
+			<th>
+				<strong>
+					<em>DAMAGE</em>
+				</strong>
+			</th>
+			<th>
+				<strong>
+					<em>PROPERTIES</em>
+				</strong>
+			</th>
+			<th>
+				<strong>
+					<em>COST</em>
+				</strong>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		{weapons
+			.filter((w) => w.category === 'melee')
+			.map((w) => (
+				<tr>
+					<td>{w.name}</td>
+					<td>{w.damage}</td>
+					<td>{w.propertyLines.map((p) => p.description).join(', ')}</td>
+					<td>{w.cost}</td>
+				</tr>
+			))}
+	</tbody>
 </table>
 
 ### Ranged Weapons
 
 <table>
-  <thead>
-    <tr>
-      <th>
-        <strong>
-          <em>ITEM</em>
-        </strong>
-      </th>
-      <th>
-        <strong>
-          <em>DAMAGE</em>
-        </strong>
-      </th>
-      <th>
-        <strong>
-          <em>PROPERTIES</em>
-        </strong>
-      </th>
-      <th>
-        <strong>
-          <em>COST</em>
-        </strong>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    {weapons
-      .filter((w) => w.category === "ranged")
-      .map((w) => (
-        <tr>
-          <td>{w.name}</td>
-          <td>{w.damage}</td>
-          <td>{w.propertyLines.map((p) => p.description).join(", ")}</td>
-          <td>{w.cost}</td>
-        </tr>
-      ))}
-  </tbody>
+	<thead>
+		<tr>
+			<th>
+				<strong>
+					<em>ITEM</em>
+				</strong>
+			</th>
+			<th>
+				<strong>
+					<em>DAMAGE</em>
+				</strong>
+			</th>
+			<th>
+				<strong>
+					<em>PROPERTIES</em>
+				</strong>
+			</th>
+			<th>
+				<strong>
+					<em>COST</em>
+				</strong>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		{weapons
+			.filter((w) => w.category === 'ranged')
+			.map((w) => (
+				<tr>
+					<td>{w.name}</td>
+					<td>{w.damage}</td>
+					<td>{w.propertyLines.map((p) => p.description).join(', ')}</td>
+					<td>{w.cost}</td>
+				</tr>
+			))}
+	</tbody>
 </table>
 
 ## Key Equipment
@@ -750,34 +754,34 @@ Costs for mundane items typically range from a few silver pieces to a few gold p
 ## Misc Adventuring Equipment
 
 <table>
-  <thead>
-    <tr>
-      <th>
-        <strong>
-          <em>ITEM</em>
-        </strong>
-      </th>
-      <th>
-        <strong>
-          <em>PROPERTIES</em>
-        </strong>
-      </th>
-      <th>
-        <strong>
-          <em>COST</em>
-        </strong>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    {miscAdventuringEquipment.map((row) => (
-      <tr>
-        <td>{row.name}</td>
-        <td>{row.description}</td>
-        <td>{row.cost}</td>
-      </tr>
-    ))}
-  </tbody>
+	<thead>
+		<tr>
+			<th>
+				<strong>
+					<em>ITEM</em>
+				</strong>
+			</th>
+			<th>
+				<strong>
+					<em>PROPERTIES</em>
+				</strong>
+			</th>
+			<th>
+				<strong>
+					<em>COST</em>
+				</strong>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		{miscAdventuringEquipment.map((row) => (
+			<tr>
+				<td>{row.name}</td>
+				<td>{row.description}</td>
+				<td>{row.cost}</td>
+			</tr>
+		))}
+	</tbody>
 </table>
 
 > **What About…?** These are not **all** of the items available for purchase, merely a sampling. If you can think of it, you can likely buy it!
@@ -791,37 +795,38 @@ Though some magical items can be purchased, most cannot. Some special shops may 
 ### Typical Costs of Magical Items
 
 <table>
-  <thead>
-    <tr>
-      <th>
-        <strong>
-          <em>RARITY</em>
-        </strong>
-      </th>
-      <th>
-        <strong>
-          <em>TYPICAL AVAILABILITY</em>
-        </strong>
-      </th>
-      <th>
-        <strong>
-          <em>COST</em>
-        </strong>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    {magicalItemRarities.map((row) => (
-      <tr>
-        <td>{row.name}</td>
-        <td>{row.availability}</td>
-        <td>{row.cost}</td>
-      </tr>
-    ))}
-  </tbody>
+	<thead>
+		<tr>
+			<th>
+				<strong>
+					<em>RARITY</em>
+				</strong>
+			</th>
+			<th>
+				<strong>
+					<em>TYPICAL AVAILABILITY</em>
+				</strong>
+			</th>
+			<th>
+				<strong>
+					<em>COST</em>
+				</strong>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		{magicalItemRarities.map((row) => (
+			<tr>
+				<td>{row.name}</td>
+				<td>{row.availability}</td>
+				<td>{row.cost}</td>
+			</tr>
+		))}
+	</tbody>
 </table>
 
 {magicalItems.map((item) => (
+
   <>
     <h3>{item.name}</h3>
     {item.subtitle && <div set:html={renderMarkdown(item.subtitle)} />}
@@ -844,16 +849,17 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
 > **Range and Reach.** Just like weapons, spells with “Range” can target creatures from a distance, but are cast with disadvantage if any enemy is adjacent to you. Add 1 die of disadvantage to gain +2 Range (max +6). Spells with “Reach” can’t do this, but they are cast as normal even when in melee.
 
 <ul>
-  {spellSchools.map((school) => (
-    <li>
-      <strong>{listLabel(`${school.name} Spells`)}</strong> {school.description}
-    </li>
-  ))}
+	{spellSchools.map((school) => (
+		<li>
+			<strong>{listLabel(`${school.name} Spells`)}</strong> {school.description}
+		</li>
+	))}
 </ul>
 
 > **Secret Spells.** Some spells have been hidden or lost through the ages. Whether they are too dangerous to be common knowledge or for other reasons, adventurers can sometimes stumble upon new spells (or wrench them out of the undead hands of a defeated Lich).
 
 {spellsData.schools.map((school) => (
+
   <>
     <h2 id={`${school.name.toLowerCase()}-spells`}>{school.name} Spells</h2>
     {school.spells.map((spell) => (
@@ -880,46 +886,47 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
 Some classes can choose from among these additional spells as they level up.
 
 {spellsData.utilitySchools.map((us) => {
-  const flatFirst = us.spells[0];
-  return "flat" in us && us.flat && flatFirst ? (
-    <>
-      <h3 id={flatFirst.id}>
-        <a href={spellDetailHrefFromCoreRules(flatFirst.id)}>{us.name}</a>
-      </h3>
-      <div
-        set:html={renderMarkdown(
-          spellMetaMarkdown(
-            flatFirst.tier,
-            flatFirst.castingTime,
-            flatFirst.target,
-          ) +
-            (flatFirst.description?.trim()
-              ? "\n\n" + flatFirst.description
-              : ""),
-        )}
-      />
-    </>
-  ) : (
-    <>
-      <h3>{us.name}</h3>
-      {us.spells.map((spell) => (
-        <>
-          <h4 id={spell.id}>
-            <a href={spellDetailHrefFromCoreRules(spell.id)}>{spell.name}</a>
-          </h4>
-          <div
-            set:html={renderMarkdown(
-              spellMetaMarkdown(
-                spell.tier,
-                spell.castingTime,
-                spell.target,
-              ) + (spell.description?.trim() ? "\n\n" + spell.description : ""),
-            )}
-          />
-        </>
-      ))}
-    </>
-  );
+const flatFirst = us.spells[0];
+return "flat" in us && us.flat && flatFirst ? (
+
+<>
+<h3 id={flatFirst.id}>
+<a href={spellDetailHrefFromCoreRules(flatFirst.id)}>{us.name}</a>
+</h3>
+<div
+set:html={renderMarkdown(
+spellMetaMarkdown(
+flatFirst.tier,
+flatFirst.castingTime,
+flatFirst.target,
+) +
+(flatFirst.description?.trim()
+? "\n\n" + flatFirst.description
+: ""),
+)}
+/>
+</>
+) : (
+<>
+<h3>{us.name}</h3>
+{us.spells.map((spell) => (
+<>
+<h4 id={spell.id}>
+<a href={spellDetailHrefFromCoreRules(spell.id)}>{spell.name}</a>
+</h4>
+<div
+set:html={renderMarkdown(
+spellMetaMarkdown(
+spell.tier,
+spell.castingTime,
+spell.target,
+) + (spell.description?.trim() ? "\n\n" + spell.description : ""),
+)}
+/>
+</>
+))}
+</>
+);
 })}
 
 # Optional Variant Rules
@@ -927,6 +934,7 @@ Some classes can choose from among these additional spells as they level up.
 If your playgroup likes extra little tactical nuggets, your GM can allow you to try out some of these additional variants to add some more spice to your game. You can always try out a rule for 1 session and see how you all like it before committing to it.
 
 {optionalVariantRules.map((rule) => (
+
   <>
     <h3>{rule.name}</h3>
     <div set:html={renderMarkdown(rule.description)} />

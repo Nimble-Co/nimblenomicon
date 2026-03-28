@@ -1,122 +1,122 @@
 [
-  {
-    "category": "cloth",
-    "armor": "2+DEX",
-    "cost": "10 gp",
-    "name": "Adventurer's Garb"
-  },
-  {
-    "category": "cloth",
-    "armor": "3+DEX",
-    "cost": "100 gp",
-    "name": "Minor Enchantment"
-  },
-  {
-    "category": "cloth",
-    "armor": "4+DEX",
-    "cost": "1,000 gp",
-    "name": "Major Enchantment"
-  },
-  {
-    "category": "cloth",
-    "armor": "5+DEX",
-    "cost": "10,000 gp",
-    "name": "Epic Enchantment"
-  },
-  {
-    "category": "leather",
-    "armor": "3+DEX",
-    "cost": "5 gp",
-    "name": "Cheap Hides"
-  },
-  {
-    "category": "leather",
-    "armor": "4+DEX",
-    "cost": "45 gp",
-    "name": "Ox Hide"
-  },
-  {
-    "category": "leather",
-    "armor": "5+DEX",
-    "cost": "300 gp",
-    "name": "Hard Leather (Req. 1 STR)"
-  },
-  {
-    "category": "leather",
-    "armor": "6+DEX",
-    "cost": "2,000 gp",
-    "name": "Wyrmhide (Req. 1 STR)"
-  },
-  {
-    "category": "plate",
-    "armor": "10",
-    "cost": "25 gp",
-    "name": "Rusty Plate (Req. 2 STR)"
-  },
-  {
-    "category": "plate",
-    "armor": "14",
-    "cost": "200 gp",
-    "name": "Half Plate (Req. 3 STR)"
-  },
-  {
-    "category": "plate",
-    "armor": "18",
-    "cost": "2,000 gp",
-    "name": "Full Plate (Req. 4 STR)"
-  },
-  {
-    "category": "plate",
-    "armor": "22",
-    "cost": "5,000 gp",
-    "name": "Mithril Plate (Req. 5 STR)"
-  },
-  {
-    "category": "mail",
-    "armor": "6+DEX (max 2)",
-    "cost": "15 gp",
-    "name": "Rusty Mail"
-  },
-  {
-    "category": "mail",
-    "armor": "9+DEX (max 2)",
-    "cost": "60 gp",
-    "name": "Chain Shirt (Req. 2 STR)"
-  },
-  {
-    "category": "mail",
-    "armor": "12+DEX (max 2)",
-    "cost": "700 gp",
-    "name": "Scale Mail (Req. 3 STR)"
-  },
-  {
-    "category": "mail",
-    "armor": "15+DEX (max 2)",
-    "cost": "3,000 gp",
-    "name": "Dragonscale (Req. 4 STR)"
-  },
-  {
-    "category": "shields",
-    "armor": "2",
-    "cost": "5 gp",
-    "name": "Wooden Buckler"
-  },
-  {
-    "category": "shields",
-    "armor": "4",
-    "cost": "80 gp",
-    "name": "Iron Shield (Req. 2 STR)"
-  },
-  {
-    "category": "shields",
-    "armor": "6",
-    "cost": "1,500 gp",
-    "name": "Tower Shield (Req. 3 STR)"
-  },
-  {
-    "category": "shields",
-    "armor": "8",
-    "cost": "9,000 gp",
-    "name": "Dragon Shield (Req. 3 STR)"
-  }
+	{
+		"category": "cloth",
+		"armor": "2+DEX",
+		"cost": "10 gp",
+		"name": "Adventurer's Garb"
+	},
+	{
+		"category": "cloth",
+		"armor": "3+DEX",
+		"cost": "100 gp",
+		"name": "Minor Enchantment"
+	},
+	{
+		"category": "cloth",
+		"armor": "4+DEX",
+		"cost": "1,000 gp",
+		"name": "Major Enchantment"
+	},
+	{
+		"category": "cloth",
+		"armor": "5+DEX",
+		"cost": "10,000 gp",
+		"name": "Epic Enchantment"
+	},
+	{
+		"category": "leather",
+		"armor": "3+DEX",
+		"cost": "5 gp",
+		"name": "Cheap Hides"
+	},
+	{
+		"category": "leather",
+		"armor": "4+DEX",
+		"cost": "45 gp",
+		"name": "Ox Hide"
+	},
+	{
+		"category": "leather",
+		"armor": "5+DEX",
+		"cost": "300 gp",
+		"name": "Hard Leather (Req. 1 STR)"
+	},
+	{
+		"category": "leather",
+		"armor": "6+DEX",
+		"cost": "2,000 gp",
+		"name": "Wyrmhide (Req. 1 STR)"
+	},
+	{
+		"category": "plate",
+		"armor": "10",
+		"cost": "25 gp",
+		"name": "Rusty Plate (Req. 2 STR)"
+	},
+	{
+		"category": "plate",
+		"armor": "14",
+		"cost": "200 gp",
+		"name": "Half Plate (Req. 3 STR)"
+	},
+	{
+		"category": "plate",
+		"armor": "18",
+		"cost": "2,000 gp",
+		"name": "Full Plate (Req. 4 STR)"
+	},
+	{
+		"category": "plate",
+		"armor": "22",
+		"cost": "5,000 gp",
+		"name": "Mithril Plate (Req. 5 STR)"
+	},
+	{
+		"category": "mail",
+		"armor": "6+DEX (max 2)",
+		"cost": "15 gp",
+		"name": "Rusty Mail"
+	},
+	{
+		"category": "mail",
+		"armor": "9+DEX (max 2)",
+		"cost": "60 gp",
+		"name": "Chain Shirt (Req. 2 STR)"
+	},
+	{
+		"category": "mail",
+		"armor": "12+DEX (max 2)",
+		"cost": "700 gp",
+		"name": "Scale Mail (Req. 3 STR)"
+	},
+	{
+		"category": "mail",
+		"armor": "15+DEX (max 2)",
+		"cost": "3,000 gp",
+		"name": "Dragonscale (Req. 4 STR)"
+	},
+	{
+		"category": "shields",
+		"armor": "2",
+		"cost": "5 gp",
+		"name": "Wooden Buckler"
+	},
+	{
+		"category": "shields",
+		"armor": "4",
+		"cost": "80 gp",
+		"name": "Iron Shield (Req. 2 STR)"
+	},
+	{
+		"category": "shields",
+		"armor": "6",
+		"cost": "1,500 gp",
+		"name": "Tower Shield (Req. 3 STR)"
+	},
+	{
+		"category": "shields",
+		"armor": "8",
+		"cost": "9,000 gp",
+		"name": "Dragon Shield (Req. 3 STR)"
+	}
 ]

@@ -90,11 +90,18 @@ export const SECTION_SIDEBAR_CONFIG = Object.fromEntries(
 		(key) =>
 			[
 				key,
-				[{ label: SECTION_METADATA[key].label, link: SECTION_METADATA[key].path }],
-			] as const
-	)
+				[
+					{
+						label: SECTION_METADATA[key].label,
+						link: SECTION_METADATA[key].path,
+					},
+				],
+			] as const,
+	),
 ) as {
-	readonly [K in SectionKey]: readonly [{ readonly label: string; readonly link: string }];
+	readonly [K in SectionKey]: readonly [
+		{ readonly label: string; readonly link: string },
+	];
 };
 
 /** First path segment for multi-file sections, or the slug for top-level docs. */

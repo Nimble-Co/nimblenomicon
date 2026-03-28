@@ -1,26 +1,26 @@
 [
-  {
-    "name": "Tiny",
-    "description": "can be carried in a typical pocket (many can comfortably fit in 1 space)."
-  },
-  {
-    "name": "Small",
-    "description": "can be carried in a backpack (2 can comfortably fit in 1 space)."
-  },
-  {
-    "name": "Medium",
-    "description": "is the average human size (1 can comfortably fit in 1 space)."
-  },
-  {
-    "name": "Large",
-    "description": "is roughly the size of a bear (1 can comfortably fit in a 2x2 area)."
-  },
-  {
-    "name": "Huge",
-    "description": "is roughly the size of a small house (1 can comfortably fit in a 3x3 area)."
-  },
-  {
-    "name": "Gargantuan",
-    "description": "can be as large as a castle keep (1 can fill a 4x4 area or greater)."
-  }
+	{
+		"name": "Tiny",
+		"description": "can be carried in a typical pocket (many can comfortably fit in 1 space)."
+	},
+	{
+		"name": "Small",
+		"description": "can be carried in a backpack (2 can comfortably fit in 1 space)."
+	},
+	{
+		"name": "Medium",
+		"description": "is the average human size (1 can comfortably fit in 1 space)."
+	},
+	{
+		"name": "Large",
+		"description": "is roughly the size of a bear (1 can comfortably fit in a 2x2 area)."
+	},
+	{
+		"name": "Huge",
+		"description": "is roughly the size of a small house (1 can comfortably fit in a 3x3 area)."
+	},
+	{
+		"name": "Gargantuan",
+		"description": "can be as large as a castle keep (1 can fill a 4x4 area or greater)."
+	}
 ]

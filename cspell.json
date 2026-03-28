@@ -1,32 +1,32 @@
 {
-  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
-  "version": "0.2",
-  "language": "en",
-  "caseSensitive": false,
-  "useGitignore": true,
-  "dictionaries": ["en_US", "softwareTerms", "game-terms", "technical-terms"],
-  "dictionaryDefinitions": [
-    {
-      "name": "game-terms",
-      "path": "./.cspell/game-terms.txt",
-      "addWords": true,
-      "supportNonStrictSearches": true
-    },
-    {
-      "name": "technical-terms",
-      "path": "./.cspell/technical-terms.txt",
-      "addWords": true,
-      "supportNonStrictSearches": true
-    }
-  ],
-  "ignorePaths": [
-    "dist/**",
-    "node_modules/**",
-    "package-lock.json",
-    "skills-lock.json",
-    ".astro/**"
-  ],
-  "ignoreRegExpList": [],
-  "ignoreWords": [],
-  "words": []
+	"$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+	"version": "0.2",
+	"language": "en",
+	"caseSensitive": false,
+	"useGitignore": true,
+	"dictionaries": ["en_US", "softwareTerms", "game-terms", "technical-terms"],
+	"dictionaryDefinitions": [
+		{
+			"name": "game-terms",
+			"path": "./.cspell/game-terms.txt",
+			"addWords": true,
+			"supportNonStrictSearches": true
+		},
+		{
+			"name": "technical-terms",
+			"path": "./.cspell/technical-terms.txt",
+			"addWords": true,
+			"supportNonStrictSearches": true
+		}
+	],
+	"ignorePaths": [
+		"dist/**",
+		"node_modules/**",
+		"package-lock.json",
+		"skills-lock.json",
+		".astro/**"
+	],
+	"ignoreRegExpList": [],
+	"ignoreWords": [],
+	"words": []
 }

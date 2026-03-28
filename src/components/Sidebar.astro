@@ -7,7 +7,10 @@ import { resolveSectionSidebar } from '../utils/section-sidebar';
 
 const { toc } = Astro.locals.starlightRoute;
 const pathname = Astro.url.pathname;
-const { sidebar, bookChrome, sectionKey } = resolveSectionSidebar(Astro.locals.starlightRoute, pathname);
+const { sidebar, bookChrome, sectionKey } = resolveSectionSidebar(
+	Astro.locals.starlightRoute,
+	pathname,
+);
 ---
 
 <NavSidebarPersister sidebar={sidebar}>

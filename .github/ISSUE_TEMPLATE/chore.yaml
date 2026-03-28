@@ -1,7 +1,7 @@
 name: Chore
 description: Maintenance task, dependency update, or housekeeping.
-title: "chore: "
-labels: ["chore"]
+title: 'chore: '
+labels: ['chore']
 body:
   - type: textarea
     id: description

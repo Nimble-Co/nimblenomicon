@@ -6,7 +6,7 @@ Nimble is a fast-paced, heroic fantasy TTRPG where bold choices and epic stories
 
 **If you're experienced with RPGs**, feel free to create your own hero from scratch (see “Character Creation” on pg. 18). When building your hero, perhaps what will have the largest impact on how you interact with the world is your hero's class. Start there. Then you can flesh out other important aspects of your character's ancestry, background, and what languages you know, as well as your stats and any equipment you have. You can do these steps in any order, filling out your character sheet as you go. **Now, go start playing!**
 
-**Videos, Digital Downloads, FAQ, and More**
+## Videos, Digital Downloads, FAQ, and More
 
 Visit [nimbleRPG.com/start](https://nimbleRPG.com/start) for everything you need to jump into the game: pre-made characters, step-by-step instructional videos, answers to FAQs, and other handy downloadable resources!
 
