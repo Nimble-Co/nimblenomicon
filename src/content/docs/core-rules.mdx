@@ -868,7 +868,7 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
                 spell.actions,
                 spell.target,
                 spell.castingNote,
-              ) + (spell.body.trim() ? "\n\n" + spell.body : ""),
+              ) + (spell.body?.trim() ? "\n\n" + spell.body : ""),
           )}
         />
       </>
@@ -884,16 +884,21 @@ Some classes can choose from among these additional spells as they level up.
   "flat" in us && us.flat ? (
     <>
       <h3>{us.name}</h3>
-      <div
-        set:html={renderMarkdown(
-          spellMetaMarkdown(
-            us.level,
-            us.actions,
-            us.target,
-            us.castingNote,
-          ) + (us.body.trim() ? "\n\n" + us.body : ""),
-        )}
-      />
+      {(() => {
+        const s = us.spells[0];
+        return (
+          <div
+            set:html={renderMarkdown(
+              spellMetaMarkdown(
+                s.level,
+                s.actions,
+                s.target,
+                s.castingNote,
+              ) + (s.body?.trim() ? "\n\n" + s.body : ""),
+            )}
+          />
+        );
+      })()}
     </>
   ) : (
     <>
@@ -908,7 +913,7 @@ Some classes can choose from among these additional spells as they level up.
                 spell.actions,
                 spell.target,
                 spell.castingNote,
-              ) + (spell.body.trim() ? "\n\n" + spell.body : ""),
+              ) + (spell.body?.trim() ? "\n\n" + spell.body : ""),
             )}
           />
         </>

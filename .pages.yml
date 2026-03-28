@@ -1,5 +1,5 @@
 # Pages CMS — https://pagescms.org/docs/configuration/
-# Use groups for sidebar navigation; format: code for large structured JSON edited as text.
+# Groups organize the sidebar. Rich-text uses format: markdown or html per field.
 
 media:
   label: Assets
@@ -12,8 +12,8 @@ content:
     label: Core Rules
     type: group
     items:
-      - name: core-rules-intro
-        label: Intro
+      - name: core-rules-start
+        label: Start
         type: group
         items:
           - name: core-rules-start-here
@@ -21,8 +21,8 @@ content:
             type: file
             path: src/data/core-rules/start-here.md
 
-      - name: core-rules-mechanics
-        label: Mechanics
+      - name: core-rules-stats-skills
+        label: Stats & skills
         type: group
         items:
           - name: stats
@@ -39,10 +39,12 @@ content:
                 label: Stat code
                 type: string
                 required: true
-                description: Short code (e.g. STR). Skills reference this value.
+                description: Short code (e.g. STR). Skills must use the same value.
               - name: body
-                type: text
+                type: rich-text
                 required: true
+                options:
+                  format: markdown
 
           - name: skills
             label: Skills
@@ -58,15 +60,16 @@ content:
                 label: Stat code
                 type: string
                 required: true
-                description: Must match a Stat code in Stats (e.g. STR). Zod validates at build; CMS cannot link lists yet.
+                description: Must match a row in Stats. Build validates; CMS cannot link lists.
               - name: body
-                type: text
+                type: rich-text
                 required: true
+                options:
+                  format: markdown
               - name: callout
                 label: Callout
                 type: rich-text
                 required: false
-                description: Optional HTML note.
                 options:
                   format: html
 
@@ -81,8 +84,10 @@ content:
                 type: string
                 required: true
               - name: body
-                type: text
+                type: rich-text
                 required: true
+                options:
+                  format: markdown
 
           - name: conditions
             label: Conditions
@@ -95,11 +100,13 @@ content:
                 type: string
                 required: true
               - name: body
-                type: text
+                type: rich-text
                 required: true
+                options:
+                  format: markdown
 
       - name: core-rules-checks
-        label: Checks & downtime
+        label: Checks
         type: group
         items:
           - name: dc-examples
@@ -110,15 +117,14 @@ content:
             list: true
             fields:
               - name: html
-                label: List item
+                label: Row
                 type: rich-text
                 required: true
-                description: Full row HTML (bold labels).
                 options:
                   format: html
 
           - name: save-types
-            label: Save types
+            label: Saves
             type: file
             path: src/data/save-types.json
             format: json
@@ -128,11 +134,13 @@ content:
                 type: string
                 required: true
               - name: body
-                type: text
+                type: rich-text
                 required: true
+                options:
+                  format: markdown
 
           - name: downtime-activities
-            label: Downtime activities
+            label: Downtime
             type: file
             path: src/data/downtime-activities.json
             format: json
@@ -142,8 +150,10 @@ content:
                 type: string
                 required: true
               - name: body
-                type: text
+                type: rich-text
                 required: true
+                options:
+                  format: markdown
 
       - name: core-rules-character
         label: Character
@@ -160,8 +170,10 @@ content:
                 type: string
                 required: true
               - name: body
-                type: text
+                type: rich-text
                 required: true
+                options:
+                  format: markdown
 
           - name: languages
             label: Languages
@@ -174,11 +186,13 @@ content:
                 type: string
                 required: true
               - name: body
-                type: text
+                type: rich-text
                 required: true
+                options:
+                  format: markdown
 
           - name: character-classes
-            label: Classes (step 1)
+            label: Classes
             type: file
             path: src/data/character-classes.json
             format: json
@@ -188,8 +202,10 @@ content:
                 type: string
                 required: true
               - name: body
-                type: text
+                type: rich-text
                 required: true
+                options:
+                  format: markdown
 
           - name: ancestries
             label: Ancestries
@@ -211,19 +227,21 @@ content:
                 type: string
                 required: true
               - name: sizeLine
-                label: Size line
+                label: Size
                 type: string
                 required: true
               - name: flavor
-                type: text
+                type: rich-text
                 required: true
+                options:
+                  format: markdown
               - name: trait
                 label: Trait
-                type: text
+                type: rich-text
                 required: true
-                description: Markdown (bold ability name, etc.).
+                options:
+                  format: markdown
               - name: callout
-                label: Callout
                 type: rich-text
                 required: false
                 options:
@@ -238,12 +256,14 @@ content:
             fields:
               - name: body
                 label: Segment
-                type: text
+                type: rich-text
                 required: true
-                description: One background or callout block; order matches the page.
+                description: One segment in document order.
+                options:
+                  format: markdown
 
           - name: adventuring-motivations
-            label: Adventuring motivations
+            label: Motivations
             type: file
             path: src/data/adventuring-motivations.json
             format: json
@@ -278,26 +298,20 @@ content:
                     - name: ranged
                       label: Ranged
               - name: item
-                label: Item
                 type: string
                 required: true
               - name: damage
-                label: Damage
                 type: string
                 required: true
               - name: properties
-                label: Properties
                 type: object
                 list: true
                 required: false
-                description: One entry per property; shown comma-separated.
                 fields:
                   - name: text
-                    label: Text
                     type: string
                     required: true
               - name: cost
-                label: Cost
                 type: string
                 required: true
 
@@ -312,10 +326,11 @@ content:
                 type: string
                 required: true
               - name: body
-                type: text
+                type: rich-text
                 required: true
+                options:
+                  format: markdown
               - name: callout
-                label: Callout
                 type: rich-text
                 required: false
                 options:
@@ -345,11 +360,10 @@ content:
                     - name: shields
                       label: Shields
               - name: item
-                label: Item
                 type: string
                 required: true
               - name: armor
-                label: Armor
+                label: Armor value
                 type: string
                 required: true
               - name: cost
@@ -357,22 +371,21 @@ content:
                 required: true
 
           - name: misc-adventuring-equipment
-            label: Misc. adventuring gear
+            label: Misc. gear
             type: file
             path: src/data/misc-adventuring-equipment.json
             format: json
             list: true
             fields:
               - name: item
-                label: Item
                 type: string
                 required: true
               - name: properties
-                label: Properties
-                type: text
+                type: rich-text
                 required: true
+                options:
+                  format: markdown
               - name: cost
-                label: Cost
                 type: string
                 required: true
 
@@ -381,7 +394,7 @@ content:
         type: group
         items:
           - name: spell-schools
-            label: School intros
+            label: Spell schools
             type: file
             path: src/data/spell-schools.json
             format: json
@@ -391,8 +404,10 @@ content:
                 type: string
                 required: true
               - name: body
-                type: text
+                type: rich-text
                 required: true
+                options:
+                  format: markdown
 
           - name: spell-scroll-costs
             label: Scroll costs
@@ -402,7 +417,6 @@ content:
             list: true
             fields:
               - name: tier
-                label: Tier
                 type: string
                 required: true
               - name: cost
@@ -417,7 +431,6 @@ content:
             list: true
             fields:
               - name: tier
-                label: Tier
                 type: string
                 required: true
               - name: cost
@@ -425,20 +438,117 @@ content:
                 required: true
 
           - name: spells
-            label: Spell compendium
+            label: Spells
             type: file
             path: src/data/spells.json
-            format: code
-            description: >
-              Schools, utility schools, and every spell. Each spell has level (0 = cantrip),
-              actions (number or null with castingNote), target, body. Edit carefully—invalid JSON breaks the build.
+            format: json
+            list: true
+            fields:
+              - name: schoolId
+                label: School
+                type: select
+                required: false
+                description: Set for main-school spells; leave empty for utility spells.
+                options:
+                  values:
+                    - name: fire-spells
+                      label: Fire
+                    - name: ice-spells
+                      label: Ice
+                    - name: lightning-spells
+                      label: Lightning
+                    - name: wind-spells
+                      label: Wind
+                    - name: radiant-spells
+                      label: Radiant
+                    - name: necrotic-spells
+                      label: Necrotic
+              - name: schoolName
+                label: School name
+                type: string
+                required: false
+                description: e.g. Fire Spells. Must match School.
+              - name: utilityGroupId
+                label: Utility group
+                type: select
+                required: false
+                description: Set for utility spells; leave empty for main-school spells.
+                options:
+                  values:
+                    - name: utility-ice
+                      label: Ice
+                    - name: utility-fire
+                      label: Fire
+                    - name: utility-lightning
+                      label: Lightning
+                    - name: utility-tempest-s-command
+                      label: Tempest's Command
+                    - name: utility-wind
+                      label: Wind
+                    - name: utility-radiant
+                      label: Radiant
+                    - name: utility-necrotic
+                      label: Necrotic
+              - name: utilityGroupName
+                label: Utility group name
+                type: string
+                required: false
+              - name: name
+                label: Spell name
+                type: string
+                required: true
+              - name: level
+                label: Level (0 = cantrip)
+                type: number
+                required: true
+                options:
+                  min: 0
+                  max: 9
+              - name: actions
+                label: Actions
+                type: number
+                required: false
+                description: Heroic actions required. Omit only if using Casting note (e.g. 1 minute, 24 hours).
+                options:
+                  min: 1
+              - name: castingNote
+                label: Casting note
+                type: text
+                required: false
+                description: Use when Actions is omitted (non-action cast time).
+              - name: target
+                label: Target
+                type: select
+                required: true
+                options:
+                  values:
+                    - name: single-target
+                      label: Single target
+                    - name: self
+                      label: Self
+                    - name: aoe
+                      label: AoE
+                    - name: two-targets
+                      label: 2 targets
+                    - name: multi-target
+                      label: Multi-target
+                    - name: single-target-plus
+                      label: Single target+
+                    - name: single-target-or-self
+                      label: Single target / self
+              - name: body
+                label: Rules
+                type: rich-text
+                required: true
+                options:
+                  format: markdown
 
       - name: core-rules-magic-items
         label: Magic items
         type: group
         items:
           - name: magical-item-rarities
-            label: Rarity table
+            label: Rarities
             type: file
             path: src/data/magical-item-rarities.json
             format: json
@@ -448,7 +558,6 @@ content:
                 type: string
                 required: true
               - name: availability
-                label: Typical availability
                 type: text
                 required: true
               - name: cost
@@ -456,33 +565,34 @@ content:
                 required: true
 
           - name: magical-items
-            label: Items & wands
+            label: Items
             type: file
             path: src/data/magical-items.json
             format: code
             description: >
-              Discriminated list (standard items vs wands). Structured JSON—use code editor.
+              Standard items and wands (kind, paragraphs, bullets, wands with recharge).
+              Structured JSON; invalid JSON breaks the build.
 
       - name: core-rules-options
         label: Options
         type: group
         items:
           - name: optional-variant-rules
-            label: Variant rules
+            label: Variants
             type: file
             path: src/data/optional-variant-rules.json
             format: json
             list: true
             fields:
               - name: name
-                label: Title
                 type: string
                 required: true
               - name: body
-                type: text
+                type: rich-text
                 required: true
+                options:
+                  format: markdown
               - name: callout
-                label: Callout
                 type: rich-text
                 required: false
                 options:
