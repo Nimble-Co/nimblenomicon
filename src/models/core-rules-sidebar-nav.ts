@@ -66,3 +66,14 @@ export function hashBelongsToChapter(
 	if (h === chapter.slug) return true;
 	return chapter.children.some((c) => c.slug === h);
 }
+
+/** Intro / “Start Here” region: hero, start-here prose, and all ## before Combat. */
+export function hashBelongsToStartHere(
+	hash: string,
+	startHereLinks: CoreRulesSidebarLink[],
+): boolean {
+	const h = hash.replace(/^#/, "");
+	if (!h || h === "_top") return true;
+	if (h === "start-here" || h === "core-rules") return true;
+	return startHereLinks.some((l) => l.slug === h);
+}
