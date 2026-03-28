@@ -4,7 +4,7 @@
  */
 import type { ImageMetadata } from 'astro';
 import coreRulesIcon from '../assets/core_rules.svg';
-import herosIcon from '../assets/heros.svg';
+import heroesIcon from '../assets/heroes.svg';
 import gameMasterGuideIcon from '../assets/game_master_guide.svg';
 import adventuresIcon from '../assets/adventures.svg';
 import monstersAndMoreIcon from '../assets/monsters_and_more.svg';
@@ -41,7 +41,7 @@ export const SECTION_METADATA = {
 	heroes: {
 		label: 'Heroes',
 		path: '/heroes/',
-		icon: herosIcon,
+		icon: heroesIcon,
 		home: { width: 17, height: 25 },
 		sidebar: { width: 34, height: 50 },
 	},
