@@ -25,15 +25,17 @@ const startHereSlugsJson = JSON.stringify(startHereLinks.map((l) => l.slug));
 	</a>
 
 	<details
-		class="nimble-core-nav__start"
+		class="nimble-core-nav__chapter nimble-core-nav__chapter--start"
 		open={hashBelongsToStartHere(hash, startHereLinks)}
 		data-nimble-start-here
 	>
-		<summary class="nimble-core-nav__start-summary">
-			<span class="nimble-core-nav__start-caret" aria-hidden="true"></span>
-			<span class="nimble-core-nav__start-title">Start Here</span>
+		<summary class="nimble-core-nav__chapter-summary">
+			<span class="nimble-core-nav__chev-slot" aria-hidden="true">
+				<span class="nimble-core-nav__chev-tri" />
+			</span>
+			<span class="nimble-core-nav__chapter-title">Start Here</span>
 		</summary>
-		<ul class="nimble-core-nav__start-links">
+		<ul class="nimble-core-nav__chapter-list nimble-core-nav__chapter-list--start">
 			{
 				startHereLinks.map((item) => (
 					<li>
@@ -112,97 +114,9 @@ const startHereSlugsJson = JSON.stringify(startHereLinks.map((l) => l.slug));
 		font-weight: 700;
 	}
 
-	/* Collapsible Start Here — gold only when [open]; collapsed = neutral bar */
-	.nimble-core-nav__start {
-		margin: 0;
-		border-radius: var(--nimble-book-sidebar-radius, 4px);
-		overflow: hidden;
-		border: 1px solid var(--nimble-book-sidebar-border, #d1d5db);
-		background: #fff;
-		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-	}
-
-	.nimble-core-nav__start[open] {
-		border-color: color-mix(in srgb, var(--nimble-book-sidebar-gold-active, #eab308) 55%, #b45309);
-		background: var(--nimble-book-sidebar-gold-active, #eab308);
-		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
-	}
-
-	.nimble-core-nav__start-summary {
-		display: flex;
-		align-items: center;
-		gap: 0.45rem;
-		padding: 0.5rem 0.65rem;
-		cursor: pointer;
-		list-style: none;
-		font-family: var(--nimble-font-body);
-		font-size: 0.875rem;
-		font-weight: 700;
-		letter-spacing: 0.02em;
-		color: var(--nimble-book-sidebar-fg, #252b42);
-		background: var(--nimble-book-sidebar-tile-bg, #ebebeb);
-	}
-
-	.nimble-core-nav__start[open] > .nimble-core-nav__start-summary {
-		color: #fff;
-		background: transparent;
-	}
-
-	.nimble-core-nav__start-summary::-webkit-details-marker {
-		display: none;
-	}
-
-	.nimble-core-nav__start:not([open]) > .nimble-core-nav__start-summary .nimble-core-nav__start-caret {
-		border-bottom: 6px solid #6b7280;
-		border-top: none;
-	}
-
-	.nimble-core-nav__start[open] > .nimble-core-nav__start-summary .nimble-core-nav__start-caret {
-		border-top: 6px solid #fff;
-		border-bottom: none;
-	}
-
-	.nimble-core-nav__start-caret {
-		width: 0;
-		height: 0;
-		border-left: 5px solid transparent;
-		border-right: 5px solid transparent;
-		flex-shrink: 0;
-	}
-
-	.nimble-core-nav__start-links {
-		list-style: none;
-		margin: 0;
-		padding: 0.35rem 0.5rem 0.55rem;
-		background: #fff;
-		border-top: 1px solid color-mix(in srgb, #fff 70%, #000);
-	}
-
-	.nimble-core-nav__start-links li {
-		margin: 0;
-	}
-
-	.nimble-core-nav__start-links a {
-		display: block;
-		padding: 0.3rem 0.35rem 0.3rem 0.5rem;
-		font-family: var(--nimble-font-body);
-		font-size: 0.8125rem;
-		font-weight: 400;
-		color: var(--nimble-book-sidebar-muted, #4b5563);
-		text-decoration: none;
-		border-radius: 2px;
-		line-height: 1.35;
-	}
-
-	.nimble-core-nav__start-links a:hover,
-	.nimble-core-nav__start-links a:focus-visible {
-		color: var(--nimble-book-sidebar-fg, #252b42);
-		background: rgba(0, 0, 0, 0.04);
-	}
-
-	.nimble-core-nav__start-links a.is-current {
-		color: var(--nimble-book-sidebar-gold-accent, #d4a90c);
-		font-weight: 700;
+	/* Start Here uses same chapter panel styles; optional indent tweak for intro links */
+	.nimble-core-nav__chapter-list--start {
+		padding-inline-start: 0.45rem;
 	}
 
 	/* Chapter rows: neutral when collapsed; gold header when [open] */
@@ -394,31 +308,49 @@ const startHereSlugsJson = JSON.stringify(startHereLinks.map((l) => l.slug));
 		}
 	}
 
-	/** Ignore scroll-spy while programmatic scroll / hash sync runs (avoids fighting the user). */
-	let scrollSyncLockUntil = 0;
+	/**
+	 * Pause scroll-spy during programmatic smooth scrolls (duration varies by browser).
+	 * Prefer `scrollend`; fall back to a long timeout so spy always resumes.
+	 */
+	let scrollSpyPaused = false;
+	let scrollSpyPauseTimer = 0;
 
-	function lockScrollSync(/** @type {number} */ ms) {
-		scrollSyncLockUntil = Date.now() + ms;
+	function pauseScrollSpyUntilScrollEnds() {
+		scrollSpyPaused = true;
+		window.clearTimeout(scrollSpyPauseTimer);
+		const resume = () => {
+			scrollSpyPaused = false;
+		};
+		window.addEventListener('scrollend', resume, { once: true, passive: true });
+		scrollSpyPauseTimer = window.setTimeout(resume, 2200);
+	}
+
+	function pauseScrollSpyBrief(/** @type {number} */ ms) {
+		scrollSpyPaused = true;
+		window.clearTimeout(scrollSpyPauseTimer);
+		scrollSpyPauseTimer = window.setTimeout(() => {
+			scrollSpyPaused = false;
+		}, ms);
 	}
 
 	function wireExpandJump(nav, /** @type {(id: string) => void} */ applyActive) {
 		const startDetails = nav.querySelector('details[data-nimble-start-here]');
 		startDetails?.addEventListener('toggle', () => {
 			if (!startDetails.open) return;
-			lockScrollSync(900);
+			pauseScrollSpyUntilScrollEnds();
 			applyActive('start-here');
 			history.replaceState(null, '', '#start-here');
 			const el = document.getElementById('start-here');
 			el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		});
 
-		nav.querySelectorAll('details.nimble-core-nav__chapter').forEach((det) => {
+		nav.querySelectorAll('details.nimble-core-nav__chapter[data-chapter-slug]').forEach((det) => {
 			if (!(det instanceof HTMLDetailsElement)) return;
 			const slug = det.getAttribute('data-chapter-slug');
 			if (!slug) return;
 			det.addEventListener('toggle', () => {
-				if (!det.open || !slug) return;
-				lockScrollSync(900);
+				if (!det.open) return;
+				pauseScrollSpyUntilScrollEnds();
 				applyActive(slug);
 				history.replaceState(null, '', '#' + encodeURIComponent(slug));
 				const el = document.getElementById(slug);
@@ -466,7 +398,7 @@ const startHereSlugsJson = JSON.stringify(startHereLinks.map((l) => l.slug));
 		};
 
 		const computeFromScroll = () => {
-			if (Date.now() < scrollSyncLockUntil) return;
+			if (scrollSpyPaused) return;
 			const offset = Math.min(160, window.innerHeight * 0.18);
 			let best = '_top';
 			for (const [id, el] of pairs) {
@@ -494,12 +426,13 @@ const startHereSlugsJson = JSON.stringify(startHereLinks.map((l) => l.slug));
 
 		window.addEventListener('hashchange', () => {
 			const h = (window.location.hash || '').replace(/^#/, '') || '_top';
-			lockScrollSync(550);
+			pauseScrollSpyBrief(450);
 			if (tracked.has(h)) {
 				apply(h);
 			}
 			const target = h === '_top' ? document.getElementById('_top') : document.getElementById(h);
 			if (target) {
+				pauseScrollSpyUntilScrollEnds();
 				target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 			}
 		});
