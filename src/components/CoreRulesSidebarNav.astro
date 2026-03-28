@@ -1,0 +1,295 @@
+---
+/**
+ * Core Rules only: mockup-shaped sidebar — gold “Start Here” stack, then white outlined chapter rows.
+ */
+import { buildCoreRulesSidebarNav, hashBelongsToChapter } from '../models/core-rules-sidebar-nav';
+
+interface Props {
+	overviewLabel: string;
+}
+
+const { overviewLabel } = Astro.props;
+const { startHereLinks, chapters } = buildCoreRulesSidebarNav();
+const hash = Astro.url.hash.replace(/^#/, '');
+const chaptersJson = JSON.stringify(chapters);
+---
+
+<nav class="nimble-core-nav" aria-label={Astro.locals.t('tableOfContents.onThisPage')}>
+	<a href="#_top" class:list={['nimble-core-nav__overview', { 'is-current': hash === '_top' || hash === '' }]}>
+		{overviewLabel}
+	</a>
+
+	<div class="nimble-core-nav__start-block">
+		<div class="nimble-core-nav__start-bar" aria-hidden="true">
+			<span class="nimble-core-nav__start-caret"></span>
+			<span class="nimble-core-nav__start-title">Start Here</span>
+		</div>
+		<ul class="nimble-core-nav__start-links">
+			{
+				startHereLinks.map((item) => (
+					<li>
+						<a
+							href={'#' + item.slug}
+							class:list={[{ 'is-current': hash === item.slug }]}
+						>
+							{item.label}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+
+	{
+		chapters.map((ch) => {
+			const open = hashBelongsToChapter(hash, ch);
+			return (
+				<details class="nimble-core-nav__chapter" data-chapter-slug={ch.slug} open={open}>
+					<summary class="nimble-core-nav__chapter-summary">
+						<span class="nimble-core-nav__chev-slot" aria-hidden="true">
+							<span class="nimble-core-nav__chev-tri" />
+						</span>
+						<span class="nimble-core-nav__chapter-title">{ch.label}</span>
+					</summary>
+					<ul class="nimble-core-nav__chapter-list">
+						<li>
+							<a
+								href={'#' + ch.slug}
+								class:list={[{ 'is-current': hash === ch.slug }]}
+							>
+								{ch.label}
+							</a>
+						</li>
+						{
+							ch.children.map((item) => (
+								<li>
+									<a
+										href={'#' + item.slug}
+										class:list={[{ 'is-current': hash === item.slug }]}
+									>
+										{item.label}
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</details>
+			);
+		})
+	}
+</nav>
+
+<style>
+	.nimble-core-nav {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		margin-top: 0.25rem;
+	}
+
+	.nimble-core-nav__overview {
+		display: block;
+		padding: 0.35rem 0.5rem;
+		font-family: var(--nimble-font-body);
+		font-size: 0.8125rem;
+		font-weight: 500;
+		color: var(--nimble-book-sidebar-muted, #4b5563);
+		text-decoration: none;
+		border-radius: var(--nimble-book-sidebar-radius, 4px);
+	}
+
+	.nimble-core-nav__overview:hover,
+	.nimble-core-nav__overview:focus-visible {
+		color: var(--nimble-book-sidebar-fg, #252b42);
+		background: rgba(0, 0, 0, 0.04);
+	}
+
+	.nimble-core-nav__overview.is-current {
+		color: var(--nimble-book-sidebar-gold-accent, #d4a90c);
+		font-weight: 700;
+	}
+
+	/* Gold “Start Here” block + nested grey links (mockup) */
+	.nimble-core-nav__start-block {
+		border-radius: var(--nimble-book-sidebar-radius, 4px);
+		overflow: hidden;
+		background: var(--nimble-book-sidebar-gold-active, #eab308);
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+	}
+
+	.nimble-core-nav__start-bar {
+		display: flex;
+		align-items: center;
+		gap: 0.45rem;
+		padding: 0.5rem 0.65rem;
+		color: #fff;
+		font-family: var(--nimble-font-body);
+		font-size: 0.875rem;
+		font-weight: 700;
+	}
+
+	.nimble-core-nav__start-caret {
+		width: 0;
+		height: 0;
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-top: 6px solid #fff;
+		border-bottom: none;
+		flex-shrink: 0;
+	}
+
+	.nimble-core-nav__start-title {
+		letter-spacing: 0.02em;
+	}
+
+	.nimble-core-nav__start-links {
+		list-style: none;
+		margin: 0;
+		padding: 0.35rem 0.5rem 0.55rem;
+		background: #fff;
+	}
+
+	.nimble-core-nav__start-links li {
+		margin: 0;
+	}
+
+	.nimble-core-nav__start-links a {
+		display: block;
+		padding: 0.3rem 0.35rem 0.3rem 0.5rem;
+		font-family: var(--nimble-font-body);
+		font-size: 0.8125rem;
+		font-weight: 400;
+		color: var(--nimble-book-sidebar-muted, #4b5563);
+		text-decoration: none;
+		border-radius: 2px;
+		line-height: 1.35;
+	}
+
+	.nimble-core-nav__start-links a:hover,
+	.nimble-core-nav__start-links a:focus-visible {
+		color: var(--nimble-book-sidebar-fg, #252b42);
+		background: rgba(0, 0, 0, 0.04);
+	}
+
+	.nimble-core-nav__start-links a.is-current {
+		color: var(--nimble-book-sidebar-gold-accent, #d4a90c);
+		font-weight: 700;
+	}
+
+	/* White outlined chapter rows + square chevron (mockup) */
+	.nimble-core-nav__chapter {
+		margin: 0;
+		border-radius: var(--nimble-book-sidebar-radius, 4px);
+		border: 1px solid var(--nimble-book-sidebar-border, #d1d5db);
+		background: #fff;
+		overflow: hidden;
+	}
+
+	.nimble-core-nav__chapter-summary {
+		display: flex;
+		align-items: center;
+		gap: 0.45rem;
+		padding: 0.45rem 0.5rem;
+		cursor: pointer;
+		list-style: none;
+		font-family: var(--nimble-font-body);
+	}
+
+	.nimble-core-nav__chapter-summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.nimble-core-nav__chev-slot {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.125rem;
+		height: 1.125rem;
+		flex-shrink: 0;
+		border: 1px solid #d1d5db;
+		border-radius: 2px;
+		background: #f9fafb;
+	}
+
+	.nimble-core-nav__chev-tri {
+		display: block;
+		width: 0;
+		height: 0;
+		border-left: 4px solid transparent;
+		border-right: 4px solid transparent;
+		border-bottom: 5px solid #6b7280;
+		border-top: none;
+	}
+
+	.nimble-core-nav__chapter[open] .nimble-core-nav__chev-tri {
+		border-bottom: none;
+		border-top: 5px solid #6b7280;
+	}
+
+	.nimble-core-nav__chapter-title {
+		flex: 1;
+		min-width: 0;
+		font-size: 0.625rem;
+		font-weight: 700;
+		font-style: italic;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--nimble-book-sidebar-fg, #252b42);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		line-height: 1.3;
+	}
+
+	.nimble-core-nav__chapter-list {
+		list-style: none;
+		margin: 0;
+		padding: 0.25rem 0.45rem 0.5rem 1.85rem;
+		border-top: 1px solid var(--nimble-book-sidebar-border, #e5e7eb);
+		background: #fafafa;
+	}
+
+	.nimble-core-nav__chapter-list a {
+		display: block;
+		padding: 0.28rem 0.25rem;
+		font-family: var(--nimble-font-body);
+		font-size: 0.8125rem;
+		color: var(--nimble-book-sidebar-muted, #4b5563);
+		text-decoration: none;
+		border-radius: 2px;
+		line-height: 1.35;
+	}
+
+	.nimble-core-nav__chapter-list a:hover,
+	.nimble-core-nav__chapter-list a:focus-visible {
+		color: var(--nimble-book-sidebar-fg, #252b42);
+	}
+
+	.nimble-core-nav__chapter-list a.is-current {
+		font-weight: 700;
+		color: var(--nimble-book-sidebar-gold-accent, #d4a90c);
+	}
+</style>
+
+<script define:vars={{ chaptersJson }}>
+	function belongsToChapter(/** @type {string} */ h, /** @type {{ slug: string; children: { slug: string }[] }} */ ch) {
+		if (!h) return false;
+		if (h === ch.slug) return true;
+		return ch.children.some((c) => c.slug === h);
+	}
+
+	function syncChapters() {
+		const h = (window.location.hash || '').replace(/^#/, '');
+		/** @type {{ slug: string; children: { slug: string }[] }[]} */
+		const chapters = JSON.parse(chaptersJson);
+		document.querySelectorAll('details.nimble-core-nav__chapter').forEach((el) => {
+			const slug = el.getAttribute('data-chapter-slug');
+			const ch = chapters.find((c) => c.slug === slug);
+			if (ch && el instanceof HTMLDetailsElement) {
+				el.open = belongsToChapter(h, ch);
+			}
+		});
+	}
+
+	window.addEventListener('hashchange', syncChapters);
+</script>

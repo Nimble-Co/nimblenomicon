@@ -3,20 +3,11 @@ import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
 import NavSidebarPersister from './NavSidebarPersister.astro';
 import SectionSidebarBrand from './SectionSidebarBrand.astro';
 import SidebarSublist from './SidebarSublist.astro';
-import { coreRulesOutlineToTocItems } from '../models/core-rules-outline';
 import { resolveSectionSidebar } from '../utils/section-sidebar';
 
-let { toc } = Astro.locals.starlightRoute;
+const { toc } = Astro.locals.starlightRoute;
 const pathname = Astro.url.pathname;
 const { sidebar, bookChrome, sectionKey } = resolveSectionSidebar(Astro.locals.starlightRoute, pathname);
-
-if (toc && Astro.locals.starlightRoute.entry.id === 'core-rules') {
-	const t = Astro.locals.t;
-	toc = {
-		...toc,
-		items: coreRulesOutlineToTocItems(t('tableOfContents.overview')),
-	};
-}
 ---
 
 <NavSidebarPersister sidebar={sidebar}>
