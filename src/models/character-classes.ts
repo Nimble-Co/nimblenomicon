@@ -3,7 +3,12 @@ import rawCharacterClasses from "../data/character-classes.json";
 
 const characterClassSchema = z
   .object({
-    name: z.string().min(1),
+    name: z
+      .string()
+      .min(1)
+      .refine((s) => s === s.toLowerCase(), {
+        message: "Class name must be lowercase in data",
+      }),
     description: z.string(),
   })
   .strict();

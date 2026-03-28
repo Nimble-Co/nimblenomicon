@@ -404,7 +404,8 @@ This will have the largest impact on the other character choices you make and ho
 <ul>
   {characterClasses.map((heroClass) => (
     <li>
-      <strong>{listLabel(heroClass.name)}</strong> {heroClass.description}
+      <strong>{listLabel(heroClass.name.toUpperCase())}</strong>{" "}
+      {heroClass.description}
     </li>
   ))}
 </ul>
