@@ -3,6 +3,7 @@ Arrr
 Badgerfolk
 Beastfolk
 Birdfolk
+Blindsight
 Bumblewise
 Bunbun
 Celestials
@@ -11,6 +12,7 @@ crits
 Crystalborn
 Cryosleep
 Darklings
+Darkvision
 Demiplane
 diming
 Dragonborn
@@ -39,6 +41,7 @@ GROFWINT
 GURPS
 Halfling
 Handwraps
+Knockback
 Lich
 Lifebinding
 Longsword
