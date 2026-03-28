@@ -23,6 +23,7 @@ import { conditions } from '../../models/conditions';
 import { coreRulesSnippets } from '../../models/core-rules-snippets';
 import { dcExamples } from '../../models/dc-examples';
 import { downtimeActivities } from '../../models/downtime-activities';
+import { glossary } from '../../models/glossary';
 import { languages } from '../../models/languages';
 import { magicalItemRarities } from '../../models/magical-item-rarities';
 import { magicalItems } from '../../models/magical-items';
@@ -67,8 +68,6 @@ import { weapons } from '../../models/weapons';
 set:html={renderMarkdown(`**${snippet.name}** ${snippet.description}`)}
 />
 ))}
-
-> **KEY.** When an ability or spell references “KEY,” use one of your Key Stats. If a stat is listed before a die roll, roll a number of dice equal to the stat. For example, “WIL d8” means that if your WIL is 2, you roll 2d8 (two eight-sided dice).
 
 {stats.map((stat) => (
 
@@ -645,7 +644,7 @@ Using an improvised weapon (e.g. a chair, a frying pan, a big rock), default to 
 
 ### Customizing Weapons
 
-Can you reflavor a staff as a greatclub? Sure! A sai instead of a dagger? Of course! Could you pay a blacksmith to make your 1d12 Greatmaul deal 2d6 or 3d4 damage instead? Since the dice all add up to 12, it won’t break the game; ask your GM! Can a blacksmith make your _Dagger_ deal that much damage? No, sorry!
+Can you reflavor a staff as a greatclub? Sure! A sai instead of a dagger? Of course! Could you pay a blacksmith to make your 1d12 Greatmaul deal 2d6 or 3d4 damage instead? Since the dice all add up to 12, it won't break the game; ask your GM! Can a blacksmith make your _Dagger_ deal that much damage? No, sorry!
 
 ### Melee Weapons
 
@@ -834,15 +833,15 @@ Though some magical items can be purchased, most cannot. Some special shops may 
 
 Spells There are 6 main schools of magic. Each school has its own basic spells called cantrips and 9 tiers of progressively more powerful spells that can be unlocked as heroes level up. Heroes can cast any spell from the schools that they know within the tiers they have unlocked.
 
-**Mana.** Powerful tiered spells require mana—a portion of the spellcaster’s life force—to fuel them. A spell’s mana cost is equal to its tier. See the _Heroes_ book for more info on how different classes gain mana. Cantrips, cost no mana.
+**Mana.** Powerful tiered spells require mana—a portion of the spellcaster's life force—to fuel them. A spell's mana cost is equal to its tier. See the _Heroes_ book for more info on how different classes gain mana. Cantrips, cost no mana.
 
 **Upcasting.** You can spend additional mana on tiered spells (up to the tier that you have unlocked) to make them stronger for each additional mana spent.
 
 **Multi-Target/Area of Effect (AoE).** Multi-target/AoE attacks follow special rules to streamline play: they do not miss or crit, and a single roll is applied to all targets. (Ignore (dis)advantage from conditions on individual targets—such as Blinded or Grappled—though anything granting you (dis)advantage still applies to your roll as normal.)
 
-> **Save Spells.** A hero’s save DC is typically 10+KEY.
+> **Save Spells.** A hero's save DC is typically 10+KEY.
 >
-> **Range and Reach.** Just like weapons, spells with “Range” can target creatures from a distance, but are cast with disadvantage if any enemy is adjacent to you. Add 1 die of disadvantage to gain +2 Range (max +6). Spells with “Reach” can’t do this, but they are cast as normal even when in melee.
+> **Range and Reach.** Just like weapons, spells with “Range” can target creatures from a distance, but are cast with disadvantage if any enemy is adjacent to you. Add 1 die of disadvantage to gain +2 Range (max +6). Spells with “Reach” can't do this, but they are cast as normal even when in melee.
 
 <ul>
 	{spellSchools.map((school) => (
@@ -937,7 +936,7 @@ If your playgroup likes extra little tactical nuggets, your GM can allow you to 
   </>
 ))}
 
-## Measuring Spaces
+# Measuring Spaces
 
 Generally, speed is preferred above precision while playing a TTRPG—don't make other people wait unnecessarily, close enough is good enough! However, if your table prefers precise rulings rather than fast but “good enough” ones, use the options below as a reference.
 
@@ -948,3 +947,12 @@ Treating diagonal spaces as adjacent is the default assumption, as it tends to b
 ### Cones & Lines
 
 For a cone, start at the character and extend X spaces outward. The cone can be up to X spaces wide at the farthest edge (you can make it narrower than X, but not wider). For a line, starting from the character, extend the area up to X spaces in a single direction (you can make it shorter, but not longer), and 1 space wide. If a space is at least halfway covered by the cone or line, it is included in the effect.
+
+# Glossary
+
+{glossary.map((entry) => (
+
+  <p>
+    <strong>{listLabel(entry.name)}</strong> {entry.description}
+  </p>
+))}

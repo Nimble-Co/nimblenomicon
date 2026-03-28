@@ -661,6 +661,25 @@ content:
                 options:
                   format: markdown
 
+      - name: glossary
+        label: Glossary
+        type: file
+        path: src/data/glossary.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+            description: Term only; the site adds a trailing period after the label.
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+
   - name: optional-variant-rules
     label: Optional Variant Rules
     type: file

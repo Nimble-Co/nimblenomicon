@@ -1,0 +1,182 @@
+[
+	{
+		"name": "Advantage X",
+		"description": "Roll X additional dice and drop the X lowest dice (removing dice from the left to right in the case of a tie)."
+	},
+	{
+		"name": "Ally",
+		"description": "A friendly creature, not yourself."
+	},
+	{
+		"name": "Assess",
+		"description": "An action to strategically analyze the situation in combat, see pg. 13."
+	},
+	{
+		"name": "Attack",
+		"description": "Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc."
+	},
+	{
+		"name": "Blindsight X",
+		"description": "You can sense creatures and obstacles normally within X spaces, ignoring Blinded, darkness, and invisibility."
+	},
+	{
+		"name": "Cantrip",
+		"description": "A basic spell. Costs 0 mana to cast, and their power increases as you level up."
+	},
+	{
+		"name": "Climbing",
+		"description": "A creature with a climbing speed can move across vertical surfaces as flat ground."
+	},
+	{
+		"name": "Concentration",
+		"description": "Can only Concentrate on 1 thing at a time. DC 10 STR save when crit or lose concentration, see pg. 10."
+	},
+	{
+		"name": "Cone X",
+		"description": "Starts at the character and extends X spaces outward, becoming up to X spaces wide at the farthest edge."
+	},
+	{
+		"name": "Cover",
+		"description": "If partially obscured, incoming attacks have disadvantage. If completely obscured, cannot be targeted. See pg. 10."
+	},
+	{
+		"name": "d44, d66, d88",
+		"description": "Roll 2 of the same dice, the leftmost die is the tens place, and the second is the ones. These rolls cannot miss or crit."
+	},
+	{
+		"name": "Darkvision X",
+		"description": "Can see normally in the dark, up to X spaces."
+	},
+	{
+		"name": "Decrement/Increment",
+		"description": "Use a die one size smaller or larger (d4 » d6 » d8 » d10 » d12 » d20)."
+	},
+	{
+		"name": "Difficult Terrain",
+		"description": "Speed halved while here. (e.g., moving through the space of an enemy)."
+	},
+	{
+		"name": "Disadvantage X",
+		"description": "Roll X additional dice and drop the X highest dice."
+	},
+	{
+		"name": "Distracted",
+		"description": "A target is distracted if it is adjacent to or Taunted by an ally, or if it cannot see you."
+	},
+	{
+		"name": "Encounter",
+		"description": "An encounter begins when Initiative is rolled and ends when hostilities do."
+	},
+	{
+		"name": "Falling",
+		"description": "Suffer 1d6 damage per 10 ft. fallen."
+	},
+	{
+		"name": "Field Rest/Safe Rest",
+		"description": "Spend time to recover some of your resources, see pg. 16."
+	},
+	{
+		"name": "Free",
+		"description": "Does not cost an action or any other resource (e.g., mana) unless otherwise stated."
+	},
+	{
+		"name": "Hampered",
+		"description": "Any creature with their actions or movement reduced (e.g., Dazed, Grappled, Prone, Difficult Terrain)."
+	},
+	{
+		"name": "KEY",
+		"description": "Use either of your KEY attributes."
+	},
+	{
+		"name": "Knockback/Push X",
+		"description": "Forcibly move a creature X spaces, ignoring Difficult Terrain. Other creatures or the environment may halt movement prematurely and deal damage. See “Falling & Forced Movement” on page 10."
+	},
+	{
+		"name": "Line X",
+		"description": "A straight line extending up to X spaces in one direction."
+	},
+	{
+		"name": "LVL",
+		"description": "Replace this with your Hero's level."
+	},
+	{
+		"name": "Mana",
+		"description": "Used to fuel spellcasting. See the Heroes book for more info on how classes gain mana."
+	},
+	{
+		"name": "Move X",
+		"description": "Move up to that many spaces."
+	},
+	{
+		"name": "Paralyzed, Stunned, Unconscious",
+		"description": "Incapacitated. Can't do anything. Attacks against you have advantage, and melee attacks that hit, crit."
+	},
+	{
+		"name": "Reach X",
+		"description": "The area within X spaces around a character; forming your choice of a cube or sphere."
+	},
+	{
+		"name": "Range X",
+		"description": "Ranged attacks are made with disadvantage if ANY enemy is adjacent. Range can be extended, see pg. 10 for more."
+	},
+	{
+		"name": "Resistance",
+		"description": "Take half as much damage."
+	},
+	{
+		"name": "Restrained",
+		"description": "Same effect as Grappled, objects Restrain, creatures Grapple. See pg. 10."
+	},
+	{
+		"name": "Round",
+		"description": "The time in combat when each Hero and enemy has a chance to act."
+	},
+	{
+		"name": "Rushed Attacks",
+		"description": "Attacking more than once on a turn imposes a cumulative disadvantage penalty (e.g., attacking with a short sword for the third time on a turn, you would roll 3d6 and take the lowest result). See pg. 13."
+	},
+	{
+		"name": "Skill Points",
+		"description": "Use them to increase your skills. Start with 4 at level 1 and gain 1 each level."
+	},
+	{
+		"name": "Spellcasting Focus",
+		"description": "Can be used instead of an empty hand to cast spells."
+	},
+	{
+		"name": "Stats",
+		"description": "The core attributes of a character."
+	},
+	{
+		"name": "Surprise",
+		"description": "When combat starts before all sides are aware, see pg. 15."
+	},
+	{
+		"name": "Target",
+		"description": "A selected creature or object. It must be within Range/Reach and able to be sensed."
+	},
+	{
+		"name": "Teleport",
+		"description": "Move instantaneously. Does not provoke opportunity attacks."
+	},
+	{
+		"name": "Temp HP",
+		"description": "HP that do not replenish, see pg. 9."
+	},
+	{
+		"name": "Turn",
+		"description": "The primary time allotted for an individual hero or monster group to act."
+	},
+	{
+		"name": "Unheld",
+		"description": "Not touched, worn, or held by anyone."
+	},
+	{
+		"name": "Vulnerable",
+		"description": "When a creature is vulnerable to a damage type, that kind of damage ignores its armor; if unarmored, they take double the damage instead."
+	},
+	{
+		"name": "Wound",
+		"description": "A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9."
+	}
+]
