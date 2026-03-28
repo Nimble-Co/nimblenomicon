@@ -27,9 +27,24 @@ content:
       - name: description
         label: Description
         type: rich-text
-        required: true
+        required: false
         options:
           format: markdown
+      - name: headingLevel
+        label: Heading Level
+        type: select
+        required: false
+        description: Leave unset for default H2 (title from Name, anchor from Id). H1 for major sections; None for markdown-only blocks (put headings in Description).
+        options:
+          values:
+            - name: h1
+              label: H1 — major section
+            - name: h2
+              label: H2 — section (explicit default)
+            - name: h3
+              label: H3 — subhead
+            - name: none
+              label: None — body only
 
   - name: stats-skills
     label: Stats & Skills

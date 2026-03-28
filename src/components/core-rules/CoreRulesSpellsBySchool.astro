@@ -1,0 +1,26 @@
+---
+import { renderMarkdown } from '../../lib/render-markdown';
+import { spellMetaMarkdown } from '../../lib/spell-meta';
+import { spellDetailHrefFromCoreRules, spellsData } from '../../models/spells';
+---
+
+{
+	spellsData.schools.map((school) => (
+		<>
+			<h2 id={`${school.name.toLowerCase()}-spells`}>{school.name} Spells</h2>
+			{school.spells.map((spell) => (
+				<>
+					<h3 id={spell.id}>
+						<a href={spellDetailHrefFromCoreRules(spell.id)}>{spell.name}</a>
+					</h3>
+					<div
+						set:html={renderMarkdown(
+							spellMetaMarkdown(spell.tier, spell.castingTime, spell.target) +
+								(spell.description?.trim() ? '\n\n' + spell.description : ''),
+						)}
+					/>
+				</>
+			))}
+		</>
+	))
+}

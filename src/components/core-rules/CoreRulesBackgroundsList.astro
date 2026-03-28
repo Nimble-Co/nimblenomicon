@@ -1,0 +1,12 @@
+---
+import { renderMarkdown } from '../../lib/render-markdown';
+import { backgrounds } from '../../models/backgrounds';
+---
+
+{
+	backgrounds.map((segment) => (
+		<div
+			set:html={renderMarkdown(`**${segment.name}** ${segment.description}`)}
+		/>
+	))
+}

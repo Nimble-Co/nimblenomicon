@@ -1,0 +1,14 @@
+---
+import { renderMarkdown } from '../../lib/render-markdown';
+import { skills } from '../../models/skills';
+---
+
+{
+	skills.map((skill) => (
+		<div
+			set:html={renderMarkdown(
+				`**${skill.name}** (${skill.stat}) ${skill.description}`,
+			)}
+		/>
+	))
+}

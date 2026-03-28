@@ -1,0 +1,14 @@
+---
+import { listLabel } from '../../lib/list-label';
+import { conditions } from '../../models/conditions';
+---
+
+<ul>
+	{
+		conditions.map((condition) => (
+			<li>
+				<strong>{listLabel(condition.name)}</strong> {condition.description}
+			</li>
+		))
+	}
+</ul>

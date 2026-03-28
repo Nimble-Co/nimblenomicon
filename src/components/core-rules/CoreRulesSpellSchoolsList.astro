@@ -1,0 +1,15 @@
+---
+import { listLabel } from '../../lib/list-label';
+import { spellSchools } from '../../models/spell-schools';
+---
+
+<ul>
+	{
+		spellSchools.map((school) => (
+			<li>
+				<strong>{listLabel(`${school.name} Spells`)}</strong>{' '}
+				{school.description}
+			</li>
+		))
+	}
+</ul>

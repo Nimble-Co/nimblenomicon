@@ -1,0 +1,14 @@
+---
+import { listLabel } from '../../lib/list-label';
+import { languages } from '../../models/languages';
+---
+
+<ul>
+	{
+		languages.map((language) => (
+			<li>
+				<strong>{listLabel(language.name)}</strong> {language.description}
+			</li>
+		))
+	}
+</ul>

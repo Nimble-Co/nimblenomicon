@@ -1,0 +1,24 @@
+---
+import { renderMarkdown } from '../../lib/render-markdown';
+import { ancestries, formatAncestrySize } from '../../models/ancestries';
+
+interface Props {
+	section: 'common' | 'exotic';
+}
+
+const { section } = Astro.props;
+const rows = ancestries.filter((a) => a.section === section);
+---
+
+{
+	rows.map((a) => (
+		<>
+			<h3 id={a.id}>
+				<a href={`/ancestries/${a.id}`}>{a.name}</a>
+			</h3>
+			<p>({formatAncestrySize(a.size)})</p>
+			<p>{a.flavor}</p>
+			<div set:html={renderMarkdown(a.trait)} />
+		</>
+	))
+}

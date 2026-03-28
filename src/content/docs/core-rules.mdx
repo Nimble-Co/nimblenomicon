@@ -8,119 +8,58 @@ banner:
     <p>This is free to use for anyone who already owns the content, is trying the system out, or cannot afford to buy it right now. If you enjoy Nimble and are able, please support the game by purchasing the official content at <a href="https://nimbleRPG.com">nimbleRPG.com</a>.</p>
 ---
 
-import manticor from '../../assets/manticor.webp';
-import CoreRulesSnippet from '../../components/CoreRulesSnippet.astro';
-import HeroCallout from '../../components/HeroCallout.astro';
-import { listLabel } from '../../lib/list-label';
-import { renderMarkdown } from '../../lib/render-markdown';
-import { spellMetaMarkdown } from '../../lib/spell-meta';
+import CoreRulesAdventuringMotivationsList from '../../components/core-rules/CoreRulesAdventuringMotivationsList.astro';
+import CoreRulesAncestrySection from '../../components/core-rules/CoreRulesAncestrySection.astro';
+import CoreRulesArmorTables from '../../components/core-rules/CoreRulesArmorTables.astro';
+import CoreRulesBackgroundsList from '../../components/core-rules/CoreRulesBackgroundsList.astro';
+import CoreRulesCharacterClassesList from '../../components/core-rules/CoreRulesCharacterClassesList.astro';
+import CoreRulesConditionsList from '../../components/core-rules/CoreRulesConditionsList.astro';
+import CoreRulesDcExamplesList from '../../components/core-rules/CoreRulesDcExamplesList.astro';
+import CoreRulesDowntimeActivitiesList from '../../components/core-rules/CoreRulesDowntimeActivitiesList.astro';
+import CoreRulesGlossaryList from '../../components/core-rules/CoreRulesGlossaryList.astro';
+import CoreRulesHero from '../../components/core-rules/CoreRulesHero.astro';
+import CoreRulesLanguagesList from '../../components/core-rules/CoreRulesLanguagesList.astro';
+import CoreRulesMagicalItemRaritiesTable from '../../components/core-rules/CoreRulesMagicalItemRaritiesTable.astro';
+import CoreRulesMagicalItemsList from '../../components/core-rules/CoreRulesMagicalItemsList.astro';
+import CoreRulesMiscAdventuringEquipmentTable from '../../components/core-rules/CoreRulesMiscAdventuringEquipmentTable.astro';
+import CoreRulesOptionalVariantRulesList from '../../components/core-rules/CoreRulesOptionalVariantRulesList.astro';
+import CoreRulesSaveTypesList from '../../components/core-rules/CoreRulesSaveTypesList.astro';
+import CoreRulesSizesList from '../../components/core-rules/CoreRulesSizesList.astro';
+import CoreRulesSkillsList from '../../components/core-rules/CoreRulesSkillsList.astro';
+import CoreRulesSnippet from '../../components/core-rules/CoreRulesSnippet.astro';
+import CoreRulesSpellSchoolsList from '../../components/core-rules/CoreRulesSpellSchoolsList.astro';
+import CoreRulesSpellsBySchool from '../../components/core-rules/CoreRulesSpellsBySchool.astro';
+import CoreRulesStatArraysList from '../../components/core-rules/CoreRulesStatArraysList.astro';
+import CoreRulesStatsList from '../../components/core-rules/CoreRulesStatsList.astro';
+import CoreRulesUtilitySpellsSection from '../../components/core-rules/CoreRulesUtilitySpellsSection.astro';
+import CoreRulesWeaponPropertiesList from '../../components/core-rules/CoreRulesWeaponPropertiesList.astro';
+import CoreRulesWeaponsTable from '../../components/core-rules/CoreRulesWeaponsTable.astro';
 
-import { adventuringMotivations } from '../../models/adventuring-motivations';
-import { ancestries, formatAncestrySize } from '../../models/ancestries';
-import { armorRows, armorTableSections } from '../../models/armor';
-import { backgrounds } from '../../models/backgrounds';
-import { characterClasses } from '../../models/character-classes';
-import { conditions } from '../../models/conditions';
-import { dcExamples } from '../../models/dc-examples';
-import { downtimeActivities } from '../../models/downtime-activities';
-import { glossary } from '../../models/glossary';
-import { languages } from '../../models/languages';
-import { magicalItemRarities } from '../../models/magical-item-rarities';
-import { magicalItems } from '../../models/magical-items';
-import { miscAdventuringEquipment } from '../../models/misc-adventuring-equipment';
-import { optionalVariantRules } from '../../models/optional-variant-rules';
-import { saveTypes } from '../../models/save-types';
-import { sizes } from '../../models/sizes';
-import { skills } from '../../models/skills';
-import { spellSchools } from '../../models/spell-schools';
-import { spellScrollCosts } from '../../models/spell-scroll-costs';
-import { spellDetailHrefFromCoreRules, spellsData } from '../../models/spells';
-import { statArrays } from '../../models/stat-arrays';
-import { stats } from '../../models/stats';
-import { wandCosts } from '../../models/wand-costs';
-import { weaponProperties } from '../../models/weapon-properties';
-import { weapons } from '../../models/weapons';
-
-<div class="nimble-full-bleed-hero">
-	<img
-		class="nimble-full-bleed-hero__img"
-		src={manticor.src}
-		width={manticor.width}
-		height={manticor.height}
-		alt="Manticore illustration — heroes battling a winged beast"
-		loading="eager"
-		decoding="async"
-	/>
-	<div class="nimble-full-bleed-hero__gradient" aria-hidden="true"></div>
-	<div class="nimble-full-bleed-hero__bottom">
-		<h1 id="_top" class="nimble-full-bleed-hero__title">
-			Core Rules
-		</h1>
-		<HeroCallout />
-	</div>
-</div>
+<CoreRulesHero />
 
 <CoreRulesSnippet id="start-here" />
 
 <CoreRulesSnippet id="stats" />
 
-{stats.map((stat) => (
-
-  <p><strong>{stat.name}</strong> ({stat.stat}) {stat.description}</p>
-))}
+<CoreRulesStatsList />
 
 <CoreRulesSnippet id="skills" />
 
-{skills.map((skill) => (
-
-  <div
-    set:html={renderMarkdown(
-      `**${skill.name}** (${skill.stat}) ${skill.description}`,
-    )}
-  />
-))}
+<CoreRulesSkillsList />
 
 <CoreRulesSnippet id="skill-checks-saves" />
 
-<ul>
-	{dcExamples.map((row) => (
-		<li
-			set:html={renderMarkdown(
-				`**${listLabel(row.name, ':')}** ${row.description}`,
-			)}
-		/>
-	))}
-</ul>
+<CoreRulesDcExamplesList />
 
-### Saves
+<CoreRulesSnippet id="saves-intro" />
 
-When the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 and add the relevant stat. A roll of 1 always fails, 20 always saves. You can choose to fail any save instead of rolling.
+<CoreRulesSaveTypesList />
 
-<ul>
-	{saveTypes.map((saveType) => (
-		<li>
-			<strong>{listLabel(`${saveType.name} Save`)}</strong>{' '}
-			{saveType.description}
-		</li>
-	))}
-</ul>
-
-### Heroes and Saves
-
-- Unless otherwise noted, the DC for effects a hero causes is **10+KEY**.
-- When making saves, each hero has 1 advantaged save (+), 1 disadvantaged save (-), and 2 neutral saves.
-
-> **Example.** A Berserker (STR+, INT-) would roll all of his STR saves with advantage and all of his INT saves with disadvantage (see next page).
+<CoreRulesSnippet id="heroes-and-saves" />
 
 <CoreRulesSnippet id="size" />
 
-<ul>
-	{sizes.map((size) => (
-		<li>
-			<strong>{size.name}</strong> {size.description}
-		</li>
-	))}
-</ul>
+<CoreRulesSizesList />
 
 <CoreRulesSnippet id="advantage-disadvantage" />
 
@@ -136,19 +75,11 @@ When the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 
 
 <CoreRulesSnippet id="conditions" />
 
-<ul>
-	{conditions.map((condition) => (
-		<li>
-			<strong>{listLabel(condition.name)}</strong> {condition.description}
-		</li>
-	))}
-</ul>
+<CoreRulesConditionsList />
 
-> ### Other Minor Statuses.
->
-> Minor statuses (Smoldering, Charged, Distracted, etc.) do nothing on their own and end whenever combat does. Some spells and abilities have additional effects against such targets.
+<CoreRulesSnippet id="conditions-minor-statuses" />
 
-# Combat
+<CoreRulesSnippet id="combat" />
 
 <CoreRulesSnippet id="heroic-actions" />
 
@@ -158,7 +89,7 @@ When the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 
 
 <CoreRulesSnippet id="starting-combat" />
 
-# Resting & Downtime
+<CoreRulesSnippet id="resting-downtime" />
 
 <CoreRulesSnippet id="field-rests" />
 
@@ -166,547 +97,116 @@ When the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 
 
 <CoreRulesSnippet id="downtime" />
 
-<ul>
-	{downtimeActivities.map((activity) => (
-		<li>
-			<strong>{listLabel(activity.name)}</strong> {activity.description}
-		</li>
-	))}
-</ul>
+<CoreRulesDowntimeActivitiesList />
 
-# Character Creation
+<CoreRulesSnippet id="character-creation" />
 
-Your hero is how you will make your mark on the world. Here's how
-you can make your own hero:
+<CoreRulesSnippet id="character-creation-step-1" />
 
-### Step 1: Choose Your Class
+<CoreRulesCharacterClassesList />
 
-This will have the largest impact on the other character choices you make and how you interact with the world:
+<CoreRulesSnippet id="character-creation-step-2-3" />
 
-<ul>
-	{characterClasses.map((heroClass) => (
-		<li>
-			<strong>{listLabel(heroClass.name.toUpperCase())}</strong>{' '}
-			{heroClass.description}
-		</li>
-	))}
-</ul>
+<CoreRulesStatArraysList />
 
-### Step 2: Choose Your Ancestry & Background
+<CoreRulesSnippet id="stat-arrays-example" />
 
-(and optionally, choose your adventuring motivation).
+<CoreRulesSnippet id="character-sheet-skill-points" />
 
-What made your hero want to start adventuring? How do you know the other heroes?
+<CoreRulesSnippet id="character-sheet-secondary-stats" />
 
-### Step 3: Fill in Your Character Sheet
+<CoreRulesSnippet id="character-sheet-equipment-money" />
 
-This handy sheet of paper helps you track your stats, abilities, loot, and other important game info.
+<CoreRulesSnippet id="character-sheet-languages-intro" />
 
-## The Character Sheet
+<CoreRulesLanguagesList />
 
-### 1. Basic Details & Stats
+<CoreRulesSnippet id="character-sheet-languages-note" />
 
-Fill in your character details: Name, Ancestry, Class, Level, Height, and Weight. Fill in the arrow for your advantaged (+) and disadvantaged (-) Saves, and choose a stat array (recommended: place the highest numbers in the KEY stats for your class).
+<CoreRulesSnippet id="character-sheet-other-abilities" />
 
-<ul>
-	{statArrays.map((arr) => (
-		<li>
-			<strong>{listLabel(arr.name, ':')}</strong> {arr.description}
-		</li>
-	))}
-</ul>
-
-> **Example.** The Cheat has DEX and INT as their KEY stats. With the Min-Max array, you might put +3 in DEX, +1 in INT, and -1 in WIL and STR. You'd also mark ▲ for DEX saves and ▼ for WIL saves.
-
-### 2. Skill Points
-
-At level 1, mark your stat bonuses into each of your respective skills (e.g., a hero with +2 DEX would mark +2 in Finesse and Stealth), and then may place **4** additional skill points wherever you like.
-
-> Example. If you have -1 INT; mark -1 for Arcana, Examination, and Lore. Repeat for your other stats. Then, with your 4 extra points, you could increase Stealth and Finesse by +2 each; any 4 skills by 1 each; or dump all 4 points into your favorite single skill. Up to you!
-
-### 3. Secondary Stats
-
-Mark your max HP and Hit Dice size (see your class), Hit Die amount (default: equal to your level), Initiative (default: DEX), Size, Speed (default: 6), max Wounds (default: 6), and inventory slots (10+STR).
-
-### 4. Equipment & Money
-
-Heroes start at level 1 with the equipment listed for their class and background OR **50 gp** to buy their starting equipment. If starting at a higher level, multiply that by the level you are starting at.
-
-> **But my character is a wealthy noble!** That's fine, but your character only has access to this amount of gold for now. Why your wealth is currently inaccessible is up to you and your GM; unlocking your full riches could be a great quest!
-
-### 5. Languages
-
-All heroes speak Common by default. Each point of INT grants you an additional language known. These languages are typically spoken by:
-
-<ul>
-	{languages.map((language) => (
-		<li>
-			<strong>{listLabel(language.name)}</strong> {language.description}
-		</li>
-	))}
-</ul>
-
-> **GROFWINT DRAZLON!** Speaking another creature's
-> language can open doors that weapons alone cannot — being heavily armed without the ability to communicate often leads to hostility.
-
-### 6. Other Abilities
-
-Mark any other special abilities you get from your class, ancestry, background, etc.
-
-### 7. Inventory Slots
-
-Each hero has 10+STR inventory slots for carrying equipment and loot (held, worn, or in a pack).
-
-- 1 slot can hold a one-handed weapon, shield, worn armor, stack of javelins, 500 gp, or 2 potions.
-- 2 slots can hold a 2-handed weapon, unworn armor, or similarly bulky items.
-- Small, related items can be grouped into one slot for simplicity (e.g., Camping Supplies: soap, blanket, brush, rations).
-
-> **On Ammunition.** In most games, there's no need to track ammo. If you have a quiver, you have enough arrows. Assume the hero collects fired arrows, crafts more, or buys them in town.
-
-Alternatively, your GM may allow you to carry what you want without the bookkeeping, so long as you're reasonable!
+<CoreRulesSnippet id="character-sheet-inventory" />
 
 <CoreRulesSnippet id="leveling-up" />
 
-# Ancestry & Background
+<CoreRulesSnippet id="ancestry-background" />
 
-## Common Ancestries
+<CoreRulesSnippet id="common-ancestries-intro" />
 
-Your kin, lineage, heritage, or race—this is how your character was born and how others see you at first glance. You may be a dwarf raised in the mines under the mountain with countless other dwarves, or you may be an elf raised by goblins! It's up to you to choose how your character began. Choose 1 ancestry and add its bonus to your character sheet.
+<CoreRulesAncestrySection section="common" />
 
-{ancestries
-.filter((a) => a.section === "common")
-.map((a) => (
+<CoreRulesSnippet id="exotic-ancestries-intro" />
 
-<>
-<h3 id={a.id}>
-<a href={`/ancestries/${a.id}`}>{a.name}</a>
-</h3>
-<p>({formatAncestrySize(a.size)})</p>
-<p>{a.flavor}</p>
-<div set:html={renderMarkdown(a.trait)} />
-</>
-))}
+<CoreRulesAncestrySection section="exotic" />
 
-## Exotic Ancestries
+<CoreRulesSnippet id="backgrounds-intro" />
 
-Your setting may or may not support these choices—check with your GM first before selecting one.
+<CoreRulesBackgroundsList />
 
-{ancestries
-.filter((a) => a.section === "exotic")
-.map((a) => (
+<CoreRulesSnippet id="adventuring-motivation-intro" />
 
-<>
-<h3 id={a.id}>
-<a href={`/ancestries/${a.id}`}>{a.name}</a>
-</h3>
-<p>({formatAncestrySize(a.size)})</p>
-<p>{a.flavor}</p>
-<div set:html={renderMarkdown(a.trait)} />
-</>
-))}
+<CoreRulesAdventuringMotivationsList />
 
-## Backgrounds
+<CoreRulesSnippet id="adventuring-motivation-make-your-own" />
 
-Backgrounds provide a glimpse into your character's past—how they were raised, the skills they honed before becoming an adventurer, or even their defining personality traits. Feel free to adapt or reimagine these backgrounds to suit your character's story. Choose 1 background:
+<CoreRulesSnippet id="equipment" />
 
-{backgrounds.map((segment) => (
+<CoreRulesSnippet id="equipment-intro" />
 
-  <div
-    set:html={renderMarkdown(`**${segment.name}** ${segment.description}`)}
-  />
-))}
+<CoreRulesSnippet id="armor-section" />
 
-## Adventuring Motivation
+<CoreRulesArmorTables />
 
-The world is a dangerous place—people don't usually just “go adventuring” without a reason. Your motivation should make your character want to work with the rest of the group.
+<CoreRulesSnippet id="armor-deflect" />
 
-{adventuringMotivations.map((motivation) => (
+<CoreRulesSnippet id="weapon-properties-heading" />
 
-  <p
-    set:html={renderMarkdown(
-      `**${motivation.name}** ${motivation.description}`,
-    )}
-  />
-))}
+<CoreRulesWeaponPropertiesList />
 
-> **Or Make Your Own!** A great character background has connections with the world, its people, your fellow heroes, or even the bad guys. Work with your GM and fellow players to find a motivation that will cross paths with where the story goes. Every good hero has a desire. What's yours?
+<CoreRulesSnippet id="weapon-special-rules" />
 
-# Equipment
+<CoreRulesSnippet id="melee-weapons-heading" />
 
-**Equipment Proficiency.** Heroes can use any equipment they like; however, each class has a list of weapons and armor types they are most skilled with. Weapons used without proficiency cannot crit. Defending while wearing armor worn without proficiency costs 1 additional action.
+<CoreRulesWeaponsTable category="melee" />
 
-**Swapping Equipment.** A hero can sheathe weapons or shields they are proficient with and equip a different one for free 1/round.
+<CoreRulesSnippet id="ranged-weapons-heading" />
 
-## Armor
-
-Armor represents your hero's ability to dodge or block damage when you use the Defend reaction. While unarmored or wearing regular clothes, your Armor is equal to your **DEX**. Some items may grant additional Armor while equipped.
-
-> **Defend Yourself!** If you're standing right next to a baddie with an axe and you're not doing anything to defend yourself, chances are, you're going to get axed!
-
-{armorTableSections.map(({ category: cat, label }) => (
-
-  <>
-    <h3>{label}</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>
-            <strong>
-              <em>ITEM</em>
-            </strong>
-          </th>
-          <th>
-            <strong>
-              <em>ARMOR</em>
-            </strong>
-          </th>
-          <th>
-            <strong>
-              <em>COST</em>
-            </strong>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {armorRows
-          .filter((row) => row.category === cat)
-          .map((row) => (
-            <tr>
-              <td>{row.name}</td>
-              <td>{row.armor}</td>
-              <td>{row.cost}</td>
-            </tr>
-          ))}
-      </tbody>
-    </table>
-  </>
-))}
-
-> **Deflect!** An optional rule for additional defensive flexibility: instead of adding your shield's armor to your total armor as normal, you may reduce the damage of an attack by your shield's armor value for free 1/round.
-
-## Weapon Properties
-
-<ul>
-	{weaponProperties.map((weaponProperty) => (
-		<li
-			set:html={renderMarkdown(
-				`**${listLabel(weaponProperty.name)}** ${weaponProperty.description}`,
-			)}
-		/>
-	))}
-</ul>
-
-### Dual Wielding
-
-Heroes may wield 2 Light weapons at the same time. While dual wielding, you may gain advantage on an attack with those weapons, 1/round.
-
-You may dual wield 1-handed weapons without the Light property if your STR is 3 or greater, or 1 weapon without the Light property if your STR is 2. If completely unarmed, fists/feet can be considered dual wielded.
-
-> **Dual wielding different weapons?** Roll dice for both weapons and choose either result instead (the 1/round limit still applies). Attacking with advantage? Add an extra die for one of the weapons.
-
-### Unarmed Strikes
-
-To attack with your bare hands or feet, roll 1d4; on hit: deal 1+STR damage.
-
-### Improvised Weapons
-
-Using an improvised weapon (e.g. a chair, a frying pan, a big rock), default to 1d4+STR or 1d6+STR. Your GM may allow you to use bigger dice or other properties if it makes sense. An improvised weapon may be likely to break if it lands a crit, though!
-
-### Customizing Weapons
-
-Can you reflavor a staff as a greatclub? Sure! A sai instead of a dagger? Of course! Could you pay a blacksmith to make your 1d12 Greatmaul deal 2d6 or 3d4 damage instead? Since the dice all add up to 12, it won't break the game; ask your GM! Can a blacksmith make your _Dagger_ deal that much damage? No, sorry!
-
-### Melee Weapons
-
-<table>
-	<thead>
-		<tr>
-			<th>
-				<strong>
-					<em>ITEM</em>
-				</strong>
-			</th>
-			<th>
-				<strong>
-					<em>DAMAGE</em>
-				</strong>
-			</th>
-			<th>
-				<strong>
-					<em>PROPERTIES</em>
-				</strong>
-			</th>
-			<th>
-				<strong>
-					<em>COST</em>
-				</strong>
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-		{weapons
-			.filter((w) => w.category === 'melee')
-			.map((w) => (
-				<tr>
-					<td>{w.name}</td>
-					<td>{w.damage}</td>
-					<td>{w.propertyLines.map((p) => p.description).join(', ')}</td>
-					<td>{w.cost}</td>
-				</tr>
-			))}
-	</tbody>
-</table>
-
-### Ranged Weapons
-
-<table>
-	<thead>
-		<tr>
-			<th>
-				<strong>
-					<em>ITEM</em>
-				</strong>
-			</th>
-			<th>
-				<strong>
-					<em>DAMAGE</em>
-				</strong>
-			</th>
-			<th>
-				<strong>
-					<em>PROPERTIES</em>
-				</strong>
-			</th>
-			<th>
-				<strong>
-					<em>COST</em>
-				</strong>
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-		{weapons
-			.filter((w) => w.category === 'ranged')
-			.map((w) => (
-				<tr>
-					<td>{w.name}</td>
-					<td>{w.damage}</td>
-					<td>{w.propertyLines.map((p) => p.description).join(', ')}</td>
-					<td>{w.cost}</td>
-				</tr>
-			))}
-	</tbody>
-</table>
+<CoreRulesWeaponsTable category="ranged" />
 
 <CoreRulesSnippet id="key-equipment" />
 
-## Misc Adventuring Equipment
+<CoreRulesSnippet id="misc-adventuring-equipment-heading" />
 
-<table>
-	<thead>
-		<tr>
-			<th>
-				<strong>
-					<em>ITEM</em>
-				</strong>
-			</th>
-			<th>
-				<strong>
-					<em>PROPERTIES</em>
-				</strong>
-			</th>
-			<th>
-				<strong>
-					<em>COST</em>
-				</strong>
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-		{miscAdventuringEquipment.map((row) => (
-			<tr>
-				<td>{row.name}</td>
-				<td>{row.description}</td>
-				<td>{row.cost}</td>
-			</tr>
-		))}
-	</tbody>
-</table>
+<CoreRulesMiscAdventuringEquipmentTable />
 
-> **What About…?** These are not **all** of the items available for purchase, merely a sampling. If you can think of it, you can likely buy it!
+<CoreRulesSnippet id="misc-equipment-notes" />
 
-> **Currency is made up of Silver (sp) and Gold pieces (gp).** 10 silver = 1 gold. 1 sp is roughly the cost of a humble meal; 1 gp, a sumptuous feast. Most small towns will have equipment and items worth 50 gp or less. You'll need to adventure to larger towns or cities or find a traveling merchant to purchase more valuable pieces of equipment.
+<CoreRulesSnippet id="magical-items-section" />
 
-## Magical Items
+<CoreRulesMagicalItemRaritiesTable />
 
-Though some magical items can be purchased, most cannot. Some special shops may have a very small selection of them to purchase, but more typically these powerful items are acquired through adventuring.
+<CoreRulesMagicalItemsList />
 
-### Typical Costs of Magical Items
+<CoreRulesSnippet id="spells-section" />
 
-<table>
-	<thead>
-		<tr>
-			<th>
-				<strong>
-					<em>RARITY</em>
-				</strong>
-			</th>
-			<th>
-				<strong>
-					<em>TYPICAL AVAILABILITY</em>
-				</strong>
-			</th>
-			<th>
-				<strong>
-					<em>COST</em>
-				</strong>
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-		{magicalItemRarities.map((row) => (
-			<tr>
-				<td>{row.name}</td>
-				<td>{row.availability}</td>
-				<td>{row.cost}</td>
-			</tr>
-		))}
-	</tbody>
-</table>
+<CoreRulesSnippet id="spells-intro" />
 
-{magicalItems.map((item) => (
+<CoreRulesSpellSchoolsList />
 
-  <>
-    <h3>{item.name}</h3>
-    {item.subtitle && <div set:html={renderMarkdown(item.subtitle)} />}
-    <div set:html={renderMarkdown(item.description)} />
-  </>
-))}
+<CoreRulesSnippet id="secret-spells" />
 
-# Spells
+<CoreRulesSpellsBySchool />
 
-Spells There are 6 main schools of magic. Each school has its own basic spells called cantrips and 9 tiers of progressively more powerful spells that can be unlocked as heroes level up. Heroes can cast any spell from the schools that they know within the tiers they have unlocked.
+<CoreRulesSnippet id="utility-spells" />
 
-**Mana.** Powerful tiered spells require mana—a portion of the spellcaster's life force—to fuel them. A spell's mana cost is equal to its tier. See the _Heroes_ book for more info on how different classes gain mana. Cantrips, cost no mana.
+<CoreRulesUtilitySpellsSection />
 
-**Upcasting.** You can spend additional mana on tiered spells (up to the tier that you have unlocked) to make them stronger for each additional mana spent.
+<CoreRulesSnippet id="optional-variant-rules" />
 
-**Multi-Target/Area of Effect (AoE).** Multi-target/AoE attacks follow special rules to streamline play: they do not miss or crit, and a single roll is applied to all targets. (Ignore (dis)advantage from conditions on individual targets—such as Blinded or Grappled—though anything granting you (dis)advantage still applies to your roll as normal.)
+<CoreRulesOptionalVariantRulesList />
 
-> **Save Spells.** A hero's save DC is typically 10+KEY.
->
-> **Range and Reach.** Just like weapons, spells with “Range” can target creatures from a distance, but are cast with disadvantage if any enemy is adjacent to you. Add 1 die of disadvantage to gain +2 Range (max +6). Spells with “Reach” can't do this, but they are cast as normal even when in melee.
+<CoreRulesSnippet id="measuring-spaces" />
 
-<ul>
-	{spellSchools.map((school) => (
-		<li>
-			<strong>{listLabel(`${school.name} Spells`)}</strong> {school.description}
-		</li>
-	))}
-</ul>
+<CoreRulesSnippet id="glossary-section" />
 
-> **Secret Spells.** Some spells have been hidden or lost through the ages. Whether they are too dangerous to be common knowledge or for other reasons, adventurers can sometimes stumble upon new spells (or wrench them out of the undead hands of a defeated Lich).
-
-{spellsData.schools.map((school) => (
-
-  <>
-    <h2 id={`${school.name.toLowerCase()}-spells`}>{school.name} Spells</h2>
-    {school.spells.map((spell) => (
-      <>
-        <h3 id={spell.id}>
-          <a href={spellDetailHrefFromCoreRules(spell.id)}>{spell.name}</a>
-        </h3>
-        <div
-          set:html={renderMarkdown(
-            spellMetaMarkdown(
-                spell.tier,
-                spell.castingTime,
-                spell.target,
-              ) + (spell.description?.trim() ? "\n\n" + spell.description : ""),
-          )}
-        />
-      </>
-    ))}
-  </>
-))}
-
-<h2 id="utility-spells">Utility Spells</h2>
-
-Some classes can choose from among these additional spells as they level up.
-
-{spellsData.utilitySchools.map((us) => {
-const flatFirst = us.spells[0];
-return "flat" in us && us.flat && flatFirst ? (
-
-<>
-<h3 id={flatFirst.id}>
-<a href={spellDetailHrefFromCoreRules(flatFirst.id)}>{us.name}</a>
-</h3>
-<div
-set:html={renderMarkdown(
-spellMetaMarkdown(
-flatFirst.tier,
-flatFirst.castingTime,
-flatFirst.target,
-) +
-(flatFirst.description?.trim()
-? "\n\n" + flatFirst.description
-: ""),
-)}
-/>
-</>
-) : (
-<>
-<h3>{us.name}</h3>
-{us.spells.map((spell) => (
-<>
-<h4 id={spell.id}>
-<a href={spellDetailHrefFromCoreRules(spell.id)}>{spell.name}</a>
-</h4>
-<div
-set:html={renderMarkdown(
-spellMetaMarkdown(
-spell.tier,
-spell.castingTime,
-spell.target,
-) + (spell.description?.trim() ? "\n\n" + spell.description : ""),
-)}
-/>
-</>
-))}
-</>
-);
-})}
-
-# Optional Variant Rules
-
-If your playgroup likes extra little tactical nuggets, your GM can allow you to try out some of these additional variants to add some more spice to your game. You can always try out a rule for 1 session and see how you all like it before committing to it.
-
-{optionalVariantRules.map((rule) => (
-
-  <>
-    <h3>{rule.name}</h3>
-    <div set:html={renderMarkdown(rule.description)} />
-  </>
-))}
-
-# Measuring Spaces
-
-Generally, speed is preferred above precision while playing a TTRPG—don't make other people wait unnecessarily, close enough is good enough! However, if your table prefers precise rulings rather than fast but “good enough” ones, use the options below as a reference.
-
-### Diagonal Spaces
-
-Treating diagonal spaces as adjacent is the default assumption, as it tends to be easier and faster (though it can cause some spatial “weirdness” that some may not prefer). Instead, you can treat diagonals as not adjacent at all or count every other diagonal as adjacent (fiddly, but a good balance). It's up to your table, but whatever the heroes can do (moving or attacking diagonally), monsters can do as well.
-
-### Cones & Lines
-
-For a cone, start at the character and extend X spaces outward. The cone can be up to X spaces wide at the farthest edge (you can make it narrower than X, but not wider). For a line, starting from the character, extend the area up to X spaces in a single direction (you can make it shorter, but not longer), and 1 space wide. If a space is at least halfway covered by the cone or line, it is included in the effect.
-
-# Glossary
-
-{glossary.map((entry) => (
-
-  <p>
-    <strong>{listLabel(entry.name)}</strong> {entry.description}
-  </p>
-))}
+<CoreRulesGlossaryList />

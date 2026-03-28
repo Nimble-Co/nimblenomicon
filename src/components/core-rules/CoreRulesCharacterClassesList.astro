@@ -1,0 +1,15 @@
+---
+import { listLabel } from '../../lib/list-label';
+import { characterClasses } from '../../models/character-classes';
+---
+
+<ul>
+	{
+		characterClasses.map((heroClass) => (
+			<li>
+				<strong>{listLabel(heroClass.name.toUpperCase())}</strong>{' '}
+				{heroClass.description}
+			</li>
+		))
+	}
+</ul>

@@ -103,5 +103,245 @@
 		"id": "key-equipment",
 		"name": "Key Equipment",
 		"description": "### Healing Potions\n\nHealing potions are deep, shimmering red elixirs with a refreshing, effervescent taste. These potions are crucial for quick recovery, though their availability is limited. Small towns may have only a few, while cities offer more (but they are not in unlimited supply). The wealthy often use healing potions as a display of affluence, incorporating them into elaborate mixed drinks at social events to showcase their status.\n\nPotions require one action to drink or to administer to an adjacent willing creature.\n\n### Torches & Lanterns\n\nHeroes cannot typically see in the dark. Fighting in the dark imposes the Blinded condition. Heroes can bring a lantern or torch to light their way in the dark as long as they have a hand free (or some other way) to hold it. A torch typically lasts for 1 dungeon (or 1 level of a very large one). A lamp with oil can typically last for 1 entire outing, until your next Safe Rest. Torches and lanterns cast light up to 6 spaces away; beyond this is darkness.\n\n> **Be Warned.** Denizens of the dark may not appreciate the light and may attack the light bearers first. Certain spells (e.g., Fire, Lightning, and Radiant) may cause flashes of light as well and draw unwanted attention!\n\n### Equipment Availability\n\nCosts for mundane items typically range from a few silver pieces to a few gold pieces. If you can find an artisan, you can commission them to create something for you—basically anything you can think of that their level of technology could support. The more ornate, the higher the price. Commissioning the creation of a special item will typically start around 50 gp and only go up from there. Smaller towns will have fewer items and artisans than larger cities."
+	},
+	{
+		"id": "saves-intro",
+		"name": "Saves",
+		"headingLevel": "none",
+		"description": "### Saves\n\nWhen the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 and add the relevant stat. A roll of 1 always fails, 20 always saves. You can choose to fail any save instead of rolling."
+	},
+	{
+		"id": "heroes-and-saves",
+		"name": "Heroes and Saves",
+		"headingLevel": "none",
+		"description": "### Heroes and Saves\n\n- Unless otherwise noted, the DC for effects a hero causes is **10+KEY**.\n- When making saves, each hero has 1 advantaged save (+), 1 disadvantaged save (-), and 2 neutral saves.\n\n> **Example.** A Berserker (STR+, INT-) would roll all of his STR saves with advantage and all of his INT saves with disadvantage (see next page)."
+	},
+	{
+		"id": "conditions-minor-statuses",
+		"name": "Other Minor Statuses",
+		"headingLevel": "none",
+		"description": "> ### Other Minor Statuses.\n>\n> Minor statuses (Smoldering, Charged, Distracted, etc.) do nothing on their own and end whenever combat does. Some spells and abilities have additional effects against such targets."
+	},
+	{
+		"id": "combat",
+		"name": "Combat",
+		"headingLevel": "h1",
+		"description": ""
+	},
+	{
+		"id": "resting-downtime",
+		"name": "Resting & Downtime",
+		"headingLevel": "h1",
+		"description": ""
+	},
+	{
+		"id": "character-creation",
+		"name": "Character Creation",
+		"headingLevel": "h1",
+		"description": "Your hero is how you will make your mark on the world. Here's how\nyou can make your own hero:"
+	},
+	{
+		"id": "character-creation-step-1",
+		"name": "Character creation — Step 1",
+		"headingLevel": "none",
+		"description": "### Step 1: Choose Your Class\n\nThis will have the largest impact on the other character choices you make and how you interact with the world:"
+	},
+	{
+		"id": "character-creation-step-2-3",
+		"name": "Character creation — Steps 2–3",
+		"headingLevel": "none",
+		"description": "### Step 2: Choose Your Ancestry & Background\n\n(and optionally, choose your adventuring motivation).\n\nWhat made your hero want to start adventuring? How do you know the other heroes?\n\n### Step 3: Fill in Your Character Sheet\n\nThis handy sheet of paper helps you track your stats, abilities, loot, and other important game info.\n\n## The Character Sheet\n\n### 1. Basic Details & Stats\n\nFill in your character details: Name, Ancestry, Class, Level, Height, and Weight. Fill in the arrow for your advantaged (+) and disadvantaged (-) Saves, and choose a stat array (recommended: place the highest numbers in the KEY stats for your class)."
+	},
+	{
+		"id": "stat-arrays-example",
+		"name": "Stat arrays example",
+		"headingLevel": "none",
+		"description": "> **Example.** The Cheat has DEX and INT as their KEY stats. With the Min-Max array, you might put +3 in DEX, +1 in INT, and -1 in WIL and STR. You'd also mark ▲ for DEX saves and ▼ for WIL saves."
+	},
+	{
+		"id": "character-sheet-skill-points",
+		"name": "Character sheet — Skill points",
+		"headingLevel": "none",
+		"description": "### 2. Skill Points\n\nAt level 1, mark your stat bonuses into each of your respective skills (e.g., a hero with +2 DEX would mark +2 in Finesse and Stealth), and then may place **4** additional skill points wherever you like.\n\n> Example. If you have -1 INT; mark -1 for Arcana, Examination, and Lore. Repeat for your other stats. Then, with your 4 extra points, you could increase Stealth and Finesse by +2 each; any 4 skills by 1 each; or dump all 4 points into your favorite single skill. Up to you!"
+	},
+	{
+		"id": "character-sheet-secondary-stats",
+		"name": "Character sheet — Secondary stats",
+		"headingLevel": "none",
+		"description": "### 3. Secondary Stats\n\nMark your max HP and Hit Dice size (see your class), Hit Die amount (default: equal to your level), Initiative (default: DEX), Size, Speed (default: 6), max Wounds (default: 6), and inventory slots (10+STR)."
+	},
+	{
+		"id": "character-sheet-equipment-money",
+		"name": "Character sheet — Equipment & money",
+		"headingLevel": "none",
+		"description": "### 4. Equipment & Money\n\nHeroes start at level 1 with the equipment listed for their class and background OR **50 gp** to buy their starting equipment. If starting at a higher level, multiply that by the level you are starting at.\n\n> **But my character is a wealthy noble!** That's fine, but your character only has access to this amount of gold for now. Why your wealth is currently inaccessible is up to you and your GM; unlocking your full riches could be a great quest!"
+	},
+	{
+		"id": "character-sheet-languages-intro",
+		"name": "Character sheet — Languages intro",
+		"headingLevel": "none",
+		"description": "### 5. Languages\n\nAll heroes speak Common by default. Each point of INT grants you an additional language known. These languages are typically spoken by:"
+	},
+	{
+		"id": "character-sheet-languages-note",
+		"name": "Character sheet — Languages note",
+		"headingLevel": "none",
+		"description": "> **GROFWINT DRAZLON!** Speaking another creature's\n> language can open doors that weapons alone cannot — being heavily armed without the ability to communicate often leads to hostility."
+	},
+	{
+		"id": "character-sheet-other-abilities",
+		"name": "Character sheet — Other abilities",
+		"headingLevel": "none",
+		"description": "### 6. Other Abilities\n\nMark any other special abilities you get from your class, ancestry, background, etc."
+	},
+	{
+		"id": "character-sheet-inventory",
+		"name": "Character sheet — Inventory slots",
+		"headingLevel": "none",
+		"description": "### 7. Inventory Slots\n\nEach hero has 10+STR inventory slots for carrying equipment and loot (held, worn, or in a pack).\n\n- 1 slot can hold a one-handed weapon, shield, worn armor, stack of javelins, 500 gp, or 2 potions.\n- 2 slots can hold a 2-handed weapon, unworn armor, or similarly bulky items.\n- Small, related items can be grouped into one slot for simplicity (e.g., Camping Supplies: soap, blanket, brush, rations).\n\n> **On Ammunition.** In most games, there's no need to track ammo. If you have a quiver, you have enough arrows. Assume the hero collects fired arrows, crafts more, or buys them in town.\n\nAlternatively, your GM may allow you to carry what you want without the bookkeeping, so long as you're reasonable!"
+	},
+	{
+		"id": "ancestry-background",
+		"name": "Ancestry & Background",
+		"headingLevel": "h1",
+		"description": ""
+	},
+	{
+		"id": "common-ancestries-intro",
+		"name": "Common Ancestries",
+		"headingLevel": "none",
+		"description": "## Common Ancestries\n\nYour kin, lineage, heritage, or race—this is how your character was born and how others see you at first glance. You may be a dwarf raised in the mines under the mountain with countless other dwarves, or you may be an elf raised by goblins! It's up to you to choose how your character began. Choose 1 ancestry and add its bonus to your character sheet."
+	},
+	{
+		"id": "exotic-ancestries-intro",
+		"name": "Exotic Ancestries",
+		"headingLevel": "none",
+		"description": "## Exotic Ancestries\n\nYour setting may or may not support these choices—check with your GM first before selecting one."
+	},
+	{
+		"id": "backgrounds-intro",
+		"name": "Backgrounds",
+		"headingLevel": "none",
+		"description": "## Backgrounds\n\nBackgrounds provide a glimpse into your character's past—how they were raised, the skills they honed before becoming an adventurer, or even their defining personality traits. Feel free to adapt or reimagine these backgrounds to suit your character's story. Choose 1 background:"
+	},
+	{
+		"id": "adventuring-motivation-intro",
+		"name": "Adventuring Motivation",
+		"headingLevel": "none",
+		"description": "## Adventuring Motivation\n\nThe world is a dangerous place—people don't usually just “go adventuring” without a reason. Your motivation should make your character want to work with the rest of the group."
+	},
+	{
+		"id": "adventuring-motivation-make-your-own",
+		"name": "Adventuring motivation — make your own",
+		"headingLevel": "none",
+		"description": "> **Or Make Your Own!** A great character background has connections with the world, its people, your fellow heroes, or even the bad guys. Work with your GM and fellow players to find a motivation that will cross paths with where the story goes. Every good hero has a desire. What's yours?"
+	},
+	{
+		"id": "equipment",
+		"name": "Equipment",
+		"headingLevel": "h1",
+		"description": ""
+	},
+	{
+		"id": "equipment-intro",
+		"name": "Equipment intro",
+		"headingLevel": "none",
+		"description": "**Equipment Proficiency.** Heroes can use any equipment they like; however, each class has a list of weapons and armor types they are most skilled with. Weapons used without proficiency cannot crit. Defending while wearing armor worn without proficiency costs 1 additional action.\n\n**Swapping Equipment.** A hero can sheathe weapons or shields they are proficient with and equip a different one for free 1/round."
+	},
+	{
+		"id": "armor-section",
+		"name": "Armor section",
+		"headingLevel": "none",
+		"description": "## Armor\n\nArmor represents your hero's ability to dodge or block damage when you use the Defend reaction. While unarmored or wearing regular clothes, your Armor is equal to your **DEX**. Some items may grant additional Armor while equipped.\n\n> **Defend Yourself!** If you're standing right next to a baddie with an axe and you're not doing anything to defend yourself, chances are, you're going to get axed!"
+	},
+	{
+		"id": "armor-deflect",
+		"name": "Armor — Deflect",
+		"headingLevel": "none",
+		"description": "> **Deflect!** An optional rule for additional defensive flexibility: instead of adding your shield's armor to your total armor as normal, you may reduce the damage of an attack by your shield's armor value for free 1/round."
+	},
+	{
+		"id": "weapon-properties-heading",
+		"name": "Weapon Properties heading",
+		"headingLevel": "none",
+		"description": "## Weapon Properties"
+	},
+	{
+		"id": "weapon-special-rules",
+		"name": "Weapon special rules",
+		"headingLevel": "none",
+		"description": "### Dual Wielding\n\nHeroes may wield 2 Light weapons at the same time. While dual wielding, you may gain advantage on an attack with those weapons, 1/round.\n\nYou may dual wield 1-handed weapons without the Light property if your STR is 3 or greater, or 1 weapon without the Light property if your STR is 2. If completely unarmed, fists/feet can be considered dual wielded.\n\n> **Dual wielding different weapons?** Roll dice for both weapons and choose either result instead (the 1/round limit still applies). Attacking with advantage? Add an extra die for one of the weapons.\n\n### Unarmed Strikes\n\nTo attack with your bare hands or feet, roll 1d4; on hit: deal 1+STR damage.\n\n### Improvised Weapons\n\nUsing an improvised weapon (e.g. a chair, a frying pan, a big rock), default to 1d4+STR or 1d6+STR. Your GM may allow you to use bigger dice or other properties if it makes sense. An improvised weapon may be likely to break if it lands a crit, though!\n\n### Customizing Weapons\n\nCan you reflavor a staff as a greatclub? Sure! A sai instead of a dagger? Of course! Could you pay a blacksmith to make your 1d12 Greatmaul deal 2d6 or 3d4 damage instead? Since the dice all add up to 12, it won't break the game; ask your GM! Can a blacksmith make your _Dagger_ deal that much damage? No, sorry!"
+	},
+	{
+		"id": "melee-weapons-heading",
+		"name": "Melee Weapons heading",
+		"headingLevel": "none",
+		"description": "### Melee Weapons"
+	},
+	{
+		"id": "ranged-weapons-heading",
+		"name": "Ranged Weapons heading",
+		"headingLevel": "none",
+		"description": "### Ranged Weapons"
+	},
+	{
+		"id": "misc-adventuring-equipment-heading",
+		"name": "Misc Adventuring Equipment heading",
+		"headingLevel": "none",
+		"description": "## Misc Adventuring Equipment"
+	},
+	{
+		"id": "misc-equipment-notes",
+		"name": "Misc equipment notes",
+		"headingLevel": "none",
+		"description": "> **What About…?** These are not **all** of the items available for purchase, merely a sampling. If you can think of it, you can likely buy it!\n\n> **Currency is made up of Silver (sp) and Gold pieces (gp).** 10 silver = 1 gold. 1 sp is roughly the cost of a humble meal; 1 gp, a sumptuous feast. Most small towns will have equipment and items worth 50 gp or less. You'll need to adventure to larger towns or cities or find a traveling merchant to purchase more valuable pieces of equipment."
+	},
+	{
+		"id": "magical-items-section",
+		"name": "Magical Items section",
+		"headingLevel": "none",
+		"description": "## Magical Items\n\nThough some magical items can be purchased, most cannot. Some special shops may have a very small selection of them to purchase, but more typically these powerful items are acquired through adventuring.\n\n### Typical Costs of Magical Items"
+	},
+	{
+		"id": "spells-section",
+		"name": "Spells",
+		"headingLevel": "h1",
+		"description": ""
+	},
+	{
+		"id": "spells-intro",
+		"name": "Spells intro",
+		"headingLevel": "none",
+		"description": "Spells There are 6 main schools of magic. Each school has its own basic spells called cantrips and 9 tiers of progressively more powerful spells that can be unlocked as heroes level up. Heroes can cast any spell from the schools that they know within the tiers they have unlocked.\n\n**Mana.** Powerful tiered spells require mana—a portion of the spellcaster's life force—to fuel them. A spell's mana cost is equal to its tier. See the _Heroes_ book for more info on how different classes gain mana. Cantrips, cost no mana.\n\n**Upcasting.** You can spend additional mana on tiered spells (up to the tier that you have unlocked) to make them stronger for each additional mana spent.\n\n**Multi-Target/Area of Effect (AoE).** Multi-target/AoE attacks follow special rules to streamline play: they do not miss or crit, and a single roll is applied to all targets. (Ignore (dis)advantage from conditions on individual targets—such as Blinded or Grappled—though anything granting you (dis)advantage still applies to your roll as normal.)\n\n> **Save Spells.** A hero's save DC is typically 10+KEY.\n>\n> **Range and Reach.** Just like weapons, spells with “Range” can target creatures from a distance, but are cast with disadvantage if any enemy is adjacent to you. Add 1 die of disadvantage to gain +2 Range (max +6). Spells with “Reach” can't do this, but they are cast as normal even when in melee."
+	},
+	{
+		"id": "secret-spells",
+		"name": "Secret spells",
+		"headingLevel": "none",
+		"description": "> **Secret Spells.** Some spells have been hidden or lost through the ages. Whether they are too dangerous to be common knowledge or for other reasons, adventurers can sometimes stumble upon new spells (or wrench them out of the undead hands of a defeated Lich)."
+	},
+	{
+		"id": "utility-spells",
+		"name": "Utility Spells",
+		"headingLevel": "h2",
+		"description": "Some classes can choose from among these additional spells as they level up."
+	},
+	{
+		"id": "optional-variant-rules",
+		"name": "Optional Variant Rules",
+		"headingLevel": "h1",
+		"description": "If your playgroup likes extra little tactical nuggets, your GM can allow you to try out some of these additional variants to add some more spice to your game. You can always try out a rule for 1 session and see how you all like it before committing to it."
+	},
+	{
+		"id": "measuring-spaces",
+		"name": "Measuring Spaces",
+		"headingLevel": "h1",
+		"description": "Generally, speed is preferred above precision while playing a TTRPG—don't make other people wait unnecessarily, close enough is good enough! However, if your table prefers precise rulings rather than fast but “good enough” ones, use the options below as a reference.\n\n### Diagonal Spaces\n\nTreating diagonal spaces as adjacent is the default assumption, as it tends to be easier and faster (though it can cause some spatial “weirdness” that some may not prefer). Instead, you can treat diagonals as not adjacent at all or count every other diagonal as adjacent (fiddly, but a good balance). It's up to your table, but whatever the heroes can do (moving or attacking diagonally), monsters can do as well.\n\n### Cones & Lines\n\nFor a cone, start at the character and extend X spaces outward. The cone can be up to X spaces wide at the farthest edge (you can make it narrower than X, but not wider). For a line, starting from the character, extend the area up to X spaces in a single direction (you can make it shorter, but not longer), and 1 space wide. If a space is at least halfway covered by the cone or line, it is included in the effect."
+	},
+	{
+		"id": "glossary-section",
+		"name": "Glossary",
+		"headingLevel": "h1",
+		"description": ""
 	}
 ]
