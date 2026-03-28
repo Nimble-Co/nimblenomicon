@@ -1,5 +1,6 @@
-# Pages CMS — https://pagescms.org/docs/configuration
-# Media: https://pagescms.org/docs/configuration/media/
+# Pages CMS — https://pagescms.org/docs/configuration/
+# Use groups for sidebar navigation; format: code for large structured JSON edited as text.
+
 media:
   label: Assets
   input: src/assets
@@ -7,447 +8,482 @@ media:
   extensions: [avif, gif, jpeg, jpg, png, svg, webp]
 
 content:
-  - name: stats
-    label: Stats
-    type: file
-    path: src/data/stats.json
-    format: json
-    list: true
-    fields:
-      - name: name
-        type: string
-        required: true
-      - name: stat
-        label: Stat code
-        type: string
-        required: true
-        description: Any short code you use for this stat (e.g. STR). Skills link to this value.
-      - name: body
-        type: text
-        required: true
+  - name: core-rules
+    label: Core Rules
+    type: group
+    items:
+      - name: core-rules-intro
+        label: Intro
+        type: group
+        items:
+          - name: core-rules-start-here
+            label: Start here
+            type: file
+            path: src/data/core-rules/start-here.md
 
-  - name: sizes
-    label: Sizes
-    type: file
-    path: src/data/sizes.json
-    format: json
-    list: true
-    fields:
-      - name: name
-        type: string
-        required: true
-      - name: body
-        type: text
-        required: true
+      - name: core-rules-mechanics
+        label: Mechanics
+        type: group
+        items:
+          - name: stats
+            label: Stats
+            type: file
+            path: src/data/stats.json
+            format: json
+            list: true
+            fields:
+              - name: name
+                type: string
+                required: true
+              - name: stat
+                label: Stat code
+                type: string
+                required: true
+                description: Short code (e.g. STR). Skills reference this value.
+              - name: body
+                type: text
+                required: true
 
-  - name: skills
-    label: Skills
-    type: file
-    path: src/data/skills.json
-    format: json
-    list: true
-    fields:
-      - name: name
-        type: string
-        required: true
-      - name: stat
-        label: Stat code
-        type: string
-        required: true
-        description: Must exactly match the Stat code on a row in Stats (e.g. STR). Pages CMS cannot reference file+list collections yet; the build fails if the code is not in stats.json.
-      - name: body
-        type: text
-        required: true
-      - name: callout
-        label: Callout
-        type: rich-text
-        required: false
-        description: Optional note.
-        options:
-          format: html
+          - name: skills
+            label: Skills
+            type: file
+            path: src/data/skills.json
+            format: json
+            list: true
+            fields:
+              - name: name
+                type: string
+                required: true
+              - name: stat
+                label: Stat code
+                type: string
+                required: true
+                description: Must match a Stat code in Stats (e.g. STR). Zod validates at build; CMS cannot link lists yet.
+              - name: body
+                type: text
+                required: true
+              - name: callout
+                label: Callout
+                type: rich-text
+                required: false
+                description: Optional HTML note.
+                options:
+                  format: html
 
-  - name: conditions
-    label: Conditions
-    type: file
-    path: src/data/conditions.json
-    format: json
-    list: true
-    fields:
-      - name: name
-        type: string
-        required: true
-      - name: body
-        type: text
-        required: true
+          - name: sizes
+            label: Sizes
+            type: file
+            path: src/data/sizes.json
+            format: json
+            list: true
+            fields:
+              - name: name
+                type: string
+                required: true
+              - name: body
+                type: text
+                required: true
 
-  - name: weapon-properties
-    label: Weapon Properties
-    type: file
-    path: src/data/weapon-properties.json
-    format: json
-    list: true
-    fields:
-      - name: name
-        type: string
-        required: true
-      - name: body
-        type: text
-        required: true
-      - name: callout
-        label: Callout
-        type: rich-text
-        required: false
-        description: Optional note.
-        options:
-          format: html
+          - name: conditions
+            label: Conditions
+            type: file
+            path: src/data/conditions.json
+            format: json
+            list: true
+            fields:
+              - name: name
+                type: string
+                required: true
+              - name: body
+                type: text
+                required: true
 
-  - name: misc-adventuring-equipment
-    label: Misc Adventuring Equipment
-    type: file
-    path: src/data/misc-adventuring-equipment.json
-    format: json
-    list: true
-    fields:
-      - name: item
-        label: Item
-        type: string
-        required: true
-      - name: properties
-        label: Properties
-        type: text
-        required: true
-      - name: cost
-        label: Cost
-        type: string
-        required: true
+      - name: core-rules-checks
+        label: Checks & downtime
+        type: group
+        items:
+          - name: dc-examples
+            label: DC examples
+            type: file
+            path: src/data/dc-examples.json
+            format: json
+            list: true
+            fields:
+              - name: html
+                label: List item
+                type: rich-text
+                required: true
+                description: Full row HTML (bold labels).
+                options:
+                  format: html
 
-  - name: weapons
-    label: Weapons (tables)
-    type: file
-    path: src/data/weapons.json
-    format: json
-    list: true
-    fields:
-      - name: category
-        label: Category
-        type: select
-        required: true
-        description: Which weapons table this row belongs to.
-        options:
-          values:
-            - name: melee
-              label: Melee
-            - name: ranged
-              label: Ranged
-      - name: item
-        label: Item
-        type: string
-        required: true
-      - name: damage
-        label: Damage
-        type: string
-        required: true
-      - name: properties
-        label: Properties
-        type: object
-        list: true
-        required: false
-        description: One row per property; shown comma-separated in the table. Leave empty if none.
-        fields:
-          - name: text
-            label: Text
-            type: string
-            required: true
-      - name: cost
-        label: Cost
-        type: string
-        required: true
+          - name: save-types
+            label: Save types
+            type: file
+            path: src/data/save-types.json
+            format: json
+            list: true
+            fields:
+              - name: name
+                type: string
+                required: true
+              - name: body
+                type: text
+                required: true
 
-  - name: dc-examples
-    label: Core Rules — DC examples
-    type: file
-    path: src/data/dc-examples.json
-    format: json
-    list: true
-    fields:
-      - name: html
-        label: List item (HTML)
-        type: rich-text
-        required: true
-        description: Full list item content including bold labels (matches Core Rules rendering).
-        options:
-          format: html
+          - name: downtime-activities
+            label: Downtime activities
+            type: file
+            path: src/data/downtime-activities.json
+            format: json
+            list: true
+            fields:
+              - name: name
+                type: string
+                required: true
+              - name: body
+                type: text
+                required: true
 
-  - name: save-types
-    label: Core Rules — Save types
-    type: file
-    path: src/data/save-types.json
-    format: json
-    list: true
-    fields:
-      - name: name
-        type: string
-        required: true
-      - name: body
-        type: text
-        required: true
+      - name: core-rules-character
+        label: Character
+        type: group
+        items:
+          - name: stat-arrays
+            label: Stat arrays
+            type: file
+            path: src/data/stat-arrays.json
+            format: json
+            list: true
+            fields:
+              - name: name
+                type: string
+                required: true
+              - name: body
+                type: text
+                required: true
 
-  - name: downtime-activities
-    label: Core Rules — Downtime activities
-    type: file
-    path: src/data/downtime-activities.json
-    format: json
-    list: true
-    fields:
-      - name: name
-        type: string
-        required: true
-      - name: body
-        type: text
-        required: true
+          - name: languages
+            label: Languages
+            type: file
+            path: src/data/languages.json
+            format: json
+            list: true
+            fields:
+              - name: name
+                type: string
+                required: true
+              - name: body
+                type: text
+                required: true
 
-  - name: character-classes
-    label: Core Rules — Character classes
-    type: file
-    path: src/data/character-classes.json
-    format: json
-    list: true
-    fields:
-      - name: name
-        type: string
-        required: true
-      - name: body
-        type: text
-        required: true
+          - name: character-classes
+            label: Classes (step 1)
+            type: file
+            path: src/data/character-classes.json
+            format: json
+            list: true
+            fields:
+              - name: name
+                type: string
+                required: true
+              - name: body
+                type: text
+                required: true
 
-  - name: stat-arrays
-    label: Core Rules — Stat arrays
-    type: file
-    path: src/data/stat-arrays.json
-    format: json
-    list: true
-    fields:
-      - name: name
-        type: string
-        required: true
-      - name: body
-        type: text
-        required: true
+          - name: ancestries
+            label: Ancestries
+            type: file
+            path: src/data/ancestries.json
+            format: json
+            list: true
+            fields:
+              - name: section
+                type: select
+                required: true
+                options:
+                  values:
+                    - name: common
+                      label: Common
+                    - name: exotic
+                      label: Exotic
+              - name: name
+                type: string
+                required: true
+              - name: sizeLine
+                label: Size line
+                type: string
+                required: true
+              - name: flavor
+                type: text
+                required: true
+              - name: trait
+                label: Trait
+                type: text
+                required: true
+                description: Markdown (bold ability name, etc.).
+              - name: callout
+                label: Callout
+                type: rich-text
+                required: false
+                options:
+                  format: html
 
-  - name: languages
-    label: Core Rules — Languages
-    type: file
-    path: src/data/languages.json
-    format: json
-    list: true
-    fields:
-      - name: name
-        type: string
-        required: true
-      - name: body
-        type: text
-        required: true
+          - name: backgrounds
+            label: Backgrounds
+            type: file
+            path: src/data/backgrounds.json
+            format: json
+            list: true
+            fields:
+              - name: body
+                label: Segment
+                type: text
+                required: true
+                description: One background or callout block; order matches the page.
 
-  - name: spell-schools
-    label: Core Rules — Spell schools
-    type: file
-    path: src/data/spell-schools.json
-    format: json
-    list: true
-    fields:
-      - name: name
-        type: string
-        required: true
-      - name: body
-        type: text
-        required: true
+          - name: adventuring-motivations
+            label: Adventuring motivations
+            type: file
+            path: src/data/adventuring-motivations.json
+            format: json
+            list: true
+            fields:
+              - name: html
+                label: Paragraph
+                type: rich-text
+                required: true
+                options:
+                  format: html
 
-  - name: magical-item-rarities
-    label: Core Rules — Magical item rarities
-    type: file
-    path: src/data/magical-item-rarities.json
-    format: json
-    list: true
-    fields:
-      - name: rarity
-        type: string
-        required: true
-      - name: availability
-        label: Typical availability
-        type: text
-        required: true
-      - name: cost
-        type: string
-        required: true
+      - name: core-rules-equipment
+        label: Equipment
+        type: group
+        items:
+          - name: weapons
+            label: Weapons
+            type: file
+            path: src/data/weapons.json
+            format: json
+            list: true
+            fields:
+              - name: category
+                label: Table
+                type: select
+                required: true
+                options:
+                  values:
+                    - name: melee
+                      label: Melee
+                    - name: ranged
+                      label: Ranged
+              - name: item
+                label: Item
+                type: string
+                required: true
+              - name: damage
+                label: Damage
+                type: string
+                required: true
+              - name: properties
+                label: Properties
+                type: object
+                list: true
+                required: false
+                description: One entry per property; shown comma-separated.
+                fields:
+                  - name: text
+                    label: Text
+                    type: string
+                    required: true
+              - name: cost
+                label: Cost
+                type: string
+                required: true
 
-  - name: spell-scroll-costs
-    label: Core Rules — Spell scroll costs
-    type: file
-    path: src/data/spell-scroll-costs.json
-    format: json
-    list: true
-    fields:
-      - name: tier
-        label: Spell tier
-        type: string
-        required: true
-      - name: cost
-        type: string
-        required: true
+          - name: weapon-properties
+            label: Weapon properties
+            type: file
+            path: src/data/weapon-properties.json
+            format: json
+            list: true
+            fields:
+              - name: name
+                type: string
+                required: true
+              - name: body
+                type: text
+                required: true
+              - name: callout
+                label: Callout
+                type: rich-text
+                required: false
+                options:
+                  format: html
 
-  - name: wand-costs
-    label: Core Rules — Wand costs
-    type: file
-    path: src/data/wand-costs.json
-    format: json
-    list: true
-    fields:
-      - name: tier
-        label: Spell tier
-        type: string
-        required: true
-      - name: cost
-        type: string
-        required: true
+          - name: armor
+            label: Armor
+            type: file
+            path: src/data/armor.json
+            format: json
+            list: true
+            fields:
+              - name: category
+                label: Section
+                type: select
+                required: true
+                options:
+                  values:
+                    - name: cloth
+                      label: Cloth
+                    - name: leather
+                      label: Leather
+                    - name: plate
+                      label: Plate
+                    - name: mail
+                      label: Mail
+                    - name: shields
+                      label: Shields
+              - name: item
+                label: Item
+                type: string
+                required: true
+              - name: armor
+                label: Armor
+                type: string
+                required: true
+              - name: cost
+                type: string
+                required: true
 
-  - name: optional-variant-rules
-    label: Core Rules — Optional variant rules
-    type: file
-    path: src/data/optional-variant-rules.json
-    format: json
-    list: true
-    fields:
-      - name: name
-        label: Rule title
-        type: string
-        required: true
-      - name: body
-        type: text
-        required: true
-      - name: callout
-        label: Callout
-        type: rich-text
-        required: false
-        options:
-          format: html
+          - name: misc-adventuring-equipment
+            label: Misc. adventuring gear
+            type: file
+            path: src/data/misc-adventuring-equipment.json
+            format: json
+            list: true
+            fields:
+              - name: item
+                label: Item
+                type: string
+                required: true
+              - name: properties
+                label: Properties
+                type: text
+                required: true
+              - name: cost
+                label: Cost
+                type: string
+                required: true
 
-  - name: adventuring-motivations
-    label: Core Rules — Adventuring motivations
-    type: file
-    path: src/data/adventuring-motivations.json
-    format: json
-    list: true
-    fields:
-      - name: html
-        label: Paragraph (HTML)
-        type: rich-text
-        required: true
-        options:
-          format: html
+      - name: core-rules-spells
+        label: Spells
+        type: group
+        items:
+          - name: spell-schools
+            label: School intros
+            type: file
+            path: src/data/spell-schools.json
+            format: json
+            list: true
+            fields:
+              - name: name
+                type: string
+                required: true
+              - name: body
+                type: text
+                required: true
 
-  - name: armor
-    label: Core Rules — Armor (tables)
-    type: file
-    path: src/data/armor.json
-    format: json
-    list: true
-    fields:
-      - name: category
-        label: Table section
-        type: select
-        required: true
-        options:
-          values:
-            - name: cloth
-              label: Cloth
-            - name: leather
-              label: Leather
-            - name: plate
-              label: Plate
-            - name: mail
-              label: Mail
-            - name: shields
-              label: Shields
-      - name: item
-        label: Item
-        type: string
-        required: true
-      - name: armor
-        label: Armor
-        type: string
-        required: true
-      - name: cost
-        type: string
-        required: true
+          - name: spell-scroll-costs
+            label: Scroll costs
+            type: file
+            path: src/data/spell-scroll-costs.json
+            format: json
+            list: true
+            fields:
+              - name: tier
+                label: Tier
+                type: string
+                required: true
+              - name: cost
+                type: string
+                required: true
 
-  - name: ancestries
-    label: Core Rules — Ancestries
-    type: file
-    path: src/data/ancestries.json
-    format: json
-    list: true
-    fields:
-      - name: section
-        type: select
-        required: true
-        options:
-          values:
-            - name: common
-              label: Common
-            - name: exotic
-              label: Exotic
-      - name: name
-        type: string
-        required: true
-      - name: sizeLine
-        label: Size line
-        type: string
-        required: true
-      - name: flavor
-        type: text
-        required: true
-      - name: trait
-        label: Trait (markdown)
-        type: text
-        required: true
-      - name: callout
-        label: Callout
-        type: rich-text
-        required: false
-        options:
-          format: html
+          - name: wand-costs
+            label: Wand costs
+            type: file
+            path: src/data/wand-costs.json
+            format: json
+            list: true
+            fields:
+              - name: tier
+                label: Tier
+                type: string
+                required: true
+              - name: cost
+                type: string
+                required: true
 
-  - name: backgrounds
-    label: Core Rules — Background segments
-    type: file
-    path: src/data/backgrounds.json
-    format: json
-    list: true
-    fields:
-      - name: body
-        label: Markdown block
-        type: text
-        required: true
-        description: One background or callout segment; order matches Core Rules.
+          - name: spells
+            label: Spell compendium
+            type: file
+            path: src/data/spells.json
+            format: code
+            description: >
+              Schools, utility schools, and every spell. Each spell has level (0 = cantrip),
+              actions (number or null with castingNote), target, body. Edit carefully—invalid JSON breaks the build.
 
-  - name: magical-items
-    label: Core Rules — Magical items & wands
-    type: file
-    path: src/data/magical-items.json
-    format: json
-    description: Array of standard items (paragraphs, bullets, callout) and wands (recharge). Edit as structured JSON.
+      - name: core-rules-magic-items
+        label: Magic items
+        type: group
+        items:
+          - name: magical-item-rarities
+            label: Rarity table
+            type: file
+            path: src/data/magical-item-rarities.json
+            format: json
+            list: true
+            fields:
+              - name: rarity
+                type: string
+                required: true
+              - name: availability
+                label: Typical availability
+                type: text
+                required: true
+              - name: cost
+                type: string
+                required: true
 
-  - name: spells
-    label: Core Rules — Spells (full JSON)
-    type: file
-    path: src/data/spells.json
-    format: json
-    description: >
-      Schools and utility sub-schools. Each spell: name, level (0 = cantrip, 1–9 = tier),
-      actions (positive integer heroic actions, or null with castingNote for e.g. 1 minute / 24 hours),
-      optional castingNote, target enum, body (rules). Presentation uses 1 Action vs 2 Actions.
+          - name: magical-items
+            label: Items & wands
+            type: file
+            path: src/data/magical-items.json
+            format: code
+            description: >
+              Discriminated list (standard items vs wands). Structured JSON—use code editor.
 
-  - name: core-rules-start-here
-    label: Core Rules — Start Here
-    type: file
-    path: src/data/core-rules/start-here.md
+      - name: core-rules-options
+        label: Options
+        type: group
+        items:
+          - name: optional-variant-rules
+            label: Variant rules
+            type: file
+            path: src/data/optional-variant-rules.json
+            format: json
+            list: true
+            fields:
+              - name: name
+                label: Title
+                type: string
+                required: true
+              - name: body
+                type: text
+                required: true
+              - name: callout
+                label: Callout
+                type: rich-text
+                required: false
+                options:
+                  format: html
