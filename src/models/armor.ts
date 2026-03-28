@@ -12,7 +12,7 @@ const armorCategorySchema = z.enum([
 const armorRowSchema = z
   .object({
     category: armorCategorySchema,
-    item: z.string().min(1),
+    name: z.string().min(1),
     armor: z.string().min(1),
     cost: z.string().min(1),
   })

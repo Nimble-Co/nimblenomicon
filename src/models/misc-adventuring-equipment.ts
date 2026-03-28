@@ -3,7 +3,7 @@ import rawMiscAdventuringEquipment from "../data/misc-adventuring-equipment.json
 
 const miscAdventuringEquipmentRowSchema = z
   .object({
-    item: z.string().min(1),
+    name: z.string().min(1),
     properties: z.string().min(1),
     cost: z.string().min(1),
   })

@@ -1,7 +1,7 @@
 [
   {
     "schoolId": "fire-spells",
-    "schoolName": "Fire Spells",
+    "schoolName": "Fire",
     "name": "Flame Dart",
     "level": 0,
     "actions": 1,
@@ -10,7 +10,7 @@
   },
   {
     "schoolId": "fire-spells",
-    "schoolName": "Fire Spells",
+    "schoolName": "Fire",
     "name": "Heart's Fire",
     "level": 0,
     "actions": 1,
@@ -19,7 +19,7 @@
   },
   {
     "schoolId": "fire-spells",
-    "schoolName": "Fire Spells",
+    "schoolName": "Fire",
     "name": "Ignite",
     "level": 1,
     "actions": 2,
@@ -28,7 +28,7 @@
   },
   {
     "schoolId": "fire-spells",
-    "schoolName": "Fire Spells",
+    "schoolName": "Fire",
     "name": "Enchant Weapon",
     "level": 2,
     "actions": 1,
@@ -37,7 +37,7 @@
   },
   {
     "schoolId": "fire-spells",
-    "schoolName": "Fire Spells",
+    "schoolName": "Fire",
     "name": "Flame Barrier",
     "level": 3,
     "actions": 1,
@@ -46,7 +46,7 @@
   },
   {
     "schoolId": "fire-spells",
-    "schoolName": "Fire Spells",
+    "schoolName": "Fire",
     "name": "Pyroclasm",
     "level": 4,
     "actions": 2,
@@ -55,7 +55,7 @@
   },
   {
     "schoolId": "fire-spells",
-    "schoolName": "Fire Spells",
+    "schoolName": "Fire",
     "name": "Fiery Embrace",
     "level": 5,
     "actions": 2,
@@ -64,7 +64,7 @@
   },
   {
     "schoolId": "fire-spells",
-    "schoolName": "Fire Spells",
+    "schoolName": "Fire",
     "name": "Living Inferno",
     "level": 7,
     "actions": 3,
@@ -73,7 +73,7 @@
   },
   {
     "schoolId": "fire-spells",
-    "schoolName": "Fire Spells",
+    "schoolName": "Fire",
     "name": "Dragonform",
     "level": 9,
     "actions": 5,
@@ -82,7 +82,7 @@
   },
   {
     "schoolId": "ice-spells",
-    "schoolName": "Ice Spells",
+    "schoolName": "Ice",
     "name": "Ice Lance",
     "level": 0,
     "actions": 1,
@@ -91,7 +91,7 @@
   },
   {
     "schoolId": "ice-spells",
-    "schoolName": "Ice Spells",
+    "schoolName": "Ice",
     "name": "Snowblind",
     "level": 0,
     "actions": 1,
@@ -100,7 +100,7 @@
   },
   {
     "schoolId": "ice-spells",
-    "schoolName": "Ice Spells",
+    "schoolName": "Ice",
     "name": "Frost Shield",
     "level": 1,
     "actions": 1,
@@ -109,7 +109,7 @@
   },
   {
     "schoolId": "ice-spells",
-    "schoolName": "Ice Spells",
+    "schoolName": "Ice",
     "name": "Shatter",
     "level": 2,
     "actions": 2,
@@ -118,7 +118,7 @@
   },
   {
     "schoolId": "ice-spells",
-    "schoolName": "Ice Spells",
+    "schoolName": "Ice",
     "name": "Cryosleep",
     "level": 3,
     "actions": 2,
@@ -127,7 +127,7 @@
   },
   {
     "schoolId": "ice-spells",
-    "schoolName": "Ice Spells",
+    "schoolName": "Ice",
     "name": "Rimeblades",
     "level": 4,
     "actions": 3,
@@ -136,7 +136,7 @@
   },
   {
     "schoolId": "ice-spells",
-    "schoolName": "Ice Spells",
+    "schoolName": "Ice",
     "name": "Arctic Blast",
     "level": 5,
     "actions": 2,
@@ -145,7 +145,7 @@
   },
   {
     "schoolId": "ice-spells",
-    "schoolName": "Ice Spells",
+    "schoolName": "Ice",
     "name": "Glacier Strike",
     "level": 8,
     "actions": 3,
@@ -154,7 +154,7 @@
   },
   {
     "schoolId": "ice-spells",
-    "schoolName": "Ice Spells",
+    "schoolName": "Ice",
     "name": "Arctic Annihilation",
     "level": 9,
     "actions": 3,
@@ -163,7 +163,7 @@
   },
   {
     "schoolId": "lightning-spells",
-    "schoolName": "Lightning Spells",
+    "schoolName": "Lightning",
     "name": "Zap",
     "level": 0,
     "actions": 1,
@@ -172,7 +172,7 @@
   },
   {
     "schoolId": "lightning-spells",
-    "schoolName": "Lightning Spells",
+    "schoolName": "Lightning",
     "name": "Overload",
     "level": 0,
     "actions": 1,
@@ -181,7 +181,7 @@
   },
   {
     "schoolId": "lightning-spells",
-    "schoolName": "Lightning Spells",
+    "schoolName": "Lightning",
     "name": "Arc Lightning",
     "level": 1,
     "actions": 2,
@@ -190,7 +190,7 @@
   },
   {
     "schoolId": "lightning-spells",
-    "schoolName": "Lightning Spells",
+    "schoolName": "Lightning",
     "name": "Alacrity",
     "level": 2,
     "actions": 1,
@@ -199,7 +199,7 @@
   },
   {
     "schoolId": "lightning-spells",
-    "schoolName": "Lightning Spells",
+    "schoolName": "Lightning",
     "name": "Stormlash",
     "level": 3,
     "actions": 2,
@@ -208,7 +208,7 @@
   },
   {
     "schoolId": "lightning-spells",
-    "schoolName": "Lightning Spells",
+    "schoolName": "Lightning",
     "name": "Electrickery",
     "level": 4,
     "actions": 3,
@@ -217,7 +217,7 @@
   },
   {
     "schoolId": "lightning-spells",
-    "schoolName": "Lightning Spells",
+    "schoolName": "Lightning",
     "name": "Electrocharge",
     "level": 5,
     "actions": 2,
@@ -226,7 +226,7 @@
   },
   {
     "schoolId": "lightning-spells",
-    "schoolName": "Lightning Spells",
+    "schoolName": "Lightning",
     "name": "Ride the Lightning",
     "level": 6,
     "actions": 3,
@@ -235,7 +235,7 @@
   },
   {
     "schoolId": "lightning-spells",
-    "schoolName": "Lightning Spells",
+    "schoolName": "Lightning",
     "name": "Seething Storm",
     "level": 9,
     "actions": 3,
@@ -244,7 +244,7 @@
   },
   {
     "schoolId": "wind-spells",
-    "schoolName": "Wind Spells",
+    "schoolName": "Wind",
     "name": "Razor Wind",
     "level": 0,
     "actions": 1,
@@ -253,7 +253,7 @@
   },
   {
     "schoolId": "wind-spells",
-    "schoolName": "Wind Spells",
+    "schoolName": "Wind",
     "name": "Breath of Life",
     "level": 0,
     "actions": 1,
@@ -262,7 +262,7 @@
   },
   {
     "schoolId": "wind-spells",
-    "schoolName": "Wind Spells",
+    "schoolName": "Wind",
     "name": "Blustery Gale",
     "level": 1,
     "actions": 2,
@@ -271,7 +271,7 @@
   },
   {
     "schoolId": "wind-spells",
-    "schoolName": "Wind Spells",
+    "schoolName": "Wind",
     "name": "Barrier of Wind",
     "level": 2,
     "actions": 1,
@@ -280,7 +280,7 @@
   },
   {
     "schoolId": "wind-spells",
-    "schoolName": "Wind Spells",
+    "schoolName": "Wind",
     "name": "Fly",
     "level": 3,
     "actions": 1,
@@ -289,7 +289,7 @@
   },
   {
     "schoolId": "wind-spells",
-    "schoolName": "Wind Spells",
+    "schoolName": "Wind",
     "name": "Eye of the Storm",
     "level": 4,
     "actions": 2,
@@ -298,7 +298,7 @@
   },
   {
     "schoolId": "wind-spells",
-    "schoolName": "Wind Spells",
+    "schoolName": "Wind",
     "name": "Updraft",
     "level": 5,
     "actions": 3,
@@ -307,7 +307,7 @@
   },
   {
     "schoolId": "wind-spells",
-    "schoolName": "Wind Spells",
+    "schoolName": "Wind",
     "name": "Thousand Cuts",
     "level": 6,
     "actions": 3,
@@ -316,7 +316,7 @@
   },
   {
     "schoolId": "wind-spells",
-    "schoolName": "Wind Spells",
+    "schoolName": "Wind",
     "name": "Boisterous Winds",
     "level": 7,
     "actions": 2,
@@ -325,7 +325,7 @@
   },
   {
     "schoolId": "radiant-spells",
-    "schoolName": "Radiant Spells",
+    "schoolName": "Radiant",
     "name": "Vicious Mockery",
     "level": 0,
     "actions": 1,
@@ -334,7 +334,7 @@
   },
   {
     "schoolId": "radiant-spells",
-    "schoolName": "Radiant Spells",
+    "schoolName": "Radiant",
     "name": "Rebuke",
     "level": 0,
     "actions": 1,
@@ -343,7 +343,7 @@
   },
   {
     "schoolId": "radiant-spells",
-    "schoolName": "Radiant Spells",
+    "schoolName": "Radiant",
     "name": "True Strike",
     "level": 0,
     "actions": 1,
@@ -352,7 +352,7 @@
   },
   {
     "schoolId": "radiant-spells",
-    "schoolName": "Radiant Spells",
+    "schoolName": "Radiant",
     "name": "Heal",
     "level": 1,
     "actions": 1,
@@ -361,7 +361,7 @@
   },
   {
     "schoolId": "radiant-spells",
-    "schoolName": "Radiant Spells",
+    "schoolName": "Radiant",
     "name": "Lifebinding Spirit",
     "level": 1,
     "actions": 1,
@@ -370,7 +370,7 @@
   },
   {
     "schoolId": "radiant-spells",
-    "schoolName": "Radiant Spells",
+    "schoolName": "Radiant",
     "name": "Warding Bond",
     "level": 2,
     "actions": 1,
@@ -379,7 +379,7 @@
   },
   {
     "schoolId": "radiant-spells",
-    "schoolName": "Radiant Spells",
+    "schoolName": "Radiant",
     "name": "Shield of Justice",
     "level": 3,
     "actions": 1,
@@ -388,7 +388,7 @@
   },
   {
     "schoolId": "radiant-spells",
-    "schoolName": "Radiant Spells",
+    "schoolName": "Radiant",
     "name": "Condemn",
     "level": 4,
     "actions": 2,
@@ -397,7 +397,7 @@
   },
   {
     "schoolId": "radiant-spells",
-    "schoolName": "Radiant Spells",
+    "schoolName": "Radiant",
     "name": "Vengeance",
     "level": 5,
     "actions": 2,
@@ -406,7 +406,7 @@
   },
   {
     "schoolId": "radiant-spells",
-    "schoolName": "Radiant Spells",
+    "schoolName": "Radiant",
     "name": "Sacrifice",
     "level": 6,
     "actions": 1,
@@ -415,7 +415,7 @@
   },
   {
     "schoolId": "radiant-spells",
-    "schoolName": "Radiant Spells",
+    "schoolName": "Radiant",
     "name": "Redeem",
     "level": 9,
     "actions": null,
@@ -425,7 +425,7 @@
   },
   {
     "schoolId": "necrotic-spells",
-    "schoolName": "Necrotic Spells",
+    "schoolName": "Necrotic",
     "name": "Withering Touch",
     "level": 0,
     "actions": 1,
@@ -434,7 +434,7 @@
   },
   {
     "schoolId": "necrotic-spells",
-    "schoolName": "Necrotic Spells",
+    "schoolName": "Necrotic",
     "name": "Entice",
     "level": 0,
     "actions": 1,
@@ -443,7 +443,7 @@
   },
   {
     "schoolId": "necrotic-spells",
-    "schoolName": "Necrotic Spells",
+    "schoolName": "Necrotic",
     "name": "Shadow Blast",
     "level": 0,
     "actions": 1,
@@ -452,7 +452,7 @@
   },
   {
     "schoolId": "necrotic-spells",
-    "schoolName": "Necrotic Spells",
+    "schoolName": "Necrotic",
     "name": "Summon Shadow",
     "level": 0,
     "actions": 1,
@@ -461,7 +461,7 @@
   },
   {
     "schoolId": "necrotic-spells",
-    "schoolName": "Necrotic Spells",
+    "schoolName": "Necrotic",
     "name": "Shadow Trap",
     "level": 1,
     "actions": 2,
@@ -470,7 +470,7 @@
   },
   {
     "schoolId": "necrotic-spells",
-    "schoolName": "Necrotic Spells",
+    "schoolName": "Necrotic",
     "name": "Dread Visage",
     "level": 2,
     "actions": 1,
@@ -479,7 +479,7 @@
   },
   {
     "schoolId": "necrotic-spells",
-    "schoolName": "Necrotic Spells",
+    "schoolName": "Necrotic",
     "name": "Vampiric Greed",
     "level": 3,
     "actions": 2,
@@ -488,7 +488,7 @@
   },
   {
     "schoolId": "necrotic-spells",
-    "schoolName": "Necrotic Spells",
+    "schoolName": "Necrotic",
     "name": "Greater Shadow",
     "level": 4,
     "actions": 2,
@@ -497,7 +497,7 @@
   },
   {
     "schoolId": "necrotic-spells",
-    "schoolName": "Necrotic Spells",
+    "schoolName": "Necrotic",
     "name": "Gangrenous Burst",
     "level": 5,
     "actions": 2,
@@ -506,7 +506,7 @@
   },
   {
     "schoolId": "necrotic-spells",
-    "schoolName": "Necrotic Spells",
+    "schoolName": "Necrotic",
     "name": "Unspeakable Word",
     "level": 6,
     "actions": 2,
@@ -515,7 +515,7 @@
   },
   {
     "schoolId": "necrotic-spells",
-    "schoolName": "Necrotic Spells",
+    "schoolName": "Necrotic",
     "name": "Creeping Death",
     "level": 7,
     "actions": 3,

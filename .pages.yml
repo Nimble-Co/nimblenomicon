@@ -298,7 +298,8 @@ content:
                       label: Melee
                     - name: ranged
                       label: Ranged
-              - name: item
+              - name: name
+                label: Weapon
                 type: string
                 required: true
               - name: damage
@@ -355,7 +356,8 @@ content:
                       label: Mail
                     - name: shields
                       label: Shields
-              - name: item
+              - name: name
+                label: Item
                 type: string
                 required: true
               - name: armor
@@ -373,7 +375,8 @@ content:
             format: json
             list: true
             fields:
-              - name: item
+              - name: name
+                label: Item
                 type: string
                 required: true
               - name: properties
@@ -397,6 +400,7 @@ content:
             list: true
             fields:
               - name: name
+                label: School (short name; page adds "Spells")
                 type: string
                 required: true
               - name: body
@@ -412,7 +416,8 @@ content:
             format: json
             list: true
             fields:
-              - name: tier
+              - name: name
+                label: Tier
                 type: string
                 required: true
               - name: cost
@@ -426,7 +431,8 @@ content:
             format: json
             list: true
             fields:
-              - name: tier
+              - name: name
+                label: Tier
                 type: string
                 required: true
               - name: cost
@@ -463,7 +469,7 @@ content:
                 label: School name
                 type: string
                 required: false
-                description: e.g. Fire Spells. Must match School.
+                description: e.g. Fire (same as Spell schools). Page headings add “Spells”.
               - name: utilityGroupId
                 label: Utility group
                 type: select
@@ -550,7 +556,8 @@ content:
             format: json
             list: true
             fields:
-              - name: rarity
+              - name: name
+                label: Rarity
                 type: string
                 required: true
               - name: availability

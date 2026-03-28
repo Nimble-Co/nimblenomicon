@@ -591,7 +591,7 @@ Armor represents your hero's ability to dodge or block damage when you use the D
           .filter((row) => row.category === cat)
           .map((row) => (
             <tr>
-              <td>{row.item}</td>
+              <td>{row.name}</td>
               <td>{row.armor}</td>
               <td>{row.cost}</td>
             </tr>
@@ -667,7 +667,7 @@ Can you reflavor a staff as a greatclub? Sure! A sai instead of a dagger? Of cou
       .filter((w) => w.category === "melee")
       .map((w) => (
         <tr>
-          <td>{w.item}</td>
+          <td>{w.name}</td>
           <td>{w.damage}</td>
           <td>{w.properties.map((p) => p.text).join(", ")}</td>
           <td>{w.cost}</td>
@@ -708,7 +708,7 @@ Can you reflavor a staff as a greatclub? Sure! A sai instead of a dagger? Of cou
       .filter((w) => w.category === "ranged")
       .map((w) => (
         <tr>
-          <td>{w.item}</td>
+          <td>{w.name}</td>
           <td>{w.damage}</td>
           <td>{w.properties.map((p) => p.text).join(", ")}</td>
           <td>{w.cost}</td>
@@ -760,7 +760,7 @@ Costs for mundane items typically range from a few silver pieces to a few gold p
   <tbody>
     {miscAdventuringEquipment.map((row) => (
       <tr>
-        <td>{row.item}</td>
+        <td>{row.name}</td>
         <td>{row.properties}</td>
         <td>{row.cost}</td>
       </tr>
@@ -801,7 +801,7 @@ Though some magical items can be purchased, most cannot. Some special shops may 
   <tbody>
     {magicalItemRarities.map((row) => (
       <tr>
-        <td>{row.rarity}</td>
+        <td>{row.name}</td>
         <td>{row.availability}</td>
         <td>{row.cost}</td>
       </tr>
@@ -834,7 +834,7 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
 <ul>
   {spellSchools.map((school) => (
     <li>
-      <strong>{listLabel(school.name)}</strong> {school.body}
+      <strong>{listLabel(`${school.name} Spells`)}</strong> {school.body}
     </li>
   ))}
 </ul>
@@ -843,7 +843,7 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
 
 {spellsData.schools.map((school) => (
   <>
-    <h2>{school.name}</h2>
+    <h2>{school.name} Spells</h2>
     {school.spells.map((spell) => (
       <>
         <h3>{spell.name}</h3>

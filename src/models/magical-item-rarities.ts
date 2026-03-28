@@ -3,7 +3,7 @@ import rawMagicalItemRarities from "../data/magical-item-rarities.json";
 
 const magicalItemRaritySchema = z
   .object({
-    rarity: z.string().min(1),
+    name: z.string().min(1),
     availability: z.string().min(1),
     cost: z.string().min(1),
   })

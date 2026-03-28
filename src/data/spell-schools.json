@@ -1,26 +1,26 @@
 [
   {
-    "name": "Fire Spells",
-    "body": "Deal high, consistent damage at medium range. Some fire spells can inflict the Smoldering condition and gain additional destructive effects against Smoldering enemies."
+    "name": "Fire",
+    "body": "Spells deal high, consistent damage at medium range. Some fire spells can inflict the Smoldering condition and gain additional destructive effects against Smoldering enemies."
   },
   {
-    "name": "Ice Spells",
-    "body": "Deal medium damage at long range, with a focus on controlling the battlefield and protecting the spellcaster. Some ice spells have additional effects against Hampered targets."
+    "name": "Ice",
+    "body": "Spells deal medium damage at long range, with a focus on controlling the battlefield and protecting the spellcaster. Some ice spells have additional effects against Hampered targets."
   },
   {
-    "name": "Lightning Spells",
-    "body": "Deal high damage at long range with a focus on teleporting around the battlefield and taking advantage of creatures equipped with metal. However, some lightning spells may fail to find ground and damage the spellcaster instead."
+    "name": "Lightning",
+    "body": "Spells deal high damage at long range with a focus on teleporting around the battlefield and taking advantage of creatures equipped with metal. However, some lightning spells may fail to find ground and damage the spellcaster instead."
   },
   {
-    "name": "Necrotic Spells",
-    "body": "Summon horrible minions or manipulate and trap targets. Some risky necrotic spells prey upon damaged creatures, sapping their very life force—but frequently fail to distinguish between friend and foe."
+    "name": "Necrotic",
+    "body": "Spells summon horrible minions or manipulate and trap targets. Some risky necrotic spells prey upon damaged creatures, sapping their very life force—but frequently fail to distinguish between friend and foe."
   },
   {
-    "name": "Radiant Spells",
-    "body": "Can obliterate the unholy, the fearful, and those who would dare harm you or your allies. Equally effective at a distance or in melee. Other spells can protect, mend wounds, and even restore creatures back to life!"
+    "name": "Radiant",
+    "body": "Spells can obliterate the unholy, the fearful, and those who would dare harm you or your allies. Equally effective at a distance or in melee. Other spells can protect, mend wounds, and even restore creatures back to life!"
   },
   {
-    "name": "Wind Spells",
-    "body": "Aid in moving friend and foe alike around the battlefield. They can also slice and cut through entire groups of foes and viciously deal extra damage on critical hits."
+    "name": "Wind",
+    "body": "Spells aid in moving friend and foe alike around the battlefield. They can also slice and cut through entire groups of foes and viciously deal extra damage on critical hits."
   }
 ]

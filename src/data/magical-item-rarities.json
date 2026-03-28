@@ -1,22 +1,22 @@
 [
   {
-    "rarity": "Uncommon",
     "availability": "Typically found around levels 2-6",
-    "cost": "50–500+ gp"
+    "cost": "50–500+ gp",
+    "name": "Uncommon"
   },
   {
-    "rarity": "Rare",
     "availability": "Typically found around levels 5-12",
-    "cost": "500–5,000+ gp"
+    "cost": "500–5,000+ gp",
+    "name": "Rare"
   },
   {
-    "rarity": "Very Rare",
     "availability": "Typically found around levels 8-18",
-    "cost": "5,000–500,000+ gp"
+    "cost": "5,000–500,000+ gp",
+    "name": "Very Rare"
   },
   {
-    "rarity": "Legendary",
     "availability": "Typically found around levels 15-20",
-    "cost": "1,000,000+gp or Priceless"
+    "cost": "1,000,000+gp or Priceless",
+    "name": "Legendary"
   }
 ]

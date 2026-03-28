@@ -3,7 +3,7 @@ import rawSpellScrollCosts from "../data/spell-scroll-costs.json";
 
 const spellScrollCostSchema = z
   .object({
-    tier: z.string().min(1),
+    name: z.string().min(1),
     cost: z.string().min(1),
   })
   .strict();

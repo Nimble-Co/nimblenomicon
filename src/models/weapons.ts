@@ -10,7 +10,7 @@ const weaponPropertyLineSchema = z
 const weaponSchema = z
   .object({
     category: z.enum(["melee", "ranged"]),
-    item: z.string().min(1),
+    name: z.string().min(1),
     damage: z.string().min(1),
     properties: z.array(weaponPropertyLineSchema).default([]),
     cost: z.string().min(1),

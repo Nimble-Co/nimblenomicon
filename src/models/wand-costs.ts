@@ -3,7 +3,7 @@ import rawWandCosts from "../data/wand-costs.json";
 
 const wandCostSchema = z
   .object({
-    tier: z.string().min(1),
+    name: z.string().min(1),
     cost: z.string().min(1),
   })
   .strict();
