@@ -137,7 +137,7 @@ content:
             list: true
             fields:
               - name: name
-                label: Name
+                label: Stat
                 type: string
                 required: true
               - name: description
