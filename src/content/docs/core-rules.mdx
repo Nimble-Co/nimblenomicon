@@ -15,7 +15,10 @@ import { listLabel } from "../../lib/list-label";
 import { spellMetaMarkdown } from "../../lib/spell-meta";
 
 import { adventuringMotivations } from "../../models/adventuring-motivations";
-import { ancestries } from "../../models/ancestries";
+import {
+  ancestries,
+  formatAncestrySize,
+} from "../../models/ancestries";
 import { armorRows, armorTableSections } from "../../models/armor";
 import { characterClasses } from "../../models/character-classes";
 import { conditions } from "../../models/conditions";
@@ -507,7 +510,7 @@ Your kin, lineage, heritage, or race—this is how your character was born and h
   .map((a) => (
     <>
       <h3>{a.name}</h3>
-      <p>{a.sizeLine}</p>
+      <p>({formatAncestrySize(a.size)})</p>
       <p>{a.flavor}</p>
       <div set:html={renderMarkdown(a.trait)} />
     </>
@@ -522,7 +525,7 @@ Your setting may or may not support these choices—check with your GM first bef
   .map((a) => (
     <>
       <h3>{a.name}</h3>
-      <p>{a.sizeLine}</p>
+      <p>({formatAncestrySize(a.size)})</p>
       <p>{a.flavor}</p>
       <div set:html={renderMarkdown(a.trait)} />
     </>

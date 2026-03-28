@@ -244,10 +244,20 @@ content:
                 label: Name
                 type: string
                 required: true
-              - name: sizeLine
+              - name: size
                 label: Size
-                type: string
+                type: select
                 required: true
+                options:
+                  values:
+                    - name: small
+                      label: Small
+                    - name: medium
+                      label: Medium
+                    - name: large
+                      label: Large
+                    - name: small-and-medium
+                      label: Small and Medium
               - name: flavor
                 label: Flavor
                 type: rich-text
