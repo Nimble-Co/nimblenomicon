@@ -4,9 +4,7 @@ import rawSnippets from '../data/core-rules-snippets.json';
 const coreRulesSnippetSchema = z
 	.object({
 		id: z.string().min(1),
-		name: z.string().min(1),
-		description: z.string(),
-		headingLevel: z.enum(['h1', 'h2', 'h3', 'none']).optional(),
+		description: z.string().min(1),
 	})
 	.strict();
 

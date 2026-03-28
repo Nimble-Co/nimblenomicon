@@ -14,14 +14,8 @@ if (!snippet) {
 		`CoreRulesSnippet: no core rules snippet with id "${id}". Check src/data/core-rules-snippets.json.`,
 	);
 }
-
-const headingLevel = snippet.headingLevel ?? 'h2';
-const hasHeading = headingLevel !== 'none';
-const body = snippet.description ?? '';
-const showBody = body.length > 0;
 ---
 
-{hasHeading && headingLevel === 'h1' && <h1 id={snippet.id}>{snippet.name}</h1>}
-{hasHeading && headingLevel === 'h2' && <h2 id={snippet.id}>{snippet.name}</h2>}
-{hasHeading && headingLevel === 'h3' && <h3 id={snippet.id}>{snippet.name}</h3>}
-{showBody && <div set:html={renderMarkdown(body)} />}
+<section id={snippet.id}>
+	<div set:html={renderMarkdown(snippet.description)} />
+</section>
