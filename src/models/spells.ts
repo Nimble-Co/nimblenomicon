@@ -19,12 +19,11 @@ const spellSchoolIdSchema = z.enum([
   "wind-spells",
   "radiant-spells",
   "necrotic-spells",
-  "tempest-s-command",
 ]);
 
 const spellEntryFields = {
   name: z.string().min(1),
-  level: z.number().int().min(0).max(9),
+  tier: z.number().int().min(0).max(9),
   castingTime: z.string().min(1),
   target: spellTargetSchema,
   description: z.string(),
@@ -42,22 +41,33 @@ function coerceUtility(v: unknown): unknown {
   return v;
 }
 
+/** CMS may send tier as string from select. */
+function coerceTier(v: unknown): unknown {
+  if (typeof v === "string" && v.trim() !== "" && !Number.isNaN(Number(v))) {
+    return Number(v);
+  }
+  return v;
+}
+
 const spellRowBaseSchema = z.preprocess(
   (raw) => {
     if (!raw || typeof raw !== "object") return raw;
     const o = raw as Record<string, unknown>;
-    return {
+    const out = {
       ...o,
       schoolId: emptyToUndef(o.schoolId),
       utility: coerceUtility(o.utility),
+      tier: coerceTier(o.tier ?? o.level),
     };
+    if ("level" in out) delete (out as Record<string, unknown>).level;
+    return out;
   },
   z
     .object({
       schoolId: spellSchoolIdSchema,
       utility: z.boolean(),
       name: z.string().min(1),
-      level: z.number().int().min(0).max(9),
+      tier: z.number().int().min(0).max(9),
       castingTime: z.string().min(1),
       target: spellTargetSchema,
       description: z.string(),
@@ -106,13 +116,12 @@ const UTILITY_SECTION_ORDER = [
   "ice-spells",
   "fire-spells",
   "lightning-spells",
-  "tempest-s-command",
   "wind-spells",
   "radiant-spells",
   "necrotic-spells",
 ] as const;
 
-/** h3 titles under Utility Spells (Tempest is not a main school). */
+/** h3 titles under Utility Spells */
 const UTILITY_SECTION_TITLE: Record<
   (typeof UTILITY_SECTION_ORDER)[number],
   string
@@ -120,7 +129,6 @@ const UTILITY_SECTION_TITLE: Record<
   "ice-spells": "Ice",
   "fire-spells": "Fire",
   "lightning-spells": "Lightning",
-  "tempest-s-command": "Tempest's Command",
   "wind-spells": "Wind",
   "radiant-spells": "Radiant",
   "necrotic-spells": "Necrotic",

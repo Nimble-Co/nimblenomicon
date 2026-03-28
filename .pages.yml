@@ -484,7 +484,7 @@ content:
                 label: School
                 type: select
                 required: true
-                description: Same school for main spells and utility spells. Tempest's Command appears only under Utility Spells.
+                description: Same school for main spells and utility spells (e.g. utility Lightning spells use Lightning).
                 options:
                   values:
                     - name: fire-spells
@@ -499,8 +499,6 @@ content:
                       label: Radiant
                     - name: necrotic-spells
                       label: Necrotic
-                    - name: tempest-s-command
-                      label: Tempest's Command
               - name: utility
                 label: Utility Spell
                 type: boolean
@@ -510,14 +508,33 @@ content:
                 label: Name
                 type: string
                 required: true
-              - name: level
-                label: Level
-                type: number
+              - name: tier
+                label: Spell Tier
+                type: select
                 required: true
-                description: 0 = Cantrip; 1–9 = Spell Tier.
+                description: Stored as a number 0–9 in JSON (Cantrip = 0).
                 options:
-                  min: 0
-                  max: 9
+                  values:
+                    - name: "0"
+                      label: Cantrip
+                    - name: "1"
+                      label: Tier 1
+                    - name: "2"
+                      label: Tier 2
+                    - name: "3"
+                      label: Tier 3
+                    - name: "4"
+                      label: Tier 4
+                    - name: "5"
+                      label: Tier 5
+                    - name: "6"
+                      label: Tier 6
+                    - name: "7"
+                      label: Tier 7
+                    - name: "8"
+                      label: Tier 8
+                    - name: "9"
+                      label: Tier 9
               - name: castingTime
                 label: Casting Time
                 type: string

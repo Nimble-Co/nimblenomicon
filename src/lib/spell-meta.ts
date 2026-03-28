@@ -10,12 +10,10 @@ const TARGET_LABEL: Record<SpellTarget, string> = {
   "single-target-or-self": "Single Target/Self",
 };
 
-/** 0 = Cantrip; 1–9 = ordinal tier */
-export function formatSpellLevel(level: number): string {
-  if (level === 0) return "Cantrip";
-  const suf =
-    level === 1 ? "st" : level === 2 ? "nd" : level === 3 ? "rd" : "th";
-  return `${level}${suf} level`;
+/** 0 = Cantrip; 1–9 = Tier 1–9 */
+export function formatSpellTier(tier: number): string {
+  if (tier === 0) return "Cantrip";
+  return `Tier ${tier}`;
 }
 
 export function formatSpellTarget(target: SpellTarget): string {
@@ -24,13 +22,13 @@ export function formatSpellTarget(target: SpellTarget): string {
 
 /** Italic meta line as in the original Core Rules (markdown). */
 export function spellMetaMarkdown(
-  level: number,
+  tier: number,
   castingTime: string,
   target: SpellTarget,
 ): string {
-  const tier = formatSpellLevel(level);
+  const tierLabel = formatSpellTier(tier);
   const cast = castingTime.trim();
   const tgt = formatSpellTarget(target);
-  const middle = cast ? `${tier}, ${cast}, ${tgt}` : `${tier}, ${tgt}`;
+  const middle = cast ? `${tierLabel}, ${cast}, ${tgt}` : `${tierLabel}, ${tgt}`;
   return `_${middle}_`;
 }
