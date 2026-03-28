@@ -138,7 +138,10 @@ const SCHOOL_ORDER = [
   "necrotic-spells",
 ] as const;
 
-/** Short title for headings (from spell-schools data / Core Rules). */
+/**
+ * Short school name for headings, utility subsection titles, and display.
+ * Main document order vs utility subsection order differ; labels stay the same per id.
+ */
 const SCHOOL_SHORT_NAME: Record<(typeof SCHOOL_ORDER)[number], string> = {
   "fire-spells": "Fire",
   "ice-spells": "Ice",
@@ -177,19 +180,6 @@ const UTILITY_SECTION_ORDER = [
   "radiant-spells",
   "necrotic-spells",
 ] as const;
-
-/** h3 titles under Utility Spells */
-const UTILITY_SECTION_TITLE: Record<
-  (typeof UTILITY_SECTION_ORDER)[number],
-  string
-> = {
-  "ice-spells": "Ice",
-  "fire-spells": "Fire",
-  "lightning-spells": "Lightning",
-  "wind-spells": "Wind",
-  "radiant-spells": "Radiant",
-  "necrotic-spells": "Necrotic",
-};
 
 export type SpellSchoolBlock = {
   id: string;
@@ -247,7 +237,7 @@ export function buildUtilitySpellGroups(
   }
   return UTILITY_SECTION_ORDER.filter((id) => bySection.has(id)).map((id) => {
     const group = bySection.get(id)!;
-    const name = UTILITY_SECTION_TITLE[id];
+    const name = SCHOOL_SHORT_NAME[id];
     const spells = group.map(entryFromRow);
     const flat =
       spells.length === 1 && spells[0]!.name.trim() === name.trim();
