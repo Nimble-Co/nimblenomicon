@@ -858,7 +858,7 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
     <h2 id={`${school.name.toLowerCase()}-spells`}>{school.name} Spells</h2>
     {school.spells.map((spell) => (
       <>
-        <h3>
+        <h3 id={spell.id}>
           <a href={spellDetailHrefFromCoreRules(spell.id)}>{spell.name}</a>
         </h3>
         <div
@@ -883,7 +883,7 @@ Some classes can choose from among these additional spells as they level up.
   const flatFirst = us.spells[0];
   return "flat" in us && us.flat && flatFirst ? (
     <>
-      <h3>
+      <h3 id={flatFirst.id}>
         <a href={spellDetailHrefFromCoreRules(flatFirst.id)}>{us.name}</a>
       </h3>
       <div
@@ -904,7 +904,7 @@ Some classes can choose from among these additional spells as they level up.
       <h3>{us.name}</h3>
       {us.spells.map((spell) => (
         <>
-          <h4>
+          <h4 id={spell.id}>
             <a href={spellDetailHrefFromCoreRules(spell.id)}>{spell.name}</a>
           </h4>
           <div

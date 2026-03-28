@@ -1,10 +1,10 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import {
-	ancestries,
-	compareAncestryRowsForListing,
-	formatAncestrySize,
-} from '../../../models/ancestries';
+ancestries,
+compareAncestryRowsForListing,
+formatAncestrySize,
+} from '../../models/ancestries';
 
 const rows = [...ancestries].sort(compareAncestryRowsForListing);
 
@@ -25,7 +25,7 @@ function sectionLabel(section: (typeof rows)[number]['section']): string {
 	hasSidebar={false}
 >
 	<p class="ancestries-index__intro">
-		<a href="../">Core Rules</a>
+		<a href="/core-rules/">Core Rules</a>
 	</p>
 	<div class="sl-markdown-content not-content">
 		<table class="ancestries-index__table">

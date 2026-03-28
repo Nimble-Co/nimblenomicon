@@ -1,7 +1,7 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import { renderMarkdown } from '../../../lib/render-markdown';
-import { ancestries, formatAncestrySize } from '../../../models/ancestries';
+import { renderMarkdown } from '../../lib/render-markdown';
+import { ancestries, formatAncestrySize } from '../../models/ancestries';
 
 export function getStaticPaths() {
 	return ancestries.map((row) => ({
@@ -33,7 +33,7 @@ const bodyMarkdown =
 	<div set:html={renderMarkdown(bodyMarkdown)} />
 	<p class="ancestry-detail__core-rules-ref">
 		<em
-			>From <a href={`../../#${row.id}`}>Core Rules</a></em
+			>From <a href={`/core-rules/#${row.id}`}>Core Rules</a></em
 		>
 	</p>
 </StarlightPage>

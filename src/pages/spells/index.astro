@@ -1,11 +1,11 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import { formatSpellTier } from '../../../lib/spell-meta';
+import { formatSpellTier } from '../../lib/spell-meta';
 import {
 	compareSpellRowsForListing,
 	spellRows,
 	spellSchoolShortName,
-} from '../../../models/spells';
+} from '../../models/spells';
 
 const rows = [...spellRows].sort(compareSpellRowsForListing);
 ---
@@ -21,7 +21,7 @@ const rows = [...spellRows].sort(compareSpellRowsForListing);
 	hasSidebar={false}
 >
 	<p class="spells-index__intro">
-		<a href="../">Core Rules</a>
+		<a href="/core-rules/">Core Rules</a>
 	</p>
 	<div class="sl-markdown-content not-content">
 		<table class="spells-index__table">

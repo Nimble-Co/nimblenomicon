@@ -3,18 +3,11 @@ import bookIcon from '../assets/nimblenomicon_icon.svg';
 import { SECTION_KEYS, SECTION_METADATA } from '../config/section-sidebars';
 import { SEARCH_PLACEHOLDER } from '../config/search';
 
-/** Resolves a site-root path for Starlight / GitHub Pages `base`. */
-function withBase(path: string): string {
-	const base = import.meta.env.BASE_URL;
-	const normalized = path.startsWith('/') ? path.slice(1) : path;
-	return base + normalized;
-}
-
 const navItems = SECTION_KEYS.map((key) => {
 	const m = SECTION_METADATA[key];
 	return {
 		label: m.label,
-		href: withBase(m.path),
+		href: m.path,
 		icon: m.icon,
 		iconWidth: m.home.width,
 		iconHeight: m.home.height,

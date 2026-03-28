@@ -212,15 +212,9 @@ function entryFromRow(row: SpellRowData): SpellEntryData {
   return spell;
 }
 
-/** Relative URL from the Core Rules doc to a spell detail page (respects `base`). */
+/** Root-absolute path to a spell detail page. */
 export function spellDetailHrefFromCoreRules(id: string): string {
-  return `spells/${id}/`;
-}
-
-/** Anchor on the Core Rules page for this spell's school / utility listing (e.g. `#fire-spells`). */
-export function coreRulesSpellListingFragment(row: SpellRowData): string {
-  if (row.utility) return "utility-spells";
-  return `${spellSchoolShortName(row.schoolId).toLowerCase()}-spells`;
+  return `/spells/${id}/`;
 }
 
 export function buildSpellSchools(rows: SpellRowData[]): SpellSchoolBlock[] {

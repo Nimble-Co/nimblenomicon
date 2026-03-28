@@ -79,9 +79,9 @@ export const ancestries: AncestryRowData[] = z
   })
   .parse(rawAncestries);
 
-/** Relative URL from the Core Rules doc to an ancestry detail page (respects `base`). */
+/** Root-absolute path to an ancestry detail page. */
 export function ancestryDetailHrefFromCoreRules(id: string): string {
-  return `ancestries/${id}/`;
+  return `/ancestries/${id}/`;
 }
 
 /**
