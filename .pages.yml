@@ -119,7 +119,7 @@ content:
             list: true
             fields:
               - name: name
-                label: Difficulty Label
+                label: Name
                 type: string
                 required: true
               - name: description
