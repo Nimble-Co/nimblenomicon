@@ -59,15 +59,14 @@ import { weapons } from '../../models/weapons';
 	</div>
 </div>
 
-{coreRulesSnippets.map((snippet) => (
+{coreRulesSnippets
+.filter((snippet) => snippet.id === 'start-here')
+.map((snippet) => (
 
-<>
-<h1>{snippet.name}</h1>
-<div set:html={renderMarkdown(snippet.description)} />
-</>
+<div
+set:html={renderMarkdown(`**${snippet.name}** ${snippet.description}`)}
+/>
 ))}
-
-# Core Rules
 
 ## Stats
 

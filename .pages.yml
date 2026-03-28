@@ -23,6 +23,11 @@ content:
             format: json
             list: true
             fields:
+              - name: id
+                label: Id
+                type: string
+                required: true
+                description: Stable anchor slug (e.g. start-here); use lowercase letters, numbers, and hyphens.
               - name: name
                 label: Name
                 type: string
