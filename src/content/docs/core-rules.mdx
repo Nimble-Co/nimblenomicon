@@ -16,6 +16,7 @@ import { spellMetaMarkdown } from "../../lib/spell-meta";
 
 import { adventuringMotivations } from "../../models/adventuring-motivations";
 import {
+  ancestryDetailHrefFromCoreRules,
   ancestries,
   formatAncestrySize,
 } from "../../models/ancestries";
@@ -512,7 +513,9 @@ Your kin, lineage, heritage, or race—this is how your character was born and h
   .filter((a) => a.section === "common")
   .map((a) => (
     <>
-      <h3>{a.name}</h3>
+      <h3 id={a.id}>
+        <a href={ancestryDetailHrefFromCoreRules(a.id)}>{a.name}</a>
+      </h3>
       <p>({formatAncestrySize(a.size)})</p>
       <p>{a.flavor}</p>
       <div set:html={renderMarkdown(a.trait)} />
@@ -527,7 +530,9 @@ Your setting may or may not support these choices—check with your GM first bef
   .filter((a) => a.section === "exotic")
   .map((a) => (
     <>
-      <h3>{a.name}</h3>
+      <h3 id={a.id}>
+        <a href={ancestryDetailHrefFromCoreRules(a.id)}>{a.name}</a>
+      </h3>
       <p>({formatAncestrySize(a.size)})</p>
       <p>{a.flavor}</p>
       <div set:html={renderMarkdown(a.trait)} />
@@ -853,7 +858,7 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
     <h2 id={`${school.name.toLowerCase()}-spells`}>{school.name} Spells</h2>
     {school.spells.map((spell) => (
       <>
-        <h3>
+        <h3 id={spell.id}>
           <a href={spellDetailHrefFromCoreRules(spell.id)}>{spell.name}</a>
         </h3>
         <div
@@ -878,7 +883,7 @@ Some classes can choose from among these additional spells as they level up.
   const flatFirst = us.spells[0];
   return "flat" in us && us.flat && flatFirst ? (
     <>
-      <h3>
+      <h3 id={flatFirst.id}>
         <a href={spellDetailHrefFromCoreRules(flatFirst.id)}>{us.name}</a>
       </h3>
       <div
@@ -899,7 +904,7 @@ Some classes can choose from among these additional spells as they level up.
       <h3>{us.name}</h3>
       {us.spells.map((spell) => (
         <>
-          <h4>
+          <h4 id={spell.id}>
             <a href={spellDetailHrefFromCoreRules(spell.id)}>{spell.name}</a>
           </h4>
           <div

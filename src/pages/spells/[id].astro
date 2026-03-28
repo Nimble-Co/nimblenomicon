@@ -1,12 +1,8 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import { renderMarkdown } from '../../../lib/render-markdown';
-import { spellMetaMarkdown } from '../../../lib/spell-meta';
-import {
-	coreRulesSpellListingFragment,
-	spellRows,
-	spellSchoolShortName,
-} from '../../../models/spells';
+import { renderMarkdown } from '../../lib/render-markdown';
+import { spellMetaMarkdown } from '../../lib/spell-meta';
+import { spellRows, spellSchoolShortName } from '../../models/spells';
 
 export function getStaticPaths() {
 	return spellRows.map((row) => ({
@@ -36,7 +32,7 @@ const bodyMarkdown =
 	<div set:html={renderMarkdown(bodyMarkdown)} />
 	<p class="spell-detail__core-rules-ref">
 		<em
-			>From <a href={`../../#${coreRulesSpellListingFragment(row)}`}>Core Rules</a></em
+			>From <a href={`/core-rules/#${row.id}`}>Core Rules</a></em
 		>
 	</p>
 </StarlightPage>

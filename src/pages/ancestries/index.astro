@@ -1,0 +1,75 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import {
+ancestries,
+compareAncestryRowsForListing,
+formatAncestrySize,
+} from '../../models/ancestries';
+
+const rows = [...ancestries].sort(compareAncestryRowsForListing);
+
+function sectionLabel(section: (typeof rows)[number]['section']): string {
+	return section === 'common' ? 'Common' : 'Exotic';
+}
+---
+
+<StarlightPage
+	frontmatter={{
+		title: 'Ancestries',
+		description:
+			'Index of ancestries by section with links to each ancestry’s full rules.',
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+	hasSidebar={false}
+>
+	<p class="ancestries-index__intro">
+		<a href="/core-rules/">Core Rules</a>
+	</p>
+	<div class="sl-markdown-content not-content">
+		<table class="ancestries-index__table">
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Section</th>
+					<th scope="col">Size</th>
+				</tr>
+			</thead>
+			<tbody>
+				{
+					rows.map((row) => (
+						<tr>
+							<th scope="row">
+								<a href={`./${row.id}/`}>{row.name}</a>
+							</th>
+							<td>{sectionLabel(row.section)}</td>
+							<td>{formatAncestrySize(row.size)}</td>
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</div>
+</StarlightPage>
+
+<style>
+	.ancestries-index__intro {
+		font-style: italic;
+		margin-bottom: 1rem;
+	}
+	.ancestries-index__table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+	.ancestries-index__table th,
+	.ancestries-index__table td {
+		text-align: start;
+		padding: 0.35rem 0.75rem 0.35rem 0;
+		border-bottom: 1px solid var(--sl-color-hairline);
+		vertical-align: top;
+	}
+	.ancestries-index__table thead th {
+		font-weight: 600;
+	}
+</style>
