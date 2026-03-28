@@ -163,6 +163,188 @@ content:
         type: string
         required: true
 
+  - name: dc-examples
+    label: Core Rules — DC examples
+    type: file
+    path: src/data/dc-examples.json
+    format: json
+    list: true
+    fields:
+      - name: html
+        label: List item (HTML)
+        type: rich-text
+        required: true
+        description: Full list item content including bold labels (matches Core Rules rendering).
+        options:
+          format: html
+
+  - name: save-types
+    label: Core Rules — Save types
+    type: file
+    path: src/data/save-types.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: body
+        type: text
+        required: true
+
+  - name: downtime-activities
+    label: Core Rules — Downtime activities
+    type: file
+    path: src/data/downtime-activities.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: body
+        type: text
+        required: true
+
+  - name: character-classes
+    label: Core Rules — Character classes
+    type: file
+    path: src/data/character-classes.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: body
+        type: text
+        required: true
+
+  - name: stat-arrays
+    label: Core Rules — Stat arrays
+    type: file
+    path: src/data/stat-arrays.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: body
+        type: text
+        required: true
+
+  - name: languages
+    label: Core Rules — Languages
+    type: file
+    path: src/data/languages.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: body
+        type: text
+        required: true
+
+  - name: spell-schools
+    label: Core Rules — Spell schools
+    type: file
+    path: src/data/spell-schools.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: body
+        type: text
+        required: true
+
+  - name: magical-item-rarities
+    label: Core Rules — Magical item rarities
+    type: file
+    path: src/data/magical-item-rarities.json
+    format: json
+    list: true
+    fields:
+      - name: rarity
+        type: string
+        required: true
+      - name: availability
+        label: Typical availability
+        type: text
+        required: true
+      - name: cost
+        type: string
+        required: true
+
+  - name: spell-scroll-costs
+    label: Core Rules — Spell scroll costs
+    type: file
+    path: src/data/spell-scroll-costs.json
+    format: json
+    list: true
+    fields:
+      - name: tier
+        label: Spell tier
+        type: string
+        required: true
+      - name: cost
+        type: string
+        required: true
+
+  - name: wand-costs
+    label: Core Rules — Wand costs
+    type: file
+    path: src/data/wand-costs.json
+    format: json
+    list: true
+    fields:
+      - name: tier
+        label: Spell tier
+        type: string
+        required: true
+      - name: cost
+        type: string
+        required: true
+
+  - name: optional-variant-rules
+    label: Core Rules — Optional variant rules
+    type: file
+    path: src/data/optional-variant-rules.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        label: Rule title
+        type: string
+        required: true
+      - name: body
+        type: text
+        required: true
+      - name: callout
+        label: Callout
+        type: rich-text
+        required: false
+        options:
+          format: html
+
+  - name: adventuring-motivations
+    label: Core Rules — Adventuring motivations
+    type: file
+    path: src/data/adventuring-motivations.json
+    format: json
+    list: true
+    fields:
+      - name: html
+        label: Paragraph (HTML)
+        type: rich-text
+        required: true
+        options:
+          format: html
+
   - name: core-rules-start-here
     label: Core Rules — Start Here
     type: file

@@ -1,0 +1,12 @@
+[
+  { "tier": "Cantrip", "cost": "10 gp" },
+  { "tier": "Tier 1 Spell", "cost": "35 gp" },
+  { "tier": "Tier 2 Spell", "cost": "100 gp" },
+  { "tier": "Tier 3 Spell", "cost": "300 gp" },
+  { "tier": "Tier 4 Spell", "cost": "1,000 gp" },
+  { "tier": "Tier 5 Spell", "cost": "3,000 gp" },
+  { "tier": "Tier 6 Spell", "cost": "10,000 gp" },
+  { "tier": "Tier 7 Spell", "cost": "25,000+ gp" },
+  { "tier": "Tier 8 Spell", "cost": "75,000+ gp" },
+  { "tier": "Tier 9 Spell", "cost": "200,000+ gp" }
+]

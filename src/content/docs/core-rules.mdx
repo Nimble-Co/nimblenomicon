@@ -11,11 +11,23 @@ banner:
 import manticor from "../../assets/manticor.webp";
 import HeroCallout from "../../components/HeroCallout.astro";
 
+import { adventuringMotivations } from "../../models/adventuring-motivations";
+import { characterClasses } from "../../models/character-classes";
 import { conditions } from "../../models/conditions";
+import { dcExamples } from "../../models/dc-examples";
+import { downtimeActivities } from "../../models/downtime-activities";
+import { languages } from "../../models/languages";
+import { magicalItemRarities } from "../../models/magical-item-rarities";
 import { miscAdventuringEquipment } from "../../models/misc-adventuring-equipment";
+import { optionalVariantRules } from "../../models/optional-variant-rules";
+import { saveTypes } from "../../models/save-types";
 import { sizes } from "../../models/sizes";
 import { skills } from "../../models/skills";
+import { spellSchools } from "../../models/spell-schools";
+import { spellScrollCosts } from "../../models/spell-scroll-costs";
+import { statArrays } from "../../models/stat-arrays";
 import { stats } from "../../models/stats";
+import { wandCosts } from "../../models/wand-costs";
 import { weaponProperties } from "../../models/weapon-properties";
 import { weapons } from "../../models/weapons";
 
@@ -71,20 +83,23 @@ they may ask you to use one of your skills.
 
 When you want to affect the _world_ (convince an NPC, spot a trap, pick a lock, etc.), the GM may call for a skill check. Roll 1d20 and add your skill (the max bonus a skill can ever have is +12). If the total meets or exceeds the Difficulty Challenge (DC), you succeed; otherwise, you fail. A roll of 1 always fails regardless of any other bonuses, while a roll of 20 always succeeds. The DC varies based on the task:
 
-- **Easy:** Spotting a large Ogre crouched behind a small bush might be a **DC 8** Perception check.
-- **Medium:** A hidden doorway behind a bookcase might be a **DC 12** Examination check.
-- **Challenging:** Calming an injured Owlbear stuck in a trap may be a **DC 15** Naturecraft check.
-- **Very Difficult:** Intuiting the true intentions of a trained Spy may be a **DC 18** Insight check.
-- **Extremely Difficult:** Disarming an ancient legendary trap may be a **DC 20+** Finesse check.
+<ul>
+  {dcExamples.map((row) => (
+    <li set:html={row.html} />
+  ))}
+</ul>
 
 ### Saves
 
 When the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 and add the relevant stat. A roll of 1 always fails, 20 always saves. You can choose to fail any save instead of rolling.
 
-- **STR Save.** When your overall fitness and physicality is tested. STR helps resist forced movement,restraint, poison, and extreme temperatures.
-- **DEX Save.** When your agility or speed is tested. DEX helps you dive for cover in an explosion or stay on your feet while running across icy terrain.
-- **INT Save.** When your intelligence is tested. INT helps you see though tricks and illusions.
-- **WIL Save.** When your courage or personality is tested. WIL helps you resist charm or fear effects.
+<ul>
+  {saveTypes.map((saveType) => (
+    <li>
+      <strong>{saveType.name}</strong> {saveType.body}
+    </li>
+  ))}
+</ul>
 
 ### Heroes and Saves
 
@@ -356,19 +371,13 @@ The time you aren't out adventuring is called **Downtime**. You can spend Downti
 
 **Example Downtime Activities:**
 
-- **Retrain.** Spend time doing activities to retrain any of your chosen abilities, features, or if it makes sense in the story, possibly even your subclass.
-- **Gather Information.** Meet NPCs, pick up news,
-  or collect rumors and job leads.
-- **Personal Goals.** Pursue goals from your back-story or other smaller quests you've chosen.
-- **Buy & Sell.** Get new equipment, and sell treasures you've collected while out adventuring.
-- **Perform.** Play music, tell stories, compete, or perform in public to earn gold or fame.
-- **Craft.** Create weapons, armor, or simple items using materials you've acquired.
-- **Socialize.** Build alliances, make new friends, or make new enemies.
-- **Invest.** Use your gold to invest in businesses or trade ventures for future profit.
-- **Mentor.** Teach a skill or ability to another character or NPC.
-- **Research.** Investigate a mystery, study ancient texts, or uncover hidden knowledge.
-- **Serve.** Aid a patron or a deity in exchange for a favor, or perform charity for townsfolk.
-- **Build.** Establish a home base, start a business, craft siege weapons, or build anything else you can imagine (GM and setting-permitting, of course).
+<ul>
+  {downtimeActivities.map((activity) => (
+    <li>
+      <strong>{activity.name}</strong> {activity.body}
+    </li>
+  ))}
+</ul>
 
 # Character Creation
 
@@ -379,17 +388,13 @@ you can make your own hero:
 
 This will have the largest impact on the other character choices you make and how you interact with the world:
 
-- **BERSERKER.** An unstoppable force of wrath and ruin.
-- **THE CHEAT.** Sneaky, backstabbing, dirty-fighting rogue.
-- **COMMANDER.** A battlefield tactician, leader, and weapon master.
-- **HUNTER.** Resourceful survivalist, bow master, and skilled tracker.
-- **MAGE.** Wield and shape the elements of fire, ice, and lightning.
-- **OATHSWORN.** Faithful guardian, protector, and avenger of the weak.
-- **SHADOWMANCER.** Summon hordes of expendable minions.
-- **SHEPHERD.** Master life and death. Lead a faithful companion.
-- **SONGWEAVER.** Inspiring presence, sharp wit, sharper tongue.
-- **STORMSHIFTER.** Master of weather, beast, and nature.
-- **ZEPHYR.** A disciplined martial artist with swift hands and swift feet.
+<ul>
+  {characterClasses.map((heroClass) => (
+    <li>
+      <strong>{heroClass.name}</strong> {heroClass.body}
+    </li>
+  ))}
+</ul>
 
 ### Step 2: Choose Your Ancestry & Background
 
@@ -407,9 +412,13 @@ This handy sheet of paper helps you track your stats, abilities, loot, and other
 
 Fill in your character details: Name, Ancestry, Class, Level, Height, and Weight. Fill in the arrow for your advantaged (+) and disadvantaged (-) Saves, and choose a stat array (recommended: place the highest numbers in the KEY stats for your class).
 
-- **Standard:** +2, +2, +0, -1
-- **Balanced:** +2, +1, +1, +0
-- **Min-Max:** +3, +1, -1, -1
+<ul>
+  {statArrays.map((arr) => (
+    <li>
+      <strong>{arr.name}</strong> {arr.body}
+    </li>
+  ))}
+</ul>
 
 > **Example.** The Cheat has DEX and INT as their KEY stats. With the Min-Max array, you might put +3 in DEX, +1 in INT, and -1 in WIL and STR. You'd also mark ▲ for DEX saves and ▼ for WIL saves.
 
@@ -433,16 +442,13 @@ Heroes start at level 1 with the equipment listed for their class and background
 
 All heroes speak Common by default. Each point of INT grants you an additional language known. These languages are typically spoken by:
 
-- **Common.** Most intelligent creatures.
-- **Dwarvish.** Dwarves, Gnomes, and Giants.
-- **Elvish.** Elves, Fey, and Sylvan.
-- **Goblin.** Goblins and Orcs.
-- **Infernal.** Various Fiends and cultists.
-- **Thieves' Cant.** Scoundrels and rogues.
-- **Celestial.** Celestials and priests.
-- **Draconic.** Dragons, Dragonborn, and Kobolds.
-- **Primordial.** Elementals and Ancient Beings.
-- **Deep Speak.** Underworld dwellers.
+<ul>
+  {languages.map((language) => (
+    <li>
+      <strong>{language.name}</strong> {language.body}
+    </li>
+  ))}
+</ul>
 
 > **GROFWINT DRAZLON!** Speaking another creature's
 > language can open doors that weapons alone cannot — being heavily armed without the ability to communicate often leads to hostility.
@@ -757,35 +763,9 @@ Backgrounds provide a glimpse into your character's past—how they were raised,
 
 The world is a dangerous place—people don't usually just “go adventuring” without a reason. Your motivation should make your character want to work with the rest of the group.
 
-**I owe a life debt to someone in my party.** Chat with your party: Who else needs help with their backstory? What did they do to help you?
-
-**I owe a LOT of money to some very dangerous people.** What did you do with the money? Your GM probably has some _GREAT_ ideas of bad guys you're in deep with.
-
-**I need to grow in power to defeat someone who has wronged me.** Do you know who wronged you, or are they unknown? Is it an individual or a larger group? Chat with your GM; they'll love to help fill in the blanks.
-
-**I am searching for a way to bring a loved one (or someone I hate) back from the dead.** Who even told you this was possible? What if they don't remember you?
-
-**I am trying to get back home.** Where is home for you, do you even remember? What caused you to leave? Chat with your GM; they can give you some options of homelands.
-
-**I am searching for the one who stole something valuable from me.** Is it an object? A person? A memory? Was it really stolen or did you make a bad bargain?
-
-**I was polymorphed into another kind of creature by a wizard.** Hah! How would it feel for a cute halfling to become an ugly goblin? What did you do to anger the wizard?
-
-**Duty calls. I am honor-bound to serve.** Who calls you? Your king? Your family? An ancient alliance or grudge? Talk with your GM and other players for ideas and mutual connections.
-
-**I was best friends with (and betrayed by) **\_\_**.** Do you want to win them back? Get even? Warn others of their backstabbing? Talk with your GM about who this might be.
-
-**I'm lost.** Physically? Emotionally? Spiritually? Are you in the wrong country or even plane of existence?
-
-**Wanderlust/Pilgrimage.** What amazing thing do you want to see or experience? Have you spent too much time away from the road? Your GM probably has some fantastic locations in mind for you.
-
-**My home town is in danger.** Are you looking for a cure? Mercenaries? Personal strength?
-
-**Curiosity! I want to learn the <strong>DEEP</strong> secrets.** Which secrets? Magical, lore, politics, what really happened in history?
-
-**To prove my worth.** You were always underestimated—by your family, your village, your peers, or yourself. What will it take to show them you're more than they thought? What kind of recognition do you seek?
-
-**I'm following a prophecy.** A mysterious figure or ancient text foretold that you would play a crucial role in the fate of the world. What do you know of the prophecy? Do you believe it?
+{adventuringMotivations.map((motivation) => (
+  <p set:html={motivation.html} />
+))}
 
 > **Or Make Your Own!** A great character background has connections with the world, its people, your fellow heroes, or even the bad guys. Work with your GM and fellow players to find a motivation that will cross paths with where the story goes. Every good hero has a desire. What's yours?
 
@@ -1026,12 +1006,36 @@ Though some magical items can be purchased, most cannot. Some special shops may 
 
 ### Typical Costs of Magical Items
 
-| **_RARITY_** | **_TYPICAL AVAILABILITY_**          | **_COST_**                |
-| ------------ | ----------------------------------- | ------------------------- |
-| Uncommon     | Typically found around levels 2-6   | 50–500+ gp                |
-| Rare         | Typically found around levels 5-12  | 500–5,000+ gp             |
-| Very Rare    | Typically found around levels 8-18  | 5,000–500,000+ gp         |
-| Legendary    | Typically found around levels 15-20 | 1,000,000+gp or Priceless |
+<table>
+  <thead>
+    <tr>
+      <th>
+        <strong>
+          <em>RARITY</em>
+        </strong>
+      </th>
+      <th>
+        <strong>
+          <em>TYPICAL AVAILABILITY</em>
+        </strong>
+      </th>
+      <th>
+        <strong>
+          <em>COST</em>
+        </strong>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {magicalItemRarities.map((row) => (
+      <tr>
+        <td>{row.rarity}</td>
+        <td>{row.availability}</td>
+        <td>{row.cost}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
 
 ### Weapon of Many Hands
 
@@ -1163,18 +1167,30 @@ Spell scrolls are single-use inscribed magical spells. Casting a spell with a sp
 
 A character must succeed on a **DC 10 Arcana** check to cast it successfully if they do not already know a spell from that school; on a failure, it is wasted. Spell tier and typical price:
 
-| **_SPELL TIER_** | **_COST_**  |
-| ---------------- | ----------- |
-| Cantrip          | 10 gp       |
-| Tier 1 Spell     | 35 gp       |
-| Tier 2 Spell     | 100 gp      |
-| Tier 3 Spell     | 300 gp      |
-| Tier 4 Spell     | 1,000 gp    |
-| Tier 5 Spell     | 3,000 gp    |
-| Tier 6 Spell     | 10,000 gp   |
-| Tier 7 Spell     | 25,000+ gp  |
-| Tier 8 Spell     | 75,000+ gp  |
-| Tier 9 Spell     | 200,000+ gp |
+<table>
+  <thead>
+    <tr>
+      <th>
+        <strong>
+          <em>SPELL TIER</em>
+        </strong>
+      </th>
+      <th>
+        <strong>
+          <em>COST</em>
+        </strong>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {spellScrollCosts.map((row) => (
+      <tr>
+        <td>{row.tier}</td>
+        <td>{row.cost}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
 
 ## Wands
 
@@ -1182,18 +1198,30 @@ Like spell scrolls, these can be used to cast spells without consuming mana and 
 
 Characters not proficient with wands must succeed on a **DC 10+spell tier Arcana** check to successfully cast the spell. Success or failure, the charge is spent. Typical wand prices and examples:
 
-| **_SPELL TIER_** | **_COST_**    |
-| ---------------- | ------------- |
-| Cantrip          | 50 gp         |
-| Tier 1 Spell     | 175 gp        |
-| Tier 2 Spell     | 500 gp        |
-| Tier 3 Spell     | 1,500 gp      |
-| Tier 4 Spell     | 5,000 gp      |
-| Tier 5 Spell     | 15,000 gp     |
-| Tier 6 Spell     | 50,000 gp     |
-| Tier 7 Spell     | 125,000+ gp   |
-| Tier 8 Spell     | 375,000+ gp   |
-| Tier 9 Spell     | 1,000,000+ gp |
+<table>
+  <thead>
+    <tr>
+      <th>
+        <strong>
+          <em>SPELL TIER</em>
+        </strong>
+      </th>
+      <th>
+        <strong>
+          <em>COST</em>
+        </strong>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {wandCosts.map((row) => (
+      <tr>
+        <td>{row.tier}</td>
+        <td>{row.cost}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
 
 ### Wand of Firestep
 
@@ -1261,12 +1289,13 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
 >
 > **Range and Reach.** Just like weapons, spells with “Range” can target creatures from a distance, but are cast with disadvantage if any enemy is adjacent to you. Add 1 die of disadvantage to gain +2 Range (max +6). Spells with “Reach” can’t do this, but they are cast as normal even when in melee.
 
-- **Fire Spells.** Deal high, consistent damage at medium range. Some fire spells can inflict the Smoldering condition and gain additional destructive effects against Smoldering enemies.
-- **Ice Spells.** Deal medium damage at long range, with a focus on controlling the battlefield and protecting the spellcaster. Some ice spells have additional effects against Hampered targets.
-- **Lightning Spells.** Deal high damage at long range with a focus on teleporting around the battlefield and taking advantage of creatures equipped with metal. However, some lightning spells may fail to find ground and damage the spellcaster instead.
-- **Necrotic Spells.** Summon horrible minions or manipulate and trap targets. Some risky necrotic spells prey upon damaged creatures, sapping their very life force—but frequently fail to distinguish between friend and foe.
-- **Radiant Spells.** Can obliterate the unholy, the fearful, and those who would dare harm you or your allies. Equally effective at a distance or in melee. Other spells can protect, mend wounds, and even restore creatures back to life!
-- **Wind Spells.** Aid in moving friend and foe alike around the battlefield. They can also slice and cut through entire groups of foes and viciously deal extra damage on critical hits.
+<ul>
+  {spellSchools.map((school) => (
+    <li>
+      <strong>{school.name}</strong> {school.body}
+    </li>
+  ))}
+</ul>
 
 > **Secret Spells.** Some spells have been hidden or lost through the ages. Whether they are too dangerous to be common knowledge or for other reasons, adventurers can sometimes stumble upon new spells (or wrench them out of the undead hands of a defeated Lich).
 
@@ -1821,63 +1850,13 @@ _Cantrip, 1 Action_
 
 If your playgroup likes extra little tactical nuggets, your GM can allow you to try out some of these additional variants to add some more spice to your game. You can always try out a rule for 1 session and see how you all like it before committing to it.
 
-### Multiclassing
-
-If your GM wants to allow for additional creativity for experienced players (and potentially broken combos!), when heroes level up, they may choose any class. For example, when a level 4 Berserker levels up, he could pick Commander, and take the level 1 Commander features instead of the level 5 Berserker features. He would have 4 d12 hit dice and a single d10 hit die. A hero gains all the equipment proficiencies of all their classes but should use the advantaged/disadvantaged saves of whichever class has the highest level.
-
-> **“Broken” Can Be Fun!** Planning, building, optimizing, and “breaking” a class build IS the fun for many people. The GM may need to make the game substantially more challenging if multiclassing is allowed. The GM also may veto any particularly overpowered, unfun, or implausible combo for the sake of the story and overall fun of the table. If this happens, well done! Your hero was too powerful for reality.
-
-### Small Groups
-
-A GM and a single hero can play with the aid of a sidekick. Sidekicks are NPCs that the hero’s player controls during combat and the GM controls outside of combat. Sidekicks get 2 actions and are always 1 level below the hero character. If the main hero dies, the sidekick can be upgraded 1 level, and hire his own sidekick to keep the adventure going! A GM can optionally allow one or two sidekicks with a party of 2–3 heroes as well.
-
-### Large Groups
-
-3rd party adventures are typically balanced for parties of 3–5 players. Playing with very large groups (6–10+ heroes) can be made far more manageable simply by limiting each hero’s actions to 2 instead of 3. No other rebalancing needs to be done.
-
-### Fast Resting
-
-For a much more heroic and fast-paced story, a Safe Rest can heal all Wounds.
-
-### Critical Healing
-
-Treat healing just like an attack roll. Rolling the max is a crit (rolling again just like an attack crit), rolling 1 is a failure to heal (note: this variant is FUN for the right group that enjoys big, dramatic, swingy moments). Consider incrementing the die size by one step if you use this variant (d4 » d6 » d8 » d10 » d12).
-
-### I Had the High Ground
-
-Taking a crit at a height may cause a character to fall down. A reasonable STR save may be called for, but a weak character (e.g., a kobold) may just fall automatically.
-
-### Thrown Potions
-
-Treat potions like Ranged attacks (Range 8). The potion misses on a 1; otherwise it heals for half as much since some splashes away and is wasted.
-
-### Sucker Punch
-
-A character standing up from Prone gives adjacent enemies the chance to take opportunity attacks (heroes and monsters alike).
-
-### Playing Dead
-
-Whenever a Hero drops to 0 HP, they can attempt to play dead by falling prone and making an Influence check (or other skill check as the situation demands).
-
-### Inspiration
-
-Whenever a hero does something memorable (role-plays a great moment, makes everyone laugh, miss an attack multiple times in a row, or otherwise engages in desired behavior), the GM can grant Inspiration: the ability to reroll any single die. Inspiration expires after a Safe Rest.
-
-### Retreat
-
-The world is dangerous, and some fights may be unwinnable. Any hero may call for a retreat on their turn. If the party agrees—unless there is a good reason story-wise that a party can’t escape (e.g., they are trapped in nets and completely surrounded by a band of nasty kobolds)—the GM allows them to flee. Each hero describes their escape (e.g., casting a spell, using equipment, or making a skill check). Consequences may follow, such as taking damage, suffering a Wound, or failing a quest. If the escape is particularly clever, the GM may allow the party to escape without additional consequence. After all, the shame of retreating is often punishment enough!
-
-### Different Key Stats
-
-Players can swap KEY or Secondary stats for a class if it makes sense (e.g., DEX and WIL for the Cheat).
-
-### Complex Characters
-
-A GM may allow heroes to pick 2 backgrounds and/or ancestry bonuses.
-
-### Custom Weapon Dice
-
-For larger weapon die sizes, you can try using dice of a different size as long as they add up to the same initial die size. For example: a 1d10 glaive could be 1d4+1d6 or 1d6+1d4 (using the first die as the primary die).
+{optionalVariantRules.map((rule) => (
+  <>
+    <h3>{rule.name}</h3>
+    <p>{rule.body}</p>
+    {rule.callout && <blockquote set:html={rule.callout} />}
+  </>
+))}
 
 ## Measuring Spaces
 
