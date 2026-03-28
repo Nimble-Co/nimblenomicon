@@ -1,20 +1,6 @@
 import { z } from "astro/zod";
 import rawSpells from "../data/spells.json";
 
-export const spellLevelSchema = z.enum([
-  "cantrip",
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-]);
-export type SpellLevel = z.infer<typeof spellLevelSchema>;
-
 export const spellTargetSchema = z.enum([
   "single-target",
   "self",
@@ -26,16 +12,27 @@ export const spellTargetSchema = z.enum([
 ]);
 export type SpellTarget = z.infer<typeof spellTargetSchema>;
 
+const spellEntryBase = {
+  name: z.string().min(1),
+  /** 0 = cantrip, 1–9 = spell tier */
+  level: z.number().int().min(0).max(9),
+  /** Heroic actions to cast; null when using castingNote instead (e.g. 1 minute, 24 hours) */
+  actions: z.union([z.number().int().positive(), z.null()]),
+  target: spellTargetSchema,
+  body: z.string(),
+  /** When actions is null, describe cast time (e.g. "24 hours", "Casting Time: 1 minute") */
+  castingNote: z.string().optional(),
+};
+
 const spellEntrySchema = z
-  .object({
-    name: z.string().min(1),
-    level: spellLevelSchema,
-    /** Casting cost, e.g. "1 Action", "2 Actions", "24 hours", "Casting Time: 1 minute". Empty only when redundant (avoid if possible). */
-    actions: z.string(),
-    target: spellTargetSchema,
-    body: z.string(),
-  })
-  .strict();
+  .object(spellEntryBase)
+  .strict()
+  .refine(
+    (s) =>
+      (s.actions === null && s.castingNote && s.castingNote.length > 0) ||
+      (s.actions !== null && s.castingNote === undefined),
+    { message: "actions must be a positive integer, or null with castingNote set" },
+  );
 
 const spellSchoolSchema = z
   .object({
@@ -58,12 +55,19 @@ const utilitySchoolFlatSchema = z
     id: z.string().min(1),
     name: z.string().min(1),
     flat: z.literal(true),
-    level: spellLevelSchema,
-    actions: z.string(),
+    level: z.number().int().min(0).max(9),
+    actions: z.union([z.number().int().positive(), z.null()]),
     target: spellTargetSchema,
     body: z.string(),
+    castingNote: z.string().optional(),
   })
-  .strict();
+  .strict()
+  .refine(
+    (s) =>
+      (s.actions === null && s.castingNote && s.castingNote.length > 0) ||
+      (s.actions !== null && s.castingNote === undefined),
+    { message: "actions must be a positive integer, or null with castingNote set" },
+  );
 
 const utilitySchoolSchema = z.union([
   utilitySchoolWithSpellsSchema,

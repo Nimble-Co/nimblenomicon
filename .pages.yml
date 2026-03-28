@@ -443,10 +443,9 @@ content:
     path: src/data/spells.json
     format: json
     description: >
-      Schools and utility sub-schools. Each spell: name, level (cantrip or 1-9),
-      actions (e.g. "1 Action", "24 hours"), target (single-target, self, aoe,
-      two-targets, multi-target, single-target-plus, single-target-or-self),
-      body (rules). The italic header line is built from level/actions/target.
+      Schools and utility sub-schools. Each spell: name, level (0 = cantrip, 1–9 = tier),
+      actions (positive integer heroic actions, or null with castingNote for e.g. 1 minute / 24 hours),
+      optional castingNote, target enum, body (rules). Presentation uses 1 Action vs 2 Actions.
 
   - name: core-rules-start-here
     label: Core Rules — Start Here
