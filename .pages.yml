@@ -288,11 +288,11 @@ content:
             list: true
             fields:
               - name: name
-                label: Hook
+                label: Name
                 type: string
                 required: true
               - name: description
-                label: Prompts
+                label: Description
                 type: rich-text
                 required: true
                 options:
