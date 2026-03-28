@@ -203,6 +203,12 @@ export function spellDetailHrefFromCoreRules(id: string): string {
   return `spells/${id}/`;
 }
 
+/** Anchor on the Core Rules page for this spell's school / utility listing (e.g. `#fire-spells`). */
+export function coreRulesSpellListingFragment(row: SpellRowData): string {
+  if (row.utility) return "utility-spells";
+  return `${spellSchoolShortName(row.schoolId).toLowerCase()}-spells`;
+}
+
 export function buildSpellSchools(rows: SpellRowData[]): SpellSchoolBlock[] {
   const bySchool = new Map<string, SpellRowData[]>();
   for (const row of rows) {

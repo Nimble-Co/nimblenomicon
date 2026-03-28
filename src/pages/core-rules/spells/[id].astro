@@ -2,7 +2,11 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { renderMarkdown } from '../../../lib/render-markdown';
 import { spellMetaMarkdown } from '../../../lib/spell-meta';
-import { spellRows, spellSchoolShortName } from '../../../models/spells';
+import {
+	coreRulesSpellListingFragment,
+	spellRows,
+	spellSchoolShortName,
+} from '../../../models/spells';
 
 export function getStaticPaths() {
 	return spellRows.map((row) => ({
@@ -14,35 +18,31 @@ export function getStaticPaths() {
 const { row } = Astro.props;
 
 const schoolName = spellSchoolShortName(row.schoolId);
-const sectionLabel = row.utility ? 'Utility Spells' : `${schoolName} Spells`;
-const sectionHref = row.utility
-	? '../../#utility-spells'
-	: `../../#${schoolName.toLowerCase()}-spells`;
 const bodyMarkdown =
 	spellMetaMarkdown(row.tier, row.castingTime, row.target) +
 	(row.description?.trim() ? '\n\n' + row.description : '');
 ---
 
 <StarlightPage
+	hasSidebar={false}
 	frontmatter={{
 		title: row.name,
-		description: `${sectionLabel} — ${schoolName} school.`,
+		description: `${schoolName} school — ${row.name}.`,
 		tableOfContents: false,
 		prev: false,
 		next: false,
 	}}
 >
-	<p class="spell-detail__meta">
-		<a href={sectionHref}>{sectionLabel}</a>
-		{' · '}
-		<a href="../../">Core Rules</a>
-	</p>
 	<div set:html={renderMarkdown(bodyMarkdown)} />
+	<p class="spell-detail__core-rules-ref">
+		<em
+			>From <a href={`../../#${coreRulesSpellListingFragment(row)}`}>Core Rules</a></em
+		>
+	</p>
 </StarlightPage>
 
 <style>
-	.spell-detail__meta {
-		font-style: italic;
-		margin-bottom: 1rem;
+	.spell-detail__core-rules-ref {
+		margin-top: 1.5rem;
 	}
 </style>
