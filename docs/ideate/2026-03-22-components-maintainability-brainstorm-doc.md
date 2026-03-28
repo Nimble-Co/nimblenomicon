@@ -57,11 +57,11 @@ Defer **C** until a second consumer of generalized heroes or a strategic fork de
 
 ## Risks
 
-| Risk | Mitigation |
-|------|------------|
-| Label strings diverge between nav tree and metadata | Single `label` per `SectionKey` consumed everywhere, or derive one from the other in code |
-| `astro.config` import from new TS modules | Keep config static if needed; metadata consumed only from `.astro`/TS components, not from `astro.config`, unless Astro’s config load order allows a shared import (verify in implementation) |
-| `NavSidebarPersister` drifts from Starlight | Code comment at wrapper + checklist step: “verify sidebar persistence after Starlight upgrade” |
+| Risk                                                | Mitigation                                                                                                                                                                                    |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Label strings diverge between nav tree and metadata | Single `label` per `SectionKey` consumed everywhere, or derive one from the other in code                                                                                                     |
+| `astro.config` import from new TS modules           | Keep config static if needed; metadata consumed only from `.astro`/TS components, not from `astro.config`, unless Astro’s config load order allows a shared import (verify in implementation) |
+| `NavSidebarPersister` drifts from Starlight         | Code comment at wrapper + checklist step: “verify sidebar persistence after Starlight upgrade”                                                                                                |
 
 ## Key Decisions
 

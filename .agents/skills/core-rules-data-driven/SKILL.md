@@ -4,7 +4,7 @@ description: Extracts repeatable blocks from src/content/docs/core-rules.mdx int
 license: MIT
 metadata:
   author: nimblenomicon
-  version: "1.3"
+  version: '1.3'
 ---
 
 # Core Rules — data-driven extraction
@@ -20,16 +20,16 @@ Apply when the user wants a **structured** Core Rules block (repeated rows, list
 ### Zod + parsed data (`src/features/stats.ts`)
 
 ```ts
-import { z } from "astro/zod";
-import rawStats from "../data/stats.json";
+import { z } from 'astro/zod';
+import rawStats from '../data/stats.json';
 
 const statSchema = z
-  .object({
-    name: z.string().min(1),
-    stat: z.string().min(1),
-    body: z.string(),
-  })
-  .strict();
+	.object({
+		name: z.string().min(1),
+		stat: z.string().min(1),
+		body: z.string(),
+	})
+	.strict();
 export type StatData = z.infer<typeof statSchema>;
 export const stats: StatData[] = z.array(statSchema).parse(rawStats);
 ```
@@ -37,9 +37,10 @@ export const stats: StatData[] = z.array(statSchema).parse(rawStats);
 ### MDX wiring (`src/content/docs/core-rules.mdx`)
 
 ```mdx
-import { stats } from "../../features/stats";
+import { stats } from '../../features/stats';
 
 {stats.map((stat) => (
+
   <p><strong>{stat.name}</strong> ({stat.stat}) {stat.body}</p>
 ))}
 ```
@@ -49,25 +50,25 @@ import { stats } from "../../features/stats";
 ### Zod + parsed data (`src/features/skills.ts`)
 
 ```ts
-import { z } from "astro/zod";
-import rawSkills from "../data/skills.json";
-import { stats } from "./stats";
+import { z } from 'astro/zod';
+import rawSkills from '../data/skills.json';
+import { stats } from './stats';
 
 const statCodes = new Set(stats.map((s) => s.stat));
 
 const skillSchema = z
-  .object({
-    name: z.string().min(1),
-    stat: z
-      .string()
-      .min(1)
-      .refine((code) => statCodes.has(code), {
-        message: "stat must match a Stat code from stats.json",
-      }),
-    body: z.string(),
-    callout: z.string().optional(),
-  })
-  .strict();
+	.object({
+		name: z.string().min(1),
+		stat: z
+			.string()
+			.min(1)
+			.refine((code) => statCodes.has(code), {
+				message: 'stat must match a Stat code from stats.json',
+			}),
+		body: z.string(),
+		callout: z.string().optional(),
+	})
+	.strict();
 export type SkillData = z.infer<typeof skillSchema>;
 export const skills: SkillData[] = z.array(skillSchema).parse(rawSkills);
 ```
@@ -75,9 +76,10 @@ export const skills: SkillData[] = z.array(skillSchema).parse(rawSkills);
 ### MDX wiring (`src/content/docs/core-rules.mdx`)
 
 ```mdx
-import { skills } from "../../features/skills";
+import { skills } from '../../features/skills';
 
 {skills.map((skill) => (
+
   <p><strong>{skill.name}</strong> ({skill.stat}) {skill.body}</p>
 ))}
 ```
@@ -87,15 +89,15 @@ import { skills } from "../../features/skills";
 ### Zod + parsed data (`src/features/sizes.ts`)
 
 ```ts
-import { z } from "astro/zod";
-import rawSizes from "../data/sizes.json";
+import { z } from 'astro/zod';
+import rawSizes from '../data/sizes.json';
 
 const sizeSchema = z
-  .object({
-    name: z.string().min(1),
-    body: z.string(),
-  })
-  .strict();
+	.object({
+		name: z.string().min(1),
+		body: z.string(),
+	})
+	.strict();
 export type SizeData = z.infer<typeof sizeSchema>;
 export const sizes: SizeData[] = z.array(sizeSchema).parse(rawSizes);
 ```
@@ -103,14 +105,14 @@ export const sizes: SizeData[] = z.array(sizeSchema).parse(rawSizes);
 ### MDX wiring (`src/content/docs/core-rules.mdx`)
 
 ```mdx
-import { sizes } from "../../features/sizes";
+import { sizes } from '../../features/sizes';
 
 <ul>
-  {sizes.map((size) => (
-    <li>
-      <strong>{size.name}</strong> {size.body}
-    </li>
-  ))}
+	{sizes.map((size) => (
+		<li>
+			<strong>{size.name}</strong> {size.body}
+		</li>
+	))}
 </ul>
 ```
 
@@ -119,32 +121,32 @@ import { sizes } from "../../features/sizes";
 ### Zod + parsed data (`src/features/conditions.ts`)
 
 ```ts
-import { z } from "astro/zod";
-import rawConditions from "../data/conditions.json";
+import { z } from 'astro/zod';
+import rawConditions from '../data/conditions.json';
 
 const conditionSchema = z
-  .object({
-    name: z.string().min(1),
-    body: z.string(),
-  })
-  .strict();
+	.object({
+		name: z.string().min(1),
+		body: z.string(),
+	})
+	.strict();
 export type ConditionData = z.infer<typeof conditionSchema>;
 export const conditions: ConditionData[] = z
-  .array(conditionSchema)
-  .parse(rawConditions);
+	.array(conditionSchema)
+	.parse(rawConditions);
 ```
 
 ### MDX wiring (`src/content/docs/core-rules.mdx`)
 
 ```mdx
-import { conditions } from "../../features/conditions";
+import { conditions } from '../../features/conditions';
 
 <ul>
-  {conditions.map((condition) => (
-    <li>
-      <strong>{condition.name}</strong> {condition.body}
-    </li>
-  ))}
+	{conditions.map((condition) => (
+		<li>
+			<strong>{condition.name}</strong> {condition.body}
+		</li>
+	))}
 </ul>
 ```
 

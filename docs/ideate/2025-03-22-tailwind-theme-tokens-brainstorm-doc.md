@@ -69,6 +69,7 @@ Brainstorm complete!
 Document: docs/ideate/2025-03-22-tailwind-theme-tokens-brainstorm-doc.md
 
 Key decisions:
+
 - Fix monotonic gray scale in `@theme` (primary bug); keep Tailwind + Starlight integration.
 - Prefer surgical fix + optional documentation; defer a full semantic-token layer unless needs grow.
 ```

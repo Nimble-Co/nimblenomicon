@@ -1,170 +1,170 @@
 [
-  {
-    "section": "common",
-    "name": "Human",
-    "size": "medium",
-    "flavor": "Found in every terrain and environment, their curiosity and ambition drive them to explore every corner of the world, making them a ubiquitous and versatile race.",
-    "trait": "**Tenacious** +1 to all skills and Initiative."
-  },
-  {
-    "section": "common",
-    "name": "Dwarf",
-    "size": "medium",
-    "flavor": "Dwarf, in the old language, means “stone.” You are resilient, solid, stout. Even when driven to exhaustion, you will not falter. Forgoing speed, you are gifted with physical vitality and a belly that can handle the finest (and worst) consumables this world has to offer.",
-    "trait": "**Stout.** +2 max Hit Dice, +1 max Wounds, -1 Speed. You know Dwarvish if your INT is not negative."
-  },
-  {
-    "section": "common",
-    "name": "Elf",
-    "size": "medium",
-    "flavor": "Elves epitomize swiftness and grace. Their tall, slender forms belie their innate speed, grace, and wit. Formidable in both diplomacy and combat, elves strike swiftly, often preventing the worst by acting first.",
-    "trait": "**Lithe.** Advantage on Initiative, +1 Speed. You know Elvish if your INT is not negative.\n\n> **What About Half-Elves?** Mix the ancestries however makes sense in your world. You can pick one ancestral bonus and use it instead of both, or use both half as effectively or half as often."
-  },
-  {
-    "section": "common",
-    "name": "Halfling",
-    "size": "small",
-    "flavor": "Kind of like a human, but smaller (except for the feet). Where does our luck come from? Well…you know what they say about rabbit feet? Well, we've got feet for days compared to them. Imagine the amount of luck you could fit into these bad boys!",
-    "trait": "**Elusive.** +1 to Stealth. If you fail a save, you can succeed instead, 1/Safe Rest."
-  },
-  {
-    "section": "common",
-    "name": "Gnome",
-    "size": "small",
-    "flavor": "Eccentric, curious, and perpetually optimistic, gnomes are cheerful—especially when compared to their typically grumpier and larger kin, the dwarves. Known for their tinkering, spreading cheer, and playful antics, gnomes pursue their passions with a scatterbrained enthusiasm.",
-    "trait": "**Optimistic.** Allow an ally within Reach 6 to reroll any single die, resets when healed to your max HP. -1 Speed. You know Dwarvish if your INT is not negative (but you call it Gnomish,of course).\n\n> **Flavor Is Free.** Want to play a Stout Halfling instead of an Elusive one? An Optimistic Human instead of Tenacious? As long as it makes sense and the GM is on board, go for it!"
-  },
-  {
-    "section": "exotic",
-    "name": "Bunbun",
-    "size": "small",
-    "flavor": "Bunbun are agile and unpredictable, using their powerful legs to leap great distances and catch foes off guard. Facing a Bunbun means contending with an opponent who can strike from unexpected angles and swiftly reposition themselves in the heat of battle.",
-    "trait": "**Bunny Legs.** Before Interposing or after Defending (after damage), hop up to your Speed in any direction for free, 1/encounter."
-  },
-  {
-    "section": "exotic",
-    "name": "Dragonborn",
-    "size": "medium",
-    "flavor": "The soul of a dragon burns within you, the scales of your body are like forged steel. You are a kiln and your heritage the coals that stoke your flames. Call upon your wrath, to speak in the tongue of your ancestors and imbue unbridled fury into your attacks.",
-    "trait": "**Draconic Heritage.** +1 Armor. When you attack: deal an additional LVL+KEY damage (ignoring armor) divided as you choose among any of your targets; recharges whenever you Safe Rest or gain a Wound. You know Draconic if your INT is not negative."
-  },
-  {
-    "section": "exotic",
-    "name": "Fiendkin",
-    "size": "medium",
-    "flavor": "Said to have been born from the union of man\nand fiend, or from a cursed bloodline, Fiendkin often find themselves outcasts in society. Yet, they embody determination in the face of adversity. Their ancestors didn't emerge from the depths of the Everflame to succumb to minor setbacks!",
-    "trait": "**Flameborn.** 1 of your neutral saves is advantaged instead. You know Infernal if your INT is not negative."
-  },
-  {
-    "section": "exotic",
-    "name": "Goblin",
-    "size": "small",
-    "flavor": "Green, cunning, and perpetually vilified, Goblins thrive on the edge of chaos. For a Goblin, vanishing into the shadows is not just a skill—it's an identity. After all, what kind of Goblin would you be if you couldn't slip away unnoticed?",
-    "trait": "**Skedaddle.** Can move 2 spaces for free after you become the target of an attack or negative effect (after damage, ignoring difficult terrain). You know Goblin if your INT is not negative."
-  },
-  {
-    "section": "exotic",
-    "name": "Kobold",
-    "size": "small",
-    "flavor": "Small, often maniacal, and dragon-obsessed. Kobolds thrive in the shadows, finding ingenious ways to survive despite their diminutive size. Underestimated by many, Kobolds prove time and again that even the smallest among us can wield great power.",
-    "trait": "**Wily.** Force an enemy to reroll a non-critical attack against you, 1/encounter. +3 to Influence friendly characters. Advantage on skill checks related to dragons. You know Draconic if your INT is not negative."
-  },
-  {
-    "section": "exotic",
-    "name": "Orc",
-    "size": "medium",
-    "flavor": "Just when you think you've bested a mighty Orc, you've merely succeeded in rousing their anger. Engaging in combat with an Orc is no endeavor for the weak-willed. While others may cower before death's approach, Orcs boldly defy its grasp.",
-    "trait": "**Relentless.** When you would drop to 0 HP, you may set your HP to LVL instead, 1/Safe Rest. +1 Might. You know Goblin if your INT is not negative (but you call it Orcish, of course)."
-  },
-  {
-    "section": "exotic",
-    "name": "Birdfolk",
-    "size": "small-and-medium",
-    "flavor": "Birdfolk find sanctuary not in stone or chains, but within the boundless expanse of the sky. However, the gift of flight comes at a cost—hollow bones, and commensurate frailty.",
-    "trait": "**Hollow Bones.** You have a fly Speed as long as you are wearing armor no heavier than Leather. Crits against you are Vicious (the attacker rolls 1 additional die). Forced movement moves you twice as far."
-  },
-  {
-    "section": "exotic",
-    "name": "Celestial",
-    "size": "medium",
-    "flavor": "Descendants of divine beings, Celestials carry an aura of nobility and grace. Their innate connection to the higher planes allows them to resist the effects of misfortune, standing strong where others may falter.",
-    "trait": "**Highborn.** Your disadvantaged save is Neutral instead. You know Celestial if your INT isn't negative."
-  },
-  {
-    "section": "exotic",
-    "name": "Changeling",
-    "size": "medium",
-    "flavor": "Often hunted for their silver blood, Changelings are natural survivors, slipping into new identities with ease. Changelings that shift too often typically aren't long for the world—they can struggle to remember who they once were, becoming little more than reflections of the faces they wear.",
-    "trait": "**New Place, New Face.** +2 shifting skill points. You may take on the appearance of any ancestry. When you do, you may place your 2 shifting skill points into any 1 skill. 1/day."
-  },
-  {
-    "section": "exotic",
-    "name": "Crystalborn",
-    "size": "medium",
-    "flavor": "Formed from living crystal, the Crystalborn are beings of dazzling beauty and otherworldly toughness. Their translucent bodies refract light and sound, granting them unique abilities in combat.",
-    "trait": "**Reflective Aura.** When you Defend, gain KEY armor and deal KEY damage back to the attacker. 1/encounter."
-  },
-  {
-    "section": "exotic",
-    "name": "Dryad/Shroomling",
-    "size": "small-and-medium",
-    "flavor": "Tied to the natural world, Dryads and Shroomlings embody the balance between flora and fauna. Their unique physiology releases toxic spores when harmed, providing a natural defense against those who dare to harm them.",
-    "trait": "**Danger Pollen/Spores.** Whenever an enemy causes you one or more Wounds, you excrete soporific spores: all adjacent enemies are Dazed. You know Elvish if your INT is not negative."
-  },
-  {
-    "section": "exotic",
-    "name": "Half-Giant",
-    "size": "large",
-    "flavor": "Towering beings whose strength is as immovable as the mountains they call home. Their sheer size and resilience make them fearsome opponents, capable of surviving even devastating blows.",
-    "trait": "**Strength of Stone.** Force an enemy to reroll a crit against you, 1/encounter. +2 Might. You know Dwarvish if your INT is not negative."
-  },
-  {
-    "section": "exotic",
-    "name": "Minotaur/Beastfolk",
-    "size": "medium",
-    "flavor": "Minotaur and other Beastfolk embody a primal connection to The Wild, combining strength with natural agility. Their powerful build allows them to move swiftly, whether repositioning to outflank foes or charging in with unstoppable force.",
-    "trait": "**Charge.** When you move at least 4 spaces, you can push a creature in your path. Medium: 1 space; Small/Tiny: up to 2 spaces. 1/turn."
-  },
-  {
-    "section": "exotic",
-    "name": "Oozeling/Construct",
-    "size": "small-and-medium",
-    "flavor": "What even is a \"PeOpLe\" anyway? So what if your heart pumps oil instead of blood, so what if you don't even have a heart!? If you can squish yourself into a pair of pants, or swing a sword like everyone else, who's to say you can't be a pEOpLe, too?!",
-    "trait": "**Odd Constitution.** Increment your Hit Dice one step (d6 » d8 » d10 » d12 » d20); they always heal you for the maximum amount. Magical healing always heals you for the minimum amount."
-  },
-  {
-    "section": "exotic",
-    "name": "Planarbeing",
-    "size": "medium",
-    "flavor": "You are not from this plane of existence—your soul is not as strongly tethered to it as others. But with this vulnerability comes power, the ability to temporarily shift from one plane to another in times of dire need.",
-    "trait": "**Planeshift.** Whenever you Defend, you can gain 1 Wound to temporarily phase out of the material plane and ignore the damage. –2 max Wounds."
-  },
-  {
-    "section": "exotic",
-    "name": "Ratfolk",
-    "size": "small",
-    "flavor": "Ratfolk are survivors, thriving in the shadows of society where others fear to tread. Agile, resourceful, and fiercely loyal to their own, they have a knack for turning scraps into solutions.",
-    "trait": "**Scurry.** Gain +2 armor if you moved on your last turn."
-  },
-  {
-    "section": "exotic",
-    "name": "Stoatling",
-    "size": "small",
-    "flavor": "Stoatlings may be small, but they're far from weak. With fierce determination and warrior hearts, they can take down foes many times their size. Their agility and tenacity let them exploit larger enemies' weaknesses, turning their size into a lethal advantage.",
-    "trait": "**Small But Ferocious.** Whenever you make a single-target attack against a creature larger than you, roll 1 additional d6 for each size category it is larger. They do the same."
-  },
-  {
-    "section": "exotic",
-    "name": "Turtlefolk",
-    "size": "small-and-medium",
-    "flavor": "Turtlefolk take their time in everything they do; they are patient, sturdy, and slow to anger. They rely on their thick shells for protection, making them difficult to harm, but their cautious movements come at the cost of speed.",
-    "trait": "**Slow & Steady.** +4 Armor, –2 speed."
-  },
-  {
-    "section": "exotic",
-    "name": "Wyrdling",
-    "size": "small",
-    "flavor": "Unpredictable and chaotic, Wyrdlings are the result of magic gone awry. Their bodies pulse with raw arcane energy, and their mere presence often disturbs the balance of magic around them.",
-    "trait": "**Chaotic Surge.** Whenever you or a willing ally within Reach 6 casts a tiered spell, you may allow them to roll on the Chaos Table. 1/encounter.\n\n> **Flavor Is Free.** Want to be a leaping Frogfolk instead of a Bunbun? A Flameborn Kobold? A winged Fairy instead of a Birdfolk? A Badgerfolk instead of a Stoatling? As long as it makes sense and your GM is game, go for it!"
-  }
+	{
+		"section": "common",
+		"name": "Human",
+		"size": "medium",
+		"flavor": "Found in every terrain and environment, their curiosity and ambition drive them to explore every corner of the world, making them a ubiquitous and versatile race.",
+		"trait": "**Tenacious** +1 to all skills and Initiative."
+	},
+	{
+		"section": "common",
+		"name": "Dwarf",
+		"size": "medium",
+		"flavor": "Dwarf, in the old language, means “stone.” You are resilient, solid, stout. Even when driven to exhaustion, you will not falter. Forgoing speed, you are gifted with physical vitality and a belly that can handle the finest (and worst) consumables this world has to offer.",
+		"trait": "**Stout.** +2 max Hit Dice, +1 max Wounds, -1 Speed. You know Dwarvish if your INT is not negative."
+	},
+	{
+		"section": "common",
+		"name": "Elf",
+		"size": "medium",
+		"flavor": "Elves epitomize swiftness and grace. Their tall, slender forms belie their innate speed, grace, and wit. Formidable in both diplomacy and combat, elves strike swiftly, often preventing the worst by acting first.",
+		"trait": "**Lithe.** Advantage on Initiative, +1 Speed. You know Elvish if your INT is not negative.\n\n> **What About Half-Elves?** Mix the ancestries however makes sense in your world. You can pick one ancestral bonus and use it instead of both, or use both half as effectively or half as often."
+	},
+	{
+		"section": "common",
+		"name": "Halfling",
+		"size": "small",
+		"flavor": "Kind of like a human, but smaller (except for the feet). Where does our luck come from? Well…you know what they say about rabbit feet? Well, we've got feet for days compared to them. Imagine the amount of luck you could fit into these bad boys!",
+		"trait": "**Elusive.** +1 to Stealth. If you fail a save, you can succeed instead, 1/Safe Rest."
+	},
+	{
+		"section": "common",
+		"name": "Gnome",
+		"size": "small",
+		"flavor": "Eccentric, curious, and perpetually optimistic, gnomes are cheerful—especially when compared to their typically grumpier and larger kin, the dwarves. Known for their tinkering, spreading cheer, and playful antics, gnomes pursue their passions with a scatterbrained enthusiasm.",
+		"trait": "**Optimistic.** Allow an ally within Reach 6 to reroll any single die, resets when healed to your max HP. -1 Speed. You know Dwarvish if your INT is not negative (but you call it Gnomish,of course).\n\n> **Flavor Is Free.** Want to play a Stout Halfling instead of an Elusive one? An Optimistic Human instead of Tenacious? As long as it makes sense and the GM is on board, go for it!"
+	},
+	{
+		"section": "exotic",
+		"name": "Bunbun",
+		"size": "small",
+		"flavor": "Bunbun are agile and unpredictable, using their powerful legs to leap great distances and catch foes off guard. Facing a Bunbun means contending with an opponent who can strike from unexpected angles and swiftly reposition themselves in the heat of battle.",
+		"trait": "**Bunny Legs.** Before Interposing or after Defending (after damage), hop up to your Speed in any direction for free, 1/encounter."
+	},
+	{
+		"section": "exotic",
+		"name": "Dragonborn",
+		"size": "medium",
+		"flavor": "The soul of a dragon burns within you, the scales of your body are like forged steel. You are a kiln and your heritage the coals that stoke your flames. Call upon your wrath, to speak in the tongue of your ancestors and imbue unbridled fury into your attacks.",
+		"trait": "**Draconic Heritage.** +1 Armor. When you attack: deal an additional LVL+KEY damage (ignoring armor) divided as you choose among any of your targets; recharges whenever you Safe Rest or gain a Wound. You know Draconic if your INT is not negative."
+	},
+	{
+		"section": "exotic",
+		"name": "Fiendkin",
+		"size": "medium",
+		"flavor": "Said to have been born from the union of man\nand fiend, or from a cursed bloodline, Fiendkin often find themselves outcasts in society. Yet, they embody determination in the face of adversity. Their ancestors didn't emerge from the depths of the Everflame to succumb to minor setbacks!",
+		"trait": "**Flameborn.** 1 of your neutral saves is advantaged instead. You know Infernal if your INT is not negative."
+	},
+	{
+		"section": "exotic",
+		"name": "Goblin",
+		"size": "small",
+		"flavor": "Green, cunning, and perpetually vilified, Goblins thrive on the edge of chaos. For a Goblin, vanishing into the shadows is not just a skill—it's an identity. After all, what kind of Goblin would you be if you couldn't slip away unnoticed?",
+		"trait": "**Skedaddle.** Can move 2 spaces for free after you become the target of an attack or negative effect (after damage, ignoring difficult terrain). You know Goblin if your INT is not negative."
+	},
+	{
+		"section": "exotic",
+		"name": "Kobold",
+		"size": "small",
+		"flavor": "Small, often maniacal, and dragon-obsessed. Kobolds thrive in the shadows, finding ingenious ways to survive despite their diminutive size. Underestimated by many, Kobolds prove time and again that even the smallest among us can wield great power.",
+		"trait": "**Wily.** Force an enemy to reroll a non-critical attack against you, 1/encounter. +3 to Influence friendly characters. Advantage on skill checks related to dragons. You know Draconic if your INT is not negative."
+	},
+	{
+		"section": "exotic",
+		"name": "Orc",
+		"size": "medium",
+		"flavor": "Just when you think you've bested a mighty Orc, you've merely succeeded in rousing their anger. Engaging in combat with an Orc is no endeavor for the weak-willed. While others may cower before death's approach, Orcs boldly defy its grasp.",
+		"trait": "**Relentless.** When you would drop to 0 HP, you may set your HP to LVL instead, 1/Safe Rest. +1 Might. You know Goblin if your INT is not negative (but you call it Orcish, of course)."
+	},
+	{
+		"section": "exotic",
+		"name": "Birdfolk",
+		"size": "small-and-medium",
+		"flavor": "Birdfolk find sanctuary not in stone or chains, but within the boundless expanse of the sky. However, the gift of flight comes at a cost—hollow bones, and commensurate frailty.",
+		"trait": "**Hollow Bones.** You have a fly Speed as long as you are wearing armor no heavier than Leather. Crits against you are Vicious (the attacker rolls 1 additional die). Forced movement moves you twice as far."
+	},
+	{
+		"section": "exotic",
+		"name": "Celestial",
+		"size": "medium",
+		"flavor": "Descendants of divine beings, Celestials carry an aura of nobility and grace. Their innate connection to the higher planes allows them to resist the effects of misfortune, standing strong where others may falter.",
+		"trait": "**Highborn.** Your disadvantaged save is Neutral instead. You know Celestial if your INT isn't negative."
+	},
+	{
+		"section": "exotic",
+		"name": "Changeling",
+		"size": "medium",
+		"flavor": "Often hunted for their silver blood, Changelings are natural survivors, slipping into new identities with ease. Changelings that shift too often typically aren't long for the world—they can struggle to remember who they once were, becoming little more than reflections of the faces they wear.",
+		"trait": "**New Place, New Face.** +2 shifting skill points. You may take on the appearance of any ancestry. When you do, you may place your 2 shifting skill points into any 1 skill. 1/day."
+	},
+	{
+		"section": "exotic",
+		"name": "Crystalborn",
+		"size": "medium",
+		"flavor": "Formed from living crystal, the Crystalborn are beings of dazzling beauty and otherworldly toughness. Their translucent bodies refract light and sound, granting them unique abilities in combat.",
+		"trait": "**Reflective Aura.** When you Defend, gain KEY armor and deal KEY damage back to the attacker. 1/encounter."
+	},
+	{
+		"section": "exotic",
+		"name": "Dryad/Shroomling",
+		"size": "small-and-medium",
+		"flavor": "Tied to the natural world, Dryads and Shroomlings embody the balance between flora and fauna. Their unique physiology releases toxic spores when harmed, providing a natural defense against those who dare to harm them.",
+		"trait": "**Danger Pollen/Spores.** Whenever an enemy causes you one or more Wounds, you excrete soporific spores: all adjacent enemies are Dazed. You know Elvish if your INT is not negative."
+	},
+	{
+		"section": "exotic",
+		"name": "Half-Giant",
+		"size": "large",
+		"flavor": "Towering beings whose strength is as immovable as the mountains they call home. Their sheer size and resilience make them fearsome opponents, capable of surviving even devastating blows.",
+		"trait": "**Strength of Stone.** Force an enemy to reroll a crit against you, 1/encounter. +2 Might. You know Dwarvish if your INT is not negative."
+	},
+	{
+		"section": "exotic",
+		"name": "Minotaur/Beastfolk",
+		"size": "medium",
+		"flavor": "Minotaur and other Beastfolk embody a primal connection to The Wild, combining strength with natural agility. Their powerful build allows them to move swiftly, whether repositioning to outflank foes or charging in with unstoppable force.",
+		"trait": "**Charge.** When you move at least 4 spaces, you can push a creature in your path. Medium: 1 space; Small/Tiny: up to 2 spaces. 1/turn."
+	},
+	{
+		"section": "exotic",
+		"name": "Oozeling/Construct",
+		"size": "small-and-medium",
+		"flavor": "What even is a \"PeOpLe\" anyway? So what if your heart pumps oil instead of blood, so what if you don't even have a heart!? If you can squish yourself into a pair of pants, or swing a sword like everyone else, who's to say you can't be a pEOpLe, too?!",
+		"trait": "**Odd Constitution.** Increment your Hit Dice one step (d6 » d8 » d10 » d12 » d20); they always heal you for the maximum amount. Magical healing always heals you for the minimum amount."
+	},
+	{
+		"section": "exotic",
+		"name": "Planarbeing",
+		"size": "medium",
+		"flavor": "You are not from this plane of existence—your soul is not as strongly tethered to it as others. But with this vulnerability comes power, the ability to temporarily shift from one plane to another in times of dire need.",
+		"trait": "**Planeshift.** Whenever you Defend, you can gain 1 Wound to temporarily phase out of the material plane and ignore the damage. –2 max Wounds."
+	},
+	{
+		"section": "exotic",
+		"name": "Ratfolk",
+		"size": "small",
+		"flavor": "Ratfolk are survivors, thriving in the shadows of society where others fear to tread. Agile, resourceful, and fiercely loyal to their own, they have a knack for turning scraps into solutions.",
+		"trait": "**Scurry.** Gain +2 armor if you moved on your last turn."
+	},
+	{
+		"section": "exotic",
+		"name": "Stoatling",
+		"size": "small",
+		"flavor": "Stoatlings may be small, but they're far from weak. With fierce determination and warrior hearts, they can take down foes many times their size. Their agility and tenacity let them exploit larger enemies' weaknesses, turning their size into a lethal advantage.",
+		"trait": "**Small But Ferocious.** Whenever you make a single-target attack against a creature larger than you, roll 1 additional d6 for each size category it is larger. They do the same."
+	},
+	{
+		"section": "exotic",
+		"name": "Turtlefolk",
+		"size": "small-and-medium",
+		"flavor": "Turtlefolk take their time in everything they do; they are patient, sturdy, and slow to anger. They rely on their thick shells for protection, making them difficult to harm, but their cautious movements come at the cost of speed.",
+		"trait": "**Slow & Steady.** +4 Armor, –2 speed."
+	},
+	{
+		"section": "exotic",
+		"name": "Wyrdling",
+		"size": "small",
+		"flavor": "Unpredictable and chaotic, Wyrdlings are the result of magic gone awry. Their bodies pulse with raw arcane energy, and their mere presence often disturbs the balance of magic around them.",
+		"trait": "**Chaotic Surge.** Whenever you or a willing ally within Reach 6 casts a tiered spell, you may allow them to roll on the Chaos Table. 1/encounter.\n\n> **Flavor Is Free.** Want to be a leaping Frogfolk instead of a Bunbun? A Flameborn Kobold? A winged Fairy instead of a Birdfolk? A Badgerfolk instead of a Stoatling? As long as it makes sense and your GM is game, go for it!"
+	}
 ]

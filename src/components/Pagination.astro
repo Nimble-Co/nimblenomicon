@@ -7,7 +7,10 @@ import { resolveSectionPagination } from '../utils/section-sidebar';
 
 const { dir } = Astro.locals.starlightRoute;
 const isRtl = dir === 'rtl';
-const { prev, next } = resolveSectionPagination(Astro.locals.starlightRoute, Astro.url.pathname);
+const { prev, next } = resolveSectionPagination(
+	Astro.locals.starlightRoute,
+	Astro.url.pathname,
+);
 ---
 
 <div class="pagination-links print:hidden" dir={dir}>

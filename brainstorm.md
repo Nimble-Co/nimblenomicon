@@ -229,7 +229,7 @@ An online searchable, quick reference repository of ALL the published Nimble con
 
 - **Nice-to-have / future**
   - **Mobile app**: Dedicated mobile app or installable PWA experience so Nimblenomicon works as an at-the-table app on phones and tablets (currently scoped as mobile-friendly web).
-  - **Offline support**: Core rules, conditions, spells, and trackers usable without a connection; see *Offline & low-connectivity behavior* under Performance & architecture notes for scope.
+  - **Offline support**: Core rules, conditions, spells, and trackers usable without a connection; see _Offline & low-connectivity behavior_ under Performance & architecture notes for scope.
   - GM sees rolls from players (shared roll visibility at the table).
 
 ## Transcript feedback to incorporate (gaps this brainstorm had)

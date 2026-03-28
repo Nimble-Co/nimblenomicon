@@ -8,10 +8,10 @@ Verbatim strings from MDX; `body` is whatever follows the bold title in the sour
 
 ```json
 [
-  {
-    "name": "Tiny",
-    "body": "can be carried in a typical pocket (many can comfortably fit in 1 space)."
-  }
+	{
+		"name": "Tiny",
+		"body": "can be carried in a typical pocket (many can comfortably fit in 1 space)."
+	}
 ]
 ```
 
@@ -20,15 +20,15 @@ Verbatim strings from MDX; `body` is whatever follows the bold title in the sour
 Zod schema stays **private** in the same file; export only the inferred type and parsed array.
 
 ```typescript
-import { z } from "astro/zod";
-import rawSizes from "../../data/sizes.json";
+import { z } from 'astro/zod';
+import rawSizes from '../../data/sizes.json';
 
 const sizeSchema = z
-  .object({
-    name: z.string().min(1),
-    body: z.string(),
-  })
-  .strict();
+	.object({
+		name: z.string().min(1),
+		body: z.string(),
+	})
+	.strict();
 export type SizeData = z.infer<typeof sizeSchema>;
 export const sizes: SizeData[] = z.array(sizeSchema).parse(rawSizes);
 ```
@@ -36,14 +36,14 @@ export const sizes: SizeData[] = z.array(sizeSchema).parse(rawSizes);
 ## Inline MDX fragment (no Astro component)
 
 ```mdx
-import { sizes } from "../../features/sizes";
+import { sizes } from '../../features/sizes';
 
 <ul>
-  {sizes.map((size) => (
-    <li>
-      <strong>{size.name}</strong> {size.body}
-    </li>
-  ))}
+	{sizes.map((size) => (
+		<li>
+			<strong>{size.name}</strong> {size.body}
+		</li>
+	))}
 </ul>
 ```
 

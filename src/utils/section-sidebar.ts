@@ -9,7 +9,11 @@ import type {
 	SidebarLink,
 } from '../../node_modules/@astrojs/starlight/utils/routing/types.ts';
 import config from 'virtual:starlight/user-config';
-import { SECTION_SIDEBAR_CONFIG, getSectionKey, type SectionKey } from '../config/section-sidebars';
+import {
+	SECTION_SIDEBAR_CONFIG,
+	getSectionKey,
+	type SectionKey,
+} from '../config/section-sidebars';
 
 /** Match current page to a sidebar link (mirrors Starlight’s pathname comparison). */
 function pathMatchesHref(href: string, pathname: string): boolean {
@@ -34,7 +38,10 @@ type RawSidebarItem =
 	| { label: string; link: string }
 	| { label: string; collapsed?: boolean; items: RawSidebarItem[] };
 
-function rawToEntries(items: readonly RawSidebarItem[], locale: string | undefined): SidebarEntry[] {
+function rawToEntries(
+	items: readonly RawSidebarItem[],
+	locale: string | undefined,
+): SidebarEntry[] {
 	return items.map((item): SidebarEntry => {
 		if ('link' in item) {
 			const href = hrefForManualLink(item.link, locale);
@@ -69,7 +76,11 @@ function markCurrent(entries: SidebarEntry[], pathname: string): void {
 	}
 }
 
-function buildSectionSidebar(key: SectionKey, pathname: string, locale: string | undefined): SidebarEntry[] {
+function buildSectionSidebar(
+	key: SectionKey,
+	pathname: string,
+	locale: string | undefined,
+): SidebarEntry[] {
 	const raw = SECTION_SIDEBAR_CONFIG[key] as unknown as RawSidebarItem[];
 	const entries = rawToEntries(raw, locale);
 	markCurrent(entries, pathname);
@@ -79,8 +90,12 @@ function buildSectionSidebar(key: SectionKey, pathname: string, locale: string |
 /** Sidebar + flags for the current docs page, scoped to its section. */
 export function resolveSectionSidebar(
 	route: StarlightRouteData,
-	pathname: string
-): { sidebar: StarlightRouteData['sidebar']; bookChrome: boolean; sectionKey: SectionKey | null } {
+	pathname: string,
+): {
+	sidebar: StarlightRouteData['sidebar'];
+	bookChrome: boolean;
+	sectionKey: SectionKey | null;
+} {
 	const key = getSectionKey(route.entry.id);
 	if (!key) {
 		return { sidebar: route.sidebar, bookChrome: false, sectionKey: null };
@@ -94,7 +109,10 @@ export function resolveSectionSidebar(
 }
 
 /** Prev/next links only within the current section. */
-export function resolveSectionPagination(route: StarlightRouteData, pathname: string) {
+export function resolveSectionPagination(
+	route: StarlightRouteData,
+	pathname: string,
+) {
 	const key = getSectionKey(route.entry.id);
 	if (!key) {
 		return route.pagination;

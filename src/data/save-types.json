@@ -1,18 +1,18 @@
 [
-  {
-    "name": "STR",
-    "description": "When your overall fitness and physicality is tested. STR helps resist forced movement,restraint, poison, and extreme temperatures."
-  },
-  {
-    "name": "DEX",
-    "description": "When your agility or speed is tested. DEX helps you dive for cover in an explosion or stay on your feet while running across icy terrain."
-  },
-  {
-    "name": "INT",
-    "description": "When your intelligence is tested. INT helps you see though tricks and illusions."
-  },
-  {
-    "name": "WIL",
-    "description": "When your courage or personality is tested. WIL helps you resist charm or fear effects."
-  }
+	{
+		"name": "STR",
+		"description": "When your overall fitness and physicality is tested. STR helps resist forced movement,restraint, poison, and extreme temperatures."
+	},
+	{
+		"name": "DEX",
+		"description": "When your agility or speed is tested. DEX helps you dive for cover in an explosion or stay on your feet while running across icy terrain."
+	},
+	{
+		"name": "INT",
+		"description": "When your intelligence is tested. INT helps you see though tricks and illusions."
+	},
+	{
+		"name": "WIL",
+		"description": "When your courage or personality is tested. WIL helps you resist charm or fear effects."
+	}
 ]

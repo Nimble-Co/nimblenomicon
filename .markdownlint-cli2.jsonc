@@ -1,0 +1,17 @@
+{
+	"$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/main/schema/markdownlint-cli-config-schema.json",
+	"config": {
+		"extends": "markdownlint/style/prettier",
+		"MD041": false,
+		"MD033": false,
+		"MD034": false,
+	},
+	"globs": ["**/*.md", "**/*.mdx"],
+	"ignores": [
+		"node_modules",
+		"dist",
+		"package-lock.json",
+		".agents/**",
+		"docs/**",
+	],
+}

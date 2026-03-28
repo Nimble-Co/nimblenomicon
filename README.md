@@ -27,11 +27,11 @@ Mockup snapshot:
 
 ## Repo contents
 
-| File / path | Purpose |
-| ----------- | ------- |
-| [brainstorm.md](brainstorm.md) | Full brainstorm: detailed feature lists, market research, performance/architecture, accessibility, and UX notes. |
-| [@design/mockups/](design/mockups/) | Image mockups and UI sketches for early exploration. |
-| [.app/](.app/) | Astro + [Starlight](https://starlight.astro.build) documentation site (Tailwind). See [Documentation site](#documentation-site-app) below. |
+| File / path                         | Purpose                                                                                                                                    |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| [brainstorm.md](brainstorm.md)      | Full brainstorm: detailed feature lists, market research, performance/architecture, accessibility, and UX notes.                           |
+| [@design/mockups/](design/mockups/) | Image mockups and UI sketches for early exploration.                                                                                       |
+| [.app/](.app/)                      | Astro + [Starlight](https://starlight.astro.build) documentation site (Tailwind). See [Documentation site](#documentation-site-app) below. |
 
 ---
 
@@ -41,7 +41,7 @@ The docs app lives under [`.app/`](.app/). It uses Starlight with [Tailwind CSS]
 
 ### Project structure
 
-```
+```text
 .app/
 ├── public/
 ├── src/
@@ -62,14 +62,14 @@ Starlight serves `.md` or `.mdx` files from `src/content/docs/` as routes based 
 
 Run these from `.app/` (after `cd .app`):
 
-| Command | Action |
-| :------ | :----- |
-| `npm install` | Installs dependencies |
-| `npm run dev` | Starts local dev server at `localhost:4321` |
-| `npm run build` | Build production site to `./dist/` |
-| `npm run preview` | Preview the build locally before deploying |
-| `npm run astro ...` | CLI commands such as `astro add`, `astro check` |
-| `npm run astro -- --help` | Astro CLI help |
+| Command                   | Action                                          |
+| :------------------------ | :---------------------------------------------- |
+| `npm install`             | Installs dependencies                           |
+| `npm run dev`             | Starts local dev server at `localhost:4321`     |
+| `npm run build`           | Build production site to `./dist/`              |
+| `npm run preview`         | Preview the build locally before deploying      |
+| `npm run astro ...`       | CLI commands such as `astro add`, `astro check` |
+| `npm run astro -- --help` | Astro CLI help                                  |
 
 ### Learn more
 

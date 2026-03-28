@@ -29,16 +29,20 @@ const pagefindEnabled =
 	!starlightRoute.entry.id.endsWith('/404') &&
 	starlightRoute.entry.data.pagefind !== false;
 
-const htmlDataAttributes: DOMStringMap = { 'data-theme': 'dark' };
-if (Boolean(starlightRoute.toc)) htmlDataAttributes['data-has-toc'] = '';
+const htmlDataAttributes: Record<string, string> = { 'data-theme': 'dark' };
+if (starlightRoute.toc) htmlDataAttributes['data-has-toc'] = '';
 if (starlightRoute.hasSidebar) htmlDataAttributes['data-has-sidebar'] = '';
-if (Boolean(starlightRoute.entry.data.hero)) htmlDataAttributes['data-has-hero'] = '';
+if (starlightRoute.entry.data.hero) htmlDataAttributes['data-has-hero'] = '';
 
-const mainDataAttributes: DOMStringMap = {};
+const mainDataAttributes: Record<string, string> = {};
 if (pagefindEnabled) mainDataAttributes['data-pagefind-body'] = '';
 ---
 
-<html lang={starlightRoute.lang} dir={starlightRoute.dir} {...htmlDataAttributes}>
+<html
+	lang={starlightRoute.lang}
+	dir={starlightRoute.dir}
+	{...htmlDataAttributes}
+>
 	<head>
 		<Head />
 		<style>
@@ -49,7 +53,9 @@ if (pagefindEnabled) mainDataAttributes['data-pagefind-body'] = '';
 				--sl-content-width: 67.5rem;
 			}
 			html {
-				scroll-padding-top: calc(1.5rem + var(--sl-nav-height) + var(--sl-mobile-toc-height));
+				scroll-padding-top: calc(
+					1.5rem + var(--sl-nav-height) + var(--sl-mobile-toc-height)
+				);
 			}
 			main.nimble-home-main {
 				padding: var(--sl-main-pad);

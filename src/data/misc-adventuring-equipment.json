@@ -1,167 +1,167 @@
 [
-  {
-    "cost": "50 gp",
-    "name": "Healing Potion (action)",
-    "description": "Heal 2d4+4 HP."
-  },
-  {
-    "cost": "150 gp",
-    "name": "Greater Healing Potion (action)",
-    "description": "Heal 3d6+6 HP."
-  },
-  {
-    "cost": "450 gp",
-    "name": "Supreme Healing Potion (action)",
-    "description": "Heal 4d8+8 HP."
-  },
-  {
-    "cost": "5 sp",
-    "name": "Torch (stack of 2)",
-    "description": "For when it's dark. 1 use each."
-  },
-  {
-    "cost": "10 gp",
-    "name": "Lantern & Oil",
-    "description": "Like a torch, but not as cool (refill: 1 gp)."
-  },
-  {
-    "cost": "2 gp",
-    "name": "Vial of Pitch",
-    "description": "Sticky, and VERY flammable."
-  },
-  {
-    "cost": "10 gp",
-    "name": "Rope (50 ft.)",
-    "description": "You always need rope."
-  },
-  {
-    "cost": "50 gp",
-    "name": "Chain (10 ft.)",
-    "description": "Like rope, but stronger (and heavy)."
-  },
-  {
-    "cost": "1 gp",
-    "name": "Bucket",
-    "description": "Also works as a hat in a pinch!"
-  },
-  {
-    "cost": "3 gp",
-    "name": "Padlock & Key",
-    "description": "Lock it or lose it."
-  },
-  {
-    "cost": "4 gp",
-    "name": "Mirror",
-    "description": "For medusas AND spinach teeth."
-  },
-  {
-    "cost": "10 gp",
-    "name": "Telescope",
-    "description": "Arrr."
-  },
-  {
-    "cost": "5 gp",
-    "name": "Magnifying Glass",
-    "description": "Make the small, big."
-  },
-  {
-    "cost": "1 sp",
-    "name": "Chalk",
-    "description": "Not JUST for kids."
-  },
-  {
-    "cost": "3 gp",
-    "name": "Shovel",
-    "description": "Sometimes you need a hole dug."
-  },
-  {
-    "cost": "3 gp",
-    "name": "Pulley",
-    "description": "Pull down, go up."
-  },
-  {
-    "cost": "4 gp",
-    "name": "Grappling Hook",
-    "description": "For climbing or catching BIG fish."
-  },
-  {
-    "cost": "10 gp",
-    "name": "Quiver & Ammo",
-    "description": "Don't leave home without it."
-  },
-  {
-    "cost": "4 gp",
-    "name": "Saw",
-    "description": "For cutting lumber."
-  },
-  {
-    "cost": "1 sp",
-    "name": "Soap",
-    "description": "Useless."
-  },
-  {
-    "cost": "5 sp",
-    "name": "Strange Plant",
-    "description": "Who knows?"
-  },
-  {
-    "cost": "1 sp",
-    "name": "Shiny Object",
-    "description": "Worthless, but VERY pretty."
-  },
-  {
-    "cost": "5 gp",
-    "name": "Lock Pick",
-    "description": "It's not mine, honest!"
-  },
-  {
-    "cost": "2 gp",
-    "name": "Bell",
-    "description": "For service."
-  },
-  {
-    "cost": "5 sp",
-    "name": "Dice",
-    "description": "LOTS of fun."
-  },
-  {
-    "cost": "1 gp",
-    "name": "Blanket",
-    "description": "Warm & fuzzy."
-  },
-  {
-    "cost": "10 gp",
-    "name": "Hunting Trap",
-    "description": "Snap snap, don't lose a finger!"
-  },
-  {
-    "cost": "5 gp",
-    "name": "Camping Supplies",
-    "description": "Bedroll, rations, simple tent."
-  },
-  {
-    "cost": "2 gp",
-    "name": "Crowbar",
-    "description": "It's LIKE a key."
-  },
-  {
-    "cost": "5 gp",
-    "name": "Pitons",
-    "description": "Metal spikes, for sealing doors."
-  },
-  {
-    "cost": "3 gp",
-    "name": "Manacles",
-    "description": "For when someone has been bad."
-  },
-  {
-    "cost": "5 sp",
-    "name": "Large Sack",
-    "description": "Like a BIG pocket."
-  },
-  {
-    "cost": "5-50 gp",
-    "name": "Instrument",
-    "description": "Drums, Horn, Lyre, Flute, etc."
-  }
+	{
+		"cost": "50 gp",
+		"name": "Healing Potion (action)",
+		"description": "Heal 2d4+4 HP."
+	},
+	{
+		"cost": "150 gp",
+		"name": "Greater Healing Potion (action)",
+		"description": "Heal 3d6+6 HP."
+	},
+	{
+		"cost": "450 gp",
+		"name": "Supreme Healing Potion (action)",
+		"description": "Heal 4d8+8 HP."
+	},
+	{
+		"cost": "5 sp",
+		"name": "Torch (stack of 2)",
+		"description": "For when it's dark. 1 use each."
+	},
+	{
+		"cost": "10 gp",
+		"name": "Lantern & Oil",
+		"description": "Like a torch, but not as cool (refill: 1 gp)."
+	},
+	{
+		"cost": "2 gp",
+		"name": "Vial of Pitch",
+		"description": "Sticky, and VERY flammable."
+	},
+	{
+		"cost": "10 gp",
+		"name": "Rope (50 ft.)",
+		"description": "You always need rope."
+	},
+	{
+		"cost": "50 gp",
+		"name": "Chain (10 ft.)",
+		"description": "Like rope, but stronger (and heavy)."
+	},
+	{
+		"cost": "1 gp",
+		"name": "Bucket",
+		"description": "Also works as a hat in a pinch!"
+	},
+	{
+		"cost": "3 gp",
+		"name": "Padlock & Key",
+		"description": "Lock it or lose it."
+	},
+	{
+		"cost": "4 gp",
+		"name": "Mirror",
+		"description": "For medusas AND spinach teeth."
+	},
+	{
+		"cost": "10 gp",
+		"name": "Telescope",
+		"description": "Arrr."
+	},
+	{
+		"cost": "5 gp",
+		"name": "Magnifying Glass",
+		"description": "Make the small, big."
+	},
+	{
+		"cost": "1 sp",
+		"name": "Chalk",
+		"description": "Not JUST for kids."
+	},
+	{
+		"cost": "3 gp",
+		"name": "Shovel",
+		"description": "Sometimes you need a hole dug."
+	},
+	{
+		"cost": "3 gp",
+		"name": "Pulley",
+		"description": "Pull down, go up."
+	},
+	{
+		"cost": "4 gp",
+		"name": "Grappling Hook",
+		"description": "For climbing or catching BIG fish."
+	},
+	{
+		"cost": "10 gp",
+		"name": "Quiver & Ammo",
+		"description": "Don't leave home without it."
+	},
+	{
+		"cost": "4 gp",
+		"name": "Saw",
+		"description": "For cutting lumber."
+	},
+	{
+		"cost": "1 sp",
+		"name": "Soap",
+		"description": "Useless."
+	},
+	{
+		"cost": "5 sp",
+		"name": "Strange Plant",
+		"description": "Who knows?"
+	},
+	{
+		"cost": "1 sp",
+		"name": "Shiny Object",
+		"description": "Worthless, but VERY pretty."
+	},
+	{
+		"cost": "5 gp",
+		"name": "Lock Pick",
+		"description": "It's not mine, honest!"
+	},
+	{
+		"cost": "2 gp",
+		"name": "Bell",
+		"description": "For service."
+	},
+	{
+		"cost": "5 sp",
+		"name": "Dice",
+		"description": "LOTS of fun."
+	},
+	{
+		"cost": "1 gp",
+		"name": "Blanket",
+		"description": "Warm & fuzzy."
+	},
+	{
+		"cost": "10 gp",
+		"name": "Hunting Trap",
+		"description": "Snap snap, don't lose a finger!"
+	},
+	{
+		"cost": "5 gp",
+		"name": "Camping Supplies",
+		"description": "Bedroll, rations, simple tent."
+	},
+	{
+		"cost": "2 gp",
+		"name": "Crowbar",
+		"description": "It's LIKE a key."
+	},
+	{
+		"cost": "5 gp",
+		"name": "Pitons",
+		"description": "Metal spikes, for sealing doors."
+	},
+	{
+		"cost": "3 gp",
+		"name": "Manacles",
+		"description": "For when someone has been bad."
+	},
+	{
+		"cost": "5 sp",
+		"name": "Large Sack",
+		"description": "Like a BIG pocket."
+	},
+	{
+		"cost": "5-50 gp",
+		"name": "Instrument",
+		"description": "Drums, Horn, Lyre, Flute, etc."
+	}
 ]

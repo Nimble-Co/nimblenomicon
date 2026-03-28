@@ -6,7 +6,10 @@ const { banner, bannerInHero } = Astro.locals.starlightRoute.entry.data;
 
 {
 	banner && bannerInHero && (
-		<div class="nimble-full-bleed-hero__callout not-content" data-pagefind-ignore>
+		<div
+			class="nimble-full-bleed-hero__callout not-content"
+			data-pagefind-ignore
+		>
 			<img
 				class="nimble-full-bleed-hero__callout-icon"
 				src={heartIcon.src}
@@ -17,7 +20,10 @@ const { banner, bannerInHero } = Astro.locals.starlightRoute.entry.data;
 				loading="eager"
 				decoding="async"
 			/>
-			<div class="nimble-full-bleed-hero__callout-body" set:html={banner.content} />
+			<div
+				class="nimble-full-bleed-hero__callout-body"
+				set:html={banner.content}
+			/>
 		</div>
 	)
 }

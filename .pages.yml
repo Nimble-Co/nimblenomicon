@@ -534,25 +534,25 @@ content:
                 description: Stored as a number 0–9 in JSON (Cantrip = 0).
                 options:
                   values:
-                    - name: "0"
+                    - name: '0'
                       label: Cantrip
-                    - name: "1"
+                    - name: '1'
                       label: Tier 1
-                    - name: "2"
+                    - name: '2'
                       label: Tier 2
-                    - name: "3"
+                    - name: '3'
                       label: Tier 3
-                    - name: "4"
+                    - name: '4'
                       label: Tier 4
-                    - name: "5"
+                    - name: '5'
                       label: Tier 5
-                    - name: "6"
+                    - name: '6'
                       label: Tier 6
-                    - name: "7"
+                    - name: '7'
                       label: Tier 7
-                    - name: "8"
+                    - name: '8'
                       label: Tier 8
-                    - name: "9"
+                    - name: '9'
                       label: Tier 9
               - name: castingTime
                 label: Casting Time

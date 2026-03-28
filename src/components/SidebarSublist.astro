@@ -21,7 +21,12 @@ interface Props {
 const { sublist, nested, toc, bookChrome = false } = Astro.props;
 ---
 
-<ul class:list={{ 'top-level': !nested, 'nimble-book-tree': bookChrome && !nested }}>
+<ul
+	class:list={{
+		'top-level': !nested,
+		'nimble-book-tree': bookChrome && !nested,
+	}}
+>
 	{
 		sublist.map((entry) => (
 			<li>
@@ -43,8 +48,14 @@ const { sublist, nested, toc, bookChrome = false } = Astro.props;
 							)}
 						</a>
 						{entry.isCurrent && toc && toc.items.length > 0 && (
-							<starlight-toc data-min-h={toc.minHeadingLevel} data-max-h={toc.maxHeadingLevel}>
-								<nav class="nimble-inline-toc" aria-label={Astro.locals.t('tableOfContents.onThisPage')}>
+							<starlight-toc
+								data-min-h={toc.minHeadingLevel}
+								data-max-h={toc.maxHeadingLevel}
+							>
+								<nav
+									class="nimble-inline-toc"
+									aria-label={Astro.locals.t('tableOfContents.onThisPage')}
+								>
 									<TableOfContentsList toc={toc.items} />
 								</nav>
 							</starlight-toc>
@@ -56,11 +67,21 @@ const { sublist, nested, toc, bookChrome = false } = Astro.props;
 							bookChrome && 'nimble-book-section',
 							{ 'nimble-book-section--nested': nested && bookChrome },
 						]}
-						open={flattenSidebar(entry.entries).some((i) => i.isCurrent) || !entry.collapsed}
+						open={
+							flattenSidebar(entry.entries).some((i) => i.isCurrent) ||
+							!entry.collapsed
+						}
 					>
 						<summary class:list={{ 'nimble-book-summary': bookChrome }}>
 							<span class="group-label">
-								<span class:list={{ large: !nested, 'nimble-book-chapter': bookChrome }}>{entry.label}</span>
+								<span
+									class:list={{
+										large: !nested,
+										'nimble-book-chapter': bookChrome,
+									}}
+								>
+									{entry.label}
+								</span>
 								{entry.badge && (
 									<Badge
 										variant={entry.badge.variant}
@@ -69,10 +90,17 @@ const { sublist, nested, toc, bookChrome = false } = Astro.props;
 									/>
 								)}
 							</span>
-							{!bookChrome && <Icon name="right-caret" class="caret" size="1.25rem" />}
+							{!bookChrome && (
+								<Icon name="right-caret" class="caret" size="1.25rem" />
+							)}
 						</summary>
 						<SidebarRestorePoint />
-						<Astro.self sublist={entry.entries} nested toc={toc} bookChrome={bookChrome} />
+						<Astro.self
+							sublist={entry.entries}
+							nested
+							toc={toc}
+							bookChrome={bookChrome}
+						/>
 					</details>
 				)}
 			</li>
@@ -196,7 +224,8 @@ const { sublist, nested, toc, bookChrome = false } = Astro.props;
 			font-size: var(--sl-text-sm);
 			color: var(--sl-color-gray-600);
 			padding-block: 0.25em;
-			padding-inline: calc(1rem * var(--depth, 0) + var(--pad-inline)) var(--pad-inline);
+			padding-inline: calc(1rem * var(--depth, 0) + var(--pad-inline))
+				var(--pad-inline);
 		}
 
 		.nimble-inline-toc :global(a:hover),

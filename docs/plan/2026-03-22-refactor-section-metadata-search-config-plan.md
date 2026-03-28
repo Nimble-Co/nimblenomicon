@@ -6,10 +6,10 @@
 
 ## Stakeholders
 
-| Audience | Impact |
-|----------|--------|
+| Audience        | Impact                                                                         |
+| --------------- | ------------------------------------------------------------------------------ |
 | **Maintainers** | Single registry for section labels, paths, icons, and sizes; fewer drift bugs. |
-| **End users** | No intentional UX or copy change; behavior must match today. |
+| **End users**   | No intentional UX or copy change; behavior must match today.                   |
 
 ## Background and motivation
 
@@ -23,14 +23,14 @@ The brainstorm chose **config-first DRY** plus **documentation** for Starlight u
 
 **Findings folded into this doc:**
 
-| Topic | Guidance |
-|-------|----------|
-| **File layout** | Prefer either a new `section-metadata.ts` **or** colocate `SECTION_METADATA` in `section-sidebars.ts` so keys, sidebar shape, and presentation live in one module—fewer imports for a six-section site. Choose based on file length tolerance. |
+| Topic                       | Guidance                                                                                                                                                                                                                                                                                                                                                                                                       |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **File layout**             | Prefer either a new `section-metadata.ts` **or** colocate `SECTION_METADATA` in `section-sidebars.ts` so keys, sidebar shape, and presentation live in one module—fewer imports for a six-section site. Choose based on file length tolerance.                                                                                                                                                                 |
 | **`withBase` / `BASE_URL`** | Prefer **not** spreading `import.meta.env` helpers across arbitrary TS unless everything is Vite-processed. Options: (a) keep `withBase` in `HomeLanding.astro` and have metadata export only `path`, composing `href` in the component; or (b) keep a small `withBase` next to metadata if only `.astro` (and Vite-bundled `src/`) imports it. Avoid non-Vite Node entrypoints calling env-dependent helpers. |
-| **Types** | After deriving `SECTION_SIDEBAR_CONFIG`, confirm types still satisfy `section-sidebar.ts` (use `satisfies` or an explicit builder return type) to avoid widening. |
-| **CONTRIBUTING commands** | Document **`grep -r`** as well as **`rg`** so maintainers without ripgrep can run the checklist. |
-| **`Search.astro`** | Replacing the frontmatter placeholder variable is enough; `pagefindTranslations` and the template pick it up—no extra abstraction. |
-| **Global sidebar** | Checklist sync for `astro.config.mjs` vs `SECTION_METADATA` remains required if config is not imported from shared TS. |
+| **Types**                   | After deriving `SECTION_SIDEBAR_CONFIG`, confirm types still satisfy `section-sidebar.ts` (use `satisfies` or an explicit builder return type) to avoid widening.                                                                                                                                                                                                                                              |
+| **CONTRIBUTING commands**   | Document **`grep -r`** as well as **`rg`** so maintainers without ripgrep can run the checklist.                                                                                                                                                                                                                                                                                                               |
+| **`Search.astro`**          | Replacing the frontmatter placeholder variable is enough; `pagefindTranslations` and the template pick it up—no extra abstraction.                                                                                                                                                                                                                                                                             |
+| **Global sidebar**          | Checklist sync for `astro.config.mjs` vs `SECTION_METADATA` remains required if config is not imported from shared TS.                                                                                                                                                                                                                                                                                         |
 
 **No blockers** identified for implementation.
 
@@ -106,13 +106,13 @@ Each metadata entry includes:
 
 ## Dependencies and risks
 
-| Risk | Mitigation |
-|------|------------|
-| Astro `.mjs` config cannot import new TS module | Keep Starlight `sidebar` in `astro.config.mjs` manual; document sync in checklist. |
-| Wrong `path` breaks pagination/sidebar matching | Build `SECTION_SIDEBAR_CONFIG` from metadata paths; compare before/after in diff. |
-| Visual regression on tile or brand sizes | Copy numeric dimensions exactly from current components into metadata. |
+| Risk                                                      | Mitigation                                                                                                            |
+| --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Astro `.mjs` config cannot import new TS module           | Keep Starlight `sidebar` in `astro.config.mjs` manual; document sync in checklist.                                    |
+| Wrong `path` breaks pagination/sidebar matching           | Build `SECTION_SIDEBAR_CONFIG` from metadata paths; compare before/after in diff.                                     |
+| Visual regression on tile or brand sizes                  | Copy numeric dimensions exactly from current components into metadata.                                                |
 | **Type widening** after deriving `SECTION_SIDEBAR_CONFIG` | Use `satisfies` or an explicit helper return type so `section-sidebar.ts` still receives a correctly typed structure. |
-| **`withBase` / env** | Keep env-sensitive URL logic in `.astro` or clearly Vite-scoped modules (see Technical review). |
+| **`withBase` / env**                                      | Keep env-sensitive URL logic in `.astro` or clearly Vite-scoped modules (see Technical review).                       |
 
 ## Out of scope
 

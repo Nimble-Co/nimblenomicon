@@ -1,7 +1,7 @@
 name: CI
 description: Suggest a CI/CD improvement.
-title: "ci: "
-labels: ["ci"]
+title: 'ci: '
+labels: ['ci']
 body:
   - type: textarea
     id: description
