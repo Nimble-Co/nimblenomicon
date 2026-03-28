@@ -244,8 +244,7 @@ export function buildUtilitySpellGroups(
 		const group = bySection.get(id)!;
 		const name = SCHOOL_SHORT_NAME[id];
 		const spells = group.map(entryFromRow);
-		const flat =
-			spells.length === 1 && spells[0]!.name.trim() === name.trim();
+		const flat = spells.length === 1 && spells[0]!.name.trim() === name.trim();
 		return { id, name, spells, flat };
 	});
 }
