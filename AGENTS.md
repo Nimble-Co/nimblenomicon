@@ -34,7 +34,7 @@ These preferences come from ongoing Core Rules work. Agents should follow them w
 
 ### Data-driven Core Rules
 
-- Move repeatable blocks from `src/content/docs/core-rules.mdx` into JSON under `src/data/`, validate with Zod in `src/models/`, and render from MDX. Keep output matching the previous markdown unless intentionally changing copy.
+- Move repeatable blocks from the Core Rules page (`src/pages/core-rules/index.astro`) into JSON under `src/data/`, validate with Zod in `src/models/`, and render from that page. Keep output matching the previous markdown unless intentionally changing copy.
 - Use **`src/models/`** (not `src/features/`) for schemas and parsed exports.
 - Remove one-off extraction or migration **scripts** after the migration is done; do not leave them in the branch unless they are maintained tooling.
 

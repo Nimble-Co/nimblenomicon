@@ -1,0 +1,17 @@
+---
+import { listLabel } from '../../lib/list-label';
+import { renderMarkdown } from '../../lib/render-markdown';
+import { dcExamples } from '../../models/dc-examples';
+---
+
+<ul>
+	{
+		dcExamples.map((row) => (
+			<li
+				set:html={renderMarkdown(
+					`**${listLabel(row.name, ':')}** ${row.description}`,
+				)}
+			/>
+		))
+	}
+</ul>

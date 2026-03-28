@@ -8,645 +8,34 @@ media:
   extensions: [avif, gif, jpeg, jpg, png, svg, webp]
 
 content:
-  - name: core-rules
-    label: Core Rules
+  - name: core-rules-snippets
+    label: Core Rules Text
+    type: file
+    path: src/data/core-rules-snippets.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: Id
+        type: string
+        required: true
+        description: Stable anchor for this block (e.g. start-here); use lowercase letters, numbers, and hyphens. Put titles in Description with # / ## / ### as needed.
+      - name: description
+        label: Description
+        type: rich-text
+        required: true
+        description: Full markdown for this block, including headings (e.g. ## Section title as the first line).
+        options:
+          format: markdown
+
+  - name: stats-skills
+    label: Stats & Skills
     type: group
     items:
-      - name: core-rules-start
-        label: Start
-        type: group
-        items:
-          - name: core-rules-start-here
-            label: Start Here
-            type: file
-            path: src/data/core-rules/start-here.md
-
-      - name: core-rules-stats-skills
-        label: Stats & Skills
-        type: group
-        items:
-          - name: stats
-            label: Stats
-            type: file
-            path: src/data/stats.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: stat
-                label: Stat Code
-                type: string
-                required: true
-                description: Short code (e.g. STR). Skills must use the same value.
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-
-          - name: skills
-            label: Skills
-            type: file
-            path: src/data/skills.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: stat
-                label: Stat Code
-                type: string
-                required: true
-                description: Must match a row in Stats. Build validates; CMS cannot link lists.
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-
-          - name: sizes
-            label: Sizes
-            type: file
-            path: src/data/sizes.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-
-          - name: conditions
-            label: Conditions
-            type: file
-            path: src/data/conditions.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-
-      - name: core-rules-checks
-        label: Checks
-        type: group
-        items:
-          - name: dc-examples
-            label: DC Examples
-            type: file
-            path: src/data/dc-examples.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-
-          - name: save-types
-            label: Saves
-            type: file
-            path: src/data/save-types.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Stat
-                type: string
-                required: true
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-
-          - name: downtime-activities
-            label: Downtime
-            type: file
-            path: src/data/downtime-activities.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-
-      - name: core-rules-character
-        label: Character
-        type: group
-        items:
-          - name: stat-arrays
-            label: Stat Arrays
-            type: file
-            path: src/data/stat-arrays.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-
-          - name: languages
-            label: Languages
-            type: file
-            path: src/data/languages.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-
-          - name: character-classes
-            label: Classes
-            type: file
-            path: src/data/character-classes.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-
-          - name: ancestries
-            label: Ancestries
-            type: file
-            path: src/data/ancestries.json
-            format: json
-            list: true
-            fields:
-              - name: section
-                label: Section
-                type: select
-                required: true
-                options:
-                  values:
-                    - name: common
-                      label: Common
-                    - name: exotic
-                      label: Exotic
-              - name: id
-                label: Id
-                type: string
-                required: false
-                description: Stable URL slug for the ancestry’s detail page (lowercase, hyphens). Must be unique if set. Leave blank to auto-generate from Name.
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: size
-                label: Size
-                type: select
-                required: true
-                options:
-                  values:
-                    - name: small
-                      label: Small
-                    - name: medium
-                      label: Medium
-                    - name: large
-                      label: Large
-                    - name: small-and-medium
-                      label: Small and Medium
-              - name: flavor
-                label: Flavor
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-              - name: trait
-                label: Trait
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-
-          - name: backgrounds
-            label: Backgrounds
-            type: file
-            path: src/data/backgrounds.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                description: Markdown; use blockquotes for tips.
-                options:
-                  format: markdown
-
-          - name: adventuring-motivations
-            label: Motivations
-            type: file
-            path: src/data/adventuring-motivations.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-
-      - name: core-rules-equipment
-        label: Equipment
-        type: group
-        items:
-          - name: weapons
-            label: Weapons
-            type: file
-            path: src/data/weapons.json
-            format: json
-            list: true
-            fields:
-              - name: category
-                label: Table
-                type: select
-                required: true
-                options:
-                  values:
-                    - name: melee
-                      label: Melee
-                    - name: ranged
-                      label: Ranged
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: damage
-                label: Damage
-                type: string
-                required: true
-              - name: propertyLines
-                label: Property Lines
-                type: object
-                list: true
-                required: false
-                fields:
-                  - name: description
-                    label: Description
-                    type: string
-                    required: true
-              - name: cost
-                label: Cost
-                type: string
-                required: true
-
-          - name: weapon-properties
-            label: Weapon Properties
-            type: file
-            path: src/data/weapon-properties.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-
-          - name: armor
-            label: Armor
-            type: file
-            path: src/data/armor.json
-            format: json
-            list: true
-            fields:
-              - name: category
-                label: Section
-                type: select
-                required: true
-                options:
-                  values:
-                    - name: cloth
-                      label: Cloth
-                    - name: leather
-                      label: Leather
-                    - name: plate
-                      label: Plate
-                    - name: mail
-                      label: Mail
-                    - name: shields
-                      label: Shields
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: armor
-                label: Armor Value
-                type: string
-                required: true
-              - name: cost
-                label: Cost
-                type: string
-                required: true
-
-          - name: misc-adventuring-equipment
-            label: Misc. Gear
-            type: file
-            path: src/data/misc-adventuring-equipment.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-              - name: cost
-                label: Cost
-                type: string
-                required: true
-
-      - name: core-rules-spells
-        label: Spells
-        type: group
-        items:
-          - name: spell-schools
-            label: Spell Schools
-            type: file
-            path: src/data/spell-schools.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-
-          - name: spell-scroll-costs
-            label: Scroll Costs
-            type: file
-            path: src/data/spell-scroll-costs.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Tier
-                type: string
-                required: true
-              - name: cost
-                label: Cost
-                type: string
-                required: true
-
-          - name: wand-costs
-            label: Wand Costs
-            type: file
-            path: src/data/wand-costs.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Tier
-                type: string
-                required: true
-              - name: cost
-                label: Cost
-                type: string
-                required: true
-
-          - name: spells
-            label: Spells
-            type: file
-            path: src/data/spells.json
-            format: json
-            list: true
-            fields:
-              - name: id
-                label: Id
-                type: string
-                required: true
-                description: Stable URL slug for the spell’s detail page (lowercase, hyphens). Must be unique.
-              - name: schoolId
-                label: School
-                type: select
-                required: true
-                description: Same school for main spells and utility spells (e.g. utility Lightning spells use Lightning).
-                options:
-                  values:
-                    - name: fire-spells
-                      label: Fire
-                    - name: ice-spells
-                      label: Ice
-                    - name: lightning-spells
-                      label: Lightning
-                    - name: wind-spells
-                      label: Wind
-                    - name: radiant-spells
-                      label: Radiant
-                    - name: necrotic-spells
-                      label: Necrotic
-              - name: utility
-                label: Utility Spell
-                type: boolean
-                required: true
-                description: When enabled, the spell is listed under Utility Spells for this school.
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: tier
-                label: Spell Tier
-                type: select
-                required: true
-                description: Stored as a number 0–9 in JSON (Cantrip = 0).
-                options:
-                  values:
-                    - name: '0'
-                      label: Cantrip
-                    - name: '1'
-                      label: Tier 1
-                    - name: '2'
-                      label: Tier 2
-                    - name: '3'
-                      label: Tier 3
-                    - name: '4'
-                      label: Tier 4
-                    - name: '5'
-                      label: Tier 5
-                    - name: '6'
-                      label: Tier 6
-                    - name: '7'
-                      label: Tier 7
-                    - name: '8'
-                      label: Tier 8
-                    - name: '9'
-                      label: Tier 9
-              - name: castingTime
-                label: Casting Time
-                type: string
-                required: true
-                description: Examples — 1 Action, 2 Actions, 24 Hours, Casting Time — 1 Minute.
-              - name: target
-                label: Target
-                type: select
-                required: true
-                options:
-                  values:
-                    - name: single-target
-                      label: Single Target
-                    - name: self
-                      label: Self
-                    - name: aoe
-                      label: AoE
-                    - name: two-targets
-                      label: 2 Targets
-                    - name: multi-target
-                      label: Multi-Target
-                    - name: single-target-plus
-                      label: Single Target+
-                    - name: single-target-or-self
-                      label: Single Target / Self
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                options:
-                  format: markdown
-
-      - name: core-rules-magic-items
-        label: Magic Items
-        type: group
-        items:
-          - name: magical-item-rarities
-            label: Rarities
-            type: file
-            path: src/data/magical-item-rarities.json
-            format: json
-            list: true
-            fields:
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: availability
-                label: Availability
-                type: text
-                required: true
-              - name: cost
-                label: Cost
-                type: string
-                required: true
-
-          - name: magical-items
-            label: Items
-            type: file
-            path: src/data/magical-items.json
-            format: json
-            list: true
-            fields:
-              - name: kind
-                label: Type
-                type: select
-                required: true
-                options:
-                  values:
-                    - name: standard
-                      label: Standard Item
-                    - name: wand
-                      label: Wand
-              - name: name
-                label: Name
-                type: string
-                required: true
-              - name: subtitle
-                label: Rarity Or Tier Line
-                type: string
-                required: false
-              - name: description
-                label: Description
-                type: rich-text
-                required: true
-                description: Markdown; use blockquotes for asides.
-                options:
-                  format: markdown
-
-      - name: glossary
-        label: Glossary
+      - name: stats
+        label: Stats
         type: file
-        path: src/data/glossary.json
+        path: src/data/stats.json
         format: json
         list: true
         fields:
@@ -654,13 +43,631 @@ content:
             label: Name
             type: string
             required: true
-            description: Term only; the site adds a trailing period after the label.
+          - name: stat
+            label: Stat Code
+            type: string
+            required: true
+            description: Short code (e.g. STR). Skills must use the same value.
           - name: description
             label: Description
             type: rich-text
             required: true
             options:
               format: markdown
+
+      - name: skills
+        label: Skills
+        type: file
+        path: src/data/skills.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: stat
+            label: Stat Code
+            type: string
+            required: true
+            description: Must match a row in Stats. Build validates; CMS cannot link lists.
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+
+      - name: sizes
+        label: Sizes
+        type: file
+        path: src/data/sizes.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+
+      - name: conditions
+        label: Conditions
+        type: file
+        path: src/data/conditions.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+
+  - name: checks
+    label: Checks
+    type: group
+    items:
+      - name: dc-examples
+        label: DC Examples
+        type: file
+        path: src/data/dc-examples.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+
+      - name: save-types
+        label: Saves
+        type: file
+        path: src/data/save-types.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Stat
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+
+      - name: downtime-activities
+        label: Downtime
+        type: file
+        path: src/data/downtime-activities.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+
+  - name: character
+    label: Character
+    type: group
+    items:
+      - name: stat-arrays
+        label: Stat Arrays
+        type: file
+        path: src/data/stat-arrays.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+
+      - name: languages
+        label: Languages
+        type: file
+        path: src/data/languages.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+
+      - name: character-classes
+        label: Classes
+        type: file
+        path: src/data/character-classes.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+
+      - name: ancestries
+        label: Ancestries
+        type: file
+        path: src/data/ancestries.json
+        format: json
+        list: true
+        fields:
+          - name: section
+            label: Section
+            type: select
+            required: true
+            options:
+              values:
+                - name: common
+                  label: Common
+                - name: exotic
+                  label: Exotic
+          - name: id
+            label: Id
+            type: string
+            required: false
+            description: Stable URL slug for the ancestry’s detail page (lowercase, hyphens). Must be unique if set. Leave blank to auto-generate from Name.
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: size
+            label: Size
+            type: select
+            required: true
+            options:
+              values:
+                - name: small
+                  label: Small
+                - name: medium
+                  label: Medium
+                - name: large
+                  label: Large
+                - name: small-and-medium
+                  label: Small and Medium
+          - name: flavor
+            label: Flavor
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+          - name: trait
+            label: Trait
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+
+      - name: backgrounds
+        label: Backgrounds
+        type: file
+        path: src/data/backgrounds.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            description: Markdown; use blockquotes for tips.
+            options:
+              format: markdown
+
+      - name: adventuring-motivations
+        label: Motivations
+        type: file
+        path: src/data/adventuring-motivations.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+
+  - name: equipment
+    label: Equipment
+    type: group
+    items:
+      - name: weapons
+        label: Weapons
+        type: file
+        path: src/data/weapons.json
+        format: json
+        list: true
+        fields:
+          - name: category
+            label: Table
+            type: select
+            required: true
+            options:
+              values:
+                - name: melee
+                  label: Melee
+                - name: ranged
+                  label: Ranged
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: damage
+            label: Damage
+            type: string
+            required: true
+          - name: propertyLines
+            label: Property Lines
+            type: object
+            list: true
+            required: false
+            fields:
+              - name: description
+                label: Description
+                type: string
+                required: true
+          - name: cost
+            label: Cost
+            type: string
+            required: true
+
+      - name: weapon-properties
+        label: Weapon Properties
+        type: file
+        path: src/data/weapon-properties.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+
+      - name: armor
+        label: Armor
+        type: file
+        path: src/data/armor.json
+        format: json
+        list: true
+        fields:
+          - name: category
+            label: Section
+            type: select
+            required: true
+            options:
+              values:
+                - name: cloth
+                  label: Cloth
+                - name: leather
+                  label: Leather
+                - name: plate
+                  label: Plate
+                - name: mail
+                  label: Mail
+                - name: shields
+                  label: Shields
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: armor
+            label: Armor Value
+            type: string
+            required: true
+          - name: cost
+            label: Cost
+            type: string
+            required: true
+
+      - name: misc-adventuring-equipment
+        label: Misc. Gear
+        type: file
+        path: src/data/misc-adventuring-equipment.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+          - name: cost
+            label: Cost
+            type: string
+            required: true
+
+  - name: spells
+    label: Spells
+    type: group
+    items:
+      - name: spell-schools
+        label: Spell Schools
+        type: file
+        path: src/data/spell-schools.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+
+      - name: spell-scroll-costs
+        label: Scroll Costs
+        type: file
+        path: src/data/spell-scroll-costs.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Tier
+            type: string
+            required: true
+          - name: cost
+            label: Cost
+            type: string
+            required: true
+
+      - name: wand-costs
+        label: Wand Costs
+        type: file
+        path: src/data/wand-costs.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Tier
+            type: string
+            required: true
+          - name: cost
+            label: Cost
+            type: string
+            required: true
+
+      - name: spells
+        label: Spells
+        type: file
+        path: src/data/spells.json
+        format: json
+        list: true
+        fields:
+          - name: id
+            label: Id
+            type: string
+            required: true
+            description: Stable URL slug for the spell’s detail page (lowercase, hyphens). Must be unique.
+          - name: schoolId
+            label: School
+            type: select
+            required: true
+            description: Same school for main spells and utility spells (e.g. utility Lightning spells use Lightning).
+            options:
+              values:
+                - name: fire-spells
+                  label: Fire
+                - name: ice-spells
+                  label: Ice
+                - name: lightning-spells
+                  label: Lightning
+                - name: wind-spells
+                  label: Wind
+                - name: radiant-spells
+                  label: Radiant
+                - name: necrotic-spells
+                  label: Necrotic
+          - name: utility
+            label: Utility Spell
+            type: boolean
+            required: true
+            description: When enabled, the spell is listed under Utility Spells for this school.
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: tier
+            label: Spell Tier
+            type: select
+            required: true
+            description: Stored as a number 0–9 in JSON (Cantrip = 0).
+            options:
+              values:
+                - name: '0'
+                  label: Cantrip
+                - name: '1'
+                  label: Tier 1
+                - name: '2'
+                  label: Tier 2
+                - name: '3'
+                  label: Tier 3
+                - name: '4'
+                  label: Tier 4
+                - name: '5'
+                  label: Tier 5
+                - name: '6'
+                  label: Tier 6
+                - name: '7'
+                  label: Tier 7
+                - name: '8'
+                  label: Tier 8
+                - name: '9'
+                  label: Tier 9
+          - name: castingTime
+            label: Casting Time
+            type: string
+            required: true
+            description: Examples — 1 Action, 2 Actions, 24 Hours, Casting Time — 1 Minute.
+          - name: target
+            label: Target
+            type: select
+            required: true
+            options:
+              values:
+                - name: single-target
+                  label: Single Target
+                - name: self
+                  label: Self
+                - name: aoe
+                  label: AoE
+                - name: two-targets
+                  label: 2 Targets
+                - name: multi-target
+                  label: Multi-Target
+                - name: single-target-plus
+                  label: Single Target+
+                - name: single-target-or-self
+                  label: Single Target / Self
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+
+  - name: magic-items
+    label: Magic Items
+    type: group
+    items:
+      - name: magical-item-rarities
+        label: Rarities
+        type: file
+        path: src/data/magical-item-rarities.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: availability
+            label: Availability
+            type: text
+            required: true
+          - name: cost
+            label: Cost
+            type: string
+            required: true
+
+      - name: magical-items
+        label: Items
+        type: file
+        path: src/data/magical-items.json
+        format: json
+        list: true
+        fields:
+          - name: kind
+            label: Type
+            type: select
+            required: true
+            options:
+              values:
+                - name: standard
+                  label: Standard Item
+                - name: wand
+                  label: Wand
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: subtitle
+            label: Rarity Or Tier Line
+            type: string
+            required: false
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            description: Markdown; use blockquotes for asides.
+            options:
+              format: markdown
+
+  - name: glossary
+    label: Glossary
+    type: file
+    path: src/data/glossary.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+        description: Term only; the site adds a trailing period after the label.
+      - name: description
+        label: Description
+        type: rich-text
+        required: true
+        options:
+          format: markdown
 
   - name: optional-variant-rules
     label: Optional Variant Rules

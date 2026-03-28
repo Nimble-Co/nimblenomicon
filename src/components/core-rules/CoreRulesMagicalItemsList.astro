@@ -1,0 +1,14 @@
+---
+import { renderMarkdown } from '../../lib/render-markdown';
+import { magicalItems } from '../../models/magical-items';
+---
+
+{
+	magicalItems.map((item) => (
+		<>
+			<h3>{item.name}</h3>
+			{item.subtitle && <div set:html={renderMarkdown(item.subtitle)} />}
+			<div set:html={renderMarkdown(item.description)} />
+		</>
+	))
+}

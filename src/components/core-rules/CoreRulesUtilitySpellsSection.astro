@@ -1,0 +1,47 @@
+---
+import { renderMarkdown } from '../../lib/render-markdown';
+import { spellMetaMarkdown } from '../../lib/spell-meta';
+import { spellDetailHrefFromCoreRules, spellsData } from '../../models/spells';
+---
+
+{
+	spellsData.utilitySchools.map((us) => {
+		const flatFirst = us.spells[0];
+		return 'flat' in us && us.flat && flatFirst ? (
+			<>
+				<h3 id={flatFirst.id}>
+					<a href={spellDetailHrefFromCoreRules(flatFirst.id)}>{us.name}</a>
+				</h3>
+				<div
+					set:html={renderMarkdown(
+						spellMetaMarkdown(
+							flatFirst.tier,
+							flatFirst.castingTime,
+							flatFirst.target,
+						) +
+							(flatFirst.description?.trim()
+								? '\n\n' + flatFirst.description
+								: ''),
+					)}
+				/>
+			</>
+		) : (
+			<>
+				<h3>{us.name}</h3>
+				{us.spells.map((spell) => (
+					<>
+						<h4 id={spell.id}>
+							<a href={spellDetailHrefFromCoreRules(spell.id)}>{spell.name}</a>
+						</h4>
+						<div
+							set:html={renderMarkdown(
+								spellMetaMarkdown(spell.tier, spell.castingTime, spell.target) +
+									(spell.description?.trim() ? '\n\n' + spell.description : ''),
+							)}
+						/>
+					</>
+				))}
+			</>
+		);
+	})
+}

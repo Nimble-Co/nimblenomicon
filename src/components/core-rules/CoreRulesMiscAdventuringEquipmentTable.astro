@@ -1,0 +1,19 @@
+---
+import CoreRulesTableThead from './CoreRulesTableThead.astro';
+import { miscAdventuringEquipment } from '../../models/misc-adventuring-equipment';
+---
+
+<table>
+	<CoreRulesTableThead labels={['ITEM', 'PROPERTIES', 'COST']} />
+	<tbody>
+		{
+			miscAdventuringEquipment.map((row) => (
+				<tr>
+					<td>{row.name}</td>
+					<td>{row.description}</td>
+					<td>{row.cost}</td>
+				</tr>
+			))
+		}
+	</tbody>
+</table>

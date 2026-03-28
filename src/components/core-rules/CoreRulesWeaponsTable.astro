@@ -1,0 +1,27 @@
+---
+import CoreRulesTableThead from './CoreRulesTableThead.astro';
+import { weapons } from '../../models/weapons';
+
+interface Props {
+	category: 'melee' | 'ranged';
+}
+
+const { category } = Astro.props;
+const rows = weapons.filter((w) => w.category === category);
+---
+
+<table>
+	<CoreRulesTableThead labels={['ITEM', 'DAMAGE', 'PROPERTIES', 'COST']} />
+	<tbody>
+		{
+			rows.map((w) => (
+				<tr>
+					<td>{w.name}</td>
+					<td>{w.damage}</td>
+					<td>{w.propertyLines.map((p) => p.description).join(', ')}</td>
+					<td>{w.cost}</td>
+				</tr>
+			))
+		}
+	</tbody>
+</table>

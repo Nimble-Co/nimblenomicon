@@ -1,0 +1,13 @@
+---
+import { sizes } from '../../models/sizes';
+---
+
+<ul>
+	{
+		sizes.map((size) => (
+			<li>
+				<strong>{size.name}</strong> {size.description}
+			</li>
+		))
+	}
+</ul>

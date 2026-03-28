@@ -1,0 +1,26 @@
+---
+import CoreRulesTableThead from './CoreRulesTableThead.astro';
+import { armorRows, armorTableSections } from '../../models/armor';
+---
+
+{
+	armorTableSections.map(({ category: cat, label }) => (
+		<>
+			<h3>{label}</h3>
+			<table>
+				<CoreRulesTableThead labels={['ITEM', 'ARMOR', 'COST']} />
+				<tbody>
+					{armorRows
+						.filter((row) => row.category === cat)
+						.map((row) => (
+							<tr>
+								<td>{row.name}</td>
+								<td>{row.armor}</td>
+								<td>{row.cost}</td>
+							</tr>
+						))}
+				</tbody>
+			</table>
+		</>
+	))
+}

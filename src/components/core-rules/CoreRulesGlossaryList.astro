@@ -1,0 +1,12 @@
+---
+import { listLabel } from '../../lib/list-label';
+import { glossary } from '../../models/glossary';
+---
+
+{
+	glossary.map((entry) => (
+		<p>
+			<strong>{listLabel(entry.name)}</strong> {entry.description}
+		</p>
+	))
+}

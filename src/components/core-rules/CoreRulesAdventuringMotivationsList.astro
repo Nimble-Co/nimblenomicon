@@ -1,0 +1,14 @@
+---
+import { renderMarkdown } from '../../lib/render-markdown';
+import { adventuringMotivations } from '../../models/adventuring-motivations';
+---
+
+{
+	adventuringMotivations.map((motivation) => (
+		<p
+			set:html={renderMarkdown(
+				`**${motivation.name}** ${motivation.description}`,
+			)}
+		/>
+	))
+}

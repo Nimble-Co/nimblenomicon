@@ -1,0 +1,17 @@
+---
+import { listLabel } from '../../lib/list-label';
+import { renderMarkdown } from '../../lib/render-markdown';
+import { weaponProperties } from '../../models/weapon-properties';
+---
+
+<ul>
+	{
+		weaponProperties.map((weaponProperty) => (
+			<li
+				set:html={renderMarkdown(
+					`**${listLabel(weaponProperty.name)}** ${weaponProperty.description}`,
+				)}
+			/>
+		))
+	}
+</ul>
