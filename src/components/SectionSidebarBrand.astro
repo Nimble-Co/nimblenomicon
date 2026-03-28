@@ -27,15 +27,17 @@ const brand = SECTION_METADATA[sectionKey];
 
 <style>
 	.nimble-section-brand {
-		padding: 0.5rem 0.75rem 1rem;
+		padding: 0.65rem 0.5rem 0.85rem;
 		text-align: center;
-		border-bottom: 1px solid var(--sl-color-hairline-shade);
-		margin-bottom: 0.75rem;
+		margin: 0 0 0.65rem;
+		border: 1px solid var(--nimble-book-sidebar-border, #c8c8c8);
+		border-radius: var(--nimble-book-sidebar-radius, 0.625rem);
+		background: var(--nimble-book-sidebar-tile-bg, #ebebeb);
 	}
 
 	.nimble-section-brand__icon {
 		display: block;
-		margin: 0 auto 0.5rem;
+		margin: 0 auto 0.45rem;
 		width: 2.5rem;
 		height: auto;
 	}
@@ -48,6 +50,15 @@ const brand = SECTION_METADATA[sectionKey];
 		font-style: italic;
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
-		color: var(--color-gray-800, #3d3d3d);
+		color: var(--nimble-book-sidebar-fg, #252b42);
+	}
+
+	:global(:root[data-theme='dark']) .nimble-section-brand {
+		border-color: var(--sl-color-hairline);
+		background: color-mix(in srgb, var(--sl-color-bg-nav) 90%, var(--sl-color-gray-5));
+	}
+
+	:global(:root[data-theme='dark']) .nimble-section-brand__title {
+		color: var(--sl-color-text);
 	}
 </style>

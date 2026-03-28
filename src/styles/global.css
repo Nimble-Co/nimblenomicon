@@ -67,6 +67,30 @@
   --sl-color-hairline-light: #e8e8e8;
   --sl-color-hairline: #dedede;
   --sl-color-hairline-shade: #e0e0e0;
+
+  /*
+   * Core Rules book sidebar — same palette as HomeLanding tiles (see README design/mockups).
+   * Consumed by SidebarSublist / SectionSidebarBrand when `.nimble-book-shell` is present.
+   */
+  --nimble-book-sidebar-fg: #252b42;
+  --nimble-book-sidebar-muted: #707070;
+  --nimble-book-sidebar-border: #c8c8c8;
+  --nimble-book-sidebar-tile-bg: #ebebeb;
+  --nimble-book-sidebar-panel-bg: #ffffff;
+  --nimble-book-sidebar-gold: #d4a90c;
+  --nimble-book-sidebar-radius: 0.625rem;
+}
+
+:root[data-theme="dark"] {
+  --nimble-book-sidebar-fg: var(--sl-color-text);
+  --nimble-book-sidebar-muted: var(--sl-color-gray-3);
+  --nimble-book-sidebar-border: var(--sl-color-hairline);
+  --nimble-book-sidebar-tile-bg: color-mix(
+    in srgb,
+    var(--sl-color-bg) 88%,
+    var(--sl-color-gray-5)
+  );
+  --nimble-book-sidebar-panel-bg: var(--sl-color-bg-nav);
 }
 
 /* Mobile drawer: Starlight uses --sl-color-black here; keep it aligned with the sidebar surface. */
@@ -197,6 +221,12 @@ body {
 :root[data-theme="light"] nav.sidebar a[aria-current="page"]:focus {
   color: #000000;
   background-color: #d4a90c;
+}
+
+/* Core Rules: inset nav + tile chrome (matches home landing / mockup references). */
+:root[data-theme="light"] nav.sidebar:has(.nimble-book-shell) .sidebar-pane {
+  padding-inline: 0.65rem;
+  padding-block-end: 1rem;
 }
 
 /* Sidebar + mobile drawer: no link underlines (Tailwind preflight / defaults win otherwise). */
