@@ -1,0 +1,71 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { formatSpellTier } from '../../../lib/spell-meta';
+import {
+	compareSpellRowsForListing,
+	spellRows,
+	spellSchoolShortName,
+} from '../../../models/spells';
+
+const rows = [...spellRows].sort(compareSpellRowsForListing);
+---
+
+<StarlightPage
+	frontmatter={{
+		title: 'Spells',
+		description: 'Alphabetical index of spells by school and tier with links to each spell.',
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+	hasSidebar={false}
+>
+	<p class="spells-index__intro">
+		<a href="../">Core Rules</a>
+	</p>
+	<div class="sl-markdown-content not-content">
+		<table class="spells-index__table">
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">School</th>
+					<th scope="col">Tier</th>
+				</tr>
+			</thead>
+			<tbody>
+				{
+					rows.map((row) => (
+						<tr>
+							<th scope="row">
+								<a href={`./${row.id}/`}>{row.name}</a>
+							</th>
+							<td>{spellSchoolShortName(row.schoolId)}</td>
+							<td>{formatSpellTier(row.tier)}</td>
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</div>
+</StarlightPage>
+
+<style>
+	.spells-index__intro {
+		font-style: italic;
+		margin-bottom: 1rem;
+	}
+	.spells-index__table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+	.spells-index__table th,
+	.spells-index__table td {
+		text-align: start;
+		padding: 0.35rem 0.75rem 0.35rem 0;
+		border-bottom: 1px solid var(--sl-color-hairline);
+		vertical-align: top;
+	}
+	.spells-index__table thead th {
+		font-weight: 600;
+	}
+</style>

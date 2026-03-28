@@ -154,6 +154,20 @@ export function spellSchoolShortName(
   return SCHOOL_SHORT_NAME[schoolId];
 }
 
+/**
+ * Sort key for a flat spell list: main schools first (document order), then utility
+ * spells (subsection order), then tier, then name.
+ */
+export function compareSpellRowsForListing(a: SpellRowData, b: SpellRowData): number {
+  if (a.utility !== b.utility) return a.utility ? 1 : -1;
+  const order = a.utility ? UTILITY_SECTION_ORDER : SCHOOL_ORDER;
+  const ai = order.indexOf(a.schoolId);
+  const bi = order.indexOf(b.schoolId);
+  if (ai !== bi) return ai - bi;
+  if (a.tier !== b.tier) return a.tier - b.tier;
+  return a.name.localeCompare(b.name);
+}
+
 /** Utility subsection order; keys match `schoolId` on utility rows. */
 const UTILITY_SECTION_ORDER = [
   "ice-spells",
