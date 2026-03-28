@@ -1,46 +1,46 @@
 [
   {
-    "name": "BERSERKER",
+    "name": "berserker",
     "description": "An unstoppable force of wrath and ruin."
   },
   {
-    "name": "THE CHEAT",
+    "name": "the cheat",
     "description": "Sneaky, backstabbing, dirty-fighting rogue."
   },
   {
-    "name": "COMMANDER",
+    "name": "commander",
     "description": "A battlefield tactician, leader, and weapon master."
   },
   {
-    "name": "HUNTER",
+    "name": "hunter",
     "description": "Resourceful survivalist, bow master, and skilled tracker."
   },
   {
-    "name": "MAGE",
+    "name": "mage",
     "description": "Wield and shape the elements of fire, ice, and lightning."
   },
   {
-    "name": "OATHSWORN",
+    "name": "oathsworn",
     "description": "Faithful guardian, protector, and avenger of the weak."
   },
   {
-    "name": "SHADOWMANCER",
+    "name": "shadowmancer",
     "description": "Summon hordes of expendable minions."
   },
   {
-    "name": "SHEPHERD",
+    "name": "shepherd",
     "description": "Master life and death. Lead a faithful companion."
   },
   {
-    "name": "SONGWEAVER",
+    "name": "songweaver",
     "description": "Inspiring presence, sharp wit, sharper tongue."
   },
   {
-    "name": "STORMSHIFTER",
+    "name": "stormshifter",
     "description": "Master of weather, beast, and nature."
   },
   {
-    "name": "ZEPHYR",
+    "name": "zephyr",
     "description": "A disciplined martial artist with swift hands and swift feet."
   }
 ]

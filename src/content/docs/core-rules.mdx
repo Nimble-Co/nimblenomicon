@@ -11,7 +11,7 @@ banner:
 import manticor from "../../assets/manticor.webp";
 import HeroCallout from "../../components/HeroCallout.astro";
 import { renderMarkdown } from "../../lib/render-markdown";
-import { listLabel } from "../../lib/list-label";
+import { classDisplayName, listLabel } from "../../lib/list-label";
 import { spellMetaMarkdown } from "../../lib/spell-meta";
 
 import { adventuringMotivations } from "../../models/adventuring-motivations";
@@ -404,7 +404,8 @@ This will have the largest impact on the other character choices you make and ho
 <ul>
   {characterClasses.map((heroClass) => (
     <li>
-      <strong>{listLabel(heroClass.name)}</strong> {heroClass.description}
+      <strong>{listLabel(classDisplayName(heroClass.name))}</strong>{" "}
+      {heroClass.description}
     </li>
   ))}
 </ul>
