@@ -8,7 +8,8 @@ banner:
     <p>This is free to use for anyone who already owns the content, is trying the system out, or cannot afford to buy it right now. If you enjoy Nimble and are able, please support the game by purchasing the official content at <a href="https://nimbleRPG.com">nimbleRPG.com</a>.</p>
 ---
 
-import CoreRulesHero from "../../components/CoreRulesHero.astro";
+import manticor from "../../assets/manticor.webp";
+import HeroCallout from "../../components/HeroCallout.astro";
 import { renderMarkdown } from "../../lib/render-markdown";
 import { listLabel } from "../../lib/list-label";
 import { spellMetaMarkdown } from "../../lib/spell-meta";
@@ -39,7 +40,28 @@ import { stats } from "../../models/stats";
 import { weaponProperties } from "../../models/weapon-properties";
 import { weapons } from "../../models/weapons";
 
-<CoreRulesHero />
+<div class="nimble-full-bleed-hero">
+  <img
+    class="nimble-full-bleed-hero__img"
+    src={manticor.src}
+    width={manticor.width}
+    height={manticor.height}
+    alt="Manticore illustration — heroes battling a winged beast"
+    loading="eager"
+    decoding="async"
+  />
+  <div class="nimble-full-bleed-hero__gradient" aria-hidden="true"></div>
+  <div class="nimble-full-bleed-hero__bottom">
+    <h1 id="_top" class="nimble-full-bleed-hero__title">
+      Core Rules
+    </h1>
+    <HeroCallout />
+  </div>
+</div>
+
+import StartHere from "../../data/core-rules/start-here.md";
+
+<StartHere />
 
 # Core Rules
 
@@ -823,7 +845,7 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
 
 {spellsData.schools.map((school) => (
   <>
-    <h2>{school.name} Spells</h2>
+    <h2 id={school.id}>{school.name} Spells</h2>
     {school.spells.map((spell) => (
       <>
         <h3>{spell.name}</h3>
@@ -841,7 +863,7 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
   </>
 ))}
 
-<h2>Utility Spells</h2>
+<h2 id="utility-spells">Utility Spells</h2>
 
 Some classes can choose from among these additional spells as they level up.
 

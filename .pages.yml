@@ -21,6 +21,32 @@ content:
             type: file
             path: src/data/core-rules/start-here.md
 
+          - name: core-rules-outline
+            label: Page Outline
+            type: file
+            path: src/data/core-rules-outline.json
+            format: json
+            fields:
+              - name: entries
+                label: Entries
+                type: object
+                list: true
+                fields:
+                  - name: slug
+                    label: Anchor Id
+                    type: string
+                    required: true
+                    description: Must match the heading id in the Core Rules page (e.g. stats, fire-spells). Changing section titles in MDX can change generated ids; update this list to match.
+                  - name: label
+                    label: Label
+                    type: string
+                    required: true
+                  - name: depth
+                    label: Depth
+                    type: number
+                    required: true
+                    description: 1 = chapter (h1), 2 = section (h2).
+
       - name: core-rules-stats-skills
         label: Stats & Skills
         type: group
