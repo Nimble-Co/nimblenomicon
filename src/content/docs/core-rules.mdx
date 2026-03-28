@@ -11,6 +11,7 @@ banner:
 import manticor from "../../assets/manticor.webp";
 import HeroCallout from "../../components/HeroCallout.astro";
 import { renderMarkdown } from "../../lib/render-markdown";
+import { spellMetaMarkdown } from "../../lib/spell-meta";
 
 import { adventuringMotivations } from "../../models/adventuring-motivations";
 import { ancestries } from "../../models/ancestries";
@@ -860,7 +861,12 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
     {school.spells.map((spell) => (
       <>
         <h3>{spell.name}</h3>
-        <div set:html={renderMarkdown(spell.body)} />
+        <div
+          set:html={renderMarkdown(
+            spellMetaMarkdown(spell.level, spell.actions, spell.target) +
+              (spell.body.trim() ? "\n\n" + spell.body : ""),
+          )}
+        />
       </>
     ))}
   </>
@@ -874,7 +880,12 @@ Some classes can choose from among these additional spells as they level up.
   "flat" in us && us.flat ? (
     <>
       <h3>{us.name}</h3>
-      <div set:html={renderMarkdown(us.body)} />
+      <div
+        set:html={renderMarkdown(
+          spellMetaMarkdown(us.level, us.actions, us.target) +
+            (us.body.trim() ? "\n\n" + us.body : ""),
+        )}
+      />
     </>
   ) : (
     <>
@@ -882,7 +893,12 @@ Some classes can choose from among these additional spells as they level up.
       {us.spells.map((spell) => (
         <>
           <h4>{spell.name}</h4>
-          <div set:html={renderMarkdown(spell.body)} />
+          <div
+            set:html={renderMarkdown(
+              spellMetaMarkdown(spell.level, spell.actions, spell.target) +
+                (spell.body.trim() ? "\n\n" + spell.body : ""),
+            )}
+          />
         </>
       ))}
     </>
