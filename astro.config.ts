@@ -1,7 +1,7 @@
-import starlight from '@astrojs/starlight';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 
+import starlightAsLibrary from './integrations/starlight-as-library';
 import { STARLIGHT_GLOBAL_SIDEBAR } from './src/config/section-sidebars';
 
 const owner = process.env.GITHUB_REPOSITORY_OWNER;
@@ -18,7 +18,7 @@ export default defineConfig({
 	site,
 	base,
 	integrations: [
-		starlight({
+		starlightAsLibrary({
 			title: 'The Nimblenomicon',
 			head: [
 				{

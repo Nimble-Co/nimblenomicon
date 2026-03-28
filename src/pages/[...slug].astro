@@ -1,0 +1,16 @@
+---
+/**
+ * Docs routes: same rendering as Starlight’s injected catch-all, but defined under `src/pages/`
+ * so this project behaves as a plain Astro app at the filesystem level.
+ */
+import CommonPage from '@astrojs/starlight/routes/common.astro';
+import { paths } from '../../node_modules/@astrojs/starlight/utils/routing/index.ts';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+	return paths;
+}
+---
+
+<CommonPage />
