@@ -442,7 +442,7 @@ content:
     type: file
     path: src/data/spells.json
     format: json
-    description: Nested schools + utility schools; edit in raw JSON or regenerate from scripts/extract-spells-from-mdx.mjs.
+    description: Nested schools + utility schools; edit as structured JSON.
 
   - name: core-rules-start-here
     label: Core Rules — Start Here
