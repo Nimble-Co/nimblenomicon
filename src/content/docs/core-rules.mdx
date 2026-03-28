@@ -850,7 +850,7 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
 
 {spellsData.schools.map((school) => (
   <>
-    <h2>{school.name} Spells</h2>
+    <h2 id={`${school.name.toLowerCase()}-spells`}>{school.name} Spells</h2>
     {school.spells.map((spell) => (
       <>
         <h3>
@@ -870,7 +870,7 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
   </>
 ))}
 
-<h2>Utility Spells</h2>
+<h2 id="utility-spells">Utility Spells</h2>
 
 Some classes can choose from among these additional spells as they level up.
 
