@@ -246,8 +246,20 @@ content:
                 required: true
               - name: size
                 label: Size
-                type: string
+                type: select
                 required: true
+                options:
+                  values:
+                    - name: small
+                      label: Small
+                    - name: medium
+                      label: Medium
+                    - name: large
+                      label: Large
+                    - name: small-or-medium
+                      label: Small or Medium
+                    - name: small-or-med
+                      label: Small or Med
               - name: flavor
                 label: Flavor
                 type: rich-text
