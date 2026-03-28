@@ -256,10 +256,8 @@ content:
                       label: Medium
                     - name: large
                       label: Large
-                    - name: small-or-medium
-                      label: Small or Medium
-                    - name: small-or-med
-                      label: Small or Med
+                    - name: small-and-medium
+                      label: Small and Medium
               - name: flavor
                 label: Flavor
                 type: rich-text

@@ -79,7 +79,7 @@
   {
     "section": "exotic",
     "name": "Birdfolk",
-    "size": "small-or-medium",
+    "size": "small-and-medium",
     "flavor": "Birdfolk find sanctuary not in stone or chains, but within the boundless expanse of the sky. However, the gift of flight comes at a cost—hollow bones, and commensurate frailty.",
     "trait": "**Hollow Bones.** You have a fly Speed as long as you are wearing armor no heavier than Leather. Crits against you are Vicious (the attacker rolls 1 additional die). Forced movement moves you twice as far."
   },
@@ -107,7 +107,7 @@
   {
     "section": "exotic",
     "name": "Dryad/Shroomling",
-    "size": "small-or-med",
+    "size": "small-and-medium",
     "flavor": "Tied to the natural world, Dryads and Shroomlings embody the balance between flora and fauna. Their unique physiology releases toxic spores when harmed, providing a natural defense against those who dare to harm them.",
     "trait": "**Danger Pollen/Spores.** Whenever an enemy causes you one or more Wounds, you excrete soporific spores: all adjacent enemies are Dazed. You know Elvish if your INT is not negative."
   },
@@ -128,7 +128,7 @@
   {
     "section": "exotic",
     "name": "Oozeling/Construct",
-    "size": "small-or-med",
+    "size": "small-and-medium",
     "flavor": "What even is a \"PeOpLe\" anyway? So what if your heart pumps oil instead of blood, so what if you don't even have a heart!? If you can squish yourself into a pair of pants, or swing a sword like everyone else, who's to say you can't be a pEOpLe, too?!",
     "trait": "**Odd Constitution.** Increment your Hit Dice one step (d6 » d8 » d10 » d12 » d20); they always heal you for the maximum amount. Magical healing always heals you for the minimum amount."
   },
@@ -156,7 +156,7 @@
   {
     "section": "exotic",
     "name": "Turtlefolk",
-    "size": "small-or-med",
+    "size": "small-and-medium",
     "flavor": "Turtlefolk take their time in everything they do; they are patient, sturdy, and slow to anger. They rely on their thick shells for protection, making them difficult to harm, but their cautious movements come at the cost of speed.",
     "trait": "**Slow & Steady.** +4 Armor, –2 speed."
   },

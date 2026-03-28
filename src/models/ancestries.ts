@@ -6,8 +6,7 @@ export const ancestrySizeEnum = z.enum([
   "small",
   "medium",
   "large",
-  "small-or-medium",
-  "small-or-med",
+  "small-and-medium",
 ]);
 export type AncestrySize = z.infer<typeof ancestrySizeEnum>;
 
@@ -15,8 +14,7 @@ const ancestrySizeDisplayMap: Record<AncestrySize, string> = {
   small: "Small",
   medium: "Medium",
   large: "Large",
-  "small-or-medium": "Small or Medium",
-  "small-or-med": "Small or Med",
+  "small-and-medium": "Small and Medium",
 };
 
 /** Human-readable size line (no parentheses). */
