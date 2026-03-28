@@ -1,14 +1,14 @@
 [
   {
-    "name": "Standard:",
+    "name": "Standard",
     "body": "+2, +2, +0, -1"
   },
   {
-    "name": "Balanced:",
+    "name": "Balanced",
     "body": "+2, +1, +1, +0"
   },
   {
-    "name": "Min-Max:",
+    "name": "Min-Max",
     "body": "+3, +1, -1, -1"
   }
 ]

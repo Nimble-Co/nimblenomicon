@@ -1,18 +1,18 @@
 [
   {
-    "name": "STR Save.",
+    "name": "STR Save",
     "body": "When your overall fitness and physicality is tested. STR helps resist forced movement,restraint, poison, and extreme temperatures."
   },
   {
-    "name": "DEX Save.",
+    "name": "DEX Save",
     "body": "When your agility or speed is tested. DEX helps you dive for cover in an explosion or stay on your feet while running across icy terrain."
   },
   {
-    "name": "INT Save.",
+    "name": "INT Save",
     "body": "When your intelligence is tested. INT helps you see though tricks and illusions."
   },
   {
-    "name": "WIL Save.",
+    "name": "WIL Save",
     "body": "When your courage or personality is tested. WIL helps you resist charm or fear effects."
   }
 ]

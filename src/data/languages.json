@@ -1,42 +1,42 @@
 [
   {
-    "name": "Common.",
+    "name": "Common",
     "body": "Most intelligent creatures."
   },
   {
-    "name": "Dwarvish.",
+    "name": "Dwarvish",
     "body": "Dwarves, Gnomes, and Giants."
   },
   {
-    "name": "Elvish.",
+    "name": "Elvish",
     "body": "Elves, Fey, and Sylvan."
   },
   {
-    "name": "Goblin.",
+    "name": "Goblin",
     "body": "Goblins and Orcs."
   },
   {
-    "name": "Infernal.",
+    "name": "Infernal",
     "body": "Various Fiends and cultists."
   },
   {
-    "name": "Thieves' Cant.",
+    "name": "Thieves' Cant",
     "body": "Scoundrels and rogues."
   },
   {
-    "name": "Celestial.",
+    "name": "Celestial",
     "body": "Celestials and priests."
   },
   {
-    "name": "Draconic.",
+    "name": "Draconic",
     "body": "Dragons, Dragonborn, and Kobolds."
   },
   {
-    "name": "Primordial.",
+    "name": "Primordial",
     "body": "Elementals and Ancient Beings."
   },
   {
-    "name": "Deep Speak.",
+    "name": "Deep Speak",
     "body": "Underworld dwellers."
   }
 ]

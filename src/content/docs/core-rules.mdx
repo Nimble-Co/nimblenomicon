@@ -11,6 +11,7 @@ banner:
 import manticor from "../../assets/manticor.webp";
 import HeroCallout from "../../components/HeroCallout.astro";
 import { renderMarkdown } from "../../lib/render-markdown";
+import { listLabel } from "../../lib/list-label";
 import { spellMetaMarkdown } from "../../lib/spell-meta";
 
 import { adventuringMotivations } from "../../models/adventuring-motivations";
@@ -103,7 +104,7 @@ When the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 
 <ul>
   {saveTypes.map((saveType) => (
     <li>
-      <strong>{saveType.name}</strong> {saveType.body}
+      <strong>{listLabel(saveType.name)}</strong> {saveType.body}
     </li>
   ))}
 </ul>
@@ -217,7 +218,7 @@ Some attacks, traps, spells, or other effects can also inflict conditions—usua
 <ul>
   {conditions.map((condition) => (
     <li>
-      <strong>{condition.name}</strong> {condition.body}
+      <strong>{listLabel(condition.name)}</strong> {condition.body}
     </li>
   ))}
 </ul>
@@ -381,7 +382,7 @@ The time you aren't out adventuring is called **Downtime**. You can spend Downti
 <ul>
   {downtimeActivities.map((activity) => (
     <li>
-      <strong>{activity.name}</strong> {activity.body}
+      <strong>{listLabel(activity.name)}</strong> {activity.body}
     </li>
   ))}
 </ul>
@@ -398,7 +399,7 @@ This will have the largest impact on the other character choices you make and ho
 <ul>
   {characterClasses.map((heroClass) => (
     <li>
-      <strong>{heroClass.name}</strong> {heroClass.body}
+      <strong>{listLabel(heroClass.name)}</strong> {heroClass.body}
     </li>
   ))}
 </ul>
@@ -422,7 +423,7 @@ Fill in your character details: Name, Ancestry, Class, Level, Height, and Weight
 <ul>
   {statArrays.map((arr) => (
     <li>
-      <strong>{arr.name}</strong> {arr.body}
+      <strong>{listLabel(arr.name, ":")}</strong> {arr.body}
     </li>
   ))}
 </ul>
@@ -452,7 +453,7 @@ All heroes speak Common by default. Each point of INT grants you an additional l
 <ul>
   {languages.map((language) => (
     <li>
-      <strong>{language.name}</strong> {language.body}
+      <strong>{listLabel(language.name)}</strong> {language.body}
     </li>
   ))}
 </ul>
@@ -599,7 +600,7 @@ Armor represents your hero's ability to dodge or block damage when you use the D
   {weaponProperties.map((weaponProperty) => (
     <>
       <li>
-        <strong>{weaponProperty.name}.</strong> {weaponProperty.body}
+        <strong>{listLabel(weaponProperty.name)}</strong> {weaponProperty.body}
       </li>
       {weaponProperty.callout && (
         <blockquote set:html={weaponProperty.callout}></blockquote>
@@ -848,7 +849,7 @@ Spells There are 6 main schools of magic. Each school has its own basic spells c
 <ul>
   {spellSchools.map((school) => (
     <li>
-      <strong>{school.name}</strong> {school.body}
+      <strong>{listLabel(school.name)}</strong> {school.body}
     </li>
   ))}
 </ul>
