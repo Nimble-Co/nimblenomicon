@@ -23,6 +23,7 @@ import {
 import { armorRows, armorTableSections } from '../../models/armor';
 import { characterClasses } from '../../models/character-classes';
 import { conditions } from '../../models/conditions';
+import { coreRulesSnippets } from '../../models/core-rules-snippets';
 import { dcExamples } from '../../models/dc-examples';
 import { downtimeActivities } from '../../models/downtime-activities';
 import { backgrounds } from '../../models/backgrounds';
@@ -62,9 +63,12 @@ import { weapons } from '../../models/weapons';
 	</div>
 </div>
 
-import StartHere from '../../data/core-rules/start-here.md';
-
-<StartHere />
+{coreRulesSnippets.map((snippet) => (
+	<>
+		<h1>{snippet.name}</h1>
+		<div set:html={renderMarkdown(snippet.description)} />
+	</>
+))}
 
 # Core Rules
 

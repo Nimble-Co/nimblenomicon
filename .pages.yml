@@ -12,14 +12,27 @@ content:
     label: Core Rules
     type: group
     items:
-      - name: core-rules-start
-        label: Start
+      - name: core-rules-snippets
+        label: Core Rules Snippets
         type: group
         items:
-          - name: core-rules-start-here
+          - name: core-rules-snippets-start-here
             label: Start Here
             type: file
-            path: src/data/core-rules/start-here.md
+            path: src/data/core-rules-snippets.json
+            format: json
+            list: true
+            fields:
+              - name: name
+                label: Name
+                type: string
+                required: true
+              - name: description
+                label: Description
+                type: rich-text
+                required: true
+                options:
+                  format: markdown
 
       - name: core-rules-stats-skills
         label: Stats & Skills
