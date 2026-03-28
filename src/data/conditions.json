@@ -1,70 +1,70 @@
 [
   {
     "name": "Blinded",
-    "body": "Can't see. Attacks against you have advantage, and your attacks have disadvantage."
+    "description": "Can't see. Attacks against you have advantage, and your attacks have disadvantage."
   },
   {
     "name": "Bloodied",
-    "body": "At half HP or less."
+    "description": "At half HP or less."
   },
   {
     "name": "Charmed",
-    "body": "Sees the charmer as an ally. Charmer has advantage on social interactions with you."
+    "description": "Sees the charmer as an ally. Charmer has advantage on social interactions with you."
   },
   {
     "name": "Dazed",
-    "body": "Heroes: lose 1 action; monsters: can perform one less action on their next turn."
+    "description": "Heroes: lose 1 action; monsters: can perform one less action on their next turn."
   },
   {
     "name": "Dying",
-    "body": "At 0 HP. Taking damage while dying causes 2 Wounds, a crit causes 3 instead."
+    "description": "At 0 HP. Taking damage while dying causes 2 Wounds, a crit causes 3 instead."
   },
   {
     "name": "Frightened",
-    "body": "Disadvantage on rolls when source of fear is nearby; speed halved when moving closer to it."
+    "description": "Disadvantage on rolls when source of fear is nearby; speed halved when moving closer to it."
   },
   {
     "name": "Grappled/Restrained",
-    "body": "Cannot move. Attacks against you have advantage."
+    "description": "Cannot move. Attacks against you have advantage."
   },
   {
     "name": "Hampered",
-    "body": "Any creature with their actions or movement reduced (e.g., Dazed, Grappled, Prone, Difficult Terrain)."
+    "description": "Any creature with their actions or movement reduced (e.g., Dazed, Grappled, Prone, Difficult Terrain)."
   },
   {
     "name": "Incapacitated",
-    "body": "Can't do anything. Attacks against you have advantage, and melee attacks that hit, crit."
+    "description": "Can't do anything. Attacks against you have advantage, and melee attacks that hit, crit."
   },
   {
     "name": "Invisible",
-    "body": "Cannot be seen. Your attacks have advantage, and attacks against you have disadvantage."
+    "description": "Cannot be seen. Your attacks have advantage, and attacks against you have disadvantage."
   },
   {
     "name": "Petrified",
-    "body": "Incapacitated. You have all the benefits and drawbacks of being a rock! Immune to most damage except from large explosions, picks, or similar tools."
+    "description": "Incapacitated. You have all the benefits and drawbacks of being a rock! Immune to most damage except from large explosions, picks, or similar tools."
   },
   {
     "name": "Poisoned",
-    "body": "Disadvantage on rolls."
+    "description": "Disadvantage on rolls."
   },
   {
     "name": "Prone",
-    "body": "Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up."
+    "description": "Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up."
   },
   {
     "name": "Riding",
-    "body": "You move with the creature you are riding. Any attacks that miss you, strike them."
+    "description": "You move with the creature you are riding. Any attacks that miss you, strike them."
   },
   {
     "name": "Slowed",
-    "body": "Speed halved during your next turn."
+    "description": "Speed halved during your next turn."
   },
   {
     "name": "Taunted",
-    "body": "Disadvantage on attacks except against the most recent taunter."
+    "description": "Disadvantage on attacks except against the most recent taunter."
   },
   {
     "name": "Wounded",
-    "body": "Has any Wounds (typically 6 Wounds and a hero is dead)."
+    "description": "Has any Wounds (typically 6 Wounds and a hero is dead)."
   }
 ]

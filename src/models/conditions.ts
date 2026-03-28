@@ -4,7 +4,7 @@ import rawConditions from "../data/conditions.json";
 const conditionSchema = z
   .object({
     name: z.string().min(1),
-    body: z.string(),
+    description: z.string(),
   })
   .strict();
 export type ConditionData = z.infer<typeof conditionSchema>;

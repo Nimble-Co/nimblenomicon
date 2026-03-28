@@ -13,8 +13,7 @@ const skillSchema = z
       .refine((code) => statCodes.has(code), {
         message: "stat must match a Stat code from stats.json",
       }),
-    body: z.string(),
-    callout: z.string().optional(),
+    description: z.string(),
   })
   .strict();
 export type SkillData = z.infer<typeof skillSchema>;
