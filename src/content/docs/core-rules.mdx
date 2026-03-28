@@ -10,34 +10,30 @@ banner:
 
 import manticor from '../../assets/manticor.webp';
 import HeroCallout from '../../components/HeroCallout.astro';
-import { renderMarkdown } from '../../lib/render-markdown';
 import { listLabel } from '../../lib/list-label';
+import { renderMarkdown } from '../../lib/render-markdown';
 import { spellMetaMarkdown } from '../../lib/spell-meta';
 
 import { adventuringMotivations } from '../../models/adventuring-motivations';
-import {
-	ancestryDetailHrefFromCoreRules,
-	ancestries,
-	formatAncestrySize,
-} from '../../models/ancestries';
+import { ancestries, formatAncestrySize } from '../../models/ancestries';
 import { armorRows, armorTableSections } from '../../models/armor';
+import { backgrounds } from '../../models/backgrounds';
 import { characterClasses } from '../../models/character-classes';
 import { conditions } from '../../models/conditions';
 import { coreRulesSnippets } from '../../models/core-rules-snippets';
 import { dcExamples } from '../../models/dc-examples';
 import { downtimeActivities } from '../../models/downtime-activities';
-import { backgrounds } from '../../models/backgrounds';
 import { languages } from '../../models/languages';
-import { magicalItems } from '../../models/magical-items';
 import { magicalItemRarities } from '../../models/magical-item-rarities';
+import { magicalItems } from '../../models/magical-items';
 import { miscAdventuringEquipment } from '../../models/misc-adventuring-equipment';
 import { optionalVariantRules } from '../../models/optional-variant-rules';
 import { saveTypes } from '../../models/save-types';
 import { sizes } from '../../models/sizes';
 import { skills } from '../../models/skills';
-import { spellsData, spellDetailHrefFromCoreRules } from '../../models/spells';
 import { spellSchools } from '../../models/spell-schools';
 import { spellScrollCosts } from '../../models/spell-scroll-costs';
+import { spellDetailHrefFromCoreRules, spellsData } from '../../models/spells';
 import { statArrays } from '../../models/stat-arrays';
 import { stats } from '../../models/stats';
 import { wandCosts } from '../../models/wand-costs';
@@ -64,10 +60,11 @@ import { weapons } from '../../models/weapons';
 </div>
 
 {coreRulesSnippets.map((snippet) => (
-	<>
-		<h1>{snippet.name}</h1>
-		<div set:html={renderMarkdown(snippet.description)} />
-	</>
+
+<>
+<h1>{snippet.name}</h1>
+<div set:html={renderMarkdown(snippet.description)} />
+</>
 ))}
 
 # Core Rules
@@ -518,7 +515,7 @@ Your kin, lineage, heritage, or race—this is how your character was born and h
 
 <>
 <h3 id={a.id}>
-<a href={ancestryDetailHrefFromCoreRules(a.id)}>{a.name}</a>
+<a href={`/ancestries/${a.id}`}>{a.name}</a>
 </h3>
 <p>({formatAncestrySize(a.size)})</p>
 <p>{a.flavor}</p>
@@ -536,7 +533,7 @@ Your setting may or may not support these choices—check with your GM first bef
 
 <>
 <h3 id={a.id}>
-<a href={ancestryDetailHrefFromCoreRules(a.id)}>{a.name}</a>
+<a href={`/ancestries/${a.id}`}>{a.name}</a>
 </h3>
 <p>({formatAncestrySize(a.size)})</p>
 <p>{a.flavor}</p>
