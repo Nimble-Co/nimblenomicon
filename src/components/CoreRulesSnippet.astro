@@ -1,0 +1,20 @@
+---
+import { renderMarkdown } from '../lib/render-markdown';
+import { coreRulesSnippets } from '../models/core-rules-snippets';
+
+interface Props {
+	id: string;
+}
+
+const { id } = Astro.props;
+const snippet = coreRulesSnippets.find((row) => row.id === id);
+
+if (!snippet) {
+	throw new Error(
+		`CoreRulesSnippet: no core rules snippet with id "${id}". Check src/data/core-rules-snippets.json.`,
+	);
+}
+---
+
+<h2 id={snippet.id}>{snippet.name}</h2>
+<div set:html={renderMarkdown(snippet.description)} />
