@@ -7,9 +7,11 @@ import { resolveSectionPagination } from '../utils/section-sidebar';
 
 const { dir } = Astro.locals.starlightRoute;
 const isRtl = dir === 'rtl';
+const urlHash = Astro.url.hash.replace(/^#/, '');
 const { prev, next } = resolveSectionPagination(
 	Astro.locals.starlightRoute,
 	Astro.url.pathname,
+	urlHash,
 );
 ---
 
