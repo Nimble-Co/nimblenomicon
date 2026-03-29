@@ -1,12 +1,17 @@
 ---
 import { listLabel } from '../../lib/list-label';
-import { glossary } from '../../models/glossary';
+import {
+glossary
+} from '../../models/glossary';
 ---
 
 {
 	glossary.map((entry) => (
-		<p>
-			<strong>{listLabel(entry.name)}</strong> {entry.description}
+		<p id={entry.id}>
+			<a href={`/glossary/${entry.id}/`}>
+				<strong>{listLabel(entry.name)}</strong>
+			</a>
+			{' ' + entry.description}
 		</p>
 	))
 }

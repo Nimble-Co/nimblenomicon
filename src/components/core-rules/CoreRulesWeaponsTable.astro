@@ -1,6 +1,6 @@
 ---
 import CoreRulesTableThead from './CoreRulesTableThead.astro';
-import { weapons } from '../../models/weapons';
+import { weaponDetailHrefFromCoreRules, weapons } from '../../models/weapons';
 
 interface Props {
 	category: 'melee' | 'ranged';
@@ -15,8 +15,10 @@ const rows = weapons.filter((w) => w.category === category);
 	<tbody>
 		{
 			rows.map((w) => (
-				<tr>
-					<td>{w.name}</td>
+				<tr id={w.id}>
+					<th scope="row">
+						<a href={weaponDetailHrefFromCoreRules(w.id)}>{w.name}</a>
+					</th>
 					<td>{w.damage}</td>
 					<td>{w.propertyLines.map((p) => p.description).join(', ')}</td>
 					<td>{w.cost}</td>

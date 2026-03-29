@@ -1,0 +1,43 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { renderMarkdown } from '../../lib/render-markdown';
+import {
+	formatWeaponCategory,
+	weaponDetailMarkdown,
+	weapons,
+} from '../../models/weapons';
+
+export function getStaticPaths() {
+	return weapons.map((row) => ({
+		params: { id: row.id },
+		props: { row },
+	}));
+}
+
+const { row } = Astro.props;
+
+const cat = formatWeaponCategory(row.category);
+const bodyMarkdown = weaponDetailMarkdown(row);
+---
+
+<StarlightPage
+	hasSidebar={false}
+	frontmatter={{
+		title: row.name,
+		description: `${cat} weapon — ${row.name}.`,
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+>
+	<div set:html={renderMarkdown(bodyMarkdown)} />
+	<p class="weapon-detail__core-rules-ref">
+		<em>From <a href={`/core-rules/#${row.id}`}>Core Rules</a></em>
+	</p>
+</StarlightPage>
+
+<style>
+	.weapon-detail__core-rules-ref {
+		margin-top: 1.5rem;
+	}
+</style>

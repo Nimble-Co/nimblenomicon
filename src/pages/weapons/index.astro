@@ -1,0 +1,73 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import {
+	compareWeaponRowsForListing,
+	formatWeaponCategory,
+	weapons,
+} from '../../models/weapons';
+
+const rows = [...weapons].sort(compareWeaponRowsForListing);
+---
+
+<StarlightPage
+	frontmatter={{
+		title: 'Weapons',
+		description:
+			'Index of melee and ranged weapons with links to each weapon’s stats.',
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+	hasSidebar={false}
+>
+	<p class="weapons-index__intro">
+		<a href="/core-rules/">Core Rules</a>
+	</p>
+	<div class="sl-markdown-content not-content">
+		<table class="weapons-index__table">
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Category</th>
+					<th scope="col">Damage</th>
+					<th scope="col">Cost</th>
+				</tr>
+			</thead>
+			<tbody>
+				{
+					rows.map((row) => (
+						<tr>
+							<th scope="row">
+								<a href={`./${row.id}/`}>{row.name}</a>
+							</th>
+							<td>{formatWeaponCategory(row.category)}</td>
+							<td>{row.damage}</td>
+							<td>{row.cost}</td>
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</div>
+</StarlightPage>
+
+<style>
+	.weapons-index__intro {
+		font-style: italic;
+		margin-bottom: 1rem;
+	}
+	.weapons-index__table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+	.weapons-index__table th,
+	.weapons-index__table td {
+		text-align: start;
+		padding: 0.35rem 0.75rem 0.35rem 0;
+		border-bottom: 1px solid var(--sl-color-hairline);
+		vertical-align: top;
+	}
+	.weapons-index__table thead th {
+		font-weight: 600;
+	}
+</style>

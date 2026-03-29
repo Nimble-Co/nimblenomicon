@@ -1,0 +1,66 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import {
+	backgrounds,
+	compareBackgroundRowsForListing,
+} from '../../models/backgrounds';
+
+const rows = [...backgrounds].sort(compareBackgroundRowsForListing);
+---
+
+<StarlightPage
+	frontmatter={{
+		title: 'Backgrounds',
+		description:
+			'Alphabetical index of character backgrounds with links to each background’s full rules.',
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+	hasSidebar={false}
+>
+	<p class="backgrounds-index__intro">
+		<a href="/core-rules/">Core Rules</a>
+	</p>
+	<div class="sl-markdown-content not-content">
+		<table class="backgrounds-index__table">
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				{
+					rows.map((row) => (
+						<tr>
+							<th scope="row">
+								<a href={`/backgrounds/${row.id}/`}>{row.name}</a>
+							</th>
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</div>
+</StarlightPage>
+
+<style>
+	.backgrounds-index__intro {
+		font-style: italic;
+		margin-bottom: 1rem;
+	}
+	.backgrounds-index__table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+	.backgrounds-index__table th,
+	.backgrounds-index__table td {
+		text-align: start;
+		padding: 0.35rem 0.75rem 0.35rem 0;
+		border-bottom: 1px solid var(--sl-color-hairline);
+		vertical-align: top;
+	}
+	.backgrounds-index__table thead th {
+		font-weight: 600;
+	}
+</style>

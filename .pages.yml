@@ -136,6 +136,11 @@ content:
         format: json
         list: true
         fields:
+          - name: id
+            label: Id
+            type: string
+            required: false
+            description: Stable URL slug for the condition’s detail page (lowercase, hyphens). Must be unique if set. Leave blank to auto-generate from Name.
           - name: name
             label: Name
             type: string
@@ -234,6 +239,11 @@ content:
         format: json
         list: true
         fields:
+          - name: id
+            label: Id
+            type: string
+            required: false
+            description: Stable URL slug for the language’s detail page (lowercase, hyphens). Must be unique if set. Leave blank to auto-generate from Name.
           - name: name
             label: Name
             type: string
@@ -323,6 +333,11 @@ content:
         format: json
         list: true
         fields:
+          - name: id
+            label: Id
+            type: string
+            required: false
+            description: Stable URL slug for the background’s detail page (lowercase, hyphens). Must be unique if set. Leave blank to auto-generate from Name.
           - name: name
             label: Name
             type: string
@@ -374,6 +389,11 @@ content:
                   label: Melee
                 - name: ranged
                   label: Ranged
+          - name: id
+            label: Id
+            type: string
+            required: false
+            description: Stable URL slug for the weapon’s detail page (lowercase, hyphens). Must be unique if set. Leave blank to auto-generate from Name.
           - name: name
             label: Name
             type: string
@@ -438,6 +458,11 @@ content:
                   label: Mail
                 - name: shields
                   label: Shields
+          - name: id
+            label: Id
+            type: string
+            required: false
+            description: Stable URL slug for the armor’s detail page (lowercase, hyphens). Must be unique if set. Leave blank to auto-generate from Name.
           - name: name
             label: Name
             type: string
@@ -458,6 +483,11 @@ content:
         format: json
         list: true
         fields:
+          - name: id
+            label: Id
+            type: string
+            required: false
+            description: Stable URL slug for the item’s detail page (lowercase, hyphens). Must be unique if set. Leave blank to auto-generate from Name.
           - name: name
             label: Name
             type: string
@@ -667,6 +697,11 @@ content:
                   label: Standard Item
                 - name: wand
                   label: Wand
+          - name: id
+            label: Id
+            type: string
+            required: false
+            description: Stable URL slug for the item’s detail page (lowercase, hyphens). Must be unique if set. Leave blank to auto-generate from Name.
           - name: name
             label: Name
             type: string
@@ -690,6 +725,11 @@ content:
     format: json
     list: true
     fields:
+      - name: id
+        label: Id
+        type: string
+        required: false
+        description: Stable URL slug for the term’s detail page (lowercase, hyphens). Must be unique if set. Leave blank to auto-generate from Name.
       - name: name
         label: Name
         type: string

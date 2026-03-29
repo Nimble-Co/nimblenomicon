@@ -9,20 +9,61 @@ const armorCategorySchema = z.enum([
 	'shields',
 ]);
 
-const armorRowSchema = z
-	.object({
-		category: armorCategorySchema,
-		name: z.string().min(1),
-		armor: z.string().min(1),
-		cost: z.string().min(1),
-	})
-	.strict();
+/** Stable URL segment for armor detail pages; unique per row. */
+export function slugifyArmorId(name: string): string {
+	return (
+		name
+			.normalize('NFKD')
+			.replace(/[\u0300-\u036f]/g, '')
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, '-')
+			.replace(/^-+|-+$/g, '') || 'armor'
+	);
+}
+
+const armorRowSchema = z.preprocess(
+	(raw) => {
+		if (!raw || typeof raw !== 'object') return raw;
+		const o = raw as Record<string, unknown>;
+		const name = typeof o.name === 'string' ? o.name : '';
+		const idRaw = o.id;
+		const id =
+			typeof idRaw === 'string' && idRaw.trim() !== ''
+				? idRaw.trim()
+				: slugifyArmorId(name);
+		return { ...o, id };
+	},
+	z
+		.object({
+			id: z.string().min(1),
+			category: armorCategorySchema,
+			name: z.string().min(1),
+			armor: z.string().min(1),
+			cost: z.string().min(1),
+		})
+		.strict(),
+);
 
 export type ArmorCategory = z.infer<typeof armorCategorySchema>;
 export type ArmorRowData = z.infer<typeof armorRowSchema>;
 
 export const armorRows: ArmorRowData[] = z
 	.array(armorRowSchema)
+	.superRefine((rows, ctx) => {
+		const seen = new Map<string, number>();
+		for (let i = 0; i < rows.length; i++) {
+			const id = rows[i]!.id;
+			if (seen.has(id)) {
+				ctx.addIssue({
+					code: z.ZodIssueCode.custom,
+					message: `Duplicate armor id "${id}" (rows ${seen.get(id)} and ${i})`,
+					path: [i, 'id'],
+				});
+			} else {
+				seen.set(id, i);
+			}
+		}
+	})
 	.parse(rawArmor);
 
 /** Section order and labels for the Core Rules armor tables. */
@@ -34,3 +75,40 @@ export const armorTableSections: { category: ArmorCategory; label: string }[] =
 		{ category: 'mail', label: 'Mail' },
 		{ category: 'shields', label: 'Shields' },
 	];
+
+/** Human-readable armor section (table heading). */
+export function formatArmorCategoryLabel(category: ArmorCategory): string {
+	const found = armorTableSections.find((s) => s.category === category);
+	return found?.label ?? category;
+}
+
+/** Markdown body for an armor detail page. */
+export function armorDetailMarkdown(row: ArmorRowData): string {
+	const section = formatArmorCategoryLabel(row.category);
+	return `*${section}.*\n\n**Armor:** ${row.armor}\n\n**Cost:** ${row.cost}`;
+}
+
+/** Root-absolute path to an armor detail page. */
+export function armorDetailHrefFromCoreRules(id: string): string {
+	return `/armor/${id}/`;
+}
+
+const categoryOrder: readonly ArmorCategory[] = [
+	'cloth',
+	'leather',
+	'plate',
+	'mail',
+	'shields',
+];
+
+/** Sort for the index: section order (as in Core Rules), then name. */
+export function compareArmorRowsForListing(
+	a: ArmorRowData,
+	b: ArmorRowData,
+): number {
+	const ai = categoryOrder.indexOf(a.category);
+	const bi = categoryOrder.indexOf(b.category);
+	const d = ai - bi;
+	if (d !== 0) return d;
+	return a.name.localeCompare(b.name);
+}

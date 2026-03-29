@@ -1,6 +1,10 @@
 ---
 import CoreRulesTableThead from './CoreRulesTableThead.astro';
-import { miscAdventuringEquipment } from '../../models/misc-adventuring-equipment';
+import { renderMarkdown } from '../../lib/render-markdown';
+import {
+	miscAdventuringEquipment,
+	miscAdventuringEquipmentDetailHrefFromCoreRules,
+} from '../../models/misc-adventuring-equipment';
 ---
 
 <table>
@@ -8,9 +12,13 @@ import { miscAdventuringEquipment } from '../../models/misc-adventuring-equipmen
 	<tbody>
 		{
 			miscAdventuringEquipment.map((row) => (
-				<tr>
-					<td>{row.name}</td>
-					<td>{row.description}</td>
+				<tr id={row.id}>
+					<th scope="row">
+						<a href={miscAdventuringEquipmentDetailHrefFromCoreRules(row.id)}>
+							{row.name}
+						</a>
+					</th>
+					<td set:html={renderMarkdown(row.description)} />
 					<td>{row.cost}</td>
 				</tr>
 			))

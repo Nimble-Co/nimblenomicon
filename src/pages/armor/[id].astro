@@ -1,0 +1,43 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { renderMarkdown } from '../../lib/render-markdown';
+import {
+	armorDetailMarkdown,
+	armorRows,
+	formatArmorCategoryLabel,
+} from '../../models/armor';
+
+export function getStaticPaths() {
+	return armorRows.map((row) => ({
+		params: { id: row.id },
+		props: { row },
+	}));
+}
+
+const { row } = Astro.props;
+
+const section = formatArmorCategoryLabel(row.category);
+const bodyMarkdown = armorDetailMarkdown(row);
+---
+
+<StarlightPage
+	hasSidebar={false}
+	frontmatter={{
+		title: row.name,
+		description: `${section} — ${row.name}.`,
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+>
+	<div set:html={renderMarkdown(bodyMarkdown)} />
+	<p class="armor-detail__core-rules-ref">
+		<em>From <a href={`/core-rules/#${row.id}`}>Core Rules</a></em>
+	</p>
+</StarlightPage>
+
+<style>
+	.armor-detail__core-rules-ref {
+		margin-top: 1.5rem;
+	}
+</style>

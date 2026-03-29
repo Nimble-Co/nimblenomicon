@@ -1,0 +1,38 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { renderMarkdown } from '../../lib/render-markdown';
+import { languages } from '../../models/languages';
+
+export function getStaticPaths() {
+	return languages.map((row) => ({
+		params: { id: row.id },
+		props: { row },
+	}));
+}
+
+const { row } = Astro.props;
+
+const bodyMarkdown = row.description?.trim() ?? '';
+---
+
+<StarlightPage
+	hasSidebar={false}
+	frontmatter={{
+		title: row.name,
+		description: `Language — ${row.name}.`,
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+>
+	<div set:html={renderMarkdown(bodyMarkdown)} />
+	<p class="language-detail__core-rules-ref">
+		<em>From <a href={`/core-rules/#${row.id}`}>Core Rules</a></em>
+	</p>
+</StarlightPage>
+
+<style>
+	.language-detail__core-rules-ref {
+		margin-top: 1.5rem;
+	}
+</style>

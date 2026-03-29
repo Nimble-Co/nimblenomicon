@@ -1,0 +1,66 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import {
+	compareConditionRowsForListing,
+	conditions,
+} from '../../models/conditions';
+
+const rows = [...conditions].sort(compareConditionRowsForListing);
+---
+
+<StarlightPage
+	frontmatter={{
+		title: 'Conditions',
+		description:
+			'Alphabetical index of conditions with links to each condition’s full rules.',
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+	hasSidebar={false}
+>
+	<p class="conditions-index__intro">
+		<a href="/core-rules/">Core Rules</a>
+	</p>
+	<div class="sl-markdown-content not-content">
+		<table class="conditions-index__table">
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				{
+					rows.map((row) => (
+						<tr>
+							<th scope="row">
+								<a href={`./${row.id}/`}>{row.name}</a>
+							</th>
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</div>
+</StarlightPage>
+
+<style>
+	.conditions-index__intro {
+		font-style: italic;
+		margin-bottom: 1rem;
+	}
+	.conditions-index__table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+	.conditions-index__table th,
+	.conditions-index__table td {
+		text-align: start;
+		padding: 0.35rem 0.75rem 0.35rem 0;
+		border-bottom: 1px solid var(--sl-color-hairline);
+		vertical-align: top;
+	}
+	.conditions-index__table thead th {
+		font-weight: 600;
+	}
+</style>

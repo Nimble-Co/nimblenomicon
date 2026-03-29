@@ -6,8 +6,11 @@ import { languages } from '../../models/languages';
 <ul>
 	{
 		languages.map((language) => (
-			<li>
-				<strong>{listLabel(language.name)}</strong> {language.description}
+			<li id={language.id}>
+				<a href={`/languages/${language.id}/`}>
+					<strong>{listLabel(language.name)}</strong>
+				</a>
+				{' ' + language.description}
 			</li>
 		))
 	}

@@ -1,0 +1,70 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import {
+	compareMiscAdventuringEquipmentRowsForListing,
+	miscAdventuringEquipment,
+} from '../../models/misc-adventuring-equipment';
+
+const rows = [...miscAdventuringEquipment].sort(
+	compareMiscAdventuringEquipmentRowsForListing,
+);
+---
+
+<StarlightPage
+	frontmatter={{
+		title: 'Misc. Adventuring Equipment',
+		description:
+			'Index of miscellaneous adventuring gear with links to each item’s full rules.',
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+	hasSidebar={false}
+>
+	<p class="misc-gear-index__intro">
+		<a href="/core-rules/">Core Rules</a>
+	</p>
+	<div class="sl-markdown-content not-content">
+		<table class="misc-gear-index__table">
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Cost</th>
+				</tr>
+			</thead>
+			<tbody>
+				{
+					rows.map((row) => (
+						<tr>
+							<th scope="row">
+								<a href={`./${row.id}/`}>{row.name}</a>
+							</th>
+							<td>{row.cost}</td>
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</div>
+</StarlightPage>
+
+<style>
+	.misc-gear-index__intro {
+		font-style: italic;
+		margin-bottom: 1rem;
+	}
+	.misc-gear-index__table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+	.misc-gear-index__table th,
+	.misc-gear-index__table td {
+		text-align: start;
+		padding: 0.35rem 0.75rem 0.35rem 0;
+		border-bottom: 1px solid var(--sl-color-hairline);
+		vertical-align: top;
+	}
+	.misc-gear-index__table thead th {
+		font-weight: 600;
+	}
+</style>

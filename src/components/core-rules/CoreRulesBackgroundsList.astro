@@ -1,12 +1,17 @@
 ---
-import { renderMarkdown } from '../../lib/render-markdown';
-import { backgrounds } from '../../models/backgrounds';
+import { listLabel } from '../../lib/list-label';
+import {
+backgrounds
+} from '../../models/backgrounds';
 ---
 
 {
 	backgrounds.map((segment) => (
-		<div
-			set:html={renderMarkdown(`**${segment.name}** ${segment.description}`)}
-		/>
+		<div id={segment.id}>
+			<a href={`/backgrounds/${segment.id}/`}>
+				<strong>{listLabel(segment.name)}</strong>
+			</a>
+			{' ' + segment.description}
+		</div>
 	))
 }

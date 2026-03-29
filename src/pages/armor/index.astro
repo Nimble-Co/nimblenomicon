@@ -1,0 +1,73 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import {
+	armorRows,
+	compareArmorRowsForListing,
+	formatArmorCategoryLabel,
+} from '../../models/armor';
+
+const rows = [...armorRows].sort(compareArmorRowsForListing);
+---
+
+<StarlightPage
+	frontmatter={{
+		title: 'Armor',
+		description:
+			'Index of armor and shields by section with links to each item’s stats.',
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+	hasSidebar={false}
+>
+	<p class="armor-index__intro">
+		<a href="/core-rules/">Core Rules</a>
+	</p>
+	<div class="sl-markdown-content not-content">
+		<table class="armor-index__table">
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Section</th>
+					<th scope="col">Armor</th>
+					<th scope="col">Cost</th>
+				</tr>
+			</thead>
+			<tbody>
+				{
+					rows.map((row) => (
+						<tr>
+							<th scope="row">
+								<a href={`./${row.id}/`}>{row.name}</a>
+							</th>
+							<td>{formatArmorCategoryLabel(row.category)}</td>
+							<td>{row.armor}</td>
+							<td>{row.cost}</td>
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</div>
+</StarlightPage>
+
+<style>
+	.armor-index__intro {
+		font-style: italic;
+		margin-bottom: 1rem;
+	}
+	.armor-index__table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+	.armor-index__table th,
+	.armor-index__table td {
+		text-align: start;
+		padding: 0.35rem 0.75rem 0.35rem 0;
+		border-bottom: 1px solid var(--sl-color-hairline);
+		vertical-align: top;
+	}
+	.armor-index__table thead th {
+		font-weight: 600;
+	}
+</style>

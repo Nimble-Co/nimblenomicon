@@ -1,12 +1,17 @@
 ---
 import { renderMarkdown } from '../../lib/render-markdown';
-import { magicalItems } from '../../models/magical-items';
+import {
+	magicalItemDetailHrefFromCoreRules,
+	magicalItems,
+} from '../../models/magical-items';
 ---
 
 {
 	magicalItems.map((item) => (
 		<>
-			<h3>{item.name}</h3>
+			<h3 id={item.id}>
+				<a href={magicalItemDetailHrefFromCoreRules(item.id)}>{item.name}</a>
+			</h3>
 			{item.subtitle && <div set:html={renderMarkdown(item.subtitle)} />}
 			<div set:html={renderMarkdown(item.description)} />
 		</>

@@ -1,0 +1,41 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { renderMarkdown } from '../../lib/render-markdown';
+import {
+	miscAdventuringEquipment,
+	miscAdventuringEquipmentDetailMarkdown,
+} from '../../models/misc-adventuring-equipment';
+
+export function getStaticPaths() {
+	return miscAdventuringEquipment.map((row) => ({
+		params: { id: row.id },
+		props: { row },
+	}));
+}
+
+const { row } = Astro.props;
+
+const bodyMarkdown = miscAdventuringEquipmentDetailMarkdown(row);
+---
+
+<StarlightPage
+	hasSidebar={false}
+	frontmatter={{
+		title: row.name,
+		description: `Misc adventuring gear — ${row.name}.`,
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+>
+	<div set:html={renderMarkdown(bodyMarkdown)} />
+	<p class="misc-gear-detail__core-rules-ref">
+		<em>From <a href={`/core-rules/#${row.id}`}>Core Rules</a></em>
+	</p>
+</StarlightPage>
+
+<style>
+	.misc-gear-detail__core-rules-ref {
+		margin-top: 1.5rem;
+	}
+</style>

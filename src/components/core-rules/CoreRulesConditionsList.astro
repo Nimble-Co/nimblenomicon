@@ -6,8 +6,11 @@ import { conditions } from '../../models/conditions';
 <ul>
 	{
 		conditions.map((condition) => (
-			<li>
-				<strong>{listLabel(condition.name)}</strong> {condition.description}
+			<li id={condition.id}>
+				<a href={`/conditions/${condition.id}/`}>
+					<strong>{listLabel(condition.name)}</strong>
+				</a>
+				{' ' + condition.description}
 			</li>
 		))
 	}
