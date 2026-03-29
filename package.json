@@ -6,6 +6,7 @@
 		"node": ">=20"
 	},
 	"scripts": {
+		"prebuild": "node scripts/generate-openapi.mjs",
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build",
