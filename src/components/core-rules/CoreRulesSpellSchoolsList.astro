@@ -6,8 +6,7 @@ import { spellSchools } from '../../models/spell-schools';
 	{
 		spellSchools.map((school) => (
 			<li>
-				<strong>{`${school.name} Spells`}.</strong>{' '}
-				{school.description}
+				<strong>{`${school.name} Spells`}.</strong> {school.description}
 			</li>
 		))
 	}

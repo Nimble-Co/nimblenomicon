@@ -6,8 +6,7 @@ import { characterClasses } from '../../models/character-classes';
 	{
 		characterClasses.map((heroClass) => (
 			<li>
-				<strong>{heroClass.name.toUpperCase()}.</strong>{' '}
-				{heroClass.description}
+				<strong>{heroClass.name.toUpperCase()}.</strong> {heroClass.description}
 			</li>
 		))
 	}

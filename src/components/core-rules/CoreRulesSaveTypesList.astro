@@ -6,8 +6,7 @@ import { saveTypes } from '../../models/save-types';
 	{
 		saveTypes.map((saveType) => (
 			<li>
-				<strong>{`${saveType.name} Save`}.</strong>{' '}
-				{saveType.description}
+				<strong>{`${saveType.name} Save`}.</strong> {saveType.description}
 			</li>
 		))
 	}

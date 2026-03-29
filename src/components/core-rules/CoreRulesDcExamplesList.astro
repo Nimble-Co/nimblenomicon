@@ -6,11 +6,7 @@ import { dcExamples } from '../../models/dc-examples';
 <ul>
 	{
 		dcExamples.map((row) => (
-			<li
-				set:html={renderMarkdown(
-					`**${row.name}:** ${row.description}`,
-				)}
-			/>
+			<li set:html={renderMarkdown(`**${row.name}:** ${row.description}`)} />
 		))
 	}
 </ul>
