@@ -1,28 +1,14 @@
 import { z } from 'astro/zod';
 import rawMiscAdventuringEquipment from '../data/misc-adventuring-equipment.json';
-
-/** Stable URL segment for misc gear detail pages; unique per row. */
-export function slugifyMiscAdventuringEquipmentId(name: string): string {
-	return (
-		name
-			.normalize('NFKD')
-			.replace(/[\u0300-\u036f]/g, '')
-			.toLowerCase()
-			.replace(/[^a-z0-9]+/g, '-')
-			.replace(/^-+|-+$/g, '') || 'misc-gear'
-	);
-}
+import { slugifyEntityId } from '../lib/slugifyEntityId';
 
 const miscAdventuringEquipmentRowSchema = z.preprocess(
 	(raw) => {
 		if (!raw || typeof raw !== 'object') return raw;
-		const o = raw as Record<string, unknown>;
+		const o = { ...(raw as Record<string, unknown>) };
+		delete o.id;
 		const name = typeof o.name === 'string' ? o.name : '';
-		const idRaw = o.id;
-		const id =
-			typeof idRaw === 'string' && idRaw.trim() !== ''
-				? idRaw.trim()
-				: slugifyMiscAdventuringEquipmentId(name);
+		const id = slugifyEntityId(name, 'misc-gear');
 		return { ...o, id };
 	},
 	z

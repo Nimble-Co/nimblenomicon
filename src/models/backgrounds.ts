@@ -1,28 +1,14 @@
 import { z } from 'astro/zod';
 import rawBackgrounds from '../data/backgrounds.json';
-
-/** Stable URL segment for background detail pages; unique per background. */
-export function slugifyBackgroundId(name: string): string {
-	return (
-		name
-			.normalize('NFKD')
-			.replace(/[\u0300-\u036f]/g, '')
-			.toLowerCase()
-			.replace(/[^a-z0-9]+/g, '-')
-			.replace(/^-+|-+$/g, '') || 'background'
-	);
-}
+import { slugifyEntityId } from '../lib/slugifyEntityId';
 
 const backgroundRowSchema = z.preprocess(
 	(raw) => {
 		if (!raw || typeof raw !== 'object') return raw;
-		const o = raw as Record<string, unknown>;
+		const o = { ...(raw as Record<string, unknown>) };
+		delete o.id;
 		const name = typeof o.name === 'string' ? o.name : '';
-		const idRaw = o.id;
-		const id =
-			typeof idRaw === 'string' && idRaw.trim() !== ''
-				? idRaw.trim()
-				: slugifyBackgroundId(name);
+		const id = slugifyEntityId(name, 'background');
 		return { ...o, id };
 	},
 	z
