@@ -16,7 +16,7 @@
 	--color-accent-200: #fde68a;
 	--color-accent-300: #fcd34d;
 	--color-accent-400: #e5c045;
-	--color-accent-500: #d4a90c;
+	--color-accent-500: #e2b41b;
 	--color-accent-600: var(--color-accent-500);
 	--color-accent-700: #b8940a;
 	--color-accent-800: #977c08;
@@ -72,6 +72,21 @@
 /* Mobile drawer: Starlight uses --sl-color-black here; keep it aligned with the sidebar surface. */
 :root[data-theme='light'] nav.sidebar .sidebar-pane {
 	background-color: #f4f4f4;
+}
+
+/* Core Rules book (mockup): white sidebar surface on all breakpoints */
+:root[data-theme='light'] nav.sidebar:has(.nimble-book-shell) .sidebar-pane {
+	background-color: #ffffff;
+}
+
+/* Desktop: separate panel from content with shadow (Nimblenomicon-C) */
+@media (min-width: 50rem) {
+	:root[data-theme='light'] nav.sidebar:has(.nimble-book-shell) .sidebar-pane {
+		border-inline-end: none;
+		box-shadow:
+			4px 0 24px rgba(0, 0, 0, 0.07),
+			1px 0 0 rgba(0, 0, 0, 0.04);
+	}
 }
 
 /* Header site title + logo — theme-driven (not accent color). */
@@ -191,12 +206,38 @@ body {
 	}
 }
 
-/* Sidebar uses --sl-color-gray-2 for links; body copy uses --sl-color-text (set above). */
-:root[data-theme='light'] nav.sidebar a[aria-current='page'],
-:root[data-theme='light'] nav.sidebar a[aria-current='page']:hover,
-:root[data-theme='light'] nav.sidebar a[aria-current='page']:focus {
+/*
+ * Sidebar current link — skip Core Rules book nav (chapter links use mockup styles in SidebarSublist).
+ */
+:root[data-theme='light']
+	nav.sidebar:not(:has(.nimble-book-shell))
+	a[aria-current='page'],
+:root[data-theme='light']
+	nav.sidebar:not(:has(.nimble-book-shell))
+	a[aria-current='page']:hover,
+:root[data-theme='light']
+	nav.sidebar:not(:has(.nimble-book-shell))
+	a[aria-current='page']:focus {
 	color: #000000;
-	background-color: #d4a90c;
+	background-color: #e2b41b;
+}
+
+/* Book nav: active subsection = gold text, no pill (matches Nimblenomicon-C mockup). */
+:root[data-theme='light']
+	nav.sidebar
+	.nimble-book-section
+	a[aria-current='page'],
+:root[data-theme='light']
+	nav.sidebar
+	.nimble-book-section
+	a[aria-current='page']:hover,
+:root[data-theme='light']
+	nav.sidebar
+	.nimble-book-section
+	a[aria-current='page']:focus {
+	color: #e2b41b !important;
+	background-color: transparent !important;
+	font-weight: 700;
 }
 
 /* Sidebar + mobile drawer: no link underlines (Tailwind preflight / defaults win otherwise). */

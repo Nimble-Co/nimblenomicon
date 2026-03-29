@@ -7,16 +7,26 @@ import { resolveSectionSidebar } from '../utils/section-sidebar';
 
 const { toc } = Astro.locals.starlightRoute;
 const pathname = Astro.url.pathname;
+const urlHash = Astro.url.hash.replace(/^#/, '');
 const { sidebar, bookChrome, sectionKey } = resolveSectionSidebar(
 	Astro.locals.starlightRoute,
 	pathname,
+	urlHash,
 );
+
+/** Book nav lists every section; hide duplicate Starlight TOC under the sidebar. */
+const tocForBook =
+	bookChrome && toc ? { ...toc, items: [] as (typeof toc)['items'] } : toc;
 ---
 
 <NavSidebarPersister sidebar={sidebar}>
 	{sectionKey && <SectionSidebarBrand sectionKey={sectionKey} />}
 	<div class:list={{ 'nimble-book-shell': bookChrome }}>
-		<SidebarSublist sublist={sidebar} toc={toc} bookChrome={bookChrome} />
+		<SidebarSublist
+			sublist={sidebar}
+			toc={tocForBook}
+			bookChrome={bookChrome}
+		/>
 	</div>
 </NavSidebarPersister>
 

@@ -251,7 +251,7 @@ const { sublist, nested, toc, bookChrome = false } = Astro.props;
 			gap: 0.5rem;
 			padding: 0.5rem 0.65rem;
 			border-radius: 0.375rem;
-			border: 1px solid var(--nimble-book-border, #dedede);
+			border: 1px solid var(--nimble-book-border, #d6d6d6);
 			background: var(--nimble-book-panel, #ffffff);
 			font-style: italic;
 		}
@@ -268,7 +268,7 @@ const { sublist, nested, toc, bookChrome = false } = Astro.props;
 			font-weight: 700 !important;
 			font-style: italic !important;
 			letter-spacing: 0.03em;
-			color: var(--nimble-book-chapter-fg, #3d3d3d) !important;
+			color: var(--nimble-book-chapter-fg, #4a4a4a) !important;
 			white-space: nowrap;
 			text-overflow: ellipsis;
 			overflow: hidden;
@@ -298,8 +298,8 @@ const { sublist, nested, toc, bookChrome = false } = Astro.props;
 		}
 
 		.nimble-book-section[open] > .nimble-book-summary {
-			border-color: var(--nimble-book-gold, #d4a90c);
-			background: var(--nimble-book-gold, #d4a90c);
+			border-color: var(--nimble-book-gold, #e2b41b);
+			background: var(--nimble-book-gold, #e2b41b);
 			color: #fff;
 		}
 
@@ -333,17 +333,12 @@ const { sublist, nested, toc, bookChrome = false } = Astro.props;
 			background: rgba(0, 0, 0, 0.04) !important;
 		}
 
-		.nimble-book-section a[aria-current='page'] {
-			background: var(--nimble-book-gold, #d4a90c) !important;
-			color: #fff !important;
-		}
-
 		.nimble-book-tree .nimble-inline-toc :global(a) {
 			color: #525252;
 		}
 
 		.nimble-book-tree .nimble-inline-toc :global(a[aria-current='true']) {
-			color: var(--nimble-book-gold, #d4a90c);
+			color: var(--nimble-book-gold, #e2b41b);
 		}
 	}
 </style>

@@ -15,13 +15,22 @@ import {
 	type SectionKey,
 } from '../config/section-sidebars';
 
-/** Match current page to a sidebar link (mirrors Starlight’s pathname comparison). */
-function pathMatchesHref(href: string, pathname: string): boolean {
+/** Path + optional fragment: hash links on `/core-rules/#id` resolve as current when the URL matches. */
+function linkMatchesCurrent(
+	href: string,
+	pathname: string,
+	urlHash: string,
+): boolean {
 	if (isAbsoluteUrl(href)) return false;
-	let h = ensureLeadingSlash(href);
-	h = formatPath(h);
-	const p = formatPath(pathname);
-	return encodeURI(h) === encodeURI(p);
+	const raw = ensureLeadingSlash(href);
+	const hashIdx = raw.indexOf('#');
+	const pathPart = hashIdx >= 0 ? raw.slice(0, hashIdx) : raw;
+	const fragment = hashIdx >= 0 ? raw.slice(hashIdx + 1) : '';
+	const formattedHref = formatPath(pathPart);
+	const formattedPath = formatPath(pathname);
+	if (encodeURI(formattedHref) !== encodeURI(formattedPath)) return false;
+	if (!fragment) return urlHash === '';
+	return fragment === urlHash;
 }
 
 function hrefForManualLink(link: string, locale: string | undefined): string {
@@ -36,7 +45,7 @@ function hrefForManualLink(link: string, locale: string | undefined): string {
 
 type RawSidebarItem =
 	| { label: string; link: string }
-	| { label: string; collapsed?: boolean; items: RawSidebarItem[] };
+	| { label: string; collapsed?: boolean; items: readonly RawSidebarItem[] };
 
 function rawToEntries(
 	items: readonly RawSidebarItem[],
@@ -66,12 +75,16 @@ function rawToEntries(
 	});
 }
 
-function markCurrent(entries: SidebarEntry[], pathname: string): void {
+function markCurrent(
+	entries: SidebarEntry[],
+	pathname: string,
+	urlHash: string,
+): void {
 	for (const entry of entries) {
 		if (entry.type === 'link') {
-			entry.isCurrent = pathMatchesHref(entry.href, pathname);
+			entry.isCurrent = linkMatchesCurrent(entry.href, pathname, urlHash);
 		} else {
-			markCurrent(entry.entries, pathname);
+			markCurrent(entry.entries, pathname, urlHash);
 		}
 	}
 }
@@ -80,10 +93,11 @@ function buildSectionSidebar(
 	key: SectionKey,
 	pathname: string,
 	locale: string | undefined,
+	urlHash: string,
 ): SidebarEntry[] {
 	const raw = SECTION_SIDEBAR_CONFIG[key] as unknown as RawSidebarItem[];
 	const entries = rawToEntries(raw, locale);
-	markCurrent(entries, pathname);
+	markCurrent(entries, pathname, urlHash);
 	return entries;
 }
 
@@ -91,6 +105,7 @@ function buildSectionSidebar(
 export function resolveSectionSidebar(
 	route: StarlightRouteData,
 	pathname: string,
+	urlHash: string,
 ): {
 	sidebar: StarlightRouteData['sidebar'];
 	bookChrome: boolean;
@@ -100,7 +115,7 @@ export function resolveSectionSidebar(
 	if (!key) {
 		return { sidebar: route.sidebar, bookChrome: false, sectionKey: null };
 	}
-	const sidebar = buildSectionSidebar(key, pathname, route.locale);
+	const sidebar = buildSectionSidebar(key, pathname, route.locale, urlHash);
 	return {
 		sidebar,
 		bookChrome: key === 'core-rules',
@@ -112,11 +127,12 @@ export function resolveSectionSidebar(
 export function resolveSectionPagination(
 	route: StarlightRouteData,
 	pathname: string,
+	urlHash: string,
 ) {
 	const key = getSectionKey(route.entry.id);
 	if (!key) {
 		return route.pagination;
 	}
-	const sidebar = buildSectionSidebar(key, pathname, route.locale);
+	const sidebar = buildSectionSidebar(key, pathname, route.locale, urlHash);
 	return getPrevNextLinks(sidebar, config.pagination ?? true, route.entry.data);
 }

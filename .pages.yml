@@ -28,6 +28,39 @@ content:
         options:
           format: markdown
 
+  - name: core-rules-sidebar
+    label: Core Rules Sidebar
+    type: file
+    path: src/data/core-rules-sidebar.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        label: Chapter Name
+        type: string
+        required: true
+        description: Accordion label (e.g. Start Here or COMBAT).
+      - name: collapsed
+        label: Collapsed By Default
+        type: boolean
+        required: true
+      - name: items
+        label: Links
+        type: object
+        list: true
+        required: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+            description: Text shown in the sidebar for this link.
+          - name: anchor
+            label: Anchor Id
+            type: string
+            required: true
+            description: Must match a Core Rules snippet id (same as the section id in the page URL hash).
+
   - name: stats-skills
     label: Stats & Skills
     type: group
