@@ -1,28 +1,14 @@
 import { z } from 'astro/zod';
 import rawLanguages from '../data/languages.json';
-
-/** Stable URL segment for language detail pages; unique per language. */
-export function slugifyLanguageId(name: string): string {
-	return (
-		name
-			.normalize('NFKD')
-			.replace(/[\u0300-\u036f]/g, '')
-			.toLowerCase()
-			.replace(/[^a-z0-9]+/g, '-')
-			.replace(/^-+|-+$/g, '') || 'language'
-	);
-}
+import { slugifyEntityId } from '../lib/slugifyEntityId';
 
 const languageRowSchema = z.preprocess(
 	(raw) => {
 		if (!raw || typeof raw !== 'object') return raw;
-		const o = raw as Record<string, unknown>;
+		const o = { ...(raw as Record<string, unknown>) };
+		delete o.id;
 		const name = typeof o.name === 'string' ? o.name : '';
-		const idRaw = o.id;
-		const id =
-			typeof idRaw === 'string' && idRaw.trim() !== ''
-				? idRaw.trim()
-				: slugifyLanguageId(name);
+		const id = slugifyEntityId(name, 'language');
 		return { ...o, id };
 	},
 	z

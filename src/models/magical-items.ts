@@ -1,32 +1,6 @@
 import { z } from 'astro/zod';
 import rawMagicalItems from '../data/magical-items.json';
-
-/** Stable URL segment for magical item detail pages; unique per item. */
-export function slugifyMagicalItemId(name: string): string {
-	return (
-		name
-			.normalize('NFKD')
-			.replace(/[\u0300-\u036f]/g, '')
-			.toLowerCase()
-			.replace(/[^a-z0-9]+/g, '-')
-			.replace(/^-+|-+$/g, '') || 'magical-item'
-	);
-}
-
-function injectIds(raw: unknown): unknown {
-	if (!Array.isArray(raw)) return raw;
-	return raw.map((item) => {
-		if (!item || typeof item !== 'object') return item;
-		const o = item as Record<string, unknown>;
-		const name = typeof o.name === 'string' ? o.name : '';
-		const idRaw = o.id;
-		const id =
-			typeof idRaw === 'string' && idRaw.trim() !== ''
-				? idRaw.trim()
-				: slugifyMagicalItemId(name);
-		return { ...o, id };
-	});
-}
+import { slugifyEntityId } from '../lib/slugifyEntityId';
 
 const magicalItemStandardSchema = z
 	.object({
@@ -55,24 +29,38 @@ const magicalItemSchema = z.discriminatedUnion('kind', [
 
 export type MagicalItemData = z.infer<typeof magicalItemSchema>;
 
+function injectDerivedIds(raw: unknown): unknown {
+	if (!Array.isArray(raw)) return raw;
+	return raw.map((item) => {
+		if (!item || typeof item !== 'object') return item;
+		const o = { ...(item as Record<string, unknown>) };
+		delete o.id;
+		const name = typeof o.name === 'string' ? o.name : '';
+		const id = slugifyEntityId(name, 'magical-item');
+		return { ...o, id };
+	});
+}
+
 export const magicalItems: MagicalItemData[] = z
-	.array(magicalItemSchema)
-	.superRefine((rows, ctx) => {
-		const seen = new Map<string, number>();
-		for (let i = 0; i < rows.length; i++) {
-			const id = rows[i]!.id;
-			if (seen.has(id)) {
-				ctx.addIssue({
-					code: z.ZodIssueCode.custom,
-					message: `Duplicate magical item id "${id}" (rows ${seen.get(id)} and ${i})`,
-					path: [i, 'id'],
-				});
-			} else {
-				seen.set(id, i);
+	.preprocess(
+		injectDerivedIds,
+		z.array(magicalItemSchema).superRefine((rows, ctx) => {
+			const seen = new Map<string, number>();
+			for (let i = 0; i < rows.length; i++) {
+				const id = rows[i]!.id;
+				if (seen.has(id)) {
+					ctx.addIssue({
+						code: z.ZodIssueCode.custom,
+						message: `Duplicate magical item id "${id}" (rows ${seen.get(id)} and ${i})`,
+						path: [i, 'id'],
+					});
+				} else {
+					seen.set(id, i);
+				}
 			}
-		}
-	})
-	.parse(injectIds(rawMagicalItems));
+		}),
+	)
+	.parse(rawMagicalItems);
 
 /** Index column label for item kind. */
 export function formatMagicalItemKind(kind: MagicalItemData['kind']): string {

@@ -1,17 +1,6 @@
 import { z } from 'astro/zod';
 import rawSpells from '../data/spells.json';
-
-/** Stable URL segment for spell detail pages; unique per spell. */
-export function slugifySpellId(name: string): string {
-	return (
-		name
-			.normalize('NFKD')
-			.replace(/[\u0300-\u036f]/g, '')
-			.toLowerCase()
-			.replace(/[^a-z0-9]+/g, '-')
-			.replace(/^-+|-+$/g, '') || 'spell'
-	);
-}
+import { slugifyEntityId } from '../lib/slugifyEntityId';
 
 export const spellTargetSchema = z.enum([
 	'single-target',
@@ -65,13 +54,10 @@ function coerceTier(v: unknown): unknown {
 const spellRowBaseSchema = z.preprocess(
 	(raw) => {
 		if (!raw || typeof raw !== 'object') return raw;
-		const o = raw as Record<string, unknown>;
+		const o = { ...(raw as Record<string, unknown>) };
+		delete o.id;
 		const name = typeof o.name === 'string' ? o.name : '';
-		const idRaw = o.id;
-		const id =
-			typeof idRaw === 'string' && idRaw.trim() !== ''
-				? idRaw.trim()
-				: slugifySpellId(name);
+		const id = slugifyEntityId(name, 'spell');
 		const out = {
 			...o,
 			id,

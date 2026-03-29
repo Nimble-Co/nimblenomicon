@@ -1,28 +1,14 @@
 import { z } from 'astro/zod';
 import rawConditions from '../data/conditions.json';
-
-/** Stable URL segment for condition detail pages; unique per condition. */
-export function slugifyConditionId(name: string): string {
-	return (
-		name
-			.normalize('NFKD')
-			.replace(/[\u0300-\u036f]/g, '')
-			.toLowerCase()
-			.replace(/[^a-z0-9]+/g, '-')
-			.replace(/^-+|-+$/g, '') || 'condition'
-	);
-}
+import { slugifyEntityId } from '../lib/slugifyEntityId';
 
 const conditionRowSchema = z.preprocess(
 	(raw) => {
 		if (!raw || typeof raw !== 'object') return raw;
-		const o = raw as Record<string, unknown>;
+		const o = { ...(raw as Record<string, unknown>) };
+		delete o.id;
 		const name = typeof o.name === 'string' ? o.name : '';
-		const idRaw = o.id;
-		const id =
-			typeof idRaw === 'string' && idRaw.trim() !== ''
-				? idRaw.trim()
-				: slugifyConditionId(name);
+		const id = slugifyEntityId(name, 'condition');
 		return { ...o, id };
 	},
 	z

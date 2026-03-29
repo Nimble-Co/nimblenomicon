@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import rawArmor from '../data/armor.json';
+import { slugifyEntityId } from '../lib/slugifyEntityId';
 
 const armorCategorySchema = z.enum([
 	'cloth',
@@ -9,28 +10,13 @@ const armorCategorySchema = z.enum([
 	'shields',
 ]);
 
-/** Stable URL segment for armor detail pages; unique per row. */
-export function slugifyArmorId(name: string): string {
-	return (
-		name
-			.normalize('NFKD')
-			.replace(/[\u0300-\u036f]/g, '')
-			.toLowerCase()
-			.replace(/[^a-z0-9]+/g, '-')
-			.replace(/^-+|-+$/g, '') || 'armor'
-	);
-}
-
 const armorRowSchema = z.preprocess(
 	(raw) => {
 		if (!raw || typeof raw !== 'object') return raw;
-		const o = raw as Record<string, unknown>;
+		const o = { ...(raw as Record<string, unknown>) };
+		delete o.id;
 		const name = typeof o.name === 'string' ? o.name : '';
-		const idRaw = o.id;
-		const id =
-			typeof idRaw === 'string' && idRaw.trim() !== ''
-				? idRaw.trim()
-				: slugifyArmorId(name);
+		const id = slugifyEntityId(name, 'armor');
 		return { ...o, id };
 	},
 	z
