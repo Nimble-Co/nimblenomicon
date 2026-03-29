@@ -1,5 +1,4 @@
 ---
-import { listLabel } from '../../lib/list-label';
 import { saveTypes } from '../../models/save-types';
 ---
 
@@ -7,8 +6,7 @@ import { saveTypes } from '../../models/save-types';
 	{
 		saveTypes.map((saveType) => (
 			<li>
-				<strong>{listLabel(`${saveType.name} Save`)}</strong>{' '}
-				{saveType.description}
+				<strong>{`${saveType.name} Save`}.</strong> {saveType.description}
 			</li>
 		))
 	}

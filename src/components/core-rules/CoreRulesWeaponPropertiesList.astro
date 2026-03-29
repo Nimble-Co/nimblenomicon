@@ -1,5 +1,4 @@
 ---
-import { listLabel } from '../../lib/list-label';
 import { renderMarkdown } from '../../lib/render-markdown';
 import { weaponProperties } from '../../models/weapon-properties';
 ---
@@ -9,7 +8,7 @@ import { weaponProperties } from '../../models/weapon-properties';
 		weaponProperties.map((weaponProperty) => (
 			<li
 				set:html={renderMarkdown(
-					`**${listLabel(weaponProperty.name)}** ${weaponProperty.description}`,
+					`**${weaponProperty.name}.** ${weaponProperty.description}`,
 				)}
 			/>
 		))

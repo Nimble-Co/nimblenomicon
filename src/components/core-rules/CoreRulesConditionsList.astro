@@ -1,5 +1,4 @@
 ---
-import { listLabel } from '../../lib/list-label';
 import { conditions } from '../../models/conditions';
 ---
 
@@ -8,7 +7,7 @@ import { conditions } from '../../models/conditions';
 		conditions.map((condition) => (
 			<li id={condition.id}>
 				<a href={`/conditions/${condition.id}/`}>
-					<strong>{listLabel(condition.name)}</strong>
+					<strong>{condition.name}.</strong>
 				</a>
 				{' ' + condition.description}
 			</li>

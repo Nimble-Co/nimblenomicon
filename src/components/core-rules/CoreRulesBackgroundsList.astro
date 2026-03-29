@@ -1,15 +1,12 @@
 ---
-import { listLabel } from '../../lib/list-label';
-import {
-backgrounds
-} from '../../models/backgrounds';
+import { backgrounds } from '../../models/backgrounds';
 ---
 
 {
 	backgrounds.map((segment) => (
 		<div id={segment.id}>
 			<a href={`/backgrounds/${segment.id}/`}>
-				<strong>{listLabel(segment.name)}</strong>
+				<strong>{segment.name}.</strong>
 			</a>
 			{' ' + segment.description}
 		</div>
