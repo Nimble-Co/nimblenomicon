@@ -1,5 +1,4 @@
 ---
-import { listLabel } from '../../lib/list-label';
 import { downtimeActivities } from '../../models/downtime-activities';
 ---
 
@@ -7,7 +6,7 @@ import { downtimeActivities } from '../../models/downtime-activities';
 	{
 		downtimeActivities.map((activity) => (
 			<li>
-				<strong>{listLabel(activity.name)}</strong> {activity.description}
+				<strong>{activity.name}.</strong> {activity.description}
 			</li>
 		))
 	}

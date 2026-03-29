@@ -1,5 +1,4 @@
 ---
-import { listLabel } from '../../lib/list-label';
 import { languages } from '../../models/languages';
 ---
 
@@ -8,7 +7,7 @@ import { languages } from '../../models/languages';
 		languages.map((language) => (
 			<li id={language.id}>
 				<a href={`/languages/${language.id}/`}>
-					<strong>{listLabel(language.name)}</strong>
+					<strong>{language.name}.</strong>
 				</a>
 				{' ' + language.description}
 			</li>

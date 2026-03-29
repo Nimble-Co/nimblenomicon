@@ -1,5 +1,4 @@
 ---
-import { listLabel } from '../../lib/list-label';
 import { renderMarkdown } from '../../lib/render-markdown';
 import { dcExamples } from '../../models/dc-examples';
 ---
@@ -9,7 +8,7 @@ import { dcExamples } from '../../models/dc-examples';
 		dcExamples.map((row) => (
 			<li
 				set:html={renderMarkdown(
-					`**${listLabel(row.name, ':')}** ${row.description}`,
+					`**${row.name}:** ${row.description}`,
 				)}
 			/>
 		))

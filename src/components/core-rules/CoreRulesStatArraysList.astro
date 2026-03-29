@@ -1,5 +1,4 @@
 ---
-import { listLabel } from '../../lib/list-label';
 import { statArrays } from '../../models/stat-arrays';
 ---
 
@@ -7,7 +6,7 @@ import { statArrays } from '../../models/stat-arrays';
 	{
 		statArrays.map((arr) => (
 			<li>
-				<strong>{listLabel(arr.name, ':')}</strong> {arr.description}
+				<strong>{arr.name}:</strong> {arr.description}
 			</li>
 		))
 	}

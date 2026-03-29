@@ -42,7 +42,7 @@ These preferences come from ongoing Core Rules work. Agents should follow them w
 
 - Prefer a single **`name`** field for row identity across features (e.g. equipment rows use `name`, not `item` or ad-hoc keys). Align JSON keys and CMS field **`name`** with that convention.
 - Prefer **`description`** for long-form or rich-text content instead of **`body`** or **`properties`**, unless the shape is intentionally different (e.g. weapons use **`propertyLines`** with **`description`** per line).
-- **List labels:** Do not bake trailing **`.`** or **`:`** into JSON `name` values; add punctuation in MDX (e.g. via a small helper like `listLabel`).
+- **List labels:** Do not bake trailing **`.`** or **`:`** into JSON `name` values; add punctuation in the Astro/MDX template next to the rendered name.
 - When a title is embedded in prose/HTML only, **extract a `name` (or equivalent) field** and compose display in MDX so the CMS can edit it cleanly.
 
 ### Spells (Nimble terminology)

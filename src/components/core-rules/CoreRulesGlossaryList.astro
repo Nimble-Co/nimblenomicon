@@ -1,5 +1,4 @@
 ---
-import { listLabel } from '../../lib/list-label';
 import {
 glossary
 } from '../../models/glossary';
@@ -9,7 +8,7 @@ glossary
 	glossary.map((entry) => (
 		<p id={entry.id}>
 			<a href={`/glossary/${entry.id}/`}>
-				<strong>{listLabel(entry.name)}</strong>
+				<strong>{entry.name}.</strong>
 			</a>
 			{' ' + entry.description}
 		</p>
