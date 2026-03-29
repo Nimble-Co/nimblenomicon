@@ -13,6 +13,7 @@ longsword
 MDX
 Pagefind
 scroller
+sindresorhus
 smithing
 spellcaster
 Starlight
