@@ -2,14 +2,23 @@ openapi: 3.0.3
 info:
   title: Nimblenomicon Data API
   version: 1.0.0
-  description: |
-    Static JSON API for Nimble RPG reference data (same content as src/data/*.json files).
-    Each collection endpoint returns a JSON array.
-    When the site is deployed with a path prefix (for example GitHub project pages), prefix these paths with that base URL.
-    Discovery is at GET /api/collections (not GET /api) so static file output can place each collection at /api/{collection} without a path collision.
+  description: >-
+    Static JSON API for Nimble RPG reference data. Responses are the raw contents of
+    `src/data/*.json` (no derived `id` fields that the site adds when parsing).
+
+
+    Each collection is available at `GET /api/{collection}` plus a dedicated path per dataset. When
+    the site uses a path prefix (for example GitHub project pages), prefix these paths with that
+    base URL.
+
+
+    Discovery: `GET /api/collections` (a bare `GET /api` is not used so static hosting can emit both
+    a directory and leaf files under `/api/`).
 servers:
   - url: /
-    description: Relative to the deployed site root (include the repository path segment for GitHub project pages when applicable).
+    description:
+      Relative to the deployed site root (include the repository path segment for GitHub
+      project pages when applicable).
 paths:
   /api/collections:
     get:
@@ -21,62 +30,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                required:
-                  - collections
-                properties:
-                  collections:
-                    type: array
-                    items:
-                      type: string
-  /api/{collection}:
-    get:
-      summary: Get a data collection
-      operationId: getCollection
-      parameters:
-        - name: collection
-          in: path
-          required: true
-          schema:
-            type: string
-            enum:
-        - adventuring-motivations
-        - ancestries
-        - armor
-        - backgrounds
-        - character-classes
-        - conditions
-        - core-rules-sidebar
-        - core-rules-snippets
-        - dc-examples
-        - downtime-activities
-        - glossary
-        - languages
-        - magical-item-rarities
-        - magical-items
-        - misc-adventuring-equipment
-        - optional-variant-rules
-        - save-types
-        - sizes
-        - skills
-        - spell-schools
-        - spell-scroll-costs
-        - spells
-        - stat-arrays
-        - stats
-        - wand-costs
-        - weapon-properties
-        - weapons
-      responses:
-        '200':
-          description: JSON array of records for the requested collection
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  additionalProperties: true
+                $ref: '#/components/schemas/CollectionsResponse'
         '404':
           description: Unknown collection
           content:
@@ -86,3 +40,884 @@ paths:
                 properties:
                   error:
                     type: string
+                required:
+                  - error
+                additionalProperties: false
+  /api/adventuring-motivations:
+    get:
+      summary: Get Adventuring Motivations
+      operationId: getAdventuringMotivations
+      description: Same JSON as `src/data/adventuring-motivations.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `AdventuringMotivationsItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AdventuringMotivationsItem'
+  /api/ancestries:
+    get:
+      summary: Get Ancestries
+      operationId: getAncestries
+      description: Same JSON as `src/data/ancestries.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `AncestriesItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AncestriesItem'
+  /api/armor:
+    get:
+      summary: Get Armor
+      operationId: getArmor
+      description: Same JSON as `src/data/armor.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `ArmorItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ArmorItem'
+  /api/backgrounds:
+    get:
+      summary: Get Backgrounds
+      operationId: getBackgrounds
+      description: Same JSON as `src/data/backgrounds.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `BackgroundsItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BackgroundsItem'
+  /api/character-classes:
+    get:
+      summary: Get Character Classes
+      operationId: getCharacterClasses
+      description: Same JSON as `src/data/character-classes.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `CharacterClassesItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CharacterClassesItem'
+  /api/conditions:
+    get:
+      summary: Get Conditions
+      operationId: getConditions
+      description: Same JSON as `src/data/conditions.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `ConditionsItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConditionsItem'
+  /api/core-rules-sidebar:
+    get:
+      summary: Get Core Rules Sidebar
+      operationId: getCoreRulesSidebar
+      description: Same JSON as `src/data/core-rules-sidebar.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `CoreRulesSidebarItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CoreRulesSidebarItem'
+  /api/core-rules-snippets:
+    get:
+      summary: Get Core Rules Snippets
+      operationId: getCoreRulesSnippets
+      description: Same JSON as `src/data/core-rules-snippets.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `CoreRulesSnippetsItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CoreRulesSnippetsItem'
+  /api/dc-examples:
+    get:
+      summary: Get Dc Examples
+      operationId: getDcExamples
+      description: Same JSON as `src/data/dc-examples.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `DcExamplesItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DcExamplesItem'
+  /api/downtime-activities:
+    get:
+      summary: Get Downtime Activities
+      operationId: getDowntimeActivities
+      description: Same JSON as `src/data/downtime-activities.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `DowntimeActivitiesItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DowntimeActivitiesItem'
+  /api/glossary:
+    get:
+      summary: Get Glossary
+      operationId: getGlossary
+      description: Same JSON as `src/data/glossary.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `GlossaryItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GlossaryItem'
+  /api/languages:
+    get:
+      summary: Get Languages
+      operationId: getLanguages
+      description: Same JSON as `src/data/languages.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `LanguagesItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LanguagesItem'
+  /api/magical-item-rarities:
+    get:
+      summary: Get Magical Item Rarities
+      operationId: getMagicalItemRarities
+      description: Same JSON as `src/data/magical-item-rarities.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `MagicalItemRaritiesItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MagicalItemRaritiesItem'
+  /api/magical-items:
+    get:
+      summary: Get Magical Items
+      operationId: getMagicalItems
+      description: Same JSON as `src/data/magical-items.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `MagicalItemsItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MagicalItemsItem'
+  /api/misc-adventuring-equipment:
+    get:
+      summary: Get Misc Adventuring Equipment
+      operationId: getMiscAdventuringEquipment
+      description: Same JSON as `src/data/misc-adventuring-equipment.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `MiscAdventuringEquipmentItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MiscAdventuringEquipmentItem'
+  /api/optional-variant-rules:
+    get:
+      summary: Get Optional Variant Rules
+      operationId: getOptionalVariantRules
+      description: Same JSON as `src/data/optional-variant-rules.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `OptionalVariantRulesItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OptionalVariantRulesItem'
+  /api/save-types:
+    get:
+      summary: Get Save Types
+      operationId: getSaveTypes
+      description: Same JSON as `src/data/save-types.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `SaveTypesItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SaveTypesItem'
+  /api/sizes:
+    get:
+      summary: Get Sizes
+      operationId: getSizes
+      description: Same JSON as `src/data/sizes.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `SizesItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SizesItem'
+  /api/skills:
+    get:
+      summary: Get Skills
+      operationId: getSkills
+      description: Same JSON as `src/data/skills.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `SkillsItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SkillsItem'
+  /api/spell-schools:
+    get:
+      summary: Get Spell Schools
+      operationId: getSpellSchools
+      description: Same JSON as `src/data/spell-schools.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `SpellSchoolsItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SpellSchoolsItem'
+  /api/spell-scroll-costs:
+    get:
+      summary: Get Spell Scroll Costs
+      operationId: getSpellScrollCosts
+      description: Same JSON as `src/data/spell-scroll-costs.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `SpellScrollCostsItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SpellScrollCostsItem'
+  /api/spells:
+    get:
+      summary: Get Spells
+      operationId: getSpells
+      description: Same JSON as `src/data/spells.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `SpellsItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SpellsItem'
+  /api/stat-arrays:
+    get:
+      summary: Get Stat Arrays
+      operationId: getStatArrays
+      description: Same JSON as `src/data/stat-arrays.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `StatArraysItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StatArraysItem'
+  /api/stats:
+    get:
+      summary: Get Stats
+      operationId: getStats
+      description: Same JSON as `src/data/stats.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `StatsItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StatsItem'
+  /api/wand-costs:
+    get:
+      summary: Get Wand Costs
+      operationId: getWandCosts
+      description: Same JSON as `src/data/wand-costs.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `WandCostsItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WandCostsItem'
+  /api/weapon-properties:
+    get:
+      summary: Get Weapon Properties
+      operationId: getWeaponProperties
+      description: Same JSON as `src/data/weapon-properties.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `WeaponPropertiesItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WeaponPropertiesItem'
+  /api/weapons:
+    get:
+      summary: Get Weapons
+      operationId: getWeapons
+      description: Same JSON as `src/data/weapons.json` (top-level array).
+      responses:
+        '200':
+          description: Array of `WeaponsItem` records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WeaponsItem'
+components:
+  schemas:
+    AdventuringMotivationsItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          minLength: 1
+      required:
+        - name
+        - description
+      additionalProperties: false
+    AncestriesItem:
+      type: object
+      properties:
+        section:
+          type: string
+          enum:
+            - common
+            - exotic
+        name:
+          type: string
+          minLength: 1
+        size:
+          type: string
+          enum:
+            - small
+            - medium
+            - large
+            - small-and-medium
+        flavor:
+          type: string
+        trait:
+          type: string
+      required:
+        - section
+        - name
+        - size
+        - flavor
+        - trait
+      additionalProperties: false
+    ArmorItem:
+      type: object
+      properties:
+        category:
+          type: string
+          enum:
+            - cloth
+            - leather
+            - plate
+            - mail
+            - shields
+        name:
+          type: string
+          minLength: 1
+        armor:
+          type: string
+          minLength: 1
+        cost:
+          type: string
+          minLength: 1
+      required:
+        - category
+        - name
+        - armor
+        - cost
+      additionalProperties: false
+    BackgroundsItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+      required:
+        - name
+        - description
+      additionalProperties: false
+    CharacterClassesItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Lowercase class name as stored in JSON
+        description:
+          type: string
+      required:
+        - name
+        - description
+      additionalProperties: false
+    ConditionsItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+      required:
+        - name
+        - description
+      additionalProperties: false
+    CoreRulesSidebarItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        collapsed:
+          type: boolean
+        items:
+          minItems: 1
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                minLength: 1
+              anchor:
+                type: string
+                minLength: 1
+            required:
+              - name
+              - anchor
+            additionalProperties: false
+      required:
+        - name
+        - collapsed
+        - items
+      additionalProperties: false
+    CoreRulesSnippetsItem:
+      type: object
+      properties:
+        id:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          minLength: 1
+      required:
+        - id
+        - description
+      additionalProperties: false
+    DcExamplesItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          minLength: 1
+      required:
+        - name
+        - description
+      additionalProperties: false
+    DowntimeActivitiesItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+      required:
+        - name
+        - description
+      additionalProperties: false
+    GlossaryItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+      required:
+        - name
+        - description
+      additionalProperties: false
+    LanguagesItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+      required:
+        - name
+        - description
+      additionalProperties: false
+    MagicalItemRaritiesItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        availability:
+          type: string
+          minLength: 1
+        cost:
+          type: string
+          minLength: 1
+      required:
+        - name
+        - availability
+        - cost
+      additionalProperties: false
+    MagicalItemsItem:
+      oneOf:
+        - type: object
+          properties:
+            kind:
+              type: string
+              enum:
+                - standard
+            name:
+              type: string
+              minLength: 1
+            subtitle:
+              type: string
+            description:
+              type: string
+              minLength: 1
+          required:
+            - kind
+            - name
+            - description
+          additionalProperties: false
+        - type: object
+          properties:
+            kind:
+              type: string
+              enum:
+                - wand
+            name:
+              type: string
+              minLength: 1
+            subtitle:
+              type: string
+            description:
+              type: string
+              minLength: 1
+          required:
+            - kind
+            - name
+            - description
+          additionalProperties: false
+    MiscAdventuringEquipmentItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          minLength: 1
+        cost:
+          type: string
+          minLength: 1
+      required:
+        - name
+        - description
+        - cost
+      additionalProperties: false
+    OptionalVariantRulesItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+      required:
+        - name
+        - description
+      additionalProperties: false
+    SaveTypesItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+      required:
+        - name
+        - description
+      additionalProperties: false
+    SizesItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+      required:
+        - name
+        - description
+      additionalProperties: false
+    SkillsItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        stat:
+          type: string
+          enum:
+            - STR
+            - DEX
+            - INT
+            - WIL
+        description:
+          type: string
+      required:
+        - name
+        - stat
+        - description
+      additionalProperties: false
+    SpellSchoolsItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+      required:
+        - name
+        - description
+      additionalProperties: false
+    SpellScrollCostsItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        cost:
+          type: string
+          minLength: 1
+      required:
+        - name
+        - cost
+      additionalProperties: false
+    SpellsItem:
+      type: object
+      properties:
+        schoolId:
+          type: string
+          enum:
+            - fire-spells
+            - ice-spells
+            - lightning-spells
+            - wind-spells
+            - radiant-spells
+            - necrotic-spells
+        utility:
+          type: boolean
+        name:
+          type: string
+          minLength: 1
+        castingTime:
+          type: string
+          minLength: 1
+        target:
+          type: string
+          enum:
+            - single-target
+            - self
+            - aoe
+            - two-targets
+            - multi-target
+            - single-target-plus
+            - single-target-or-self
+        description:
+          type: string
+        tier:
+          type: integer
+          minimum: 0
+          maximum: 9
+        level:
+          type: integer
+          minimum: 0
+          maximum: 9
+      required:
+        - schoolId
+        - utility
+        - name
+        - castingTime
+        - target
+        - description
+        - tier
+      additionalProperties: false
+    StatArraysItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+      required:
+        - name
+        - description
+      additionalProperties: false
+    StatsItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        stat:
+          type: string
+          minLength: 1
+        description:
+          type: string
+      required:
+        - name
+        - stat
+        - description
+      additionalProperties: false
+    WandCostsItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        cost:
+          type: string
+          minLength: 1
+      required:
+        - name
+        - cost
+      additionalProperties: false
+    WeaponPropertiesItem:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+      required:
+        - name
+        - description
+      additionalProperties: false
+    WeaponsItem:
+      type: object
+      properties:
+        category:
+          type: string
+          enum:
+            - melee
+            - ranged
+        name:
+          type: string
+          minLength: 1
+        damage:
+          type: string
+          minLength: 1
+        propertyLines:
+          type: array
+          items:
+            type: object
+            properties:
+              description:
+                type: string
+                minLength: 1
+            required:
+              - description
+            additionalProperties: false
+        cost:
+          type: string
+          minLength: 1
+      required:
+        - category
+        - name
+        - damage
+        - propertyLines
+        - cost
+      additionalProperties: false
+    CollectionsResponse:
+      type: object
+      properties:
+        collections:
+          type: array
+          items:
+            type: string
+      required:
+        - collections
+      additionalProperties: false
