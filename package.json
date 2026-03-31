@@ -6,7 +6,6 @@
 		"node": ">=20"
 	},
 	"scripts": {
-		"prebuild": "npx tsx scripts/generate-openapi.ts",
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build",
@@ -35,7 +34,6 @@
 		"markdownlint-cli2": "^0.17.2",
 		"prettier": "^3.5.3",
 		"prettier-plugin-astro": "^0.14.1",
-		"tsx": "^4.21.0",
 		"typescript": "^5.8.2",
 		"typescript-eslint": "^8.28.0",
 		"yaml": "^2.8.3",
