@@ -4,9 +4,9 @@ import { skills } from '../../models/skills';
 ---
 
 {
-	skills.map((skill) => (
+	skills.map(async (skill) => (
 		<div
-			set:html={renderMarkdown(
+			set:html={await renderMarkdown(
 				`**${skill.name}** (${skill.stat}) ${skill.description}`,
 			)}
 		/>

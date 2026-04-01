@@ -1,13 +1,22 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import { formatSpellTier } from '../../lib/spell-meta';
-import {
-	compareSpellRowsForListing,
-	spellRows,
-	spellSchoolShortName,
-} from '../../models/spells';
+import { spellSchools } from '../../models/spell-schools';
+import { type SpellData, spells } from '../../models/spells';
 
-const rows = [...spellRows].sort(compareSpellRowsForListing);
+function compareSpellRowsForListing(a: SpellData, b: SpellData): number {
+	const bySchool = a.schoolId.localeCompare(b.schoolId);
+	if (bySchool !== 0) return bySchool;
+	const byUtility = a.utility ? 1 : 0;
+	if (byUtility !== 0) return byUtility;
+	const byTier = a.tier - b.tier;
+	if (byTier !== 0) return byTier;
+	const byName = a.name.localeCompare(b.name);
+	if (byName !== 0) return byName;
+	return a.tier - b.tier;
+}
+
+const spellSchoolShortName = (schoolId: string) =>
+	spellSchools.find((school) => school.id === schoolId)?.name ?? schoolId;
 ---
 
 <StarlightPage
@@ -21,9 +30,6 @@ const rows = [...spellRows].sort(compareSpellRowsForListing);
 	}}
 	hasSidebar={false}
 >
-	<p class="spells-index__intro">
-		<a href="/core-rules/">Core Rules</a>
-	</p>
 	<div class="sl-markdown-content not-content">
 		<table class="spells-index__table">
 			<thead>
@@ -31,17 +37,19 @@ const rows = [...spellRows].sort(compareSpellRowsForListing);
 					<th scope="col">Name</th>
 					<th scope="col">School</th>
 					<th scope="col">Tier</th>
+					<th scope="col">Utility</th>
 				</tr>
 			</thead>
 			<tbody>
 				{
-					rows.map((row) => (
+					spells.sort(compareSpellRowsForListing).map((spell) => (
 						<tr>
 							<th scope="row">
-								<a href={`./${row.id}/`}>{row.name}</a>
+								<a href={`/spells/${spell.id}/`}>{spell.name}</a>
 							</th>
-							<td>{spellSchoolShortName(row.schoolId)}</td>
-							<td>{formatSpellTier(row.tier)}</td>
+							<td>{spellSchoolShortName(spell.schoolId)}</td>
+							<td>{spell.tierLabel}</td>
+							<td>{spell.utility ? 'Yes' : 'No'}</td>
 						</tr>
 					))
 				}

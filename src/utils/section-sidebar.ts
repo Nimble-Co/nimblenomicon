@@ -118,7 +118,7 @@ export function resolveSectionSidebar(
 	const sidebar = buildSectionSidebar(key, pathname, route.locale, urlHash);
 	return {
 		sidebar,
-		bookChrome: key === 'core-rules',
+		bookChrome: false,
 		sectionKey: key,
 	};
 }

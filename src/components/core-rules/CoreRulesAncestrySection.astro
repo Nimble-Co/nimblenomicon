@@ -11,14 +11,14 @@ const rows = ancestries.filter((a) => a.section === section);
 ---
 
 {
-	rows.map((a) => (
+	rows.map(async (a) => (
 		<>
 			<h3 id={a.id}>
 				<a href={`/ancestries/${a.id}`}>{a.name}</a>
 			</h3>
 			<p>({formatAncestrySize(a.size)})</p>
 			<p>{a.flavor}</p>
-			<div set:html={renderMarkdown(a.trait)} />
+			<div set:html={await renderMarkdown(a.trait)} />
 		</>
 	))
 }

@@ -25,7 +25,7 @@ const bodyMarkdown = row.description?.trim() ?? '';
 		next: false,
 	}}
 >
-	<div set:html={renderMarkdown(bodyMarkdown)} />
+	<div set:html={await renderMarkdown(bodyMarkdown)} />
 	<p class="language-detail__core-rules-ref">
 		<em>From <a href={`/core-rules/#${row.id}`}>Core Rules</a></em>
 	</p>

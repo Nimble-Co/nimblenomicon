@@ -30,7 +30,7 @@ const bodyMarkdown = magicalItemDetailMarkdown(row);
 		next: false,
 	}}
 >
-	<div set:html={renderMarkdown(bodyMarkdown)} />
+	<div set:html={await renderMarkdown(bodyMarkdown)} />
 	<p class="magical-item-detail__core-rules-ref">
 		<em>From <a href={`/core-rules/#${row.id}`}>Core Rules</a></em>
 	</p>
