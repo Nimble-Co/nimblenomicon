@@ -1,7 +1,6 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { renderMarkdown } from '../../lib/render-markdown';
-import { formatSpellTarget, formatSpellTier } from '../../lib/spell-meta';
 import { spellSchools } from '../../models/spell-schools';
 import { spells, type SpellData } from '../../models/spells';
 
@@ -18,12 +17,13 @@ const schoolName =
 	spellSchools.find((school) => school.id === spell.schoolId)?.name ??
 	spell.schoolId;
 function spellMetaMarkdown(spell: SpellData): string {
-	const tierLabel = formatSpellTier(spell.tier);
-	const cast = spell.castingTime.trim();
-	const tgt = spell.target ? formatSpellTarget(spell.target) : '';
-	const components = [tierLabel, cast, tgt];
-	const middle = components.filter(Boolean).join(', ');
-	return `_${middle}_`;
+	const components = [
+		spell.tierLabel,
+		spell.castingTime.trim(),
+		spell.targetLabel,
+		spell.utility ? 'Utility' : '',
+	];
+	return `_${components.filter(Boolean).join(', ')}_`;
 }
 
 const bodyMarkdown = spellMetaMarkdown(spell) + '\n\n' + spell.description;

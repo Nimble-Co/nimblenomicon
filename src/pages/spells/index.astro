@@ -1,6 +1,5 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import { formatSpellTier } from '../../lib/spell-meta';
 import { spellSchools } from '../../models/spell-schools';
 import { type SpellData, spells } from '../../models/spells';
 
@@ -15,7 +14,6 @@ function compareSpellRowsForListing(a: SpellData, b: SpellData): number {
 	if (byName !== 0) return byName;
 	return a.tier - b.tier;
 }
-const rows = [...spells].sort(compareSpellRowsForListing);
 
 const spellSchoolShortName = (schoolId: string) =>
 	spellSchools.find((school) => school.id === schoolId)?.name ?? schoolId;
@@ -44,14 +42,14 @@ const spellSchoolShortName = (schoolId: string) =>
 			</thead>
 			<tbody>
 				{
-					rows.map((row) => (
+					spells.sort(compareSpellRowsForListing).map((spell) => (
 						<tr>
 							<th scope="row">
-								<a href={`/spells/${row.id}/`}>{row.name}</a>
+								<a href={`/spells/${spell.id}/`}>{spell.name}</a>
 							</th>
-							<td>{spellSchoolShortName(row.schoolId)}</td>
-							<td>{formatSpellTier(row.tier)}</td>
-							<td>{row.utility ? 'Yes' : 'No'}</td>
+							<td>{spellSchoolShortName(spell.schoolId)}</td>
+							<td>{spell.tierLabel}</td>
+							<td>{spell.utility ? 'Yes' : 'No'}</td>
 						</tr>
 					))
 				}

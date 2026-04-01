@@ -1,6 +1,5 @@
 ---
 import { renderMarkdown } from '../../lib/render-markdown';
-import { formatSpellTarget, formatSpellTier } from '../../lib/spell-meta';
 import { spells, type SpellData } from '../../models/spells';
 
 const { spellSchoolId, utility = false } = Astro.props;
@@ -9,12 +8,12 @@ const filteredSpells = spells.filter(
 );
 
 function spellMetaMarkdown(spell: SpellData): string {
-	const tierLabel = formatSpellTier(spell.tier);
-	const cast = spell.castingTime.trim();
-	const tgt = spell.target ? formatSpellTarget(spell.target) : '';
-	const components = [tierLabel, cast, tgt];
-	const middle = components.filter(Boolean).join(', ');
-	return `_${middle}_`;
+	const components = [
+		spell.tierLabel,
+		spell.castingTime.trim(),
+		spell.targetLabel,
+	];
+	return `_${components.filter(Boolean).join(', ')}_`;
 }
 ---
 
