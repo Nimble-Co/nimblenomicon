@@ -6,7 +6,9 @@ import { dcExamples } from '../../models/dc-examples';
 <ul>
 	{
 		dcExamples.map(async (row) => (
-			<li set:html={await renderMarkdown(`**${row.name}:** ${row.description}`)} />
+			<li
+				set:html={await renderMarkdown(`**${row.name}:** ${row.description}`)}
+			/>
 		))
 	}
 </ul>
