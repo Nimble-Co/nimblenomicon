@@ -12,17 +12,15 @@ content:
     label: Books
     type: collection
     path: src/content/docs/
-    format: yaml-frontmatter
+    format: code
     filename: '{primary}.mdx'
     fields:
-      - name: title
-        label: Title
-        type: string
-        required: true
       - name: body
         label: Body
         type: code
         required: true
+        options:
+          format: mdx
 
   - name: stats-skills
     label: Stats & Skills
