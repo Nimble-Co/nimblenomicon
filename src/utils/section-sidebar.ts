@@ -1,14 +1,14 @@
 import type { StarlightRouteData } from '@astrojs/starlight/route-data';
+import config from 'virtual:starlight/user-config';
 import { formatPath } from '../../node_modules/@astrojs/starlight/utils/format-path.ts';
 import { getPrevNextLinks } from '../../node_modules/@astrojs/starlight/utils/navigation.ts';
 import { ensureLeadingSlash } from '../../node_modules/@astrojs/starlight/utils/path.ts';
-import { isAbsoluteUrl } from '../../node_modules/@astrojs/starlight/utils/url.ts';
 import type {
 	SidebarEntry,
 	SidebarGroup,
 	SidebarLink,
 } from '../../node_modules/@astrojs/starlight/utils/routing/types.ts';
-import config from 'virtual:starlight/user-config';
+import { isAbsoluteUrl } from '../../node_modules/@astrojs/starlight/utils/url.ts';
 import {
 	SECTION_SIDEBAR_CONFIG,
 	getSectionKey,
@@ -118,7 +118,7 @@ export function resolveSectionSidebar(
 	const sidebar = buildSectionSidebar(key, pathname, route.locale, urlHash);
 	return {
 		sidebar,
-		bookChrome: key === 'core-rules' || key === 'game-masters-guide',
+		bookChrome: false,
 		sectionKey: key,
 	};
 }

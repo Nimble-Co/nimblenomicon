@@ -1,6 +1,13 @@
-import { marked } from 'marked';
+import { createMarkdownProcessor } from '@astrojs/markdown-remark';
 
-/** Parse Core Rules–style markdown fragments to HTML (used in MDX with set:html). */
-export function renderMarkdown(md: string): string {
-	return marked.parse(md, { async: false }) as string;
+let processorPromise: ReturnType<typeof createMarkdownProcessor> | undefined;
+async function getProcessor() {
+	processorPromise ??= createMarkdownProcessor();
+	return processorPromise;
+}
+/** Parse Core Rules–style markdown fragments to HTML (used in Astro with set:html). */
+export async function renderMarkdown(md: string): Promise<string> {
+	const processor = await getProcessor();
+	const { code } = await processor.render(md);
+	return code;
 }

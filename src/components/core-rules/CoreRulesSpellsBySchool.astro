@@ -1,26 +1,38 @@
 ---
 import { renderMarkdown } from '../../lib/render-markdown';
-import { spellMetaMarkdown } from '../../lib/spell-meta';
-import { spellDetailHrefFromCoreRules, spellsData } from '../../models/spells';
+import { spells, type SpellData } from '../../models/spells';
+
+const { spellSchoolId, utility = false } = Astro.props;
+const filteredSpells = spells.filter(
+	(spell) => spell.schoolId === spellSchoolId && spell.utility === utility,
+);
+
+function spellMetaMarkdown(spell: SpellData): string {
+	const components = [
+		spell.tierLabel,
+		spell.castingTime.trim(),
+		spell.targetLabel,
+	];
+	return `_${components.filter(Boolean).join(', ')}_`;
+}
 ---
 
 {
-	spellsData.schools.map((school) => (
+	(
 		<>
-			<h2 id={`${school.name.toLowerCase()}-spells`}>{school.name} Spells</h2>
-			{school.spells.map((spell) => (
+			{filteredSpells.map(async (spell) => (
 				<>
 					<h3 id={spell.id}>
-						<a href={spellDetailHrefFromCoreRules(spell.id)}>{spell.name}</a>
+						<a href={`/spells/${spell.id}/`}>{spell.name}</a>
 					</h3>
 					<div
-						set:html={renderMarkdown(
-							spellMetaMarkdown(spell.tier, spell.castingTime, spell.target) +
+						set:html={await renderMarkdown(
+							spellMetaMarkdown(spell) +
 								(spell.description?.trim() ? '\n\n' + spell.description : ''),
 						)}
 					/>
 				</>
 			))}
 		</>
-	))
+	)
 }

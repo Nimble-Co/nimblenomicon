@@ -3,14 +3,12 @@
  * other sections’ links do not appear in the sidebar.
  */
 import type { ImageMetadata } from 'astro';
-import coreRulesIcon from '../assets/core_rules.svg';
-import { coreRulesSidebarToNavItems } from '../models/core-rules-sidebar';
-import { gameMastersGuideSidebarToNavItems } from '../models/game-masters-guide-sidebar';
-import heroesIcon from '../assets/heroes.svg';
-import gameMasterGuideIcon from '../assets/game_master_guide.svg';
 import adventuresIcon from '../assets/adventures.svg';
-import monstersAndMoreIcon from '../assets/monsters_and_more.svg';
+import coreRulesIcon from '../assets/core_rules.svg';
 import creatorsKitIcon from '../assets/creators_kit.svg';
+import gameMasterGuideIcon from '../assets/game_master_guide.svg';
+import heroesIcon from '../assets/heroes.svg';
+import monstersAndMoreIcon from '../assets/monsters_and_more.svg';
 
 export const SECTION_KEYS = [
 	'core-rules',
@@ -95,14 +93,12 @@ export type SectionSidebarRawItem =
 			readonly items: readonly SectionSidebarRawItem[];
 	  };
 
-/** Per-section nav trees; Core Rules uses mockup accordion chapters + in-page anchors. */
+/** Per-section nav trees: one landing link per book (same shape for every section, including Core Rules). */
 export const SECTION_SIDEBAR_CONFIG: {
 	readonly [K in SectionKey]: readonly SectionSidebarRawItem[];
 } = {
 	...Object.fromEntries(
-		SECTION_KEYS.filter(
-			(k) => k !== 'core-rules' && k !== 'game-masters-guide',
-		).map(
+		SECTION_KEYS.map(
 			(key) =>
 				[
 					key,
@@ -114,10 +110,6 @@ export const SECTION_SIDEBAR_CONFIG: {
 					],
 				] as const,
 		),
-	),
-	'core-rules': coreRulesSidebarToNavItems(SECTION_METADATA['core-rules'].path),
-	'game-masters-guide': gameMastersGuideSidebarToNavItems(
-		SECTION_METADATA['game-masters-guide'].path,
 	),
 } as { readonly [K in SectionKey]: readonly SectionSidebarRawItem[] };
 

@@ -8,58 +8,52 @@ media:
   extensions: [avif, gif, jpeg, jpg, png, svg, webp]
 
 content:
-  - name: core-rules-snippets
-    label: Core Rules Text
-    type: file
-    path: src/data/core-rules-snippets.json
-    format: json
-    list: true
-    fields:
-      - name: id
-        label: Id
-        type: string
-        required: true
-        description: Stable anchor for this block (e.g. start-here); use lowercase letters, numbers, and hyphens. Put titles in Description with # / ## / ### as needed.
-      - name: description
-        label: Description
-        type: rich-text
-        required: true
-        description: Full markdown for this block, including headings (e.g. ## Section title as the first line).
+  - name: books
+    label: Books
+    type: group
+    items:
+      - name: core-rules
+        label: Core Rules
+        type: file
+        path: src/content/docs/core-rules.mdx
+        format: code
         options:
-          format: markdown
-
-  - name: core-rules-sidebar
-    label: Core Rules Sidebar
-    type: file
-    path: src/data/core-rules-sidebar.json
-    format: json
-    list: true
-    fields:
-      - name: name
-        label: Chapter Name
-        type: string
-        required: true
-        description: Accordion label (e.g. Start Here or COMBAT).
-      - name: collapsed
-        label: Collapsed By Default
-        type: boolean
-        required: true
-      - name: items
-        label: Links
-        type: object
-        list: true
-        required: true
-        fields:
-          - name: name
-            label: Name
-            type: string
-            required: true
-            description: Text shown in the sidebar for this link.
-          - name: anchor
-            label: Anchor Id
-            type: string
-            required: true
-            description: Must match a Core Rules snippet id (same as the section id in the page URL hash).
+          format: mdx
+      - name: game-masters-guide
+        label: Game Master's Guide
+        type: file
+        path: src/content/docs/game-masters-guide.mdx
+        format: code
+        options:
+          format: mdx
+      - name: heroes
+        label: Heroes
+        type: file
+        path: src/content/docs/heroes.mdx
+        format: code
+        options:
+          format: mdx
+      - name: adventures
+        label: Adventures
+        type: file
+        path: src/content/docs/adventures.mdx
+        format: code
+        options:
+          format: mdx
+      - name: monsters-and-more
+        label: Monsters & More
+        type: file
+        path: src/content/docs/monsters-and-more.mdx
+        format: code
+        options:
+          format: mdx
+      - name: creators-kit
+        label: Creators Kit
+        type: file
+        path: src/content/docs/creators-kit.mdx
+        format: code
+        options:
+          format: mdx
 
   - name: game-masters-guide-snippets
     label: Game Master's Guide Text

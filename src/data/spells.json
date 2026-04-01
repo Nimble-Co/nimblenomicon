@@ -1,6 +1,6 @@
 [
 	{
-		"schoolId": "fire-spells",
+		"schoolId": "fire",
 		"utility": false,
 		"name": "Flame Dart",
 		"castingTime": "1 Action",
@@ -9,7 +9,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "fire-spells",
+		"schoolId": "fire",
 		"utility": false,
 		"name": "Heart's Fire",
 		"castingTime": "1 Action",
@@ -18,7 +18,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "fire-spells",
+		"schoolId": "fire",
 		"utility": false,
 		"name": "Ignite",
 		"castingTime": "2 Actions",
@@ -27,7 +27,7 @@
 		"tier": 1
 	},
 	{
-		"schoolId": "fire-spells",
+		"schoolId": "fire",
 		"utility": false,
 		"name": "Enchant Weapon",
 		"castingTime": "1 Action",
@@ -36,7 +36,7 @@
 		"tier": 2
 	},
 	{
-		"schoolId": "fire-spells",
+		"schoolId": "fire",
 		"utility": false,
 		"name": "Flame Barrier",
 		"castingTime": "1 Action",
@@ -45,7 +45,7 @@
 		"tier": 3
 	},
 	{
-		"schoolId": "fire-spells",
+		"schoolId": "fire",
 		"utility": false,
 		"name": "Pyroclasm",
 		"castingTime": "2 Actions",
@@ -54,7 +54,7 @@
 		"tier": 4
 	},
 	{
-		"schoolId": "fire-spells",
+		"schoolId": "fire",
 		"utility": false,
 		"name": "Fiery Embrace",
 		"castingTime": "2 Actions",
@@ -63,7 +63,7 @@
 		"tier": 5
 	},
 	{
-		"schoolId": "fire-spells",
+		"schoolId": "fire",
 		"utility": false,
 		"name": "Living Inferno",
 		"castingTime": "3 Actions",
@@ -72,7 +72,7 @@
 		"tier": 7
 	},
 	{
-		"schoolId": "fire-spells",
+		"schoolId": "fire",
 		"utility": false,
 		"name": "Dragonform",
 		"castingTime": "5 Actions",
@@ -81,7 +81,7 @@
 		"tier": 9
 	},
 	{
-		"schoolId": "ice-spells",
+		"schoolId": "ice",
 		"utility": false,
 		"name": "Ice Lance",
 		"castingTime": "1 Action",
@@ -90,7 +90,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "ice-spells",
+		"schoolId": "ice",
 		"utility": false,
 		"name": "Snowblind",
 		"castingTime": "1 Action",
@@ -99,7 +99,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "ice-spells",
+		"schoolId": "ice",
 		"utility": false,
 		"name": "Frost Shield",
 		"castingTime": "1 Action",
@@ -108,7 +108,7 @@
 		"tier": 1
 	},
 	{
-		"schoolId": "ice-spells",
+		"schoolId": "ice",
 		"utility": false,
 		"name": "Shatter",
 		"castingTime": "2 Actions",
@@ -117,7 +117,7 @@
 		"tier": 2
 	},
 	{
-		"schoolId": "ice-spells",
+		"schoolId": "ice",
 		"utility": false,
 		"name": "Cryosleep",
 		"castingTime": "2 Actions",
@@ -126,7 +126,7 @@
 		"tier": 3
 	},
 	{
-		"schoolId": "ice-spells",
+		"schoolId": "ice",
 		"utility": false,
 		"name": "Rimeblades",
 		"castingTime": "3 Actions",
@@ -135,7 +135,7 @@
 		"tier": 4
 	},
 	{
-		"schoolId": "ice-spells",
+		"schoolId": "ice",
 		"utility": false,
 		"name": "Arctic Blast",
 		"castingTime": "2 Actions",
@@ -144,7 +144,7 @@
 		"tier": 5
 	},
 	{
-		"schoolId": "ice-spells",
+		"schoolId": "ice",
 		"utility": false,
 		"name": "Glacier Strike",
 		"castingTime": "3 Actions",
@@ -153,7 +153,7 @@
 		"tier": 8
 	},
 	{
-		"schoolId": "ice-spells",
+		"schoolId": "ice",
 		"utility": false,
 		"name": "Arctic Annihilation",
 		"castingTime": "3 Actions",
@@ -162,7 +162,7 @@
 		"tier": 9
 	},
 	{
-		"schoolId": "lightning-spells",
+		"schoolId": "lightning",
 		"utility": false,
 		"name": "Zap",
 		"castingTime": "1 Action",
@@ -171,7 +171,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "lightning-spells",
+		"schoolId": "lightning",
 		"utility": false,
 		"name": "Overload",
 		"castingTime": "1 Action",
@@ -180,7 +180,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "lightning-spells",
+		"schoolId": "lightning",
 		"utility": false,
 		"name": "Arc Lightning",
 		"castingTime": "2 Actions",
@@ -189,7 +189,7 @@
 		"tier": 1
 	},
 	{
-		"schoolId": "lightning-spells",
+		"schoolId": "lightning",
 		"utility": false,
 		"name": "Alacrity",
 		"castingTime": "1 Action",
@@ -198,7 +198,7 @@
 		"tier": 2
 	},
 	{
-		"schoolId": "lightning-spells",
+		"schoolId": "lightning",
 		"utility": false,
 		"name": "Stormlash",
 		"castingTime": "2 Actions",
@@ -207,7 +207,7 @@
 		"tier": 3
 	},
 	{
-		"schoolId": "lightning-spells",
+		"schoolId": "lightning",
 		"utility": false,
 		"name": "Electrickery",
 		"castingTime": "3 Actions",
@@ -216,7 +216,7 @@
 		"tier": 4
 	},
 	{
-		"schoolId": "lightning-spells",
+		"schoolId": "lightning",
 		"utility": false,
 		"name": "Electrocharge",
 		"castingTime": "2 Actions",
@@ -225,7 +225,7 @@
 		"tier": 5
 	},
 	{
-		"schoolId": "lightning-spells",
+		"schoolId": "lightning",
 		"utility": false,
 		"name": "Ride the Lightning",
 		"castingTime": "3 Actions",
@@ -234,7 +234,7 @@
 		"tier": 6
 	},
 	{
-		"schoolId": "lightning-spells",
+		"schoolId": "lightning",
 		"utility": false,
 		"name": "Seething Storm",
 		"castingTime": "3 Actions",
@@ -243,7 +243,7 @@
 		"tier": 9
 	},
 	{
-		"schoolId": "wind-spells",
+		"schoolId": "wind",
 		"utility": false,
 		"name": "Razor Wind",
 		"castingTime": "1 Action",
@@ -252,7 +252,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "wind-spells",
+		"schoolId": "wind",
 		"utility": false,
 		"name": "Breath of Life",
 		"castingTime": "1 Action",
@@ -261,7 +261,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "wind-spells",
+		"schoolId": "wind",
 		"utility": false,
 		"name": "Blustery Gale",
 		"castingTime": "2 Actions",
@@ -270,7 +270,7 @@
 		"tier": 1
 	},
 	{
-		"schoolId": "wind-spells",
+		"schoolId": "wind",
 		"utility": false,
 		"name": "Barrier of Wind",
 		"castingTime": "1 Action",
@@ -279,7 +279,7 @@
 		"tier": 2
 	},
 	{
-		"schoolId": "wind-spells",
+		"schoolId": "wind",
 		"utility": false,
 		"name": "Fly",
 		"castingTime": "1 Action",
@@ -288,7 +288,7 @@
 		"tier": 3
 	},
 	{
-		"schoolId": "wind-spells",
+		"schoolId": "wind",
 		"utility": false,
 		"name": "Eye of the Storm",
 		"castingTime": "2 Actions",
@@ -297,7 +297,7 @@
 		"tier": 4
 	},
 	{
-		"schoolId": "wind-spells",
+		"schoolId": "wind",
 		"utility": false,
 		"name": "Updraft",
 		"castingTime": "3 Actions",
@@ -306,7 +306,7 @@
 		"tier": 5
 	},
 	{
-		"schoolId": "wind-spells",
+		"schoolId": "wind",
 		"utility": false,
 		"name": "Thousand Cuts",
 		"castingTime": "3 Actions",
@@ -315,7 +315,7 @@
 		"tier": 6
 	},
 	{
-		"schoolId": "wind-spells",
+		"schoolId": "wind",
 		"utility": false,
 		"name": "Boisterous Winds",
 		"castingTime": "2 Actions",
@@ -324,7 +324,7 @@
 		"tier": 7
 	},
 	{
-		"schoolId": "radiant-spells",
+		"schoolId": "radiant",
 		"utility": false,
 		"name": "Vicious Mockery",
 		"castingTime": "1 Action",
@@ -333,7 +333,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "radiant-spells",
+		"schoolId": "radiant",
 		"utility": false,
 		"name": "Rebuke",
 		"castingTime": "1 Action",
@@ -342,7 +342,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "radiant-spells",
+		"schoolId": "radiant",
 		"utility": false,
 		"name": "True Strike",
 		"castingTime": "1 Action",
@@ -351,7 +351,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "radiant-spells",
+		"schoolId": "radiant",
 		"utility": false,
 		"name": "Heal",
 		"castingTime": "1 Action",
@@ -360,7 +360,7 @@
 		"tier": 1
 	},
 	{
-		"schoolId": "radiant-spells",
+		"schoolId": "radiant",
 		"utility": false,
 		"name": "Lifebinding Spirit",
 		"castingTime": "1 Action",
@@ -369,7 +369,7 @@
 		"tier": 1
 	},
 	{
-		"schoolId": "radiant-spells",
+		"schoolId": "radiant",
 		"utility": false,
 		"name": "Warding Bond",
 		"castingTime": "1 Action",
@@ -378,7 +378,7 @@
 		"tier": 2
 	},
 	{
-		"schoolId": "radiant-spells",
+		"schoolId": "radiant",
 		"utility": false,
 		"name": "Shield of Justice",
 		"castingTime": "1 Action",
@@ -387,7 +387,7 @@
 		"tier": 3
 	},
 	{
-		"schoolId": "radiant-spells",
+		"schoolId": "radiant",
 		"utility": false,
 		"name": "Condemn",
 		"castingTime": "2 Actions",
@@ -396,7 +396,7 @@
 		"tier": 4
 	},
 	{
-		"schoolId": "radiant-spells",
+		"schoolId": "radiant",
 		"utility": false,
 		"name": "Vengeance",
 		"castingTime": "2 Actions",
@@ -405,7 +405,7 @@
 		"tier": 5
 	},
 	{
-		"schoolId": "radiant-spells",
+		"schoolId": "radiant",
 		"utility": false,
 		"name": "Sacrifice",
 		"castingTime": "1 Action",
@@ -414,7 +414,7 @@
 		"tier": 6
 	},
 	{
-		"schoolId": "radiant-spells",
+		"schoolId": "radiant",
 		"utility": false,
 		"name": "Redeem",
 		"castingTime": "24 hours",
@@ -423,7 +423,7 @@
 		"tier": 9
 	},
 	{
-		"schoolId": "necrotic-spells",
+		"schoolId": "necrotic",
 		"utility": false,
 		"name": "Withering Touch",
 		"castingTime": "1 Action",
@@ -432,7 +432,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "necrotic-spells",
+		"schoolId": "necrotic",
 		"utility": false,
 		"name": "Entice",
 		"castingTime": "1 Action",
@@ -441,7 +441,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "necrotic-spells",
+		"schoolId": "necrotic",
 		"utility": false,
 		"name": "Shadow Blast",
 		"castingTime": "1 Action",
@@ -450,7 +450,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "necrotic-spells",
+		"schoolId": "necrotic",
 		"utility": false,
 		"name": "Summon Shadow",
 		"castingTime": "1 Action",
@@ -459,7 +459,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "necrotic-spells",
+		"schoolId": "necrotic",
 		"utility": false,
 		"name": "Shadow Trap",
 		"castingTime": "2 Actions",
@@ -468,7 +468,7 @@
 		"tier": 1
 	},
 	{
-		"schoolId": "necrotic-spells",
+		"schoolId": "necrotic",
 		"utility": false,
 		"name": "Dread Visage",
 		"castingTime": "1 Action",
@@ -477,7 +477,7 @@
 		"tier": 2
 	},
 	{
-		"schoolId": "necrotic-spells",
+		"schoolId": "necrotic",
 		"utility": false,
 		"name": "Vampiric Greed",
 		"castingTime": "2 Actions",
@@ -486,16 +486,15 @@
 		"tier": 3
 	},
 	{
-		"schoolId": "necrotic-spells",
+		"schoolId": "necrotic",
 		"utility": false,
 		"name": "Greater Shadow",
 		"castingTime": "2 Actions",
-		"target": "single-target",
 		"description": "Summon a 5d12 Greater Shadow minion (max 1 adjacent to you). When it dies, it explodes into 5 shadow minions (see Summon Shadow). Place them anywhere within 8 spaces. **Upcast:** +1d12 damage, +1 shadow minion on explosion.",
 		"tier": 4
 	},
 	{
-		"schoolId": "necrotic-spells",
+		"schoolId": "necrotic",
 		"utility": false,
 		"name": "Gangrenous Burst",
 		"castingTime": "2 Actions",
@@ -504,7 +503,7 @@
 		"tier": 5
 	},
 	{
-		"schoolId": "necrotic-spells",
+		"schoolId": "necrotic",
 		"utility": false,
 		"name": "Unspeakable Word",
 		"castingTime": "2 Actions",
@@ -513,7 +512,7 @@
 		"tier": 6
 	},
 	{
-		"schoolId": "necrotic-spells",
+		"schoolId": "necrotic",
 		"utility": false,
 		"name": "Creeping Death",
 		"castingTime": "3 Actions",
@@ -522,25 +521,39 @@
 		"tier": 7
 	},
 	{
-		"schoolId": "ice-spells",
+		"schoolId": "ice",
 		"utility": true,
 		"name": "Ice Disk",
-		"castingTime": "1 Action",
-		"target": "self",
-		"description": "**Concentration:** Up to 1 minute. Conjure a disk of ice that floats just above the ground and follows you. It can carry up to 250 lbs./115 kg of weight for 1 hour or until you cast this spell again.",
+		"castingTime": "1 minute",
+		"description": "Conjure a disk of ice that floats just above the ground and follows you. It can carry up to 250 lbs./115 kg of weight for 1 hour or until you cast this spell again.",
 		"tier": 0
 	},
 	{
-		"schoolId": "ice-spells",
+		"schoolId": "ice",
 		"utility": true,
 		"name": "Chillcraft",
 		"castingTime": "1 Action",
-		"target": "self",
-		"description": "**Concentration:** Up to 10 minutes. Turn a small patch of water into a reflective icy mirror. Looking through it grants you vision of any desired location near this same body of water for 10 minutes.",
+		"description": "**Chill.** Harmlessly freeze, thaw, or move a bath-sized amount of water near you.\n\nOR: **Craft.** Conjure a sheet of opaque, mirror-like, or transparent ice the size of a window or small door.",
 		"tier": 0
 	},
 	{
-		"schoolId": "fire-spells",
+		"schoolId": "ice",
+		"utility": true,
+		"name": "Wintry Scrying",
+		"castingTime": "10 minutes",
+		"description": "Turn a small patch of water into a reflective icy mirror. Looking though it grants you vision of any desired location near this same body of water for 10 minutes.",
+		"tier": 0
+	},
+	{
+		"schoolId": "fire",
+		"utility": true,
+		"name": "Firebrand",
+		"castingTime": "1 Action",
+		"description": "Touch a surface and secretly mark it with a symbol or brief message. Speaking a chosen command word while nearby reveals it.",
+		"tier": 0
+	},
+	{
+		"schoolId": "fire",
 		"utility": true,
 		"name": "Fire Step",
 		"castingTime": "1 Action",
@@ -549,25 +562,24 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "fire-spells",
+		"schoolId": "fire",
 		"utility": true,
 		"name": "Kindle",
 		"castingTime": "1 Action",
 		"target": "single-target",
-		"description": "",
+		"description": "**Conjure** a minor visual illusion.\n\nOR: **Ignite** a small, unheld item within Range 6.",
 		"tier": 0
 	},
 	{
-		"schoolId": "lightning-spells",
+		"schoolId": "lightning",
 		"utility": true,
 		"name": "Spark Buddy",
 		"castingTime": "Casting Time: 1 minute",
-		"target": "single-target",
 		"description": "Conjure a Tiny (squirrel-sized) electrical helper for up to 1 hour. It can fetch Tiny objects (~1 lb./500 g max), open unlocked doors, illuminate a small area, or deliver a harmless shock. If it takes damage or moves further than 6 spaces away from you, it dissipates into sparks.",
 		"tier": 0
 	},
 	{
-		"schoolId": "lightning-spells",
+		"schoolId": "lightning",
 		"utility": true,
 		"name": "Spark Step",
 		"castingTime": "1 Action",
@@ -576,16 +588,15 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "lightning-spells",
+		"schoolId": "lightning",
 		"utility": true,
 		"name": "Tempest's Command",
 		"castingTime": "1 Action",
-		"target": "self",
 		"description": "Dispel a minor magical effect, or temporarily suppress a stronger one (the more powerful an enchantment, the shorter the duration). **OR: Voice of Thunder.** Your eyes glow and your voice is amplified to a booming, thunder-like volume for 1 min.",
 		"tier": 0
 	},
 	{
-		"schoolId": "wind-spells",
+		"schoolId": "wind",
 		"utility": true,
 		"name": "Wind Whisper",
 		"castingTime": "1 Action",
@@ -594,7 +605,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "wind-spells",
+		"schoolId": "wind",
 		"utility": true,
 		"name": "Helpful Gust",
 		"castingTime": "1 Action",
@@ -603,7 +614,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "wind-spells",
+		"schoolId": "wind",
 		"utility": true,
 		"name": "Feather Fall",
 		"castingTime": "1 Action",
@@ -612,7 +623,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "radiant-spells",
+		"schoolId": "radiant",
 		"utility": true,
 		"name": "Light",
 		"castingTime": "1 Action",
@@ -621,7 +632,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "radiant-spells",
+		"schoolId": "radiant",
 		"utility": true,
 		"name": "Beautify",
 		"castingTime": "1 Action",
@@ -630,7 +641,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "radiant-spells",
+		"schoolId": "radiant",
 		"utility": true,
 		"name": "Bond of Peace",
 		"castingTime": "1 Action",
@@ -639,7 +650,7 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "necrotic-spells",
+		"schoolId": "necrotic",
 		"utility": true,
 		"name": "Gravecraft",
 		"castingTime": "1 Action",
@@ -648,20 +659,18 @@
 		"tier": 0
 	},
 	{
-		"schoolId": "necrotic-spells",
+		"schoolId": "necrotic",
 		"utility": true,
 		"name": "False Face",
 		"castingTime": "Casting Time: 1 minute",
-		"target": "single-target",
 		"description": "Change your appearance to look like someone else for 10 minutes. Requires a piece of them.",
 		"tier": 0
 	},
 	{
-		"schoolId": "necrotic-spells",
+		"schoolId": "necrotic",
 		"utility": true,
 		"name": "Thought Leech",
 		"castingTime": "1 Action",
-		"target": "single-target",
 		"description": "**Reach:** 6. Read the surface thoughts of a creature within Reach. Creatures can sense you doing this and may not like it.",
 		"tier": 0
 	},
