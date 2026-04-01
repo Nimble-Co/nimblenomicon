@@ -15,6 +15,10 @@ content:
     format: code
     filename: '{primary}.mdx'
     fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
       - name: body
         label: Body
         type: code
