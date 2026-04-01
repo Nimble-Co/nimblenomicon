@@ -1,0 +1,21 @@
+---
+import manticor from '../../assets/manticor.webp';
+import HeroCallout from '../HeroCallout.astro';
+---
+
+<div class="nimble-full-bleed-hero">
+	<img
+		class="nimble-full-bleed-hero__img"
+		src={manticor.src}
+		width={manticor.width}
+		height={manticor.height}
+		alt="Fantasy illustration — heroes facing a dangerous beast"
+		loading="eager"
+		decoding="async"
+	/>
+	<div class="nimble-full-bleed-hero__gradient" aria-hidden="true"></div>
+	<div class="nimble-full-bleed-hero__bottom">
+		<h1 id="_top" class="nimble-full-bleed-hero__title">Game Master's Guide</h1>
+		<HeroCallout />
+	</div>
+</div>

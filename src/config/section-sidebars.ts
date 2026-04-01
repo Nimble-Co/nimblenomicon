@@ -5,6 +5,7 @@
 import type { ImageMetadata } from 'astro';
 import coreRulesIcon from '../assets/core_rules.svg';
 import { coreRulesSidebarToNavItems } from '../models/core-rules-sidebar';
+import { gameMastersGuideSidebarToNavItems } from '../models/game-masters-guide-sidebar';
 import heroesIcon from '../assets/heroes.svg';
 import gameMasterGuideIcon from '../assets/game_master_guide.svg';
 import adventuresIcon from '../assets/adventures.svg';
@@ -99,7 +100,9 @@ export const SECTION_SIDEBAR_CONFIG: {
 	readonly [K in SectionKey]: readonly SectionSidebarRawItem[];
 } = {
 	...Object.fromEntries(
-		SECTION_KEYS.filter((k) => k !== 'core-rules').map(
+		SECTION_KEYS.filter(
+			(k) => k !== 'core-rules' && k !== 'game-masters-guide',
+		).map(
 			(key) =>
 				[
 					key,
@@ -113,6 +116,9 @@ export const SECTION_SIDEBAR_CONFIG: {
 		),
 	),
 	'core-rules': coreRulesSidebarToNavItems(SECTION_METADATA['core-rules'].path),
+	'game-masters-guide': gameMastersGuideSidebarToNavItems(
+		SECTION_METADATA['game-masters-guide'].path,
+	),
 } as { readonly [K in SectionKey]: readonly SectionSidebarRawItem[] };
 
 /** First path segment for multi-file sections, or the slug for top-level docs. */

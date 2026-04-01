@@ -664,5 +664,95 @@
 		"target": "single-target",
 		"description": "**Reach:** 6. Read the surface thoughts of a creature within Reach. Creatures can sense you doing this and may not like it.",
 		"tier": 0
+	},
+	{
+		"schoolId": "radiant-spells",
+		"utility": false,
+		"name": "Revive",
+		"castingTime": "1 hour",
+		"target": "single-target",
+		"description": "Bring a dead creature back to life, provided they've been dead no more than 10 days and have not been revived by this spell before. Attempting to revive a creature already brought back with this spell risks raising a mindless, zombified husk instead.\n\n> **Why is this secret?** Freely returning to life can lower the stakes and sap excitement from near-death encounters. On the flip side, it's a powerful tool to maintain momentum in a campaign struck by bad luck or to create dramatic story moments (such as reviving a villain).",
+		"tier": 3
+	},
+	{
+		"schoolId": "lightning-spells",
+		"utility": false,
+		"name": "Sparkfetch",
+		"castingTime": "1 Action",
+		"target": "single-target",
+		"description": "Loudly teleport a tiny, unheld metal item you can see to yourself.\n\n> **Why is this secret?** This seemingly harmless cantrip led to a wave of mysterious thefts, as stormy nights became prime time for mischievous first-year students pilfering coins and valuables. Quickly banned, it remains an infamous spell in magical academies.",
+		"tier": 0
+	},
+	{
+		"schoolId": "wind-spells",
+		"utility": false,
+		"name": "Lesser Windform",
+		"castingTime": "1 Action",
+		"target": "self",
+		"description": "**Concentration:** Up to 10 minutes. You are invisible and blinded for the duration of the spell.",
+		"tier": 0
+	},
+	{
+		"schoolId": "wind-spells",
+		"utility": false,
+		"name": "Greater Windform",
+		"castingTime": "2 Actions",
+		"target": "self",
+		"description": "**Concentration:** Up to 10 minutes. Gain invisibility, a flying speed, and the ability to slip through any space that wind can pass through.",
+		"tier": 5
+	},
+	{
+		"schoolId": "radiant-spells",
+		"utility": false,
+		"name": "Radiant Bond",
+		"castingTime": "1 Action",
+		"target": "single-target",
+		"description": "**Concentration:** Up to 10 minutes. Telepathically communicate across any distance with a creature that holds a gift you have freely given.",
+		"tier": 3
+	},
+	{
+		"schoolId": "necrotic-spells",
+		"utility": false,
+		"name": "Speak With Dead",
+		"castingTime": "2 Actions",
+		"target": "single-target",
+		"description": "Temporarily animate a corpse, allowing it to answer up to 3 questions before returning to rest. The corpse must answer, but it isn't required to be truthful if it dislikes the questioner or the questions.",
+		"tier": 4
+	},
+	{
+		"schoolId": "fire-spells",
+		"utility": false,
+		"name": "Hearth & Home",
+		"castingTime": "10 minutes",
+		"target": "aoe",
+		"description": "Conjure a welcoming inn, complete with sturdy wooden tables, plush chairs, and a soft rug underfoot. At its heart burns a cozy fire in a fireplace, filling the space with warmth and light. The inn lasts for 12 hours and vanishes without a trace afterward.\n\n> **Why is this secret?** Safe resting anywhere is incredibly powerful. This spell is notoriously tricky to cast manually, so it is most often imbued in wands for wealthy travelers. Allow it cautiously, as it can easily break game balance.",
+		"tier": 3
+	},
+	{
+		"schoolId": "lightning-spells",
+		"utility": false,
+		"name": "Teleport",
+		"castingTime": "10 minutes",
+		"target": "multi-target",
+		"description": "You and up to 10 willing creatures within 2 spaces are instantly teleported to a place of your choice that you have visited before.",
+		"tier": 6
+	},
+	{
+		"schoolId": "ice-spells",
+		"utility": false,
+		"name": "Cryotomb",
+		"castingTime": "4 Actions",
+		"target": "single-target",
+		"description": "**Range:** 12. A target must make a STR save or become incapacitated in an icy tomb and immune to harm. This lasts as long as you remain alive, or until the ice melts or is otherwise destroyed. The creature may repeat the save once every 10 days. Huge or larger creatures have advantage on the save. Small or Tiny creatures have disadvantage. **Upcast:** +5 spell save DC.\n\n> **Why is this secret?** Being able to instantly trap any boss who fails a single roll is incredibly useful. Cryotomb is even more useful as a narrative linchpin though. For example, the king may have a terrifying monster sealed in ice beneath the palace—and the tomb is beginning to crack…",
+		"tier": 8
+	},
+	{
+		"schoolId": "necrotic-spells",
+		"utility": false,
+		"name": "Memory Veil",
+		"castingTime": "1 Action",
+		"target": "aoe",
+		"description": "**Concentration:** As long as the caster remains conscious. Conceal or change all memories of an event for up to 12 creatures within 2 spaces on a failed WIL save for as long as this spell lasts.\n\n> **Why is this secret?** This can have profound ethical and narrative implications. Often used by shadowy organizations or rulers to cover up secrets best left buried.",
+		"tier": 3
 	}
 ]

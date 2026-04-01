@@ -1,0 +1,232 @@
+[
+	{
+		"level": "1/4",
+		"hpNoArmor": 12,
+		"hpMediumArmor": 9,
+		"hpHeavyArmor": 7,
+		"damagePerRound": 3,
+		"attackSampleDice": "1d4+1",
+		"saveDC": 9,
+		"crEquivalent": "1/8"
+	},
+	{
+		"level": "1/3",
+		"hpNoArmor": 15,
+		"hpMediumArmor": 11,
+		"hpHeavyArmor": 8,
+		"damagePerRound": 5,
+		"attackSampleDice": "1d6+2",
+		"saveDC": 9,
+		"crEquivalent": "1/4"
+	},
+	{
+		"level": "1/2",
+		"hpNoArmor": 18,
+		"hpMediumArmor": 15,
+		"hpHeavyArmor": 11,
+		"damagePerRound": 7,
+		"attackSampleDice": "1d6+3",
+		"saveDC": 10,
+		"crEquivalent": "1/4"
+	},
+	{
+		"level": "1",
+		"hpNoArmor": 26,
+		"hpMediumArmor": 20,
+		"hpHeavyArmor": 16,
+		"damagePerRound": 11,
+		"attackSampleDice": "2d8+2 or (2×) 1d8+1",
+		"saveDC": 10,
+		"crEquivalent": "1/2"
+	},
+	{
+		"level": "2",
+		"hpNoArmor": 34,
+		"hpMediumArmor": 27,
+		"hpHeavyArmor": 20,
+		"damagePerRound": 13,
+		"attackSampleDice": "2d8+4 or (2×) 1d8+3",
+		"saveDC": 11,
+		"crEquivalent": "1"
+	},
+	{
+		"level": "3",
+		"hpNoArmor": 41,
+		"hpMediumArmor": 33,
+		"hpHeavyArmor": 25,
+		"damagePerRound": 15,
+		"attackSampleDice": "2d8+6 or (2×) 1d8+4",
+		"saveDC": 11,
+		"crEquivalent": "1"
+	},
+	{
+		"level": "4",
+		"hpNoArmor": 49,
+		"hpMediumArmor": 39,
+		"hpHeavyArmor": 29,
+		"damagePerRound": 18,
+		"attackSampleDice": "2d8+9 or (2×) 1d8+5",
+		"saveDC": 12,
+		"crEquivalent": "2"
+	},
+	{
+		"level": "5",
+		"hpNoArmor": 58,
+		"hpMediumArmor": 46,
+		"hpHeavyArmor": 35,
+		"damagePerRound": 19,
+		"attackSampleDice": "2d8+10 or (2×) 1d8+6",
+		"saveDC": 12,
+		"crEquivalent": "2"
+	},
+	{
+		"level": "6",
+		"hpNoArmor": 68,
+		"hpMediumArmor": 54,
+		"hpHeavyArmor": 41,
+		"damagePerRound": 21,
+		"attackSampleDice": "2d8+12 or (2×) 1d8+7",
+		"saveDC": 13,
+		"crEquivalent": "3"
+	},
+	{
+		"level": "7",
+		"hpNoArmor": 79,
+		"hpMediumArmor": 63,
+		"hpHeavyArmor": 47,
+		"damagePerRound": 24,
+		"attackSampleDice": "3d8+10 or (2×) 2d8+4",
+		"saveDC": 13,
+		"crEquivalent": "3"
+	},
+	{
+		"level": "8",
+		"hpNoArmor": 91,
+		"hpMediumArmor": 73,
+		"hpHeavyArmor": 55,
+		"damagePerRound": 26,
+		"attackSampleDice": "3d8+12 or (2×) 2d8+5",
+		"saveDC": 14,
+		"crEquivalent": "4"
+	},
+	{
+		"level": "9",
+		"hpNoArmor": 104,
+		"hpMediumArmor": 83,
+		"hpHeavyArmor": 62,
+		"damagePerRound": 28,
+		"attackSampleDice": "4d8+10 or (2×) 2d8+6",
+		"saveDC": 14,
+		"crEquivalent": "4"
+	},
+	{
+		"level": "10",
+		"hpNoArmor": 118,
+		"hpMediumArmor": 94,
+		"hpHeavyArmor": 71,
+		"damagePerRound": 30,
+		"attackSampleDice": "4d8+12 or (2×) 2d8+7",
+		"saveDC": 15,
+		"crEquivalent": "5"
+	},
+	{
+		"level": "11",
+		"hpNoArmor": 133,
+		"hpMediumArmor": 106,
+		"hpHeavyArmor": 80,
+		"damagePerRound": 33,
+		"attackSampleDice": "5d8+11 or (2×) 3d8+3",
+		"saveDC": 15,
+		"crEquivalent": "6"
+	},
+	{
+		"level": "12",
+		"hpNoArmor": 149,
+		"hpMediumArmor": 119,
+		"hpHeavyArmor": 89,
+		"damagePerRound": 35,
+		"attackSampleDice": "5d8+13 or (2×) 3d8+4",
+		"saveDC": 16,
+		"crEquivalent": "7"
+	},
+	{
+		"level": "13",
+		"hpNoArmor": 166,
+		"hpMediumArmor": 132,
+		"hpHeavyArmor": 100,
+		"damagePerRound": 38,
+		"attackSampleDice": "6d8+11 or (2×) 3d8+6",
+		"saveDC": 16,
+		"crEquivalent": "8"
+	},
+	{
+		"level": "14",
+		"hpNoArmor": 184,
+		"hpMediumArmor": 147,
+		"hpHeavyArmor": 110,
+		"damagePerRound": 40,
+		"attackSampleDice": "6d8+13 or (2×) 3d8+7",
+		"saveDC": 17,
+		"crEquivalent": "9"
+	},
+	{
+		"level": "15",
+		"hpNoArmor": 203,
+		"hpMediumArmor": 162,
+		"hpHeavyArmor": 122,
+		"damagePerRound": 43,
+		"attackSampleDice": "7d8+11 or (2×) 3d8+8",
+		"saveDC": 17,
+		"crEquivalent": "9"
+	},
+	{
+		"level": "16",
+		"hpNoArmor": 223,
+		"hpMediumArmor": 178,
+		"hpHeavyArmor": 134,
+		"damagePerRound": 45,
+		"attackSampleDice": "7d8+13 or (2×) 4d8+5",
+		"saveDC": 18,
+		"crEquivalent": "10"
+	},
+	{
+		"level": "17",
+		"hpNoArmor": 244,
+		"hpMediumArmor": 195,
+		"hpHeavyArmor": 146,
+		"damagePerRound": 48,
+		"attackSampleDice": "8d8+12 or (2×) 4d8+6",
+		"saveDC": 18,
+		"crEquivalent": "11"
+	},
+	{
+		"level": "18",
+		"hpNoArmor": 266,
+		"hpMediumArmor": 213,
+		"hpHeavyArmor": 160,
+		"damagePerRound": 50,
+		"attackSampleDice": "8d8+14 or (2×) 4d8+7",
+		"saveDC": 19,
+		"crEquivalent": "12"
+	},
+	{
+		"level": "19",
+		"hpNoArmor": 289,
+		"hpMediumArmor": 231,
+		"hpHeavyArmor": 173,
+		"damagePerRound": 52,
+		"attackSampleDice": "9d8+12 or (2×) 4d8+8",
+		"saveDC": 19,
+		"crEquivalent": "13"
+	},
+	{
+		"level": "20",
+		"hpNoArmor": 313,
+		"hpMediumArmor": 250,
+		"hpHeavyArmor": 189,
+		"damagePerRound": 54,
+		"attackSampleDice": "9d8+13 or (2×) 4d8+9",
+		"saveDC": 20,
+		"crEquivalent": "14"
+	}
+]

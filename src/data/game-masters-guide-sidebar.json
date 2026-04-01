@@ -1,0 +1,146 @@
+[
+  {
+    "name": "Start Here",
+    "collapsed": false,
+    "items": [
+      {
+        "name": "Starting as a GM",
+        "anchor": "starting-as-a-gm"
+      }
+    ]
+  },
+  {
+    "name": "Advanced GM Tools",
+    "collapsed": false,
+    "items": [
+      {
+        "name": "Advanced GM Tools",
+        "anchor": "advanced-gm-tools-intro"
+      },
+      {
+        "name": "What You DON'T See",
+        "anchor": "what-you-dont-see"
+      },
+      {
+        "name": "Heroic Vignettes",
+        "anchor": "heroic-vignettes"
+      },
+      {
+        "name": "Making Adventures",
+        "anchor": "making-your-own-adventures"
+      },
+      {
+        "name": "Skill Challenges",
+        "anchor": "running-skill-challenges"
+      },
+      {
+        "name": "What to Avoid",
+        "anchor": "what-to-avoid"
+      }
+    ]
+  },
+  {
+    "name": "Adventuring Rewards",
+    "collapsed": false,
+    "items": [
+      {
+        "name": "Adventuring Rewards",
+        "anchor": "adventuring-rewards-intro"
+      },
+      {
+        "name": "Release Valves & Story Items",
+        "anchor": "release-valves-and-story-items"
+      },
+      {
+        "name": "Combat Items & Resting",
+        "anchor": "combat-items-and-resting"
+      },
+      {
+        "name": "Secret Spells",
+        "anchor": "secret-spells-intro"
+      },
+      {
+        "name": "Gold & Lodging",
+        "anchor": "gold-and-lodging"
+      },
+      {
+        "name": "Boons",
+        "anchor": "boons"
+      }
+    ]
+  },
+  {
+    "name": "Monsters",
+    "collapsed": false,
+    "items": [
+      {
+        "name": "Monsters & Running",
+        "anchor": "monsters-and-running"
+      },
+      {
+        "name": "Encounters & Tuning",
+        "anchor": "encounter-guidelines-and-tuning"
+      },
+      {
+        "name": "Unique Encounters",
+        "anchor": "unique-encounters"
+      },
+      {
+        "name": "Monster Builder",
+        "anchor": "monster-builder-intro"
+      },
+      {
+        "name": "Bestiary",
+        "anchor": "bestiary"
+      },
+      {
+        "name": "Legendary Monsters",
+        "anchor": "legendary-monsters"
+      }
+    ]
+  },
+  {
+    "name": "Adventures",
+    "collapsed": true,
+    "items": [
+      {
+        "name": "Garden of Death",
+        "anchor": "garden-of-death"
+      },
+      {
+        "name": "Valley of Hope & Farhope",
+        "anchor": "valley-of-hope-and-farhope"
+      },
+      {
+        "name": "Regions (Elderwild–Skyreach)",
+        "anchor": "adventure-locations-elderwild-through-skyreach"
+      },
+      {
+        "name": "Regions (Growling–Shadowblight)",
+        "anchor": "adventure-locations-growling-through-shadowblight"
+      }
+    ]
+  },
+  {
+    "name": "Appendix",
+    "collapsed": false,
+    "items": [
+      {
+        "name": "5e Conversion",
+        "anchor": "5e-conversion"
+      },
+      {
+        "name": "Appendix of Inspiration",
+        "anchor": "appendix-of-inspiration"
+      },
+      {
+        "name": "For Creators",
+        "anchor": "for-creators-and-more"
+      },
+      {
+        "name": "Chaos",
+        "anchor": "chaos-intro"
+      }
+    ]
+  }
+]

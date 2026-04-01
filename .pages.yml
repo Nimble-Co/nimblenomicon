@@ -61,6 +61,168 @@ content:
             required: true
             description: Must match a Core Rules snippet id (same as the section id in the page URL hash).
 
+  - name: game-masters-guide-snippets
+    label: Game Master's Guide Text
+    type: file
+    path: src/data/game-masters-guide-snippets.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: Id
+        type: string
+        required: true
+        description: Stable anchor for this block; use lowercase letters, numbers, and hyphens. Put titles in Description with # / ## / ### as needed.
+      - name: description
+        label: Description
+        type: rich-text
+        required: true
+        description: Full markdown for this block, including headings (e.g. ## Section title as the first line).
+        options:
+          format: markdown
+
+  - name: game-masters-guide-sidebar
+    label: Game Master's Guide Sidebar
+    type: file
+    path: src/data/game-masters-guide-sidebar.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        label: Chapter Name
+        type: string
+        required: true
+        description: Accordion label.
+      - name: collapsed
+        label: Collapsed By Default
+        type: boolean
+        required: true
+      - name: items
+        label: Links
+        type: object
+        list: true
+        required: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+            description: Text shown in the sidebar for this link.
+          - name: anchor
+            label: Anchor Id
+            type: string
+            required: true
+            description: Must match a Game Master's Guide snippet id (same as the section id in the page URL hash).
+
+  - name: game-masters-guide-data
+    label: Game Master's Guide Data
+    type: group
+    items:
+      - name: chaos-magic
+        label: Chaos Table
+        type: file
+        path: src/data/chaos-magic.json
+        format: json
+        list: true
+        fields:
+          - name: roll
+            label: d20 Roll
+            type: number
+            required: true
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: string
+            required: true
+
+      - name: gmg-gold-by-level
+        label: Gold By Level
+        type: file
+        path: src/data/gmg-gold-by-level.json
+        format: json
+        list: true
+        fields:
+          - name: level
+            label: Level
+            type: number
+            required: true
+          - name: gold
+            label: Gold
+            type: number
+            required: true
+
+      - name: gmg-temporary-boons
+        label: Temporary Boons (1d8)
+        type: file
+        path: src/data/gmg-temporary-boons.json
+        format: json
+        list: true
+        fields:
+          - name: roll
+            label: d8 Roll
+            type: number
+            required: true
+          - name: description
+            label: Description
+            type: string
+            required: true
+
+      - name: gmg-monster-builder-levels
+        label: Monster Builder Levels
+        type: file
+        path: src/data/gmg-monster-builder-levels.json
+        format: json
+        list: true
+        fields:
+          - name: level
+            label: Monster Level
+            type: string
+            required: true
+          - name: hpNoArmor
+            label: HP No Armor
+            type: number
+            required: true
+          - name: hpMediumArmor
+            label: HP Medium Armor
+            type: number
+            required: true
+          - name: hpHeavyArmor
+            label: HP Heavy Armor
+            type: number
+            required: true
+          - name: damagePerRound
+            label: Damage Per Round
+            type: number
+            required: true
+          - name: attackSampleDice
+            label: Attack Sample Dice
+            type: string
+            required: true
+          - name: saveDC
+            label: Save DC
+            type: number
+            required: true
+          - name: crEquivalent
+            label: CR Equivalent
+            type: string
+            required: true
+
+      - name: gmg-secret-spell-ids
+        label: Secret Spell Order
+        type: file
+        path: src/data/gmg-secret-spell-ids.json
+        format: json
+        list: true
+        fields:
+          - name: spellId
+            label: Spell Id
+            type: string
+            required: true
+            description: Must match a spell id from spells.json (kebab-case slug).
+
   - name: stats-skills
     label: Stats & Skills
     type: group

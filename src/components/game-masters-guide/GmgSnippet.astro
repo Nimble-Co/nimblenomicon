@@ -1,0 +1,21 @@
+---
+import { renderMarkdown } from '../../lib/render-markdown';
+import { gameMastersGuideSnippets } from '../../models/game-masters-guide-snippets';
+
+interface Props {
+	id: string;
+}
+
+const { id } = Astro.props;
+const snippet = gameMastersGuideSnippets.find((row) => row.id === id);
+
+if (!snippet) {
+	throw new Error(
+		`GmgSnippet: no Game Master's Guide snippet with id "${id}". Check src/data/game-masters-guide-snippets.json.`,
+	);
+}
+---
+
+<section id={snippet.id}>
+	<div set:html={renderMarkdown(snippet.description)} />
+</section>

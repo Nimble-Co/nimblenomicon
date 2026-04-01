@@ -1,0 +1,10 @@
+[
+	{ "roll": 1, "description": "Recover 2 additional Wounds" },
+	{ "roll": 2, "description": "Gain LVL temp HP" },
+	{ "roll": 3, "description": "Gain KEY temp Hit Dice" },
+	{ "roll": 4, "description": "+1 Speed" },
+	{ "roll": 5, "description": "Inspired (reroll any die, once)" },
+	{ "roll": 6, "description": "Advantage vs. Fear/Charm/Etc." },
+	{ "roll": 7, "description": "Learn an important rumor" },
+	{ "roll": 8, "description": "+KEY mana" }
+]
