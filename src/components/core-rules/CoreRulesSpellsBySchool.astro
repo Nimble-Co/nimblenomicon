@@ -1,26 +1,39 @@
 ---
 import { renderMarkdown } from '../../lib/render-markdown';
-import { spellMetaMarkdown } from '../../lib/spell-meta';
-import { spellDetailHrefFromCoreRules, spellsData } from '../../models/spells';
+import { formatSpellTarget, formatSpellTier } from '../../lib/spell-meta';
+import { spells, type SpellData } from '../../models/spells';
+
+const { spellSchoolId, utility = false } = Astro.props;
+const filteredSpells = spells.filter(
+	(spell) => spell.schoolId === spellSchoolId && spell.utility === utility,
+);
+
+function spellMetaMarkdown(spell: SpellData): string {
+	const tierLabel = formatSpellTier(spell.tier);
+	const cast = spell.castingTime.trim();
+	const tgt = spell.target ? formatSpellTarget(spell.target) : '';
+	const components = [tierLabel, cast, tgt];
+	const middle = components.filter(Boolean).join(', ');
+	return `_${middle}_`;
+}
 ---
 
 {
-	spellsData.schools.map((school) => (
+	(
 		<>
-			<h2 id={`${school.name.toLowerCase()}-spells`}>{school.name} Spells</h2>
-			{school.spells.map((spell) => (
+			{filteredSpells.map((spell) => (
 				<>
 					<h3 id={spell.id}>
-						<a href={spellDetailHrefFromCoreRules(spell.id)}>{spell.name}</a>
+						<a href={`/spells/${spell.id}/`}>{spell.name}</a>
 					</h3>
 					<div
 						set:html={renderMarkdown(
-							spellMetaMarkdown(spell.tier, spell.castingTime, spell.target) +
+							spellMetaMarkdown(spell) +
 								(spell.description?.trim() ? '\n\n' + spell.description : ''),
 						)}
 					/>
 				</>
 			))}
 		</>
-	))
+	)
 }

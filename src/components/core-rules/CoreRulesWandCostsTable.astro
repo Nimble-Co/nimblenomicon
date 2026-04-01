@@ -1,0 +1,18 @@
+---
+import CoreRulesTableThead from './CoreRulesTableThead.astro';
+import { wandCosts } from '../../models/wand-costs';
+---
+
+<table>
+	<CoreRulesTableThead labels={['SPELL', 'TYPICAL PRICE']} />
+	<tbody>
+		{
+			wandCosts.map((row) => (
+				<tr>
+					<td>{row.name}</td>
+					<td>{row.cost}</td>
+				</tr>
+			))
+		}
+	</tbody>
+</table>

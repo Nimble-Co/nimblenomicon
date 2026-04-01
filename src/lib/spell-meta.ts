@@ -19,18 +19,3 @@ export function formatSpellTier(tier: number): string {
 export function formatSpellTarget(target: SpellTarget): string {
 	return TARGET_LABEL[target];
 }
-
-/** Italic meta line as in the original Core Rules (markdown). */
-export function spellMetaMarkdown(
-	tier: number,
-	castingTime: string,
-	target: SpellTarget,
-): string {
-	const tierLabel = formatSpellTier(tier);
-	const cast = castingTime.trim();
-	const tgt = formatSpellTarget(target);
-	const middle = cast
-		? `${tierLabel}, ${cast}, ${tgt}`
-		: `${tierLabel}, ${tgt}`;
-	return `_${middle}_`;
-}

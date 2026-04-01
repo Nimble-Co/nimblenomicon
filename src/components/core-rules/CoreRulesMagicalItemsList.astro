@@ -1,13 +1,27 @@
 ---
 import { renderMarkdown } from '../../lib/render-markdown';
 import {
+	compareMagicalItemsForListing,
 	magicalItemDetailHrefFromCoreRules,
 	magicalItems,
+	type MagicalItemData,
 } from '../../models/magical-items';
+
+interface Props {
+	kind?: MagicalItemData['kind'];
+}
+
+const { kind } = Astro.props;
+
+const rows = kind
+	? magicalItems
+			.filter((item) => item.kind === kind)
+			.sort(compareMagicalItemsForListing)
+	: magicalItems;
 ---
 
 {
-	magicalItems.map((item) => (
+	rows.map((item) => (
 		<>
 			<h3 id={item.id}>
 				<a href={magicalItemDetailHrefFromCoreRules(item.id)}>{item.name}</a>

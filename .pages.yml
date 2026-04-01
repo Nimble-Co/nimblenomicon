@@ -20,10 +20,8 @@ content:
         required: true
       - name: body
         label: Body
-        type: rich-text
+        type: code
         required: true
-        options:
-          format: markdown
 
   - name: stats-skills
     label: Stats & Skills
