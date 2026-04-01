@@ -11,7 +11,7 @@ content:
   - name: books
     label: Books
     type: collection
-    path: src/content/docs
+    path: src/content/docs/
     format: yaml-frontmatter
     fields:
       - name: title
