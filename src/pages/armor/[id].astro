@@ -2,9 +2,9 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { renderMarkdown } from '../../lib/render-markdown';
 import {
-	armorDetailMarkdown,
-	armorRows,
-	formatArmorCategoryLabel,
+  armorDetailMarkdown,
+  armorRows,
+  formatArmorCategoryLabel,
 } from '../../models/armor';
 
 export function getStaticPaths() {
@@ -30,7 +30,7 @@ const bodyMarkdown = armorDetailMarkdown(row);
 		next: false,
 	}}
 >
-	<div set:html={renderMarkdown(bodyMarkdown)} />
+	<div set:html={await renderMarkdown(bodyMarkdown)} />
 	<p class="armor-detail__core-rules-ref">
 		<em>From <a href={`/core-rules/#${row.id}`}>Core Rules</a></em>
 	</p>

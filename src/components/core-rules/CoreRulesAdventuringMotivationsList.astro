@@ -4,9 +4,9 @@ import { adventuringMotivations } from '../../models/adventuring-motivations';
 ---
 
 {
-	adventuringMotivations.map((motivation) => (
+	adventuringMotivations.map(async (motivation) => (
 		<p
-			set:html={renderMarkdown(
+			set:html={await renderMarkdown(
 				`**${motivation.name}** ${motivation.description}`,
 			)}
 		/>

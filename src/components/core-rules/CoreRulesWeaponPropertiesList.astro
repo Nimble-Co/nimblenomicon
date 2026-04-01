@@ -5,9 +5,9 @@ import { weaponProperties } from '../../models/weapon-properties';
 
 <ul>
 	{
-		weaponProperties.map((weaponProperty) => (
+		weaponProperties.map(async (weaponProperty) => (
 			<li
-				set:html={renderMarkdown(
+				set:html={await renderMarkdown(
 					`**${weaponProperty.name}.** ${weaponProperty.description}`,
 				)}
 			/>

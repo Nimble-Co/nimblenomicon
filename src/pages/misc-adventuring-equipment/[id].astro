@@ -2,8 +2,8 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { renderMarkdown } from '../../lib/render-markdown';
 import {
-	miscAdventuringEquipment,
-	miscAdventuringEquipmentDetailMarkdown,
+  miscAdventuringEquipment,
+  miscAdventuringEquipmentDetailMarkdown,
 } from '../../models/misc-adventuring-equipment';
 
 export function getStaticPaths() {
@@ -28,7 +28,7 @@ const bodyMarkdown = miscAdventuringEquipmentDetailMarkdown(row);
 		next: false,
 	}}
 >
-	<div set:html={renderMarkdown(bodyMarkdown)} />
+	<div set:html={await renderMarkdown(bodyMarkdown)} />
 	<p class="misc-gear-detail__core-rules-ref">
 		<em>From <a href={`/core-rules/#${row.id}`}>Core Rules</a></em>
 	</p>

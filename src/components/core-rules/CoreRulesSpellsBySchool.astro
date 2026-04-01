@@ -20,13 +20,13 @@ function spellMetaMarkdown(spell: SpellData): string {
 {
 	(
 		<>
-			{filteredSpells.map((spell) => (
+			{filteredSpells.map(async (spell) => (
 				<>
 					<h3 id={spell.id}>
 						<a href={`/spells/${spell.id}/`}>{spell.name}</a>
 					</h3>
 					<div
-						set:html={renderMarkdown(
+						set:html={await renderMarkdown(
 							spellMetaMarkdown(spell) +
 								(spell.description?.trim() ? '\n\n' + spell.description : ''),
 						)}

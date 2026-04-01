@@ -1,10 +1,10 @@
 ---
 import { renderMarkdown } from '../../lib/render-markdown';
 import {
-	compareMagicalItemsForListing,
-	magicalItemDetailHrefFromCoreRules,
-	magicalItems,
-	type MagicalItemData,
+  compareMagicalItemsForListing,
+  magicalItemDetailHrefFromCoreRules,
+  magicalItems,
+  type MagicalItemData,
 } from '../../models/magical-items';
 
 interface Props {
@@ -21,13 +21,13 @@ const rows = kind
 ---
 
 {
-	rows.map((item) => (
+	rows.map(async (item) => (
 		<>
 			<h3 id={item.id}>
 				<a href={magicalItemDetailHrefFromCoreRules(item.id)}>{item.name}</a>
 			</h3>
-			{item.subtitle && <div set:html={renderMarkdown(item.subtitle)} />}
-			<div set:html={renderMarkdown(item.description)} />
+			{item.subtitle && <div set:html={await renderMarkdown(item.subtitle)} />}
+			<div set:html={await renderMarkdown(item.description)} />
 		</>
 	))
 }

@@ -39,7 +39,7 @@ const bodyMarkdown = spellMetaMarkdown(spell) + '\n\n' + spell.description;
 		next: false,
 	}}
 >
-	<div set:html={renderMarkdown(bodyMarkdown)} />
+	<div set:html={await renderMarkdown(bodyMarkdown)} />
 	<p class="spell-detail__core-rules-ref">
 		<em>From <a href={`/core-rules/#${spell.id}`}>Core Rules</a></em>
 	</p>
