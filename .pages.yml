@@ -13,6 +13,7 @@ content:
     type: collection
     path: src/content/docs/
     format: yaml-frontmatter
+    filename: '{primary}.mdx'
     fields:
       - name: title
         label: Title
