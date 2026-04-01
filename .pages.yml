@@ -10,11 +10,50 @@ media:
 content:
   - name: books
     label: Books
-    type: file
-    path: src/content/docs/core-rules.mdx
-    format: code
-    options:
-      format: mdx
+    type: group
+    items:
+      - name: core-rules
+        label: Core Rules
+        type: file
+        path: src/content/docs/core-rules.mdx
+        format: code
+        options:
+          format: mdx
+      - name: game-master-guide
+        label: Game Master Guide
+        type: file
+        path: src/content/docs/game-master-guide.mdx
+        format: code
+        options:
+          format: mdx
+      - name: heroes
+        label: Heroes
+        type: file
+        path: src/content/docs/heroes.mdx
+        format: code
+        options:
+          format: mdx
+      - name: adventures
+        label: Adventures
+        type: file
+        path: src/content/docs/adventures.mdx
+        format: code
+        options:
+          format: mdx
+      - name: monsters-and-more
+        label: Monsters & More
+        type: file
+        path: src/content/docs/monsters-and-more.mdx
+        format: code
+        options:
+          format: mdx
+      - name: creators-kit
+        label: Creators Kit
+        type: file
+        path: src/content/docs/creators-kit.mdx
+        format: code
+        options:
+          format: mdx
 
   - name: stats-skills
     label: Stats & Skills
