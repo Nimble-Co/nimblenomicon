@@ -19,10 +19,10 @@ content:
         format: code
         options:
           format: mdx
-      - name: game-master-guide
-        label: Game Master Guide
+      - name: game-masters-guide
+        label: Game Master's Guide
         type: file
-        path: src/content/docs/game-master-guide.mdx
+        path: src/content/docs/game-masters-guide.mdx
         format: code
         options:
           format: mdx
