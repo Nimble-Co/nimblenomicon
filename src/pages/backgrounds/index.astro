@@ -1,8 +1,8 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import {
-	backgrounds,
-	compareBackgroundRowsForListing,
+backgrounds,
+compareBackgroundRowsForListing,
 } from '../../models/backgrounds';
 
 const rows = [...backgrounds].sort(compareBackgroundRowsForListing);
@@ -12,7 +12,7 @@ const rows = [...backgrounds].sort(compareBackgroundRowsForListing);
 	frontmatter={{
 		title: 'Backgrounds',
 		description:
-			'Alphabetical index of character backgrounds with links to each background’s full rules.',
+			"Alphabetical index of character backgrounds with links to each background's full rules.",
 		tableOfContents: false,
 		prev: false,
 		next: false,

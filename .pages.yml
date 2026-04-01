@@ -8,10 +8,10 @@ media:
   extensions: [avif, gif, jpeg, jpg, png, svg, webp]
 
 content:
-  - name: core-rules
-    label: Core Rules
+  - name: books
+    label: Books
     type: collection
-    path: src/books/core-rules
+    path: src/content/docs
     format: yaml-frontmatter
     fields:
       - name: title

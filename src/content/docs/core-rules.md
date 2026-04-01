@@ -1,8 +1,13 @@
 ---
-title: Start Here
+title: Core Rules
+description: Nimble Core Rules (2.0.3) — text reference.
+hidePageTitle: true
+bannerInHero: true
 ---
 
-## Start Here
+<!-- <CoreRulesHero /> -->
+
+# Start Here
 
 Nimble is a fast-paced, heroic fantasy TTRPG where bold choices and epic stories take center stage.
 
@@ -37,3 +42,42 @@ At least one player should familiarize themselves with the base rules in this bo
 > **Note.** If these examples don't mean anything to you, that's okay, you'll get the hang of it after playing once or twice.
 
 **Be gracious to the GM.** They put a lot of effort into running the game; avoid arguing over rulings. Give them a break sometimes and offer to run a ses-sion for them! **Bring snacks.**
+
+# Core Rules
+
+## Stats
+
+Heroes have 4 stats that impact their effectiveness in various tasks: 2 Key Stats crucial to their class and 2 Secondary Stats. The maximum a hero's stat can typically go is +5 .
+
+> **KEY.** When an ability or spell references “KEY,” use one of your Key Stats. If a stat is listed before a die roll, roll a number of dice equal to the stat. For example, “WIL d8” means that if your WIL is 2, you roll 2d8 (two eight-sided dice).
+
+<!-- stats-list -->
+
+## Skills
+
+Skills gauge how well your hero interacts with the world. Whenever you tell the GM what you are doing, they may ask you to use one of your skills.
+
+<!-- skills-list -->
+
+## Skill Checks & Saves
+
+When you want to affect the _world_ (convince an NPC, spot a trap, pick a lock, etc.), the GM may call for a skill check. Roll 1d20 and add your skill (the max bonus a skill can ever have is +12). If the total meets or exceeds the Difficulty Challenge (DC), you succeed; otherwise, you fail. A roll of 1 always fails regardless of any other bonuses, while a roll of 20 always succeeds. The DC varies based on the task:
+
+<!-- dc-examples -->
+
+**Saves** When the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 and add the relevant stat. A roll of 1 always fails, 20 always saves. You can choose to fail any save instead of rolling.
+
+<!-- save-types -->
+
+### Heroes and Saves
+
+- Unless otherwise noted, the DC for effects a hero causes is **10+KEY**.
+- When making saves, each hero has 1 advantaged save (+), 1 disadvantaged save (-), and 2 neutral saves.
+
+> **Example.** A Berserker (STR+, INT-) would roll all of his STR saves with advantage and all of his INT saves with disadvantage.
+
+## Size
+
+Some spells and abilities affect differently sized objects or creatures. For size, use the following guidelines:
+
+<!-- size-examples -->

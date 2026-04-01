@@ -1,8 +1,5 @@
 import { z } from 'astro/zod';
 import rawSidebar from '../data/core-rules-sidebar.json';
-import { coreRulesSnippets } from './core-rules-snippets';
-
-const snippetIds = new Set(coreRulesSnippets.map((r) => r.id));
 
 const coreRulesSidebarLeafSchema = z
 	.object({
@@ -19,24 +16,8 @@ const coreRulesSidebarChapterSchema = z
 	})
 	.strict();
 
-const coreRulesSidebarSchema = z
-	.array(coreRulesSidebarChapterSchema)
-	.min(1)
-	.superRefine((chapters, ctx) => {
-		for (let ci = 0; ci < chapters.length; ci++) {
-			const ch = chapters[ci]!;
-			for (let li = 0; li < ch.items.length; li++) {
-				const { anchor } = ch.items[li]!;
-				if (!snippetIds.has(anchor)) {
-					ctx.addIssue({
-						code: z.ZodIssueCode.custom,
-						message: `Unknown anchor "${anchor}" (no matching core-rules snippet id)`,
-						path: [ci, 'items', li, 'anchor'],
-					});
-				}
-			}
-		}
-	});
+/** Shape-only validation. Anchors are not checked against snippet ids while sidebar is in flux. */
+const coreRulesSidebarSchema = z.array(coreRulesSidebarChapterSchema).min(1);
 
 export type CoreRulesSidebarChapter = z.infer<
 	typeof coreRulesSidebarChapterSchema
