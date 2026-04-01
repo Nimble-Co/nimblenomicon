@@ -1,12 +1,6 @@
 ---
 title: Core Rules
-description: Nimble Core Rules (2.0.3) — text reference.
-hidePageTitle: true
-bannerInHero: true
 ---
-
-<!-- <CoreRulesHero /> -->
-
 # Start Here
 
 Nimble is a fast-paced, heroic fantasy TTRPG where bold choices and epic stories take center stage.
@@ -51,23 +45,23 @@ Heroes have 4 stats that impact their effectiveness in various tasks: 2 Key Stat
 
 > **KEY.** When an ability or spell references “KEY,” use one of your Key Stats. If a stat is listed before a die roll, roll a number of dice equal to the stat. For example, “WIL d8” means that if your WIL is 2, you roll 2d8 (two eight-sided dice).
 
-<!-- stats-list -->
+
 
 ## Skills
 
 Skills gauge how well your hero interacts with the world. Whenever you tell the GM what you are doing, they may ask you to use one of your skills.
 
-<!-- skills-list -->
+
 
 ## Skill Checks & Saves
 
-When you want to affect the _world_ (convince an NPC, spot a trap, pick a lock, etc.), the GM may call for a skill check. Roll 1d20 and add your skill (the max bonus a skill can ever have is +12). If the total meets or exceeds the Difficulty Challenge (DC), you succeed; otherwise, you fail. A roll of 1 always fails regardless of any other bonuses, while a roll of 20 always succeeds. The DC varies based on the task:
+When you want to affect the *world* (convince an NPC, spot a trap, pick a lock, etc.), the GM may call for a skill check. Roll 1d20 and add your skill (the max bonus a skill can ever have is +12). If the total meets or exceeds the Difficulty Challenge (DC), you succeed; otherwise, you fail. A roll of 1 always fails regardless of any other bonuses, while a roll of 20 always succeeds. The DC varies based on the task:
 
-<!-- dc-examples -->
 
-**Saves** When the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 and add the relevant stat. A roll of 1 always fails, 20 always saves. You can choose to fail any save instead of rolling.
 
-<!-- save-types -->
+**Saves** When the *world* affects *you*, roll a save instead of a skill check. Roll 1d20 and add the relevant stat. A roll of 1 always fails, 20 always saves. You can choose to fail any save instead of rolling.
+
+
 
 ### Heroes and Saves
 
@@ -80,4 +74,3 @@ When you want to affect the _world_ (convince an NPC, spot a trap, pick a lock, 
 
 Some spells and abilities affect differently sized objects or creatures. For size, use the following guidelines:
 
-<!-- size-examples -->
