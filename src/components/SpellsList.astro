@@ -1,16 +1,19 @@
 ---
-import { renderMarkdown } from '../../lib/render-markdown';
-import { spells, type SpellData } from '../../models/spells';
+import { renderMarkdown } from '../lib/render-markdown';
+import { spells, type SpellData } from '../models/spells';
 
-const { spellSchoolId, utility = false } = Astro.props;
+const { spellSchoolId, utility = false, secret = false } = Astro.props;
 const filteredSpells = spells.filter(
-	(spell) => spell.schoolId === spellSchoolId && spell.utility === utility,
+	(spell) =>
+		(spellSchoolId ? spell.schoolId === spellSchoolId : true) &&
+		spell.utility === utility &&
+		spell.secret === secret,
 );
 
 function spellMetaMarkdown(spell: SpellData): string {
 	const components = [
 		spell.tierLabel,
-		spell.castingTime.trim(),
+		spell.castingTime?.trim(),
 		spell.targetLabel,
 	];
 	return `_${components.filter(Boolean).join(', ')}_`;

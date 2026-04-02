@@ -151,19 +151,6 @@ content:
             type: string
             required: true
 
-      - name: gmg-secret-spell-ids
-        label: Secret Spell Order
-        type: file
-        path: src/data/gmg-secret-spell-ids.json
-        format: json
-        list: true
-        fields:
-          - name: spellId
-            label: Spell Id
-            type: string
-            required: true
-            description: Must match a spell id from spells.json (kebab-case slug).
-
   - name: stats-skills
     label: Stats & Skills
     type: group
@@ -672,7 +659,7 @@ content:
             label: Spell Tier
             type: select
             required: true
-            description: Stored as a number 0–9 in JSON (Cantrip = 0).
+            description: Stored as a number 0-9 in JSON (Cantrip = 0).
             options:
               values:
                 - name: '0'
@@ -720,6 +707,21 @@ content:
                   label: Single Target+
                 - name: single-target-or-self
                   label: Single Target / Self
+          - name: source
+            label: Source
+            type: select
+            required: true
+            options:
+              values:
+                - name: core-rules
+                  label: Core Rules
+                - name: game-masters-guide
+                  label: Game Master's Guide
+          - name: secret
+            label: Secret Spell
+            type: boolean
+            required: true
+            description: When enabled, the spell is listed under Secret Spells.
           - name: description
             label: Description
             type: rich-text

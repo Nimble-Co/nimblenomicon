@@ -5,17 +5,21 @@ hidePageTitle: true
 bannerInHero: true
 ---
 
-import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import manticorHero from '../../assets/manticor.webp';
+import FullBleedHero from '../../components/FullBleedHero.astro';
 import GmgChaosTable from '../../components/game-masters-guide/GmgChaosTable.astro';
 import GmgGoldByLevelTable from '../../components/game-masters-guide/GmgGoldByLevelTable.astro';
-import GmgHero from '../../components/game-masters-guide/GmgHero.astro';
 import GmgMonsterBuilderTable from '../../components/game-masters-guide/GmgMonsterBuilderTable.astro';
-import GmgSecretSpellsList from '../../components/game-masters-guide/GmgSecretSpellsList.astro';
 import GmgTemporaryBoonsTable from '../../components/game-masters-guide/GmgTemporaryBoonsTable.astro';
+import SpellList from '../../components/SpellsList.astro';
 
 {/* const bannerContent = `<p>This is free to use for anyone who already owns the content, is trying the system out, or cannot afford to buy it right now. If you enjoy Nimble and are able, please support the game by purchasing the official content at <a href="https://nimbleRPG.com">nimbleRPG.com</a>.</p>`; */}
 
-<GmgHero />
+<FullBleedHero
+	title="Game Master's Guide"
+	image={manticorHero}
+	imageAlt="Fantasy illustration — heroes facing a dangerous beast"
+/>
 
 # Starting as a GM
 
@@ -523,7 +527,7 @@ When a party rests is up to you, as the GM. Offering one-time healing or directi
 These spells are either incredibly powerful and banned from common knowledge, or ancient and simply lost to the ravages of time. They may not be appropriate for heroes to wield freely but can make for excellent quest rewards when found on scrolls, imbued in wands, or taught by a rare NPC. The mere existence of these spells can drive entire storylines and enrich your game world.
 
 
-<GmgSecretSpellsList />
+<SpellList secret />
 
 ## Gold
 

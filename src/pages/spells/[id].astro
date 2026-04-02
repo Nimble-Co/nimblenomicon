@@ -18,10 +18,12 @@ const schoolName =
 	spell.schoolId;
 function spellMetaMarkdown(spell: SpellData): string {
 	const components = [
+		`${schoolName} Spell`,
 		spell.tierLabel,
-		spell.castingTime.trim(),
+		spell.castingTime?.trim(),
 		spell.targetLabel,
 		spell.utility ? 'Utility' : '',
+		spell.secret ? 'Secret' : '',
 	];
 	return `_${components.filter(Boolean).join(', ')}_`;
 }
@@ -41,7 +43,13 @@ const bodyMarkdown = spellMetaMarkdown(spell) + '\n\n' + spell.description;
 >
 	<div set:html={await renderMarkdown(bodyMarkdown)} />
 	<p class="spell-detail__core-rules-ref">
-		<em>From <a href={`/core-rules/#${spell.id}`}>Core Rules</a></em>
+		<em
+			>From <a href={`/${spell.source}/#${spell.id}`}
+				>{
+					spell.source === 'core-rules' ? 'Core Rules' : "Game Master's Guide"
+				}</a
+			></em
+		>
 	</p>
 </StarlightPage>
 

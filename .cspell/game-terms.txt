@@ -20,6 +20,7 @@ Criticals
 crits
 critting
 Cryosleep
+Cryotomb
 Crystalborn
 cutscene
 Cutscenes
@@ -126,6 +127,7 @@ sidequest
 Snowblind
 Songweaver
 SONGWEAVER
+Sparkfetch
 spellcasters
 Spellcasting
 statblocks
@@ -149,6 +151,7 @@ unheld
 upcasting
 WCAG
 Webslinger
+Windform
 Wyrdling
 Wyrdlings
 Wyrmhide

@@ -19,10 +19,12 @@ const spellsSchema = z
 		schoolId: z.string().min(1),
 		utility: z.boolean(),
 		name: z.string().min(1),
-		castingTime: z.string().min(1),
+		castingTime: z.string().min(1).optional(),
 		target: spellTargetSchema.optional(),
 		description: z.string().min(1),
 		tier: z.number().min(0).max(9),
+		secret: z.boolean().default(false),
+		source: z.enum(['core-rules', 'game-masters-guide']),
 	})
 	.strict()
 	.transform((spell) => {
