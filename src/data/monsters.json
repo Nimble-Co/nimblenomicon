@@ -2,33 +2,84 @@
   {
     "name": "Bandit Minion",
     "level": "1/4",
+    "sizeId": "medium",
+    "armor": "none",
+    "speed": 6,
+    "speedMode": "walk",
     "bodyDescription": "**Stab.** 1d8 (follows minion rules).",
     "groupId": "bandits"
   },
   {
     "name": "Bandit",
     "level": "1/3",
+    "sizeId": "medium",
+    "healthPoints": 12,
+    "armor": "medium",
+    "speed": 6,
+    "speedMode": "walk",
     "bodyDescription": "**Stab.** 1d8+1 (or Shoot, Range 8).",
-    "groupId": "bandits",
-    "healthPoints": 12
+    "groupId": "bandits"
   },
   {
     "name": "Bandit Bruiser",
     "level": "2",
-    "armor": "medium",
+    "sizeId": "medium",
     "healthPoints": 24,
+    "armor": "medium",
+    "speed": 6,
+    "speedMode": "walk",
     "bodyDescription": "**Bash.** 2d8+4.",
+    "groupId": "bandits"
+  },
+  {
+    "name": "Bandit Captain",
+    "level": "4",
+    "sizeId": "medium",
+    "healthPoints": 36,
+    "armor": "medium",
+    "speed": 6,
+    "speedMode": "walk",
+    "bodyDescription": "**Slice (3x).** 1d8+1 (or Shoot, Range 8).",
+    "groupId": "bandits"
+  },
+  {
+    "name": "Bandit Hunter",
+    "level": "1",
+    "sizeId": "medium",
+    "healthPoints": 22,
+    "armor": "none",
+    "speed": 6,
+    "speedMode": "walk",
+    "bodyDescription": "**Battlebow.** 2d8+2 (Range 12).",
     "groupId": "bandits"
   },
   {
     "name": "Bandit Assassin",
     "level": "2",
+    "sizeId": "medium",
     "healthPoints": 24,
+    "armor": "none",
+    "speed": 6,
+    "speedMode": "walk",
+    "bodyDescription": "**Poison Blade (2x).** 1d8+2. On damage: Dazed.",
     "specialAbility": {
       "name": "Sneak",
       "description": "You are invisible until you attack."
     },
-    "bodyDescription": "**Poison Blade (2x).** 1d8+2.",
     "groupId": "bandits"
+  },
+  {
+    "name": "Bandit Mage",
+    "level": "4",
+    "sizeId": "medium",
+    "healthPoints": 41,
+    "armor": "none",
+    "speed": 6,
+    "speedMode": "walk",
+    "bodyDescription": "**Arc Lightning.** 3d8 (Range 12). Also strikes the next closest creature. On miss: damage self instead.",
+    "specialAbility": {
+      "name": "Spark Step",
+      "description": "When damaged, teleport up to 4 spaces."
+    }
   }
 ]
