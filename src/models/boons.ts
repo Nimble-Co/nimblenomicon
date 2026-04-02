@@ -76,15 +76,3 @@ const boonSchema = rawBoonSchema.transform((row): BoonData => {
 });
 
 export const boons: BoonData[] = z.array(boonSchema).parse(rawBoons);
-
-/** Lodging table (1d8) rows, sorted by roll. */
-export const gmgTemporaryBoons: TemporaryBoonRow[] = boons
-	.filter((b): b is TemporaryBoonRow => b.level === 'temporary')
-	.slice()
-	.sort((a, b) => a.roll - b.roll);
-
-export function boonsByLevel(
-	level: 'minor' | 'major' | 'epic',
-): NamedBoonData[] {
-	return boons.filter((b): b is NamedBoonData => b.level === level);
-}

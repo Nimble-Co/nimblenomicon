@@ -10,8 +10,7 @@ import FullBleedHero from '../../components/FullBleedHero.astro';
 import GmgChaosTable from '../../components/game-masters-guide/GmgChaosTable.astro';
 import GmgGoldByLevelTable from '../../components/game-masters-guide/GmgGoldByLevelTable.astro';
 import GmgMonsterBuilderTable from '../../components/game-masters-guide/GmgMonsterBuilderTable.astro';
-import GmgBoonsList from '../../components/game-masters-guide/GmgBoonsList.astro';
-import GmgTemporaryBoonsTable from '../../components/game-masters-guide/GmgTemporaryBoonsTable.astro';
+import BoonsList from '../../components/BoonsList.astro';
 import SpellList from '../../components/SpellsList.astro';
 
 <FullBleedHero
@@ -562,7 +561,7 @@ Spending extra gold on lavish accommodations can provide valuable temporary bene
 
 These Boons are temporary and last only until the heroes take another Safe Rest. Adjust the cost and impact to suit your campaign and the party's level of wealth.
 
-<GmgTemporaryBoonsTable />
+<BoonsList level="temporary" />
 
 ## Boons
 
@@ -570,15 +569,15 @@ Boons can be a great quest reward from a powerful patron (e.g., an elf queen, he
 
 ### Minor Boons
 
-<GmgBoonsList level="minor" />
+<BoonsList level="minor" />
 
 ### Major Boons
 
-<GmgBoonsList level="major" />
+<BoonsList level="major" />
 
 ### EPIC Boons
 
-<GmgBoonsList level="epic" />
+<BoonsList level="epic" />
 
 # Monsters
 
