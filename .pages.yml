@@ -55,59 +55,6 @@ content:
         options:
           format: mdx
 
-  - name: game-masters-guide-snippets
-    label: Game Master's Guide Text
-    type: file
-    path: src/data/game-masters-guide-snippets.json
-    format: json
-    list: true
-    fields:
-      - name: id
-        label: Id
-        type: string
-        required: true
-        description: Stable anchor for this block; use lowercase letters, numbers, and hyphens. Put titles in Description with # / ## / ### as needed.
-      - name: description
-        label: Description
-        type: rich-text
-        required: true
-        description: Full markdown for this block, including headings (e.g. ## Section title as the first line).
-        options:
-          format: markdown
-
-  - name: game-masters-guide-sidebar
-    label: Game Master's Guide Sidebar
-    type: file
-    path: src/data/game-masters-guide-sidebar.json
-    format: json
-    list: true
-    fields:
-      - name: name
-        label: Chapter Name
-        type: string
-        required: true
-        description: Accordion label.
-      - name: collapsed
-        label: Collapsed By Default
-        type: boolean
-        required: true
-      - name: items
-        label: Links
-        type: object
-        list: true
-        required: true
-        fields:
-          - name: name
-            label: Name
-            type: string
-            required: true
-            description: Text shown in the sidebar for this link.
-          - name: anchor
-            label: Anchor Id
-            type: string
-            required: true
-            description: Must match a Game Master's Guide snippet id (same as the section id in the page URL hash).
-
   - name: game-masters-guide-data
     label: Game Master's Guide Data
     type: group

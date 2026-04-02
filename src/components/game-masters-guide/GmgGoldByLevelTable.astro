@@ -1,60 +1,32 @@
 ---
 import { gmgGoldByLevel } from '../../models/gmg-gold-by-level';
-
-const low = gmgGoldByLevel.filter((r) => r.level <= 10);
-const high = gmgGoldByLevel.filter((r) => r.level > 10);
 ---
 
 <section class="gmg-data-table-wrap" aria-label="Gold per level">
-	<div class="gmg-gold-grid">
-		<table class="gmg-data-table">
-			<thead>
-				<tr>
-					<th scope="col">Level</th>
-					<th scope="col">Gold</th>
-				</tr>
-			</thead>
-			<tbody>
-				{
-					low.map((row) => (
-						<tr>
-							<td>{row.level}</td>
-							<td>{row.gold.toLocaleString()}</td>
-						</tr>
-					))
-				}
-			</tbody>
-		</table>
-		<table class="gmg-data-table">
-			<thead>
-				<tr>
-					<th scope="col">Level</th>
-					<th scope="col">Gold</th>
-				</tr>
-			</thead>
-			<tbody>
-				{
-					high.map((row) => (
-						<tr>
-							<td>{row.level}</td>
-							<td>{row.gold.toLocaleString()}</td>
-						</tr>
-					))
-				}
-			</tbody>
-		</table>
-	</div>
+	<table class="gmg-data-table">
+		<thead>
+			<tr>
+				<th scope="col">Level</th>
+				<th scope="col">Gold</th>
+			</tr>
+		</thead>
+		<tbody>
+			{
+				gmgGoldByLevel.map((row) => (
+					<tr>
+						<td>{row.level}</td>
+						<td>{row.gold.toLocaleString()}</td>
+					</tr>
+				))
+			}
+		</tbody>
+	</table>
 </section>
 
 <style>
 	.gmg-data-table-wrap {
 		overflow-x: auto;
 		margin-block: 1rem;
-	}
-	.gmg-gold-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-		gap: 1rem;
 	}
 	.gmg-data-table {
 		width: 100%;
