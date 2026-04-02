@@ -157,3 +157,20 @@ Wyrdlings
 Wyrmhide
 zombified
 Zwiehander
+
+# Game Master's Guide & chaos magic content
+Aetherlings
+aetherling
+DIAZ
+elderwild
+Embiggen
+farhope
+Graviturgical
+improv
+Kelebek
+Mindfire
+nums
+shadowblight
+Shadowtrap
+skyreach
+Unbiggen
