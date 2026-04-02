@@ -1,0 +1,64 @@
+---
+import { gmgMonsterBuilderLevels } from '../../models/gmg-monster-builder-levels';
+---
+
+<section class="gmg-data-table-wrap" aria-label="Monster builder by level">
+	<table class="gmg-data-table gmg-data-table--wide">
+		<thead>
+			<tr>
+				<th scope="col">Monster Level</th>
+				<th scope="col">HP (no armor)</th>
+				<th scope="col">HP (M)</th>
+				<th scope="col">HP (H)</th>
+				<th scope="col">Dmg / round</th>
+				<th scope="col">Attack (sample)</th>
+				<th scope="col">Save DC</th>
+				<th scope="col">CR equiv.</th>
+			</tr>
+		</thead>
+		<tbody>
+			{
+				gmgMonsterBuilderLevels.map((row) => (
+					<tr>
+						<td>{row.level}</td>
+						<td>{row.hpNoArmor}</td>
+						<td>{row.hpMediumArmor}</td>
+						<td>{row.hpHeavyArmor}</td>
+						<td>{row.damagePerRound}</td>
+						<td>{row.attackSampleDice}</td>
+						<td>{row.saveDC}</td>
+						<td>{row.crEquivalent}</td>
+					</tr>
+				))
+			}
+		</tbody>
+	</table>
+</section>
+
+<style>
+	.gmg-data-table-wrap {
+		overflow-x: auto;
+		margin-block: 1rem;
+	}
+	.gmg-data-table {
+		width: max-content;
+		min-width: 100%;
+		border-collapse: collapse;
+		font-size: var(--sl-text-sm);
+	}
+	.gmg-data-table th,
+	.gmg-data-table td {
+		border: 1px solid var(--sl-color-hairline);
+		padding: 0.4rem 0.5rem;
+		vertical-align: top;
+		text-align: start;
+		white-space: nowrap;
+	}
+	.gmg-data-table td:nth-child(6) {
+		white-space: normal;
+		min-width: 10rem;
+	}
+	.gmg-data-table th {
+		background: var(--sl-color-bg-sidebar);
+	}
+</style>

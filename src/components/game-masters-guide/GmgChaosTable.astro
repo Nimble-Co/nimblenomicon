@@ -1,0 +1,52 @@
+---
+import { chaosMagicRows } from '../../models/chaos-magic';
+---
+
+<section class="gmg-data-table-wrap" aria-label="Chaos table">
+	<table class="gmg-data-table">
+		<thead>
+			<tr>
+				<th scope="col">d20</th>
+				<th scope="col">Name</th>
+				<th scope="col">Effect</th>
+			</tr>
+		</thead>
+		<tbody>
+			{
+				chaosMagicRows.map((row) => (
+					<tr>
+						<td>{row.roll}</td>
+						<td>{row.name}</td>
+						<td>{row.description}</td>
+					</tr>
+				))
+			}
+		</tbody>
+	</table>
+</section>
+
+<style>
+	.gmg-data-table-wrap {
+		overflow-x: auto;
+		margin-block: 1rem;
+	}
+	.gmg-data-table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: var(--sl-text-sm);
+	}
+	.gmg-data-table th,
+	.gmg-data-table td {
+		border: 1px solid var(--sl-color-hairline);
+		padding: 0.5rem 0.65rem;
+		vertical-align: top;
+		text-align: start;
+	}
+	.gmg-data-table th {
+		background: var(--sl-color-bg-sidebar);
+	}
+	.gmg-data-table td:first-child {
+		white-space: nowrap;
+		font-variant-numeric: tabular-nums;
+	}
+</style>

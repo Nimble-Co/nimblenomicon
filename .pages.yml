@@ -55,6 +55,102 @@ content:
         options:
           format: mdx
 
+  - name: game-masters-guide-data
+    label: Game Master's Guide Data
+    type: group
+    items:
+      - name: chaos-magic
+        label: Chaos Table
+        type: file
+        path: src/data/chaos-magic.json
+        format: json
+        list: true
+        fields:
+          - name: roll
+            label: d20 Roll
+            type: number
+            required: true
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: string
+            required: true
+
+      - name: gmg-gold-by-level
+        label: Gold By Level
+        type: file
+        path: src/data/gmg-gold-by-level.json
+        format: json
+        list: true
+        fields:
+          - name: level
+            label: Level
+            type: number
+            required: true
+          - name: gold
+            label: Gold
+            type: number
+            required: true
+
+      - name: gmg-temporary-boons
+        label: Temporary Boons (1d8)
+        type: file
+        path: src/data/gmg-temporary-boons.json
+        format: json
+        list: true
+        fields:
+          - name: roll
+            label: d8 Roll
+            type: number
+            required: true
+          - name: description
+            label: Description
+            type: string
+            required: true
+
+      - name: gmg-monster-builder-levels
+        label: Monster Builder Levels
+        type: file
+        path: src/data/gmg-monster-builder-levels.json
+        format: json
+        list: true
+        fields:
+          - name: level
+            label: Monster Level
+            type: string
+            required: true
+          - name: hpNoArmor
+            label: HP No Armor
+            type: number
+            required: true
+          - name: hpMediumArmor
+            label: HP Medium Armor
+            type: number
+            required: true
+          - name: hpHeavyArmor
+            label: HP Heavy Armor
+            type: number
+            required: true
+          - name: damagePerRound
+            label: Damage Per Round
+            type: number
+            required: true
+          - name: attackSampleDice
+            label: Attack Sample Dice
+            type: string
+            required: true
+          - name: saveDC
+            label: Save DC
+            type: number
+            required: true
+          - name: crEquivalent
+            label: CR Equivalent
+            type: string
+            required: true
+
   - name: stats-skills
     label: Stats & Skills
     type: group
@@ -563,7 +659,7 @@ content:
             label: Spell Tier
             type: select
             required: true
-            description: Stored as a number 0–9 in JSON (Cantrip = 0).
+            description: Stored as a number 0-9 in JSON (Cantrip = 0).
             options:
               values:
                 - name: '0'
@@ -611,6 +707,21 @@ content:
                   label: Single Target+
                 - name: single-target-or-self
                   label: Single Target / Self
+          - name: source
+            label: Source
+            type: select
+            required: true
+            options:
+              values:
+                - name: core-rules
+                  label: Core Rules
+                - name: game-masters-guide
+                  label: Game Master's Guide
+          - name: secret
+            label: Secret Spell
+            type: boolean
+            required: true
+            description: When enabled, the spell is listed under Secret Spells.
           - name: description
             label: Description
             type: rich-text

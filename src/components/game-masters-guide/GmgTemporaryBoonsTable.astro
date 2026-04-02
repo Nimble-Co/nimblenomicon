@@ -1,0 +1,51 @@
+---
+import { gmgTemporaryBoons } from '../../models/gmg-temporary-boons';
+---
+
+<section class="gmg-data-table-wrap" aria-label="1d8 temporary boons">
+	<table class="gmg-data-table">
+		<thead>
+			<tr>
+				<th scope="col">1d8</th>
+				<th scope="col">Temporary Boon</th>
+			</tr>
+		</thead>
+		<tbody>
+			{
+				gmgTemporaryBoons.map((row) => (
+					<tr>
+						<td>{row.roll}</td>
+						<td>{row.description}</td>
+					</tr>
+				))
+			}
+		</tbody>
+	</table>
+</section>
+
+<style>
+	.gmg-data-table-wrap {
+		overflow-x: auto;
+		margin-block: 1rem;
+	}
+	.gmg-data-table {
+		width: 100%;
+		max-width: 40rem;
+		border-collapse: collapse;
+		font-size: var(--sl-text-sm);
+	}
+	.gmg-data-table th,
+	.gmg-data-table td {
+		border: 1px solid var(--sl-color-hairline);
+		padding: 0.5rem 0.65rem;
+		vertical-align: top;
+		text-align: start;
+	}
+	.gmg-data-table th {
+		background: var(--sl-color-bg-sidebar);
+	}
+	.gmg-data-table td:first-child {
+		font-variant-numeric: tabular-nums;
+		white-space: nowrap;
+	}
+</style>

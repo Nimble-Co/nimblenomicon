@@ -38,6 +38,7 @@ const spellSchoolShortName = (schoolId: string) =>
 					<th scope="col">School</th>
 					<th scope="col">Tier</th>
 					<th scope="col">Utility</th>
+					<th scope="col">Secret</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -49,7 +50,8 @@ const spellSchoolShortName = (schoolId: string) =>
 							</th>
 							<td>{spellSchoolShortName(spell.schoolId)}</td>
 							<td>{spell.tierLabel}</td>
-							<td>{spell.utility ? 'Yes' : 'No'}</td>
+							<td>{spell.utility ? 'Utility' : ''}</td>
+							<td>{spell.secret ? 'Secret' : ''}</td>
 						</tr>
 					))
 				}

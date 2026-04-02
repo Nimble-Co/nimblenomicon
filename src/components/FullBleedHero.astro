@@ -1,0 +1,227 @@
+---
+import type { ImageMetadata } from 'astro';
+import heartIcon from '../assets/heart.svg';
+
+interface Props {
+	title: string;
+	image: ImageMetadata;
+	/** Override default alt text (defaults to a short description using the title). */
+	imageAlt?: string;
+}
+
+const { title, image, imageAlt } = Astro.props;
+const alt = imageAlt ?? `${title} — hero illustration`;
+---
+
+<div class="nimble-full-bleed-hero">
+	<img
+		class="nimble-full-bleed-hero__img"
+		src={image.src}
+		height={image.height}
+		alt={alt}
+		loading="eager"
+		decoding="async"
+	/>
+	<div class="nimble-full-bleed-hero__gradient" aria-hidden="true"></div>
+	<div class="nimble-full-bleed-hero__bottom">
+		<h1 id="_top" class="nimble-full-bleed-hero__title">{title}</h1>
+		<div
+			class="nimble-full-bleed-hero__callout not-content"
+			data-pagefind-ignore
+		>
+			<img
+				class="nimble-full-bleed-hero__callout-icon"
+				src={heartIcon.src}
+				width={heartIcon.width}
+				height={heartIcon.height}
+				alt=""
+				aria-hidden="true"
+				loading="eager"
+				decoding="async"
+			/>
+			<div class="nimble-full-bleed-hero__callout-body">
+				<p>
+					This is free to use for anyone who already owns the content, is trying
+					the system out, or cannot afford to buy it right now. If you enjoy
+					Nimble and are able, please support the game by purchasing the
+					official content at <a href="https://nimblerpg.com">nimbleRPG.com</a>.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style is:global>
+	/*
+	 * Hero-led pages: Starlight still renders an empty first `content-panel` (no PageTitle) and
+	 * adds a sibling hairline + padding. Remove both so the hero sits flush under the header.
+	 */
+	main .content-panel:first-child:not(:has(.sl-container > *)) {
+		display: none;
+	}
+
+	main .content-panel:has(.nimble-full-bleed-hero) {
+		border-top: none;
+		padding-top: 0;
+	}
+
+	/* Core Rules / GMG — edge-to-edge hero above prose column */
+	.nimble-full-bleed-hero {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: stretch;
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw);
+		margin-bottom: 0;
+		min-height: 380px;
+		min-width: 0;
+		/* Allow the callout to extend past the hero and overlap the prose below */
+		overflow: visible;
+	}
+
+	.nimble-full-bleed-hero__img {
+		position: absolute;
+		inset: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	/* Bottom + edge darkening so white title reads on busy art */
+	.nimble-full-bleed-hero__gradient {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		pointer-events: none;
+		background:
+			linear-gradient(
+				to top,
+				rgba(0, 0, 0, 0.92) 0%,
+				rgba(0, 0, 0, 0.35) 42%,
+				transparent 72%
+			),
+			linear-gradient(
+				to right,
+				rgba(0, 0, 0, 0.45) 0%,
+				transparent 28%,
+				transparent 72%,
+				rgba(0, 0, 0, 0.45) 100%
+			);
+	}
+
+	.nimble-full-bleed-hero__bottom {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		/* stretch so title + callout use full usable width (center avoids this in some browsers) */
+		align-items: stretch;
+		gap: 0.75rem;
+		box-sizing: border-box;
+		width: min(100%, 40rem);
+		min-width: 0;
+		margin-inline: auto;
+		padding: 0 max(1rem, env(safe-area-inset-left)) 1rem
+			max(1rem, env(safe-area-inset-right));
+		margin-top: auto;
+	}
+
+	.nimble-full-bleed-hero__title {
+		margin: 0;
+		text-align: center;
+		font-family: var(--nimble-font-heading);
+		font-weight: 700;
+		font-style: italic;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		font-size: clamp(1.625rem, 4.2vw, 2.625rem);
+		line-height: 1.1;
+		color: #ffffff;
+		text-shadow:
+			0 2px 20px rgba(0, 0, 0, 0.75),
+			0 0 1px rgba(0, 0, 0, 0.9);
+	}
+
+	.nimble-full-bleed-hero__callout {
+		position: relative;
+		z-index: 3;
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+		box-sizing: border-box;
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
+		padding: 0.75rem clamp(0.625rem, 3vw, 1rem);
+		border-radius: 0.375rem;
+		border: 1px solid rgba(0, 0, 0, 0.12);
+		background-color: rgba(248, 248, 248, 1);
+		color: #525252;
+		box-shadow:
+			0 4px 24px rgba(0, 0, 0, 0.35),
+			0 1px 2px rgba(0, 0, 0, 0.08);
+		/* Half of the card sits on the image, half on the page body below */
+		margin-bottom: -3rem;
+	}
+
+	@media (max-width: 22rem) {
+		.nimble-full-bleed-hero__callout {
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
+
+		.nimble-full-bleed-hero__callout-icon {
+			margin-top: 0;
+		}
+
+		.nimble-full-bleed-hero__callout-body {
+			text-align: center;
+		}
+	}
+
+	/* Restore vertical rhythm after the hero + overlapping callout */
+	.sl-markdown-content:has(> .nimble-full-bleed-hero:first-child)
+		> .nimble-full-bleed-hero
+		+ * {
+		margin-top: 3.5rem;
+	}
+
+	.nimble-full-bleed-hero__callout-icon {
+		flex-shrink: 0;
+		width: 1.5rem;
+		height: auto;
+		display: block;
+		/* Align with first line of copy (avoid centering on the full wrapped paragraph) */
+		margin-top: 0.2em;
+	}
+
+	.nimble-full-bleed-hero__callout-body {
+		flex: 1;
+		min-width: 0;
+		font-size: 0.8125rem;
+		font-style: italic;
+		line-height: 1.45;
+		overflow-wrap: anywhere;
+	}
+
+	.nimble-full-bleed-hero__callout-body p {
+		margin: 0;
+	}
+
+	.nimble-full-bleed-hero__callout-body a {
+		color: var(--sl-color-text-accent);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.nimble-full-bleed-hero__callout-body a:hover,
+	.nimble-full-bleed-hero__callout-body a:focus-visible {
+		color: var(--sl-color-white);
+	}
+</style>

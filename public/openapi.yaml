@@ -141,20 +141,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/CoreRulesSidebarItem'
-  /api/core-rules-snippets:
-    get:
-      summary: Get Core Rules Snippets
-      operationId: getCoreRulesSnippets
-      description: Same JSON as `src/data/core-rules-snippets.json` (top-level array).
-      responses:
-        '200':
-          description: Array of `CoreRulesSnippetsItem` records
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/CoreRulesSnippetsItem'
   /api/dc-examples:
     get:
       summary: Get Dc Examples
@@ -556,19 +542,6 @@ components:
         - name
         - collapsed
         - items
-      additionalProperties: false
-    CoreRulesSnippetsItem:
-      type: object
-      properties:
-        id:
-          type: string
-          minLength: 1
-        description:
-          type: string
-          minLength: 1
-      required:
-        - id
-        - description
       additionalProperties: false
     DcExamplesItem:
       type: object

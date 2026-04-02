@@ -1,8 +1,13 @@
 ---
 title: Core Rules
 description: The core rules of Nimble RPG.
+hidePageTitle: true
+bannerInHero: true
 ---
 
+import manticorHero from '../../assets/manticor.webp';
+import FullBleedHero from '../../components/FullBleedHero.astro';
+import SpellList from '../../components/SpellsList.astro';
 import CoreRulesAdventuringMotivationsList from '../../components/core-rules/CoreRulesAdventuringMotivationsList.astro';
 import CoreRulesAncestrySection from '../../components/core-rules/CoreRulesAncestrySection.astro';
 import CoreRulesArmorTables from '../../components/core-rules/CoreRulesArmorTables.astro';
@@ -22,12 +27,17 @@ import CoreRulesSizesList from '../../components/core-rules/CoreRulesSizesList.a
 import CoreRulesSkillsList from '../../components/core-rules/CoreRulesSkillsList.astro';
 import CoreRulesSpellSchoolsList from '../../components/core-rules/CoreRulesSpellSchoolsList.astro';
 import CoreRulesSpellScrollCostsTable from '../../components/core-rules/CoreRulesSpellScrollCostsTable.astro';
-import CoreRulesSpellsBySchool from '../../components/core-rules/CoreRulesSpellsBySchool.astro';
 import CoreRulesStatArraysList from '../../components/core-rules/CoreRulesStatArraysList.astro';
 import CoreRulesStatsList from '../../components/core-rules/CoreRulesStatsList.astro';
 import CoreRulesWandCostsTable from '../../components/core-rules/CoreRulesWandCostsTable.astro';
 import CoreRulesWeaponPropertiesList from '../../components/core-rules/CoreRulesWeaponPropertiesList.astro';
 import CoreRulesWeaponsTable from '../../components/core-rules/CoreRulesWeaponsTable.astro';
+
+<FullBleedHero
+	title="Core Rules"
+	image={manticorHero}
+	imageAlt="Manticore illustration — heroes battling a winged beast"
+/>
 
 # Start Here
 
@@ -591,27 +601,27 @@ There are 6 main schools of magic. Each school has its own basic spells called c
 
 ## Fire Spells
 
-<CoreRulesSpellsBySchool spellSchoolId="fire" />
+<SpellList spellSchoolId="fire" />
 
 ## Ice Spells
 
-<CoreRulesSpellsBySchool spellSchoolId="ice" />
+<SpellList spellSchoolId="ice" />
 
 ## Lightning Spells
 
-<CoreRulesSpellsBySchool spellSchoolId="lightning" />
+<SpellList spellSchoolId="lightning" />
 
 ## Wind Spells
 
-<CoreRulesSpellsBySchool spellSchoolId="wind" />
+<SpellList spellSchoolId="wind" />
 
 ## Radiant Spells
 
-<CoreRulesSpellsBySchool spellSchoolId="radiant" />
+<SpellList spellSchoolId="radiant" />
 
 ## Necrotic Spells
 
-<CoreRulesSpellsBySchool spellSchoolId="necrotic" />
+<SpellList spellSchoolId="necrotic" />
 
 ## Utility Spells
 
@@ -619,27 +629,27 @@ Some classes can choose from among these additional spells as they level up.
 
 ### Fire
 
-<CoreRulesSpellsBySchool spellSchoolId="fire" utility />
+<SpellList spellSchoolId="fire" utility />
 
 ### Ice
 
-<CoreRulesSpellsBySchool spellSchoolId="ice" utility />
+<SpellList spellSchoolId="ice" utility />
 
 ### Lightning
 
-<CoreRulesSpellsBySchool spellSchoolId="lightning" utility />
+<SpellList spellSchoolId="lightning" utility />
 
 ### Wind
 
-<CoreRulesSpellsBySchool spellSchoolId="wind" utility />
+<SpellList spellSchoolId="wind" utility />
 
 ### Radiant
 
-<CoreRulesSpellsBySchool spellSchoolId="radiant" utility />
+<SpellList spellSchoolId="radiant" utility />
 
 ### Necrotic
 
-<CoreRulesSpellsBySchool spellSchoolId="necrotic" utility />
+<SpellList spellSchoolId="necrotic" utility />
 
 # Optional Variant Rules
 
