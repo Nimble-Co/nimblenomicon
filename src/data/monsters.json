@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Bandit Minion",
+    "level": "1/4",
+    "bodyDescription": "**Stab.** 1d8 (follows minion rules).",
+    "groupId": "bandits"
+  },
+  {
+    "name": "Bandit",
+    "level": "1/3",
+    "bodyDescription": "**Stab.** 1d8+1 (or Shoot, Range 8).",
+    "groupId": "bandits",
+    "healthPoints": 12
+  },
+  {
+    "name": "Bandit Bruiser",
+    "level": "2",
+    "armor": "medium",
+    "healthPoints": 24,
+    "bodyDescription": "**Bash.** 2d8+4.",
+    "groupId": "bandits"
+  },
+  {
+    "name": "Bandit Assassin",
+    "level": "2",
+    "healthPoints": 24,
+    "specialAbility": {
+      "name": "Sneak",
+      "description": "You are invisible until you attack."
+    },
+    "bodyDescription": "**Poison Blade (2x).** 1d8+2.",
+    "groupId": "bandits"
+  }
+]

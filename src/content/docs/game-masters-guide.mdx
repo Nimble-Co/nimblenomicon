@@ -12,6 +12,7 @@ import GmgGoldByLevelTable from '../../components/game-masters-guide/GmgGoldByLe
 import GmgMonsterBuilderTable from '../../components/game-masters-guide/GmgMonsterBuilderTable.astro';
 import GmgTemporaryBoonsTable from '../../components/game-masters-guide/GmgTemporaryBoonsTable.astro';
 import SpellList from '../../components/SpellsList.astro';
+import MonsterGroupShowcase from '../../components/monsters/MonsterGroupShowcase.astro';
 
 <FullBleedHero
 	title="Game Master's Guide"
@@ -843,7 +844,7 @@ Once you have the base stats for the encounter, you can optionally add a cool fl
 
 # Bestiary
 
-:: monsters
+<MonsterGroupShowcase groupId="bandits" />
 
 ## Legendary Monsters
 

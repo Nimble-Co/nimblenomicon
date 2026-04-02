@@ -1,0 +1,123 @@
+---
+import { renderMarkdown } from '../../lib/render-markdown';
+import { slugifyEntityId } from '../../lib/slugifyEntityId';
+import type { MonsterData } from '../../models/monsters';
+import { sizes } from '../../models/sizes';
+
+interface Props {
+	monster: MonsterData;
+}
+
+const { monster } = Astro.props;
+
+function sizeLabel(sizeId: string): string {
+	const match = sizes.find((s) => slugifyEntityId(s.name, 'size') === sizeId);
+	return match?.name ?? sizeId;
+}
+
+const SPEED_MODE_LABEL: Record<MonsterData['speedMode'], string> = {
+	walk: 'Walk',
+	fly: 'Fly',
+	burrow: 'Burrow',
+	swim: 'Swim',
+};
+
+const armorAbbrev: Record<MonsterData['armor'], string | null> = {
+	none: null,
+	medium: 'M',
+	heavy: 'H',
+};
+
+const bodyHtml = await renderMarkdown(monster.bodyDescription);
+const specialAbilityDescHtml = monster.specialAbility
+	? await renderMarkdown(monster.specialAbility.description)
+	: '';
+const specialConditionDescHtml = monster.specialCondition
+	? await renderMarkdown(monster.specialCondition.description)
+	: '';
+
+const hasHp = monster.healthPoints !== undefined;
+const hasArmorBadge = Boolean(armorAbbrev[monster.armor]);
+
+const showSize = monster.sizeId !== 'medium';
+const showSpeed = monster.speedMode !== 'walk' || monster.speed !== 6;
+---
+
+<article
+	class="w-full max-w-xl rounded-md border-4 border-double border-gray-300 bg-(--sl-color-bg) p-4"
+>
+	<header>
+		<div class="flex flex-row items-end justify-between gap-3">
+			<h2 class="min-w-0 flex-1">
+				<span class="inline-flex max-w-full flex-wrap items-baseline gap-x-2">
+					<span class="text-xl font-bold leading-none">{monster.name}</span>
+					<span
+						class="text-xs font-normal italic leading-none tracking-wide text-gray-500 uppercase"
+					>
+						LVL {monster.level}
+						{
+							showSize && (
+								<span class="ml-2">
+									{sizeLabel(monster.sizeId).toUpperCase()}
+								</span>
+							)
+						}
+					</span>
+				</span>
+			</h2>
+
+			<div
+				class="flex shrink-0 flex-row flex-wrap items-end justify-end gap-2 text-sm font-bold tabular-nums"
+			>
+				{
+					hasArmorBadge && (
+						<span
+							class="inline-flex h-6 min-w-6 items-center justify-center border border-gray-300 text-xs"
+							title="Armor"
+						>
+							{armorAbbrev[monster.armor]}
+						</span>
+					)
+				}
+				{
+					hasHp && (
+						<span title="Hit points">
+							<span aria-hidden="true">♥</span>
+							{monster.healthPoints}
+						</span>
+					)
+				}
+				{
+					showSpeed && (
+						<span class="text-gray-600">
+							{SPEED_MODE_LABEL[monster.speedMode]} {monster.speed}
+						</span>
+					)
+				}
+			</div>
+		</div>
+	</header>
+
+	{
+		monster.specialAbility && (
+			<div class="mt-3 rounded-md bg-gray-200 p-2 dark:bg-gray-700">
+				<p class="mb-1 font-bold">{monster.specialAbility.name}</p>
+				<div class="text-sm [&_p]:m-0" set:html={specialAbilityDescHtml} />
+			</div>
+		)
+	}
+
+	<div
+		class="mt-3 text-sm leading-relaxed [&_p]:mb-2 [&_p:last-child]:mb-0"
+		set:html={bodyHtml}
+	/>
+
+	{
+		monster.specialCondition && (
+			<div class="mt-3 rounded-md bg-gray-100 p-2 dark:bg-gray-800">
+				<p class="mb-1 font-bold">{monster.specialCondition.name}</p>
+				<div class="text-sm [&_p]:m-0" set:html={specialConditionDescHtml} />
+			</div>
+		)
+	}
+</article>

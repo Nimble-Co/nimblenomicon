@@ -787,6 +787,220 @@ content:
             options:
               format: markdown
 
+  - name: monsters
+    label: Monsters
+    type: group
+    items:
+      - name: monster-groups
+        label: Monster Groups
+        type: file
+        path: src/data/monster-groups.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+            description: Detail page URL slug is generated from this name (kebab-case).
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+          - name: sharedAbility
+            label: Shared Ability
+            type: object
+            required: false
+            fields:
+              - name: name
+                label: Name
+                type: string
+                required: true
+              - name: description
+                label: Description
+                type: rich-text
+                required: true
+                options:
+                  format: markdown
+          - name: potentialLoot
+            label: Potential Loot
+            type: text
+            required: true
+          - name: sampleEncounters
+            label: Sample Encounters
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+
+      - name: monsters
+        label: Monsters
+        type: file
+        path: src/data/monsters.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+            description: Detail page URL slug is generated from this name (kebab-case).
+          - name: level
+            label: Level
+            type: select
+            required: true
+            description: Fractional levels for minions; 1–20 for full creatures.
+            options:
+              values:
+                - name: "1/4"
+                  label: "1/4"
+                - name: "1/3"
+                  label: "1/3"
+                - name: "1/2"
+                  label: "1/2"
+                - name: "1"
+                  label: "1"
+                - name: "2"
+                  label: "2"
+                - name: "3"
+                  label: "3"
+                - name: "4"
+                  label: "4"
+                - name: "5"
+                  label: "5"
+                - name: "6"
+                  label: "6"
+                - name: "7"
+                  label: "7"
+                - name: "8"
+                  label: "8"
+                - name: "9"
+                  label: "9"
+                - name: "10"
+                  label: "10"
+                - name: "11"
+                  label: "11"
+                - name: "12"
+                  label: "12"
+                - name: "13"
+                  label: "13"
+                - name: "14"
+                  label: "14"
+                - name: "15"
+                  label: "15"
+                - name: "16"
+                  label: "16"
+                - name: "17"
+                  label: "17"
+                - name: "18"
+                  label: "18"
+                - name: "19"
+                  label: "19"
+                - name: "20"
+                  label: "20"
+          - name: sizeId
+            label: Size
+            type: select
+            required: true
+            description: Default is Medium if omitted in raw JSON; CMS must pick one.
+            options:
+              values:
+                - name: tiny
+                  label: Tiny
+                - name: small
+                  label: Small
+                - name: medium
+                  label: Medium
+                - name: large
+                  label: Large
+                - name: huge
+                  label: Huge
+                - name: gargantuan
+                  label: Gargantuan
+          - name: healthPoints
+            label: Health Points
+            type: number
+            required: false
+            description: Omit for minions (no HP to track).
+          - name: armor
+            label: Armor
+            type: select
+            required: true
+            options:
+              values:
+                - name: none
+                  label: None
+                - name: medium
+                  label: Medium
+                - name: heavy
+                  label: Heavy
+          - name: speed
+            label: Speed
+            type: number
+            required: true
+            description: Default 6 when using defaults outside CMS.
+          - name: speedMode
+            label: Speed Mode
+            type: select
+            required: true
+            options:
+              values:
+                - name: walk
+                  label: Walk
+                - name: fly
+                  label: Fly
+                - name: burrow
+                  label: Burrow
+                - name: swim
+                  label: Swim
+          - name: bodyDescription
+            label: Body Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+          - name: specialAbility
+            label: Special Ability
+            type: object
+            required: false
+            fields:
+              - name: name
+                label: Name
+                type: string
+                required: true
+              - name: description
+                label: Description
+                type: rich-text
+                required: true
+                options:
+                  format: markdown
+          - name: specialCondition
+            label: Special Condition
+            type: object
+            required: false
+            fields:
+              - name: name
+                label: Name
+                type: string
+                required: true
+              - name: description
+                label: Description
+                type: rich-text
+                required: true
+                options:
+                  format: markdown
+          - name: groupId
+            label: Monster Group
+            type: select
+            required: false
+            description: Must match a monster group id. Add a select option when you add a group.
+            options:
+              values:
+                - name: bandits
+                  label: Bandits
+
   - name: glossary
     label: Glossary
     type: file
