@@ -1,6 +1,8 @@
 # Game terms, ancestries, classes, and proper nouns (Nimble RPG)
+AHHHH
 Arrr
 Badgerfolk
+BAHAMUT
 Beastfolk
 Birdfolk
 Blindsight
@@ -11,14 +13,17 @@ Chillcraft
 crits
 Cryosleep
 Crystalborn
+cutscene
 Darklings
 Darkvision
 Demiplane
 diming
+Doppo
 Dragonborn
 Dragonform
 Dragonscale
 Drazlon
+dwarven
 Dwarvish
 Elderwyrm
 Electrickery
@@ -29,7 +34,9 @@ Firestep
 Flameborn
 Frogfolk
 Futuresight
+giftcard
 Gnatbane
+gnolls
 Gravecraft
 Gravemark
 Gravework
@@ -37,14 +44,19 @@ Greataxe
 Greatmaul
 Greatsword
 grimdark
+Grimoire
 GROFWINT
 GURPS
 Halfling
 Handwraps
+hehehehe
+Kerrik
 Knockback
 Lich
 Lifebinding
+lockpicking
 Longsword
+Maeve
 manticor
 Manticore
 Mindlink
@@ -69,7 +81,9 @@ Planeshift
 Playtest
 polymorphed
 prebuild
+premade
 Pyroclasm
+Questhook
 Ragnar
 Ratfolk
 rebuying
@@ -80,12 +94,14 @@ Rimeblades
 roadmapping
 rollable
 Scrying
+Shadowblades
 Shadowdarklings
 Shadowmancer
 SHADOWMANCER
 Shortbow
 Shroomling
 Shroomlings
+sidequest
 Snowblind
 Songweaver
 SONGWEAVER
@@ -100,6 +116,7 @@ subpanel
 Tanky
 tappable
 teleporting
+Trollsbane
 TTRPG
 Turtlefolk
 underdeliver
@@ -110,3 +127,4 @@ WCAG
 Wyrdling
 Wyrdlings
 Wyrmhide
+zombified
