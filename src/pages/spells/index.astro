@@ -17,6 +17,15 @@ function compareSpellRowsForListing(a: SpellData, b: SpellData): number {
 
 const spellSchoolShortName = (schoolId: string) =>
 	spellSchools.find((school) => school.id === schoolId)?.name ?? schoolId;
+
+const rows = [...spells].sort(compareSpellRowsForListing);
+const schoolsSorted = [...spellSchools].sort((a, b) =>
+	a.name.localeCompare(b.name),
+);
+const tierOptions = Array.from({ length: 10 }, (_, tier) => ({
+	tier,
+	label: tier === 0 ? 'Cantrip' : `Tier ${tier}`,
+}));
 ---
 
 <StarlightPage
@@ -30,8 +39,109 @@ const spellSchoolShortName = (schoolId: string) =>
 	}}
 	hasSidebar={false}
 >
-	<div class="sl-markdown-content not-content">
-		<table class="spells-index__table">
+	<div class="sl-markdown-content not-content spells-index">
+		<div class="spells-index__toolbar">
+			<label class="spells-index__search-label">
+				<span class="spells-index__label-text">Search</span>
+				<input
+					class="spells-index__search"
+					type="search"
+					name="spell-filter-q"
+					autocomplete="off"
+					placeholder="Filter by name or school"
+					aria-controls="spells-index-table"
+				/>
+			</label>
+
+			<details class="spells-index__dropdown" data-filter="school">
+				<summary class="spells-index__summary">
+					<span class="spells-index__summary-label">School</span>
+					<span class="spells-index__summary-value" data-summary-value
+						>All schools</span
+					>
+				</summary>
+				<fieldset class="spells-index__fieldset">
+					<legend class="spells-index__legend">Spell school</legend>
+					{
+						schoolsSorted.map((school) => (
+							<label class="spells-index__check">
+								<input
+									type="checkbox"
+									name="school"
+									value={school.id}
+									data-school-name={school.name}
+								/>
+								{school.name}
+							</label>
+						))
+					}
+				</fieldset>
+			</details>
+
+			<details class="spells-index__dropdown" data-filter="tier">
+				<summary class="spells-index__summary">
+					<span class="spells-index__summary-label">Tier</span>
+					<span class="spells-index__summary-value" data-summary-value
+						>All tiers</span
+					>
+				</summary>
+				<fieldset class="spells-index__fieldset">
+					<legend class="spells-index__legend">Spell tier</legend>
+					{
+						tierOptions.map(({ tier, label }) => (
+							<label class="spells-index__check">
+								<input type="checkbox" name="tier" value={String(tier)} />
+								{label}
+							</label>
+						))
+					}
+				</fieldset>
+			</details>
+
+			<details class="spells-index__dropdown" data-filter="secret">
+				<summary class="spells-index__summary">
+					<span class="spells-index__summary-label">Secret</span>
+					<span class="spells-index__summary-value" data-summary-value>Any</span
+					>
+				</summary>
+				<fieldset class="spells-index__fieldset">
+					<legend class="spells-index__legend">Secret spell</legend>
+					<label class="spells-index__check">
+						<input type="checkbox" name="secret" value="yes" />
+						Secret
+					</label>
+					<label class="spells-index__check">
+						<input type="checkbox" name="secret" value="no" />
+						Not secret
+					</label>
+				</fieldset>
+			</details>
+
+			<details class="spells-index__dropdown" data-filter="utility">
+				<summary class="spells-index__summary">
+					<span class="spells-index__summary-label">Utility</span>
+					<span class="spells-index__summary-value" data-summary-value>Any</span
+					>
+				</summary>
+				<fieldset class="spells-index__fieldset">
+					<legend class="spells-index__legend">Utility spell</legend>
+					<label class="spells-index__check">
+						<input type="checkbox" name="utility" value="yes" />
+						Utility
+					</label>
+					<label class="spells-index__check">
+						<input type="checkbox" name="utility" value="no" />
+						Not utility
+					</label>
+				</fieldset>
+			</details>
+
+			<p class="spells-index__status" aria-live="polite">
+				<span data-spell-count></span>
+			</p>
+		</div>
+
+		<table class="spells-index__table" id="spells-index-table">
 			<thead>
 				<tr>
 					<th scope="col">Name</th>
@@ -43,24 +153,352 @@ const spellSchoolShortName = (schoolId: string) =>
 			</thead>
 			<tbody>
 				{
-					spells.sort(compareSpellRowsForListing).map((spell) => (
-						<tr>
-							<th scope="row">
-								<a href={`/spells/${spell.id}/`}>{spell.name}</a>
-							</th>
-							<td>{spellSchoolShortName(spell.schoolId)}</td>
-							<td>{spell.tierLabel}</td>
-							<td>{spell.utility ? 'Utility' : ''}</td>
-							<td>{spell.secret ? 'Secret' : ''}</td>
-						</tr>
-					))
+					rows.map((spell) => {
+						const schoolName = spellSchoolShortName(spell.schoolId);
+						const searchBlob = `${spell.name} ${schoolName}`.toLowerCase();
+						return (
+							<tr
+								class="spells-index__row"
+								data-school-id={spell.schoolId}
+								data-tier={spell.tier}
+								data-utility={spell.utility ? '1' : '0'}
+								data-secret={spell.secret ? '1' : '0'}
+								data-search={searchBlob}
+							>
+								<th scope="row">
+									<a href={`/spells/${spell.id}/`}>{spell.name}</a>
+								</th>
+								<td>{schoolName}</td>
+								<td>{spell.tierLabel}</td>
+								<td>{spell.utility ? 'Utility' : ''}</td>
+								<td>{spell.secret ? 'Secret' : ''}</td>
+							</tr>
+						);
+					})
 				}
 			</tbody>
 		</table>
 	</div>
 </StarlightPage>
 
+<script>
+	function norm(s: string): string {
+		return s.trim().toLowerCase();
+	}
+
+	function selectedValues(root: HTMLElement, name: string): Set<string> {
+		const set = new Set<string>();
+		for (const el of root.querySelectorAll<HTMLInputElement>(
+			`input[name="${name}"]:checked`,
+		)) {
+			set.add(el.value);
+		}
+		return set;
+	}
+
+	function rowMatches(
+		row: HTMLTableRowElement,
+		q: string,
+		schools: Set<string>,
+		tiers: Set<string>,
+		secretYes: boolean,
+		secretNo: boolean,
+		utilityYes: boolean,
+		utilityNo: boolean,
+	): boolean {
+		const search = row.dataset.search ?? '';
+		if (q && !search.includes(q)) return false;
+
+		if (schools.size > 0 && !schools.has(row.dataset.schoolId ?? ''))
+			return false;
+
+		if (tiers.size > 0 && !tiers.has(String(row.dataset.tier ?? '')))
+			return false;
+
+		const isSecret = row.dataset.secret === '1';
+		if (secretYes !== secretNo) {
+			if (secretYes && !isSecret) return false;
+			if (secretNo && isSecret) return false;
+		}
+
+		const isUtility = row.dataset.utility === '1';
+		if (utilityYes !== utilityNo) {
+			if (utilityYes && !isUtility) return false;
+			if (utilityNo && isUtility) return false;
+		}
+
+		return true;
+	}
+
+	function updateSummaries(root: HTMLElement): void {
+		const schoolChecked = selectedValues(root, 'school');
+		const schoolSummary = root.querySelector(
+			'[data-filter="school"] [data-summary-value]',
+		);
+		if (schoolSummary) {
+			if (schoolChecked.size === 0) {
+				schoolSummary.textContent = 'All schools';
+			} else {
+				const labels: string[] = [];
+				for (const id of schoolChecked) {
+					const input = root.querySelector<HTMLInputElement>(
+						`input[name="school"][value="${CSS.escape(id)}"]`,
+					);
+					const name = input?.dataset.schoolName ?? id;
+					labels.push(name);
+				}
+				labels.sort((a, b) => a.localeCompare(b));
+				schoolSummary.textContent =
+					labels.length > 2 ? `${labels.length} selected` : labels.join(', ');
+			}
+		}
+
+		const tierChecked = selectedValues(root, 'tier');
+		const tierSummary = root.querySelector(
+			'[data-filter="tier"] [data-summary-value]',
+		);
+		if (tierSummary) {
+			if (tierChecked.size === 0) {
+				tierSummary.textContent = 'All tiers';
+			} else {
+				const tierNums = [...tierChecked]
+					.map((t) => Number.parseInt(t, 10))
+					.sort((a, b) => a - b);
+				const tierLabels = tierNums.map((t) =>
+					t === 0 ? 'Cantrip' : `Tier ${t}`,
+				);
+				tierSummary.textContent =
+					tierLabels.length > 3
+						? `${tierLabels.length} selected`
+						: tierLabels.join(', ');
+			}
+		}
+
+		const secY = root.querySelector<HTMLInputElement>(
+			'input[name="secret"][value="yes"]',
+		)?.checked;
+		const secN = root.querySelector<HTMLInputElement>(
+			'input[name="secret"][value="no"]',
+		)?.checked;
+		const secretSummary = root.querySelector(
+			'[data-filter="secret"] [data-summary-value]',
+		);
+		if (secretSummary) {
+			if (secY && secN) secretSummary.textContent = 'Any';
+			else if (secY) secretSummary.textContent = 'Secret';
+			else if (secN) secretSummary.textContent = 'Not secret';
+			else secretSummary.textContent = 'Any';
+		}
+
+		const utY = root.querySelector<HTMLInputElement>(
+			'input[name="utility"][value="yes"]',
+		)?.checked;
+		const utN = root.querySelector<HTMLInputElement>(
+			'input[name="utility"][value="no"]',
+		)?.checked;
+		const utilitySummary = root.querySelector(
+			'[data-filter="utility"] [data-summary-value]',
+		);
+		if (utilitySummary) {
+			if (utY && utN) utilitySummary.textContent = 'Any';
+			else if (utY) utilitySummary.textContent = 'Utility';
+			else if (utN) utilitySummary.textContent = 'Not utility';
+			else utilitySummary.textContent = 'Any';
+		}
+	}
+
+	function applyFilters(root: HTMLElement): void {
+		const q = norm(
+			root.querySelector<HTMLInputElement>('.spells-index__search')?.value ??
+				'',
+		);
+		const schools = selectedValues(root, 'school');
+		const tiers = selectedValues(root, 'tier');
+		const secY =
+			root.querySelector<HTMLInputElement>('input[name="secret"][value="yes"]')
+				?.checked ?? false;
+		const secN =
+			root.querySelector<HTMLInputElement>('input[name="secret"][value="no"]')
+				?.checked ?? false;
+		const utY =
+			root.querySelector<HTMLInputElement>('input[name="utility"][value="yes"]')
+				?.checked ?? false;
+		const utN =
+			root.querySelector<HTMLInputElement>('input[name="utility"][value="no"]')
+				?.checked ?? false;
+
+		let visible = 0;
+		for (const row of root.querySelectorAll<HTMLTableRowElement>(
+			'.spells-index__row',
+		)) {
+			const show = rowMatches(row, q, schools, tiers, secY, secN, utY, utN);
+			row.hidden = !show;
+			if (show) visible += 1;
+		}
+
+		const countEl = root.querySelector('[data-spell-count]');
+		if (countEl) {
+			const total = root.querySelectorAll('.spells-index__row').length;
+			countEl.textContent =
+				visible === total
+					? `Showing all ${total} spells`
+					: `Showing ${visible} of ${total} spells`;
+		}
+
+		updateSummaries(root);
+	}
+
+	function wireSpellsIndex(): void {
+		const root = document.querySelector('.spells-index');
+		if (!root) return;
+
+		const total = root.querySelectorAll('.spells-index__row').length;
+		const countEl = root.querySelector('[data-spell-count]');
+		if (countEl) countEl.textContent = `Showing all ${total} spells`;
+
+		root
+			.querySelector('.spells-index__search')
+			?.addEventListener('input', () => applyFilters(root));
+		for (const el of root.querySelectorAll('input[type="checkbox"]')) {
+			el.addEventListener('change', () => applyFilters(root));
+		}
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', wireSpellsIndex);
+	} else {
+		wireSpellsIndex();
+	}
+</script>
+
 <style>
+	.spells-index__toolbar {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-end;
+		gap: 0.75rem 1rem;
+		margin-bottom: 1rem;
+	}
+
+	.spells-index__search-label {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		min-width: min(100%, 16rem);
+		flex: 1 1 12rem;
+	}
+
+	.spells-index__label-text {
+		font-size: var(--sl-text-sm);
+		font-weight: 600;
+	}
+
+	.spells-index__search {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 0.4rem 0.6rem;
+		font: inherit;
+		color: var(--sl-color-text);
+		background-color: var(--sl-color-bg-nav);
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: var(--sl-border-radius);
+	}
+
+	.spells-index__search:focus-visible {
+		outline: 2px solid var(--sl-color-accent);
+		outline-offset: 2px;
+	}
+
+	.spells-index__dropdown {
+		min-width: 10rem;
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: var(--sl-border-radius);
+		background-color: var(--sl-color-bg-nav);
+	}
+
+	.spells-index__summary {
+		list-style: none;
+		cursor: pointer;
+		padding: 0.4rem 0.6rem;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 0.5rem;
+		align-items: baseline;
+		font-size: var(--sl-text-sm);
+	}
+
+	.spells-index__summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.spells-index__summary::after {
+		content: '';
+		margin-inline-start: auto;
+		width: 0.5rem;
+		height: 0.5rem;
+		border-inline-end: 2px solid currentColor;
+		border-block-end: 2px solid currentColor;
+		transform: rotate(45deg) translateY(-0.1rem);
+		opacity: 0.7;
+	}
+
+	.spells-index__summary-label {
+		font-weight: 600;
+	}
+
+	.spells-index__summary-value {
+		color: var(--sl-color-gray-3);
+		font-weight: 400;
+		max-width: 12rem;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.spells-index__fieldset {
+		margin: 0;
+		padding: 0.35rem 0.6rem 0.6rem;
+		border: none;
+		border-top: 1px solid var(--sl-color-hairline);
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		max-height: 14rem;
+		overflow: auto;
+	}
+
+	.spells-index__legend {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	.spells-index__check {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.35rem;
+		font-size: var(--sl-text-sm);
+		cursor: pointer;
+	}
+
+	.spells-index__check input {
+		margin-top: 0.2rem;
+	}
+
+	.spells-index__status {
+		width: 100%;
+		flex-basis: 100%;
+		margin: 0;
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-3);
+	}
+
 	.spells-index__intro {
 		font-style: italic;
 		margin-bottom: 1rem;
