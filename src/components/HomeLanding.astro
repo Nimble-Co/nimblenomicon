@@ -2,6 +2,18 @@
 import bookIcon from '../assets/nimblenomicon_icon.svg';
 import { HOME_REFERENCE_LINKS } from '../config/home-reference-links';
 import { SEARCH_PLACEHOLDER } from '../config/search';
+import { SECTION_KEYS, SECTION_METADATA } from '../config/section-sidebars';
+
+const bookNavItems = SECTION_KEYS.map((key) => {
+	const m = SECTION_METADATA[key];
+	return {
+		label: m.label,
+		href: m.path,
+		icon: m.icon,
+		iconWidth: m.home.width,
+		iconHeight: m.home.height,
+	};
+});
 ---
 
 <section class="home-landing" aria-label="Home">
@@ -42,6 +54,26 @@ import { SEARCH_PLACEHOLDER } from '../config/search';
 			<span class="home-landing__search-placeholder">{SEARCH_PLACEHOLDER}</span>
 		</button>
 	</div>
+
+	<ul class="home-landing__grid" role="list">
+		{
+			bookNavItems.map(({ label, href, icon, iconWidth, iconHeight }) => (
+				<li>
+					<a class="home-landing__tile" href={href}>
+						<img
+							class="home-landing__tile-img"
+							src={icon.src}
+							width={iconWidth}
+							height={iconHeight}
+							alt=""
+							aria-hidden="true"
+						/>
+						<span class="home-landing__tile-label">{label}</span>
+					</a>
+				</li>
+			))
+		}
+	</ul>
 
 	<nav class="home-landing__ref" aria-labelledby="home-ref-heading">
 		<h2 class="home-landing__ref-heading" id="home-ref-heading">Reference</h2>
@@ -99,6 +131,7 @@ import { SEARCH_PLACEHOLDER } from '../config/search';
 		--home-fg: #252b42;
 		--home-muted: #707070;
 		--home-border: #c8c8c8;
+		--home-surface: #ebebeb;
 		--home-input-bg: #ffffff;
 
 		display: flex;
@@ -192,6 +225,71 @@ import { SEARCH_PLACEHOLDER } from '../config/search';
 		color: var(--home-muted);
 	}
 
+	.home-landing__grid {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.65rem 0.75rem;
+	}
+
+	.home-landing__tile {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		min-height: 3.25rem;
+		padding: 0.65rem 0.85rem;
+		border: 1px solid var(--home-border);
+		border-radius: 0.625rem;
+		background: var(--home-surface);
+		text-align: left;
+		box-sizing: border-box;
+		text-decoration: none;
+		color: inherit;
+		transition:
+			background-color 0.08s ease,
+			border-color 0.08s ease;
+	}
+
+	.home-landing__tile:hover {
+		background-color: color-mix(
+			in srgb,
+			var(--home-surface) 85%,
+			var(--home-fg)
+		);
+		border-color: color-mix(in srgb, var(--home-border) 70%, var(--home-fg));
+	}
+
+	.home-landing__tile:focus-visible {
+		outline: 2px solid var(--sl-color-accent-high, var(--color-accent-500));
+		outline-offset: 2px;
+	}
+
+	.home-landing__tile-img {
+		flex-shrink: 0;
+		width: 22px;
+		height: auto;
+		object-fit: contain;
+		display: block;
+	}
+
+	.home-landing__tile-label {
+		font-family: var(--nimble-search-trigger-font);
+		font-size: 0.8125rem;
+		font-weight: 700;
+		font-style: italic;
+		line-height: 1.25;
+		letter-spacing: 0.02em;
+	}
+
+	@media (min-width: 30rem) {
+		.home-landing__tile-label {
+			font-size: 0.875rem;
+		}
+	}
+
 	.home-landing__ref {
 		width: 100%;
 		text-align: center;
@@ -265,6 +363,11 @@ import { SEARCH_PLACEHOLDER } from '../config/search';
 		--home-fg: var(--sl-color-text);
 		--home-muted: var(--sl-color-gray-3);
 		--home-border: var(--sl-color-hairline);
+		--home-surface: color-mix(
+			in srgb,
+			var(--sl-color-bg) 88%,
+			var(--sl-color-gray-5)
+		);
 		--home-input-bg: var(--sl-color-bg-nav);
 	}
 
