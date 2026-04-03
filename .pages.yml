@@ -95,17 +95,36 @@ content:
             type: number
             required: true
 
-      - name: gmg-temporary-boons
-        label: Temporary Boons (1d8)
+      - name: boons
+        label: Boons
         type: file
-        path: src/data/gmg-temporary-boons.json
+        path: src/data/boons.json
         format: json
         list: true
         fields:
+          - name: level
+            label: Level
+            type: select
+            required: true
+            description: Temporary = lodging 1d8 table; minor, major, epic = named boon list.
+            options:
+              values:
+                - name: temporary
+                  label: Temporary (1d8)
+                - name: minor
+                  label: Minor
+                - name: major
+                  label: Major
+                - name: epic
+                  label: Epic
           - name: roll
             label: d8 Roll
             type: number
-            required: true
+            description: Required when Level is Temporary (1–8). Leave empty for named boons.
+          - name: name
+            label: Name
+            type: string
+            description: Required for Minor, Major, and Epic. Omit for Temporary rows.
           - name: description
             label: Description
             type: string
