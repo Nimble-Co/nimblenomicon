@@ -1,0 +1,22 @@
+---
+/**
+ * Footer link on static detail pages pointing back to the matching anchor
+ * in Core Rules or another source book (e.g. spells from the GMG).
+ */
+export interface Props {
+	href: string;
+	sourceName: string;
+}
+
+const { href, sourceName } = Astro.props;
+---
+
+<p class="detail-page-source-ref">
+	<em>From <a href={href}>{sourceName}</a></em>
+</p>
+
+<style>
+	.detail-page-source-ref {
+		margin-top: 1.5rem;
+	}
+</style>
