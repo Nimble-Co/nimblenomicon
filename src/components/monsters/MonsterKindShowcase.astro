@@ -1,0 +1,36 @@
+---
+import { renderMarkdown } from '../../lib/render-markdown';
+import { monsterKinds } from '../../models/monster-kinds';
+
+interface Props {
+	kind: string;
+}
+
+const { kind: kindSlug } = Astro.props;
+
+const kind = monsterKinds.find((k) => k.id === kindSlug);
+---
+
+{
+	kind && (
+		<>
+			<div class="italic" set:html={await renderMarkdown(kind.description)} />
+
+			<slot />
+
+			{kind.loot && (
+				<>
+					<h3>{kind.name} Loot</h3>
+					<p>{kind.loot}</p>
+				</>
+			)}
+
+			{kind.sampleEncounters && (
+				<div>
+					<h3>Sample Encounters</h3>
+					<div set:html={await renderMarkdown(kind.sampleEncounters)} />
+				</div>
+			)}
+		</>
+	)
+}

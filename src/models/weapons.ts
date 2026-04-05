@@ -40,7 +40,7 @@ export const weapons: WeaponRowData[] = z
 			const id = rows[i]!.id;
 			if (seen.has(id)) {
 				ctx.addIssue({
-					code: z.ZodIssueCode.custom,
+					code: 'custom',
 					message: `Duplicate weapon id "${id}" (rows ${seen.get(id)} and ${i})`,
 					path: [i, 'id'],
 				});

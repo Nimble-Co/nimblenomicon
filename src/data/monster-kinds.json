@@ -1,0 +1,51 @@
+[
+	{
+		"name": "Bandits",
+		"description": "You've **got** money, they **want** money… a perfect match! (hand it over)",
+		"loot": "VERY valuable item (stolen; its owner may come looking for it, or reward you for its return), kidnapped person, leather armor, chipped blades, old food, fine art or clothes, wagon load of some commodity (salt, nails, wool, etc.), coded letter from a secretive client.",
+		"sampleEncounters": "- **Level 1:** 1 Bruiser / 2 Assassins\n- **Level 2:** 2 Bruisers + 1 Mage"
+	},
+	{
+		"name": "Cultists & Horrors",
+		"description": "Driven by twisted beliefs, fanatical cultists perform dark rituals to awaken ancient evils, unleashing horrors that feast on fear and despair.",
+		"loot": "Bloodstained dagger (engraved with dark symbols), a twisted idol (whispers terrible thoughts), vial of black ichor, a mask (carved, likeness of a fiend), a tattered robe (lined with hidden pockets), a scroll with summoning rituals (half-finished), shackles inscribed with infer- nal runes, fragment of a fiendish contract, black candles (cannot be extinguished)."
+	},
+	{
+		"name": "Dungeon Denizens",
+		"description": "For some creatures, YOU are the loot at the end of the dungeon.",
+		"loot": "Tarnished coins (partially dissolved by acid), ancient bones with traces of gnaw marks, indigestible items (bones, gems, magical trinkets), a leather-bound journal (water-damaged pages), lockpicks, a treasure map (only half), boots (suspiciously untouched by corrosion)."
+	},
+	{
+		"name": "Forest Denizens",
+		"description": "Every shadow hides a predator, every branch and leaf conspires against you, the forest is alive—and you are not welcome.",
+		"loot": "25 ft. of vines (usable as rope), glowing sap (minor healing properties), moss-covered coins from an ancient era, a brittle leaf with veins that spell out words in Druidic, a pouch of dried herbs, a cluster of rare mushrooms, a handful of acorns (they grow INSTANTLY when placed in water), a small flower that never wilts, flute overgrown with moss, a tattered map to a hidden grove, a dried flower crown."
+	},
+	{
+		"name": "Goblins",
+		"description": "Green, cunning, & thriving on the edge of chaos. Will mock you mercilessly if given the chance.",
+		"loot": "Live mouse (a snack for later), moldy bread, smooth stones, sharp sticks, teeth (forcibly removed), arrows (surprisingly well-made), lots of blades (jagged, but effective), dead captive (forgot to feed him), shiny junk (random shiny bits of metal, broken glass, and buttons), slug farm (a jar of slimy, wriggling slugs),\"Potion\" (suspiciously colored liquid in a dirty bottle), unidentifiable jerky. A filthy notebook tracking bizarre trades and bets, boots (too big)."
+	},
+	{
+		"name": "Hill & Field",
+		"description": "Mighty brutes and cunning beasts, always on the lookout for easy prey."
+	},
+	{
+		"name": "Kobolds",
+		"description": "Small, maniacal dragonlings. Fiercely protective of their own.",
+		"loot": "Honey, LOTS of twine, sandwiches (stolen), shiny objects, dragon painting (poorly—yet lovingly—made), rotting meats, a variety of traps (small cages, spikes, snapping)."
+	},
+	{
+		"name": "Snakemen",
+		"description": "*Aggressive Hissing Noises*"
+	},
+	{
+		"name": "Undead",
+		"description": "Hate the living for not being dead, hate themselves for not being living.",
+		"loot": "Tarnished silver locket containing a faded portrait (who is it?), bone fragments engraved with arcane symbols, a dark gemstone (emits a faint chill), vials of blood (long- dried), a diary written in an ancient hand, a macabre necklace (skeletal finger bones), a broken holy symbol smeared with ash, a signet ring from a lost noble house, moldy grave dirt (whispers when touched), shovel."
+	},
+	{
+		"name": "Underground",
+		"description": "Nightmarish denizens of the deep, these monstrous beings lurk in dark tunnels and cavernous depths, ready to ensnare or devour any intruders.",
+		"loot": "Chitinous plating, tunnel map (hastily scrawled), serrated teeth (as much as you can carry), spider silk, venom sac, partially digested meats, gemstones (uncut), pheromone gland, luminescent fungus, molted cara- pace, rusted tools, ancient coins, echo stones (faintly hum when tapped)."
+	}
+]

@@ -20,7 +20,7 @@ export const chaosMagicRows: ChaosMagicRow[] = z
 				const r = rows[i]!.roll;
 				if (seen.has(r)) {
 					ctx.addIssue({
-						code: z.ZodIssueCode.custom,
+						code: 'custom',
 						message: `Duplicate chaos roll ${r}`,
 						path: [i, 'roll'],
 					});
