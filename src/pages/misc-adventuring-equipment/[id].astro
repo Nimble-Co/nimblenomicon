@@ -1,5 +1,6 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
 import { renderMarkdown } from '../../lib/render-markdown';
 import {
 	miscAdventuringEquipment,
@@ -29,13 +30,8 @@ const bodyMarkdown = miscAdventuringEquipmentDetailMarkdown(row);
 	}}
 >
 	<div set:html={await renderMarkdown(bodyMarkdown)} />
-	<p class="misc-gear-detail__core-rules-ref">
-		<em>From <a href={`/core-rules/#${row.id}`}>Core Rules</a></em>
-	</p>
+	<DetailPageSourceRef
+		href={`/core-rules/#${row.id}`}
+		sourceName="Core Rules"
+	/>
 </StarlightPage>
-
-<style>
-	.misc-gear-detail__core-rules-ref {
-		margin-top: 1.5rem;
-	}
-</style>
