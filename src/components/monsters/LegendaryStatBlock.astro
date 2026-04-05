@@ -3,7 +3,7 @@ import { renderMarkdown } from '../../lib/render-markdown';
 import { slugifyEntityId } from '../../lib/slugifyEntityId';
 import {
 	legendaryMonsters,
-	type LegendaryMonsterData,
+	type LegendaryTeamMemberData,
 } from '../../models/legendary-monsters';
 import { sizes } from '../../models/sizes';
 import { monsterActionSchema, type MonsterAction } from '../../models/monsters';
@@ -26,17 +26,14 @@ function actionHeading(action: MonsterAction): string {
 	return `${action.name}${uses}${endsSentence ? '' : '.'}`;
 }
 
-const SPEED_MODE_LABEL: Record<
-	LegendaryMonsterData['movement']['mode'],
-	string
-> = {
+const SPEED_MODE_LABEL: Record<string, string> = {
 	walk: 'Walk',
 	fly: 'Fly',
 	burrow: 'Burrow',
 	swim: 'Swim',
 };
 
-const armorAbbrev: Record<LegendaryMonsterData['armor'], string | null> = {
+const armorAbbrev: Record<'none' | 'medium' | 'heavy', string | null> = {
 	none: null,
 	medium: 'M',
 	heavy: 'H',
@@ -50,31 +47,24 @@ const SAVE_LABEL: Record<string, string> = {
 	all: 'ALL',
 };
 
-function primarySaveDisplay(
-	saves: LegendaryMonsterData['saves'],
-): string | null {
-	if (!saves) return null;
+function saveBadgeStrings(saves: LegendaryTeamMemberData['saves']): string[] {
+	if (!saves) return [];
 
 	if (typeof saves.all === 'number' && saves.all !== 0) {
 		const n = saves.all;
 		const sign = n > 0 ? '+'.repeat(n) : '-'.repeat(-n);
-		return `ALL${sign}`;
+		return [`ALL${sign}`];
 	}
 
 	const order = ['str', 'dex', 'int', 'wil'] as const;
-	let bestKey: (typeof order)[number] | undefined;
-	let bestVal = 0;
+	const out: string[] = [];
 	for (const k of order) {
 		const v = saves[k];
-		if (typeof v === 'number' && v > bestVal) {
-			bestVal = v;
-			bestKey = k;
+		if (typeof v === 'number' && v > 0) {
+			out.push(`${SAVE_LABEL[k]}${'+'.repeat(v)}`);
 		}
 	}
-	if (bestKey !== undefined && bestVal > 0) {
-		return `${SAVE_LABEL[bestKey]}${'+'.repeat(bestVal)}`;
-	}
-	return null;
+	return out;
 }
 
 const monster = legendaryMonsters.find((m) => m.id === legendaryMonsterId);
@@ -83,135 +73,250 @@ if (!monster) {
 	throw new Error(`Legendary monster with id ${legendaryMonsterId} not found`);
 }
 
-const primarySave = primarySaveDisplay(monster.saves);
+let bloodiedHtml: string | null = null;
+let lastStandHtml: string;
+let notesHtml: string | null = null;
 
-const hasArmorBadge = Boolean(armorAbbrev[monster.armor]);
-
-const showSize = monster.size !== 'medium';
-const showSpeed =
-	monster.movement.mode !== 'walk' || monster.movement.speed !== 6;
-
-const actionDescriptionHtml = await Promise.all(
-	monster.actions.map((a) =>
-		renderMarkdown(monsterActionSchema.parse(a).description),
-	),
-);
-
-const bloodiedHtml = monster.bloodied
-	? await renderMarkdown(monster.bloodied)
-	: null;
-const lastStandHtml = await renderMarkdown(monster.lastStand);
-const notesHtml = monster.notes ? await renderMarkdown(monster.notes) : null;
-
-const metaParts: string[] = [`Level ${monster.level}`, 'Solo'];
-if (showSize) {
-	metaParts.push(sizeLabel(monster.size));
+if (monster.kind === 'solo') {
+	bloodiedHtml = monster.bloodied
+		? await renderMarkdown(monster.bloodied)
+		: null;
+	lastStandHtml = await renderMarkdown(monster.lastStand);
+	notesHtml = monster.notes ? await renderMarkdown(monster.notes) : null;
+} else {
+	bloodiedHtml = monster.bloodied
+		? await renderMarkdown(monster.bloodied)
+		: null;
+	lastStandHtml = await renderMarkdown(monster.lastStand);
+	notesHtml = monster.notes ? await renderMarkdown(monster.notes) : null;
 }
-metaParts.push(monster.creatureType);
-const metaLine = metaParts.join(', ');
+
+const soloActionHtml =
+	monster.kind === 'solo'
+		? await Promise.all(
+				monster.actions.map((a) =>
+					renderMarkdown(monsterActionSchema.parse(a).description),
+				),
+			)
+		: [];
+
+const teamMemberActionHtml: string[][] =
+	monster.kind === 'team'
+		? await Promise.all(
+				monster.members.map((member) =>
+					Promise.all(
+						member.actions.map((a) =>
+							renderMarkdown(monsterActionSchema.parse(a).description),
+						),
+					),
+				),
+			)
+		: [];
 ---
 
 <article
 	class="w-full max-w-xl rounded-md border-4 border-double border-gray-300 bg-surface p-2"
 >
-	<header class="flex items-end justify-between gap-3">
-		<hgroup class="flex min-w-0 flex-1 flex-wrap items-baseline gap-x-2">
-			<h2 class="text-xl font-bold leading-none">{monster.name}</h2>
-			<p
-				class="m-0 text-xs font-normal italic leading-none tracking-wide text-gray-500 uppercase"
-			>
-				{metaLine}
-			</p>
-		</hgroup>
-
-		<ul
-			class="m-0 flex shrink-0 list-none flex-wrap items-end justify-end gap-2 p-0 text-base font-bold tabular-nums"
-			aria-label="Quick stats"
-		>
-			{
-				hasArmorBadge && (
-					<li>
-						<span
-							class="inline-flex h-6 min-w-6 items-center justify-center border border-gray-300 text-xs"
-							title="Armor"
-						>
-							{armorAbbrev[monster.armor]}
-						</span>
-					</li>
-				)
-			}
-			<li>
-				<span title="Hit points">
-					<span aria-hidden="true">♥</span>
-					{monster.hp}
-				</span>
-			</li>
-			{
-				primarySave && (
-					<li>
-						<span title="Primary save advantage">
-							<span aria-hidden="true">★</span>
-							{primarySave}
-						</span>
-					</li>
-				)
-			}
-			{
-				showSpeed && (
-					<li>
-						<span class="text-gray-600">
-							{SPEED_MODE_LABEL[monster.movement.mode]} {monster.movement.speed}
-						</span>
-					</li>
-				)
-			}
-		</ul>
-	</header>
-
 	{
-		monster.specialAbilities.map((ability) => (
-			<Ability name={ability.name} description={ability.description} />
-		))
-	}
+		monster.kind === 'solo' ? (
+			<>
+				<header class="flex items-end justify-between gap-3 border-b border-gray-300 pb-2">
+					<hgroup class="flex min-w-0 flex-1 flex-wrap items-baseline gap-x-2">
+						<h2 class="text-xl font-bold leading-none">{monster.name}</h2>
+						<p class="m-0 text-xs font-normal italic leading-none tracking-wide text-gray-500 uppercase">
+							{[
+								`Level ${monster.level}`,
+								'Solo',
+								monster.size !== 'medium' ? sizeLabel(monster.size) : null,
+								monster.creatureType,
+							]
+								.filter(Boolean)
+								.join(', ')}
+						</p>
+					</hgroup>
 
-	{
-		monster.actions.length > 0 && (
-			<div class="mt-3 text-base leading-relaxed">
-				{monster.actionsIntro && (
-					<p class="m-0 mb-1.5 font-bold">ACTIONS: {monster.actionsIntro}</p>
-				)}
-				{monster.actions.length === 1 ? (
-					<div class="m-0">
-						<strong>{actionHeading(monster.actions[0]!)}</strong>{' '}
-						<span
-							class="inline [&_p]:m-0 [&_p]:inline"
-							set:html={actionDescriptionHtml[0]}
-						/>
-						{monster.actions[0]!.joinNext === 'or' && ' OR:'}
-						{monster.actions[0]!.joinNext === 'then' && ' Then:'}
-					</div>
-				) : (
-					<ul class="m-0 list-outside list-disc space-y-1.5 pl-5 text-base leading-relaxed">
-						{monster.actions.map((action, i) => (
-							<li class="m-0 pl-1">
-								<strong>{actionHeading(action)}</strong>{' '}
+					<ul
+						class="m-0 flex shrink-0 list-none flex-wrap items-end justify-end gap-2 p-0 text-base font-bold tabular-nums"
+						aria-label="Quick stats"
+					>
+						{Boolean(armorAbbrev[monster.armor]) && (
+							<li>
 								<span
-									class="inline [&_p]:m-0 [&_p]:inline"
-									set:html={actionDescriptionHtml[i]}
-								/>
-								{action.joinNext === 'or' && ' OR:'}
-								{action.joinNext === 'then' && ' Then:'}
+									class="inline-flex h-6 min-w-6 items-center justify-center border border-gray-300 text-xs"
+									title="Armor"
+								>
+									{armorAbbrev[monster.armor]}
+								</span>
+							</li>
+						)}
+						<li>
+							<span title="Hit points">
+								<span aria-hidden="true">♥</span>
+								{monster.hp}
+							</span>
+						</li>
+						{saveBadgeStrings(monster.saves).map((badge) => (
+							<li>
+								<span title="Save modifier">
+									<span aria-hidden="true">★</span>
+									{badge}
+								</span>
 							</li>
 						))}
+						{(monster.movement.mode !== 'walk' ||
+							monster.movement.speed !== 6) && (
+							<li>
+								<span class="text-gray-600">
+									{SPEED_MODE_LABEL[monster.movement.mode]}{' '}
+									{monster.movement.speed}
+								</span>
+							</li>
+						)}
 					</ul>
+				</header>
+
+				{monster.specialAbilities.map((ability) => (
+					<Ability name={ability.name} description={ability.description} />
+				))}
+
+				{monster.actions.length > 0 && (
+					<div class="mt-3 text-base leading-relaxed">
+						{monster.actionsIntro && (
+							<p class="m-0 mb-1.5 font-bold">
+								ACTIONS: {monster.actionsIntro}
+							</p>
+						)}
+						{monster.actions.length === 1 ? (
+							<div class="m-0">
+								<strong>{actionHeading(monster.actions[0]!)}</strong>{' '}
+								<span
+									class="inline [&_p]:m-0 [&_p]:inline"
+									set:html={soloActionHtml[0]}
+								/>
+								{monster.actions[0]!.joinNext === 'or' && ' OR:'}
+								{monster.actions[0]!.joinNext === 'then' && ' Then:'}
+							</div>
+						) : (
+							<ul class="m-0 list-outside list-disc space-y-1.5 pl-5 text-base leading-relaxed">
+								{monster.actions.map((action, i) => (
+									<li class="m-0 pl-1">
+										<strong>{actionHeading(action)}</strong>{' '}
+										<span
+											class="inline [&_p]:m-0 [&_p]:inline"
+											set:html={soloActionHtml[i]}
+										/>
+										{action.joinNext === 'or' && ' OR:'}
+										{action.joinNext === 'then' && ' Then:'}
+									</li>
+								))}
+							</ul>
+						)}
+					</div>
 				)}
-			</div>
+			</>
+		) : (
+			<>
+				<header class="border-b border-gray-300 pb-2">
+					<hgroup class="flex min-w-0 flex-col gap-1">
+						<p class="m-0 text-xs font-normal italic leading-none tracking-wide text-gray-500 uppercase">
+							Level {monster.level} Solo {monster.creatureType}
+						</p>
+						<h2 class="m-0 text-xl font-bold leading-none">{monster.name}</h2>
+					</hgroup>
+				</header>
+
+				{monster.actionsIntro && (
+					<p class="m-0 mt-3 font-bold">ACTIONS: {monster.actionsIntro}</p>
+				)}
+
+				<div class="mt-3">
+					{monster.members.map((member, mi) => (
+						<div class:list={[mi > 0 && 'mt-3 border-t border-gray-300 pt-3']}>
+							<h3 class="m-0 text-base font-bold uppercase tracking-wide">
+								{member.name}
+								{member.roleLabel && (
+									<span class="font-normal normal-case">
+										{' '}
+										({member.roleLabel})
+									</span>
+								)}
+							</h3>
+							<ul
+								class="m-0 mt-1 flex list-none flex-wrap items-center gap-x-3 gap-y-1 p-0 text-base font-bold tabular-nums"
+								aria-label={`Quick stats for ${member.name}`}
+							>
+								{Boolean(armorAbbrev[member.armor]) && (
+									<li>
+										<span
+											class="inline-flex h-6 min-w-6 items-center justify-center border border-gray-300 text-xs"
+											title="Armor"
+										>
+											{armorAbbrev[member.armor]}
+										</span>
+									</li>
+								)}
+								<li>
+									<span title="Hit points">
+										<span aria-hidden="true">♥</span>
+										{member.hp}
+									</span>
+								</li>
+								{saveBadgeStrings(member.saves).map((badge) => (
+									<li>
+										<span title="Save modifier">
+											<span aria-hidden="true">★</span>
+											{badge}
+										</span>
+									</li>
+								))}
+							</ul>
+
+							{member.specialAbilities.map((ability) => (
+								<Ability
+									name={ability.name}
+									description={ability.description}
+								/>
+							))}
+
+							{member.actions.length > 0 && (
+								<div class="mt-2 text-base leading-relaxed">
+									{member.actions.length === 1 ? (
+										<div class="m-0">
+											<strong>{actionHeading(member.actions[0]!)}</strong>{' '}
+											<span
+												class="inline [&_p]:m-0 [&_p]:inline"
+												set:html={teamMemberActionHtml[mi]![0]}
+											/>
+											{member.actions[0]!.joinNext === 'or' && ' OR:'}
+											{member.actions[0]!.joinNext === 'then' && ' Then:'}
+										</div>
+									) : (
+										<ul class="m-0 list-outside list-disc space-y-1.5 pl-5 text-base leading-relaxed">
+											{member.actions.map((action, ai) => (
+												<li class="m-0 pl-1">
+													<strong>{actionHeading(action)}</strong>{' '}
+													<span
+														class="inline [&_p]:m-0 [&_p]:inline"
+														set:html={teamMemberActionHtml[mi]![ai]}
+													/>
+													{action.joinNext === 'or' && ' OR:'}
+													{action.joinNext === 'then' && ' Then:'}
+												</li>
+											))}
+										</ul>
+									)}
+								</div>
+							)}
+						</div>
+					))}
+				</div>
+			</>
 		)
 	}
 
 	<div
 		class:list={[
-			'mt-3 gap-3 text-base leading-relaxed sm:gap-4',
+			'mt-3 gap-3 border-t border-gray-300 pt-3 text-base leading-relaxed sm:gap-4',
 			bloodiedHtml ? 'grid sm:grid-cols-2' : '',
 		]}
 	>
