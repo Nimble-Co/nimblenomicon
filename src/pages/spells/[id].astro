@@ -1,5 +1,6 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
 import { renderMarkdown } from '../../lib/render-markdown';
 import { spellSchools } from '../../models/spell-schools';
 import { spells, type SpellData } from '../../models/spells';
@@ -29,6 +30,10 @@ function spellMetaMarkdown(spell: SpellData): string {
 }
 
 const bodyMarkdown = spellMetaMarkdown(spell) + '\n\n' + spell.description;
+
+const sourceHref = `/${spell.source}/#${spell.id}`;
+const sourceName =
+	spell.source === 'core-rules' ? 'Core Rules' : "Game Master's Guide";
 ---
 
 <StarlightPage
@@ -42,19 +47,5 @@ const bodyMarkdown = spellMetaMarkdown(spell) + '\n\n' + spell.description;
 	}}
 >
 	<div set:html={await renderMarkdown(bodyMarkdown)} />
-	<p class="spell-detail__core-rules-ref">
-		<em
-			>From <a href={`/${spell.source}/#${spell.id}`}
-				>{
-					spell.source === 'core-rules' ? 'Core Rules' : "Game Master's Guide"
-				}</a
-			></em
-		>
-	</p>
+	<DetailPageSourceRef href={sourceHref} sourceName={sourceName} />
 </StarlightPage>
-
-<style>
-	.spell-detail__core-rules-ref {
-		margin-top: 1.5rem;
-	}
-</style>
