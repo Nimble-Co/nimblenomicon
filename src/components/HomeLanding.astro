@@ -1,9 +1,10 @@
 ---
 import bookIcon from '../assets/nimblenomicon_icon.svg';
-import { SECTION_KEYS, SECTION_METADATA } from '../config/section-sidebars';
+import { HOME_REFERENCE_LINKS } from '../config/home-reference-links';
 import { SEARCH_PLACEHOLDER } from '../config/search';
+import { SECTION_KEYS, SECTION_METADATA } from '../config/section-sidebars';
 
-const navItems = SECTION_KEYS.map((key) => {
+const bookNavItems = SECTION_KEYS.map((key) => {
 	const m = SECTION_METADATA[key];
 	return {
 		label: m.label,
@@ -56,7 +57,7 @@ const navItems = SECTION_KEYS.map((key) => {
 
 	<ul class="home-landing__grid" role="list">
 		{
-			navItems.map(({ label, href, icon, iconWidth, iconHeight }) => (
+			bookNavItems.map(({ label, href, icon, iconWidth, iconHeight }) => (
 				<li>
 					<a class="home-landing__tile" href={href}>
 						<img
@@ -73,6 +74,21 @@ const navItems = SECTION_KEYS.map((key) => {
 			))
 		}
 	</ul>
+
+	<nav class="home-landing__ref" aria-labelledby="home-ref-heading">
+		<h2 class="home-landing__ref-heading" id="home-ref-heading">Reference</h2>
+		<ul class="home-landing__ref-list" role="list">
+			{
+				HOME_REFERENCE_LINKS.map(({ label, href }) => (
+					<li class="home-landing__ref-item">
+						<a class="home-landing__ref-link" href={href}>
+							{label}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
 </section>
 
 <script>
@@ -259,18 +275,6 @@ const navItems = SECTION_KEYS.map((key) => {
 		display: block;
 	}
 
-	:global(:root[data-theme='dark']) .home-landing {
-		--home-fg: var(--sl-color-text);
-		--home-muted: var(--sl-color-gray-3);
-		--home-border: var(--sl-color-hairline);
-		--home-surface: color-mix(
-			in srgb,
-			var(--sl-color-bg) 88%,
-			var(--sl-color-gray-5)
-		);
-		--home-input-bg: var(--sl-color-bg-nav);
-	}
-
 	.home-landing__tile-label {
 		font-family: var(--nimble-search-trigger-font);
 		font-size: 0.8125rem;
@@ -283,6 +287,93 @@ const navItems = SECTION_KEYS.map((key) => {
 	@media (min-width: 30rem) {
 		.home-landing__tile-label {
 			font-size: 0.875rem;
+		}
+	}
+
+	.home-landing__ref {
+		width: 100%;
+		text-align: center;
+	}
+
+	.home-landing__ref-heading {
+		margin: 0 0 0.85rem;
+		font-family: var(--nimble-font-heading);
+		font-size: clamp(0.7rem, 1.8vw, 0.8125rem);
+		font-weight: 700;
+		font-style: italic;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--home-muted);
+	}
+
+	.home-landing__ref-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: baseline;
+		column-gap: 0.35rem;
+		row-gap: 0.5rem;
+	}
+
+	.home-landing__ref-item {
+		display: inline-flex;
+		align-items: baseline;
+		max-width: 100%;
+	}
+
+	.home-landing__ref-item:not(:last-child)::after {
+		content: '·';
+		margin-inline-start: 0.35rem;
+		color: var(--home-muted);
+		font-weight: 400;
+		pointer-events: none;
+	}
+
+	.home-landing__ref-link {
+		font-family: var(--nimble-search-trigger-font);
+		font-size: 0.875rem;
+		font-weight: 700;
+		font-style: italic;
+		line-height: 1.35;
+		letter-spacing: 0.02em;
+		color: var(--home-fg);
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.15em;
+		text-decoration-color: color-mix(in srgb, var(--home-fg) 35%, transparent);
+		transition:
+			color 0.08s ease,
+			text-decoration-color 0.08s ease;
+	}
+
+	.home-landing__ref-link:hover {
+		text-decoration-color: var(--home-fg);
+	}
+
+	.home-landing__ref-link:focus-visible {
+		outline: 2px solid var(--sl-color-accent-high, var(--color-accent-500));
+		outline-offset: 2px;
+		border-radius: 2px;
+	}
+
+	:global(:root[data-theme='dark']) .home-landing {
+		--home-fg: var(--sl-color-text);
+		--home-muted: var(--sl-color-gray-3);
+		--home-border: var(--sl-color-hairline);
+		--home-surface: color-mix(
+			in srgb,
+			var(--sl-color-bg) 88%,
+			var(--sl-color-gray-5)
+		);
+		--home-input-bg: var(--sl-color-bg-nav);
+	}
+
+	@media (min-width: 30rem) {
+		.home-landing__ref-link {
+			font-size: 0.9375rem;
 		}
 	}
 </style>
