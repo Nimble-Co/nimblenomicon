@@ -191,21 +191,16 @@ const metaLine = metaParts.join(', ');
 						{monster.actions[0]!.joinNext === 'then' && ' Then:'}
 					</div>
 				) : (
-					<ul class="m-0 list-none space-y-1.5 p-0">
+					<ul class="m-0 list-outside list-disc space-y-1.5 pl-5 text-base leading-relaxed">
 						{monster.actions.map((action, i) => (
-							<li class="m-0 flex gap-1">
-								<span class="shrink-0" aria-hidden="true">
-									•
-								</span>
-								<span class="min-w-0">
-									<strong>{actionHeading(action)}</strong>{' '}
-									<span
-										class="inline [&_p]:m-0 [&_p]:inline"
-										set:html={actionDescriptionHtml[i]}
-									/>
-									{action.joinNext === 'or' && ' OR:'}
-									{action.joinNext === 'then' && ' Then:'}
-								</span>
+							<li class="m-0 pl-1">
+								<strong>{actionHeading(action)}</strong>{' '}
+								<span
+									class="inline [&_p]:m-0 [&_p]:inline"
+									set:html={actionDescriptionHtml[i]}
+								/>
+								{action.joinNext === 'or' && ' OR:'}
+								{action.joinNext === 'then' && ' Then:'}
 							</li>
 						))}
 					</ul>

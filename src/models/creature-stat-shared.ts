@@ -40,7 +40,7 @@ export const creatureMovementSchema = z
 
 export type CreatureMovement = z.infer<typeof creatureMovementSchema>;
 
-/** Bold name + prose — special abilities on monsters; traits on legendaries. */
+/** Bold name + prose — special abilities on monsters; traits on legendary stat blocks. */
 export const namedAbilityBlockSchema = z
 	.object({
 		name: z.string().min(1),
