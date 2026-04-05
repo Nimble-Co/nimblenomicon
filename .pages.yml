@@ -791,10 +791,10 @@ content:
     label: Monsters
     type: group
     items:
-      - name: monster-groups
-        label: Monster Groups
+      - name: monster-families
+        label: Monster Families
         type: file
-        path: src/data/monster-groups.json
+        path: src/data/monster-families.json
         format: json
         list: true
         fields:
@@ -803,16 +803,12 @@ content:
             type: string
             required: true
             description: Detail page URL slug is generated from this name (kebab-case).
-          - name: description
-            label: Description
-            type: rich-text
-            required: true
-            options:
-              format: markdown
-          - name: sharedAbility
-            label: Shared Ability
+          - name: abilities
+            label: Abilities
             type: object
+            list: true
             required: false
+            description: Family-wide abilities shown on kind pages and stat blocks.
             fields:
               - name: name
                 label: Name
@@ -824,14 +820,48 @@ content:
                 required: true
                 options:
                   format: markdown
-          - name: potentialLoot
-            label: Potential Loot
-            type: text
+
+      - name: monster-kinds
+        label: Monster Kinds
+        type: file
+        path: src/data/monster-kinds.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
             required: true
+            description: Detail page URL slug is generated from this name (kebab-case).
+          - name: familyId
+            label: Monster Family
+            type: select
+            required: true
+            description: Must match a monster family id. Add a select option when you add a family.
+            options:
+              values:
+                - name: bandits
+                  label: Bandits
+                - name: kobolds
+                  label: Kobolds
+                - name: goblins
+                  label: Goblins
+                - name: snakemen
+                  label: Snakemen
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+          - name: loot
+            label: Loot
+            type: text
+            required: false
           - name: sampleEncounters
             label: Sample Encounters
             type: rich-text
-            required: true
+            required: false
             options:
               format: markdown
 
@@ -854,53 +884,60 @@ content:
             description: Fractional levels for minions; 1–20 for full creatures.
             options:
               values:
-                - name: "1/4"
-                  label: "1/4"
-                - name: "1/3"
-                  label: "1/3"
-                - name: "1/2"
-                  label: "1/2"
-                - name: "1"
-                  label: "1"
-                - name: "2"
-                  label: "2"
-                - name: "3"
-                  label: "3"
-                - name: "4"
-                  label: "4"
-                - name: "5"
-                  label: "5"
-                - name: "6"
-                  label: "6"
-                - name: "7"
-                  label: "7"
-                - name: "8"
-                  label: "8"
-                - name: "9"
-                  label: "9"
-                - name: "10"
-                  label: "10"
-                - name: "11"
-                  label: "11"
-                - name: "12"
-                  label: "12"
-                - name: "13"
-                  label: "13"
-                - name: "14"
-                  label: "14"
-                - name: "15"
-                  label: "15"
-                - name: "16"
-                  label: "16"
-                - name: "17"
-                  label: "17"
-                - name: "18"
-                  label: "18"
-                - name: "19"
-                  label: "19"
-                - name: "20"
-                  label: "20"
-          - name: sizeId
+                - name: '1/4'
+                  label: '1/4'
+                - name: '1/3'
+                  label: '1/3'
+                - name: '1/2'
+                  label: '1/2'
+                - name: '1'
+                  label: '1'
+                - name: '2'
+                  label: '2'
+                - name: '3'
+                  label: '3'
+                - name: '4'
+                  label: '4'
+                - name: '5'
+                  label: '5'
+                - name: '6'
+                  label: '6'
+                - name: '7'
+                  label: '7'
+                - name: '8'
+                  label: '8'
+                - name: '9'
+                  label: '9'
+                - name: '10'
+                  label: '10'
+                - name: '11'
+                  label: '11'
+                - name: '12'
+                  label: '12'
+                - name: '13'
+                  label: '13'
+                - name: '14'
+                  label: '14'
+                - name: '15'
+                  label: '15'
+                - name: '16'
+                  label: '16'
+                - name: '17'
+                  label: '17'
+                - name: '18'
+                  label: '18'
+                - name: '19'
+                  label: '19'
+                - name: '20'
+                  label: '20'
+                - name: '21'
+                  label: '21'
+          - name: isMinion
+            label: Is Minion
+            type: boolean
+            required: true
+            description: True when the creature is a minion (no HP to track when hp is omitted).
+          - name: size
             label: Size
             type: select
             required: true
@@ -919,8 +956,8 @@ content:
                   label: Huge
                 - name: gargantuan
                   label: Gargantuan
-          - name: healthPoints
-            label: Health Points
+          - name: hp
+            label: HP
             type: number
             required: false
             description: Omit for minions (no HP to track).
@@ -936,34 +973,78 @@ content:
                   label: Medium
                 - name: heavy
                   label: Heavy
-          - name: speed
-            label: Speed
-            type: number
+          - name: movement
+            label: Movement
+            type: object
             required: true
-            description: Default 6 when using defaults outside CMS.
-          - name: speedMode
-            label: Speed Mode
-            type: select
-            required: true
-            options:
-              values:
-                - name: walk
-                  label: Walk
-                - name: fly
-                  label: Fly
-                - name: burrow
-                  label: Burrow
-                - name: swim
-                  label: Swim
-          - name: bodyDescription
-            label: Body Description
+            fields:
+              - name: speed
+                label: Speed
+                type: number
+                required: true
+                description: Default 6 when using defaults outside CMS.
+              - name: mode
+                label: Mode
+                type: select
+                required: true
+                options:
+                  values:
+                    - name: walk
+                      label: Walk
+                    - name: fly
+                      label: Fly
+                    - name: burrow
+                      label: Burrow
+                    - name: swim
+                      label: Swim
+          - name: actions
+            label: Actions
+            type: object
+            list: true
+            required: false
+            description: Stat block attacks; use Join next to recreate OR / Then / blank-line OR between rows.
+            fields:
+              - name: name
+                label: Name
+                type: string
+                required: true
+                description: Attack name without (2x); set Uses for multi-use.
+              - name: uses
+                label: Uses
+                type: number
+                required: false
+                description: Optional; renders as (2x), (3x), etc. after the name.
+              - name: description
+                label: Description
+                type: rich-text
+                required: true
+                options:
+                  format: markdown
+                description: Full line after the name (dice, range, riders).
+              - name: joinNext
+                label: Join next
+                type: select
+                required: false
+                description: Connector toward the following action (omit on the last row).
+                options:
+                  values:
+                    - name: or
+                      label: OR (same line)
+                    - name: orBreak
+                      label: OR (blank line before next)
+                    - name: then
+                      label: Then
+          - name: notes
+            label: Notes
             type: rich-text
-            required: true
+            required: false
             options:
               format: markdown
-          - name: specialAbility
-            label: Special Ability
+            description: Optional text after actions (e.g. mimic disguises).
+          - name: specialAbilities
+            label: Special Abilities
             type: object
+            list: true
             required: false
             fields:
               - name: name
@@ -991,15 +1072,64 @@ content:
                 required: true
                 options:
                   format: markdown
-          - name: groupId
-            label: Monster Group
+          - name: kind
+            label: Monster Kind
             type: select
             required: false
-            description: Must match a monster group id. Add a select option when you add a group.
+            description: Must match a monster kind id. Add a select option when you add a kind.
             options:
               values:
                 - name: bandits
                   label: Bandits
+                - name: cultists-and-horrors
+                  label: Cultists & Horrors
+                - name: dungeon-denizens
+                  label: Dungeon Denizens
+                - name: forest-denizens
+                  label: Forest Denizens
+                - name: goblins
+                  label: Goblins
+                - name: hill-and-field
+                  label: Hill & Field
+                - name: kobolds
+                  label: Kobolds
+                - name: snakemen
+                  label: Snakemen
+                - name: undead
+                  label: Undead
+                - name: underground
+                  label: Underground
+          - name: family
+            label: Monster Family
+            type: select
+            required: false
+            description: Must match the family for the selected kind (e.g. kobolds kind → kobolds family). Set both or omit both.
+            options:
+              values:
+                - name: bandits
+                  label: Bandits
+                - name: briarbanes
+                  label: Briarbanes
+                - name: cultists
+                  label: Cultists
+                - name: goblins
+                  label: Goblins
+                - name: gnolls
+                  label: Gnolls
+                - name: horrors
+                  label: Horrors
+                - name: kobolds
+                  label: Kobolds
+                - name: mimics
+                  label: Mimics
+                - name: oozes
+                  label: Oozes
+                - name: snakemen
+                  label: Snakemen
+                - name: stirges
+                  label: Stirges
+                - name: undead
+                  label: Undead
 
   - name: glossary
     label: Glossary

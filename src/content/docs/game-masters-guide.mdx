@@ -11,8 +11,11 @@ import GmgChaosTable from '../../components/game-masters-guide/GmgChaosTable.ast
 import GmgGoldByLevelTable from '../../components/game-masters-guide/GmgGoldByLevelTable.astro';
 import GmgMonsterBuilderTable from '../../components/game-masters-guide/GmgMonsterBuilderTable.astro';
 import GmgTemporaryBoonsTable from '../../components/game-masters-guide/GmgTemporaryBoonsTable.astro';
+import MonsterFamily from '../../components/monsters/MonsterFamily.astro';
+import MonsterKindShowcase from '../../components/monsters/MonsterKindShowcase.astro';
+import MonsterStatBlock from '../../components/monsters/MonsterStatBlock.astro';
 import SpellList from '../../components/SpellsList.astro';
-import MonsterGroupShowcase from '../../components/monsters/MonsterGroupShowcase.astro';
+import { slugifyEntityId } from '../../lib/slugifyEntityId';
 
 <FullBleedHero
 	title="Game Master's Guide"
@@ -844,7 +847,88 @@ Once you have the base stats for the encounter, you can optionally add a cool fl
 
 # Bestiary
 
-<MonsterGroupShowcase groupId="bandits" />
+## Goblins
+
+<MonsterKindShowcase kind="goblins">
+	<MonsterFamily family="goblins" />
+</MonsterKindShowcase>
+
+## Kobolds
+
+<MonsterKindShowcase kind="kobolds">
+	<MonsterFamily family="kobolds" />
+</MonsterKindShowcase>
+
+## Bandits
+
+<MonsterKindShowcase kind="bandits">
+	<MonsterFamily family="bandits" />
+</MonsterKindShowcase>
+
+## Snakemen
+
+<MonsterKindShowcase kind="snakemen">
+	<MonsterFamily family="snakemen" />
+</MonsterKindShowcase>
+
+## Dungeon Denizens
+
+<MonsterKindShowcase kind="dungeon-denizens">
+	<MonsterFamily family="mimics" />
+	<MonsterFamily family="oozes" />
+	<MonsterFamily family="stirges" />
+</MonsterKindShowcase>
+
+## Hill & Field
+
+<MonsterKindShowcase kind="hill-and-field">
+	<MonsterFamily family="gnolls" />
+
+    <MonsterStatBlock monsterId="worg" />
+    <MonsterStatBlock monsterId="blue-drake" />
+    <MonsterStatBlock monsterId="griffon" />
+    <MonsterStatBlock monsterId="bulette" />
+    <MonsterStatBlock monsterId="troll" />
+    <MonsterStatBlock monsterId="hill-giant" />
+    <MonsterStatBlock monsterId="roc" />
+
+</MonsterKindShowcase>
+
+## Undead
+
+<MonsterKindShowcase kind="undead">
+	<MonsterFamily family="undead" />
+</MonsterKindShowcase>
+
+## Forest Denizens
+
+<MonsterKindShowcase kind="forest-denizens">
+
+<MonsterStatBlock monsterId="duskprowler" />
+<MonsterStatBlock monsterId="basilisk" />
+<MonsterStatBlock monsterId="druid" />
+
+    <MonsterFamily family="briarbanes" />
+
+</MonsterKindShowcase>
+
+## Cultists & Horrors
+
+<MonsterKindShowcase kind="cultists-and-horrors">
+	<MonsterFamily family="cultists" />
+	<MonsterFamily family="horrors" />
+</MonsterKindShowcase>
+
+## Underground
+
+<MonsterKindShowcase kind="underground">
+	<MonsterStatBlock monsterId="giant-spider" />
+	<MonsterStatBlock monsterId="ettercap" />
+	<MonsterStatBlock monsterId="nestweaver" />
+	<MonsterStatBlock monsterId="umber-hulk" />
+	<MonsterStatBlock monsterId="cloaker" />
+	<MonsterStatBlock monsterId="great-worm" />
+</MonsterKindShowcase>
 
 ## Legendary Monsters
 

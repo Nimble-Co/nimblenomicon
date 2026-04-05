@@ -1,85 +1,1674 @@
 [
-  {
-    "name": "Bandit Minion",
-    "level": "1/4",
-    "sizeId": "medium",
-    "armor": "none",
-    "speed": 6,
-    "speedMode": "walk",
-    "bodyDescription": "**Stab.** 1d8 (follows minion rules).",
-    "groupId": "bandits"
-  },
-  {
-    "name": "Bandit",
-    "level": "1/3",
-    "sizeId": "medium",
-    "healthPoints": 12,
-    "armor": "medium",
-    "speed": 6,
-    "speedMode": "walk",
-    "bodyDescription": "**Stab.** 1d8+1 (or Shoot, Range 8).",
-    "groupId": "bandits"
-  },
-  {
-    "name": "Bandit Bruiser",
-    "level": "2",
-    "sizeId": "medium",
-    "healthPoints": 24,
-    "armor": "medium",
-    "speed": 6,
-    "speedMode": "walk",
-    "bodyDescription": "**Bash.** 2d8+4.",
-    "groupId": "bandits"
-  },
-  {
-    "name": "Bandit Captain",
-    "level": "4",
-    "sizeId": "medium",
-    "healthPoints": 36,
-    "armor": "medium",
-    "speed": 6,
-    "speedMode": "walk",
-    "bodyDescription": "**Slice (3x).** 1d8+1 (or Shoot, Range 8).",
-    "groupId": "bandits"
-  },
-  {
-    "name": "Bandit Hunter",
-    "level": "1",
-    "sizeId": "medium",
-    "healthPoints": 22,
-    "armor": "none",
-    "speed": 6,
-    "speedMode": "walk",
-    "bodyDescription": "**Battlebow.** 2d8+2 (Range 12).",
-    "groupId": "bandits"
-  },
-  {
-    "name": "Bandit Assassin",
-    "level": "2",
-    "sizeId": "medium",
-    "healthPoints": 24,
-    "armor": "none",
-    "speed": 6,
-    "speedMode": "walk",
-    "bodyDescription": "**Poison Blade (2x).** 1d8+2. On damage: Dazed.",
-    "specialAbility": {
-      "name": "Sneak",
-      "description": "You are invisible until you attack."
-    },
-    "groupId": "bandits"
-  },
-  {
-    "name": "Bandit Mage",
-    "level": "4",
-    "sizeId": "medium",
-    "healthPoints": 41,
-    "armor": "none",
-    "speed": 6,
-    "speedMode": "walk",
-    "bodyDescription": "**Arc Lightning.** 3d8 (Range 12). Also strikes the next closest creature. On miss: damage self instead.",
-    "specialAbility": {
-      "name": "Spark Step",
-      "description": "When damaged, teleport up to 4 spaces."
-    }
-  }
+	{
+		"name": "Bandit Minion",
+		"level": "1/4",
+		"isMinion": true,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Stab",
+				"description": "1d8 (follows minion rules)"
+			}
+		],
+		"kind": "bandits",
+		"family": "bandits"
+	},
+	{
+		"name": "Bandit",
+		"level": "1/3",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Stab",
+				"description": "1d8+1 (or Shoot, Range 8)"
+			}
+		],
+		"kind": "bandits",
+		"family": "bandits",
+		"hp": 12
+	},
+	{
+		"name": "Bandit Hunter",
+		"level": "1",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Battlebow",
+				"description": "2d8+2 (Range 12)"
+			}
+		],
+		"kind": "bandits",
+		"family": "bandits",
+		"hp": 22
+	},
+	{
+		"name": "Bandit Assassin",
+		"level": "2",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Poison Blade",
+				"uses": 2,
+				"description": "1d8+2 On damage: Dazed."
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Sneak",
+				"description": "You are invisible until you attack."
+			}
+		],
+		"kind": "bandits",
+		"family": "bandits",
+		"hp": 24
+	},
+	{
+		"name": "Bandit Bruiser",
+		"level": "2",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "medium",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Bash",
+				"description": "2d8+4"
+			}
+		],
+		"kind": "bandits",
+		"family": "bandits",
+		"hp": 24
+	},
+	{
+		"name": "Bandit Captain",
+		"level": "4",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "medium",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Slice",
+				"uses": 3,
+				"description": "1d8+1 (or Shoot, Range 8)"
+			}
+		],
+		"kind": "bandits",
+		"family": "bandits",
+		"hp": 36
+	},
+	{
+		"name": "Bandit Mage",
+		"level": "4",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Arc Lightning",
+				"description": "3d8 (Range 12) Also strikes the next closest creature. On miss: damage self instead."
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Spark Step",
+				"description": "When damaged, teleport up to 4 spaces."
+			}
+		],
+		"kind": "bandits",
+		"family": "bandits",
+		"hp": 41
+	},
+	{
+		"name": "Stenchling",
+		"level": "1/2",
+		"isMinion": false,
+		"size": "small",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Bite",
+				"description": "2d6"
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Putrid Cloud",
+				"description": "On Death: 2d6 poison damage to enemies within Reach 2."
+			}
+		],
+		"kind": "cultists-and-horrors",
+		"family": "horrors",
+		"hp": 18
+	},
+	{
+		"name": "Cultist",
+		"level": "1",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Oblation of Blood!",
+				"description": "If undamaged, attack self for 2 damage. Adjacent enemies are inflicted with Despair."
+			},
+			{
+				"name": "Dreadful Blade",
+				"description": "1d6+6"
+			},
+			{
+				"name": "Blood Boil",
+				"description": "3d6+6 (Range 12) (Bloodied creature)"
+			}
+		],
+		"kind": "cultists-and-horrors",
+		"family": "cultists",
+		"hp": 28
+	},
+	{
+		"name": "Fanatic",
+		"level": "3",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Oblation of Blood!",
+				"description": "If undamaged, attack self for 2 damage. Adjacent enemies are inflicted with Despair."
+			},
+			{
+				"name": "Whispers of Madness",
+				"description": "3d6+6 Contested STR check or Grappled (reroll to escape, or any radiant damage); if successful, deal psychic damage (cannot be Defended or Interposed against)."
+			}
+		],
+		"kind": "cultists-and-horrors",
+		"family": "cultists",
+		"hp": 41
+	},
+	{
+		"name": "Spiny Fiend",
+		"level": "4",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Claws",
+				"uses": 2,
+				"description": "1d6+6"
+			},
+			{
+				"name": "Shoot Spine",
+				"description": "1d6+6 (Range 12)"
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Spines",
+				"description": "Melee attackers take 3 damage."
+			}
+		],
+		"kind": "cultists-and-horrors",
+		"family": "horrors",
+		"hp": 49
+	},
+	{
+		"name": "Doomsayer",
+		"level": "5",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Feverish Chant",
+				"description": "(Concentration) Reduce all damage done to allies who can hear you to 1."
+			},
+			{
+				"name": "Ecstatic Ravings",
+				"description": "2d6 Psychic damage to all enemies who can hear you."
+			}
+		],
+		"kind": "cultists-and-horrors",
+		"family": "cultists",
+		"hp": 58
+	},
+	{
+		"name": "Glabrezu",
+		"level": "14",
+		"isMinion": false,
+		"size": "large",
+		"armor": "heavy",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Doomclaw",
+				"uses": 2,
+				"description": "3d6+10 (Reach 2) On damage: Grappled (escape DC 17). If the same creature is Grappled by both of the glabrezu's claws, it must escape from each of them separately."
+			},
+			{
+				"name": "Tear Asunder",
+				"description": "50 (A creature Grappled by both of the glabrezu's claws) Unpreventable damage. If the target is at 0 HP: DC 17 STR save or be torn in two, dying instantly."
+			}
+		],
+		"kind": "cultists-and-horrors",
+		"family": "horrors",
+		"hp": 110
+	},
+	{
+		"name": "Stirge",
+		"level": "1/2",
+		"isMinion": false,
+		"size": "tiny",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Latch On",
+				"description": "1d4+2 On hit: Latched On."
+			}
+		],
+		"kind": "dungeon-denizens",
+		"family": "stirges",
+		"hp": 10
+	},
+	{
+		"name": "Gray Ooze",
+		"level": "1",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Acidic Touch",
+				"uses": 2,
+				"description": "1d6+2"
+			}
+		],
+		"kind": "dungeon-denizens",
+		"family": "oozes",
+		"hp": 28
+	},
+	{
+		"name": "Tiny Mimic",
+		"level": "1",
+		"isMinion": false,
+		"size": "tiny",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Pseudopod",
+				"description": "1d4 (escape DC 9)",
+				"joinNext": "or"
+			},
+			{
+				"name": "Bite",
+				"description": "1d12 (a Grappled creature)"
+			}
+		],
+		"kind": "dungeon-denizens",
+		"family": "mimics",
+		"hp": 28
+	},
+	{
+		"name": "Small Mimic",
+		"level": "2",
+		"isMinion": false,
+		"size": "small",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Pseudopod",
+				"description": "1d6 (escape DC 11)",
+				"joinNext": "or"
+			},
+			{
+				"name": "Bite",
+				"description": "1d20 (a Grappled creature)"
+			}
+		],
+		"kind": "dungeon-denizens",
+		"family": "mimics",
+		"hp": 41
+	},
+	{
+		"name": "Ochre Jelly",
+		"level": "4",
+		"isMinion": false,
+		"size": "large",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Acidic Touch",
+				"uses": 2,
+				"description": "1d6+3"
+			}
+		],
+		"kind": "dungeon-denizens",
+		"family": "oozes",
+		"hp": 52
+	},
+	{
+		"name": "Greater Stirge",
+		"level": "6",
+		"isMinion": false,
+		"size": "small",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Latch On",
+				"description": "1d12+10 On hit: Latched On."
+			}
+		],
+		"kind": "dungeon-denizens",
+		"family": "stirges",
+		"hp": 60
+	},
+	{
+		"name": "Medium Mimic",
+		"level": "6",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Pseudopod",
+				"description": "1d8 (escape DC 13)",
+				"joinNext": "or"
+			},
+			{
+				"name": "Bite",
+				"description": "2d20 (a Grappled creature)"
+			}
+		],
+		"kind": "dungeon-denizens",
+		"family": "mimics",
+		"hp": 79
+	},
+	{
+		"name": "Black Pudding",
+		"level": "8",
+		"isMinion": false,
+		"size": "large",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Acidic Touch",
+				"uses": 2,
+				"description": "1d6+5 (Reach 2)"
+			}
+		],
+		"kind": "dungeon-denizens",
+		"family": "oozes",
+		"hp": 90
+	},
+	{
+		"name": "Elder Ooze",
+		"level": "12",
+		"isMinion": false,
+		"size": "huge",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Acidic Touch",
+				"uses": 3,
+				"description": "1d6+6 (Reach 3)"
+			}
+		],
+		"kind": "dungeon-denizens",
+		"family": "oozes",
+		"hp": 150
+	},
+	{
+		"name": "Seedling",
+		"level": "1/2",
+		"isMinion": false,
+		"size": "small",
+		"armor": "heavy",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Thorn Seed",
+				"description": "2d6+2 (Range 6)"
+			}
+		],
+		"kind": "forest-denizens",
+		"family": "briarbanes",
+		"hp": 8
+	},
+	{
+		"name": "Acidpod",
+		"level": "1",
+		"isMinion": false,
+		"size": "small",
+		"armor": "heavy",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Grab",
+				"description": "DC 12 DEX save or Grappled."
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Caustic Eruption",
+				"description": "On death: 4d6 acid damage to all adjacent creatures."
+			}
+		],
+		"kind": "forest-denizens",
+		"family": "briarbanes",
+		"hp": 8
+	},
+	{
+		"name": "Tangler",
+		"level": "2",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "heavy",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Tangle",
+				"uses": 2,
+				"description": "1d6+2 (Reach 6) On Hit: Grappled (escape DC 12, or any fire or slashing damage)."
+			}
+		],
+		"kind": "forest-denizens",
+		"family": "briarbanes",
+		"hp": 20
+	},
+	{
+		"name": "Rootbreaker",
+		"level": "5",
+		"isMinion": false,
+		"size": "large",
+		"armor": "heavy",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Slam",
+				"description": "3d6+6 On crit: knockback 2."
+			}
+		],
+		"kind": "forest-denizens",
+		"family": "briarbanes",
+		"hp": 50
+	},
+	{
+		"name": "Duskprowler",
+		"level": "6",
+		"isMinion": false,
+		"size": "large",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Ravage",
+				"uses": 2,
+				"description": "2d8+2"
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Illusory Aura",
+				"description": "Attacks against the Duskprowler have Disadvantage 2. Damage suppresses this effect until the end of the next hero's turn."
+			}
+		],
+		"kind": "forest-denizens",
+		"hp": 70
+	},
+	{
+		"name": "Basilisk",
+		"level": "7",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "heavy",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Stone Gaze",
+				"description": "Daze 1 creature within sight, then:"
+			},
+			{
+				"name": "Envenom",
+				"description": "1d8+10 Advantage vs Dazed targets."
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Flesh to Stone",
+				"description": "Creatures Dazed by the Basilisk remain so for 10 minutes. Dazed 3 times = Petrified."
+			}
+		],
+		"kind": "forest-denizens",
+		"hp": 48
+	},
+	{
+		"name": "Druid",
+		"level": "8",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Beastshift",
+				"description": "4d4+10 +4 speed, gain Medium armor this round."
+			},
+			{
+				"name": "Hurricane",
+				"description": "4d4+10 (Reach 3) To all enemies within reach. On damage: move targets anywhere else in Reach."
+			}
+		],
+		"kind": "forest-denizens",
+		"hp": 90
+	},
+	{
+		"name": "Treant",
+		"level": "14",
+		"isMinion": false,
+		"size": "huge",
+		"armor": "heavy",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Slam",
+				"description": "2d6+10 (Reach 3) On damage: Prone."
+			},
+			{
+				"name": "Stomp",
+				"description": "2d6+20 (Hampered target)"
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Enrage",
+				"description": "Attack with advantage when unarmored."
+			}
+		],
+		"kind": "forest-denizens",
+		"family": "briarbanes",
+		"hp": 170
+	},
+	{
+		"name": "Goblin Minion",
+		"level": "1/4",
+		"isMinion": true,
+		"size": "small",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Stab",
+				"description": "1d6 (follows minion rules)"
+			}
+		],
+		"kind": "goblins",
+		"family": "goblins"
+	},
+	{
+		"name": "Goblin",
+		"level": "1/3",
+		"isMinion": false,
+		"size": "small",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Stab",
+				"description": "1d6+2 (or Shoot, Range 8)"
+			}
+		],
+		"kind": "goblins",
+		"family": "goblins",
+		"hp": 15
+	},
+	{
+		"name": "Bugbear",
+		"level": "2",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "medium",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Cleave",
+				"description": "2d6+4",
+				"joinNext": "or"
+			},
+			{
+				"name": "Javelin",
+				"description": "1d6+2 (Range 8)"
+			}
+		],
+		"kind": "goblins",
+		"family": "goblins",
+		"hp": 30
+	},
+	{
+		"name": "Goblin Ratrider",
+		"level": "2",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 10,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Bite & Stab",
+				"uses": 2,
+				"description": "1d6+2 On crit: Prone."
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "CHAARGE!",
+				"description": "If you move at least 4 spaces in a straight line, attack with advantage once."
+			}
+		],
+		"kind": "goblins",
+		"family": "goblins",
+		"hp": 30
+	},
+	{
+		"name": "Goblin Taskmaster",
+		"level": "2",
+		"isMinion": false,
+		"size": "small",
+		"armor": "medium",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Stab",
+				"description": "1d6+2 (or Shoot, Range 8) Then:",
+				"joinNext": "then"
+			},
+			{
+				"name": "Get in here!",
+				"description": "Call a goblin minion to the fight."
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Meat Shield",
+				"description": "Can force other goblins to Interpose for him."
+			}
+		],
+		"kind": "goblins",
+		"family": "goblins",
+		"hp": 30
+	},
+	{
+		"name": "Gnoll",
+		"level": "1",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Ravage",
+				"uses": 2,
+				"description": "1d10",
+				"joinNext": "or"
+			},
+			{
+				"name": "Shoot",
+				"description": "1d10 (Range 12)"
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Frenzy",
+				"description": "Advantage against Bloodied creatures."
+			}
+		],
+		"kind": "hill-and-field",
+		"family": "gnolls",
+		"hp": 28
+	},
+	{
+		"name": "Worg",
+		"level": "1",
+		"isMinion": false,
+		"size": "large",
+		"armor": "none",
+		"movement": {
+			"speed": 10,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Rip Apart",
+				"uses": 2,
+				"description": "1d6+2 On hit: Grappled (escape DC 10)."
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Savage",
+				"description": "Always crits when attacking a Grappled creature."
+			}
+		],
+		"kind": "hill-and-field",
+		"hp": 28
+	},
+	{
+		"name": "Blue Drake",
+		"level": "2",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 12,
+			"mode": "fly"
+		},
+		"actions": [
+			{
+				"name": "Shocking Bite",
+				"description": "1d12+5 (ignores metal armor)"
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "On Death",
+				"description": "Deal 1d12 damage back (ignores metal armor)."
+			}
+		],
+		"kind": "hill-and-field",
+		"hp": 34
+	},
+	{
+		"name": "Gnoll Packleader",
+		"level": "4",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "medium",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Bark Orders",
+				"description": "2 allies can move. Then:",
+				"joinNext": "then"
+			},
+			{
+				"name": "Ravage",
+				"uses": 3,
+				"description": "1d10"
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Frenzy",
+				"description": "Advantage against Bloodied creatures."
+			}
+		],
+		"kind": "hill-and-field",
+		"family": "gnolls",
+		"hp": 39
+	},
+	{
+		"name": "Griffon",
+		"level": "4",
+		"isMinion": false,
+		"size": "large",
+		"armor": "none",
+		"movement": {
+			"speed": 12,
+			"mode": "fly"
+		},
+		"actions": [
+			{
+				"name": "Talons",
+				"description": "2d6+10 On hit: Grappled (escape DC 14)"
+			},
+			{
+				"name": "Fly & Drop",
+				"description": "(if grappling) Fly upward 12 and release (6d6 fall damage)."
+			}
+		],
+		"kind": "hill-and-field",
+		"hp": 50
+	},
+	{
+		"name": "Bulette",
+		"level": "10",
+		"isMinion": false,
+		"size": "large",
+		"armor": "heavy",
+		"movement": {
+			"speed": 6,
+			"mode": "burrow"
+		},
+		"actions": [
+			{
+				"name": "Drag Below",
+				"description": "2d12 (A Grappled creature) Then drag below and burrow away.",
+				"joinNext": "or"
+			},
+			{
+				"name": "Leap & Bite",
+				"description": "1d12+20 (If not grappling) Leap 6, and attack. On hit: Grappled."
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Burst Forth!",
+				"description": "Combat with a Bulette starts with the heaviest character making a DC 14 DEX save or they are Grappled (escape DC 14) and take 1d12+20 damage (half on save)."
+			}
+		],
+		"kind": "hill-and-field",
+		"hp": 74
+	},
+	{
+		"name": "Troll",
+		"level": "10",
+		"isMinion": false,
+		"size": "large",
+		"armor": "medium",
+		"movement": {
+			"speed": 8,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Claws",
+				"description": "1d4+10 (Reach 2) On crit: Prone."
+			},
+			{
+				"name": "Bite",
+				"description": "1d4+20 (A Prone creature)"
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Regenerate",
+				"description": "Does not die at 0 HP. Only fire, radiant, or a crit while at 0 HP can kill it."
+			}
+		],
+		"kind": "hill-and-field",
+		"hp": 100
+	},
+	{
+		"name": "Hill Giant",
+		"level": "12",
+		"isMinion": false,
+		"size": "huge",
+		"armor": "none",
+		"movement": {
+			"speed": 8,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Smash",
+				"uses": 2,
+				"description": "1d6+15 (Reach 2)"
+			},
+			{
+				"name": "Boulder!",
+				"description": "1d6+20 (Range 12)"
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Brute",
+				"description": "On hit: Knockback Primary Die spaces."
+			}
+		],
+		"kind": "hill-and-field",
+		"hp": 140
+	},
+	{
+		"name": "Roc",
+		"level": "17",
+		"isMinion": false,
+		"size": "gargantuan",
+		"armor": "medium",
+		"movement": {
+			"speed": 20,
+			"mode": "fly"
+		},
+		"actions": [
+			{
+				"name": "Pluck Up",
+				"description": "3d12+20 (Reach 4, target up to 2 creatures) On hit: Grappled (escape DC 18)."
+			},
+			{
+				"name": "Crush & Drop",
+				"description": "20 Fly upward 20 spaces, deal damage to Grappled creatures, then release (10d6 fall damage)."
+			}
+		],
+		"kind": "hill-and-field",
+		"hp": 195
+	},
+	{
+		"name": "Kobold Minion",
+		"level": "1/4",
+		"isMinion": true,
+		"size": "small",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Stab",
+				"description": "1d4 (follows minion rules)"
+			}
+		],
+		"kind": "kobolds",
+		"family": "kobolds"
+	},
+	{
+		"name": "Kobold",
+		"level": "1/3",
+		"isMinion": false,
+		"size": "small",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Stab",
+				"description": "1d4+2 (or Sling, Range 8)"
+			}
+		],
+		"kind": "kobolds",
+		"family": "kobolds",
+		"hp": 12
+	},
+	{
+		"name": "Kobold Sneak",
+		"level": "1/2",
+		"isMinion": false,
+		"size": "small",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Stab",
+				"description": "1d4+2 (or Sling, Range 8)"
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Revenge",
+				"description": "When an ally dies, you may move up to 6 spaces before using your Nooooo! ability."
+			}
+		],
+		"kind": "kobolds",
+		"family": "kobolds",
+		"hp": 15
+	},
+	{
+		"name": "Kobold Clanger",
+		"level": "1",
+		"isMinion": false,
+		"size": "small",
+		"armor": "heavy",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [],
+		"specialAbilities": [
+			{
+				"name": "CLANG!",
+				"description": "Allies who hear your clanging, roll 1 additional die whenever they attack."
+			}
+		],
+		"kind": "kobolds",
+		"family": "kobolds",
+		"hp": 16
+	},
+	{
+		"name": "Kobold Denwarden",
+		"level": "1",
+		"isMinion": false,
+		"size": "small",
+		"armor": "medium",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Stab",
+				"uses": 2,
+				"description": "1d4+2 (or Sling, Range 8)"
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Hold!",
+				"description": "Adjacent allies gain Medium Armor."
+			}
+		],
+		"kind": "kobolds",
+		"family": "kobolds",
+		"hp": 20
+	},
+	{
+		"name": "Kobold Trapper",
+		"level": "1",
+		"isMinion": false,
+		"size": "small",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Throw Scorpion",
+				"uses": 2,
+				"description": "1d4+2 (Range 8)"
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Trap!",
+				"description": "When an enemy moves adjacent to you or an ally, they trigger one of your traps! (1/encounter each). BEEES! Deal 5d4 damage (doesn't miss). Half as much to ALL adjacent creatures. HIDDEN NET! Restrained (escape DC 10)."
+			}
+		],
+		"kind": "kobolds",
+		"family": "kobolds",
+		"hp": 26
+	},
+	{
+		"name": "Kobold Trapper (Medium)",
+		"level": "1",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "medium",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"hp": 20,
+		"actions": [
+			{
+				"name": "Stab",
+				"uses": 2,
+				"description": "1d4+2 (or Sling, Range 8)"
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Hold!",
+				"description": "Adjacent allies gain Medium Armor."
+			}
+		],
+		"kind": "kobolds",
+		"family": "kobolds"
+	},
+	{
+		"name": "Snakeman Minion",
+		"level": "1/4",
+		"isMinion": true,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Strike",
+				"description": "1d6 Melee/ranged (follows minion rules)"
+			}
+		],
+		"kind": "snakemen",
+		"family": "snakemen"
+	},
+	{
+		"name": "Snakeman",
+		"level": "1",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Slash",
+				"description": "1d6+6 (or Spit, Range 8)"
+			}
+		],
+		"kind": "snakemen",
+		"family": "snakemen",
+		"hp": 26
+	},
+	{
+		"name": "Cobra Captain",
+		"level": "4",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "medium",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Slash",
+				"uses": 2,
+				"description": "1d6+6 (or Spit, Range 8)"
+			}
+		],
+		"kind": "snakemen",
+		"family": "snakemen",
+		"hp": 36
+	},
+	{
+		"name": "Giant Cobra",
+		"level": "8",
+		"isMinion": false,
+		"size": "large",
+		"armor": "medium",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Crush",
+				"description": "2d6+20 Advantage vs. smaller creatures."
+			}
+		],
+		"kind": "snakemen",
+		"family": "snakemen",
+		"hp": 80
+	},
+	{
+		"name": "Skeleton",
+		"level": "1/3",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Grave Arrow",
+				"description": "1d4+3 (Range 8)"
+			}
+		],
+		"kind": "undead",
+		"family": "undead",
+		"hp": 10
+	},
+	{
+		"name": "Zombie",
+		"level": "1/2",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Crunch",
+				"description": "1d4+4 On damage: Grappled."
+			}
+		],
+		"kind": "undead",
+		"family": "undead",
+		"hp": 15
+	},
+	{
+		"name": "Ghoul",
+		"level": "1",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Sickening Claw",
+				"description": "1d4+8 On damage: Dazed."
+			}
+		],
+		"kind": "undead",
+		"family": "undead",
+		"hp": 20
+	},
+	{
+		"name": "Specter",
+		"level": "3",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "fly"
+		},
+		"actions": [
+			{
+				"name": "Deathly Touch",
+				"description": "1d4 On damage: set HP to 0."
+			}
+		],
+		"kind": "undead",
+		"family": "undead",
+		"hp": 30
+	},
+	{
+		"name": "Ogre Zombie",
+		"level": "5",
+		"isMinion": false,
+		"size": "large",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Greatclub",
+				"uses": 2,
+				"description": "1d4+8 On crit: Prone."
+			}
+		],
+		"kind": "undead",
+		"family": "undead",
+		"hp": 46
+	},
+	{
+		"name": "Mummy",
+		"level": "6",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Slam",
+				"uses": 2,
+				"description": "1d4+8 On damage: Dazed."
+			}
+		],
+		"kind": "undead",
+		"family": "undead",
+		"hp": 54
+	},
+	{
+		"name": "Giant Zombie",
+		"level": "8",
+		"isMinion": false,
+		"size": "huge",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Decaying Swipe",
+				"uses": 2,
+				"description": "1d4+10 On damage: knockback Primary Die spaces."
+			}
+		],
+		"kind": "undead",
+		"family": "undead",
+		"hp": 73
+	},
+	{
+		"name": "Wraith",
+		"level": "10",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "fly"
+		},
+		"actions": [
+			{
+				"name": "Soul Rend",
+				"uses": 2,
+				"description": "1d4+10 (Range 8) On damage: deal 1 Wound."
+			}
+		],
+		"kind": "undead",
+		"family": "undead",
+		"hp": 94
+	},
+	{
+		"name": "Mummy Lord",
+		"level": "21",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Scarab Swarm",
+				"description": "Summon 10 scarab minions (d6) within 6 spaces. Then:"
+			},
+			{
+				"name": "Slam",
+				"uses": 2,
+				"description": "1d4+20 On damage: Dazed."
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Cursed Gaze",
+				"description": "When crit: DC 20 INT save, or suffer 1 Wound."
+			}
+		],
+		"kind": "undead",
+		"family": "undead",
+		"hp": 280
+	},
+	{
+		"name": "Giant Spider",
+		"level": "2",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "medium",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Shoot Web",
+				"description": "1d8+2 (Range 6) On hit: Restrained (escape DC 12, or any slashing/fire damage)."
+			},
+			{
+				"name": "Bite",
+				"description": "2d8+4 (Hampered target) Poisoned (magical healing ends)."
+			}
+		],
+		"kind": "underground",
+		"hp": 27
+	},
+	{
+		"name": "Ettercap",
+		"level": "4",
+		"isMinion": false,
+		"size": "medium",
+		"armor": "none",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Web Garrote",
+				"description": "1d8+2 On hit: Grappled (escape DC 13), Silenced until target escapes. (Silenced: Cannot cast spells or use other abilities that require speaking.)"
+			}
+		],
+		"kind": "underground",
+		"hp": 49
+	},
+	{
+		"name": "Nestweaver",
+		"level": "6",
+		"isMinion": false,
+		"size": "large",
+		"armor": "medium",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Shoot Web",
+				"description": "1d8+2 (Range 6) On hit: Restrained (escape DC 12, or any slashing/fire damage)."
+			},
+			{
+				"name": "Bite",
+				"description": "3d8+6 (Hampered target) Poisoned (magical healing ends)."
+			}
+		],
+		"kind": "underground",
+		"hp": 54
+	},
+	{
+		"name": "Umber Hulk",
+		"level": "10",
+		"isMinion": false,
+		"size": "large",
+		"armor": "heavy",
+		"movement": {
+			"speed": 6,
+			"mode": "walk"
+		},
+		"actions": [
+			{
+				"name": "Mandible & Claws",
+				"uses": 2,
+				"description": "1d10+10"
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Confounding Pheromones",
+				"description": "Enemies make a DC 15 WIL save at the start of their turns or Confused this turn. Gain advantage 1 on the save for each failure this encounter. (Confused: The GM spends your next action.)"
+			}
+		],
+		"kind": "underground",
+		"hp": 70
+	},
+	{
+		"name": "Cloaker",
+		"level": "13",
+		"isMinion": false,
+		"size": "large",
+		"armor": "none",
+		"movement": {
+			"speed": 10,
+			"mode": "fly"
+		},
+		"actions": [
+			{
+				"name": "Wrap",
+				"description": "2d10+20 On Hit: Grappled (escape DC 16)."
+			},
+			{
+				"name": "Horrifying Wail",
+				"description": "DC 16 WIL save, or creatures within 6 spaces are Frightened and must spend 1 Action moving as far away as possible."
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Ambusher",
+				"description": "Cloakers always start first and heroes roll Initiative with disadvantage."
+			},
+			{
+				"name": "Mutual Harm",
+				"description": "You take half damage from attacks while grappling a creature (they take the other half)."
+			}
+		],
+		"kind": "underground",
+		"hp": 110
+	},
+	{
+		"name": "Great Worm",
+		"level": "16",
+		"isMinion": false,
+		"size": "huge",
+		"armor": "heavy",
+		"movement": {
+			"speed": 8,
+			"mode": "burrow"
+		},
+		"actions": [
+			{
+				"name": "Crush",
+				"description": "50 Creatures in a 2×6 area take damage on a failed DC 18 DEX save. (Creatures who fail can spend 1 Action to dive out of the way instead of taking this damage. They move half their speed and land Prone.)"
+			},
+			{
+				"name": "Bite/Swallow",
+				"description": "1d4+40 On crit: Swallowed. (Swallowed: You take 20 damage at the start of your turn. Your attacks cannot miss and ignore armor.)"
+			}
+		],
+		"specialAbilities": [
+			{
+				"name": "Tremor Sight",
+				"description": "Advantage against creatures that moved since the worm's last turn."
+			}
+		],
+		"kind": "underground",
+		"hp": 140
+	}
 ]

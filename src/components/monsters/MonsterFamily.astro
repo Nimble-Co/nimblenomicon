@@ -1,0 +1,38 @@
+---
+import { monsterFamilies } from '../../models/monster-families';
+import { monsters } from '../../models/monsters';
+import Ability from './Ability.astro';
+import MonsterStatBlock from './MonsterStatBlock.astro';
+
+interface Props {
+	family: string;
+	showFamilyAbilitiesInStatBlocks?: boolean;
+}
+
+const { family: familySlug, showFamilyAbilitiesInStatBlocks = false } =
+	Astro.props;
+
+const family = monsterFamilies.find((f) => f.id === familySlug);
+const monstersInFamily = monsters.filter((m) => m.family?.id === familySlug);
+---
+
+{
+	family && (
+		<section class="flex flex-col items-stretch gap-2 border-double border-4 border-gray-300 bg-surface p-2 rounded-md">
+			<h3>{family.name}</h3>
+
+			{family.abilities.map((ability) => (
+				<Ability name={ability.name} description={ability.description} />
+			))}
+
+			<div class="flex flex-col items-stretch gap-2">
+				{monstersInFamily.map((monster) => (
+					<MonsterStatBlock
+						monsterId={monster.id}
+						showFamilyAbilities={showFamilyAbilitiesInStatBlocks}
+					/>
+				))}
+			</div>
+		</section>
+	)
+}

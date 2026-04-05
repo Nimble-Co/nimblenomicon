@@ -50,7 +50,7 @@ export const magicalItems: MagicalItemData[] = z
 				const id = rows[i]!.id;
 				if (seen.has(id)) {
 					ctx.addIssue({
-						code: z.ZodIssueCode.custom,
+						code: 'custom',
 						message: `Duplicate magical item id "${id}" (rows ${seen.get(id)} and ${i})`,
 						path: [i, 'id'],
 					});

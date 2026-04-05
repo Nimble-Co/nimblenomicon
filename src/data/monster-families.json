@@ -1,0 +1,117 @@
+[
+	{
+		"name": "Bandits",
+		"abilities": [
+			{
+				"name": "Parry",
+				"description": "Treat attacks against you that roll 2 as a miss."
+			}
+		]
+	},
+	{
+		"name": "Briarbanes",
+		"abilities": [
+			{
+				"name": "Peeling Bark",
+				"description": "Damage degrades Armor 1 step: Heavy » Medium » None."
+			}
+		]
+	},
+	{
+		"name": "Cultists",
+		"abilities": [
+			{
+				"name": "Fanatical Zeal",
+				"description": "While not at max HP, make all rolls with advantage. Your crits also inflict Despair (Disadvantage on the next attack you make this encounter)."
+			}
+		]
+	},
+	{
+		"name": "Goblins",
+		"abilities": [
+			{
+				"name": "Haha, Missed Me!",
+				"description": "Whenever an attack misses you, deal 1 psychic damage in return."
+			}
+		]
+	},
+	{
+		"name": "Gnolls",
+		"abilities": [
+			{
+				"name": "Frenzy",
+				"description": "Advantage against Bloodied creatures."
+			}
+		]
+	},
+	{
+		"name": "Horrors",
+		"abilities": []
+	},
+	{
+		"name": "Kobolds",
+		"abilities": [
+			{
+				"name": "Nooooo!",
+				"description": "When an ally within 2 spaces dies, attack once for free."
+			}
+		]
+	},
+	{
+		"name": "Mimics",
+		"abilities": [
+			{
+				"name": "Ambusher",
+				"description": "Mimics always start first and heroes roll Initiative with disadvantage."
+			},
+			{
+				"name": "Sticky",
+				"description": "Mimic hits also Grapple and can Grapple any number of creatures. When crit: release 1 creature (attacker's choice)."
+			}
+		]
+	},
+	{
+		"name": "Oozes",
+		"abilities": [
+			{
+				"name": "Digestive Touch",
+				"description": "Contact with an ooze inflicts the Digested condition: they deal an additional X damage for each time the target has been Digested this encounter."
+			},
+			{
+				"name": "Goopy",
+				"description": "When crit or dealt any slashing damage: summon X ooze minions (size: d6); their attacks inflict Digested."
+			}
+		]
+	},
+	{
+		"name": "Snakemen",
+		"abilities": [
+			{
+				"name": "Coiling Strike",
+				"description": "On melee crit: Grapple (escape DC 10)."
+			}
+		]
+	},
+	{
+		"name": "Stirges",
+		"abilities": [
+			{
+				"name": "Evasive Flier",
+				"description": "Attacks against stirges are made with disadvantage."
+			},
+			{
+				"name": "Latched On",
+				"description": "You move where your target moves until either dies. Your attacks can't miss or be Defended/Interposed against. Attacks that miss you damage your target instead."
+			}
+		]
+	},
+	{
+		"name": "Undead",
+		"abilities": [
+			{
+				"name": "Unliving, Undying",
+				"description": "The first time this dies, reset to 1 HP instead (excluding minions)."
+			}
+		]
+	}
+]

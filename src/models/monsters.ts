@@ -1,10 +1,9 @@
 import { z } from 'astro/zod';
 import rawMonsters from '../data/monsters.json';
 import { slugifyEntityId } from '../lib/slugifyEntityId';
-import { monsterGroups } from './monster-groups';
+import { monsterFamilies } from './monster-families';
+import { monsterKinds } from './monster-kinds';
 import { sizes } from './sizes';
-
-const groupIds = new Set(monsterGroups.map((g) => g.id));
 
 const namedBlockSchema = z
 	.object({
@@ -13,11 +12,11 @@ const namedBlockSchema = z
 	})
 	.strict();
 
-const sizeIds = sizes.map((s) => slugifyEntityId(s.name, 'size')) as [
+const sizeSlugs = sizes.map((s) => slugifyEntityId(s.name, 'size')) as [
 	string,
 	...string[],
 ];
-const sizeIdSchema = z.enum(sizeIds).default('medium');
+const sizeSchema = z.enum(sizeSlugs).default('medium');
 
 /** Monster level: fractional minion-style tiers or whole levels 1–20. */
 const MONSTER_LEVEL_VALUES = [
@@ -44,43 +43,96 @@ const MONSTER_LEVEL_VALUES = [
 	'18',
 	'19',
 	'20',
+	'21',
 ] as const;
 
 const monsterLevelSchema = z.enum(MONSTER_LEVEL_VALUES);
 export type MonsterLevel = z.infer<typeof monsterLevelSchema>;
 
+const movementSchema = z
+	.object({
+		speed: z.number().default(6),
+		mode: z.enum(['walk', 'fly', 'burrow', 'swim']).default('walk'),
+	})
+	.strict()
+	.default({ speed: 6, mode: 'walk' });
+
+/** Connector after this action toward the next (`or` = same-line “ OR:”; then “OR:” before next; `then` = “ Then:”). */
+const monsterActionJoinNextSchema = z.enum(['or', 'then']);
+
+const monsterActionSchema = z
+	.object({
+		name: z.string().min(1),
+		uses: z.number().int().positive().optional(),
+		description: z.string().min(1),
+		joinNext: monsterActionJoinNextSchema.optional(),
+	})
+	.strict();
+
 const monsterSchema = z
 	.object({
 		name: z.string().min(1),
 		level: monsterLevelSchema,
-		sizeId: sizeIdSchema,
-		healthPoints: z.number().optional(),
+		isMinion: z.boolean().default(false),
+		size: sizeSchema,
+		hp: z.number().optional(),
 		armor: z.enum(['none', 'medium', 'heavy']).default('none'),
-		speed: z.number().default(6),
-		speedMode: z.enum(['walk', 'fly', 'burrow', 'swim']).default('walk'),
-		bodyDescription: z.string().min(1),
-		specialAbility: namedBlockSchema.optional(),
-		specialCondition: namedBlockSchema.optional(),
-		groupId: z.string().min(1).optional(),
+		movement: movementSchema,
+		actions: z.array(monsterActionSchema).default([]),
+		notes: z.string().min(1).optional(),
+		specialAbilities: z.array(namedBlockSchema).default([]),
+		kind: z.string().min(1).optional(),
+		family: z.string().min(1).optional(),
 	})
 	.strict()
-	.superRefine((row, ctx) => {
-		if (row.groupId !== undefined && !groupIds.has(row.groupId)) {
-			ctx.addIssue({
-				code: z.ZodIssueCode.custom,
-				message: `groupId "${row.groupId}" does not match any monster group`,
-				path: ['groupId'],
-			});
+	.transform((row) => {
+		const { kind: kindSlug, family: familySlug, ...rest } = row;
+
+		if (kindSlug === undefined && familySlug === undefined) {
+			return {
+				...rest,
+				family: undefined,
+				id: slugifyEntityId(rest.name, 'monster'),
+				kind: undefined,
+			};
 		}
-	})
-	.transform((row) => ({
-		...row,
-		id: slugifyEntityId(row.name, 'monster'),
-	}));
 
+		let kindRow: (typeof monsterKinds)[number] | undefined;
+		if (kindSlug !== undefined) {
+			const found = monsterKinds.find((k) => k.id === kindSlug);
+			if (found === undefined) {
+				throw new Error(
+					`Unknown monster kind slug "${kindSlug}" for monster "${rest.name}"`,
+				);
+			}
+			kindRow = found;
+		}
+
+		let familyRow: (typeof monsterFamilies)[number] | undefined;
+		if (familySlug !== undefined) {
+			const found = monsterFamilies.find((f) => f.id === familySlug);
+			if (found === undefined) {
+				throw new Error(
+					`Unknown monster family slug "${familySlug}" for monster "${rest.name}"`,
+				);
+			}
+			familyRow = found;
+		}
+
+		return {
+			...rest,
+			family: familyRow,
+			id: slugifyEntityId(rest.name, 'monster'),
+			kind: kindRow,
+		};
+	});
+
+export type MonsterAction = z.infer<typeof monsterActionSchema>;
 export type MonsterData = z.infer<typeof monsterSchema>;
-export const monsters: MonsterData[] = z.array(monsterSchema).parse(rawMonsters);
+export const monsters: MonsterData[] = z
+	.array(monsterSchema)
+	.parse(rawMonsters);
 
-export function getMonstersByGroupId(groupId: string): MonsterData[] {
-	return monsters.filter((m) => m.groupId === groupId);
+export function getMonstersByKindId(kindId: string): MonsterData[] {
+	return monsters.filter((m) => m.kind?.id === kindId);
 }

@@ -14,6 +14,15 @@ html {
 
 @theme {
 	/*
+	 * Custom palette only — disable Tailwind defaults, then define Nimble tokens.
+	 * https://tailwindcss.com/docs/colors#using-a-custom-palette
+	 */
+	--color-*: initial;
+
+	--color-white: #fff;
+	--color-black: #000;
+
+	/*
 	 * Nimble light theme — wired into Starlight via @astrojs/starlight-tailwind
 	 * (see node_modules/@astrojs/starlight-tailwind/tailwind.css :root mappings).
 	 */
@@ -43,6 +52,14 @@ html {
 	--color-gray-800: #2e2c29;
 	--color-gray-900: #141312;
 	--color-gray-950: #0a0a09;
+}
+
+/*
+ * Semantic surfaces — follow Starlight content background (light overrides in `:root[data-theme='light']`).
+ * https://tailwindcss.com/docs/colors#referencing-other-variables
+ */
+@theme inline {
+	--color-surface: var(--sl-color-bg);
 }
 
 :root {
