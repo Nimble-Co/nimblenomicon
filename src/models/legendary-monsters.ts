@@ -35,10 +35,8 @@ const legendaryMonsterSchema = z
 			.object({
 				str: z.number().int().optional(),
 				dex: z.number().int().optional(),
-				con: z.number().int().optional(),
 				int: z.number().int().optional(),
 				wil: z.number().int().optional(),
-				cha: z.number().int().optional(),
 				all: z.number().int().optional(),
 			})
 			.strict()

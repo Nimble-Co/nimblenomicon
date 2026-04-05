@@ -1285,20 +1285,12 @@ content:
                 label: DEX
                 type: number
                 required: false
-              - name: con
-                label: CON
-                type: number
-                required: false
               - name: int
                 label: INT
                 type: number
                 required: false
               - name: wil
                 label: WIL
-                type: number
-                required: false
-              - name: cha
-                label: CHA
                 type: number
                 required: false
               - name: all
