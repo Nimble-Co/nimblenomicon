@@ -46,7 +46,7 @@ const MONSTER_LEVEL_VALUES = [
 	'21',
 ] as const;
 
-const monsterLevelSchema = z.enum(MONSTER_LEVEL_VALUES);
+export const monsterLevelSchema = z.enum(MONSTER_LEVEL_VALUES);
 export type MonsterLevel = z.infer<typeof monsterLevelSchema>;
 
 const movementSchema = z
@@ -58,9 +58,9 @@ const movementSchema = z
 	.default({ speed: 6, mode: 'walk' });
 
 /** Connector after this action toward the next (`or` = same-line “ OR:”; then “OR:” before next; `then` = “ Then:”). */
-const monsterActionJoinNextSchema = z.enum(['or', 'then']);
+export const monsterActionJoinNextSchema = z.enum(['or', 'then']);
 
-const monsterActionSchema = z
+export const monsterActionSchema = z
 	.object({
 		name: z.string().min(1),
 		uses: z.number().int().positive().optional(),

@@ -1150,6 +1150,235 @@ content:
                 - name: undead
                   label: Undead
 
+      - name: legendary-monsters
+        label: Legendary Monsters
+        type: file
+        path: src/data/legendary-monsters.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+            description: Stat block title; URL slug is generated from this name (kebab-case).
+          - name: level
+            label: Party Level
+            type: select
+            required: true
+            description: Legendary stats are keyed to party level (whole levels).
+            options:
+              values:
+                - name: '1'
+                  label: '1'
+                - name: '2'
+                  label: '2'
+                - name: '3'
+                  label: '3'
+                - name: '4'
+                  label: '4'
+                - name: '5'
+                  label: '5'
+                - name: '6'
+                  label: '6'
+                - name: '7'
+                  label: '7'
+                - name: '8'
+                  label: '8'
+                - name: '9'
+                  label: '9'
+                - name: '10'
+                  label: '10'
+                - name: '11'
+                  label: '11'
+                - name: '12'
+                  label: '12'
+                - name: '13'
+                  label: '13'
+                - name: '14'
+                  label: '14'
+                - name: '15'
+                  label: '15'
+                - name: '16'
+                  label: '16'
+                - name: '17'
+                  label: '17'
+                - name: '18'
+                  label: '18'
+                - name: '19'
+                  label: '19'
+                - name: '20'
+                  label: '20'
+          - name: creatureType
+            label: Creature Type
+            type: string
+            required: true
+            description: Free text after Solo and size on the stat block (e.g. Large Owlbear).
+          - name: size
+            label: Size
+            type: select
+            required: true
+            options:
+              values:
+                - name: tiny
+                  label: Tiny
+                - name: small
+                  label: Small
+                - name: medium
+                  label: Medium
+                - name: large
+                  label: Large
+                - name: huge
+                  label: Huge
+                - name: gargantuan
+                  label: Gargantuan
+          - name: hp
+            label: HP
+            type: number
+            required: true
+          - name: armor
+            label: Armor
+            type: select
+            required: true
+            options:
+              values:
+                - name: none
+                  label: None
+                - name: medium
+                  label: Medium
+                - name: heavy
+                  label: Heavy
+          - name: movement
+            label: Movement
+            type: object
+            required: true
+            fields:
+              - name: speed
+                label: Speed
+                type: number
+                required: true
+              - name: mode
+                label: Mode
+                type: select
+                required: true
+                options:
+                  values:
+                    - name: walk
+                      label: Walk
+                    - name: fly
+                      label: Fly
+                    - name: burrow
+                      label: Burrow
+                    - name: swim
+                      label: Swim
+          - name: saves
+            label: Save Modifiers
+            type: object
+            required: false
+            description: Advantage (+n) or disadvantage (-n) per save; omit unused stats.
+            fields:
+              - name: str
+                label: STR
+                type: number
+                required: false
+              - name: dex
+                label: DEX
+                type: number
+                required: false
+              - name: con
+                label: CON
+                type: number
+                required: false
+              - name: int
+                label: INT
+                type: number
+                required: false
+              - name: wil
+                label: WIL
+                type: number
+                required: false
+              - name: cha
+                label: CHA
+                type: number
+                required: false
+              - name: all
+                label: All Saves
+                type: number
+                required: false
+                description: Positive = advantage on all saves (shown as ALL+ on the block).
+          - name: specialAbilities
+            label: Traits
+            type: object
+            list: true
+            required: false
+            description: Gray banner traits (e.g. Brutal).
+            fields:
+              - name: name
+                label: Name
+                type: string
+                required: true
+              - name: description
+                label: Description
+                type: rich-text
+                required: true
+                options:
+                  format: markdown
+          - name: actionsIntro
+            label: Actions Intro
+            type: string
+            required: false
+            description: Text after “ACTIONS:” (e.g. After each hero's turn, choose one:).
+          - name: actions
+            label: Actions
+            type: object
+            list: true
+            required: false
+            fields:
+              - name: name
+                label: Name
+                type: string
+                required: true
+              - name: uses
+                label: Uses
+                type: number
+                required: false
+                description: Renders as (Nx) after the name.
+              - name: description
+                label: Description
+                type: rich-text
+                required: true
+                options:
+                  format: markdown
+              - name: joinNext
+                label: Join next
+                type: select
+                required: false
+                options:
+                  values:
+                    - name: or
+                      label: OR (same line)
+                    - name: then
+                      label: Then
+          - name: bloodied
+            label: Bloodied
+            type: rich-text
+            required: false
+            options:
+              format: markdown
+            description: Half-HP trigger; optional if the creature has no Bloodied rule.
+          - name: lastStand
+            label: Last Stand
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+          - name: notes
+            label: Notes
+            type: rich-text
+            required: false
+            options:
+              format: markdown
+
   - name: glossary
     label: Glossary
     type: file
