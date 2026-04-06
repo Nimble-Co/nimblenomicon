@@ -39,8 +39,6 @@ const legendaryRows: ListingRow[] = legendaryMonsters.map((m) => ({
 	minionLabel: '',
 }));
 
-const search = Astro.url.searchParams.get('search') || '';
-
 const rows = [...regularRows, ...legendaryRows];
 ---
 
