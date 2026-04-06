@@ -1,19 +1,14 @@
-import { z } from 'astro/zod';
-import rawCharacterClasses from '../data/character-classes.json';
+import { heroClasses } from './class';
 
-const characterClassSchema = z
-	.object({
-		name: z
-			.string()
-			.min(1)
-			.refine((s) => s === s.toLowerCase(), {
-				message: 'Class name must be lowercase in data',
-			}),
-		description: z.string(),
-	})
-	.strict();
+export type CharacterClassData = {
+	/** Lowercase display name (Core Rules list). */
+	name: string;
+	/** Core Rules short blurb; same as `HeroClassData.summary`. */
+	description: string;
+};
 
-export type CharacterClassData = z.infer<typeof characterClassSchema>;
-export const characterClasses: CharacterClassData[] = z
-	.array(characterClassSchema)
-	.parse(rawCharacterClasses);
+/** Core Rules class list — derived from full `classes.json` via `heroClasses`. */
+export const characterClasses: CharacterClassData[] = heroClasses.map((c) => ({
+	name: c.name.toLowerCase(),
+	description: c.summary,
+}));

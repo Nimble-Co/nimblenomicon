@@ -1,5 +1,6 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
 import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
 import LegendaryStatBlock from '../../components/monsters/LegendaryStatBlock.astro';
 import MonsterStatBlock from '../../components/monsters/MonsterStatBlock.astro';
@@ -65,6 +66,7 @@ const description =
 		next: false,
 	}}
 >
+	<DetailPageBackToList href="/monsters/" label="All Monsters" />
 	{
 		variant === 'monster' ? (
 			<MonsterStatBlock

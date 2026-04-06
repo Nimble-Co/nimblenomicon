@@ -1,4 +1,5 @@
 ---
+import { PAGE_TITLE_ID } from '../../node_modules/@astrojs/starlight/constants.ts';
 import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
 import NavSidebarPersister from './NavSidebarPersister.astro';
 import SectionSidebarBrand from './SectionSidebarBrand.astro';
@@ -6,6 +7,13 @@ import SidebarSublist from './SidebarSublist.astro';
 import { resolveSectionSidebar } from '../utils/section-sidebar';
 
 const { toc } = Astro.locals.starlightRoute;
+/** Starlight prepends a synthetic `#_top` item labeled “Overview”; omit it in the left sidebar. */
+const tocWithoutOverview = toc
+	? {
+			...toc,
+			items: toc.items.filter((item) => item.slug !== PAGE_TITLE_ID),
+		}
+	: toc;
 const pathname = Astro.url.pathname;
 const urlHash = Astro.url.hash.replace(/^#/, '');
 const { sidebar, bookChrome, sectionKey } = resolveSectionSidebar(
@@ -16,7 +24,12 @@ const { sidebar, bookChrome, sectionKey } = resolveSectionSidebar(
 
 /** Book nav lists every section; hide duplicate Starlight TOC under the sidebar. */
 const tocForBook =
-	bookChrome && toc ? { ...toc, items: [] as (typeof toc)['items'] } : toc;
+	bookChrome && tocWithoutOverview
+		? {
+				...tocWithoutOverview,
+				items: [] as (typeof tocWithoutOverview)['items'],
+			}
+		: tocWithoutOverview;
 ---
 
 <NavSidebarPersister sidebar={sidebar}>

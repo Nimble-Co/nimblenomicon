@@ -99,20 +99,20 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/BackgroundsItem'
-  /api/character-classes:
+  /api/classes:
     get:
-      summary: Get Character Classes
-      operationId: getCharacterClasses
-      description: Same JSON as `src/data/character-classes.json` (top-level array).
+      summary: Get Classes
+      operationId: getClasses
+      description: Full class records (Core Rules `summary`, flavor `description`, levels, subclasses). Same JSON as `src/data/classes.json` (top-level array).
       responses:
         '200':
-          description: Array of `CharacterClassesItem` records
+          description: Array of class records
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/CharacterClassesItem'
+                  $ref: '#/components/schemas/ClassesRecord'
   /api/conditions:
     get:
       summary: Get Conditions
@@ -489,19 +489,12 @@ components:
         - name
         - description
       additionalProperties: false
-    CharacterClassesItem:
+    ClassesRecord:
       type: object
-      properties:
-        name:
-          type: string
-          minLength: 1
-          description: Lowercase class name as stored in JSON
-        description:
-          type: string
-      required:
-        - name
-        - description
-      additionalProperties: false
+      description: >
+        Nimble class row from `classes.json` (includes `summary` for Core Rules,
+        full `description`, progression `levels`, nested `subclasses`, etc.).
+      additionalProperties: true
     ConditionsItem:
       type: object
       properties:
