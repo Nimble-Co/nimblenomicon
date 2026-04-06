@@ -230,4 +230,5 @@ Stormquill
 Sunscorn
 Thornblight
 Vael
+Vinelash
 Veilwalker
