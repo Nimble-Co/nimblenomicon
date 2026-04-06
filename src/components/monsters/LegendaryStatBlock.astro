@@ -224,12 +224,7 @@ const teamMemberActionHtml: string[][] = isTeam
 
 				<div class="mt-3">
 					{monster.creatures.map((member, mi) => (
-						<div
-							class:list={[
-								mi > 0 &&
-									'mt-3 border-t border-hairline pt-3',
-							]}
-						>
+						<div class:list={[mi > 0 && 'mt-3 border-t border-hairline pt-3']}>
 							<h3 class="m-0 text-base font-bold uppercase tracking-wide">
 								{member.name}
 								{member.roleLabel && (
@@ -244,9 +239,7 @@ const teamMemberActionHtml: string[][] = isTeam
 								aria-label={`Quick stats for ${member.name}`}
 							>
 								{member.size !== 'medium' && (
-									<li class="text-fg-muted">
-										{sizeLabel(member.size)}
-									</li>
+									<li class="text-fg-muted">{sizeLabel(member.size)}</li>
 								)}
 								{Boolean(armorAbbrev[member.armor]) && (
 									<li>
