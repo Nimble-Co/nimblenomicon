@@ -9,7 +9,10 @@ import { formatNewsDate, getLatestNimbleNews } from '../lib/nimble-news';
 const newsItems = await getLatestNimbleNews(3);
 
 /** Theme-aware hero mark: Starlight header still uses the file as a raster `img`, so we only swap fills here */
-const bookIconHtml = bookIconRaw.replaceAll('fill="#2A2526"', 'fill="currentColor"');
+const bookIconHtml = bookIconRaw.replaceAll(
+	'fill="#2A2526"',
+	'fill="currentColor"',
+);
 
 const bookNavItems = SECTION_KEYS.map((key) => {
 	const m = SECTION_METADATA[key];
