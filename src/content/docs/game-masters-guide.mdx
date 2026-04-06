@@ -15,6 +15,7 @@ import SpellList from '../../components/SpellsList.astro';
 import MonsterFamily from '../../components/monsters/MonsterFamily.astro';
 import MonsterKindShowcase from '../../components/monsters/MonsterKindShowcase.astro';
 import MonsterStatBlock from '../../components/monsters/MonsterStatBlock.astro';
+import LegendaryStatBlock from '../../components/monsters/LegendaryStatBlock.astro';
 import { slugifyEntityId } from '../../lib/slugifyEntityId';
 
 <FullBleedHero
@@ -954,13 +955,33 @@ For an easier encounter, use the stats 1 or 2 levels lower; more challenging, 1 
 
 For example, see Pudge the Blunderer below. For a level 2 party he'll have 75 HP and Medium Armor. No need to stick strictly to the stat guidelines though his small attack hits for slightly less than suggested and, in exchange, his big attack hits for slightly more. When Bloodied, Pudge gets angry and his die size goes up, increasing his damage and reducing his chance to miss. For his Last Stand, he becomes far more dangerous, moving and using his big attack each turn.
 
-:: Pudge
+<LegendaryStatBlock legendaryMonsterId="pudge-the-blunderer" />
 
 ### Legendary Teams
 
 "Solo" encounters need not be strictly solo! Legendary creatures may have pets, summon minions, or even come in groups. You can have ALL of them attack after each hero, or take turns attacking.
 
-:: Kelebek & Poppy
+<LegendaryStatBlock legendaryMonsterId="kelebek-and-poppy" />
+
+### Legendary Bestiary
+
+Official legendary stat blocks, ordered from lowest level to highest.
+
+<LegendaryStatBlock legendaryMonsterId="grimbeak-the-unyielding" />
+<LegendaryStatBlock legendaryMonsterId="thorn-quickblade" />
+<LegendaryStatBlock legendaryMonsterId="ravager-of-the-lowlands" />
+<LegendaryStatBlock legendaryMonsterId="nalzar-apex-predator" />
+<LegendaryStatBlock legendaryMonsterId="queen-aranya-broodmother" />
+<LegendaryStatBlock legendaryMonsterId="florindris-bane-of-the-forest" />
+<LegendaryStatBlock legendaryMonsterId="general-flameheart" />
+<LegendaryStatBlock legendaryMonsterId="vael-undying-necromancer" />
+<LegendaryStatBlock legendaryMonsterId="titan-of-the-deep-woods" />
+<LegendaryStatBlock legendaryMonsterId="ul-vek-psionic-despot" />
+<LegendaryStatBlock legendaryMonsterId="dravok-all-seeing-tyrant" />
+<LegendaryStatBlock legendaryMonsterId="azriel-lord-of-pain-and-flame" />
+<LegendaryStatBlock legendaryMonsterId="gloomwing-the-cruel" />
+<LegendaryStatBlock legendaryMonsterId="alaric-draegoth-the-crimson-count" />
+<LegendaryStatBlock legendaryMonsterId="caerys-the-hollow-star" />
 
 # The Garden of Death
 

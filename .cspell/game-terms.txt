@@ -186,6 +186,7 @@ Graviturgical
 Haha
 improv
 Kelebek
+Entomancer
 lockpicks
 Mindfire
 Nestweaver
@@ -205,3 +206,29 @@ Stirges
 Treant
 Unbiggen
 Worg
+
+# Legendary monsters (GMG bestiary)
+Alaric
+Aranya
+Azriel
+Balor
+Broodmother
+Caerys
+Dravok
+Draegoth
+Ebonfang
+Florindris
+Flameheart
+Gloomwing
+Grimbeak
+Mistform
+Nalzar
+Psionic
+Quickblade
+Spiderling
+Stormquill
+Sunscorn
+Thornblight
+Vael
+Vinelash
+Veilwalker

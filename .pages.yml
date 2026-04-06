@@ -1150,6 +1150,243 @@ content:
                 - name: undead
                   label: Undead
 
+      - name: legendary-monsters
+        label: Legendary Monsters
+        type: file
+        path: src/data/legendary-monsters.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Stat Block Title
+            type: string
+            required: true
+            description: Display name; URL slug is generated from this (kebab-case).
+          - name: level
+            label: Party Level
+            type: select
+            required: true
+            description: Whole levels only for legendary stat blocks.
+            options:
+              values:
+                - name: '1'
+                  label: '1'
+                - name: '2'
+                  label: '2'
+                - name: '3'
+                  label: '3'
+                - name: '4'
+                  label: '4'
+                - name: '5'
+                  label: '5'
+                - name: '6'
+                  label: '6'
+                - name: '7'
+                  label: '7'
+                - name: '8'
+                  label: '8'
+                - name: '9'
+                  label: '9'
+                - name: '10'
+                  label: '10'
+                - name: '11'
+                  label: '11'
+                - name: '12'
+                  label: '12'
+                - name: '13'
+                  label: '13'
+                - name: '14'
+                  label: '14'
+                - name: '15'
+                  label: '15'
+                - name: '16'
+                  label: '16'
+                - name: '17'
+                  label: '17'
+                - name: '18'
+                  label: '18'
+                - name: '19'
+                  label: '19'
+                - name: '20'
+                  label: '20'
+          - name: creatureType
+            label: Descriptor
+            type: string
+            required: true
+            description: Shown after Level and Solo (e.g. Large Owlbear, or team subtitle).
+          - name: actionsIntro
+            label: Actions Intro
+            type: string
+            required: false
+            description: Text after “ACTIONS:” for the whole stat block.
+          - name: bloodied
+            label: Bloodied
+            type: rich-text
+            required: false
+            options:
+              format: markdown
+            description: Shared Bloodied rule for the encounter (optional).
+          - name: lastStand
+            label: Last Stand
+            type: rich-text
+            required: false
+            options:
+              format: markdown
+            description: Shared Last Stand rule for the encounter (optional).
+          - name: notes
+            label: Notes
+            type: rich-text
+            required: false
+            options:
+              format: markdown
+          - name: creatures
+            label: Creatures
+            type: object
+            list: true
+            required: true
+            description: One creature for a solo legendary; two or more for a legendary team. Each row has stats and actions; omit Name for a single-creature block.
+            fields:
+              - name: name
+                label: Creature Name
+                type: string
+                required: false
+                description: Required when there are multiple creatures (e.g. Kelebek, Poppy). Omit for solo blocks.
+              - name: roleLabel
+                label: Role Label
+                type: string
+                required: false
+                description: Shown in parentheses after the name (e.g. Entomancer).
+              - name: size
+                label: Size
+                type: select
+                required: true
+                options:
+                  values:
+                    - name: tiny
+                      label: Tiny
+                    - name: small
+                      label: Small
+                    - name: medium
+                      label: Medium
+                    - name: large
+                      label: Large
+                    - name: huge
+                      label: Huge
+                    - name: gargantuan
+                      label: Gargantuan
+              - name: hp
+                label: HP
+                type: number
+                required: true
+              - name: armor
+                label: Armor
+                type: select
+                required: true
+                options:
+                  values:
+                    - name: none
+                      label: None
+                    - name: medium
+                      label: Medium
+                    - name: heavy
+                      label: Heavy
+              - name: movement
+                label: Movement
+                type: object
+                required: true
+                fields:
+                  - name: speed
+                    label: Speed
+                    type: number
+                    required: true
+                  - name: mode
+                    label: Mode
+                    type: select
+                    required: true
+                    options:
+                      values:
+                        - name: walk
+                          label: Walk
+                        - name: fly
+                          label: Fly
+                        - name: burrow
+                          label: Burrow
+                        - name: swim
+                          label: Swim
+              - name: saves
+                label: Save Modifiers
+                type: object
+                required: false
+                description: Advantage (+n) or disadvantage (-n) per Nimble save.
+                fields:
+                  - name: str
+                    label: STR
+                    type: number
+                    required: false
+                  - name: dex
+                    label: DEX
+                    type: number
+                    required: false
+                  - name: int
+                    label: INT
+                    type: number
+                    required: false
+                  - name: wil
+                    label: WIL
+                    type: number
+                    required: false
+                  - name: all
+                    label: All Saves
+                    type: number
+                    required: false
+                    description: Positive = ALL+ on the stat block.
+              - name: specialAbilities
+                label: Traits
+                type: object
+                list: true
+                required: false
+                fields:
+                  - name: name
+                    label: Name
+                    type: string
+                    required: true
+                  - name: description
+                    label: Description
+                    type: rich-text
+                    required: true
+                    options:
+                      format: markdown
+              - name: actions
+                label: Actions
+                type: object
+                list: true
+                required: false
+                fields:
+                  - name: name
+                    label: Name
+                    type: string
+                    required: true
+                  - name: uses
+                    label: Uses
+                    type: number
+                    required: false
+                  - name: description
+                    label: Description
+                    type: rich-text
+                    required: true
+                    options:
+                      format: markdown
+                  - name: joinNext
+                    label: Join next
+                    type: select
+                    required: false
+                    options:
+                      values:
+                        - name: or
+                          label: OR (same line)
+                        - name: then
+                          label: Then
+
   - name: glossary
     label: Glossary
     type: file

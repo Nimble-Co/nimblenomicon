@@ -1,22 +1,19 @@
 import { z } from 'astro/zod';
 import rawMonsters from '../data/monsters.json';
 import { slugifyEntityId } from '../lib/slugifyEntityId';
+import {
+	creatureArmorTierSchema,
+	creatureMovementSchema,
+	creatureSizeSchema,
+	namedAbilityBlockSchema,
+} from './creature-stat-shared';
 import { monsterFamilies } from './monster-families';
 import { monsterKinds } from './monster-kinds';
-import { sizes } from './sizes';
 
-const namedBlockSchema = z
-	.object({
-		name: z.string().min(1),
-		description: z.string().min(1),
-	})
-	.strict();
-
-const sizeSlugs = sizes.map((s) => slugifyEntityId(s.name, 'size')) as [
-	string,
-	...string[],
-];
-const sizeSchema = z.enum(sizeSlugs).default('medium');
+const movementSchema = creatureMovementSchema.default({
+	speed: 6,
+	mode: 'walk',
+});
 
 /** Monster level: fractional minion-style tiers or whole levels 1–20. */
 const MONSTER_LEVEL_VALUES = [
@@ -46,21 +43,13 @@ const MONSTER_LEVEL_VALUES = [
 	'21',
 ] as const;
 
-const monsterLevelSchema = z.enum(MONSTER_LEVEL_VALUES);
+export const monsterLevelSchema = z.enum(MONSTER_LEVEL_VALUES);
 export type MonsterLevel = z.infer<typeof monsterLevelSchema>;
 
-const movementSchema = z
-	.object({
-		speed: z.number().default(6),
-		mode: z.enum(['walk', 'fly', 'burrow', 'swim']).default('walk'),
-	})
-	.strict()
-	.default({ speed: 6, mode: 'walk' });
-
 /** Connector after this action toward the next (`or` = same-line “ OR:”; then “OR:” before next; `then` = “ Then:”). */
-const monsterActionJoinNextSchema = z.enum(['or', 'then']);
+export const monsterActionJoinNextSchema = z.enum(['or', 'then']);
 
-const monsterActionSchema = z
+export const monsterActionSchema = z
 	.object({
 		name: z.string().min(1),
 		uses: z.number().int().positive().optional(),
@@ -74,13 +63,13 @@ const monsterSchema = z
 		name: z.string().min(1),
 		level: monsterLevelSchema,
 		isMinion: z.boolean().default(false),
-		size: sizeSchema,
+		size: creatureSizeSchema,
 		hp: z.number().optional(),
-		armor: z.enum(['none', 'medium', 'heavy']).default('none'),
+		armor: creatureArmorTierSchema.default('none'),
 		movement: movementSchema,
 		actions: z.array(monsterActionSchema).default([]),
 		notes: z.string().min(1).optional(),
-		specialAbilities: z.array(namedBlockSchema).default([]),
+		specialAbilities: z.array(namedAbilityBlockSchema).default([]),
 		kind: z.string().min(1).optional(),
 		family: z.string().min(1).optional(),
 	})
