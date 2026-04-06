@@ -3,7 +3,11 @@ import bookIcon from '../assets/nimblenomicon_icon.svg';
 import bookIconRaw from '../assets/nimblenomicon_icon.svg?raw';
 import { HOME_REFERENCE_LINKS } from '../config/home-reference-links';
 import { SEARCH_PLACEHOLDER } from '../config/search';
-import { SECTION_KEYS, SECTION_METADATA } from '../config/section-sidebars';
+import {
+	SECTION_KEYS,
+	SECTION_METADATA,
+	type SectionKey,
+} from '../config/section-sidebars';
 import { formatNewsDate, getLatestNimbleNews } from '../lib/nimble-news';
 
 const newsItems = await getLatestNimbleNews(3);
@@ -14,11 +18,17 @@ const bookIconHtml = bookIconRaw.replaceAll(
 	'fill="currentColor"',
 );
 
+/** Home book grid only — optional external URL (sidebar still uses `SECTION_METADATA.path`). */
+const HOME_BOOK_TILE_EXTERNAL: Partial<Record<SectionKey, string>> = {
+	'monsters-and-more':
+		'https://www.kickstarter.com/projects/nimblerpg/monsters-and-more-a-nimble-ttrpg-reprint-and-expansion',
+};
+
 const bookNavItems = SECTION_KEYS.map((key) => {
 	const m = SECTION_METADATA[key];
-	const homeTileHref = 'homeTileHref' in m ? m.homeTileHref : undefined;
-	const href = homeTileHref ?? m.path;
-	const external = Boolean(homeTileHref);
+	const externalUrl = HOME_BOOK_TILE_EXTERNAL[key];
+	const href = externalUrl ?? m.path;
+	const external = Boolean(externalUrl);
 	return {
 		label: m.label,
 		href,
@@ -33,7 +43,7 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 	aria-label="Home"
 >
 	<div
-		class="flex w-full max-w-[40rem] flex-col items-center gap-[clamp(1.75rem,4vw,2.5rem)]"
+		class="flex w-full max-w-160 flex-col items-center gap-[clamp(1.75rem,4vw,2.5rem)]"
 	>
 		<div class="flex flex-col items-center gap-5">
 			<span
@@ -56,7 +66,7 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 		<div class="w-full" role="search">
 			<button
 				type="button"
-				class="box-border flex w-full cursor-pointer items-center gap-[0.65rem] rounded-full border border-hairline bg-surface-nav py-[0.65rem] pl-4 pr-4 text-left font-inherit text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
+				class="box-border flex w-full cursor-pointer items-center gap-[0.65rem] rounded-full border border-hairline bg-surface-nav py-[0.65rem] pl-4 pr-4 text-left font-inherit text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
 				data-home-search-trigger
 				aria-label={SEARCH_PLACEHOLDER}
 				aria-keyshortcuts="Control+K"
@@ -88,7 +98,7 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 				bookNavItems.map(({ label, href, iconSvg, external }) => (
 					<li>
 						<a
-							class="box-border flex min-h-[3.25rem] w-full items-center gap-[0.6rem] rounded-[0.625rem] border border-hairline bg-gray-200 px-[0.85rem] py-[0.65rem] text-left text-fg no-underline transition-colors duration-75 ease-linear hover:border-fg/30 hover:bg-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 motion-reduce:transition-none dark:bg-gray-900/60 dark:hover:bg-gray-800"
+							class="box-border flex min-h-13 w-full items-center gap-[0.6rem] rounded-[0.625rem] border border-hairline bg-gray-200 px-[0.85rem] py-[0.65rem] text-left text-fg no-underline transition-colors duration-75 ease-linear hover:border-fg/30 hover:bg-gray-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 motion-reduce:transition-none dark:bg-gray-900/60 dark:hover:bg-gray-800"
 							href={href}
 							{...(external
 								? { target: '_blank', rel: 'noopener noreferrer' }
@@ -99,7 +109,7 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 								set:html={iconSvg}
 								aria-hidden="true"
 							/>
-							<span class="font-sans text-[0.8125rem] font-bold italic leading-[1.25] tracking-[0.02em] min-[30rem]:text-sm">
+							<span class="font-sans text-[0.8125rem] font-bold italic leading-tight tracking-[0.02em] min-[30rem]:text-sm">
 								{label}
 							</span>
 						</a>
@@ -123,7 +133,7 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 					HOME_REFERENCE_LINKS.map(({ label, href }) => (
 						<li class="inline-flex max-w-full items-baseline not-last:after:pointer-events-none not-last:after:ml-[0.35rem] not-last:after:font-normal not-last:after:text-fg-muted not-last:after:content-['·']">
 							<a
-								class="font-sans text-sm font-bold italic leading-[1.35] tracking-[0.02em] text-fg underline decoration-fg/35 decoration-1 underline-offset-[0.15em] transition-colors duration-75 ease-linear hover:decoration-fg focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 motion-reduce:transition-none min-[30rem]:text-[0.9375rem]"
+								class="font-sans text-sm font-bold italic leading-[1.35] tracking-[0.02em] text-fg underline decoration-fg/35 decoration-1 underline-offset-[0.15em] transition-colors duration-75 ease-linear hover:decoration-fg focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 motion-reduce:transition-none min-[30rem]:text-[0.9375rem]"
 								href={href}
 							>
 								{label}
@@ -154,7 +164,7 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 					{newsItems.map((item) => (
 						<li class="m-0 flex min-w-0 flex-col">
 							<a
-								class="flex min-h-full w-full flex-1 flex-col items-center gap-[0.65rem] no-underline text-fg transition-opacity duration-75 ease-linear hover:opacity-90 focus-visible:rounded-[0.625rem] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-500 motion-reduce:transition-none"
+								class="flex min-h-full w-full flex-1 flex-col items-center gap-[0.65rem] no-underline text-fg transition-opacity duration-75 ease-linear hover:opacity-90 focus-visible:rounded-[0.625rem] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-500 motion-reduce:transition-none"
 								href={item.url}
 								target="_blank"
 								rel="noopener noreferrer"

@@ -23,8 +23,6 @@ export type SectionKey = (typeof SECTION_KEYS)[number];
 export type SectionPresentation = {
 	label: string;
 	path: string;
-	/** If set, home landing grid uses this URL instead of `path` (sidebar and docs still use `path`). */
-	homeTileHref?: string;
 	/** Inline SVG markup (`fill="currentColor"` in source) for theme-aware color */
 	iconSvg: string;
 	home: { width: number; height: number };
@@ -64,8 +62,6 @@ export const SECTION_METADATA = {
 	'monsters-and-more': {
 		label: 'Monsters & More',
 		path: '/monsters-and-more/',
-		homeTileHref:
-			'https://www.kickstarter.com/projects/nimblerpg/monsters-and-more-a-nimble-ttrpg-reprint-and-expansion',
 		iconSvg: monstersAndMoreIconSvg,
 		home: { width: 20, height: 21 },
 		sidebar: { width: 40, height: 42 },
