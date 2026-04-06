@@ -2,7 +2,6 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
 import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
-import { detailPageBackLinks } from '../../config/detail-page-back-links';
 import { renderMarkdown } from '../../lib/render-markdown';
 import { ancestries, formatAncestrySize } from '../../models/ancestries';
 
@@ -21,8 +20,6 @@ const bodyMarkdown =
 	row.flavor +
 	'\n\n' +
 	row.trait;
-
-const back = detailPageBackLinks.ancestries;
 ---
 
 <StarlightPage
@@ -35,7 +32,7 @@ const back = detailPageBackLinks.ancestries;
 		next: false,
 	}}
 >
-	<DetailPageBackToList href={back.href} label={back.label} />
+	<DetailPageBackToList href="/ancestries/" label="All Ancestries" />
 	<div set:html={await renderMarkdown(bodyMarkdown)} />
 	<DetailPageSourceRef
 		href={`/core-rules/#${row.id}`}
