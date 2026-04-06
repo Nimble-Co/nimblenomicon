@@ -22,5 +22,6 @@ stonecraft
 Sublist
 sublist
 tailwindcss
+viewports
 Zod
 Maintainership

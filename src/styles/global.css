@@ -80,6 +80,8 @@ html[data-theme='dark'] {
 	--color-danger: var(--sl-color-red);
 	/* Beaufort Pro — matches `--nimble-font-heading` in `:root`; for `font-heading` utilities. */
 	--font-heading: 'beaufort-pro', serif;
+	/* Starlight header gap — use `gap-nav-gap` in markup (avoid `gap-[var(--sl-…)]`). */
+	--spacing-nav-gap: var(--sl-nav-gap);
 }
 
 :root {
