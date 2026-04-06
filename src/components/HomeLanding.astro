@@ -18,22 +18,12 @@ const bookIconHtml = bookIconRaw.replaceAll(
 	'fill="currentColor"',
 );
 
-/** Home book grid only — optional external URL (sidebar still uses `SECTION_METADATA.path`). */
-const HOME_BOOK_TILE_EXTERNAL: Partial<Record<SectionKey, string>> = {
-	'monsters-and-more':
-		'https://www.kickstarter.com/projects/nimblerpg/monsters-and-more-a-nimble-ttrpg-reprint-and-expansion',
-};
-
 const bookNavItems = SECTION_KEYS.map((key) => {
 	const m = SECTION_METADATA[key];
-	const externalUrl = HOME_BOOK_TILE_EXTERNAL[key];
-	const href = externalUrl ?? m.path;
-	const external = Boolean(externalUrl);
 	return {
 		label: m.label,
-		href,
-		external,
 		iconSvg: m.iconSvg,
+		path: m.path,
 	};
 });
 ---
@@ -95,14 +85,11 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 			role="list"
 		>
 			{
-				bookNavItems.map(({ label, href, iconSvg, external }) => (
+				bookNavItems.map(({ label, iconSvg, path }) => (
 					<li>
 						<a
 							class="box-border flex min-h-13 w-full items-center gap-[0.6rem] rounded-[0.625rem] border border-hairline bg-gray-200 px-[0.85rem] py-[0.65rem] text-left text-fg no-underline transition-colors duration-75 ease-linear hover:border-fg/30 hover:bg-gray-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 motion-reduce:transition-none dark:bg-gray-900/60 dark:hover:bg-gray-800"
-							href={href}
-							{...(external
-								? { target: '_blank', rel: 'noopener noreferrer' }
-								: {})}
+							href={path}
 						>
 							<span
 								class="inline-flex h-[22px] w-[22px] shrink-0 items-center justify-center text-fg [&_svg]:block [&_svg]:max-h-full [&_svg]:max-w-full [&_svg]:object-contain"
