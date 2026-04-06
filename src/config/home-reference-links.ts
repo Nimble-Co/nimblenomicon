@@ -6,6 +6,7 @@ export const HOME_REFERENCE_LINKS = [
 	{ label: 'Ancestries', href: '/ancestries/' },
 	{ label: 'Armor', href: '/armor/' },
 	{ label: 'Backgrounds', href: '/backgrounds/' },
+	{ label: 'Classes', href: '/classes/' },
 	{ label: 'Conditions', href: '/conditions/' },
 	{ label: 'Glossary', href: '/glossary/' },
 	{ label: 'Languages', href: '/languages/' },
