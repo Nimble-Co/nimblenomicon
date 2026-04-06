@@ -171,12 +171,13 @@ CHAARGE
 Cloaker
 Cloakers
 Denwarden
-Doomclaw
-Duskprowler
 DIAZ
+Doomclaw
 dragonlings
+Duskprowler
 elderwild
 Embiggen
+Entomancer
 farhope
 Glabrezu
 glabrezu's
@@ -186,7 +187,6 @@ Graviturgical
 Haha
 improv
 Kelebek
-Entomancer
 lockpicks
 Mindfire
 Nestweaver
@@ -211,6 +211,7 @@ Worg
 Airshift
 Archdruid
 Archmage
+backstab
 Beastshifted
 Beastshifting
 Bloodlust
@@ -220,11 +221,12 @@ Deathbringer's
 Direbeast
 Earthwalker
 Faaace
-Multishot
 Mountainheart
+Multishot
 nightfrost
 Nightfrost
 nonmagical
+Pfft
 Phasebeast
 pickpocketing
 Quickstrike
@@ -250,8 +252,6 @@ Windborne
 Windstep
 Windstrider
 wyrmling
-backstab
-Pfft
 
 # Legendary monsters (GMG bestiary)
 Alaric
@@ -260,21 +260,24 @@ Azriel
 Balor
 Broodmother
 Caerys
-Dravok
 Draegoth
+Dravok
 Ebonfang
-Florindris
+FIDDLINESS
 Flameheart
+Florindris
 Gloomwing
 Grimbeak
+Hexbinder
 Mistform
 Nalzar
 Psionic
 Quickblade
+rulebook
 Spiderling
 Stormquill
 Sunscorn
 Thornblight
 Vael
-Vinelash
 Veilwalker
+Vinelash
