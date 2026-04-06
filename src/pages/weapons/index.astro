@@ -1,9 +1,9 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import {
-compareWeaponRowsForListing,
-formatWeaponCategory,
-weapons,
+	compareWeaponRowsForListing,
+	formatWeaponCategory,
+	weapons,
 } from '../../models/weapons';
 
 const rows = [...weapons].sort(compareWeaponRowsForListing);
