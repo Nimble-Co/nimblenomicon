@@ -31,7 +31,11 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	},
 	{
 		"name": "Kelebek & Poppy",
@@ -89,7 +93,11 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	},
 	{
 		"name": "Grimbeak, the Unyielding",
@@ -132,7 +140,11 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	},
 	{
 		"name": "Thorn Quickblade",
@@ -170,7 +182,11 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	},
 	{
 		"name": "Ravager of the Lowlands",
@@ -214,7 +230,11 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	},
 	{
 		"name": "Nalzar, Apex Predator",
@@ -257,7 +277,11 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	},
 	{
 		"name": "Queen Aranya, Broodmother",
@@ -303,7 +327,11 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	},
 	{
 		"name": "Florindris, Bane of the Forest",
@@ -350,7 +378,11 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	},
 	{
 		"name": "General Flameheart",
@@ -393,7 +425,11 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	},
 	{
 		"name": "Vael, Undying Necromancer",
@@ -436,7 +472,11 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	},
 	{
 		"name": "Titan of the Deep Woods",
@@ -481,7 +521,11 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	},
 	{
 		"name": "Ul'vek, Psionic Despot",
@@ -525,7 +569,11 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	},
 	{
 		"name": "Dravok, All-Seeing Tyrant",
@@ -568,7 +616,11 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	},
 	{
 		"name": "Azriel, Lord of Pain & Flame",
@@ -606,7 +658,11 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	},
 	{
 		"name": "Gloomwing the Cruel",
@@ -657,7 +713,11 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	},
 	{
 		"name": "Alaric Draegoth, the Crimson Count",
@@ -703,7 +763,11 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	},
 	{
 		"name": "Caerys, the Hollow Star",
@@ -761,6 +825,10 @@
 					}
 				]
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "legendary-monsters"
+		}
 	}
 ]

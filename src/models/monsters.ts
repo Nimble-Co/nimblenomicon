@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import rawMonsters from '../data/monsters.json';
+import { sourceRefSchema } from './entity-base';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 import {
 	creatureArmorTierSchema,
@@ -72,6 +73,7 @@ const monsterSchema = z
 		specialAbilities: z.array(namedAbilityBlockSchema).default([]),
 		kind: z.string().min(1).optional(),
 		family: z.string().min(1).optional(),
+		source: sourceRefSchema,
 	})
 	.strict()
 	.transform((row) => {

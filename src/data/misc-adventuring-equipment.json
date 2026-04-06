@@ -2,166 +2,298 @@
 	{
 		"cost": "50 gp",
 		"name": "Healing Potion (action)",
-		"description": "Heal 2d4+4 HP."
+		"description": "Heal 2d4+4 HP.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "150 gp",
 		"name": "Greater Healing Potion (action)",
-		"description": "Heal 3d6+6 HP."
+		"description": "Heal 3d6+6 HP.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "450 gp",
 		"name": "Supreme Healing Potion (action)",
-		"description": "Heal 4d8+8 HP."
+		"description": "Heal 4d8+8 HP.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "5 sp",
 		"name": "Torch (stack of 2)",
-		"description": "For when it's dark. 1 use each."
+		"description": "For when it's dark. 1 use each.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "10 gp",
 		"name": "Lantern & Oil",
-		"description": "Like a torch, but not as cool (refill: 1 gp)."
+		"description": "Like a torch, but not as cool (refill: 1 gp).",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "2 gp",
 		"name": "Vial of Pitch",
-		"description": "Sticky, and VERY flammable."
+		"description": "Sticky, and VERY flammable.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "10 gp",
 		"name": "Rope (50 ft.)",
-		"description": "You always need rope."
+		"description": "You always need rope.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "50 gp",
 		"name": "Chain (10 ft.)",
-		"description": "Like rope, but stronger (and heavy)."
+		"description": "Like rope, but stronger (and heavy).",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "1 gp",
 		"name": "Bucket",
-		"description": "Also works as a hat in a pinch!"
+		"description": "Also works as a hat in a pinch!",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "3 gp",
 		"name": "Padlock & Key",
-		"description": "Lock it or lose it."
+		"description": "Lock it or lose it.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "4 gp",
 		"name": "Mirror",
-		"description": "For medusas AND spinach teeth."
+		"description": "For medusas AND spinach teeth.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "10 gp",
 		"name": "Telescope",
-		"description": "Arrr."
+		"description": "Arrr.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "5 gp",
 		"name": "Magnifying Glass",
-		"description": "Make the small, big."
+		"description": "Make the small, big.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "1 sp",
 		"name": "Chalk",
-		"description": "Not JUST for kids."
+		"description": "Not JUST for kids.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "3 gp",
 		"name": "Shovel",
-		"description": "Sometimes you need a hole dug."
+		"description": "Sometimes you need a hole dug.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "3 gp",
 		"name": "Pulley",
-		"description": "Pull down, go up."
+		"description": "Pull down, go up.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "4 gp",
 		"name": "Grappling Hook",
-		"description": "For climbing or catching BIG fish."
+		"description": "For climbing or catching BIG fish.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "10 gp",
 		"name": "Quiver & Ammo",
-		"description": "Don't leave home without it."
+		"description": "Don't leave home without it.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "4 gp",
 		"name": "Saw",
-		"description": "For cutting lumber."
+		"description": "For cutting lumber.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "1 sp",
 		"name": "Soap",
-		"description": "Useless."
+		"description": "Useless.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "5 sp",
 		"name": "Strange Plant",
-		"description": "Who knows?"
+		"description": "Who knows?",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "1 sp",
 		"name": "Shiny Object",
-		"description": "Worthless, but VERY pretty."
+		"description": "Worthless, but VERY pretty.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "5 gp",
 		"name": "Lock Pick",
-		"description": "It's not mine, honest!"
+		"description": "It's not mine, honest!",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "2 gp",
 		"name": "Bell",
-		"description": "For service."
+		"description": "For service.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "5 sp",
 		"name": "Dice",
-		"description": "LOTS of fun."
+		"description": "LOTS of fun.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "1 gp",
 		"name": "Blanket",
-		"description": "Warm & fuzzy."
+		"description": "Warm & fuzzy.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "10 gp",
 		"name": "Hunting Trap",
-		"description": "Snap snap, don't lose a finger!"
+		"description": "Snap snap, don't lose a finger!",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "5 gp",
 		"name": "Camping Supplies",
-		"description": "Bedroll, rations, simple tent."
+		"description": "Bedroll, rations, simple tent.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "2 gp",
 		"name": "Crowbar",
-		"description": "It's LIKE a key."
+		"description": "It's LIKE a key.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "5 gp",
 		"name": "Pitons",
-		"description": "Metal spikes, for sealing doors."
+		"description": "Metal spikes, for sealing doors.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "3 gp",
 		"name": "Manacles",
-		"description": "For when someone has been bad."
+		"description": "For when someone has been bad.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "5 sp",
 		"name": "Large Sack",
-		"description": "Like a BIG pocket."
+		"description": "Like a BIG pocket.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	},
 	{
 		"cost": "5-50 gp",
 		"name": "Instrument",
-		"description": "Drums, Horn, Lyre, Flute, etc."
+		"description": "Drums, Horn, Lyre, Flute, etc.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "misc-adventuring-equipment"
+		}
 	}
 ]

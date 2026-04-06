@@ -1,11 +1,13 @@
 import { z } from 'astro/zod';
 import raw from '../data/chaos-magic.json';
+import { sourceRefSchema } from './entity-base';
 
 const chaosRowSchema = z
 	.object({
 		roll: z.number().int().min(1).max(20),
 		name: z.string().min(1),
 		description: z.string().min(1),
+		source: sourceRefSchema,
 	})
 	.strict();
 

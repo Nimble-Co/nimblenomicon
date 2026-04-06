@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import rawArmor from '../data/armor.json';
+import { sourceRefSchema } from './entity-base';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const armorCategorySchema = z.enum([
@@ -26,6 +27,7 @@ const armorRowSchema = z.preprocess(
 			name: z.string().min(1),
 			armor: z.string().min(1),
 			cost: z.string().min(1),
+			source: sourceRefSchema,
 		})
 		.strict(),
 );

@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import rawConditions from '../data/conditions.json';
+import { sourceRefSchema } from './entity-base';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const conditionRowSchema = z.preprocess(
@@ -16,6 +17,7 @@ const conditionRowSchema = z.preprocess(
 			id: z.string().min(1),
 			name: z.string().min(1),
 			description: z.string(),
+			source: sourceRefSchema,
 		})
 		.strict(),
 );

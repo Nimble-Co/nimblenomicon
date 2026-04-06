@@ -1,26 +1,50 @@
 [
 	{
 		"name": "2-handed",
-		"description": "Can be held in a single hand, but must be wielded in 2 hands to attack with it."
+		"description": "Can be held in a single hand, but must be wielded in 2 hands to attack with it.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "weapon-properties"
+		}
 	},
 	{
 		"name": "Load",
-		"description": "Some weapons require extra actions to load before each shot."
+		"description": "Some weapons require extra actions to load before each shot.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "weapon-properties"
+		}
 	},
 	{
 		"name": "Reach",
-		"description": "How close an enemy must be to be affected by this attack. If unspecified, Reach 1."
+		"description": "How close an enemy must be to be affected by this attack. If unspecified, Reach 1.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "weapon-properties"
+		}
 	},
 	{
 		"name": "Range",
-		"description": "Attacks can be made from afar. If any enemy is adjacent to you, your Ranged attacks are made with disadvantage. Add 1 die of disadvantage to gain +2 Range."
+		"description": "Attacks can be made from afar. If any enemy is adjacent to you, your Ranged attacks are made with disadvantage. Add 1 die of disadvantage to gain +2 Range.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "weapon-properties"
+		}
 	},
 	{
 		"name": "Thrown",
-		"description": "Treat a melee weapon as if it had Range. Once thrown, you no longer have it!"
+		"description": "Treat a melee weapon as if it had Range. Once thrown, you no longer have it!",
+		"source": {
+			"book": "core-rules",
+			"headingId": "weapon-properties"
+		}
 	},
 	{
 		"name": "Vicious",
-		"description": "Roll 1 additional die whenever you roll crit damage.\n\n> **Remember!** Only the Primary Die (the leftmost one) is used for determining whether an attack crits. Every time you roll crit damage, roll the additional Vicious die as well!"
+		"description": "Roll 1 additional die whenever you roll crit damage.\n\n> **Remember!** Only the Primary Die (the leftmost one) is used for determining whether an attack crits. Every time you roll crit damage, roll the additional Vicious die as well!",
+		"source": {
+			"book": "core-rules",
+			"headingId": "weapon-properties"
+		}
 	}
 ]

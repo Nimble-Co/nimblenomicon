@@ -1,42 +1,82 @@
 [
 	{
 		"cost": "50 gp",
-		"name": "Cantrip"
+		"name": "Cantrip",
+		"source": {
+			"book": "core-rules",
+			"headingId": "wands"
+		}
 	},
 	{
 		"cost": "175 gp",
-		"name": "Tier 1 Spell"
+		"name": "Tier 1 Spell",
+		"source": {
+			"book": "core-rules",
+			"headingId": "wands"
+		}
 	},
 	{
 		"cost": "500 gp",
-		"name": "Tier 2 Spell"
+		"name": "Tier 2 Spell",
+		"source": {
+			"book": "core-rules",
+			"headingId": "wands"
+		}
 	},
 	{
 		"cost": "1,500 gp",
-		"name": "Tier 3 Spell"
+		"name": "Tier 3 Spell",
+		"source": {
+			"book": "core-rules",
+			"headingId": "wands"
+		}
 	},
 	{
 		"cost": "5,000 gp",
-		"name": "Tier 4 Spell"
+		"name": "Tier 4 Spell",
+		"source": {
+			"book": "core-rules",
+			"headingId": "wands"
+		}
 	},
 	{
 		"cost": "15,000 gp",
-		"name": "Tier 5 Spell"
+		"name": "Tier 5 Spell",
+		"source": {
+			"book": "core-rules",
+			"headingId": "wands"
+		}
 	},
 	{
 		"cost": "50,000 gp",
-		"name": "Tier 6 Spell"
+		"name": "Tier 6 Spell",
+		"source": {
+			"book": "core-rules",
+			"headingId": "wands"
+		}
 	},
 	{
 		"cost": "125,000+ gp",
-		"name": "Tier 7 Spell"
+		"name": "Tier 7 Spell",
+		"source": {
+			"book": "core-rules",
+			"headingId": "wands"
+		}
 	},
 	{
 		"cost": "375,000+ gp",
-		"name": "Tier 8 Spell"
+		"name": "Tier 8 Spell",
+		"source": {
+			"book": "core-rules",
+			"headingId": "wands"
+		}
 	},
 	{
 		"cost": "1,000,000+ gp",
-		"name": "Tier 9 Spell"
+		"name": "Tier 9 Spell",
+		"source": {
+			"book": "core-rules",
+			"headingId": "wands"
+		}
 	}
 ]

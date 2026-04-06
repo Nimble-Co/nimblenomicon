@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import rawMonsterFamilies from '../data/monster-families.json';
+import { sourceRefSchema } from './entity-base';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const namedBlockSchema = z
@@ -13,6 +14,7 @@ const monsterFamilySchema = z
 	.object({
 		name: z.string().min(1),
 		abilities: z.array(namedBlockSchema).default([]),
+		source: sourceRefSchema,
 	})
 	.strict()
 	.transform((row) => ({

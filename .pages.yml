@@ -7,6 +7,36 @@ media:
   output: /assets
   extensions: [avif, gif, jpeg, jpg, png, svg, webp]
 
+# Reused in JSON list `fields` for book + heading anchor citations.
+x-source-field: &source_field
+  name: source
+  label: Source
+  type: object
+  required: true
+  description: Book page and heading anchor (matches the heading id in the built HTML).
+  fields:
+    - name: book
+      label: Book
+      type: select
+      required: true
+      options:
+        values:
+          - name: core-rules
+            label: Core Rules
+          - name: heroes
+            label: Heroes
+          - name: game-masters-guide
+            label: Game Master's Guide
+          - name: adventures
+            label: Adventures
+          - name: creators-kit
+            label: Creator's Kit
+    - name: headingId
+      label: Heading Id
+      type: string
+      required: true
+      description: URL fragment for the section (e.g. stats, fire-spells, boons).
+
 content:
   - name: books
     label: Books
@@ -70,6 +100,8 @@ content:
             label: Name
             type: string
             required: true
+          - <<: *source_field
+            description: Book page and heading anchor for this class (Heroes h2 id).
           - name: summary
             label: Core Rules Summary
             type: string
@@ -204,6 +236,7 @@ content:
                 label: List Name
                 type: string
                 required: true
+              - <<: *source_field
               - name: description
                 label: Intro
                 type: rich-text
@@ -236,6 +269,7 @@ content:
                 label: Name
                 type: string
                 required: true
+              - <<: *source_field
               - name: levels
                 label: Levels
                 type: object
@@ -286,6 +320,7 @@ content:
             label: Description
             type: string
             required: true
+          - <<: *source_field
 
       - name: gmg-gold-by-level
         label: Gold By Level
@@ -302,6 +337,7 @@ content:
             label: Gold
             type: number
             required: true
+          - <<: *source_field
 
       - name: boons
         label: Boons
@@ -337,6 +373,7 @@ content:
             label: Description
             type: string
             required: true
+          - <<: *source_field
 
       - name: gmg-monster-builder-levels
         label: Monster Builder Levels
@@ -377,6 +414,7 @@ content:
             label: CR Equivalent
             type: string
             required: true
+          - <<: *source_field
 
   - name: stats-skills
     label: Stats & Skills
@@ -404,6 +442,7 @@ content:
             required: true
             options:
               format: markdown
+          - <<: *source_field
 
       - name: skills
         label: Skills
@@ -427,6 +466,7 @@ content:
             required: true
             options:
               format: markdown
+          - <<: *source_field
 
       - name: sizes
         label: Sizes
@@ -445,6 +485,7 @@ content:
             required: true
             options:
               format: markdown
+          - <<: *source_field
 
       - name: conditions
         label: Conditions
@@ -464,6 +505,7 @@ content:
             required: true
             options:
               format: markdown
+          - <<: *source_field
 
   - name: checks
     label: Checks
@@ -486,6 +528,7 @@ content:
             required: true
             options:
               format: markdown
+          - <<: *source_field
 
       - name: save-types
         label: Saves
@@ -504,6 +547,7 @@ content:
             required: true
             options:
               format: markdown
+          - <<: *source_field
 
       - name: downtime-activities
         label: Downtime
@@ -522,6 +566,7 @@ content:
             required: true
             options:
               format: markdown
+          - <<: *source_field
 
   - name: character
     label: Character
@@ -544,6 +589,7 @@ content:
             required: true
             options:
               format: markdown
+          - <<: *source_field
 
       - name: languages
         label: Languages
@@ -612,6 +658,7 @@ content:
             required: true
             options:
               format: markdown
+          - <<: *source_field
 
       - name: backgrounds
         label: Backgrounds
@@ -632,6 +679,7 @@ content:
             description: Markdown; use blockquotes for tips.
             options:
               format: markdown
+          - <<: *source_field
 
       - name: adventuring-motivations
         label: Motivations
@@ -650,6 +698,7 @@ content:
             required: true
             options:
               format: markdown
+          - <<: *source_field
 
   - name: equipment
     label: Equipment
@@ -695,6 +744,7 @@ content:
             label: Cost
             type: string
             required: true
+          - <<: *source_field
 
       - name: weapon-properties
         label: Weapon Properties
@@ -713,6 +763,7 @@ content:
             required: true
             options:
               format: markdown
+          - <<: *source_field
 
       - name: armor
         label: Armor
@@ -750,6 +801,7 @@ content:
             label: Cost
             type: string
             required: true
+          - <<: *source_field
 
       - name: misc-adventuring-equipment
         label: Misc. Gear
@@ -773,6 +825,7 @@ content:
             label: Cost
             type: string
             required: true
+          - <<: *source_field
 
   - name: spells
     label: Spells
@@ -795,6 +848,7 @@ content:
             required: true
             options:
               format: markdown
+          - <<: *source_field
 
       - name: spell-scroll-costs
         label: Scroll Costs
@@ -811,6 +865,7 @@ content:
             label: Cost
             type: string
             required: true
+          - <<: *source_field
 
       - name: wand-costs
         label: Wand Costs
@@ -827,6 +882,7 @@ content:
             label: Cost
             type: string
             required: true
+          - <<: *source_field
 
       - name: spells
         label: Spells
@@ -916,16 +972,7 @@ content:
                   label: Single Target+
                 - name: single-target-or-self
                   label: Single Target / Self
-          - name: source
-            label: Source
-            type: select
-            required: true
-            options:
-              values:
-                - name: core-rules
-                  label: Core Rules
-                - name: game-masters-guide
-                  label: Game Master's Guide
+          - <<: *source_field
           - name: secret
             label: Secret Spell
             type: boolean
@@ -961,6 +1008,7 @@ content:
             label: Cost
             type: string
             required: true
+          - <<: *source_field
 
       - name: magical-items
         label: Items
@@ -995,6 +1043,7 @@ content:
             description: Markdown; use blockquotes for asides.
             options:
               format: markdown
+          - <<: *source_field
 
   - name: monsters
     label: Monsters
@@ -1029,6 +1078,7 @@ content:
                 required: true
                 options:
                   format: markdown
+          - <<: *source_field
 
       - name: monster-kinds
         label: Monster Kinds
@@ -1073,6 +1123,7 @@ content:
             required: false
             options:
               format: markdown
+          - <<: *source_field
 
       - name: monsters
         label: Monsters
@@ -1339,6 +1390,7 @@ content:
                   label: Stirges
                 - name: undead
                   label: Undead
+          - <<: *source_field
 
       - name: legendary-monsters
         label: Legendary Monsters
@@ -1429,6 +1481,7 @@ content:
             required: false
             options:
               format: markdown
+          - <<: *source_field
           - name: creatures
             label: Creatures
             type: object
@@ -1595,6 +1648,7 @@ content:
         required: true
         options:
           format: markdown
+      - <<: *source_field
 
   - name: optional-variant-rules
     label: Optional Variant Rules
@@ -1613,3 +1667,4 @@ content:
         required: true
         options:
           format: markdown
+      - <<: *source_field

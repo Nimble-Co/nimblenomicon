@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import rawBoons from '../data/boons.json';
+import { sourceRefSchema } from './entity-base';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const rawBoonSchema = z
@@ -8,6 +9,7 @@ const rawBoonSchema = z
 		roll: z.number().int().min(1).max(8).optional(),
 		name: z.string().min(1).optional(),
 		description: z.string().min(1),
+		source: sourceRefSchema,
 	})
 	.strict()
 	.superRefine((row, ctx) => {
@@ -48,6 +50,7 @@ export type TemporaryBoonRow = {
 	level: 'temporary';
 	roll: number;
 	description: string;
+	source: z.infer<typeof sourceRefSchema>;
 };
 
 export type NamedBoonData = {
@@ -55,6 +58,7 @@ export type NamedBoonData = {
 	name: string;
 	description: string;
 	id: string;
+	source: z.infer<typeof sourceRefSchema>;
 };
 
 export type BoonData = TemporaryBoonRow | NamedBoonData;

@@ -2,21 +2,37 @@
 	{
 		"name": "Strength",
 		"stat": "STR",
-		"description": "Your raw physical power and resilience, endurance, and resistance to harm. Affects STR weapon damage, resistance to Wounds, HP recovery, Concentration, STR saves, carrying capacity, Grappling, and the Might skill."
+		"description": "Your raw physical power and resilience, endurance, and resistance to harm. Affects STR weapon damage, resistance to Wounds, HP recovery, Concentration, STR saves, carrying capacity, Grappling, and the Might skill.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "stats"
+		}
 	},
 	{
 		"name": "Dexterity",
 		"stat": "DEX",
-		"description": "Your agility, reflexes, and precision with blades or bows. Affects DEX weapon damage, Initiative, DEX saves, Grappling, and can contribute to Armor, as well as the Stealth and Finesse skills."
+		"description": "Your agility, reflexes, and precision with blades or bows. Affects DEX weapon damage, Initiative, DEX saves, Grappling, and can contribute to Armor, as well as the Stealth and Finesse skills.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "stats"
+		}
 	},
 	{
 		"name": "Intelligence",
 		"stat": "INT",
-		"description": "Your Intelligence reflects knowledge and reasoning across fields like the arcane, tactics, or street smarts. Affects languages, spellcasting, use of wands, spell scrolls, INT saves, as well as the Arcana, Examination, and Lore skills."
+		"description": "Your Intelligence reflects knowledge and reasoning across fields like the arcane, tactics, or street smarts. Affects languages, spellcasting, use of wands, spell scrolls, INT saves, as well as the Arcana, Examination, and Lore skills.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "stats"
+		}
 	},
 	{
 		"name": "Will",
 		"stat": "WIL",
-		"description": "Your force of personality, courage, and wisdom. Will shapes your interactions with both nature and society. Affects spellcasting and WIL saves, as well as the Insight, Influence, Naturecraft, and Perception skills."
+		"description": "Your force of personality, courage, and wisdom. Will shapes your interactions with both nature and society. Affects spellcasting and WIL saves, as well as the Insight, Influence, Naturecraft, and Perception skills.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "stats"
+		}
 	}
 ]

@@ -1,14 +1,26 @@
 [
 	{
 		"name": "Standard",
-		"description": "+2, +2, +0, -1"
+		"description": "+2, +2, +0, -1",
+		"source": {
+			"book": "core-rules",
+			"headingId": "step-3-fill-in-your-character-sheet"
+		}
 	},
 	{
 		"name": "Balanced",
-		"description": "+2, +1, +1, +0"
+		"description": "+2, +1, +1, +0",
+		"source": {
+			"book": "core-rules",
+			"headingId": "step-3-fill-in-your-character-sheet"
+		}
 	},
 	{
 		"name": "Min-Max",
-		"description": "+3, +1, -1, -1"
+		"description": "+3, +1, -1, -1",
+		"source": {
+			"book": "core-rules",
+			"headingId": "step-3-fill-in-your-character-sheet"
+		}
 	}
 ]

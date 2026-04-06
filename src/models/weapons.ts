@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import rawWeapons from '../data/weapons.json';
+import { sourceRefSchema } from './entity-base';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const weaponPropertyLineSchema = z
@@ -25,6 +26,7 @@ const weaponRowSchema = z.preprocess(
 			damage: z.string().min(1),
 			propertyLines: z.array(weaponPropertyLineSchema).default([]),
 			cost: z.string().min(1),
+			source: sourceRefSchema,
 		})
 		.strict(),
 );

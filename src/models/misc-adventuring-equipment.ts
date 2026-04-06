@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import rawMiscAdventuringEquipment from '../data/misc-adventuring-equipment.json';
+import { sourceRefSchema } from './entity-base';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const miscAdventuringEquipmentRowSchema = z.preprocess(
@@ -17,6 +18,7 @@ const miscAdventuringEquipmentRowSchema = z.preprocess(
 			name: z.string().min(1),
 			description: z.string().min(1),
 			cost: z.string().min(1),
+			source: sourceRefSchema,
 		})
 		.strict(),
 );

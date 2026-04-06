@@ -3,6 +3,7 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
 import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
 import { renderMarkdown } from '../../utils/render-markdown';
+import { sourceRefHref, sourceRefLabel } from '../../models/entity-base';
 import { spellSchools } from '../../models/spell-schools';
 import { spells, type SpellData } from '../../models/spells';
 
@@ -32,9 +33,8 @@ function spellMetaMarkdown(spell: SpellData): string {
 
 const bodyMarkdown = spellMetaMarkdown(spell) + '\n\n' + spell.description;
 
-const sourceHref = `/${spell.source}/#${spell.id}`;
-const sourceName =
-	spell.source === 'core-rules' ? 'Core Rules' : "Game Master's Guide";
+const sourceHref = sourceRefHref(spell.source);
+const sourceName = sourceRefLabel(spell.source);
 ---
 
 <StarlightPage

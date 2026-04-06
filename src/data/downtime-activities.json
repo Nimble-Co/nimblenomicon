@@ -1,50 +1,98 @@
 [
 	{
 		"name": "Retrain",
-		"description": "Spend time doing activities to retrain any of your chosen abilities, features, or if it makes sense in the story, possibly even your subclass."
+		"description": "Spend time doing activities to retrain any of your chosen abilities, features, or if it makes sense in the story, possibly even your subclass.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "downtime"
+		}
 	},
 	{
 		"name": "Gather Information",
-		"description": "Meet NPCs, pick up news, or collect rumors and job leads."
+		"description": "Meet NPCs, pick up news, or collect rumors and job leads.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "downtime"
+		}
 	},
 	{
 		"name": "Personal Goals",
-		"description": "Pursue goals from your back-story or other smaller quests you've chosen."
+		"description": "Pursue goals from your back-story or other smaller quests you've chosen.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "downtime"
+		}
 	},
 	{
 		"name": "Buy & Sell",
-		"description": "Get new equipment, and sell treasures you've collected while out adventuring."
+		"description": "Get new equipment, and sell treasures you've collected while out adventuring.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "downtime"
+		}
 	},
 	{
 		"name": "Perform",
-		"description": "Play music, tell stories, compete, or perform in public to earn gold or fame."
+		"description": "Play music, tell stories, compete, or perform in public to earn gold or fame.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "downtime"
+		}
 	},
 	{
 		"name": "Craft",
-		"description": "Create weapons, armor, or simple items using materials you've acquired."
+		"description": "Create weapons, armor, or simple items using materials you've acquired.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "downtime"
+		}
 	},
 	{
 		"name": "Socialize",
-		"description": "Build alliances, make new friends, or make new enemies."
+		"description": "Build alliances, make new friends, or make new enemies.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "downtime"
+		}
 	},
 	{
 		"name": "Invest",
-		"description": "Use your gold to invest in businesses or trade ventures for future profit."
+		"description": "Use your gold to invest in businesses or trade ventures for future profit.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "downtime"
+		}
 	},
 	{
 		"name": "Mentor",
-		"description": "Teach a skill or ability to another character or NPC."
+		"description": "Teach a skill or ability to another character or NPC.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "downtime"
+		}
 	},
 	{
 		"name": "Research",
-		"description": "Investigate a mystery, study ancient texts, or uncover hidden knowledge."
+		"description": "Investigate a mystery, study ancient texts, or uncover hidden knowledge.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "downtime"
+		}
 	},
 	{
 		"name": "Serve",
-		"description": "Aid a patron or a deity in exchange for a favor, or perform charity for townsfolk."
+		"description": "Aid a patron or a deity in exchange for a favor, or perform charity for townsfolk.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "downtime"
+		}
 	},
 	{
 		"name": "Build",
-		"description": "Establish a home base, start a business, craft siege weapons, or build anything else you can imagine (GM and setting-permitting, of course)."
+		"description": "Establish a home base, start a business, craft siege weapons, or build anything else you can imagine (GM and setting-permitting, of course).",
+		"source": {
+			"book": "core-rules",
+			"headingId": "downtime"
+		}
 	}
 ]

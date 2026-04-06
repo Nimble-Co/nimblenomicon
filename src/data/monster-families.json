@@ -6,7 +6,11 @@
 				"name": "Parry",
 				"description": "Treat attacks against you that roll 2 as a miss."
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "monster-builder"
+		}
 	},
 	{
 		"name": "Briarbanes",
@@ -15,7 +19,11 @@
 				"name": "Peeling Bark",
 				"description": "Damage degrades Armor 1 step: Heavy » Medium » None."
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "monster-builder"
+		}
 	},
 	{
 		"name": "Cultists",
@@ -24,7 +32,11 @@
 				"name": "Fanatical Zeal",
 				"description": "While not at max HP, make all rolls with advantage. Your crits also inflict Despair (Disadvantage on the next attack you make this encounter)."
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "monster-builder"
+		}
 	},
 	{
 		"name": "Goblins",
@@ -33,7 +45,11 @@
 				"name": "Haha, Missed Me!",
 				"description": "Whenever an attack misses you, deal 1 psychic damage in return."
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "monster-builder"
+		}
 	},
 	{
 		"name": "Gnolls",
@@ -42,11 +58,19 @@
 				"name": "Frenzy",
 				"description": "Advantage against Bloodied creatures."
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "monster-builder"
+		}
 	},
 	{
 		"name": "Horrors",
-		"abilities": []
+		"abilities": [],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "monster-builder"
+		}
 	},
 	{
 		"name": "Kobolds",
@@ -55,7 +79,11 @@
 				"name": "Nooooo!",
 				"description": "When an ally within 2 spaces dies, attack once for free."
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "monster-builder"
+		}
 	},
 	{
 		"name": "Mimics",
@@ -68,7 +96,11 @@
 				"name": "Sticky",
 				"description": "Mimic hits also Grapple and can Grapple any number of creatures. When crit: release 1 creature (attacker's choice)."
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "monster-builder"
+		}
 	},
 	{
 		"name": "Oozes",
@@ -81,7 +113,11 @@
 				"name": "Goopy",
 				"description": "When crit or dealt any slashing damage: summon X ooze minions (size: d6); their attacks inflict Digested."
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "monster-builder"
+		}
 	},
 	{
 		"name": "Snakemen",
@@ -90,7 +126,11 @@
 				"name": "Coiling Strike",
 				"description": "On melee crit: Grapple (escape DC 10)."
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "monster-builder"
+		}
 	},
 	{
 		"name": "Stirges",
@@ -103,7 +143,11 @@
 				"name": "Latched On",
 				"description": "You move where your target moves until either dies. Your attacks can't miss or be Defended/Interposed against. Attacks that miss you damage your target instead."
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "monster-builder"
+		}
 	},
 	{
 		"name": "Undead",
@@ -112,6 +156,10 @@
 				"name": "Unliving, Undying",
 				"description": "The first time this dies, reset to 1 HP instead (excluding minions)."
 			}
-		]
+		],
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "monster-builder"
+		}
 	}
 ]

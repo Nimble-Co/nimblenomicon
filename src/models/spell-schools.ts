@@ -1,11 +1,13 @@
 import { z } from 'astro/zod';
 import rawSpellSchools from '../data/spell-schools.json';
+import { sourceRefSchema } from './entity-base';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const spellSchoolSchema = z
 	.object({
 		name: z.string().min(1),
 		description: z.string(),
+		source: sourceRefSchema,
 	})
 	.strict()
 	.transform((spell) => ({

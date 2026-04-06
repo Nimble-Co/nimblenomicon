@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import rawMonsterKinds from '../data/monster-kinds.json';
+import { sourceRefSchema } from './entity-base';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const monsterKindSchema = z
@@ -8,6 +9,7 @@ const monsterKindSchema = z
 		description: z.string().min(1),
 		loot: z.string().min(1).optional(),
 		sampleEncounters: z.string().min(1).optional(),
+		source: sourceRefSchema,
 	})
 	.strict()
 	.transform((row) => ({

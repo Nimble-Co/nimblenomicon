@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import rawSkills from '../data/skills.json';
+import { sourceRefSchema } from './entity-base';
 import { stats } from './stats';
 
 const statCodes = new Set(stats.map((s) => s.stat));
@@ -14,6 +15,7 @@ const skillSchema = z
 				message: 'stat must match a Stat code from stats.json',
 			}),
 		description: z.string(),
+		source: sourceRefSchema,
 	})
 	.strict();
 export type SkillData = z.infer<typeof skillSchema>;

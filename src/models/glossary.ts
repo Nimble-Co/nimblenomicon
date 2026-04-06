@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import rawGlossary from '../data/glossary.json';
+import { sourceRefSchema } from './entity-base';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const glossaryEntryRowSchema = z.preprocess(
@@ -16,6 +17,7 @@ const glossaryEntryRowSchema = z.preprocess(
 			id: z.string().min(1),
 			name: z.string().min(1),
 			description: z.string(),
+			source: sourceRefSchema,
 		})
 		.strict(),
 );

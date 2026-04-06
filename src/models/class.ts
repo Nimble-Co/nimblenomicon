@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import rawClasses from '../data/classes.json';
+import { sourceRefSchema } from './entity-base';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 import { namedAbilityBlockSchema } from './creature-stat-shared';
 
@@ -16,6 +17,7 @@ const abilityListInputSchema = z
 		name: z.string().min(1),
 		description: z.string().min(1),
 		items: z.array(namedAbilityBlockSchema),
+		source: sourceRefSchema,
 	})
 	.strict();
 
@@ -65,6 +67,7 @@ const subclassRowSchema = z
 	.object({
 		name: z.string().min(1),
 		levels: z.array(classLevelRowSchema),
+		source: sourceRefSchema,
 	})
 	.strict();
 
@@ -127,6 +130,7 @@ const heroClassSchema = z
 		levels: z.array(classLevelRowSchema),
 		abilityLists: z.array(abilityListInputSchema).default([]),
 		subclasses: z.array(subclassRowSchema),
+		source: sourceRefSchema,
 	})
 	.strict()
 	.transform((row) => {
@@ -157,6 +161,7 @@ export type HeroSubclassData = {
 	name: string;
 	levels: z.infer<typeof classLevelRowSchema>[];
 	id: string;
+	source: z.infer<typeof sourceRefSchema>;
 };
 
 export type HeroClassData = z.infer<typeof heroClassSchema>;

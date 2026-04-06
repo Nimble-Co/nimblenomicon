@@ -4,6 +4,7 @@ import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
 import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
 import LegendaryStatBlock from '../../components/LegendaryStatBlock.astro';
 import MonsterStatBlock from '../../components/MonsterStatBlock.astro';
+import { sourceRefHref, sourceRefLabel } from '../../models/entity-base';
 import type { LegendaryEntryData } from '../../models/legendary-monsters';
 import { legendaryMonsters } from '../../models/legendary-monsters';
 import type { MonsterData } from '../../models/monsters';
@@ -79,7 +80,7 @@ const description =
 		)
 	}
 	<DetailPageSourceRef
-		href={`/game-masters-guide/#${record.id}`}
-		sourceName="Game Master's Guide"
+		href={sourceRefHref(record.source)}
+		sourceName={sourceRefLabel(record.source)}
 	/>
 </StarlightPage>

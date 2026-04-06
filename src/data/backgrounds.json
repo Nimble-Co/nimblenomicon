@@ -1,106 +1,210 @@
 [
 	{
 		"name": "Back Out of Retirement",
-		"description": "You've forgotten more than most adventurers these days know! Talk with your GM, what made you come out of retirement?\n\n- **Let's see if I remember how to do this...** You may gain 1 Wound to use an ability or cast a spell as if you were 1 level higher.\n- **These old bones.** Your age has long since started to show. –1 max Wounds."
+		"description": "You've forgotten more than most adventurers these days know! Talk with your GM, what made you come out of retirement?\n\n- **Let's see if I remember how to do this...** You may gain 1 Wound to use an ability or cast a spell as if you were 1 level higher.\n- **These old bones.** Your age has long since started to show. –1 max Wounds.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Devoted Protector",
-		"description": "Choose 1 ally in your party. You can survive +3 max Wounds as long as they are nearby. Whenever they take a Wound, you do too."
+		"description": "Choose 1 ally in your party. You can survive +3 max Wounds as long as they are nearby. Whenever they take a Wound, you do too.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Academy Dropout",
-		"description": "School just isn't for everyone! You learn by experience in the _real world_ (or at least that's what you tell yourself). Learn any 1 Utility Spell."
+		"description": "School just isn't for everyone! You learn by experience in the _real world_ (or at least that's what you tell yourself). Learn any 1 Utility Spell.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Made a BAD Choice",
-		"description": "Start with 500 or 1000 extra gold, or an uncommon/rare magical item (that your GM allows). Gain an equally powerful curse or enemy who wants it back. If you choose this background, your GM may allow you to choose another."
+		"description": "Start with 500 or 1000 extra gold, or an uncommon/rare magical item (that your GM allows). Gain an equally powerful curse or enemy who wants it back. If you choose this background, your GM may allow you to choose another.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Haunted Past",
-		"description": "You are haunted by voices that occasionally give you cryptic advice. The voices are sometimes VERY helpful. Other times they only want to see you suffer. Advantage against fear."
+		"description": "You are haunted by voices that occasionally give you cryptic advice. The voices are sometimes VERY helpful. Other times they only want to see you suffer. Advantage against fear.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Ear to the Ground",
-		"description": "Advantage on checks to know or obtain gossip for events that will soon happen or have happened less than 1 year ago."
+		"description": "Advantage on checks to know or obtain gossip for events that will soon happen or have happened less than 1 year ago.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "What? I've Been Around",
-		"description": "_1/per location_ (or at the GM's discretion). You happen to know JUST the person who has the information you're looking for, or could get you out of a jam, and… Roll 1d20:\n\n- **1–5.** They want you DEAD.\n- **6–12.** You owe them money.\n- **13–19.** They can be convinced to help you..\n- **20.** They are your biggest fan/are madly in love with you."
+		"description": "_1/per location_ (or at the GM's discretion). You happen to know JUST the person who has the information you're looking for, or could get you out of a jam, and… Roll 1d20:\n\n- **1–5.** They want you DEAD.\n- **6–12.** You owe them money.\n- **13–19.** They can be convinced to help you..\n- **20.** They are your biggest fan/are madly in love with you.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Acrobat",
-		"description": "Can be thrown by a larger ally, REALLY far. Half damage from falling and forced movement."
+		"description": "Can be thrown by a larger ally, REALLY far. Half damage from falling and forced movement.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Wild One",
-		"description": "Whether it is the sticks or flowers in your hair, your smell, or the way you carry yourself, wild creatures are less frightened of you and more willing to aid you. +1 Naturecraft. While Field Resting, roll your Hit Dice with advantage while in the wild."
+		"description": "Whether it is the sticks or flowers in your hair, your smell, or the way you carry yourself, wild creatures are less frightened of you and more willing to aid you. +1 Naturecraft. While Field Resting, roll your Hit Dice with advantage while in the wild.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Fey Touched",
-		"description": "You take half damage from all magical effects, double from weapons made of metal (before armor is applied)."
+		"description": "You take half damage from all magical effects, double from weapons made of metal (before armor is applied).",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Survivalist",
-		"description": "You never run out of your own personal rations. Anything can be food if you try hard enough! Advantage against poison saves. +1 max Hit Die."
+		"description": "You never run out of your own personal rations. Anything can be food if you try hard enough! Advantage against poison saves. +1 max Hit Die.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Home at Sea",
-		"description": "Recover twice as many Wounds and HP while resting on a ship or near water. You can fill in for a first mate or captain in a pinch. Advantage on water-related skill checks."
+		"description": "Recover twice as many Wounds and HP while resting on a ship or near water. You can fill in for a first mate or captain in a pinch. Advantage on water-related skill checks.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "At Home Underground",
-		"description": "You can dig twice as fast as others. Safe resting locations underground always count as Lavish lodging for you. You struggle to rest (INT save) while it's raining. “Water… from the SKY?!“"
+		"description": "You can dig twice as fast as others. Safe resting locations underground always count as Lavish lodging for you. You struggle to rest (INT save) while it's raining. “Water… from the SKY?!“",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Raised by Goblins",
-		"description": "You speak Goblin natively (much better than one who has learned it later in life). You automatically notice and can avoid crudely-made traps and have advantage to notice and disarm more sophisticated traps."
+		"description": "You speak Goblin natively (much better than one who has learned it later in life). You automatically notice and can avoid crudely-made traps and have advantage to notice and disarm more sophisticated traps.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Change It Up!",
-		"description": "> You can choose any other ancestry to be raised by instead, and exchange the known language and get 1 helpful/iconic ability those people would inculcate (e.g., Dwarves know Dwarvish and are very good with smithing or stonecraft)."
+		"description": "> You can choose any other ancestry to be raised by instead, and exchange the known language and get 1 helpful/iconic ability those people would inculcate (e.g., Dwarves know Dwarvish and are very good with smithing or stonecraft).",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "History Buff",
-		"description": "Advantage on all Lore checks related to knowledge about items, facts, or events that happened more than 100 years ago."
+		"description": "Advantage on all Lore checks related to knowledge about items, facts, or events that happened more than 100 years ago.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "(Former) Con Artist",
-		"description": "You can forge most documents or mimic voices flawlessly. You have a criminal contact in most major cities. However, your reputation often precedes you—until you prove yourself to be trustworthy."
+		"description": "You can forge most documents or mimic voices flawlessly. You have a criminal contact in most major cities. However, your reputation often precedes you—until you prove yourself to be trustworthy.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "(Secretly) Undead",
-		"description": "Unnatural Resilience: You are immune to disease and do not need to eat, drink, or breathe. Children, animals, and Celestials are uneasy in your presence; many will be horrified to discover your true nature."
+		"description": "Unnatural Resilience: You are immune to disease and do not need to eat, drink, or breathe. Children, animals, and Celestials are uneasy in your presence; many will be horrified to discover your true nature.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Taste for the Finer Things",
-		"description": "You always have up-to-date knowledge of the customs and dress of the upper classes and may even know many of their secrets. Advantage on Influence checks with the upper class."
+		"description": "You always have up-to-date knowledge of the customs and dress of the upper classes and may even know many of their secrets. Advantage on Influence checks with the upper class.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Fearless",
-		"description": "You are immune to the Frightened condition. +1 Initiative. –1 Armor."
+		"description": "You are immune to the Frightened condition. +1 Initiative. –1 Armor.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "So Dumb I'm Smart Sometimes",
-		"description": "(Req. 0 or negative INT at character creation.) Reroll an INT-related skill check, 1/day. Reroll a failed INT save with advantage, 1/Safe Rest."
+		"description": "(Req. 0 or negative INT at character creation.) Reroll an INT-related skill check, 1/day. Reroll a failed INT save with advantage, 1/Safe Rest.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Wily Underdog",
-		"description": "(Req. 0 or negative STR at character creation.) Reroll a failed STR-related roll (e.g., STR attack, STR save, Might check) and use another stat instead, 1/day."
+		"description": "(Req. 0 or negative STR at character creation.) Reroll a failed STR-related roll (e.g., STR attack, STR save, Might check) and use another stat instead, 1/day.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Bumblewise",
-		"description": "(Req. 0 or negative WIL at character creation.) A result of 1 or less on any WIL-related roll counts as a natural 20 (WIL save, Naturecraft, Perception, Influence, or Insight check)."
+		"description": "(Req. 0 or negative WIL at character creation.) A result of 1 or less on any WIL-related roll counts as a natural 20 (WIL save, Naturecraft, Perception, Influence, or Insight check).",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Accidental Acrobat",
-		"description": "(Req. 0 or negative DEX at character creation.) Whenever you fail a DEX-related roll (e.g., DEX attack, DEX save, Stealth check, Finesse check), you may roll again. If you still fail, the consequences are BAD."
+		"description": "(Req. 0 or negative DEX at character creation.) Whenever you fail a DEX-related roll (e.g., DEX attack, DEX save, Stealth check, Finesse check), you may roll again. If you still fail, the consequences are BAD.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Tradesman/Artisan",
-		"description": "Choose a profession (Baker/Cook, Smith, Stonemason, Weaver, Leatherworker, etc.). Checks you make related to that profession are made with advantage. You also retain special knowledge related to your profession."
+		"description": "Choose a profession (Baker/Cook, Smith, Stonemason, Weaver, Leatherworker, etc.). Checks you make related to that profession are made with advantage. You also retain special knowledge related to your profession.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	},
 	{
 		"name": "Make It Your Own!",
-		"description": "> Remember, backgrounds are just a starting point—you're free to adjust, reimagine, or completely rewrite them to suit your character's story. If you want to know a Utility Spell but don't like the Academy Dropout flavor, come up with a different reason why your character might know it. Maybe they learned it from a traveling bard or discovered it etched into an ancient relic.\n>\n> Feel free to swap traits, change the flavor text, or blend backgrounds together. Haunted Past might become Blessed by Spirits if your character views their other- worldly voices as guardians rather than tormentors.\n>\n> Work with your GM to ensure any changes align with your game's setting and are balanced with other backgrounds. These are here to inspire creativity—what you build with them is entirely up to you!"
+		"description": "> Remember, backgrounds are just a starting point—you're free to adjust, reimagine, or completely rewrite them to suit your character's story. If you want to know a Utility Spell but don't like the Academy Dropout flavor, come up with a different reason why your character might know it. Maybe they learned it from a traveling bard or discovered it etched into an ancient relic.\n>\n> Feel free to swap traits, change the flavor text, or blend backgrounds together. Haunted Past might become Blessed by Spirits if your character views their other- worldly voices as guardians rather than tormentors.\n>\n> Work with your GM to ensure any changes align with your game's setting and are balanced with other backgrounds. These are here to inspire creativity—what you build with them is entirely up to you!",
+		"source": {
+			"book": "core-rules",
+			"headingId": "backgrounds"
+		}
 	}
 ]

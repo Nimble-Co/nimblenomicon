@@ -320,7 +320,11 @@
 						"name": "You're Next!",
 						"description": "Action: While Raging, you can make a Might skill check to demoralize an enemy within Reach 12 (DC: their current HP). On a success, they immediately flee the battle."
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "savage-arsenal"
+				}
 			}
 		],
 		"subclasses": [
@@ -367,7 +371,11 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "mountainheart"
+				}
 			},
 			{
 				"name": "Red Mist",
@@ -412,10 +420,18 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "red-mist"
+				}
 			}
 		],
-		"summary": "An unstoppable force of wrath and ruin."
+		"summary": "An unstoppable force of wrath and ruin.",
+		"source": {
+			"book": "heroes",
+			"headingId": "berserker"
+		}
 	},
 	{
 		"name": "The Cheat",
@@ -749,7 +765,11 @@
 						"name": "Trickshot",
 						"description": "When you throw a dagger, it returns back to your hand at the end of your turn. On a hit, it ricochets to another creature within 2 spaces, dealing half as much damage to them."
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "underhanded-abilities"
+				}
 			}
 		],
 		"subclasses": [
@@ -796,7 +816,11 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "scoundrel"
+				}
 			},
 			{
 				"name": "Silent Blade",
@@ -841,10 +865,18 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "silent-blade"
+				}
 			}
 		],
-		"summary": "Sneaky, backstabbing, dirty-fighting rogue."
+		"summary": "Sneaky, backstabbing, dirty-fighting rogue.",
+		"source": {
+			"book": "heroes",
+			"headingId": "the-cheat"
+		}
 	},
 	{
 		"name": "Commander",
@@ -1158,7 +1190,11 @@
 						"name": "Reposition!",
 						"description": "Action/Reaction (on an ally's turn): Command 1 ally to move up to their speed (or 2 allies up to half their speed) for free."
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "commander-s-orders"
+				}
 			},
 			{
 				"name": "Combat Tactics",
@@ -1184,7 +1220,11 @@
 						"name": "Sweeping Strike",
 						"description": "2 actions: Select any contiguous area within your weapon's Reach and damage ALL targets there. This attack does not miss on a 1."
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "combat-tactics"
+				}
 			},
 			{
 				"name": "Weapon Mastery",
@@ -1202,7 +1242,11 @@
 						"name": "Piercing",
 						"description": "Your attacks with piercing weapons ignore Medium Armor."
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "weapon-mastery"
+				}
 			}
 		],
 		"subclasses": [
@@ -1249,7 +1293,11 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "bulwark"
+				}
 			},
 			{
 				"name": "Vanguard",
@@ -1290,10 +1338,18 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "vanguard"
+				}
 			}
 		],
-		"summary": "A battlefield tactician, leader, and weapon master."
+		"summary": "A battlefield tactician, leader, and weapon master.",
+		"source": {
+			"book": "heroes",
+			"headingId": "commander"
+		}
 	},
 	{
 		"name": "Hunter",
@@ -1635,7 +1691,11 @@
 						"name": "Wild Instinct",
 						"description": "(1/round, costs 0 TotH charges if you have none.) Assess for free, with advantage."
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "thrill-of-the-hunt"
+				}
 			}
 		],
 		"subclasses": [
@@ -1686,7 +1746,11 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "shadowpath"
+				}
 			},
 			{
 				"name": "Wild Heart",
@@ -1735,10 +1799,18 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "wild-heart"
+				}
 			}
 		],
-		"summary": "Resourceful survivalist, bow master, and skilled tracker."
+		"summary": "Resourceful survivalist, bow master, and skilled tracker.",
+		"source": {
+			"book": "heroes",
+			"headingId": "hunter"
+		}
 	},
 	{
 		"name": "Mage",
@@ -2079,7 +2151,11 @@
 						"name": "Stretch Time",
 						"description": "(2 mana) Reduce the action cost of a spell by 1 (min 1)."
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "spellshaper"
+				}
 			}
 		],
 		"subclasses": [
@@ -2126,7 +2202,11 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "chaos"
+				}
 			},
 			{
 				"name": "Control",
@@ -2175,10 +2255,18 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "control"
+				}
 			}
 		],
-		"summary": "Wield and shape the elements of fire, ice, and lightning."
+		"summary": "Wield and shape the elements of fire, ice, and lightning.",
+		"source": {
+			"book": "heroes",
+			"headingId": "mage"
+		}
 	},
 	{
 		"name": "Oathsworn",
@@ -2553,7 +2641,11 @@
 						"name": "Well Armored",
 						"description": "Whenever you Interpose, gain temp HP equal to your STR."
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "sacred-decrees"
+				}
 			}
 		],
 		"subclasses": [
@@ -2596,7 +2688,11 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "refuge"
+				}
 			},
 			{
 				"name": "Vengeance",
@@ -2637,10 +2733,18 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "vengeance"
+				}
 			}
 		],
-		"summary": "Faithful guardian, protector, and avenger of the weak."
+		"summary": "Faithful guardian, protector, and avenger of the weak.",
+		"source": {
+			"book": "heroes",
+			"headingId": "oathsworn"
+		}
 	},
 	{
 		"name": "Shadowmancer",
@@ -2994,7 +3098,11 @@
 						"name": "Whispers of the Grave",
 						"description": "(1/day) You can ask a dead creature 3 yes/no questions. It can never be questioned this way again."
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "lesser-invocations"
+				}
 			},
 			{
 				"name": "Greater Invocations",
@@ -3044,7 +3152,11 @@
 						"name": "Vengeful Blast",
 						"description": "Whenever a minion dies, you may cast Shadow Blast as a reaction (even if you already cast it this turn)."
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "greater-invocations"
+				}
 			}
 		],
 		"subclasses": [
@@ -3087,7 +3199,11 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "abyssal-depths"
+				}
 			},
 			{
 				"name": "Red Dragon",
@@ -3128,10 +3244,18 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "red-dragon"
+				}
 			}
 		],
-		"summary": "Summon hordes of expendable minions."
+		"summary": "Summon hordes of expendable minions.",
+		"source": {
+			"book": "heroes",
+			"headingId": "shadowmancer"
+		}
 	},
 	{
 		"name": "Shepherd",
@@ -3464,7 +3588,11 @@
 						"name": "Vengeful Spirit",
 						"description": "Action: Your Lifebinding Spirit sacrifices itself to transform into a swirling vortex of radiant light that damages all enemies within 3 spaces of you, ignoring armor and cover. This lasts for a number of rounds equal to the healing charges left on the Lifebinding Spirit."
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "sacred-graces"
+				}
 			}
 		],
 		"subclasses": [
@@ -3511,7 +3639,11 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "malice"
+				}
 			},
 			{
 				"name": "Mercy",
@@ -3556,10 +3688,18 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "mercy"
+				}
 			}
 		],
-		"summary": "Master life and death. Lead a faithful companion."
+		"summary": "Master life and death. Lead a faithful companion.",
+		"source": {
+			"book": "heroes",
+			"headingId": "shepherd"
+		}
 	},
 	{
 		"name": "Songweaver",
@@ -3892,7 +4032,11 @@
 						"name": "Song of Domination",
 						"description": "(1/encounter) 2 actions: Play a bewitching tune, and all enemies within 6 spaces who hear it must make a WIL save. If they fail, you move them up to 6 spaces in any direction, and they cannot move on their next turn."
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "lyrical-weaponry"
+				}
 			}
 		],
 		"subclasses": [
@@ -3935,7 +4079,11 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "courage"
+				}
 			},
 			{
 				"name": "Snark",
@@ -3976,10 +4124,18 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "snark"
+				}
 			}
 		],
-		"summary": "Inspiring presence, sharp wit, sharper tongue."
+		"summary": "Inspiring presence, sharp wit, sharper tongue.",
+		"source": {
+			"book": "heroes",
+			"headingId": "songweaver"
+		}
 	},
 	{
 		"name": "Stormshifter",
@@ -4320,7 +4476,11 @@
 						"name": "Beast of Nightmares",
 						"description": "(Tiny) Transform into any Tiny beast or insect. Sting: (1/round) Action: Reach 0. 1d4 piercing + 3×LVL acid damage (ignoring armor), on crit: 4×LVL damage. Silent But Deadly: Speed 2. You cannot Defend or Interpose. Attackers cannot target you until you become conspicuous."
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "beastshift-forms"
+				}
 			},
 			{
 				"name": "Chimeric Boons",
@@ -4362,7 +4522,11 @@
 						"name": "Winged",
 						"description": "Gain a flying speed. Forced movement moves you twice as far while flying."
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "chimeric-boons"
+				}
 			}
 		],
 		"subclasses": [
@@ -4421,7 +4585,11 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "fang-and-claw"
+				}
 			},
 			{
 				"name": "Sky & Storm",
@@ -4470,10 +4638,18 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "sky-and-storm"
+				}
 			}
 		],
-		"summary": "Master of weather, beast, and nature."
+		"summary": "Master of weather, beast, and nature.",
+		"source": {
+			"book": "heroes",
+			"headingId": "stormshifter"
+		}
 	},
 	{
 		"name": "Zephyr",
@@ -4797,7 +4973,11 @@
 						"name": "Windstrider",
 						"description": "If you move through the space of a willing creature while using Windstep, they can move with you and choose any space adjacent to your path of movement to end in."
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "martial-arts-abilities"
+				}
 			}
 		],
 		"subclasses": [
@@ -4840,7 +5020,11 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "flame"
+				}
 			},
 			{
 				"name": "Pain",
@@ -4881,9 +5065,17 @@
 							}
 						]
 					}
-				]
+				],
+				"source": {
+					"book": "heroes",
+					"headingId": "pain"
+				}
 			}
 		],
-		"summary": "A disciplined martial artist with swift hands and swift feet."
+		"summary": "A disciplined martial artist with swift hands and swift feet.",
+		"source": {
+			"book": "heroes",
+			"headingId": "zephyr"
+		}
 	}
 ]

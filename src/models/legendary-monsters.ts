@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import rawLegendaryMonsters from '../data/legendary-monsters.json';
+import { sourceRefSchema } from './entity-base';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 import {
 	creatureArmorTierSchema,
@@ -35,6 +36,7 @@ const legendaryEntrySchema = z
 		lastStand: z.string().min(1).optional(),
 		notes: z.string().min(1).optional(),
 		creatures: z.array(legendaryCreatureSchema).min(1),
+		source: sourceRefSchema,
 	})
 	.strict()
 	.refine(

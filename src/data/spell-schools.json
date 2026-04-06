@@ -1,26 +1,50 @@
 [
 	{
 		"name": "Fire",
-		"description": "Spells deal high, consistent damage at medium range. Some fire spells can inflict the Smoldering condition and gain additional destructive effects against Smoldering enemies."
+		"description": "Spells deal high, consistent damage at medium range. Some fire spells can inflict the Smoldering condition and gain additional destructive effects against Smoldering enemies.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "spells"
+		}
 	},
 	{
 		"name": "Ice",
-		"description": "Spells deal medium damage at long range, with a focus on controlling the battlefield and protecting the spellcaster. Some ice spells have additional effects against Hampered targets."
+		"description": "Spells deal medium damage at long range, with a focus on controlling the battlefield and protecting the spellcaster. Some ice spells have additional effects against Hampered targets.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "spells"
+		}
 	},
 	{
 		"name": "Lightning",
-		"description": "Spells deal high damage at long range with a focus on teleporting around the battlefield and taking advantage of creatures equipped with metal. However, some lightning spells may fail to find ground and damage the spellcaster instead."
+		"description": "Spells deal high damage at long range with a focus on teleporting around the battlefield and taking advantage of creatures equipped with metal. However, some lightning spells may fail to find ground and damage the spellcaster instead.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "spells"
+		}
 	},
 	{
 		"name": "Necrotic",
-		"description": "Spells summon horrible minions or manipulate and trap targets. Some risky necrotic spells prey upon damaged creatures, sapping their very life force—but frequently fail to distinguish between friend and foe."
+		"description": "Spells summon horrible minions or manipulate and trap targets. Some risky necrotic spells prey upon damaged creatures, sapping their very life force—but frequently fail to distinguish between friend and foe.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "spells"
+		}
 	},
 	{
 		"name": "Radiant",
-		"description": "Spells can obliterate the unholy, the fearful, and those who would dare harm you or your allies. Equally effective at a distance or in melee. Other spells can protect, mend wounds, and even restore creatures back to life!"
+		"description": "Spells can obliterate the unholy, the fearful, and those who would dare harm you or your allies. Equally effective at a distance or in melee. Other spells can protect, mend wounds, and even restore creatures back to life!",
+		"source": {
+			"book": "core-rules",
+			"headingId": "spells"
+		}
 	},
 	{
 		"name": "Wind",
-		"description": "Spells aid in moving friend and foe alike around the battlefield. They can also slice and cut through entire groups of foes and viciously deal extra damage on critical hits."
+		"description": "Spells aid in moving friend and foe alike around the battlefield. They can also slice and cut through entire groups of foes and viciously deal extra damage on critical hits.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "spells"
+		}
 	}
 ]

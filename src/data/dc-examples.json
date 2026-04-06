@@ -1,22 +1,42 @@
 [
 	{
 		"name": "Easy",
-		"description": "Spotting a large Ogre crouched behind a small bush might be a **DC 8** Perception check."
+		"description": "Spotting a large Ogre crouched behind a small bush might be a **DC 8** Perception check.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "skill-checks--saves"
+		}
 	},
 	{
 		"name": "Medium",
-		"description": "A hidden doorway behind a bookcase might be a **DC 12** Examination check."
+		"description": "A hidden doorway behind a bookcase might be a **DC 12** Examination check.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "skill-checks--saves"
+		}
 	},
 	{
 		"name": "Challenging",
-		"description": "Calming an injured Owlbear stuck in a trap may be a **DC 15** Naturecraft check."
+		"description": "Calming an injured Owlbear stuck in a trap may be a **DC 15** Naturecraft check.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "skill-checks--saves"
+		}
 	},
 	{
 		"name": "Very Difficult",
-		"description": "Intuiting the true intentions of a trained Spy may be a **DC 18** Insight check."
+		"description": "Intuiting the true intentions of a trained Spy may be a **DC 18** Insight check.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "skill-checks--saves"
+		}
 	},
 	{
 		"name": "Extremely Difficult",
-		"description": "Disarming an ancient legendary trap may be a **DC 20+** Finesse check."
+		"description": "Disarming an ancient legendary trap may be a **DC 20+** Finesse check.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "skill-checks--saves"
+		}
 	}
 ]

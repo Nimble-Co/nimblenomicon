@@ -3,6 +3,7 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
 import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
 import { renderMarkdown } from '../../utils/render-markdown';
+import { sourceRefHref, sourceRefLabel } from '../../models/entity-base';
 import { ancestries, formatAncestrySize } from '../../models/ancestries';
 
 export function getStaticPaths() {
@@ -35,7 +36,7 @@ const bodyMarkdown =
 	<DetailPageBackToList href="/ancestries/" label="All Ancestries" />
 	<div set:html={await renderMarkdown(bodyMarkdown)} />
 	<DetailPageSourceRef
-		href={`/core-rules/#${row.id}`}
-		sourceName="Core Rules"
+		href={sourceRefHref(row.source)}
+		sourceName={sourceRefLabel(row.source)}
 	/>
 </StarlightPage>

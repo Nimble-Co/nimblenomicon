@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import rawSpells from '../data/spells.json';
+import { sourceRefSchema } from './entity-base';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const spellTargetSchema = z.enum([
@@ -24,7 +25,7 @@ const spellsSchema = z
 		description: z.string().min(1),
 		tier: z.number().min(0).max(9),
 		secret: z.boolean().default(false),
-		source: z.enum(['core-rules', 'game-masters-guide']),
+		source: sourceRefSchema,
 	})
 	.strict()
 	.transform((spell) => {

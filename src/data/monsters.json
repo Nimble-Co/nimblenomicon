@@ -16,7 +16,11 @@
 			}
 		],
 		"kind": "bandits",
-		"family": "bandits"
+		"family": "bandits",
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Bandit",
@@ -36,7 +40,11 @@
 		],
 		"kind": "bandits",
 		"family": "bandits",
-		"hp": 12
+		"hp": 12,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Bandit Hunter",
@@ -56,7 +64,11 @@
 		],
 		"kind": "bandits",
 		"family": "bandits",
-		"hp": 22
+		"hp": 22,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Bandit Assassin",
@@ -83,7 +95,11 @@
 		],
 		"kind": "bandits",
 		"family": "bandits",
-		"hp": 24
+		"hp": 24,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Bandit Bruiser",
@@ -103,7 +119,11 @@
 		],
 		"kind": "bandits",
 		"family": "bandits",
-		"hp": 24
+		"hp": 24,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Bandit Captain",
@@ -124,7 +144,11 @@
 		],
 		"kind": "bandits",
 		"family": "bandits",
-		"hp": 36
+		"hp": 36,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Bandit Mage",
@@ -150,7 +174,11 @@
 		],
 		"kind": "bandits",
 		"family": "bandits",
-		"hp": 41
+		"hp": 41,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Stenchling",
@@ -176,7 +204,11 @@
 		],
 		"kind": "cultists-and-horrors",
 		"family": "horrors",
-		"hp": 18
+		"hp": 18,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Cultist",
@@ -204,7 +236,11 @@
 		],
 		"kind": "cultists-and-horrors",
 		"family": "cultists",
-		"hp": 28
+		"hp": 28,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Fanatic",
@@ -228,7 +264,11 @@
 		],
 		"kind": "cultists-and-horrors",
 		"family": "cultists",
-		"hp": 41
+		"hp": 41,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Spiny Fiend",
@@ -259,7 +299,11 @@
 		],
 		"kind": "cultists-and-horrors",
 		"family": "horrors",
-		"hp": 49
+		"hp": 49,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Doomsayer",
@@ -283,7 +327,11 @@
 		],
 		"kind": "cultists-and-horrors",
 		"family": "cultists",
-		"hp": 58
+		"hp": 58,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Glabrezu",
@@ -308,7 +356,11 @@
 		],
 		"kind": "cultists-and-horrors",
 		"family": "horrors",
-		"hp": 110
+		"hp": 110,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Stirge",
@@ -328,7 +380,11 @@
 		],
 		"kind": "dungeon-denizens",
 		"family": "stirges",
-		"hp": 10
+		"hp": 10,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Gray Ooze",
@@ -349,7 +405,11 @@
 		],
 		"kind": "dungeon-denizens",
 		"family": "oozes",
-		"hp": 28
+		"hp": 28,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Tiny Mimic",
@@ -374,7 +434,11 @@
 		],
 		"kind": "dungeon-denizens",
 		"family": "mimics",
-		"hp": 28
+		"hp": 28,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Small Mimic",
@@ -399,7 +463,11 @@
 		],
 		"kind": "dungeon-denizens",
 		"family": "mimics",
-		"hp": 41
+		"hp": 41,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Ochre Jelly",
@@ -420,7 +488,11 @@
 		],
 		"kind": "dungeon-denizens",
 		"family": "oozes",
-		"hp": 52
+		"hp": 52,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Greater Stirge",
@@ -440,7 +512,11 @@
 		],
 		"kind": "dungeon-denizens",
 		"family": "stirges",
-		"hp": 60
+		"hp": 60,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Medium Mimic",
@@ -465,7 +541,11 @@
 		],
 		"kind": "dungeon-denizens",
 		"family": "mimics",
-		"hp": 79
+		"hp": 79,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Black Pudding",
@@ -486,7 +566,11 @@
 		],
 		"kind": "dungeon-denizens",
 		"family": "oozes",
-		"hp": 90
+		"hp": 90,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Elder Ooze",
@@ -507,7 +591,11 @@
 		],
 		"kind": "dungeon-denizens",
 		"family": "oozes",
-		"hp": 150
+		"hp": 150,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Seedling",
@@ -527,7 +615,11 @@
 		],
 		"kind": "forest-denizens",
 		"family": "briarbanes",
-		"hp": 8
+		"hp": 8,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Acidpod",
@@ -553,7 +645,11 @@
 		],
 		"kind": "forest-denizens",
 		"family": "briarbanes",
-		"hp": 8
+		"hp": 8,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Tangler",
@@ -574,7 +670,11 @@
 		],
 		"kind": "forest-denizens",
 		"family": "briarbanes",
-		"hp": 20
+		"hp": 20,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Rootbreaker",
@@ -594,7 +694,11 @@
 		],
 		"kind": "forest-denizens",
 		"family": "briarbanes",
-		"hp": 50
+		"hp": 50,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Duskprowler",
@@ -620,7 +724,11 @@
 			}
 		],
 		"kind": "forest-denizens",
-		"hp": 70
+		"hp": 70,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Basilisk",
@@ -649,7 +757,11 @@
 			}
 		],
 		"kind": "forest-denizens",
-		"hp": 48
+		"hp": 48,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Druid",
@@ -672,7 +784,11 @@
 			}
 		],
 		"kind": "forest-denizens",
-		"hp": 90
+		"hp": 90,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Treant",
@@ -702,7 +818,11 @@
 		],
 		"kind": "forest-denizens",
 		"family": "briarbanes",
-		"hp": 170
+		"hp": 170,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Goblin Minion",
@@ -721,7 +841,11 @@
 			}
 		],
 		"kind": "goblins",
-		"family": "goblins"
+		"family": "goblins",
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Goblin",
@@ -741,7 +865,11 @@
 		],
 		"kind": "goblins",
 		"family": "goblins",
-		"hp": 15
+		"hp": 15,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Bugbear",
@@ -766,7 +894,11 @@
 		],
 		"kind": "goblins",
 		"family": "goblins",
-		"hp": 30
+		"hp": 30,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Goblin Ratrider",
@@ -793,7 +925,11 @@
 		],
 		"kind": "goblins",
 		"family": "goblins",
-		"hp": 30
+		"hp": 30,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Goblin Taskmaster",
@@ -824,7 +960,11 @@
 		],
 		"kind": "goblins",
 		"family": "goblins",
-		"hp": 30
+		"hp": 30,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Gnoll",
@@ -856,7 +996,11 @@
 		],
 		"kind": "hill-and-field",
 		"family": "gnolls",
-		"hp": 28
+		"hp": 28,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Worg",
@@ -882,7 +1026,11 @@
 			}
 		],
 		"kind": "hill-and-field",
-		"hp": 28
+		"hp": 28,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Blue Drake",
@@ -907,7 +1055,11 @@
 			}
 		],
 		"kind": "hill-and-field",
-		"hp": 34
+		"hp": 34,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Gnoll Packleader",
@@ -939,7 +1091,11 @@
 		],
 		"kind": "hill-and-field",
 		"family": "gnolls",
-		"hp": 39
+		"hp": 39,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Griffon",
@@ -962,7 +1118,11 @@
 			}
 		],
 		"kind": "hill-and-field",
-		"hp": 50
+		"hp": 50,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Bulette",
@@ -992,7 +1152,11 @@
 			}
 		],
 		"kind": "hill-and-field",
-		"hp": 74
+		"hp": 74,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Troll",
@@ -1021,7 +1185,11 @@
 			}
 		],
 		"kind": "hill-and-field",
-		"hp": 100
+		"hp": 100,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Hill Giant",
@@ -1051,7 +1219,11 @@
 			}
 		],
 		"kind": "hill-and-field",
-		"hp": 140
+		"hp": 140,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Roc",
@@ -1074,7 +1246,11 @@
 			}
 		],
 		"kind": "hill-and-field",
-		"hp": 195
+		"hp": 195,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Kobold Minion",
@@ -1093,7 +1269,11 @@
 			}
 		],
 		"kind": "kobolds",
-		"family": "kobolds"
+		"family": "kobolds",
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Kobold",
@@ -1113,7 +1293,11 @@
 		],
 		"kind": "kobolds",
 		"family": "kobolds",
-		"hp": 12
+		"hp": 12,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Kobold Sneak",
@@ -1139,7 +1323,11 @@
 		],
 		"kind": "kobolds",
 		"family": "kobolds",
-		"hp": 15
+		"hp": 15,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Kobold Clanger",
@@ -1160,7 +1348,11 @@
 		],
 		"kind": "kobolds",
 		"family": "kobolds",
-		"hp": 16
+		"hp": 16,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Kobold Denwarden",
@@ -1187,7 +1379,11 @@
 		],
 		"kind": "kobolds",
 		"family": "kobolds",
-		"hp": 20
+		"hp": 20,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Kobold Trapper",
@@ -1214,7 +1410,11 @@
 		],
 		"kind": "kobolds",
 		"family": "kobolds",
-		"hp": 26
+		"hp": 26,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Kobold Trapper (Medium)",
@@ -1241,7 +1441,11 @@
 			}
 		],
 		"kind": "kobolds",
-		"family": "kobolds"
+		"family": "kobolds",
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Snakeman Minion",
@@ -1260,7 +1464,11 @@
 			}
 		],
 		"kind": "snakemen",
-		"family": "snakemen"
+		"family": "snakemen",
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Snakeman",
@@ -1280,7 +1488,11 @@
 		],
 		"kind": "snakemen",
 		"family": "snakemen",
-		"hp": 26
+		"hp": 26,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Cobra Captain",
@@ -1301,7 +1513,11 @@
 		],
 		"kind": "snakemen",
 		"family": "snakemen",
-		"hp": 36
+		"hp": 36,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Giant Cobra",
@@ -1321,7 +1537,11 @@
 		],
 		"kind": "snakemen",
 		"family": "snakemen",
-		"hp": 80
+		"hp": 80,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Skeleton",
@@ -1341,7 +1561,11 @@
 		],
 		"kind": "undead",
 		"family": "undead",
-		"hp": 10
+		"hp": 10,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Zombie",
@@ -1361,7 +1585,11 @@
 		],
 		"kind": "undead",
 		"family": "undead",
-		"hp": 15
+		"hp": 15,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Ghoul",
@@ -1381,7 +1609,11 @@
 		],
 		"kind": "undead",
 		"family": "undead",
-		"hp": 20
+		"hp": 20,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Specter",
@@ -1401,7 +1633,11 @@
 		],
 		"kind": "undead",
 		"family": "undead",
-		"hp": 30
+		"hp": 30,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Ogre Zombie",
@@ -1422,7 +1658,11 @@
 		],
 		"kind": "undead",
 		"family": "undead",
-		"hp": 46
+		"hp": 46,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Mummy",
@@ -1443,7 +1683,11 @@
 		],
 		"kind": "undead",
 		"family": "undead",
-		"hp": 54
+		"hp": 54,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Giant Zombie",
@@ -1464,7 +1708,11 @@
 		],
 		"kind": "undead",
 		"family": "undead",
-		"hp": 73
+		"hp": 73,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Wraith",
@@ -1485,7 +1733,11 @@
 		],
 		"kind": "undead",
 		"family": "undead",
-		"hp": 94
+		"hp": 94,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Mummy Lord",
@@ -1516,7 +1768,11 @@
 		],
 		"kind": "undead",
 		"family": "undead",
-		"hp": 280
+		"hp": 280,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Giant Spider",
@@ -1539,7 +1795,11 @@
 			}
 		],
 		"kind": "underground",
-		"hp": 27
+		"hp": 27,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Ettercap",
@@ -1558,7 +1818,11 @@
 			}
 		],
 		"kind": "underground",
-		"hp": 49
+		"hp": 49,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Nestweaver",
@@ -1581,7 +1845,11 @@
 			}
 		],
 		"kind": "underground",
-		"hp": 54
+		"hp": 54,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Umber Hulk",
@@ -1607,7 +1875,11 @@
 			}
 		],
 		"kind": "underground",
-		"hp": 70
+		"hp": 70,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Cloaker",
@@ -1640,7 +1912,11 @@
 			}
 		],
 		"kind": "underground",
-		"hp": 110
+		"hp": 110,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	},
 	{
 		"name": "Great Worm",
@@ -1669,6 +1945,10 @@
 			}
 		],
 		"kind": "underground",
-		"hp": 140
+		"hp": 140,
+		"source": {
+			"book": "game-masters-guide",
+			"headingId": "running-monsters"
+		}
 	}
 ]

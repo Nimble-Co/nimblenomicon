@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import raw from '../data/gmg-monster-builder-levels.json';
+import { sourceRefSchema } from './entity-base';
 
 const rowSchema = z
 	.object({
@@ -11,6 +12,7 @@ const rowSchema = z
 		attackSampleDice: z.string().min(1),
 		saveDC: z.number().int().min(0),
 		crEquivalent: z.string().min(1),
+		source: sourceRefSchema,
 	})
 	.strict();
 

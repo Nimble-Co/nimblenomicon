@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import rawLanguages from '../data/languages.json';
+import { sourceRefSchema } from './entity-base';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const languageRowSchema = z.preprocess(
@@ -16,6 +17,7 @@ const languageRowSchema = z.preprocess(
 			id: z.string().min(1),
 			name: z.string().min(1),
 			description: z.string(),
+			source: sourceRefSchema,
 		})
 		.strict(),
 );

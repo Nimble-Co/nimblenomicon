@@ -1,26 +1,50 @@
 [
 	{
 		"name": "Tiny",
-		"description": "can be carried in a typical pocket (many can comfortably fit in 1 space)."
+		"description": "can be carried in a typical pocket (many can comfortably fit in 1 space).",
+		"source": {
+			"book": "core-rules",
+			"headingId": "size"
+		}
 	},
 	{
 		"name": "Small",
-		"description": "can be carried in a backpack (2 can comfortably fit in 1 space)."
+		"description": "can be carried in a backpack (2 can comfortably fit in 1 space).",
+		"source": {
+			"book": "core-rules",
+			"headingId": "size"
+		}
 	},
 	{
 		"name": "Medium",
-		"description": "is the average human size (1 can comfortably fit in 1 space)."
+		"description": "is the average human size (1 can comfortably fit in 1 space).",
+		"source": {
+			"book": "core-rules",
+			"headingId": "size"
+		}
 	},
 	{
 		"name": "Large",
-		"description": "is roughly the size of a bear (1 can comfortably fit in a 2x2 area)."
+		"description": "is roughly the size of a bear (1 can comfortably fit in a 2x2 area).",
+		"source": {
+			"book": "core-rules",
+			"headingId": "size"
+		}
 	},
 	{
 		"name": "Huge",
-		"description": "is roughly the size of a small house (1 can comfortably fit in a 3x3 area)."
+		"description": "is roughly the size of a small house (1 can comfortably fit in a 3x3 area).",
+		"source": {
+			"book": "core-rules",
+			"headingId": "size"
+		}
 	},
 	{
 		"name": "Gargantuan",
-		"description": "can be as large as a castle keep (1 can fill a 4x4 area or greater)."
+		"description": "can be as large as a castle keep (1 can fill a 4x4 area or greater).",
+		"source": {
+			"book": "core-rules",
+			"headingId": "size"
+		}
 	}
 ]

@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import rawMagicalItems from '../data/magical-items.json';
+import { sourceRefSchema } from './entity-base';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const magicalItemStandardSchema = z
@@ -9,6 +10,7 @@ const magicalItemStandardSchema = z
 		name: z.string().min(1),
 		subtitle: z.string().optional(),
 		description: z.string().min(1),
+		source: sourceRefSchema,
 	})
 	.strict();
 
@@ -19,6 +21,7 @@ const magicalItemWandSchema = z
 		name: z.string().min(1),
 		subtitle: z.string().optional(),
 		description: z.string().min(1),
+		source: sourceRefSchema,
 	})
 	.strict();
 

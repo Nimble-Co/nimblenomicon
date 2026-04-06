@@ -1,42 +1,82 @@
 [
 	{
 		"name": "Common",
-		"description": "Most intelligent creatures."
+		"description": "Most intelligent creatures.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "5-languages"
+		}
 	},
 	{
 		"name": "Dwarvish",
-		"description": "Dwarves, Gnomes, and Giants."
+		"description": "Dwarves, Gnomes, and Giants.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "5-languages"
+		}
 	},
 	{
 		"name": "Elvish",
-		"description": "Elves, Fey, and Sylvan."
+		"description": "Elves, Fey, and Sylvan.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "5-languages"
+		}
 	},
 	{
 		"name": "Goblin",
-		"description": "Goblins and Orcs."
+		"description": "Goblins and Orcs.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "5-languages"
+		}
 	},
 	{
 		"name": "Infernal",
-		"description": "Various Fiends and cultists."
+		"description": "Various Fiends and cultists.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "5-languages"
+		}
 	},
 	{
 		"name": "Thieves' Cant",
-		"description": "Scoundrels and rogues."
+		"description": "Scoundrels and rogues.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "5-languages"
+		}
 	},
 	{
 		"name": "Celestial",
-		"description": "Celestials and priests."
+		"description": "Celestials and priests.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "5-languages"
+		}
 	},
 	{
 		"name": "Draconic",
-		"description": "Dragons, Dragonborn, and Kobolds."
+		"description": "Dragons, Dragonborn, and Kobolds.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "5-languages"
+		}
 	},
 	{
 		"name": "Primordial",
-		"description": "Elementals and Ancient Beings."
+		"description": "Elementals and Ancient Beings.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "5-languages"
+		}
 	},
 	{
 		"name": "Deep Speak",
-		"description": "Underworld dwellers."
+		"description": "Underworld dwellers.",
+		"source": {
+			"book": "core-rules",
+			"headingId": "5-languages"
+		}
 	}
 ]
