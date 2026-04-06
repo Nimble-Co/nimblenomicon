@@ -1,0 +1,31 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
+import { heroClasses } from '../../models/class';
+import { compareReferenceRowsByName } from '../../utils/reference-index-sort';
+
+const columns = [
+	{ id: 'name', label: 'Name' },
+	{ id: 'summary', label: 'Summary' },
+];
+
+const rows = [...heroClasses].sort(compareReferenceRowsByName).map((c) => ({
+	name: c.name,
+	lead: { href: `/classes/${c.id}/`, text: c.name },
+	rest: [c.summary],
+}));
+---
+
+<StarlightPage
+	frontmatter={{
+		title: 'Classes',
+		description: 'Alphabetical index of hero classes with links to each class.',
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+	hasSidebar={false}
+>
+	<ReferenceIndexTable columns={columns} rows={rows} />
+</StarlightPage>
+

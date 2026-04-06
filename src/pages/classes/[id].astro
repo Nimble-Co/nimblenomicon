@@ -1,0 +1,45 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
+import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
+import HeroClassSheet from '../../components/HeroClassSheet.astro';
+import type { HeroClassData } from '../../models/class';
+import { heroClasses } from '../../models/class';
+
+export function getStaticPaths() {
+	const seen = new Set<string>();
+	const paths: Array<{ params: { id: string }; props: { heroClass: HeroClassData } }> =
+		[];
+
+	for (const c of heroClasses) {
+		if (seen.has(c.id)) {
+			throw new Error(`Duplicate class page id "${c.id}".`);
+		}
+		seen.add(c.id);
+		paths.push({
+			params: { id: c.id },
+			props: { heroClass: c },
+		});
+	}
+
+	return paths;
+}
+
+const { heroClass } = Astro.props;
+---
+
+<StarlightPage
+	hasSidebar={false}
+	frontmatter={{
+		title: heroClass.name,
+		description: `Hero class — ${heroClass.name}.`,
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+>
+	<DetailPageBackToList href="/classes/" label="All Classes" />
+	<HeroClassSheet classId={heroClass.id} />
+	<DetailPageSourceRef href={`/heroes/#${heroClass.id}`} sourceName="Heroes" />
+</StarlightPage>
+
