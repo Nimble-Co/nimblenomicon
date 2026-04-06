@@ -1,0 +1,83 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
+import LegendaryStatBlock from '../../components/monsters/LegendaryStatBlock.astro';
+import MonsterStatBlock from '../../components/monsters/MonsterStatBlock.astro';
+import type { LegendaryEntryData } from '../../models/legendary-monsters';
+import { legendaryMonsters } from '../../models/legendary-monsters';
+import type { MonsterData } from '../../models/monsters';
+import { monsters } from '../../models/monsters';
+
+export function getStaticPaths() {
+	const seen = new Set<string>();
+	const paths: Array<{
+		params: { id: string };
+		props:
+			| { variant: 'monster'; record: MonsterData }
+			| { variant: 'legendary'; record: LegendaryEntryData };
+	}> = [];
+
+	for (const m of monsters) {
+		if (seen.has(m.id)) {
+			throw new Error(
+				`Duplicate monster page id "${m.id}" within regular monsters.`,
+			);
+		}
+		seen.add(m.id);
+		paths.push({
+			params: { id: m.id },
+			props: { variant: 'monster', record: m },
+		});
+	}
+
+	for (const m of legendaryMonsters) {
+		if (seen.has(m.id)) {
+			throw new Error(
+				`Duplicate monster page id "${m.id}" between regular and legendary monsters.`,
+			);
+		}
+		seen.add(m.id);
+		paths.push({
+			params: { id: m.id },
+			props: { variant: 'legendary', record: m },
+		});
+	}
+
+	return paths;
+}
+
+const { variant, record } = Astro.props;
+
+const title = record.name;
+const description =
+	variant === 'monster'
+		? `Monster stat block — ${record.name}.`
+		: `Legendary monster — ${record.name}.`;
+---
+
+<StarlightPage
+	hasSidebar={false}
+	frontmatter={{
+		title,
+		description,
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+>
+	{
+		variant === 'monster' ? (
+			<MonsterStatBlock
+				monsterId={record.id}
+				showKind={true}
+				showFamilyAbilities={true}
+			/>
+		) : (
+			<LegendaryStatBlock legendaryMonsterId={record.id} />
+		)
+	}
+	<DetailPageSourceRef
+		href={`/game-masters-guide/#${record.id}`}
+		sourceName="Game Master's Guide"
+	/>
+</StarlightPage>

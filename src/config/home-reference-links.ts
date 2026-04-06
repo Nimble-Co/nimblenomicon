@@ -10,6 +10,7 @@ export const HOME_REFERENCE_LINKS = [
 	{ label: 'Glossary', href: '/glossary/' },
 	{ label: 'Languages', href: '/languages/' },
 	{ label: 'Magical Items', href: '/magical-items/' },
+	{ label: 'Monsters', href: '/monsters/' },
 	{ label: 'Misc. Equipment', href: '/misc-adventuring-equipment/' },
 	{ label: 'Spells', href: '/spells/' },
 	{ label: 'Weapons', href: '/weapons/' },

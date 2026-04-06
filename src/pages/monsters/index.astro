@@ -1,0 +1,105 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { legendaryMonsters } from '../../models/legendary-monsters';
+import { monsters } from '../../models/monsters';
+
+type ListingRow =
+	| {
+			id: string;
+			isLegendary: false;
+			name: string;
+			level: string;
+			kind: string;
+			family: string;
+			minionLabel: string;
+	  }
+	| {
+			id: string;
+			isLegendary: true;
+			name: string;
+			level: string;
+			minionLabel: string;
+	  };
+
+const regularRows: ListingRow[] = monsters.map((m) => ({
+	id: m.id,
+	isLegendary: false,
+	name: m.name,
+	level: m.level,
+	kind: m.kind?.name ?? '',
+	family: m.family?.name ?? '',
+	minionLabel: m.isMinion ? 'Minion' : '',
+}));
+
+const legendaryRows: ListingRow[] = legendaryMonsters.map((m) => ({
+	id: m.id,
+	name: m.name,
+	isLegendary: true,
+	level: m.level,
+	minionLabel: '',
+}));
+
+const search = Astro.url.searchParams.get('search') || '';
+
+const rows = [...regularRows, ...legendaryRows];
+---
+
+<StarlightPage
+	frontmatter={{
+		title: 'Monsters',
+		description:
+			'Index of regular and legendary monsters with links to each stat block.',
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+	hasSidebar={false}
+>
+	<div class="sl-markdown-content not-content">
+		<table class="monsters-index__table">
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Level</th>
+					<th scope="col">Legendary</th>
+					<th scope="col">Kind</th>
+					<th scope="col">Family</th>
+					<th scope="col">Minion</th>
+				</tr>
+			</thead>
+			<tbody>
+				{
+					rows.map((row) => (
+						<tr>
+							<th scope="row">
+								<a href={`/monsters/${row.id}/`}>{row.name}</a>
+							</th>
+							<td>{row.level}</td>
+							<td>{row.isLegendary ? 'Legendary' : ''}</td>
+							<td>{row.isLegendary ? '' : (row.kind ?? '')}</td>
+							<td>{row.isLegendary ? '' : (row.family ?? '')}</td>
+							<td>{row.minionLabel}</td>
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</div>
+</StarlightPage>
+
+<style>
+	.monsters-index__table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+	.monsters-index__table th,
+	.monsters-index__table td {
+		text-align: start;
+		padding: 0.35rem 0.75rem 0.35rem 0;
+		border-bottom: 1px solid var(--sl-color-hairline);
+		vertical-align: top;
+	}
+	.monsters-index__table thead th {
+		font-weight: 600;
+	}
+</style>
