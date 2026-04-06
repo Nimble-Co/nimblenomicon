@@ -49,4 +49,25 @@ const tocForBook =
 
 <script>
 	import '../../node_modules/@astrojs/starlight/components-internals/TableOfContents/starlight-toc.ts';
+
+	function closeMobileSidebarMenu(): void {
+		const menu = document.querySelector('starlight-menu-button');
+		if (!menu || menu.getAttribute('aria-expanded') !== 'true') return;
+		menu.setAttribute('aria-expanded', 'false');
+		document.body.removeAttribute('data-mobile-menu-expanded');
+	}
+
+	function isMobileSidebarViewport(): boolean {
+		return !window.matchMedia('(min-width: 50rem)').matches;
+	}
+
+	document
+		.getElementById('starlight__sidebar')
+		?.addEventListener('click', (event) => {
+			if (!isMobileSidebarViewport()) return;
+			const target = event.target;
+			if (!(target instanceof Element)) return;
+			if (!target.closest('a[href]')) return;
+			closeMobileSidebarMenu();
+		});
 </script>
