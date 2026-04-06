@@ -1,0 +1,23 @@
+---
+import { renderMarkdown } from '../../lib/render-markdown';
+
+/** One bullet: markdown string rendered to HTML (e.g. **Name.** description). */
+interface Item {
+	id?: string;
+	markdown: string;
+}
+
+interface Props {
+	items: Item[];
+}
+
+const { items } = Astro.props;
+
+const htmlByIndex = await Promise.all(
+	items.map((item) => renderMarkdown(item.markdown)),
+);
+---
+
+<ul>
+	{items.map((item, i) => <li id={item.id} set:html={htmlByIndex[i]} />)}
+</ul>

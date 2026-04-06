@@ -1,89 +1,39 @@
 ---
-import { renderMarkdown } from '../lib/render-markdown';
+import DataTable from './ui/DataTable.astro';
+import TermLineList from './ui/TermLineList.astro';
 import {
-	boons,
-	type NamedBoonData,
-	type TemporaryBoonRow,
+	namedBoonMarkdownLines,
+	temporaryBoonTableSpec,
 } from '../models/boons';
 
 const { level } = Astro.props as {
 	level: 'temporary' | 'minor' | 'major' | 'epic';
 };
 
-const temporaryRows: TemporaryBoonRow[] =
-	level === 'temporary'
-		? boons
-				.filter((b): b is TemporaryBoonRow => b.level === 'temporary')
-				.slice()
-				.sort((a, b) => a.roll - b.roll)
-		: [];
-
-const namedRows: NamedBoonData[] =
-	level !== 'temporary'
-		? boons.filter((b): b is NamedBoonData => b.level === level)
-		: [];
-
-function itemMarkdown(row: NamedBoonData): string {
-	return `**${row.name}**. ${row.description.trim()}`;
-}
+const tempTable = temporaryBoonTableSpec();
 ---
 
 {
 	level === 'temporary' ? (
-		<section class="boons-table-wrap" aria-label="1d8 temporary boons">
-			<table class="boons-table">
-				<thead>
-					<tr>
-						<th scope="col">1d8</th>
-						<th scope="col">Temporary Boon</th>
-					</tr>
-				</thead>
-				<tbody>
-					{temporaryRows.map((row) => (
-						<tr>
-							<td>{row.roll}</td>
-							<td>{row.description}</td>
-						</tr>
-					))}
-				</tbody>
-			</table>
-		</section>
+		<DataTable
+			columns={tempTable.columns}
+			rows={tempTable.rows}
+			ariaLabel="1d8 temporary boons"
+			variant="data"
+			tableClass="max-w-160"
+		/>
 	) : (
-		<ul class="boons-named-list">
-			{namedRows.map(async (row) => (
-				<li set:html={await renderMarkdown(itemMarkdown(row))} />
-			))}
-		</ul>
+		<div class="boons-named-list">
+			<TermLineList items={namedBoonMarkdownLines(level)} />
+		</div>
 	)
 }
 
 <style>
-	.boons-table-wrap {
-		overflow-x: auto;
-		margin-block: 1rem;
-	}
-	.boons-table {
-		width: 100%;
-		max-width: 40rem;
-		border-collapse: collapse;
-		font-size: var(--sl-text-sm);
-	}
-	.boons-table th,
-	.boons-table td {
-		border: 1px solid var(--sl-color-hairline);
-		padding: 0.5rem 0.65rem;
-		vertical-align: top;
-		text-align: start;
-	}
-	.boons-table th {
-		background: var(--sl-color-bg-sidebar);
-	}
-	.boons-table td:first-child {
-		font-variant-numeric: tabular-nums;
-		white-space: nowrap;
-	}
 	.boons-named-list {
 		margin-block: 0.75rem;
+	}
+	.boons-named-list :global(ul) {
 		padding-inline-start: 1.25rem;
 	}
 	.boons-named-list :global(li) {

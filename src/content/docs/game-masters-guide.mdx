@@ -7,15 +7,18 @@ bannerInHero: true
 
 import manticorHero from '../../assets/manticor.webp';
 import FullBleedHero from '../../components/FullBleedHero.astro';
-import GmgChaosTable from '../../components/game-masters-guide/GmgChaosTable.astro';
-import GmgGoldByLevelTable from '../../components/game-masters-guide/GmgGoldByLevelTable.astro';
-import GmgMonsterBuilderTable from '../../components/game-masters-guide/GmgMonsterBuilderTable.astro';
+import DataTable from '../../components/ui/DataTable.astro';
 import BoonsList from '../../components/BoonsList.astro';
 import SpellList from '../../components/SpellsList.astro';
 import MonsterFamily from '../../components/monsters/MonsterFamily.astro';
 import MonsterKindShowcase from '../../components/monsters/MonsterKindShowcase.astro';
 import MonsterStatBlock from '../../components/monsters/MonsterStatBlock.astro';
 import LegendaryStatBlock from '../../components/monsters/LegendaryStatBlock.astro';
+import {
+	chaosMagicTable,
+	gmgGoldByLevelTable,
+	gmgMonsterBuilderTable,
+} from '../../lib/doc-presenters';
 import { slugifyEntityId } from '../../lib/slugifyEntityId';
 
 <FullBleedHero
@@ -554,7 +557,7 @@ Gold is a versatile reward that gives heroes the freedom to choose their own rew
 - **People In Need.** A destitute village, public works projects, beggars, allies in need.
 - **Greedy Monsters.** Dragons and other powerful beings are drawn to large hoards of gold.
 
-<GmgGoldByLevelTable />
+<DataTable ariaLabel="Gold per level" {...gmgGoldByLevelTable()} />
 
 ## Lodging Boons
 
@@ -751,7 +754,11 @@ If you'd like to create your own monsters, use the table below for your monster'
 
 > **Example.** If you wanted a glass cannon type of enemy, like a mage or an assassin, you can use damage from 1-5 rows higher, and the HP from an equal number of rows lower. A level 5 mage might have 34 HP and deal 26 damage per round. If we give the mage a teleport ability, it'd be as strong as a level 6 monster. For a tanky, defensive creature, lower the damage and increase the HP/Armor.
 
-<GmgMonsterBuilderTable />
+<DataTable
+	ariaLabel="Monster builder by level"
+	tableClass="nimble-data-table--wide"
+	{...gmgMonsterBuilderTable()}
+/>
 
 **What die size to use?** Default to d8 for custom monsters—it offers a balanced chance of hitting, missing, and critting. Any die size is fine as long as overall damage per round stays consistent. Here are some thematic guidelines:
 
@@ -1049,4 +1056,4 @@ interviews, and listener Q&A.
 
 Unless otherwise noted, ongoing effects last for up to 1 minute or until Chaos is triggered again.
 
-<GmgChaosTable />
+<DataTable ariaLabel="Chaos table" {...chaosMagicTable()} />

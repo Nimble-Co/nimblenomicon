@@ -1,0 +1,138 @@
+---
+import { renderMarkdown } from '../../lib/render-markdown';
+
+export interface DataTableColumn {
+	key: string;
+	label: string;
+	/** Use `<th scope="row">` for this column (first column for equipment-style tables). */
+	rowHeader?: boolean;
+	/** Cell value is markdown (e.g. equipment descriptions). */
+	markdown?: boolean;
+	/** Extra classes on each body cell in this column. */
+	cellClass?: string;
+}
+
+interface Props {
+	columns: DataTableColumn[];
+	rows: Record<string, unknown>[];
+	ariaLabel?: string;
+	/** Core Rules book tables use italic small-caps header cells. */
+	variant?: 'core-rules' | 'data';
+	wrapClass?: string;
+	tableClass?: string;
+}
+
+const {
+	columns,
+	rows,
+	ariaLabel,
+	variant = 'data',
+	wrapClass = '',
+	tableClass = '',
+} = Astro.props;
+
+type Cell = { kind: 'markdown'; html: string } | { kind: 'text'; text: string };
+
+const bodyRows: Cell[][] = await Promise.all(
+	rows.map(async (row) => {
+		return Promise.all(
+			columns.map(async (col): Promise<Cell> => {
+				const raw = row[col.key];
+				if (col.markdown && raw != null && String(raw).trim() !== '') {
+					return {
+						kind: 'markdown',
+						html: await renderMarkdown(String(raw)),
+					};
+				}
+				return {
+					kind: 'text',
+					text: raw != null ? String(raw) : '',
+				};
+			}),
+		);
+	}),
+);
+---
+
+<section
+	class:list={['nimble-data-table-wrap', 'overflow-x-auto', 'my-4', wrapClass]}
+	aria-label={ariaLabel}
+>
+	<table
+		class:list={[
+			'nimble-data-table',
+			'w-full',
+			'border-collapse',
+			'text-sm',
+			tableClass,
+		]}
+	>
+		<thead>
+			<tr>
+				{
+					columns.map((col) => (
+						<th
+							scope="col"
+							class:list={[
+								variant === 'core-rules' && 'nimble-data-table__th--core',
+								'border',
+								'border-hairline',
+								'bg-surface-nav',
+								'px-2.5',
+								'py-2',
+								'text-start',
+								'align-top',
+							]}
+						>
+							{variant === 'core-rules' ? (
+								<strong>
+									<em>{col.label}</em>
+								</strong>
+							) : (
+								col.label
+							)}
+						</th>
+					))
+				}
+			</tr>
+		</thead>
+		<tbody>
+			{
+				rows.map((row, ri) => (
+					<tr id={typeof row.id === 'string' ? row.id : undefined}>
+						{columns.map((col, ci) => {
+							const cell = bodyRows[ri]![ci]!;
+							const CellTag = col.rowHeader ? 'th' : 'td';
+							const baseClass = [
+								'border',
+								'border-hairline',
+								'px-2.5',
+								'py-2',
+								'align-top',
+								'text-start',
+								col.cellClass,
+							];
+							if (cell.kind === 'markdown') {
+								return (
+									<CellTag
+										class:list={baseClass}
+										scope={col.rowHeader ? 'row' : undefined}
+										set:html={cell.html}
+									/>
+								);
+							}
+							return (
+								<CellTag
+									class:list={baseClass}
+									scope={col.rowHeader ? 'row' : undefined}
+								>
+									{cell.text}
+								</CellTag>
+							);
+						})}
+					</tr>
+				))
+			}
+		</tbody>
+	</table>
+</section>

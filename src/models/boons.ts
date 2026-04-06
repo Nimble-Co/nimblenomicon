@@ -76,3 +76,41 @@ const boonSchema = rawBoonSchema.transform((row): BoonData => {
 });
 
 export const boons: BoonData[] = z.array(boonSchema).parse(rawBoons);
+
+const BOON_ROLL_COLUMNS = [
+	{ key: 'roll', label: '1d8' },
+	{ key: 'description', label: 'Temporary Boon' },
+] as const;
+
+/** Rows for the 1d8 temporary boons table (sorted by roll). */
+export function temporaryBoonTableRows(): {
+	roll: number;
+	description: string;
+}[] {
+	return boons
+		.filter((b): b is TemporaryBoonRow => b.level === 'temporary')
+		.slice()
+		.sort((a, b) => a.roll - b.roll)
+		.map((row) => ({ roll: row.roll, description: row.description }));
+}
+
+export function temporaryBoonTableSpec(): {
+	columns: { key: string; label: string }[];
+	rows: Record<string, unknown>[];
+} {
+	return {
+		columns: [...BOON_ROLL_COLUMNS],
+		rows: temporaryBoonTableRows(),
+	};
+}
+
+/** Markdown lines for minor / major / epic boon lists. */
+export function namedBoonMarkdownLines(
+	level: 'minor' | 'major' | 'epic',
+): { markdown: string }[] {
+	return boons
+		.filter((b): b is NamedBoonData => b.level === level)
+		.map((row) => ({
+			markdown: `**${row.name}**. ${row.description.trim()}`,
+		}));
+}

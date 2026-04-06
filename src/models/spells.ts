@@ -49,3 +49,32 @@ const spellsSchema = z
 
 export type SpellData = z.infer<typeof spellsSchema>;
 export const spells: SpellData[] = z.array(spellsSchema).parse(rawSpells);
+
+export interface SpellListingFilters {
+	schoolId?: string;
+	utility?: boolean;
+	secret?: boolean;
+}
+
+/** Spells for doc lists (Core Rules / GMG), same filter semantics as the former `SpellsList` component. */
+export function spellsMatching(filters: SpellListingFilters): SpellData[] {
+	const { schoolId, utility = false, secret = false } = filters;
+	return spells.filter(
+		(spell) =>
+			(schoolId ? spell.schoolId === schoolId : true) &&
+			spell.utility === utility &&
+			spell.secret === secret,
+	);
+}
+
+/** Markdown fragment for the heading block body (meta line + description). */
+export function spellListingBodyMarkdown(spell: SpellData): string {
+	const metaParts = [
+		spell.tierLabel,
+		spell.castingTime?.trim(),
+		spell.targetLabel,
+	].filter(Boolean);
+	const meta = metaParts.length > 0 ? `_${metaParts.join(', ')}_` : '';
+	const desc = spell.description?.trim();
+	return meta + (desc ? `\n\n${desc}` : '');
+}

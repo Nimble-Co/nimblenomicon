@@ -8,30 +8,36 @@ bannerInHero: true
 import manticorHero from '../../assets/manticor.webp';
 import FullBleedHero from '../../components/FullBleedHero.astro';
 import SpellList from '../../components/SpellsList.astro';
-import CoreRulesAdventuringMotivationsList from '../../components/core-rules/CoreRulesAdventuringMotivationsList.astro';
-import CoreRulesAncestrySection from '../../components/core-rules/CoreRulesAncestrySection.astro';
-import CoreRulesArmorTables from '../../components/core-rules/CoreRulesArmorTables.astro';
-import CoreRulesBackgroundsList from '../../components/core-rules/CoreRulesBackgroundsList.astro';
-import CoreRulesCharacterClassesList from '../../components/core-rules/CoreRulesCharacterClassesList.astro';
-import CoreRulesConditionsList from '../../components/core-rules/CoreRulesConditionsList.astro';
-import CoreRulesDcExamplesList from '../../components/core-rules/CoreRulesDcExamplesList.astro';
-import CoreRulesDowntimeActivitiesList from '../../components/core-rules/CoreRulesDowntimeActivitiesList.astro';
-import CoreRulesGlossaryList from '../../components/core-rules/CoreRulesGlossaryList.astro';
-import CoreRulesLanguagesList from '../../components/core-rules/CoreRulesLanguagesList.astro';
-import CoreRulesMagicalItemRaritiesTable from '../../components/core-rules/CoreRulesMagicalItemRaritiesTable.astro';
-import CoreRulesMagicalItemsList from '../../components/core-rules/CoreRulesMagicalItemsList.astro';
-import CoreRulesMiscAdventuringEquipmentTable from '../../components/core-rules/CoreRulesMiscAdventuringEquipmentTable.astro';
-import CoreRulesOptionalVariantRulesList from '../../components/core-rules/CoreRulesOptionalVariantRulesList.astro';
-import CoreRulesSaveTypesList from '../../components/core-rules/CoreRulesSaveTypesList.astro';
-import CoreRulesSizesList from '../../components/core-rules/CoreRulesSizesList.astro';
-import CoreRulesSkillsList from '../../components/core-rules/CoreRulesSkillsList.astro';
-import CoreRulesSpellSchoolsList from '../../components/core-rules/CoreRulesSpellSchoolsList.astro';
-import CoreRulesSpellScrollCostsTable from '../../components/core-rules/CoreRulesSpellScrollCostsTable.astro';
-import CoreRulesStatArraysList from '../../components/core-rules/CoreRulesStatArraysList.astro';
-import CoreRulesStatsList from '../../components/core-rules/CoreRulesStatsList.astro';
-import CoreRulesWandCostsTable from '../../components/core-rules/CoreRulesWandCostsTable.astro';
-import CoreRulesWeaponPropertiesList from '../../components/core-rules/CoreRulesWeaponPropertiesList.astro';
-import CoreRulesWeaponsTable from '../../components/core-rules/CoreRulesWeaponsTable.astro';
+import DataTable from '../../components/ui/DataTable.astro';
+import HeadingBlockList from '../../components/ui/HeadingBlockList.astro';
+import TermLineList from '../../components/ui/TermLineList.astro';
+import TermParagraphList from '../../components/ui/TermParagraphList.astro';
+import {
+	adventuringMotivationParagraphLines,
+	ancestryBlocks,
+	armorTableSectionsData,
+	backgroundsBlockLines,
+	characterClassBulletLines,
+	conditionBulletLines,
+	coreRulesWeaponsTable,
+	dcExampleBulletLines,
+	downtimeBulletLines,
+	glossaryParagraphLines,
+	languageBulletLines,
+	magicalItemBlocks,
+	magicalItemRaritiesTable,
+	miscAdventuringEquipmentTable,
+	optionalVariantRuleSections,
+	saveTypeBulletLines,
+	sizeBulletLines,
+	skillsParagraphLines,
+	spellSchoolBulletLines,
+	spellScrollCostsTable,
+	statArrayBulletLines,
+	statsParagraphLines,
+	wandCostsTable,
+	weaponPropertyBulletLines,
+} from '../../lib/doc-presenters';
 
 <FullBleedHero
 	title="Core Rules"
@@ -90,23 +96,23 @@ Heroes have 4 stats that impact their effectiveness in various tasks: 2 Key Stat
 
 > **KEY.** When an ability or spell references “KEY,” use one of your Key Stats. If a stat is listed before a die roll, roll a number of dice equal to the stat. For example, “WIL d8” means that if your WIL is 2, you roll 2d8 (two eight-sided dice).
 
-<CoreRulesStatsList />
+<TermParagraphList items={statsParagraphLines()} />
 
 ## Skills
 
 Skills gauge how well your hero interacts with the world. Whenever you tell the GM what you are doing, they may ask you to use one of your skills.
 
-<CoreRulesSkillsList />
+<TermParagraphList items={skillsParagraphLines()} />
 
 ## Skill Checks & Saves
 
 When you want to affect the _world_ (convince an NPC, spot a trap, pick a lock, etc.), the GM may call for a skill check. Roll 1d20 and add your skill (the max bonus a skill can ever have is +12). If the total meets or exceeds the Difficulty Challenge (DC), you succeed; otherwise, you fail. A roll of 1 always fails regardless of any other bonuses, while a roll of 20 always succeeds. The DC varies based on the task:
 
-<CoreRulesDcExamplesList />
+<TermLineList items={dcExampleBulletLines()} />
 
 **Saves** When the _world_ affects _you_, roll a save instead of a skill check. Roll 1d20 and add the relevant stat. A roll of 1 always fails, 20 always saves. You can choose to fail any save instead of rolling.
 
-<CoreRulesSaveTypesList />
+<TermLineList items={saveTypeBulletLines()} />
 
 ### Heroes and Saves
 
@@ -119,7 +125,7 @@ When you want to affect the _world_ (convince an NPC, spot a trap, pick a lock, 
 
 Some spells and abilities affect differently sized objects or creatures. For size, use the following guidelines:
 
-<CoreRulesSizesList />
+<TermLineList items={sizeBulletLines()} />
 
 ## Advantage & Disadvantage
 
@@ -206,7 +212,7 @@ Forced movement (pushing a grappler away), incapacitation, or spending an action
 
 Some attacks, traps, spells, or other effects can also inflict conditions—usually negative effects other than damage. Some conditions are temporary, lasting as little as a single round; others may last until cured in some way, and some can be ended by using an action to make an appropriate save.
 
-<CoreRulesConditionsList />
+<TermLineList items={conditionBulletLines()} />
 
 > **Other Minor Statuses.** Minor statuses (Smoldering, Charged, Distracted, etc.) do nothing on their own and end whenever combat does. Some spells and abilities have additional effects against such targets.
 
@@ -362,7 +368,7 @@ The time you aren't out adventuring is called **Downtime**. You can spend Downti
 
 **Example Downtime Activities:**
 
-<CoreRulesDowntimeActivitiesList />
+<TermLineList items={downtimeBulletLines()} />
 
 # Character Creation
 
@@ -372,7 +378,7 @@ Your hero is how you will make your mark on the world. Here's how you can make y
 
 This will have the largest impact on the other character choices you make and how you interact with the world:
 
-<CoreRulesCharacterClassesList />
+<TermLineList items={characterClassBulletLines()} />
 
 ### Step 2: Choose Your Ancestry & Background
 
@@ -390,7 +396,7 @@ This handy sheet of paper helps you track your stats, abilities, loot, and other
 
 Fill in your character details: Name, Ancestry, Class, Level, Height, and Weight. Fill in the arrow for your advantaged (+) and disadvantaged (-) Saves, and choose a stat array (recommended: place the highest numbers in the KEY stats for your class).
 
-<CoreRulesStatArraysList />
+<TermLineList items={statArrayBulletLines()} />
 
 > **Example.** The Cheat has DEX and INT as their KEY stats. With the Min-Max array, you might put +3 in DEX, +1 in INT, and -1 in WIL and STR. You'd also mark ▲ for DEX saves and ▼ for WIL saves.
 
@@ -414,7 +420,7 @@ Heroes start at level 1 with the equipment listed for their class and background
 
 All heroes speak Common by default. Each point of INT grants you an additional language known. These languages are typically spoken by:
 
-<CoreRulesLanguagesList />
+<TermLineList items={languageBulletLines()} />
 
 > **GROFWINT DRAZLON!** Speaking another creature's language can open doors that weapons alone cannot — being heavily armed without the ability to communicate often leads to hostility.
 
@@ -453,25 +459,25 @@ The GM may allow you to gain a level (LVL) whenever you complete an appropriatel
 
 Your kin, lineage, heritage, or race—this is how your character was born and how others see you at first glance. You may be a dwarf raised in the mines under the mountain with countless other dwarves, or you may be an elf raised by goblins! It's up to you to choose how your character began. Choose 1 ancestry and add its bonus to your character sheet.
 
-<CoreRulesAncestrySection section="common" />
+<HeadingBlockList blocks={ancestryBlocks('common')} />
 
 ## Exotic Ancestries
 
 Your setting may or may not support these choices—check with your GM first before selecting one.
 
-<CoreRulesAncestrySection section="exotic" />
+<HeadingBlockList blocks={ancestryBlocks('exotic')} />
 
 ## Backgrounds
 
 Backgrounds provide a glimpse into your character's past—how they were raised, the skills they honed before becoming an adventurer, or even their defining personality traits. Feel free to adapt or reimagine these backgrounds to suit your character's story. Choose 1 background:
 
-<CoreRulesBackgroundsList />
+<TermParagraphList as="div" items={backgroundsBlockLines()} />
 
 ## Adventuring Motivation
 
 The world is a dangerous place—people don't usually just “go adventuring” without a reason. Your motivation should make your character want to work with the rest of the group.
 
-<CoreRulesAdventuringMotivationsList />
+<TermParagraphList items={adventuringMotivationParagraphLines()} />
 
 > **Or Make Your Own!** A great character background has connections with the world, its people, your fellow heroes, or even the bad guys. Work with your GM and fellow players to find a motivation that will cross paths with where the story goes. Every good hero has a desire. What's yours?
 
@@ -487,13 +493,21 @@ Armor represents your hero's ability to dodge or block damage when you use the D
 
 > **Defend Yourself!** If you're standing right next to a baddie with an axe and you're not doing anything to defend yourself, chances are, you're going to get axed!
 
-<CoreRulesArmorTables />
+{
+armorTableSectionsData().map(({ sectionLabel, columns, rows }) => (
+
+<>
+<h3>{sectionLabel}</h3>
+<DataTable variant="core-rules" columns={columns} rows={rows} />
+</>
+))
+}
 
 > **Deflect!** An optional rule for additional defensive flexibility: instead of adding your shield's armor to your total armor as normal, you may reduce the damage of an attack by your shield's armor value for free 1/round.
 
 ## Weapon Properties
 
-<CoreRulesWeaponPropertiesList />
+<TermLineList items={weaponPropertyBulletLines()} />
 
 > **Remember!** Only the Primary Die (the leftmost one) is used for determining whether an attack crits. Every time you roll crit damage, roll the additional Vicious die as well!
 
@@ -519,11 +533,11 @@ Can you reflavor a staff as a greatclub? Sure! A sai instead of a dagger? Of cou
 
 ### Melee Weapons
 
-<CoreRulesWeaponsTable category="melee" />
+<DataTable variant="core-rules" {...coreRulesWeaponsTable('melee')} />
 
 ### Ranged Weapons
 
-<CoreRulesWeaponsTable category="ranged" />
+<DataTable variant="core-rules" {...coreRulesWeaponsTable('ranged')} />
 
 ## Key Equipment
 
@@ -549,7 +563,7 @@ Costs for mundane items typically range from a few silver pieces to a few gold p
 
 > **Currency is made up of Silver (sp) and Gold pieces (gp).** 10 silver = 1 gold. 1 sp is roughly the cost of a humble meal; 1 gp, a sumptuous feast. Most small towns will have equipment and items worth 50 gp or less. You'll need to adventure to larger towns or cities or find a traveling merchant to purchase more valuable pieces of equipment.
 
-<CoreRulesMiscAdventuringEquipmentTable />
+<DataTable variant="core-rules" {...miscAdventuringEquipmentTable()} />
 
 ## Magical Items
 
@@ -557,9 +571,9 @@ Though some magical items can be purchased, most cannot. Some special shops may 
 
 ### Typical Costs of Magical Items
 
-<CoreRulesMagicalItemRaritiesTable />
+<DataTable variant="core-rules" {...magicalItemRaritiesTable()} />
 
-<CoreRulesMagicalItemsList kind="standard" />
+<HeadingBlockList blocks={magicalItemBlocks('standard')} />
 
 ## Spell Scrolls & Wands
 
@@ -569,7 +583,7 @@ Spell scrolls are single-use inscribed magical spells. Casting a spell with a sp
 
 A character must succeed on a **DC 10 Arcana** check to cast it successfully if they do not already know a spell from that school; on a failure, it is wasted. Spell tier and typical price:
 
-<CoreRulesSpellScrollCostsTable />
+<DataTable variant="core-rules" {...spellScrollCostsTable()} />
 
 ### Wands
 
@@ -577,9 +591,9 @@ Like spell scrolls, these can be used to cast spells without consuming mana and 
 
 Characters not proficient with wands must succeed on a **DC 10+spell tier Arcana** check to successfully cast the spell. Success or failure, the charge is spent. Typical wand prices and examples:
 
-<CoreRulesWandCostsTable />
+<DataTable variant="core-rules" {...wandCostsTable()} />
 
-<CoreRulesMagicalItemsList kind="wand" />
+<HeadingBlockList blocks={magicalItemBlocks('wand')} />
 
 # Spells
 
@@ -595,7 +609,7 @@ There are 6 main schools of magic. Each school has its own basic spells called c
 >
 > **Range and Reach.** Just like weapons, spells with “Range” can target creatures from a distance, but are cast with disadvantage if any enemy is adjacent to you. Add 1 die of disadvantage to gain +2 Range (max +6). Spells with “Reach” can't do this, but they are cast as normal even when in melee.
 
-<CoreRulesSpellSchoolsList />
+<TermLineList items={spellSchoolBulletLines()} />
 
 > **Secret Spells.** Some spells have been hidden or lost through the ages. Whether they are too dangerous to be common knowledge or for other reasons, adventurers can sometimes stumble upon new spells (or wrench them out of the undead hands of a defeated Lich).
 
@@ -655,7 +669,7 @@ Some classes can choose from among these additional spells as they level up.
 
 If your playgroup likes extra little tactical nuggets, your GM can allow you to try out some of these additional variants to add some more spice to your game. You can always try out a rule for 1 session and see how you all like it before committing to it.
 
-<CoreRulesOptionalVariantRulesList />
+<HeadingBlockList blocks={optionalVariantRuleSections()} />
 
 # Measuring Spaces
 
@@ -671,4 +685,4 @@ For a cone, start at the character and extend X spaces outward. The cone can be 
 
 # Glossary
 
-<CoreRulesGlossaryList />
+<TermParagraphList items={glossaryParagraphLines()} />

@@ -1,0 +1,22 @@
+---
+import { renderMarkdown } from '../../lib/render-markdown';
+
+interface Item {
+	id?: string;
+	markdown: string;
+}
+
+interface Props {
+	items: Item[];
+	/** Use `p` for stacked paragraphs; `div` for block-level rows without paragraph margins. */
+	as?: 'p' | 'div';
+}
+
+const { items, as: Tag = 'p' } = Astro.props;
+
+const htmlByIndex = await Promise.all(
+	items.map((item) => renderMarkdown(item.markdown)),
+);
+---
+
+{items.map((item, i) => <Tag id={item.id} set:html={htmlByIndex[i]} />)}

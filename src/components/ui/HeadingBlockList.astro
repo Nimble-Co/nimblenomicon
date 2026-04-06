@@ -1,0 +1,50 @@
+---
+import { renderMarkdown } from '../../lib/render-markdown';
+
+interface Block {
+	id?: string;
+	title: string;
+	href?: string;
+	/** Shown below the title (plain text), e.g. parenthetical size. */
+	metaLine?: string;
+	/** Plain paragraph between title and body (e.g. flavor text). */
+	flavor?: string;
+	subtitleMarkdown?: string;
+	bodyMarkdown: string;
+	headingLevel?: 'h2' | 'h3' | 'h4';
+}
+
+interface Props {
+	blocks: Block[];
+}
+
+const { blocks } = Astro.props;
+
+const subtitleHtml = await Promise.all(
+	blocks.map((b) =>
+		b.subtitleMarkdown?.trim()
+			? renderMarkdown(b.subtitleMarkdown.trim())
+			: Promise.resolve(''),
+	),
+);
+const bodyHtml = await Promise.all(
+	blocks.map((b) => renderMarkdown(b.bodyMarkdown)),
+);
+---
+
+{
+	blocks.map((block, i) => {
+		const H = block.headingLevel ?? 'h3';
+		return (
+			<section>
+				<H id={block.id}>
+					{block.href ? <a href={block.href}>{block.title}</a> : block.title}
+				</H>
+				{block.metaLine && <p>{block.metaLine}</p>}
+				{block.flavor && <p>{block.flavor}</p>}
+				{block.subtitleMarkdown?.trim() && <div set:html={subtitleHtml[i]} />}
+				<div set:html={bodyHtml[i]} />
+			</section>
+		);
+	})
+}
