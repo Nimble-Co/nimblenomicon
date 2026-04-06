@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import rawHeroClasses from '../data/hero-classes.json';
+import rawClasses from '../data/classes.json';
 import { slugifyEntityId } from '../lib/slugifyEntityId';
 import { namedAbilityBlockSchema } from './creature-stat-shared';
 
@@ -10,12 +10,12 @@ const classLevelRowSchema = z
 	})
 	.strict();
 
-const abilityListSchema = z
+/** Parsed from JSON without `id`; `id` is set in `heroClassSchema` via `slugifyEntityId`. */
+const abilityListInputSchema = z
 	.object({
 		name: z.string().min(1),
 		description: z.string().min(1),
 		items: z.array(namedAbilityBlockSchema),
-		id: z.string().min(1).optional(),
 	})
 	.strict();
 
@@ -114,6 +114,8 @@ const gearRowSchema = z
 const heroClassSchema = z
 	.object({
 		name: z.string().min(1),
+		/** Core Rules one-line blurb (shown in class list on Core Rules). */
+		summary: z.string().min(1),
 		description: z.string().min(1),
 		keyStats: z.array(keyStatRowSchema).min(1),
 		hitDie: z.string().min(1),
@@ -123,7 +125,7 @@ const heroClassSchema = z
 		weapons: weaponsSchema,
 		startingGear: z.array(gearRowSchema),
 		levels: z.array(classLevelRowSchema),
-		abilityLists: z.array(abilityListSchema).default([]),
+		abilityLists: z.array(abilityListInputSchema).default([]),
 		subclasses: z.array(subclassRowSchema),
 	})
 	.strict()
@@ -133,9 +135,14 @@ const heroClassSchema = z
 			...sub,
 			id: slugifyEntityId(`${row.name} ${sub.name}`, 'subclass'),
 		}));
+		const abilityLists = row.abilityLists.map((list) => ({
+			...list,
+			id: slugifyEntityId(`${row.name} ${list.name}`, 'ability-list'),
+		}));
 		return {
 			...row,
 			subclasses,
+			abilityLists,
 			id,
 			hitDieLabel: hitDieLabel(row.hitDie),
 			savesDisplay: savesDisplay(row.saves),
@@ -156,7 +163,7 @@ export type HeroClassData = z.infer<typeof heroClassSchema>;
 
 export const heroClasses: HeroClassData[] = z
 	.array(heroClassSchema)
-	.parse(rawHeroClasses);
+	.parse(rawClasses);
 
 export function getHeroClassById(classId: string): HeroClassData | undefined {
 	return heroClasses.find((c) => c.id === classId);

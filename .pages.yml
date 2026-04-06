@@ -59,10 +59,10 @@ content:
     label: Heroes Data
     type: group
     items:
-      - name: hero-classes
-        label: Hero Classes
+      - name: classes
+        label: Classes
         type: file
-        path: src/data/hero-classes.json
+        path: src/data/classes.json
         format: json
         list: true
         fields:
@@ -70,6 +70,11 @@ content:
             label: Name
             type: string
             required: true
+          - name: summary
+            label: Core Rules Summary
+            type: string
+            required: true
+            description: One-line blurb for the Core Rules class list.
           - name: description
             label: Description
             type: rich-text
@@ -221,10 +226,6 @@ content:
                     required: true
                     options:
                       format: markdown
-              - name: id
-                label: Id
-                type: string
-                required: false
           - name: subclasses
             label: Subclasses
             type: object
@@ -556,24 +557,6 @@ content:
             type: string
             required: true
             description: Detail page URL slug is generated from this name (kebab-case).
-          - name: description
-            label: Description
-            type: rich-text
-            required: true
-            options:
-              format: markdown
-
-      - name: character-classes
-        label: Classes
-        type: file
-        path: src/data/character-classes.json
-        format: json
-        list: true
-        fields:
-          - name: name
-            label: Name
-            type: string
-            required: true
           - name: description
             label: Description
             type: rich-text
