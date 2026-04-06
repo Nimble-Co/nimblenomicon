@@ -1,5 +1,6 @@
 # Project, stack, and code-adjacent terms
 blockquotes
+borderless
 astrojs
 Astro
 cliffside

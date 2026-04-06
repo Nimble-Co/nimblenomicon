@@ -1,41 +1,19 @@
 ---
-import { renderMarkdown } from '../lib/render-markdown';
-import { spells, type SpellData } from '../models/spells';
+import HeadingBlockList from './ui/HeadingBlockList.astro';
+import {
+	spellListingBodyMarkdown,
+	spellsMatching,
+	type SpellListingFilters,
+} from '../models/spells';
 
-const { spellSchoolId, utility = false, secret = false } = Astro.props;
-const filteredSpells = spells.filter(
-	(spell) =>
-		(spellSchoolId ? spell.schoolId === spellSchoolId : true) &&
-		spell.utility === utility &&
-		spell.secret === secret,
-);
+const filters = Astro.props as SpellListingFilters;
 
-function spellMetaMarkdown(spell: SpellData): string {
-	const components = [
-		spell.tierLabel,
-		spell.castingTime?.trim(),
-		spell.targetLabel,
-	];
-	return `_${components.filter(Boolean).join(', ')}_`;
-}
+const blocks = spellsMatching(filters).map((spell) => ({
+	id: spell.id,
+	title: spell.name,
+	href: `/spells/${spell.id}/`,
+	bodyMarkdown: spellListingBodyMarkdown(spell),
+}));
 ---
 
-{
-	(
-		<>
-			{filteredSpells.map(async (spell) => (
-				<>
-					<h3 id={spell.id}>
-						<a href={`/spells/${spell.id}/`}>{spell.name}</a>
-					</h3>
-					<div
-						set:html={await renderMarkdown(
-							spellMetaMarkdown(spell) +
-								(spell.description?.trim() ? '\n\n' + spell.description : ''),
-						)}
-					/>
-				</>
-			))}
-		</>
-	)
-}
+<HeadingBlockList blocks={blocks} />
