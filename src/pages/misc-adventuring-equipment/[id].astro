@@ -1,6 +1,8 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
 import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
+import { detailPageBackLinks } from '../../config/detail-page-back-links';
 import { renderMarkdown } from '../../lib/render-markdown';
 import {
 	miscAdventuringEquipment,
@@ -17,6 +19,8 @@ export function getStaticPaths() {
 const { row } = Astro.props;
 
 const bodyMarkdown = miscAdventuringEquipmentDetailMarkdown(row);
+
+const back = detailPageBackLinks.miscAdventuringEquipment;
 ---
 
 <StarlightPage
@@ -29,6 +33,7 @@ const bodyMarkdown = miscAdventuringEquipmentDetailMarkdown(row);
 		next: false,
 	}}
 >
+	<DetailPageBackToList href={back.href} label={back.label} />
 	<div set:html={await renderMarkdown(bodyMarkdown)} />
 	<DetailPageSourceRef
 		href={`/core-rules/#${row.id}`}

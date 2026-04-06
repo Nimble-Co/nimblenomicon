@@ -1,6 +1,8 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
 import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
+import { detailPageBackLinks } from '../../config/detail-page-back-links';
 import LegendaryStatBlock from '../../components/monsters/LegendaryStatBlock.astro';
 import MonsterStatBlock from '../../components/monsters/MonsterStatBlock.astro';
 import type { LegendaryEntryData } from '../../models/legendary-monsters';
@@ -53,6 +55,8 @@ const description =
 	variant === 'monster'
 		? `Monster stat block — ${record.name}.`
 		: `Legendary monster — ${record.name}.`;
+
+const back = detailPageBackLinks.monsters;
 ---
 
 <StarlightPage
@@ -65,6 +69,7 @@ const description =
 		next: false,
 	}}
 >
+	<DetailPageBackToList href={back.href} label={back.label} />
 	{
 		variant === 'monster' ? (
 			<MonsterStatBlock

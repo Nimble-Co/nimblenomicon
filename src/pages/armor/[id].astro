@@ -1,6 +1,8 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
 import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
+import { detailPageBackLinks } from '../../config/detail-page-back-links';
 import { renderMarkdown } from '../../lib/render-markdown';
 import {
 	armorDetailMarkdown,
@@ -19,6 +21,8 @@ const { row } = Astro.props;
 
 const section = formatArmorCategoryLabel(row.category);
 const bodyMarkdown = armorDetailMarkdown(row);
+
+const back = detailPageBackLinks.armor;
 ---
 
 <StarlightPage
@@ -31,6 +35,7 @@ const bodyMarkdown = armorDetailMarkdown(row);
 		next: false,
 	}}
 >
+	<DetailPageBackToList href={back.href} label={back.label} />
 	<div set:html={await renderMarkdown(bodyMarkdown)} />
 	<DetailPageSourceRef
 		href={`/core-rules/#${row.id}`}

@@ -1,6 +1,8 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
 import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
+import { detailPageBackLinks } from '../../config/detail-page-back-links';
 import { renderMarkdown } from '../../lib/render-markdown';
 import { spellSchools } from '../../models/spell-schools';
 import { spells, type SpellData } from '../../models/spells';
@@ -34,6 +36,8 @@ const bodyMarkdown = spellMetaMarkdown(spell) + '\n\n' + spell.description;
 const sourceHref = `/${spell.source}/#${spell.id}`;
 const sourceName =
 	spell.source === 'core-rules' ? 'Core Rules' : "Game Master's Guide";
+
+const back = detailPageBackLinks.spells;
 ---
 
 <StarlightPage
@@ -46,6 +50,7 @@ const sourceName =
 		next: false,
 	}}
 >
+	<DetailPageBackToList href={back.href} label={back.label} />
 	<div set:html={await renderMarkdown(bodyMarkdown)} />
 	<DetailPageSourceRef href={sourceHref} sourceName={sourceName} />
 </StarlightPage>
