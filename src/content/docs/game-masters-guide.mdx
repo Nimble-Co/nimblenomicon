@@ -14,10 +14,12 @@ import MonsterKindShowcase from '../../components/MonsterKindShowcase.astro';
 import MonsterStatBlock from '../../components/MonsterStatBlock.astro';
 import SpellList from '../../components/SpellsList.astro';
 import DataTable from '../../components/DataTable.astro';
+import HeadingBlockList from '../../components/HeadingBlockList.astro';
 import {
 	chaosMagicTable,
 	gmgGoldByLevelTable,
 	gmgMonsterBuilderTable,
+	magicalItemBlocks,
 } from '../../utils/doc-presenters';
 import { slugifyEntityId } from '../../utils/slugifyEntityId';
 
@@ -455,78 +457,34 @@ That said, when it's NOT the fault of the players (it's unexpected, unfair, or u
 
 Having extremely dangerous threats that players can stumble into (and escape from!) is a great way to show that the world is realistic and to make things painful for the heroes without being so punishing for the players.
 
-### Gem of Escape
-
-These magical gems are always crafted in pairs and can have any number of willing creatures magically bound to it. Crush one (1 Action) in case of emergency to instantly teleport ALL who are bound to it to the location of the other gem.
-
-> **Why This is Great.** A party may find the gem on a defeated bad guy. Where is the other gem… who knows? They might use it to hunt down the rest of the bad guys, they might use it to escape a sticky situation. It's up to you as the GM whether they escape to safety or if it's "out of the frying pan and into the fire!"
-
-### Glacier in a Bottle
-
-When poured out (1 Action), it creates a solid form of ice, filling any number of unoccupied consecutive spaces up to 6 spaces away and 2 spaces high. The ice lasts for 1 hour before melting. Extreme heat or damage may cause it to fail prematurely. 1/Safe Rest.
-
-### Phoenix Helm
-
-On Death: You are reborn as a golden fiery phoenix.
-Enemies within 6 spaces take **LVL d10** fire damage
-on a failed **DC 10+KEY** DEX save (half on save).
-Gain the following stats and abilities:
-
-- Gain a fly speed of 10, 10 Armor, and 10xLVL HP .
-- Creatures that touch you take LVL fire damage.
-- **Fiery Talons.** 1 Action, 1d10+LVL damage.
-
-After 10 minutes, this form ends, the helm is no more and you return with 0 HP and all but 1 Wound.
+<HeadingBlockList
+	blocks={magicalItemBlocks(undefined, {
+		source: 'game-masters-guide',
+		adventuringRewardCategory: 'release-valve',
+	})}
+/>
 
 ## Story Items
 
 Sometimes as the GM you need to reach into the world and give the party information—to lead (or mislead) the party in a particular, dramatic direction. BUT direct advice from the GM can come across as railroading. Especially unasked-for advice. These items give the players an "in-world" way to have access to information they need but perhaps shouldn't have. They can decide if and when they ask for it, how to interpret it, whether to follow—or even trust—this in-world source, or not.
 
-### The Grimoire of Truths
-
-This sentient magical book possesses an extensive knowledge of the world, past events, people's motivations, and even possible future outcomes. It eagerly converses with its owner, presenting itself as a helpful companion. However, its true goal is to gain their trust, offering just enough useful insight to ultimately lead them into great trouble.
-
-> "Ah, another mortal thirsting for knowledge."
->
-> "Power comes at a cost. But then, so does ignorance."
->
-> "Oh, **that one**? Her smile hides a thousand lies and treacheries."
->
-> "Would you like the safe, **boring** route, or the one filled with **excitement** and potential doom? I know which one I'd pick."
-
-### Hear-ring
-
-A simple piece of jewelry worn on the ear. While
-worn, wearers can communicate with one another
-no matter the distance. Frequently crafted as a pair,
-sometimes as a larger set.
-
-> **Why this is cool.** How many do you let your party find, just one? Who has the other ones (the bad guys perhaps)? Or do they find a pair? Perhaps they are part of a much larger set and left by the bad guys so they can listen in on the party's plans!
-
-### Pocket Cauldron
-
-While taking a Safe Rest, use this cauldron to brew a single potion of your choice, which must be consumed immediately:
-
-- **Elixir of Futuresight:** Grants the drinker a brief,
-  cryptic vision of a future event.
-- **Elixir of Requiem:** Allows the drinker to relive a crucial memory from their past.
-- **Elixir of Time:** Once every 100 years, the cauldron can brew a potion that can take the drinker back in time 1 day.
-
-> **Why this is great.** Not only does this allow you as the
-> GM to reach into the world and move things along or
-> mix things up, but it can also help your players develop
-> their backstories, and can even serve as a 'redo' button
-> should that ever become necessary.
+<HeadingBlockList
+	blocks={magicalItemBlocks(undefined, {
+		source: 'game-masters-guide',
+		adventuringRewardCategory: 'story',
+	})}
+/>
 
 ## Combat Items
 
 Create combat-related items with a drawback so there is a choice to be made. It can be a one-time-use item, something that damages the hero, or something that needs to be recharged to be used again. Alternatively, you can have it become friends with the party, like Lumina!
 
-### Lumina, Living Sunbeam
-
-A small, radiant orb of light, about the size of an apple, with a gentle, warm glow that pulses with life and a perpetually cheerful expression. She is a one-time use item that, when activated as an action, will deal **LVL d6** radiant damage to all enemies within 6 spaces and heal allies in the area for the same amount. Until then, she hovers around her owner, spreading warmth and light, and offering encouragement.
-
-> "I'm here to brighten your journey! And, when the time comes, it's okay… don't be afraid to let me shine." —Lumina
+<HeadingBlockList
+	blocks={magicalItemBlocks(undefined, {
+		source: 'game-masters-guide',
+		adventuringRewardCategory: 'combat',
+	})}
+/>
 
 ## Resting & Healing
 

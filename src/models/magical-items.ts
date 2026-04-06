@@ -2,6 +2,16 @@ import { z } from 'astro/zod';
 import rawMagicalItems from '../data/magical-items.json';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 
+const magicalItemSourceSchema = z
+	.enum(['core-rules', 'game-masters-guide'])
+	.default('core-rules');
+
+const adventuringRewardCategorySchema = z.enum([
+	'release-valve',
+	'story',
+	'combat',
+]);
+
 const magicalItemStandardSchema = z
 	.object({
 		id: z.string().min(1),
@@ -9,6 +19,8 @@ const magicalItemStandardSchema = z
 		name: z.string().min(1),
 		subtitle: z.string().optional(),
 		description: z.string().min(1),
+		source: magicalItemSourceSchema,
+		adventuringRewardCategory: adventuringRewardCategorySchema.optional(),
 	})
 	.strict();
 
@@ -19,6 +31,8 @@ const magicalItemWandSchema = z
 		name: z.string().min(1),
 		subtitle: z.string().optional(),
 		description: z.string().min(1),
+		source: magicalItemSourceSchema,
+		adventuringRewardCategory: adventuringRewardCategorySchema.optional(),
 	})
 	.strict();
 

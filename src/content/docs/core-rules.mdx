@@ -573,7 +573,9 @@ Though some magical items can be purchased, most cannot. Some special shops may 
 
 <DataTable {...magicalItemRaritiesTable()} />
 
-<HeadingBlockList blocks={magicalItemBlocks('standard')} />
+<HeadingBlockList
+	blocks={magicalItemBlocks('standard', { source: 'core-rules' })}
+/>
 
 ## Spell Scrolls & Wands
 
@@ -593,7 +595,9 @@ Characters not proficient with wands must succeed on a **DC 10+spell tier Arcana
 
 <DataTable {...wandCostsTable()} />
 
-<HeadingBlockList blocks={magicalItemBlocks('wand')} />
+<HeadingBlockList
+	blocks={magicalItemBlocks('wand', { source: 'core-rules' })}
+/>
 
 # Spells
 

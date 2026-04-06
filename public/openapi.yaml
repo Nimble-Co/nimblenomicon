@@ -610,6 +610,17 @@ components:
               type: string
               enum:
                 - standard
+            source:
+              type: string
+              enum:
+                - core-rules
+                - game-masters-guide
+            adventuringRewardCategory:
+              type: string
+              enum:
+                - release-valve
+                - story
+                - combat
             name:
               type: string
               minLength: 1
@@ -629,6 +640,17 @@ components:
               type: string
               enum:
                 - wand
+            source:
+              type: string
+              enum:
+                - core-rules
+                - game-masters-guide
+            adventuringRewardCategory:
+              type: string
+              enum:
+                - release-valve
+                - story
+                - combat
             name:
               type: string
               minLength: 1
