@@ -426,3 +426,47 @@ nav.sidebar a:focus-visible {
 :root[data-theme='dark'] .starlight-aside.starlight-aside--danger {
 	background-color: #1c2028;
 }
+
+/*
+ * Prose links — use body-like colors + underline for readability (Starlight defaults to accent).
+ * Unlayered so these win over `@layer starlight.content` markdown rules.
+ */
+:root[data-theme='light'] .sl-markdown-content a:not(:where(.not-content *)) {
+	color: #000000;
+	text-decoration: underline;
+	text-underline-offset: 0.12em;
+}
+:root[data-theme='light']
+	.sl-markdown-content
+	a:hover:not(:where(.not-content *)) {
+	color: #252b42;
+}
+
+:root[data-theme='dark'] .sl-markdown-content a:not(:where(.not-content *)) {
+	color: var(--sl-color-text);
+	text-decoration: underline;
+	text-underline-offset: 0.12em;
+}
+:root[data-theme='dark']
+	.sl-markdown-content
+	a:hover:not(:where(.not-content *)) {
+	color: #f0f2f8;
+}
+
+:root[data-theme='light'] .starlight-aside__content a {
+	color: #000000;
+	text-decoration: underline;
+	text-underline-offset: 0.12em;
+}
+:root[data-theme='light'] .starlight-aside__content a:hover {
+	color: #252b42;
+}
+
+:root[data-theme='dark'] .starlight-aside__content a {
+	color: var(--sl-color-text);
+	text-decoration: underline;
+	text-underline-offset: 0.12em;
+}
+:root[data-theme='dark'] .starlight-aside__content a:hover {
+	color: #f0f2f8;
+}
