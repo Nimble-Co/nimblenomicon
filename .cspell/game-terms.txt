@@ -250,6 +250,8 @@ Windborne
 Windstep
 Windstrider
 wyrmling
+backstab
+Pfft
 
 # Legendary monsters (GMG bestiary)
 Alaric
