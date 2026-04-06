@@ -8,8 +8,10 @@ import { heroClasses } from '../../models/class';
 
 export function getStaticPaths() {
 	const seen = new Set<string>();
-	const paths: Array<{ params: { id: string }; props: { heroClass: HeroClassData } }> =
-		[];
+	const paths: Array<{
+		params: { id: string };
+		props: { heroClass: HeroClassData };
+	}> = [];
 
 	for (const c of heroClasses) {
 		if (seen.has(c.id)) {
@@ -42,4 +44,3 @@ const { heroClass } = Astro.props;
 	<HeroClassSheet classId={heroClass.id} />
 	<DetailPageSourceRef href={`/heroes/#${heroClass.id}`} sourceName="Heroes" />
 </StarlightPage>
-
