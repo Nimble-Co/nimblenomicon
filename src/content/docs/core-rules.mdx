@@ -6,12 +6,12 @@ bannerInHero: true
 ---
 
 import manticorHero from '../../assets/manticor.webp';
+import DataTable from '../../components/DataTable.astro';
 import FullBleedHero from '../../components/FullBleedHero.astro';
+import HeadingBlockList from '../../components/HeadingBlockList.astro';
 import SpellList from '../../components/SpellsList.astro';
-import DataTable from '../../components/ui/DataTable.astro';
-import HeadingBlockList from '../../components/ui/HeadingBlockList.astro';
-import TermLineList from '../../components/ui/TermLineList.astro';
-import TermParagraphList from '../../components/ui/TermParagraphList.astro';
+import TermLineList from '../../components/TermLineList.astro';
+import TermParagraphList from '../../components/TermParagraphList.astro';
 import {
 	adventuringMotivationParagraphLines,
 	ancestryBlocks,
@@ -37,7 +37,7 @@ import {
 	statsParagraphLines,
 	wandCostsTable,
 	weaponPropertyBulletLines,
-} from '../../lib/doc-presenters';
+} from '../../utils/doc-presenters';
 
 <FullBleedHero
 	title="Core Rules"

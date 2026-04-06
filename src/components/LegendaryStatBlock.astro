@@ -1,12 +1,12 @@
 ---
-import { renderMarkdown } from '../../lib/render-markdown';
-import { slugifyEntityId } from '../../lib/slugifyEntityId';
+import { renderMarkdown } from '../utils/render-markdown';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 import {
 	legendaryMonsters,
 	type LegendaryCreatureData,
-} from '../../models/legendary-monsters';
-import { sizes } from '../../models/sizes';
-import { monsterActionSchema, type MonsterAction } from '../../models/monsters';
+} from '../models/legendary-monsters';
+import { sizes } from '../models/sizes';
+import { monsterActionSchema, type MonsterAction } from '../models/monsters';
 import Ability from './Ability.astro';
 
 interface Props {

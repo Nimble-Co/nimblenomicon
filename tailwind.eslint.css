@@ -1,6 +1,6 @@
 /*
  * Root entry for eslint-plugin-tailwindcss (Tailwind v4).
- * The plugin resolves `tailwindcss` from the entry file’s directory; a file under
+ * The plugin resolves `tailwindcss` from the entry file's directory; a file under
  * `src/styles/` breaks module resolution. Keep this file at repo root and import the real theme.
  */
 @import './src/styles/global.css';

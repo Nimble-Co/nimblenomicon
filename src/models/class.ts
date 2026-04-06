@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
 import rawClasses from '../data/classes.json';
-import { slugifyEntityId } from '../lib/slugifyEntityId';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 import { namedAbilityBlockSchema } from './creature-stat-shared';
 
 const classLevelRowSchema = z

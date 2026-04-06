@@ -105,7 +105,7 @@ if (project.trailingSlash === 'never')
 			const closeModal = () => dialog.close();
 
 			/**
-			 * Call from another control’s click handler (same synchronous user gesture).
+			 * Call from another control's click handler (same synchronous user gesture).
 			 * `openBtn.click()` does not preserve activation, so `showModal()` can be blocked.
 			 */
 			this.openSearchModal = () => openModal();

@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
 import rawGlossary from '../data/glossary.json';
-import { slugifyEntityId } from '../lib/slugifyEntityId';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const glossaryEntryRowSchema = z.preprocess(
 	(raw) => {

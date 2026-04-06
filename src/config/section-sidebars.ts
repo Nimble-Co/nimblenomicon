@@ -1,6 +1,6 @@
 /**
  * Per-section Starlight sidebar configs. Each home tile / book gets its own nav tree;
- * other sections’ links do not appear in the sidebar.
+ * other sections' links do not appear in the sidebar.
  */
 import adventuresIconSvg from '../assets/adventures.svg?raw';
 import coreRulesIconSvg from '../assets/core_rules.svg?raw';

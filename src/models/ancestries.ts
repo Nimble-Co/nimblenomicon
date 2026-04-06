@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
 import rawAncestries from '../data/ancestries.json';
-import { slugifyEntityId } from '../lib/slugifyEntityId';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 /** Stored in JSON / CMS; kebab-case matches `.pages.yml` select `name` values. */
 export const ancestrySizeEnum = z.enum([

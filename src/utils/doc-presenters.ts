@@ -1,6 +1,6 @@
 /**
  * Maps model rows to markdown lines / table props for generic doc components.
- * Keeps domain-specific formatting out of `src/components/ui/*`.
+ * Keeps domain-specific formatting out of generic doc components under `src/components/`.
  */
 
 import {

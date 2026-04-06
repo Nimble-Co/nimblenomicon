@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
 import rawArmor from '../data/armor.json';
-import { slugifyEntityId } from '../lib/slugifyEntityId';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const armorCategorySchema = z.enum([
 	'cloth',

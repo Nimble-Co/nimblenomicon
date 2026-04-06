@@ -6,20 +6,20 @@ bannerInHero: true
 ---
 
 import manticorHero from '../../assets/manticor.webp';
-import FullBleedHero from '../../components/FullBleedHero.astro';
-import DataTable from '../../components/ui/DataTable.astro';
 import BoonsList from '../../components/BoonsList.astro';
+import FullBleedHero from '../../components/FullBleedHero.astro';
+import LegendaryStatBlock from '../../components/LegendaryStatBlock.astro';
+import MonsterFamily from '../../components/MonsterFamily.astro';
+import MonsterKindShowcase from '../../components/MonsterKindShowcase.astro';
+import MonsterStatBlock from '../../components/MonsterStatBlock.astro';
 import SpellList from '../../components/SpellsList.astro';
-import MonsterFamily from '../../components/monsters/MonsterFamily.astro';
-import MonsterKindShowcase from '../../components/monsters/MonsterKindShowcase.astro';
-import MonsterStatBlock from '../../components/monsters/MonsterStatBlock.astro';
-import LegendaryStatBlock from '../../components/monsters/LegendaryStatBlock.astro';
+import DataTable from '../../components/DataTable.astro';
 import {
 	chaosMagicTable,
 	gmgGoldByLevelTable,
 	gmgMonsterBuilderTable,
-} from '../../lib/doc-presenters';
-import { slugifyEntityId } from '../../lib/slugifyEntityId';
+} from '../../utils/doc-presenters';
+import { slugifyEntityId } from '../../utils/slugifyEntityId';
 
 <FullBleedHero
 	title="Game Master's Guide"
