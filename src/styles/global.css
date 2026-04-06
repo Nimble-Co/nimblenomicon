@@ -67,7 +67,16 @@ html[data-theme='dark'] {
  * https://tailwindcss.com/docs/colors#referencing-other-variables
  */
 @theme inline {
+	/*
+	 * Surfaces + Starlight-driven semantics. Use Tailwind utilities only (e.g. text-fg-muted,
+	 * border-hairline) — do not inline `var(--sl-…)` in class strings; add aliases here instead.
+	 */
 	--color-surface: var(--sl-color-bg);
+	--color-fg: var(--sl-color-text);
+	--color-fg-muted: var(--sl-color-gray-3);
+	--color-hairline: var(--sl-color-hairline-light);
+	--color-surface-code: var(--sl-color-bg-inline-code);
+	--color-danger: var(--sl-color-red);
 }
 
 :root {
