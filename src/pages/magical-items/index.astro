@@ -10,11 +10,30 @@ import { compareReferenceRowsByName } from '../../utils/reference-index-sort';
 const columns = [
 	{ id: 'name', label: 'Name' },
 	{ id: 'type', label: 'Type' },
+	{ id: 'source', label: 'Source' },
+	{ id: 'adventuringReward', label: 'Adventuring Reward' },
 ];
+
+function formatSource(source: (typeof magicalItems)[number]['source']): string {
+	return source === 'game-masters-guide' ? "GM's Guide" : 'Core Rules';
+}
+
+function formatRewardCategory(
+	cat: (typeof magicalItems)[number]['adventuringRewardCategory'],
+): string {
+	if (!cat) return '';
+	if (cat === 'release-valve') return 'Release Valve';
+	if (cat === 'story') return 'Story Item';
+	return 'Combat Item';
+}
 
 const rows = [...magicalItems].sort(compareReferenceRowsByName).map((row) => ({
 	lead: { href: `./${row.id}/`, text: row.name },
-	rest: [formatMagicalItemKind(row.kind)],
+	rest: [
+		formatMagicalItemKind(row.kind),
+		formatSource(row.source),
+		formatRewardCategory(row.adventuringRewardCategory),
+	],
 }));
 ---
 

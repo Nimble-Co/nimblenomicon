@@ -3,6 +3,12 @@ import rawMagicalItems from '../data/magical-items.json';
 import { sourceRefSchema } from './entity-base';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 
+const adventuringRewardCategorySchema = z.enum([
+	'release-valve',
+	'story',
+	'combat',
+]);
+
 const magicalItemStandardSchema = z
 	.object({
 		id: z.string().min(1),
@@ -11,6 +17,7 @@ const magicalItemStandardSchema = z
 		subtitle: z.string().optional(),
 		description: z.string().min(1),
 		source: sourceRefSchema,
+		adventuringRewardCategory: adventuringRewardCategorySchema.optional(),
 	})
 	.strict();
 
@@ -22,6 +29,7 @@ const magicalItemWandSchema = z
 		subtitle: z.string().optional(),
 		description: z.string().min(1),
 		source: sourceRefSchema,
+		adventuringRewardCategory: adventuringRewardCategorySchema.optional(),
 	})
 	.strict();
 

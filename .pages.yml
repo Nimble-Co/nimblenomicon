@@ -1027,6 +1027,18 @@ content:
                   label: Standard Item
                 - name: wand
                   label: Wand
+          - name: adventuringRewardCategory
+            label: Adventuring Reward Category
+            type: select
+            required: false
+            options:
+              values:
+                - name: release-valve
+                  label: Release Valve
+                - name: story
+                  label: Story Item
+                - name: combat
+                  label: Combat Item
           - name: name
             label: Name
             type: string

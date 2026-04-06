@@ -188,7 +188,13 @@ export function ancestryBlocks(section: 'common' | 'exotic'): {
 	}));
 }
 
-export function magicalItemBlocks(kind?: MagicalItemData['kind']): {
+export function magicalItemBlocks(
+	kind?: MagicalItemData['kind'],
+	opts?: {
+		source?: MagicalItemData['source'];
+		adventuringRewardCategory?: MagicalItemData['adventuringRewardCategory'];
+	},
+): {
 	id: string;
 	title: string;
 	href: string;
@@ -201,7 +207,18 @@ export function magicalItemBlocks(kind?: MagicalItemData['kind']): {
 				.sort(compareReferenceRowsByName)
 		: [...magicalItems].sort(compareReferenceRowsByName);
 
-	return rows.map((item) => ({
+	const filtered = rows.filter((row) => {
+		if (opts?.source && row.source !== opts.source) return false;
+		if (
+			typeof opts?.adventuringRewardCategory !== 'undefined' &&
+			row.adventuringRewardCategory !== opts.adventuringRewardCategory
+		) {
+			return false;
+		}
+		return true;
+	});
+
+	return filtered.map((item) => ({
 		id: item.id,
 		title: item.name,
 		href: magicalItemDetailHrefFromCoreRules(item.id),
