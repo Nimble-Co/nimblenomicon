@@ -26,7 +26,7 @@ Standard commands from the repo root (see `CONTRIBUTING.md` § Local Development
 ### Caveats
 
 - **No test script** exists in `package.json` yet. Do not attempt to run `npm test` — it will fail.
-- **Lint and format** run in CI (`.github/workflows/lint.yml`). Before pushing substantive edits, run `npm run format:check` and `npm run lint` locally. Markdownlint targets repo docs and `src/**`; `.agents/**` and `docs/**` are ignored so agent-skill and ideation markdown does not block the build.
+- **Lint, format, and build** run in CI (`.github/workflows/ci.yml`). Before pushing substantive edits, run `npm run format:check` and `npm run lint` locally. Markdownlint targets repo docs and `src/**`; `.agents/**` and `docs/**` are ignored so agent-skill and ideation markdown does not block the build.
 - **Search (Pagefind)** only works in production builds. In the dev server, the search bar is present but nonfunctional. To test search: `npm run build && npm run preview`, then use the preview server.
 - The `site` option in `astro.config.ts` is **not set** (it is computed from GitHub environment variables during CI). This causes a harmless `@astrojs/sitemap` warning during local builds. Ignore it.
 - **No environment variables or secrets** are required for local development.

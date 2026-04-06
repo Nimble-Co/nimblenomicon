@@ -61,7 +61,7 @@ export const SECTION_METADATA = {
 	},
 	'monsters-and-more': {
 		label: 'Monsters & More',
-		path: '/monsters-and-more/',
+		path: 'https://www.kickstarter.com/projects/nimblerpg/monsters-and-more-a-nimble-ttrpg-reprint-and-expansion',
 		iconSvg: monstersAndMoreIconSvg,
 		home: { width: 20, height: 21 },
 		sidebar: { width: 40, height: 42 },

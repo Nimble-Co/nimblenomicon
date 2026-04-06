@@ -1,4 +1,4 @@
-name: Lint
+name: CI
 
 on:
   pull_request:
@@ -6,14 +6,14 @@ on:
     branches: [main]
 
 concurrency:
-  group: lint-${{ github.workflow }}-${{ github.ref }}
+  group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
-  lint:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -31,8 +31,11 @@ jobs:
       - name: Check formatting (Prettier)
         run: npm run format:check
 
-      - name: Lint TypeScript and Astro (ESLint)
+      - name: Lint TypeScript and Astro (ESLint, including Tailwind class rules)
         run: npm run lint:js
 
       - name: Lint Markdown and MDX (markdownlint)
         run: npm run lint:md
+
+      - name: Production build
+        run: npm run build
