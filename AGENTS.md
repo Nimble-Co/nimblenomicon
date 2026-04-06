@@ -19,6 +19,10 @@ Standard commands from the repo root (see `CONTRIBUTING.md` § Local Development
 | `npm run format:check` | Check formatting (same as CI)             |
 | `npm run lint`         | ESLint (TS/Astro) + markdownlint (md/mdx) |
 
+### Styling (Tailwind v4 + Starlight)
+
+- **Do not** use arbitrary Tailwind values that embed Starlight CSS variables (e.g. `text-[var(--sl-color-gray-3)]`, `border-[var(--sl-color-hairline-light)]`). Those belong in [`src/styles/global.css`](src/styles/global.css) under `@theme inline` as `--color-*` aliases to `var(--sl-color-…)`, then reference them with normal utilities (`text-fg-muted`, `border-hairline`, `bg-surface-code`, `text-danger`, etc.). Keeps markup readable and preserves theme switching.
+
 ### Caveats
 
 - **No test script** exists in `package.json` yet. Do not attempt to run `npm test` — it will fail.

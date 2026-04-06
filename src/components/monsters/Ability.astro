@@ -3,7 +3,7 @@ const { name, description } = Astro.props;
 ---
 
 <section
-	class="mt-3 rounded-md bg-gray-200 p-2 text-base leading-snug dark:bg-gray-700 italic"
+	class="mt-3 rounded-md border border-hairline bg-surface-code p-2 text-base italic leading-snug text-fg"
 >
 	<h3 class="m-0 inline text-base font-bold">{name}</h3>{' '}
 	<span class="[&_p]:m-0 [&_p]:inline" set:html={description} />
