@@ -1,9 +1,9 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import {
-	compareMagicalItemsForListing,
-	formatMagicalItemKind,
-	magicalItems,
+compareMagicalItemsForListing,
+formatMagicalItemKind,
+magicalItems,
 } from '../../models/magical-items';
 
 const rows = [...magicalItems].sort(compareMagicalItemsForListing);
@@ -17,7 +17,7 @@ const idxHead = `${idxCell} font-semibold`;
 	frontmatter={{
 		title: 'Magic Items',
 		description:
-			'Index of magic items and wands with links to each item’s full rules.',
+			"Index of magic items and wands with links to each item's full rules.",
 		tableOfContents: false,
 		prev: false,
 		next: false,

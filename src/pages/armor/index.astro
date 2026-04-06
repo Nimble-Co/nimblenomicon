@@ -1,9 +1,9 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import {
-	armorRows,
-	compareArmorRowsForListing,
-	formatArmorCategoryLabel,
+armorRows,
+compareArmorRowsForListing,
+formatArmorCategoryLabel,
 } from '../../models/armor';
 
 const rows = [...armorRows].sort(compareArmorRowsForListing);
@@ -17,7 +17,7 @@ const idxHead = `${idxCell} font-semibold`;
 	frontmatter={{
 		title: 'Armor',
 		description:
-			'Index of armor and shields by section with links to each item’s stats.',
+			"Index of armor and shields by section with links to each item's stats.",
 		tableOfContents: false,
 		prev: false,
 		next: false,

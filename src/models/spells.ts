@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
 import rawSpells from '../data/spells.json';
-import { slugifyEntityId } from '../lib/slugifyEntityId';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const spellTargetSchema = z.enum([
 	'single-target',

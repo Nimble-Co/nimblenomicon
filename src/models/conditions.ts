@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
 import rawConditions from '../data/conditions.json';
-import { slugifyEntityId } from '../lib/slugifyEntityId';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const conditionRowSchema = z.preprocess(
 	(raw) => {

@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
 import rawMiscAdventuringEquipment from '../data/misc-adventuring-equipment.json';
-import { slugifyEntityId } from '../lib/slugifyEntityId';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const miscAdventuringEquipmentRowSchema = z.preprocess(
 	(raw) => {

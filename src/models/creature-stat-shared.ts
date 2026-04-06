@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import { slugifyEntityId } from '../lib/slugifyEntityId';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 import { sizes } from './sizes';
 
 const sizeSlugs = sizes.map((s) => slugifyEntityId(s.name, 'size')) as [

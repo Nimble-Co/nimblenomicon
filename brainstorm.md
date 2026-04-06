@@ -40,7 +40,7 @@ An online searchable, quick reference repository of ALL the published Nimble con
 - **Character Builders**
   - **Character-creation flow**: Class selection as a visual, art-forward flow—cover art for each class (“what class do you want?”), with icon and full art per class so the experience feels like picking from a gallery, not a dropdown.
   - Guided hero creation wizard: pick ancestry/background/class, assign STR/DEX/INT/WIL with clear Key vs Secondary stats and live-updated derived values (initiative, saves, damage dice, mana, languages).
-  - Class effectiveness meter: visual feedback on how well chosen stats fit the class’s Key Stats, warning when a build under-invests in its primary dice.
+  - Class effectiveness meter: visual feedback on how well chosen stats fit the class's Key Stats, warning when a build under-invests in its primary dice.
   - HP & Wounds calculator: auto-roll (or fixed) Hit Dice per level with advantage, showing resulting max HP, Wound threshold, and recovery rates compared to level norms.
   - Action economy preview: per-build summary of typical turn patterns (3 actions, reactions, multi-action abilities) and how class features/spells interact with heroic actions and reactions.
   - Spell selection by school & tier: filtered spells by Fire/Ice/Lightning/Necrotic/Radiant/Wind, showing tier, mana cost, upcast options, and KEY usage; warns if chosen spells overload mana vs expected pool.
@@ -52,11 +52,11 @@ An online searchable, quick reference repository of ALL the published Nimble con
   - **Export & sharing (nice-to-have)**: Export character to PDF; share character link/sheet with other players or the GM.
 
 - **Monster & Encounter Builders**
-  - Monster statline generator by level: input monster level to get suggested HP, Armor band, damage per round, attack dice, and save DCs based on Nimble’s Monster Builder table, with sliders to trade stats for special abilities.
-  - Combat role templates: presets like glass cannon, tank, controller, skirmisher that auto-adjust HP, damage, and armor following Nimble’s tuning guidance.
+  - Monster statline generator by level: input monster level to get suggested HP, Armor band, damage per round, attack dice, and save DCs based on Nimble's Monster Builder table, with sliders to trade stats for special abilities.
+  - Combat role templates: presets like glass cannon, tank, controller, skirmisher that auto-adjust HP, damage, and armor following Nimble's tuning guidance.
   - Die-size theming assistant: recommend default damage and HP dice based on creature type (d4 undead, d6 goblins, d8 humans, d10 beasts, d12 giants, d20 apex threats) with reskin options.
   - Condition & tag builder: choose which conditions (Frightened, Prone, Grappled, Smoldering, Charged, etc.) a monster can inflict and get calibrated attack/save DCs and damage tradeoffs.
-  - Ability economy checker: validates that monster abilities don’t overload per-round actions/reactions versus expected DPR for its level.
+  - Ability economy checker: validates that monster abilities don't overload per-round actions/reactions versus expected DPR for its level.
   - Encounter difficulty calculator: given party size and levels, compute Easy/Medium/Hard/Deadly/Very Deadly bands and show how a chosen set of monsters fits into those bands.
   - Round-by-round simulator: simple probabilistic simulator to estimate length and lethality of an encounter, including Wound/Dying risk and resource drain over several rounds.
   - Armor distribution advisor: warns if an encounter deviates too far from the 60% unarmored / 30% medium / 10% heavy enemy mix, suggesting tweak options.
@@ -64,9 +64,9 @@ An online searchable, quick reference repository of ALL the published Nimble con
   - Condition load analysis: summary of how many “hampering” effects (Dazed, Grappled, Prone, etc.) an encounter can stack and whether that risks locking heroes out of actions.
 
 - **Treasure & Economy Tools**
-  - Gold-per-level budget planner: input party level, size, and campaign length to output expected gold per hero and per arc based on Nimble’s Gold Gain Per Level table.
+  - Gold-per-level budget planner: input party level, size, and campaign length to output expected gold per hero and per arc based on Nimble's Gold Gain Per Level table.
   - Shop inventory generator by town size: item lists appropriate to settlement size and party level (mundane and magic), constrained by rarity and availability guidance.
-  - Magic item pricing sanity-checker: recommend gold price or rarity band from an item’s mechanical benefits, consistent with progression guidelines.
+  - Magic item pricing sanity-checker: recommend gold price or rarity band from an item's mechanical benefits, consistent with progression guidelines.
   - Loot package builder per encounter: suggest bundles of coin, trade goods, and magic items for a selected encounter difficulty and party level that keep heroes near the expected wealth curve.
   - Long-term hoard impact visualizer: model the effect of big windfalls on party wealth over future levels and suggest story hooks or sinks to keep economy in bounds.
   - Lifestyle & upkeep estimator: translate current gold into lifestyle and upkeep costs over downtime, helping GMs pace economic pressure.
@@ -80,29 +80,29 @@ An online searchable, quick reference repository of ALL the published Nimble con
   - Armor Mix Advisor: given an encounter or dungeon, suggest a foe roster that matches the 60/30/10 armor guidance and explain pacing implications.
   - Session Pacing Planner: outline 2–5 encounters per session, balancing difficulty, social scenes, and exploration, with expected Wound and mana drain to naturally push toward Safe Rests.
   - Safe Rest Pressure Tracker: track anticipated HP/Wound accumulation, treasure, and healing and highlight when Safe Rests become justified vs risky, including “if they push on” risks.
-  - Campaign Milestone Mapper: quest milestones tied to level-ups, each with suggested gold rewards, items, and monster level bands to keep progression close to Nimble’s expectations.
-  - Class & Stat Spotlight Planner: encounter and scene suggestions that reward each hero’s Key Stats so the campaign naturally showcases each character.
-  - Condition-Focused Encounter Seeds: encounter templates built around specific conditions (grapples, fear, blindness, etc.) to lean into Nimble’s condition system.
+  - Campaign Milestone Mapper: quest milestones tied to level-ups, each with suggested gold rewards, items, and monster level bands to keep progression close to Nimble's expectations.
+  - Class & Stat Spotlight Planner: encounter and scene suggestions that reward each hero's Key Stats so the campaign naturally showcases each character.
+  - Condition-Focused Encounter Seeds: encounter templates built around specific conditions (grapples, fear, blindness, etc.) to lean into Nimble's condition system.
   - Action Economy Stress-Test Tool: rough round-by-round action/DPR simulation to see whether a fight will feel like a slugfest, glass cannon shootout, or “hard but fair,” with tuning tips.
   - Hero Growth & Re-Spec Notes: reminders at specific levels when players can reassign skills or unlock major features, with prompts for scenes that highlight these.
 
 - **Random Tables & Generators**
-  - Encounter Builder by Level & Theme: generate complete encounters from hero levels plus a theme (e.g., undead, goblins, apex beast), keeping stats aligned with Nimble’s math.
-  - On-the-Fly Reinforcement Table: quick-roll reinforcements that respect the encounter’s remaining difficulty budget.
+  - Encounter Builder by Level & Theme: generate complete encounters from hero levels plus a theme (e.g., undead, goblins, apex beast), keeping stats aligned with Nimble's math.
+  - On-the-Fly Reinforcement Table: quick-roll reinforcements that respect the encounter's remaining difficulty budget.
   - Conditions-Driven Complications Table: mid-fight complications that introduce key conditions and change advantage/disadvantage landscapes without hard-locking heroes.
-  - Treasure & Gold Parcel Generator: loot parcels aligned to party level and Nimble’s gold guidance with sliders for magic frequency and trade-goods vs coin.
+  - Treasure & Gold Parcel Generator: loot parcels aligned to party level and Nimble's gold guidance with sliders for magic frequency and trade-goods vs coin.
   - Shops & Availability Tables: town-size-based roll tables for what items are in stock, their prices, and any special conditions (favors, limited quantities).
   - Spell Scrolls & Secret Spells Drops: random arcane finds with level-scaled chances of hinting or granting a Secret Spell.
   - Wound & Injury Flavor Generator: non-mechanical Wound flavor that adds narrative weight without changing core mechanics.
   - Terrain & Hazard Packs: bundles (icy bridges, smoldering ruins, lightning storms, necrotic graveyards, radiant sanctuaries, slicing winds) with suggested conditions and foes.
-  - Initiative & Opening Twist Table: rollable twists that modify the start of combat within Nimble’s rules (surprise, starting actions, etc.).
+  - Initiative & Opening Twist Table: rollable twists that modify the start of combat within Nimble's rules (surprise, starting actions, etc.).
 
 - **Downtime & World Events**
-  - Safe Rest Outcome Generator: small narrative events when heroes rest (rumors, minor thefts, NPC offers) that don’t break gold pacing but open new hooks.
+  - Safe Rest Outcome Generator: small narrative events when heroes rest (rumors, minor thefts, NPC offers) that don't break gold pacing but open new hooks.
   - Downtime Activity Menus by Class/Stat: activities keyed to stats that yield gold, contacts, or minor boons without hard power creep.
   - Gold Sink & Investment Ideas: tables for how excess gold attracts attention and long-term investments whose returns stay within wealth expectations.
-  - Town Mood & Stability Tracker: world-event rolls that shift a settlement’s mood and influence future encounter difficulty, armor mixes, and access to goods.
-  - Faction Clock & Response Generator: tools to track how factions adapt (up-armoring elites, recruiting casters, changing encounter comps) using Nimble’s roles and levels.
+  - Town Mood & Stability Tracker: world-event rolls that shift a settlement's mood and influence future encounter difficulty, armor mixes, and access to goods.
+  - Faction Clock & Response Generator: tools to track how factions adapt (up-armoring elites, recruiting casters, changing encounter comps) using Nimble's roles and levels.
   - Travel & Road Event Tables: journey events tuned to party level with guidance on when to treat them as full encounters.
   - World-Scale Crisis Escalation: tiered crises that evolve between sessions, each step suggesting encounter templates and rest opportunities.
   - Downtime Consequence Resolver: consequences for skipped rest or risky side projects using Wounds, conditions, and resource loss in a fair, Nimble-consistent way.
@@ -119,7 +119,7 @@ An online searchable, quick reference repository of ALL the published Nimble con
   - Advantage/disadvantage dice helper: tracker for stacked advantage/disadvantage instances and resulting dice pool.
   - Exploding crit roller: dice roller that automatically chains max rolls on the Primary Die and applies crit riders.
   - Rushed attack tracker: per-turn attack list that tags extra attacks as Rushed and adds correct disadvantage.
-  - Heroic reactions monitor: tracks off-turn reactions and subtracts from next turn’s actions; quick buttons for Defend, Interpose, Opportunity Attack, Help, etc.
+  - Heroic reactions monitor: tracks off-turn reactions and subtracts from next turn's actions; quick buttons for Defend, Interpose, Opportunity Attack, Help, etc.
   - Conditions panel per hero: tap-to-add conditions with attached mechanical summaries.
   - Smoldering/Charged/minor status tracker: mini-panel tracking minor tags and listing spells/abilities that interact with them.
   - Armor & Defend helper: tracks Armor and armor type and shows expected reduction when using Defend, including non-proficiency costs.
@@ -137,7 +137,7 @@ An online searchable, quick reference repository of ALL the published Nimble con
   - Mana budget planning tool: per-day mana spend planner comparing desired casts per tier vs available pool.
   - Equipment & proficiency evolution tracker: level-based view of new weapon/armor proficiencies and suggested loadout changes.
   - Feat / feature milestone map: branching tree of upcoming features, reactions, and multi-action abilities with interaction notes.
-  - Wealth & magic item pacing guide: visualization of on-track vs rich vs broke status based on Nimble’s gold-per-level expectations.
+  - Wealth & magic item pacing guide: visualization of on-track vs rich vs broke status based on Nimble's gold-per-level expectations.
   - Encounter difficulty feel estimator: optional “party strength snapshot” that links back to monster level guidelines so players can gauge fights.
 
 - **Quick Rules Aides**
@@ -158,7 +158,7 @@ An online searchable, quick reference repository of ALL the published Nimble con
 
 - **Homebrew Library**
   - Homebrew heroes/classes browser: filterable custom heroes/subclasses with Key Stats, role tags, mana progression, and tier unlocks.
-  - Monster archive by level band: monster index keyed to Nimble’s monster builder (Level, HP band, Armor, DPR, primary die size) with baseline deviation badges.
+  - Monster archive by level band: monster index keyed to Nimble's monster builder (Level, HP band, Armor, DPR, primary die size) with baseline deviation badges.
   - Spell compendium with Nimble structure: homebrew spells organized by School, Tier, casting type, and explicit mana/upcast options.
   - Conditions & statuses module: custom minor tags and variant conditions, each stating how they interact with core conditions.
   - Items & magic gear catalog: homebrew equipment keyed to proficiency types, damage dice, weapon properties, armor bands, and wealth-by-level guidance.
@@ -173,7 +173,7 @@ An online searchable, quick reference repository of ALL the published Nimble con
   - School & synergy tagging for spells: explicit cross-school combo tags and condition chains.
   - Complexity & prep overhead rating: sliders for rules load, tracking overhead, and GM adjudication needed.
   - Playtest feedback threads: structured feedback capturing damage vs baseline, impact on Wounds/Dying, encounters per Safe Rest, etc.
-  - Curated “balanced” badges: badges awarded once play reports converge within acceptable variance from Nimble’s heuristics.
+  - Curated “balanced” badges: badges awarded once play reports converge within acceptable variance from Nimble's heuristics.
   - Tag-based collections: auto-generated lists like “Level 1-friendly Radiant heals” or “Wound-heavy grimdark variants” based on tags and ratings.
 
 - **Remix & Adaptation Tools**
@@ -201,14 +201,14 @@ An online searchable, quick reference repository of ALL the published Nimble con
   - Fragmented access & cost: lots of paid add-ons and the feeling of “rebuying” content; for Nimble, we should be clear about what is free, what requires owning the books, and avoid nickel-and-diming core reference use.
 
 - **What Demiplane / Pathfinder Nexus does well**
-  - Multi-system digital platform: supports many RPGs (Pathfinder, Vampire, Avatar, etc.), suggesting patterns for system-agnostic UX while still respecting each game’s unique rules.
+  - Multi-system digital platform: supports many RPGs (Pathfinder, Vampire, Avatar, etc.), suggesting patterns for system-agnostic UX while still respecting each game's unique rules.
   - Rich feature roadmap: character tools, GM tools, active effects, crafting/alchemy, PDF exports, and integrations (e.g., Roll20 sync) show how a platform can grow beyond a basic compendium.
   - Cross-platform and integration mindset: explicit focus on linking with VTTs instead of trying to be everything itself; Nimblenomicon could aim to play nicely with lightweight VTTs rather than building a VTT from scratch.
 
 - **Common Demiplane complaints to avoid**
   - Double-paying for content: users upset at having to buy PDFs _and_ buy digital licenses again; Nimblenomicon should be very careful about any model that feels like repurchasing Nimble books.
-  - License-only access and weak offline story: you’re mostly buying platform access, not files you can keep; for Nimblenomicon, emphasizing “open markdown + search” with good export options would differentiate.
-  - Value vs free alternatives: Pathfinder has strong free tools (e.g., Pathbuilder), so Demiplane struggles to justify its cost; Nimblenomicon should lean on what is uniquely Nimble-aware (Wounds, heroics, conditions, monster math) and what’s freely accessible.
+  - License-only access and weak offline story: you're mostly buying platform access, not files you can keep; for Nimblenomicon, emphasizing “open markdown + search” with good export options would differentiate.
+  - Value vs free alternatives: Pathfinder has strong free tools (e.g., Pathbuilder), so Demiplane struggles to justify its cost; Nimblenomicon should lean on what is uniquely Nimble-aware (Wounds, heroics, conditions, monster math) and what's freely accessible.
   - Early-stage roughness: alpha-level performance and mobile issues were noted; our design should set performance and simplicity as non-negotiables from the outset.
 
 - **Broader digital TTRPG tool ecosystem lessons (Roll20, Foundry, etc.)**
@@ -280,7 +280,7 @@ An online searchable, quick reference repository of ALL the published Nimble con
 
 - **Performance budgets for Nimblenomicon**
   - Set explicit budgets for key web-vital-style metrics: aim for TTI < 3s, FCP < 1.5s on mid-range mobile, and total page payload (HTML + CSS + JS + fonts) ideally < 500KB for core reference views.
-  - Target good Core Web Vitals thresholds: LCP ≤ 2.5s, INP ≤ 200ms for interactions like expanding a rule, opening a spell, or adding a condition, and CLS ≤ 0.1 so rules pages don’t jump as they load.
+  - Target good Core Web Vitals thresholds: LCP ≤ 2.5s, INP ≤ 200ms for interactions like expanding a rule, opening a spell, or adding a condition, and CLS ≤ 0.1 so rules pages don't jump as they load.
   - Keep request counts low (≈30 or fewer) and aggressively control third-party scripts so main-thread time stays short and interactions remain snappy even during long sessions.
 
 - **High-level architecture direction**

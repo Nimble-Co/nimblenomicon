@@ -1,6 +1,6 @@
 # Nimblenomicon
 
-**An online, searchable repository of all published Nimble content**—free for anyone who has the books, can’t afford them, or is trying the system. GM tools, player tools, and resources in one place.
+**An online, searchable repository of all published Nimble content**—free for anyone who has the books, can't afford them, or is trying the system. GM tools, player tools, and resources in one place.
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
@@ -79,7 +79,7 @@ Run these from `.app/` (after `cd .app`):
 
 ---
 
-Nimblenomicon is based on **Nimble Core Rules 2.0.2** and **Creator’s Kit 1.2**. The vault and tooling are intended to complement the official books, not replace them.
+Nimblenomicon is based on **Nimble Core Rules 2.0.2** and **Creator's Kit 1.2**. The vault and tooling are intended to complement the official books, not replace them.
 
 ---
 

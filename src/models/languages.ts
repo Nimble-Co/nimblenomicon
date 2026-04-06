@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
 import rawLanguages from '../data/languages.json';
-import { slugifyEntityId } from '../lib/slugifyEntityId';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const languageRowSchema = z.preprocess(
 	(raw) => {

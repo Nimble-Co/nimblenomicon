@@ -1,9 +1,9 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import {
-	ancestries,
-	compareAncestryRowsForListing,
-	formatAncestrySize,
+ancestries,
+compareAncestryRowsForListing,
+formatAncestrySize,
 } from '../../models/ancestries';
 
 const rows = [...ancestries].sort(compareAncestryRowsForListing);
@@ -21,7 +21,7 @@ const idxHead = `${idxCell} font-semibold`;
 	frontmatter={{
 		title: 'Ancestries',
 		description:
-			'Index of ancestries by section with links to each ancestry’s full rules.',
+			"Index of ancestries by section with links to each ancestry's full rules.",
 		tableOfContents: false,
 		prev: false,
 		next: false,

@@ -1,5 +1,5 @@
 ---
-import { renderMarkdown } from '../../lib/render-markdown';
+import { renderMarkdown } from '../utils/render-markdown';
 
 export interface DataTableColumn {
 	key: string;
@@ -102,7 +102,7 @@ const bodyRows: Cell[][] = await Promise.all(
 			{
 				rows.map((row, ri) => (
 					<tr
-						class:list={['odd:bg-black/[0.045]', 'dark:odd:bg-white/[0.06]']}
+						class:list={['odd:bg-black/4.5', 'dark:odd:bg-white/6']}
 						id={typeof row.id === 'string' ? row.id : undefined}
 					>
 						{columns.map((col, ci) => {

@@ -1,12 +1,12 @@
 ---
-import { renderMarkdown } from '../../lib/render-markdown';
-import { slugifyEntityId } from '../../lib/slugifyEntityId';
+import { renderMarkdown } from '../utils/render-markdown';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 import {
 	monsters,
 	type MonsterAction,
 	type MonsterData,
-} from '../../models/monsters';
-import { sizes } from '../../models/sizes';
+} from '../models/monsters';
+import { sizes } from '../models/sizes';
 import Ability from './Ability.astro';
 
 interface Props {

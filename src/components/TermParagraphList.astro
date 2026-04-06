@@ -1,5 +1,5 @@
 ---
-import { renderMarkdown } from '../../lib/render-markdown';
+import { renderMarkdown } from '../utils/render-markdown';
 
 interface Item {
 	id?: string;
@@ -15,8 +15,12 @@ interface Props {
 const { items, as: Tag = 'p' } = Astro.props;
 
 const htmlByIndex = await Promise.all(
-	items.map((item) => renderMarkdown(item.markdown)),
+	items.map((item: Item) => renderMarkdown(item.markdown)),
 );
 ---
 
-{items.map((item, i) => <Tag id={item.id} set:html={htmlByIndex[i]} />)}
+{
+	items.map((item: Item, i: number) => (
+		<Tag id={item.id} set:html={htmlByIndex[i]} />
+	))
+}
