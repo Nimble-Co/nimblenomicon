@@ -1,0 +1,68 @@
+---
+export type ReferenceIndexTableColumn = {
+	/** Stable machine id for future sort/filter hooks. */
+	id: string;
+	label: string;
+};
+
+export type ReferenceIndexTableRow = {
+	lead: { href: string; text: string };
+	rest: string[];
+};
+
+interface Props {
+	columns: ReferenceIndexTableColumn[];
+	rows: ReferenceIndexTableRow[];
+}
+
+const { columns, rows } = Astro.props;
+
+/** Matches `ui/DataTable.astro` book-style table cells (first column is row header + link). */
+const headClass =
+	'border-0 bg-transparent px-3 py-2 align-bottom font-bold italic uppercase tracking-wide text-start';
+const bodyCellClass = 'border-0 px-3 py-2 align-top font-normal text-start';
+/** Default link color skips prose rules inside `.not-content`; match table `text-fg` + underline affordance. */
+const leadLinkClass =
+	'text-fg underline underline-offset-[0.12em] decoration-inherit hover:text-fg';
+---
+
+<section
+	class:list={['sl-markdown-content', 'not-content', 'overflow-x-auto', 'my-4']}
+	data-reference-index="true"
+>
+	<table class="w-full border-collapse text-sm text-fg">
+		<thead>
+			<tr>
+				{
+					columns.map((col) => (
+						<th class={headClass} scope="col" data-column-id={col.id}>
+							{col.label}
+						</th>
+					))
+				}
+			</tr>
+		</thead>
+		<tbody>
+			{
+				rows.map((row) => (
+					<tr class:list={['odd:bg-black/[0.045]', 'dark:odd:bg-white/[0.06]']}>
+						<th
+							class={bodyCellClass}
+							scope="row"
+							data-column-id={columns[0]?.id}
+						>
+							<a class={leadLinkClass} href={row.lead.href}>
+								{row.lead.text}
+							</a>
+						</th>
+						{row.rest.map((cell, i) => (
+							<td class={bodyCellClass} data-column-id={columns[i + 1]?.id}>
+								{cell}
+							</td>
+						))}
+					</tr>
+				))
+			}
+		</tbody>
+	</table>
+</section>

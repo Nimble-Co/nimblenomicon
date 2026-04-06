@@ -1,68 +1,52 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
 import {
-	compareMagicalItemsForListing,
 	formatMagicalItemKind,
 	magicalItems,
 } from '../../models/magical-items';
+import { compareReferenceRowsByName } from '../../utils/reference-index-sort';
 
-const rows = [...magicalItems].sort(compareMagicalItemsForListing);
+const columns = [
+	{ id: 'name', label: 'Name' },
+	{ id: 'type', label: 'Type' },
+	{ id: 'source', label: 'Source' },
+	{ id: 'adventuringReward', label: 'Adventuring Reward' },
+];
 
-const idxCell =
-	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
-const idxHead = `${idxCell} font-semibold`;
-
-function formatSource(source: (typeof rows)[number]['source']): string {
+function formatSource(source: (typeof magicalItems)[number]['source']): string {
 	return source === 'game-masters-guide' ? "GM's Guide" : 'Core Rules';
 }
 
 function formatRewardCategory(
-	cat: (typeof rows)[number]['adventuringRewardCategory'],
+	cat: (typeof magicalItems)[number]['adventuringRewardCategory'],
 ): string {
 	if (!cat) return '';
 	if (cat === 'release-valve') return 'Release Valve';
 	if (cat === 'story') return 'Story Item';
 	return 'Combat Item';
 }
+
+const rows = [...magicalItems].sort(compareReferenceRowsByName).map((row) => ({
+	lead: { href: `./${row.id}/`, text: row.name },
+	rest: [
+		formatMagicalItemKind(row.kind),
+		formatSource(row.source),
+		formatRewardCategory(row.adventuringRewardCategory),
+	],
+}));
 ---
 
 <StarlightPage
 	frontmatter={{
 		title: 'Magic Items',
 		description:
-			"Index of magic items and wands with links to each item's full rules.",
+			"Alphabetical index of magic items and wands with links to each item's full rules.",
 		tableOfContents: false,
 		prev: false,
 		next: false,
 	}}
 	hasSidebar={false}
 >
-	<div class="sl-markdown-content not-content">
-		<table class="w-full border-collapse">
-			<thead>
-				<tr>
-					<th class={idxHead} scope="col">Name</th>
-					<th class={idxHead} scope="col">Type</th>
-					<th class={idxHead} scope="col">Source</th>
-					<th class={idxHead} scope="col">Adventuring Reward</th>
-				</tr>
-			</thead>
-			<tbody>
-				{
-					rows.map((row) => (
-						<tr>
-							<th class={idxCell} scope="row">
-								<a href={`./${row.id}/`}>{row.name}</a>
-							</th>
-							<td class={idxCell}>{formatMagicalItemKind(row.kind)}</td>
-							<td class={idxCell}>{formatSource(row.source)}</td>
-							<td class={idxCell}>
-								{formatRewardCategory(row.adventuringRewardCategory)}
-							</td>
-						</tr>
-					))
-				}
-			</tbody>
-		</table>
-	</div>
+	<ReferenceIndexTable columns={columns} rows={rows} />
 </StarlightPage>

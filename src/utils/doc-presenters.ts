@@ -17,11 +17,11 @@ import { downtimeActivities } from '../models/downtime-activities';
 import { glossary } from '../models/glossary';
 import { languages } from '../models/languages';
 import {
-	compareMagicalItemsForListing,
 	magicalItemDetailHrefFromCoreRules,
 	magicalItems,
 	type MagicalItemData,
 } from '../models/magical-items';
+import { compareReferenceRowsByName } from './reference-index-sort';
 import { optionalVariantRules } from '../models/optional-variant-rules';
 import { saveTypes } from '../models/save-types';
 import { sizes } from '../models/sizes';
@@ -204,8 +204,8 @@ export function magicalItemBlocks(
 	const rows = kind
 		? magicalItems
 				.filter((item) => item.kind === kind)
-				.sort(compareMagicalItemsForListing)
-		: [...magicalItems].sort(compareMagicalItemsForListing);
+				.sort(compareReferenceRowsByName)
+		: [...magicalItems].sort(compareReferenceRowsByName);
 
 	const filtered = rows.filter((row) => {
 		if (opts?.source && row.source !== opts.source) return false;
