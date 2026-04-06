@@ -1,49 +1,33 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
 import {
-	compareMagicalItemsForListing,
 	formatMagicalItemKind,
 	magicalItems,
 } from '../../models/magical-items';
+import { compareReferenceRowsByName } from '../../utils/reference-index-sort';
 
-const rows = [...magicalItems].sort(compareMagicalItemsForListing);
+const columns = [
+	{ id: 'name', label: 'Name' },
+	{ id: 'type', label: 'Type' },
+];
 
-const idxCell =
-	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
-const idxHead = `${idxCell} font-semibold`;
+const rows = [...magicalItems].sort(compareReferenceRowsByName).map((row) => ({
+	lead: { href: `./${row.id}/`, text: row.name },
+	rest: [formatMagicalItemKind(row.kind)],
+}));
 ---
 
 <StarlightPage
 	frontmatter={{
 		title: 'Magic Items',
 		description:
-			"Index of magic items and wands with links to each item's full rules.",
+			"Alphabetical index of magic items and wands with links to each item's full rules.",
 		tableOfContents: false,
 		prev: false,
 		next: false,
 	}}
 	hasSidebar={false}
 >
-	<div class="sl-markdown-content not-content">
-		<table class="w-full border-collapse">
-			<thead>
-				<tr>
-					<th class={idxHead} scope="col">Name</th>
-					<th class={idxHead} scope="col">Type</th>
-				</tr>
-			</thead>
-			<tbody>
-				{
-					rows.map((row) => (
-						<tr>
-							<th class={idxCell} scope="row">
-								<a href={`./${row.id}/`}>{row.name}</a>
-							</th>
-							<td class={idxCell}>{formatMagicalItemKind(row.kind)}</td>
-						</tr>
-					))
-				}
-			</tbody>
-		</table>
-	</div>
+	<ReferenceIndexTable columns={columns} rows={rows} />
 </StarlightPage>

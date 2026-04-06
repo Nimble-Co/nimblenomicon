@@ -1,65 +1,41 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
 import { spellSchools } from '../../models/spell-schools';
-import { type SpellData, spells } from '../../models/spells';
-
-function compareSpellRowsForListing(a: SpellData, b: SpellData): number {
-	const bySchool = a.schoolId.localeCompare(b.schoolId);
-	if (bySchool !== 0) return bySchool;
-	const byUtility = a.utility ? 1 : 0;
-	if (byUtility !== 0) return byUtility;
-	const byTier = a.tier - b.tier;
-	if (byTier !== 0) return byTier;
-	const byName = a.name.localeCompare(b.name);
-	if (byName !== 0) return byName;
-	return a.tier - b.tier;
-}
+import { spells } from '../../models/spells';
+import { compareReferenceRowsByName } from '../../utils/reference-index-sort';
 
 const spellSchoolShortName = (schoolId: string) =>
 	spellSchools.find((school) => school.id === schoolId)?.name ?? schoolId;
 
-const idxCell =
-	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
-const idxHead = `${idxCell} font-semibold`;
+const columns = [
+	{ id: 'name', label: 'Name' },
+	{ id: 'school', label: 'School' },
+	{ id: 'tier', label: 'Tier' },
+	{ id: 'utility', label: 'Utility' },
+	{ id: 'secret', label: 'Secret' },
+];
+
+const rows = [...spells].sort(compareReferenceRowsByName).map((spell) => ({
+	lead: { href: `/spells/${spell.id}/`, text: spell.name },
+	rest: [
+		spellSchoolShortName(spell.schoolId),
+		spell.tierLabel,
+		spell.utility ? 'Utility' : '',
+		spell.secret ? 'Secret' : '',
+	],
+}));
 ---
 
 <StarlightPage
 	frontmatter={{
 		title: 'Spells',
-		description:
-			'Alphabetical index of spells by school and tier with links to each spell.',
+		description: 'Alphabetical index of spells with links to each spell.',
 		tableOfContents: false,
 		prev: false,
 		next: false,
 	}}
 	hasSidebar={false}
 >
-	<div class="sl-markdown-content not-content">
-		<table class="w-full border-collapse">
-			<thead>
-				<tr>
-					<th class={idxHead} scope="col">Name</th>
-					<th class={idxHead} scope="col">School</th>
-					<th class={idxHead} scope="col">Tier</th>
-					<th class={idxHead} scope="col">Utility</th>
-					<th class={idxHead} scope="col">Secret</th>
-				</tr>
-			</thead>
-			<tbody>
-				{
-					spells.sort(compareSpellRowsForListing).map((spell) => (
-						<tr>
-							<th class={idxCell} scope="row">
-								<a href={`/spells/${spell.id}/`}>{spell.name}</a>
-							</th>
-							<td class={idxCell}>{spellSchoolShortName(spell.schoolId)}</td>
-							<td class={idxCell}>{spell.tierLabel}</td>
-							<td class={idxCell}>{spell.utility ? 'Utility' : ''}</td>
-							<td class={idxCell}>{spell.secret ? 'Secret' : ''}</td>
-						</tr>
-					))
-				}
-			</tbody>
-		</table>
-	</div>
+	<ReferenceIndexTable columns={columns} rows={rows} />
 </StarlightPage>

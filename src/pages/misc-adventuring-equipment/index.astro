@@ -1,50 +1,31 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import {
-	compareMiscAdventuringEquipmentRowsForListing,
-	miscAdventuringEquipment,
-} from '../../models/misc-adventuring-equipment';
+import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
+import { miscAdventuringEquipment } from '../../models/misc-adventuring-equipment';
+import { compareReferenceRowsByName } from '../../utils/reference-index-sort';
 
-const rows = [...miscAdventuringEquipment].sort(
-	compareMiscAdventuringEquipmentRowsForListing,
-);
+const rows = [...miscAdventuringEquipment].sort(compareReferenceRowsByName);
+const columns = [
+	{ id: 'name', label: 'Name' },
+	{ id: 'cost', label: 'Cost' },
+];
 
-const idxCell =
-	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
-const idxHead = `${idxCell} font-semibold`;
+const tableRows = rows.map((row) => ({
+	lead: { href: `./${row.id}/`, text: row.name },
+	rest: [row.cost],
+}));
 ---
 
 <StarlightPage
 	frontmatter={{
 		title: 'Misc. Adventuring Equipment',
 		description:
-			"Index of miscellaneous adventuring gear with links to each item's full rules.",
+			"Alphabetical index of miscellaneous adventuring gear with links to each item's full rules.",
 		tableOfContents: false,
 		prev: false,
 		next: false,
 	}}
 	hasSidebar={false}
 >
-	<div class="sl-markdown-content not-content">
-		<table class="w-full border-collapse">
-			<thead>
-				<tr>
-					<th class={idxHead} scope="col">Name</th>
-					<th class={idxHead} scope="col">Cost</th>
-				</tr>
-			</thead>
-			<tbody>
-				{
-					rows.map((row) => (
-						<tr>
-							<th class={idxCell} scope="row">
-								<a href={`./${row.id}/`}>{row.name}</a>
-							</th>
-							<td class={idxCell}>{row.cost}</td>
-						</tr>
-					))
-				}
-			</tbody>
-		</table>
-	</div>
+	<ReferenceIndexTable columns={columns} rows={tableRows} />
 </StarlightPage>
