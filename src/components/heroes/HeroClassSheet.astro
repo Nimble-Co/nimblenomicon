@@ -1,0 +1,191 @@
+---
+import { renderMarkdown } from '../../lib/render-markdown';
+import { getHeroClassById } from '../../models/class';
+
+interface Props {
+	classId: string;
+}
+
+const { classId } = Astro.props;
+
+const hc = getHeroClassById(classId);
+
+if (!hc) {
+	throw new Error(`Hero class with id ${classId} not found`);
+}
+
+/** Bold label + optional period before body (matches stat block / book style). */
+function abilityHeading(name: string): string {
+	const t = name.trim();
+	return /[.!?;:]$/.test(t) ? t : `${t}.`;
+}
+
+const flavorHtml = await renderMarkdown(hc.description);
+
+const levelsRendered = await Promise.all(
+	hc.levels.map(async (lvl) => ({
+		level: lvl.level,
+		abilities: await Promise.all(
+			lvl.abilities.map(async (a) => ({
+				heading: abilityHeading(a.name),
+				html: await renderMarkdown(a.description),
+			})),
+		),
+	})),
+);
+
+const abilityListsRendered = await Promise.all(
+	hc.abilityLists.map(async (list) => ({
+		name: list.name,
+		introHtml: await renderMarkdown(list.description),
+		items: await Promise.all(
+			list.items.map(async (item) => ({
+				heading: abilityHeading(item.name),
+				html: await renderMarkdown(item.description),
+			})),
+		),
+	})),
+);
+
+const subclassesRendered = await Promise.all(
+	hc.subclasses.map(async (sub) => ({
+		name: sub.name,
+		levels: await Promise.all(
+			sub.levels.map(async (lvl) => ({
+				level: lvl.level,
+				abilities: await Promise.all(
+					lvl.abilities.map(async (a) => ({
+						heading: abilityHeading(a.name),
+						html: await renderMarkdown(a.description),
+					})),
+				),
+			})),
+		),
+	})),
+);
+
+const statRows: { label: string; value: string }[] = [
+	{ label: 'Key Stats', value: hc.keyStatsDisplay },
+	{ label: 'Hit Die', value: hc.hitDieLabel },
+	{ label: 'Starting HP', value: String(hc.startingHp) },
+	{ label: 'Saves', value: hc.savesDisplay },
+	{ label: 'Armor', value: hc.armorDisplay },
+	{ label: 'Weapons', value: hc.weaponsDisplay },
+	{ label: 'Starting Gear', value: hc.gearDisplay },
+];
+---
+
+<article
+	class="not-prose mt-4 w-full max-w-3xl border border-hairline bg-surface text-fg"
+	aria-labelledby={`class-${hc.id}-summary`}
+>
+	<p id={`class-${hc.id}-summary`} class="sr-only">
+		{hc.name} class features and progression.
+	</p>
+
+	<div
+		class="prose prose-sm max-w-none border-b border-hairline px-3 py-4 text-fg sm:px-4 [&_p]:text-fg [&_strong]:text-fg"
+		set:html={flavorHtml}
+	/>
+
+	<div
+		class="border-b border-hairline bg-surface-code px-3 py-3 text-sm leading-snug sm:px-4"
+	>
+		<dl class="m-0 grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
+			{
+				statRows.map((row) => (
+					<div class="flex flex-col gap-0.5 sm:flex-row sm:gap-2">
+						<dt class="m-0 shrink-0 font-semibold text-fg">{row.label}</dt>
+						<dd class="m-0 text-fg [&_p]:m-0">{row.value}</dd>
+					</div>
+				))
+			}
+		</dl>
+	</div>
+
+	<div class="border-t border-hairline px-3 pb-4 sm:px-4">
+		<h3 class="mt-4 font-heading text-lg font-semibold text-fg">
+			Class features
+		</h3>
+		{
+			levelsRendered.map((lvl) => (
+				<section class="mt-4 border-b border-hairline pb-4 last:border-b-0">
+					<div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-6">
+						<p class="m-0 w-28 shrink-0 text-sm italic text-fg-muted">
+							Level {lvl.level}
+						</p>
+						<div class="min-w-0 flex-1 space-y-3 text-base leading-snug">
+							{lvl.abilities.map((a) => (
+								<p class="m-0 text-fg">
+									<strong>{a.heading}</strong>{' '}
+									<span class="[&_p]:inline [&_p]:m-0" set:html={a.html} />
+								</p>
+							))}
+						</div>
+					</div>
+				</section>
+			))
+		}
+	</div>
+
+	{
+		abilityListsRendered.length > 0 && (
+			<div class="border-t border-hairline px-3 pb-4 sm:px-4">
+				{abilityListsRendered.map((list) => (
+					<section class="mt-6">
+						<h3 class="m-0 font-heading text-lg font-semibold text-fg">
+							{list.name}
+						</h3>
+						<div
+							class="prose prose-sm mt-2 max-w-none text-fg [&_p]:text-fg"
+							set:html={list.introHtml}
+						/>
+						<ul class="mt-3 list-none space-y-3 p-0">
+							{list.items.map((item) => (
+								<li class="text-base leading-snug text-fg">
+									<strong>{item.heading}</strong>{' '}
+									<span class="[&_p]:inline [&_p]:m-0" set:html={item.html} />
+								</li>
+							))}
+						</ul>
+					</section>
+				))}
+			</div>
+		)
+	}
+
+	{
+		subclassesRendered.length > 0 && (
+			<div class="border-t border-hairline px-3 pb-6 sm:px-4">
+				<h3 class="mt-6 font-heading text-lg font-semibold text-fg">
+					Subclasses
+				</h3>
+				{subclassesRendered.map((sub) => (
+					<section class="mt-6">
+						<h4 class="m-0 text-base font-semibold text-fg">{sub.name}</h4>
+						{sub.levels.map((lvl) => (
+							<div class="mt-4 border-b border-hairline pb-4 last:border-b-0">
+								<div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-6">
+									<p class="m-0 w-28 shrink-0 text-sm italic text-fg-muted">
+										Level {lvl.level}
+									</p>
+									<div class="min-w-0 flex-1 space-y-3 text-base leading-snug">
+										{lvl.abilities.map((a) => (
+											<p class="m-0 text-fg">
+												<strong>{a.heading}</strong>{' '}
+												<span
+													class="[&_p]:inline [&_p]:m-0"
+													set:html={a.html}
+												/>
+											</p>
+										))}
+									</div>
+								</div>
+							</div>
+						))}
+					</section>
+				))}
+			</div>
+		)
+	}
+</article>
