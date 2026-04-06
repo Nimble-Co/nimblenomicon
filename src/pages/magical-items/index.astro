@@ -7,6 +7,10 @@ import {
 } from '../../models/magical-items';
 
 const rows = [...magicalItems].sort(compareMagicalItemsForListing);
+
+const idxCell =
+	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
+const idxHead = `${idxCell} font-semibold`;
 ---
 
 <StarlightPage
@@ -20,25 +24,22 @@ const rows = [...magicalItems].sort(compareMagicalItemsForListing);
 	}}
 	hasSidebar={false}
 >
-	<p class="magical-items-index__intro">
-		<a href="/core-rules/">Core Rules</a>
-	</p>
 	<div class="sl-markdown-content not-content">
-		<table class="magical-items-index__table">
+		<table class="w-full border-collapse">
 			<thead>
 				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
+					<th class={idxHead} scope="col">Name</th>
+					<th class={idxHead} scope="col">Type</th>
 				</tr>
 			</thead>
 			<tbody>
 				{
 					rows.map((row) => (
 						<tr>
-							<th scope="row">
+							<th class={idxCell} scope="row">
 								<a href={`./${row.id}/`}>{row.name}</a>
 							</th>
-							<td>{formatMagicalItemKind(row.kind)}</td>
+							<td class={idxCell}>{formatMagicalItemKind(row.kind)}</td>
 						</tr>
 					))
 				}
@@ -46,24 +47,3 @@ const rows = [...magicalItems].sort(compareMagicalItemsForListing);
 		</table>
 	</div>
 </StarlightPage>
-
-<style>
-	.magical-items-index__intro {
-		font-style: italic;
-		margin-bottom: 1rem;
-	}
-	.magical-items-index__table {
-		width: 100%;
-		border-collapse: collapse;
-	}
-	.magical-items-index__table th,
-	.magical-items-index__table td {
-		text-align: start;
-		padding: 0.35rem 0.75rem 0.35rem 0;
-		border-bottom: 1px solid var(--sl-color-hairline);
-		vertical-align: top;
-	}
-	.magical-items-index__table thead th {
-		font-weight: 600;
-	}
-</style>

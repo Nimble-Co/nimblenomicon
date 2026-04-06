@@ -11,12 +11,6 @@ export interface Props {
 const { href, sourceName } = Astro.props;
 ---
 
-<p class="detail-page-source-ref">
+<p class="mt-6">
 	<em>From <a href={href}>{sourceName}</a></em>
 </p>
-
-<style>
-	.detail-page-source-ref {
-		margin-top: 1.5rem;
-	}
-</style>
