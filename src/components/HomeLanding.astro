@@ -16,9 +16,13 @@ const bookIconHtml = bookIconRaw.replaceAll(
 
 const bookNavItems = SECTION_KEYS.map((key) => {
 	const m = SECTION_METADATA[key];
+	const homeTileHref = 'homeTileHref' in m ? m.homeTileHref : undefined;
+	const href = homeTileHref ?? m.path;
+	const external = Boolean(homeTileHref);
 	return {
 		label: m.label,
-		href: m.path,
+		href,
+		external,
 		iconSvg: m.iconSvg,
 	};
 });
@@ -81,11 +85,14 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 			role="list"
 		>
 			{
-				bookNavItems.map(({ label, href, iconSvg }) => (
+				bookNavItems.map(({ label, href, iconSvg, external }) => (
 					<li>
 						<a
 							class="box-border flex min-h-[3.25rem] w-full items-center gap-[0.6rem] rounded-[0.625rem] border border-hairline bg-gray-200 px-[0.85rem] py-[0.65rem] text-left text-fg no-underline transition-colors duration-75 ease-linear hover:border-fg/30 hover:bg-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 motion-reduce:transition-none dark:bg-gray-900/60 dark:hover:bg-gray-800"
 							href={href}
+							{...(external
+								? { target: '_blank', rel: 'noopener noreferrer' }
+								: {})}
 						>
 							<span
 								class="inline-flex h-[22px] w-[22px] shrink-0 items-center justify-center text-fg [&_svg]:block [&_svg]:max-h-full [&_svg]:max-w-full [&_svg]:object-contain"
