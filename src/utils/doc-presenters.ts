@@ -3,54 +3,54 @@
  * Keeps domain-specific formatting out of generic doc components under `src/components/`.
  */
 
+import { adventuringMotivations } from '../models/adventuring-motivations';
 import {
 	ancestries,
 	formatAncestrySize,
 	type AncestryRowData,
 } from '../models/ancestries';
-import { adventuringMotivations } from '../models/adventuring-motivations';
-import { backgrounds } from '../models/backgrounds';
-import { characterClasses } from '../models/character-classes';
-import { conditions } from '../models/conditions';
-import { dcExamples } from '../models/dc-examples';
-import { downtimeActivities } from '../models/downtime-activities';
-import { glossary } from '../models/glossary';
-import { languages } from '../models/languages';
-import {
-	magicalItemDetailHrefFromCoreRules,
-	magicalItems,
-	type MagicalItemData,
-} from '../models/magical-items';
-import { compareReferenceRowsByName } from './reference-index-sort';
-import { optionalVariantRules } from '../models/optional-variant-rules';
-import { saveTypes } from '../models/save-types';
-import { sizes } from '../models/sizes';
-import { skills } from '../models/skills';
-import { spellSchools } from '../models/spell-schools';
-import { statArrays } from '../models/stat-arrays';
-import { stats } from '../models/stats';
-import { weaponProperties } from '../models/weapon-properties';
-import { chaosMagicRows } from '../models/chaos-magic';
-import { gmgGoldByLevel } from '../models/gmg-gold-by-level';
-import { gmgMonsterBuilderLevels } from '../models/gmg-monster-builder-levels';
 import {
 	armorDetailHrefFromCoreRules,
 	armorRows,
 	armorTableSections,
 	type ArmorCategory,
 } from '../models/armor';
+import { backgrounds } from '../models/backgrounds';
+import { chaosMagicRows } from '../models/chaos-magic';
+import { heroClasses } from '../models/class';
+import { conditions } from '../models/conditions';
+import { dcExamples } from '../models/dc-examples';
+import { downtimeActivities } from '../models/downtime-activities';
+import { glossary } from '../models/glossary';
+import { gmgGoldByLevel } from '../models/gmg-gold-by-level';
+import { gmgMonsterBuilderLevels } from '../models/gmg-monster-builder-levels';
+import { languages } from '../models/languages';
+import { magicalItemRarities } from '../models/magical-item-rarities';
+import {
+	magicalItemDetailHrefFromCoreRules,
+	magicalItems,
+	type MagicalItemData,
+} from '../models/magical-items';
 import {
 	miscAdventuringEquipment,
 	miscAdventuringEquipmentDetailHrefFromCoreRules,
 } from '../models/misc-adventuring-equipment';
-import { magicalItemRarities } from '../models/magical-item-rarities';
+import { optionalVariantRules } from '../models/optional-variant-rules';
+import { saveTypes } from '../models/save-types';
+import { sizes } from '../models/sizes';
+import { skills } from '../models/skills';
+import { spellSchools } from '../models/spell-schools';
 import { spellScrollCosts } from '../models/spell-scroll-costs';
+import { statArrays } from '../models/stat-arrays';
+import { stats } from '../models/stats';
 import { wandCosts } from '../models/wand-costs';
+import { weaponProperties } from '../models/weapon-properties';
 import {
 	weaponDetailHrefFromCoreRules,
 	weapons,
 	type WeaponRowData,
 } from '../models/weapons';
+import { compareReferenceRowsByName } from './reference-index-sort';
 
 /** Matches `DataTable` column shape (defined here to avoid circular imports). */
 export type DocTableColumn = {
@@ -108,8 +108,8 @@ export function downtimeBulletLines(): MarkdownLineItem[] {
 }
 
 export function characterClassBulletLines(): MarkdownLineItem[] {
-	return characterClasses.map((c) => ({
-		markdown: `**${c.name.toUpperCase()}.** ${c.description}`,
+	return heroClasses.map((c) => ({
+		markdown: `[**${c.name.toUpperCase()}**](/classes/${c.id}). ${c.summary}`,
 	}));
 }
 
