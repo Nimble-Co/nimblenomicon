@@ -1,0 +1,55 @@
+---
+export type ReferenceIndexTableColumn = {
+	/** Stable machine id for future sort/filter hooks. */
+	id: string;
+	label: string;
+};
+
+export type ReferenceIndexTableRow = {
+	lead: { href: string; text: string };
+	rest: string[];
+};
+
+interface Props {
+	columns: ReferenceIndexTableColumn[];
+	rows: ReferenceIndexTableRow[];
+}
+
+const { columns, rows } = Astro.props;
+
+const idxCell =
+	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
+const idxHead = `${idxCell} font-semibold`;
+---
+
+<div class="sl-markdown-content not-content" data-reference-index="true">
+	<table class="w-full border-collapse">
+		<thead>
+			<tr>
+				{
+					columns.map((col) => (
+						<th class={idxHead} scope="col" data-column-id={col.id}>
+							{col.label}
+						</th>
+					))
+				}
+			</tr>
+		</thead>
+		<tbody>
+			{
+				rows.map((row) => (
+					<tr>
+						<th class={idxCell} scope="row" data-column-id={columns[0]?.id}>
+							<a href={row.lead.href}>{row.lead.text}</a>
+						</th>
+						{row.rest.map((cell, i) => (
+							<td class={idxCell} data-column-id={columns[i + 1]?.id}>
+								{cell}
+							</td>
+						))}
+					</tr>
+				))
+			}
+		</tbody>
+	</table>
+</div>

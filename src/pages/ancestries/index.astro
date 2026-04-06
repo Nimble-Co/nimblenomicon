@@ -1,5 +1,6 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
 import {
 	ancestries,
 	compareAncestryRowsForListing,
@@ -12,9 +13,16 @@ function sectionLabel(section: (typeof rows)[number]['section']): string {
 	return section === 'common' ? 'Common' : 'Exotic';
 }
 
-const idxCell =
-	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
-const idxHead = `${idxCell} font-semibold`;
+const columns = [
+	{ id: 'name', label: 'Name' },
+	{ id: 'section', label: 'Section' },
+	{ id: 'size', label: 'Size' },
+];
+
+const tableRows = rows.map((row) => ({
+	lead: { href: `./${row.id}/`, text: row.name },
+	rest: [sectionLabel(row.section), formatAncestrySize(row.size)],
+}));
 ---
 
 <StarlightPage
@@ -28,28 +36,5 @@ const idxHead = `${idxCell} font-semibold`;
 	}}
 	hasSidebar={false}
 >
-	<div class="sl-markdown-content not-content">
-		<table class="w-full border-collapse">
-			<thead>
-				<tr>
-					<th class={idxHead} scope="col">Name</th>
-					<th class={idxHead} scope="col">Section</th>
-					<th class={idxHead} scope="col">Size</th>
-				</tr>
-			</thead>
-			<tbody>
-				{
-					rows.map((row) => (
-						<tr>
-							<th class={idxCell} scope="row">
-								<a href={`./${row.id}/`}>{row.name}</a>
-							</th>
-							<td class={idxCell}>{sectionLabel(row.section)}</td>
-							<td class={idxCell}>{formatAncestrySize(row.size)}</td>
-						</tr>
-					))
-				}
-			</tbody>
-		</table>
-	</div>
+	<ReferenceIndexTable columns={columns} rows={tableRows} />
 </StarlightPage>

@@ -1,5 +1,6 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
 import {
 	compareWeaponRowsForListing,
 	formatWeaponCategory,
@@ -8,9 +9,17 @@ import {
 
 const rows = [...weapons].sort(compareWeaponRowsForListing);
 
-const idxCell =
-	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
-const idxHead = `${idxCell} font-semibold`;
+const columns = [
+	{ id: 'name', label: 'Name' },
+	{ id: 'category', label: 'Category' },
+	{ id: 'damage', label: 'Damage' },
+	{ id: 'cost', label: 'Cost' },
+];
+
+const tableRows = rows.map((row) => ({
+	lead: { href: `./${row.id}/`, text: row.name },
+	rest: [formatWeaponCategory(row.category), row.damage, row.cost],
+}));
 ---
 
 <StarlightPage
@@ -24,30 +33,5 @@ const idxHead = `${idxCell} font-semibold`;
 	}}
 	hasSidebar={false}
 >
-	<div class="sl-markdown-content not-content">
-		<table class="w-full border-collapse">
-			<thead>
-				<tr>
-					<th class={idxHead} scope="col">Name</th>
-					<th class={idxHead} scope="col">Category</th>
-					<th class={idxHead} scope="col">Damage</th>
-					<th class={idxHead} scope="col">Cost</th>
-				</tr>
-			</thead>
-			<tbody>
-				{
-					rows.map((row) => (
-						<tr>
-							<th class={idxCell} scope="row">
-								<a href={`./${row.id}/`}>{row.name}</a>
-							</th>
-							<td class={idxCell}>{formatWeaponCategory(row.category)}</td>
-							<td class={idxCell}>{row.damage}</td>
-							<td class={idxCell}>{row.cost}</td>
-						</tr>
-					))
-				}
-			</tbody>
-		</table>
-	</div>
+	<ReferenceIndexTable columns={columns} rows={tableRows} />
 </StarlightPage>

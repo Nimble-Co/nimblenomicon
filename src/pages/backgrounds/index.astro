@@ -1,15 +1,18 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
 import {
 	backgrounds,
 	compareBackgroundRowsForListing,
 } from '../../models/backgrounds';
 
-const rows = [...backgrounds].sort(compareBackgroundRowsForListing);
-
-const idxCell =
-	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
-const idxHead = `${idxCell} font-semibold`;
+const columns = [{ id: 'name', label: 'Name' }];
+const rows = [...backgrounds]
+	.sort(compareBackgroundRowsForListing)
+	.map((row) => ({
+		lead: { href: `/backgrounds/${row.id}/`, text: row.name },
+		rest: [],
+	}));
 ---
 
 <StarlightPage
@@ -23,24 +26,5 @@ const idxHead = `${idxCell} font-semibold`;
 	}}
 	hasSidebar={false}
 >
-	<div class="sl-markdown-content not-content">
-		<table class="w-full border-collapse">
-			<thead>
-				<tr>
-					<th class={idxHead} scope="col">Name</th>
-				</tr>
-			</thead>
-			<tbody>
-				{
-					rows.map((row) => (
-						<tr>
-							<th class={idxCell} scope="row">
-								<a href={`/backgrounds/${row.id}/`}>{row.name}</a>
-							</th>
-						</tr>
-					))
-				}
-			</tbody>
-		</table>
-	</div>
+	<ReferenceIndexTable columns={columns} rows={rows} />
 </StarlightPage>

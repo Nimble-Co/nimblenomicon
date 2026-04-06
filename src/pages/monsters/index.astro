@@ -1,5 +1,6 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
 import { legendaryMonsters } from '../../models/legendary-monsters';
 import { monsters } from '../../models/monsters';
 
@@ -41,9 +42,25 @@ const legendaryRows: ListingRow[] = legendaryMonsters.map((m) => ({
 
 const rows = [...regularRows, ...legendaryRows];
 
-const idxCell =
-	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
-const idxHead = `${idxCell} font-semibold`;
+const columns = [
+	{ id: 'name', label: 'Name' },
+	{ id: 'level', label: 'Level' },
+	{ id: 'legendary', label: 'Legendary' },
+	{ id: 'kind', label: 'Kind' },
+	{ id: 'family', label: 'Family' },
+	{ id: 'minion', label: 'Minion' },
+];
+
+const tableRows = rows.map((row) => ({
+	lead: { href: `/monsters/${row.id}/`, text: row.name },
+	rest: [
+		row.level,
+		row.isLegendary ? 'Legendary' : '',
+		row.isLegendary ? '' : (row.kind ?? ''),
+		row.isLegendary ? '' : (row.family ?? ''),
+		row.minionLabel,
+	],
+}));
 ---
 
 <StarlightPage
@@ -57,36 +74,5 @@ const idxHead = `${idxCell} font-semibold`;
 	}}
 	hasSidebar={false}
 >
-	<div class="sl-markdown-content not-content">
-		<table class="w-full border-collapse">
-			<thead>
-				<tr>
-					<th class={idxHead} scope="col">Name</th>
-					<th class={idxHead} scope="col">Level</th>
-					<th class={idxHead} scope="col">Legendary</th>
-					<th class={idxHead} scope="col">Kind</th>
-					<th class={idxHead} scope="col">Family</th>
-					<th class={idxHead} scope="col">Minion</th>
-				</tr>
-			</thead>
-			<tbody>
-				{
-					rows.map((row) => (
-						<tr>
-							<th class={idxCell} scope="row">
-								<a href={`/monsters/${row.id}/`}>{row.name}</a>
-							</th>
-							<td class={idxCell}>{row.level}</td>
-							<td class={idxCell}>{row.isLegendary ? 'Legendary' : ''}</td>
-							<td class={idxCell}>{row.isLegendary ? '' : (row.kind ?? '')}</td>
-							<td class={idxCell}>
-								{row.isLegendary ? '' : (row.family ?? '')}
-							</td>
-							<td class={idxCell}>{row.minionLabel}</td>
-						</tr>
-					))
-				}
-			</tbody>
-		</table>
-	</div>
+	<ReferenceIndexTable columns={columns} rows={tableRows} />
 </StarlightPage>

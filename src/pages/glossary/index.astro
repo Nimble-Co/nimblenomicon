@@ -2,11 +2,16 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { compareGlossaryRowsForListing, glossary } from '../../models/glossary';
 
-const rows = [...glossary].sort(compareGlossaryRowsForListing);
+import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
 
-const idxCell =
-	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
-const idxHead = `${idxCell} font-semibold`;
+const sorted = [...glossary].sort(compareGlossaryRowsForListing);
+
+const columns = [{ id: 'term', label: 'Term' }];
+
+const rows = sorted.map((row) => ({
+	lead: { href: `./${row.id}/`, text: row.name },
+	rest: [],
+}));
 ---
 
 <StarlightPage
@@ -20,24 +25,5 @@ const idxHead = `${idxCell} font-semibold`;
 	}}
 	hasSidebar={false}
 >
-	<div class="sl-markdown-content not-content">
-		<table class="w-full border-collapse">
-			<thead>
-				<tr>
-					<th class={idxHead} scope="col">Term</th>
-				</tr>
-			</thead>
-			<tbody>
-				{
-					rows.map((row) => (
-						<tr>
-							<th class={idxCell} scope="row">
-								<a href={`./${row.id}/`}>{row.name}</a>
-							</th>
-						</tr>
-					))
-				}
-			</tbody>
-		</table>
-	</div>
+	<ReferenceIndexTable columns={columns} rows={rows} />
 </StarlightPage>
