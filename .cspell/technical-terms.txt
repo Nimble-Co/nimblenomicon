@@ -11,6 +11,7 @@ halfling
 hrefs
 longsword
 MDX
+nimblerpg
 Pagefind
 scroller
 sindresorhus

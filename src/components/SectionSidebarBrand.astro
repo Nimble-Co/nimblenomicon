@@ -14,12 +14,9 @@ const brand = SECTION_METADATA[sectionKey];
 ---
 
 <div class="nimble-section-brand">
-	<img
-		class="nimble-section-brand__icon"
-		src={brand.icon.src}
-		width={brand.sidebar.width}
-		height={brand.sidebar.height}
-		alt=""
+	<span
+		class="nimble-section-brand__icon nimble-section-brand__icon-svg text-fg-muted"
+		set:html={brand.iconSvg}
 		aria-hidden="true"
 	/>
 	<p class="nimble-section-brand__title">{brand.label}</p>
@@ -34,9 +31,17 @@ const brand = SECTION_METADATA[sectionKey];
 	}
 
 	.nimble-section-brand__icon {
-		display: block;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		margin: 0 auto 0.5rem;
 		width: 2.5rem;
+		height: auto;
+	}
+
+	.nimble-section-brand__icon-svg :global(svg) {
+		display: block;
+		width: 100%;
 		height: auto;
 	}
 

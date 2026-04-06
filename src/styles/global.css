@@ -72,11 +72,14 @@ html[data-theme='dark'] {
 	 * border-hairline) — do not inline `var(--sl-…)` in class strings; add aliases here instead.
 	 */
 	--color-surface: var(--sl-color-bg);
+	--color-surface-nav: var(--sl-color-bg-nav);
 	--color-fg: var(--sl-color-text);
 	--color-fg-muted: var(--sl-color-gray-3);
 	--color-hairline: var(--sl-color-hairline-light);
 	--color-surface-code: var(--sl-color-bg-inline-code);
 	--color-danger: var(--sl-color-red);
+	/* Beaufort Pro — matches `--nimble-font-heading` in `:root`; for `font-heading` utilities. */
+	--font-heading: 'beaufort-pro', serif;
 }
 
 :root {

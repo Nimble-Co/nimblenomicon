@@ -1,94 +1,187 @@
 ---
 import bookIcon from '../assets/nimblenomicon_icon.svg';
+import bookIconRaw from '../assets/nimblenomicon_icon.svg?raw';
 import { HOME_REFERENCE_LINKS } from '../config/home-reference-links';
 import { SEARCH_PLACEHOLDER } from '../config/search';
 import { SECTION_KEYS, SECTION_METADATA } from '../config/section-sidebars';
+import { formatNewsDate, getLatestNimbleNews } from '../lib/nimble-news';
+
+const newsItems = await getLatestNimbleNews(3);
+
+/** Theme-aware hero mark: Starlight header still uses the file as a raster `img`, so we only swap fills here */
+const bookIconHtml = bookIconRaw.replaceAll(
+	'fill="#2A2526"',
+	'fill="currentColor"',
+);
 
 const bookNavItems = SECTION_KEYS.map((key) => {
 	const m = SECTION_METADATA[key];
 	return {
 		label: m.label,
 		href: m.path,
-		icon: m.icon,
-		iconWidth: m.home.width,
-		iconHeight: m.home.height,
+		iconSvg: m.iconSvg,
 	};
 });
 ---
 
-<section class="home-landing" aria-label="Home">
-	<div class="home-landing__brand">
-		<img
-			class="home-landing__book"
-			src={bookIcon.src}
-			width="168"
-			height="210"
-			alt=""
-			aria-hidden="true"
-		/>
-		<div class="home-landing__title-stack">
-			<span class="home-landing__the">THE</span>
-			<span class="home-landing__name">NIMBLENOMICON</span>
-		</div>
-	</div>
-
-	<div class="home-landing__search" role="search">
-		<button
-			type="button"
-			class="home-landing__search-trigger"
-			aria-label={SEARCH_PLACEHOLDER}
-			aria-keyshortcuts="Control+K"
-		>
-			<svg
-				class="home-landing__search-icon"
-				width="20"
-				height="20"
-				viewBox="0 0 24 24"
+<section
+	class="mx-auto flex w-full max-w-none flex-col items-center justify-center gap-[clamp(2rem,5vw,3rem)] px-[max(1rem,env(safe-area-inset-left,0px))] py-8 pb-12 text-center text-fg min-h-[calc(100vh-var(--sl-nav-height)-3rem)]"
+	aria-label="Home"
+>
+	<div
+		class="flex w-full max-w-[40rem] flex-col items-center gap-[clamp(1.75rem,4vw,2.5rem)]"
+	>
+		<div class="flex flex-col items-center gap-5">
+			<span
+				class="mx-auto block w-[clamp(7rem,22vw,10.5rem)] text-fg [&_svg]:block [&_svg]:h-auto [&_svg]:w-full"
+				set:html={bookIconHtml}
 				aria-hidden="true"
+			/>
+			<div class="flex flex-col items-center gap-[0.15em] uppercase">
+				<span
+					class="font-heading text-[clamp(0.75rem,2vw,0.9375rem)] font-bold italic tracking-[0.2em]"
+					>THE</span
+				>
+				<span
+					class="font-heading text-[clamp(1.5rem,5vw,2.35rem)] font-bold italic leading-[1.05] tracking-[0.08em]"
+					>NIMBLENOMICON</span
+				>
+			</div>
+		</div>
+
+		<div class="w-full" role="search">
+			<button
+				type="button"
+				class="box-border flex w-full cursor-pointer items-center gap-[0.65rem] rounded-full border border-hairline bg-surface-nav py-[0.65rem] pl-4 pr-4 text-left font-inherit text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
+				data-home-search-trigger
+				aria-label={SEARCH_PLACEHOLDER}
+				aria-keyshortcuts="Control+K"
 			>
-				<path
-					fill="currentColor"
-					d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-				></path>
-			</svg>
-			<span class="home-landing__search-placeholder">{SEARCH_PLACEHOLDER}</span>
-		</button>
-	</div>
+				<svg
+					class="shrink-0 text-fg-muted opacity-85 dark:opacity-100"
+					width="20"
+					height="20"
+					viewBox="0 0 24 24"
+					aria-hidden="true"
+				>
+					<path
+						fill="currentColor"
+						d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+					></path>
+				</svg>
+				<span
+					class="min-w-0 flex-1 font-sans text-[0.9375rem] italic text-fg-muted"
+					>{SEARCH_PLACEHOLDER}</span
+				>
+			</button>
+		</div>
 
-	<ul class="home-landing__grid" role="list">
-		{
-			bookNavItems.map(({ label, href, icon, iconWidth, iconHeight }) => (
-				<li>
-					<a class="home-landing__tile" href={href}>
-						<img
-							class="home-landing__tile-img"
-							src={icon.src}
-							width={iconWidth}
-							height={iconHeight}
-							alt=""
-							aria-hidden="true"
-						/>
-						<span class="home-landing__tile-label">{label}</span>
-					</a>
-				</li>
-			))
-		}
-	</ul>
-
-	<nav class="home-landing__ref" aria-labelledby="home-ref-heading">
-		<h2 class="home-landing__ref-heading" id="home-ref-heading">Reference</h2>
-		<ul class="home-landing__ref-list" role="list">
+		<ul
+			class="m-0 grid w-full list-none grid-cols-2 gap-x-3 gap-y-[0.65rem] p-0"
+			role="list"
+		>
 			{
-				HOME_REFERENCE_LINKS.map(({ label, href }) => (
-					<li class="home-landing__ref-item">
-						<a class="home-landing__ref-link" href={href}>
-							{label}
+				bookNavItems.map(({ label, href, iconSvg }) => (
+					<li>
+						<a
+							class="box-border flex min-h-[3.25rem] w-full items-center gap-[0.6rem] rounded-[0.625rem] border border-hairline bg-gray-200 px-[0.85rem] py-[0.65rem] text-left text-fg no-underline transition-colors duration-75 ease-linear hover:border-fg/30 hover:bg-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 motion-reduce:transition-none dark:bg-gray-900/60 dark:hover:bg-gray-800"
+							href={href}
+						>
+							<span
+								class="inline-flex h-[22px] w-[22px] shrink-0 items-center justify-center text-fg [&_svg]:block [&_svg]:max-h-full [&_svg]:max-w-full [&_svg]:object-contain"
+								set:html={iconSvg}
+								aria-hidden="true"
+							/>
+							<span class="font-sans text-[0.8125rem] font-bold italic leading-[1.25] tracking-[0.02em] min-[30rem]:text-sm">
+								{label}
+							</span>
 						</a>
 					</li>
 				))
 			}
 		</ul>
-	</nav>
+
+		<nav class="w-full text-center" aria-labelledby="home-ref-heading">
+			<h2
+				class="mb-[0.85rem] mt-0 font-heading text-[clamp(0.7rem,1.8vw,0.8125rem)] font-bold uppercase italic tracking-[0.14em] text-fg-muted"
+				id="home-ref-heading"
+			>
+				Reference
+			</h2>
+			<ul
+				class="m-0 flex list-none flex-wrap items-baseline justify-center gap-x-[0.35rem] gap-y-2 p-0"
+				role="list"
+			>
+				{
+					HOME_REFERENCE_LINKS.map(({ label, href }) => (
+						<li class="inline-flex max-w-full items-baseline not-last:after:pointer-events-none not-last:after:ml-[0.35rem] not-last:after:font-normal not-last:after:text-fg-muted not-last:after:content-['·']">
+							<a
+								class="font-sans text-sm font-bold italic leading-[1.35] tracking-[0.02em] text-fg underline decoration-fg/35 decoration-1 underline-offset-[0.15em] transition-colors duration-75 ease-linear hover:decoration-fg focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 motion-reduce:transition-none min-[30rem]:text-[0.9375rem]"
+								href={href}
+							>
+								{label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+	</div>
+
+	{
+		newsItems.length > 0 && (
+			<section
+				class="mx-auto w-full max-w-[min(56rem,100%)] text-center"
+				aria-labelledby="home-news-heading"
+			>
+				<h2
+					class="mb-5 mt-0 font-heading text-[clamp(0.7rem,1.8vw,0.8125rem)] font-bold uppercase italic tracking-[0.14em] text-fg-muted"
+					id="home-news-heading"
+				>
+					— Latest News —
+				</h2>
+				<ul
+					class="m-0 grid list-none grid-cols-1 gap-6 p-0 text-center min-[42rem]:grid-cols-3 min-[42rem]:items-stretch min-[42rem]:gap-x-5 min-[42rem]:gap-y-4"
+					role="list"
+				>
+					{newsItems.map((item) => (
+						<li class="m-0 flex min-w-0 flex-col">
+							<a
+								class="flex min-h-full w-full flex-1 flex-col items-center gap-[0.65rem] no-underline text-fg transition-opacity duration-75 ease-linear hover:opacity-90 focus-visible:rounded-[0.625rem] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-500 motion-reduce:transition-none"
+								href={item.url}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<time
+									class="font-heading text-[clamp(0.65rem,1.6vw,0.75rem)] font-semibold not-italic tracking-[0.08em] text-fg-muted"
+									datetime={item.publishedIso}
+								>
+									{formatNewsDate(item.publishedIso)}
+								</time>
+								<span class="flex-[1_1_auto] self-stretch font-heading text-[clamp(0.95rem,2.2vw,1.125rem)] font-bold italic leading-[1.2] tracking-[0.02em] text-fg">
+									{item.title}
+								</span>
+								<span class="box-border block aspect-video w-full shrink-0 self-stretch overflow-hidden rounded-lg border border-hairline bg-gray-200 dark:bg-gray-900/60">
+									<img
+										class:list={[
+											'block h-full w-full',
+											item.imageUrl ? 'object-cover' : 'object-contain p-5',
+										]}
+										src={item.imageUrl ?? bookIcon.src}
+										width="640"
+										height="360"
+										loading="lazy"
+										decoding="async"
+										alt=""
+									/>
+								</span>
+							</a>
+						</li>
+					))}
+				</ul>
+			</section>
+		)
+	}
 </section>
 
 <script>
@@ -115,7 +208,7 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 
 	function wireHomeSearch() {
 		document
-			.querySelector('.home-landing__search-trigger')
+			.querySelector('[data-home-search-trigger]')
 			?.addEventListener('click', openHeaderSearch);
 	}
 
@@ -125,267 +218,3 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 		wireHomeSearch();
 	}
 </script>
-
-<style>
-	.home-landing {
-		--home-fg: #252b42;
-		--home-muted: #707070;
-		--home-border: #c8c8c8;
-		--home-surface: #ebebeb;
-		--home-input-bg: #ffffff;
-
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		min-height: calc(100vh - var(--sl-nav-height) - 3rem);
-		max-width: 40rem;
-		margin-inline: auto;
-		padding-block: 2rem 3rem;
-		gap: clamp(1.75rem, 4vw, 2.5rem);
-		color: var(--home-fg);
-	}
-
-	.home-landing__brand {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 1.25rem;
-	}
-
-	.home-landing__book {
-		width: clamp(7rem, 22vw, 10.5rem);
-		height: auto;
-		display: block;
-	}
-
-	.home-landing__title-stack {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 0.15em;
-		text-transform: uppercase;
-	}
-
-	.home-landing__the {
-		font-family: var(--nimble-font-heading);
-		font-size: clamp(0.75rem, 2vw, 0.9375rem);
-		font-weight: 700;
-		font-style: italic;
-		letter-spacing: 0.2em;
-	}
-
-	.home-landing__name {
-		font-family: var(--nimble-font-heading);
-		font-size: clamp(1.5rem, 5vw, 2.35rem);
-		font-weight: 700;
-		font-style: italic;
-		letter-spacing: 0.08em;
-		line-height: 1.05;
-	}
-
-	.home-landing__search {
-		width: 100%;
-	}
-
-	.home-landing__search-trigger {
-		display: flex;
-		align-items: center;
-		gap: 0.65rem;
-		width: 100%;
-		padding: 0.65rem 1rem;
-		border: 1px solid var(--home-border);
-		border-radius: 999px;
-		background: var(--home-input-bg);
-		box-sizing: border-box;
-		cursor: pointer;
-		font: inherit;
-		text-align: left;
-		color: inherit;
-	}
-
-	.home-landing__search-trigger:focus-visible {
-		outline: 2px solid var(--sl-color-accent-high, var(--color-accent-500));
-		outline-offset: 2px;
-	}
-
-	.home-landing__search-icon {
-		flex-shrink: 0;
-		color: var(--home-muted);
-		opacity: 0.85;
-	}
-
-	.home-landing__search-placeholder {
-		flex: 1;
-		min-width: 0;
-		font-family: var(--nimble-search-trigger-font);
-		font-size: 0.9375rem;
-		font-style: italic;
-		color: var(--home-muted);
-	}
-
-	.home-landing__grid {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		width: 100%;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 0.65rem 0.75rem;
-	}
-
-	.home-landing__tile {
-		display: flex;
-		align-items: center;
-		gap: 0.6rem;
-		min-height: 3.25rem;
-		padding: 0.65rem 0.85rem;
-		border: 1px solid var(--home-border);
-		border-radius: 0.625rem;
-		background: var(--home-surface);
-		text-align: left;
-		box-sizing: border-box;
-		text-decoration: none;
-		color: inherit;
-		transition:
-			background-color 0.08s ease,
-			border-color 0.08s ease;
-	}
-
-	.home-landing__tile:hover {
-		background-color: color-mix(
-			in srgb,
-			var(--home-surface) 85%,
-			var(--home-fg)
-		);
-		border-color: color-mix(in srgb, var(--home-border) 70%, var(--home-fg));
-	}
-
-	.home-landing__tile:focus-visible {
-		outline: 2px solid var(--sl-color-accent-high, var(--color-accent-500));
-		outline-offset: 2px;
-	}
-
-	.home-landing__tile-img {
-		flex-shrink: 0;
-		width: 22px;
-		height: auto;
-		object-fit: contain;
-		display: block;
-	}
-
-	.home-landing__tile-label {
-		font-family: var(--nimble-search-trigger-font);
-		font-size: 0.8125rem;
-		font-weight: 700;
-		font-style: italic;
-		line-height: 1.25;
-		letter-spacing: 0.02em;
-	}
-
-	@media (min-width: 30rem) {
-		.home-landing__tile-label {
-			font-size: 0.875rem;
-		}
-	}
-
-	.home-landing__ref {
-		width: 100%;
-		text-align: center;
-	}
-
-	.home-landing__ref-heading {
-		margin: 0 0 0.85rem;
-		font-family: var(--nimble-font-heading);
-		font-size: clamp(0.7rem, 1.8vw, 0.8125rem);
-		font-weight: 700;
-		font-style: italic;
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
-		color: var(--home-muted);
-	}
-
-	.home-landing__ref-list {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		align-items: baseline;
-		column-gap: 0.35rem;
-		row-gap: 0.5rem;
-	}
-
-	.home-landing__ref-item {
-		display: inline-flex;
-		align-items: baseline;
-		max-width: 100%;
-	}
-
-	.home-landing__ref-item:not(:last-child)::after {
-		content: '·';
-		margin-inline-start: 0.35rem;
-		color: var(--home-muted);
-		font-weight: 400;
-		pointer-events: none;
-	}
-
-	.home-landing__ref-link {
-		font-family: var(--nimble-search-trigger-font);
-		font-size: 0.875rem;
-		font-weight: 700;
-		font-style: italic;
-		line-height: 1.35;
-		letter-spacing: 0.02em;
-		color: var(--home-fg);
-		text-decoration: underline;
-		text-decoration-thickness: 1px;
-		text-underline-offset: 0.15em;
-		text-decoration-color: color-mix(in srgb, var(--home-fg) 35%, transparent);
-		transition:
-			color 0.08s ease,
-			text-decoration-color 0.08s ease;
-	}
-
-	.home-landing__ref-link:hover {
-		text-decoration-color: var(--home-fg);
-	}
-
-	.home-landing__ref-link:focus-visible {
-		outline: 2px solid var(--sl-color-accent-high, var(--color-accent-500));
-		outline-offset: 2px;
-		border-radius: 2px;
-	}
-
-	:global(:root[data-theme='dark']) .home-landing {
-		--home-fg: var(--sl-color-text);
-		/* Brighter than gray-3 so placeholder + search glyph meet contrast on nav tiles */
-		--home-muted: var(--sl-color-gray-2);
-		--home-border: var(--sl-color-hairline-light);
-		--home-surface: color-mix(
-			in srgb,
-			var(--sl-color-bg) 82%,
-			var(--sl-color-bg-nav)
-		);
-		--home-input-bg: var(--sl-color-bg-nav);
-	}
-
-	:global(:root[data-theme='dark']) .home-landing__search-icon {
-		opacity: 1;
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.home-landing__tile,
-		.home-landing__ref-link {
-			transition: none;
-		}
-	}
-
-	@media (min-width: 30rem) {
-		.home-landing__ref-link {
-			font-size: 0.9375rem;
-		}
-	}
-</style>

@@ -2,13 +2,12 @@
  * Per-section Starlight sidebar configs. Each home tile / book gets its own nav tree;
  * other sections’ links do not appear in the sidebar.
  */
-import type { ImageMetadata } from 'astro';
-import adventuresIcon from '../assets/adventures.svg';
-import coreRulesIcon from '../assets/core_rules.svg';
-import creatorsKitIcon from '../assets/creators_kit.svg';
-import gameMasterGuideIcon from '../assets/game_master_guide.svg';
-import heroesIcon from '../assets/heroes.svg';
-import monstersAndMoreIcon from '../assets/monsters_and_more.svg';
+import adventuresIconSvg from '../assets/adventures.svg?raw';
+import coreRulesIconSvg from '../assets/core_rules.svg?raw';
+import creatorsKitIconSvg from '../assets/creators_kit.svg?raw';
+import gameMasterGuideIconSvg from '../assets/game_master_guide.svg?raw';
+import heroesIconSvg from '../assets/heroes.svg?raw';
+import monstersAndMoreIconSvg from '../assets/monsters_and_more.svg?raw';
 
 export const SECTION_KEYS = [
 	'core-rules',
@@ -24,7 +23,8 @@ export type SectionKey = (typeof SECTION_KEYS)[number];
 export type SectionPresentation = {
 	label: string;
 	path: string;
-	icon: ImageMetadata;
+	/** Inline SVG markup (`fill="currentColor"` in source) for theme-aware color */
+	iconSvg: string;
 	home: { width: number; height: number };
 	sidebar: { width: number; height: number };
 };
@@ -34,42 +34,42 @@ export const SECTION_METADATA = {
 	'core-rules': {
 		label: 'Core Rules',
 		path: '/core-rules/',
-		icon: coreRulesIcon,
+		iconSvg: coreRulesIconSvg,
 		home: { width: 20, height: 23 },
 		sidebar: { width: 40, height: 46 },
 	},
 	heroes: {
 		label: 'Heroes',
 		path: '/heroes/',
-		icon: heroesIcon,
+		iconSvg: heroesIconSvg,
 		home: { width: 17, height: 25 },
 		sidebar: { width: 34, height: 50 },
 	},
 	'game-masters-guide': {
 		label: "Game Master's Guide",
 		path: '/game-masters-guide/',
-		icon: gameMasterGuideIcon,
+		iconSvg: gameMasterGuideIconSvg,
 		home: { width: 21, height: 18 },
 		sidebar: { width: 42, height: 36 },
 	},
 	adventures: {
 		label: 'Adventures',
 		path: '/adventures/',
-		icon: adventuresIcon,
+		iconSvg: adventuresIconSvg,
 		home: { width: 20, height: 18 },
 		sidebar: { width: 40, height: 36 },
 	},
 	'monsters-and-more': {
 		label: 'Monsters & More',
 		path: '/monsters-and-more/',
-		icon: monstersAndMoreIcon,
+		iconSvg: monstersAndMoreIconSvg,
 		home: { width: 20, height: 21 },
 		sidebar: { width: 40, height: 42 },
 	},
 	'creators-kit': {
 		label: "Creator's Kit",
 		path: '/creators-kit/',
-		icon: creatorsKitIcon,
+		iconSvg: creatorsKitIconSvg,
 		home: { width: 17, height: 23 },
 		sidebar: { width: 34, height: 46 },
 	},
