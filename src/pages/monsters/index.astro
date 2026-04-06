@@ -3,6 +3,7 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
 import { legendaryMonsters } from '../../models/legendary-monsters';
 import { monsters } from '../../models/monsters';
+import { compareReferenceRowsByName } from '../../utils/reference-index-sort';
 
 type ListingRow =
 	| {
@@ -40,7 +41,9 @@ const legendaryRows: ListingRow[] = legendaryMonsters.map((m) => ({
 	minionLabel: '',
 }));
 
-const rows = [...regularRows, ...legendaryRows];
+const rows = [...regularRows, ...legendaryRows].sort(
+	compareReferenceRowsByName,
+);
 
 const columns = [
 	{ id: 'name', label: 'Name' },
@@ -67,7 +70,7 @@ const tableRows = rows.map((row) => ({
 	frontmatter={{
 		title: 'Monsters',
 		description:
-			'Index of regular and legendary monsters with links to each stat block.',
+			'Alphabetical index of regular and legendary monsters with links to each stat block.',
 		tableOfContents: false,
 		prev: false,
 		next: false,

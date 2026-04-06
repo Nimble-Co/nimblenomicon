@@ -1,19 +1,18 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
-import {
-	compareConditionRowsForListing,
-	conditions,
-} from '../../models/conditions';
+import { conditions } from '../../models/conditions';
+import { compareReferenceRowsByName } from '../../utils/reference-index-sort';
 
-const columns = [{ id: 'name', label: 'Name' }];
+const columns = [
+	{ id: 'name', label: 'Name' },
+	{ id: 'description', label: 'Description' },
+];
 
-const rows = [...conditions]
-	.sort(compareConditionRowsForListing)
-	.map((row) => ({
-		lead: { href: `./${row.id}/`, text: row.name },
-		rest: [],
-	}));
+const rows = [...conditions].sort(compareReferenceRowsByName).map((row) => ({
+	lead: { href: `./${row.id}/`, text: row.name },
+	rest: [row.description],
+}));
 ---
 
 <StarlightPage

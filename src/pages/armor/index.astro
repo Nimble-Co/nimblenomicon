@@ -1,13 +1,10 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
-import {
-	armorRows,
-	compareArmorRowsForListing,
-	formatArmorCategoryLabel,
-} from '../../models/armor';
+import { armorRows, formatArmorCategoryLabel } from '../../models/armor';
+import { compareReferenceRowsByName } from '../../utils/reference-index-sort';
 
-const rows = [...armorRows].sort(compareArmorRowsForListing).map((row) => ({
+const rows = [...armorRows].sort(compareReferenceRowsByName).map((row) => ({
 	lead: { href: `./${row.id}/`, text: row.name },
 	rest: [formatArmorCategoryLabel(row.category), row.armor, row.cost],
 }));
@@ -24,7 +21,7 @@ const columns = [
 	frontmatter={{
 		title: 'Armor',
 		description:
-			'Index of armor and shields by section with links to each item’s stats.',
+			'Alphabetical index of armor and shields with links to each item’s stats.',
 		tableOfContents: false,
 		prev: false,
 		next: false,

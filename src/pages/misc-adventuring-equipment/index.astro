@@ -1,14 +1,10 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
-import {
-	compareMiscAdventuringEquipmentRowsForListing,
-	miscAdventuringEquipment,
-} from '../../models/misc-adventuring-equipment';
+import { miscAdventuringEquipment } from '../../models/misc-adventuring-equipment';
+import { compareReferenceRowsByName } from '../../utils/reference-index-sort';
 
-const rows = [...miscAdventuringEquipment].sort(
-	compareMiscAdventuringEquipmentRowsForListing,
-);
+const rows = [...miscAdventuringEquipment].sort(compareReferenceRowsByName);
 const columns = [
 	{ id: 'name', label: 'Name' },
 	{ id: 'cost', label: 'Cost' },
@@ -24,7 +20,7 @@ const tableRows = rows.map((row) => ({
 	frontmatter={{
 		title: 'Misc. Adventuring Equipment',
 		description:
-			'Index of miscellaneous adventuring gear with links to each item’s full rules.',
+			'Alphabetical index of miscellaneous adventuring gear with links to each item’s full rules.',
 		tableOfContents: false,
 		prev: false,
 		next: false,

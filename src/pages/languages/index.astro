@@ -1,16 +1,17 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
-import {
-	compareLanguageRowsForListing,
-	languages,
-} from '../../models/languages';
+import { languages } from '../../models/languages';
+import { compareReferenceRowsByName } from '../../utils/reference-index-sort';
 
-const columns = [{ id: 'name', label: 'Name' }];
+const columns = [
+	{ id: 'name', label: 'Name' },
+	{ id: 'description', label: 'Description' },
+];
 
-const rows = [...languages].sort(compareLanguageRowsForListing).map((row) => ({
+const rows = [...languages].sort(compareReferenceRowsByName).map((row) => ({
 	lead: { href: `./${row.id}/`, text: row.name },
-	rest: [],
+	rest: [row.description],
 }));
 ---
 

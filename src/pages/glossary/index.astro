@@ -1,16 +1,19 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import { compareGlossaryRowsForListing, glossary } from '../../models/glossary';
-
 import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
+import { glossary } from '../../models/glossary';
+import { compareReferenceRowsByName } from '../../utils/reference-index-sort';
 
-const sorted = [...glossary].sort(compareGlossaryRowsForListing);
+const sorted = [...glossary].sort(compareReferenceRowsByName);
 
-const columns = [{ id: 'term', label: 'Term' }];
+const columns = [
+	{ id: 'term', label: 'Term' },
+	{ id: 'description', label: 'Description' },
+];
 
 const rows = sorted.map((row) => ({
 	lead: { href: `./${row.id}/`, text: row.name },
-	rest: [],
+	rest: [row.description],
 }));
 ---
 

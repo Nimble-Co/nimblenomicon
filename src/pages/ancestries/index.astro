@@ -1,13 +1,10 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
-import {
-	ancestries,
-	compareAncestryRowsForListing,
-	formatAncestrySize,
-} from '../../models/ancestries';
+import { ancestries, formatAncestrySize } from '../../models/ancestries';
+import { compareReferenceRowsByName } from '../../utils/reference-index-sort';
 
-const rows = [...ancestries].sort(compareAncestryRowsForListing);
+const rows = [...ancestries].sort(compareReferenceRowsByName);
 
 function sectionLabel(section: (typeof rows)[number]['section']): string {
 	return section === 'common' ? 'Common' : 'Exotic';
@@ -29,7 +26,7 @@ const tableRows = rows.map((row) => ({
 	frontmatter={{
 		title: 'Ancestries',
 		description:
-			'Index of ancestries by section with links to each ancestry’s full rules.',
+			'Alphabetical index of ancestries with links to each ancestry’s full rules.',
 		tableOfContents: false,
 		prev: false,
 		next: false,

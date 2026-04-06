@@ -17,11 +17,11 @@ import { downtimeActivities } from '../models/downtime-activities';
 import { glossary } from '../models/glossary';
 import { languages } from '../models/languages';
 import {
-	compareMagicalItemsForListing,
 	magicalItemDetailHrefFromCoreRules,
 	magicalItems,
 	type MagicalItemData,
 } from '../models/magical-items';
+import { compareReferenceRowsByName } from '../utils/reference-index-sort';
 import { optionalVariantRules } from '../models/optional-variant-rules';
 import { saveTypes } from '../models/save-types';
 import { sizes } from '../models/sizes';
@@ -198,8 +198,8 @@ export function magicalItemBlocks(kind?: MagicalItemData['kind']): {
 	const rows = kind
 		? magicalItems
 				.filter((item) => item.kind === kind)
-				.sort(compareMagicalItemsForListing)
-		: [...magicalItems].sort(compareMagicalItemsForListing);
+				.sort(compareReferenceRowsByName)
+		: [...magicalItems].sort(compareReferenceRowsByName);
 
 	return rows.map((item) => ({
 		id: item.id,

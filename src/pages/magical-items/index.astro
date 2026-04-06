@@ -2,29 +2,27 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import ReferenceIndexTable from '../../components/ReferenceIndexTable.astro';
 import {
-	compareMagicalItemsForListing,
 	formatMagicalItemKind,
 	magicalItems,
 } from '../../models/magical-items';
+import { compareReferenceRowsByName } from '../../utils/reference-index-sort';
 
 const columns = [
 	{ id: 'name', label: 'Name' },
 	{ id: 'type', label: 'Type' },
 ];
 
-const rows = [...magicalItems]
-	.sort(compareMagicalItemsForListing)
-	.map((row) => ({
-		lead: { href: `./${row.id}/`, text: row.name },
-		rest: [formatMagicalItemKind(row.kind)],
-	}));
+const rows = [...magicalItems].sort(compareReferenceRowsByName).map((row) => ({
+	lead: { href: `./${row.id}/`, text: row.name },
+	rest: [formatMagicalItemKind(row.kind)],
+}));
 ---
 
 <StarlightPage
 	frontmatter={{
 		title: 'Magic Items',
 		description:
-			'Index of magic items and wands with links to each item’s full rules.',
+			'Alphabetical index of magic items and wands with links to each item’s full rules.',
 		tableOfContents: false,
 		prev: false,
 		next: false,
