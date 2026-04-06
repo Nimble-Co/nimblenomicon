@@ -114,12 +114,15 @@ const statRows: { label: string; value: string }[] = [
 						<p class="m-0 w-28 shrink-0 text-sm italic text-fg-muted">
 							Level {lvl.level}
 						</p>
-						<div class="min-w-0 flex-1 space-y-3 text-base leading-snug">
+						<div class="flex min-w-0 flex-1 flex-col gap-5 text-base leading-snug">
 							{lvl.abilities.map((a) => (
-								<p class="m-0 text-fg">
-									<strong>{a.heading}</strong>{' '}
-									<span class="[&_p]:inline [&_p]:m-0" set:html={a.html} />
-								</p>
+								<div class="text-fg">
+									<strong class="font-bold">{a.heading}</strong>{' '}
+									<span
+										class="[&_p:first-child]:inline [&_p:first-child]:m-0 [&_p:not(:first-child)]:mt-2 [&_p:not(:first-child)]:block"
+										set:html={a.html}
+									/>
+								</div>
 							))}
 						</div>
 					</div>
@@ -140,11 +143,16 @@ const statRows: { label: string; value: string }[] = [
 							class="prose prose-sm mt-2 max-w-none text-fg [&_p]:text-fg"
 							set:html={list.introHtml}
 						/>
-						<ul class="mt-3 list-none space-y-3 p-0">
+						<ul class="mt-3 flex list-none flex-col gap-5 p-0">
 							{list.items.map((item) => (
 								<li class="text-base leading-snug text-fg">
-									<strong>{item.heading}</strong>{' '}
-									<span class="[&_p]:inline [&_p]:m-0" set:html={item.html} />
+									<div>
+										<strong class="font-bold">{item.heading}</strong>{' '}
+										<span
+											class="[&_p:first-child]:inline [&_p:first-child]:m-0 [&_p:not(:first-child)]:mt-2 [&_p:not(:first-child)]:block"
+											set:html={item.html}
+										/>
+									</div>
 								</li>
 							))}
 						</ul>
@@ -169,15 +177,15 @@ const statRows: { label: string; value: string }[] = [
 									<p class="m-0 w-28 shrink-0 text-sm italic text-fg-muted">
 										Level {lvl.level}
 									</p>
-									<div class="min-w-0 flex-1 space-y-3 text-base leading-snug">
+									<div class="flex min-w-0 flex-1 flex-col gap-5 text-base leading-snug">
 										{lvl.abilities.map((a) => (
-											<p class="m-0 text-fg">
-												<strong>{a.heading}</strong>{' '}
+											<div class="text-fg">
+												<strong class="font-bold">{a.heading}</strong>{' '}
 												<span
-													class="[&_p]:inline [&_p]:m-0"
+													class="[&_p:first-child]:inline [&_p:first-child]:m-0 [&_p:not(:first-child)]:mt-2 [&_p:not(:first-child)]:block"
 													set:html={a.html}
 												/>
-											</p>
+											</div>
 										))}
 									</div>
 								</div>
