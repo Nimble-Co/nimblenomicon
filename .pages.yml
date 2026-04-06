@@ -1229,10 +1229,10 @@ content:
           - name: lastStand
             label: Last Stand
             type: rich-text
-            required: true
+            required: false
             options:
               format: markdown
-            description: Shared Last Stand rule for the encounter.
+            description: Shared Last Stand rule for the encounter (optional).
           - name: notes
             label: Notes
             type: rich-text

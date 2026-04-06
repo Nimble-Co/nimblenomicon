@@ -32,7 +32,7 @@ const legendaryEntrySchema = z
 		creatureType: z.string().min(1),
 		actionsIntro: z.string().min(1).optional(),
 		bloodied: z.string().min(1).optional(),
-		lastStand: z.string().min(1),
+		lastStand: z.string().min(1).optional(),
 		notes: z.string().min(1).optional(),
 		creatures: z.array(legendaryCreatureSchema).min(1),
 	})
