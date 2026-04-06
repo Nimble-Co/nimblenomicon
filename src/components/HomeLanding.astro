@@ -361,14 +361,26 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 
 	:global(:root[data-theme='dark']) .home-landing {
 		--home-fg: var(--sl-color-text);
-		--home-muted: var(--sl-color-gray-3);
-		--home-border: var(--sl-color-hairline);
+		/* Brighter than gray-3 so placeholder + search glyph meet contrast on nav tiles */
+		--home-muted: var(--sl-color-gray-2);
+		--home-border: var(--sl-color-hairline-light);
 		--home-surface: color-mix(
 			in srgb,
-			var(--sl-color-bg) 88%,
-			var(--sl-color-gray-5)
+			var(--sl-color-bg) 82%,
+			var(--sl-color-bg-nav)
 		);
 		--home-input-bg: var(--sl-color-bg-nav);
+	}
+
+	:global(:root[data-theme='dark']) .home-landing__search-icon {
+		opacity: 1;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.home-landing__tile,
+		.home-landing__ref-link {
+			transition: none;
+		}
 	}
 
 	@media (min-width: 30rem) {

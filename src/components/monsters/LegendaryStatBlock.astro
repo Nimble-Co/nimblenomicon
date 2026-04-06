@@ -106,15 +106,15 @@ const teamMemberActionHtml: string[][] = isTeam
 ---
 
 <article
-	class="w-full max-w-xl rounded-md border-4 border-double border-gray-300 bg-surface p-2"
+	class="w-full max-w-xl rounded-md border-4 border-double border-[var(--sl-color-hairline-light)] bg-surface p-2 text-[var(--sl-color-text)]"
 >
 	{
 		!isTeam && soloCreature ? (
 			<>
-				<header class="flex items-end justify-between gap-3 border-b border-gray-300 pb-2">
+				<header class="flex items-end justify-between gap-3 border-b border-[var(--sl-color-hairline-light)] pb-2">
 					<hgroup class="flex min-w-0 flex-1 flex-wrap items-baseline gap-x-2">
 						<h2 class="text-xl font-bold leading-none">{monster.name}</h2>
-						<p class="m-0 text-xs font-normal italic leading-none tracking-wide text-gray-500 uppercase">
+						<p class="m-0 text-xs font-normal uppercase italic leading-none tracking-wide text-[var(--sl-color-gray-3)]">
 							{[
 								`Level ${monster.level}`,
 								'Solo',
@@ -135,7 +135,7 @@ const teamMemberActionHtml: string[][] = isTeam
 						{Boolean(armorAbbrev[soloCreature.armor]) && (
 							<li>
 								<span
-									class="inline-flex h-6 min-w-6 items-center justify-center border border-gray-300 text-xs"
+									class="inline-flex h-6 min-w-6 items-center justify-center border border-[var(--sl-color-hairline-light)] text-xs"
 									title="Armor"
 								>
 									{armorAbbrev[soloCreature.armor]}
@@ -159,7 +159,7 @@ const teamMemberActionHtml: string[][] = isTeam
 						{(soloCreature.movement.mode !== 'walk' ||
 							soloCreature.movement.speed !== 6) && (
 							<li>
-								<span class="text-gray-600">
+								<span class="text-[var(--sl-color-gray-3)]">
 									{SPEED_MODE_LABEL[soloCreature.movement.mode]}{' '}
 									{soloCreature.movement.speed}
 								</span>
@@ -209,9 +209,9 @@ const teamMemberActionHtml: string[][] = isTeam
 			</>
 		) : (
 			<>
-				<header class="border-b border-gray-300 pb-2">
+				<header class="border-b border-[var(--sl-color-hairline-light)] pb-2">
 					<hgroup class="flex min-w-0 flex-col gap-1">
-						<p class="m-0 text-xs font-normal italic leading-none tracking-wide text-gray-500 uppercase">
+						<p class="m-0 text-xs font-normal uppercase italic leading-none tracking-wide text-[var(--sl-color-gray-3)]">
 							Level {monster.level} Solo {monster.creatureType}
 						</p>
 						<h2 class="m-0 text-xl font-bold leading-none">{monster.name}</h2>
@@ -224,7 +224,12 @@ const teamMemberActionHtml: string[][] = isTeam
 
 				<div class="mt-3">
 					{monster.creatures.map((member, mi) => (
-						<div class:list={[mi > 0 && 'mt-3 border-t border-gray-300 pt-3']}>
+						<div
+							class:list={[
+								mi > 0 &&
+									'mt-3 border-t border-[var(--sl-color-hairline-light)] pt-3',
+							]}
+						>
 							<h3 class="m-0 text-base font-bold uppercase tracking-wide">
 								{member.name}
 								{member.roleLabel && (
@@ -239,12 +244,14 @@ const teamMemberActionHtml: string[][] = isTeam
 								aria-label={`Quick stats for ${member.name}`}
 							>
 								{member.size !== 'medium' && (
-									<li class="text-gray-600">{sizeLabel(member.size)}</li>
+									<li class="text-[var(--sl-color-gray-3)]">
+										{sizeLabel(member.size)}
+									</li>
 								)}
 								{Boolean(armorAbbrev[member.armor]) && (
 									<li>
 										<span
-											class="inline-flex h-6 min-w-6 items-center justify-center border border-gray-300 text-xs"
+											class="inline-flex h-6 min-w-6 items-center justify-center border border-[var(--sl-color-hairline-light)] text-xs"
 											title="Armor"
 										>
 											{armorAbbrev[member.armor]}
@@ -268,7 +275,7 @@ const teamMemberActionHtml: string[][] = isTeam
 								{(member.movement.mode !== 'walk' ||
 									member.movement.speed !== 6) && (
 									<li>
-										<span class="text-gray-600">
+										<span class="text-[var(--sl-color-gray-3)]">
 											{SPEED_MODE_LABEL[member.movement.mode]}{' '}
 											{member.movement.speed}
 										</span>
@@ -321,14 +328,14 @@ const teamMemberActionHtml: string[][] = isTeam
 
 	{
 		(bloodiedHtml || lastStandHtml) && (
-			<div class="mt-3 flex flex-col gap-3 border-t border-gray-300 pt-3 text-base leading-relaxed sm:gap-4">
+			<div class="mt-3 flex flex-col gap-3 border-t border-[var(--sl-color-hairline-light)] pt-3 text-base leading-relaxed sm:gap-4">
 				{bloodiedHtml && (
 					<section class="m-0">
 						<h3 class="m-0 text-sm font-bold uppercase tracking-wide">
 							Bloodied
 						</h3>
 						<div
-							class="[&_strong]:text-red-600 dark:[&_strong]:text-red-400 [&_p]:m-0"
+							class="[&_strong]:text-[var(--sl-color-red)] [&_p]:m-0"
 							set:html={bloodiedHtml}
 						/>
 					</section>
@@ -339,7 +346,7 @@ const teamMemberActionHtml: string[][] = isTeam
 							Last Stand
 						</h3>
 						<div
-							class="[&_strong]:text-red-600 dark:[&_strong]:text-red-400 [&_p]:m-0"
+							class="[&_strong]:text-[var(--sl-color-red)] [&_p]:m-0"
 							set:html={lastStandHtml}
 						/>
 					</section>

@@ -74,13 +74,13 @@ const metaLine = metaParts.join(', ');
 ---
 
 <article
-	class="w-full max-w-xl rounded-md border-4 border-double border-gray-300 bg-surface p-2"
+	class="w-full max-w-xl rounded-md border-4 border-double border-[var(--sl-color-hairline-light)] bg-surface p-2 text-[var(--sl-color-text)]"
 >
 	<header class="flex items-end justify-between gap-3">
 		<hgroup class="flex min-w-0 flex-1 flex-wrap items-baseline gap-x-2">
 			<h2 class="text-xl font-bold leading-none">{monster.name}</h2>
 			<p
-				class="m-0 text-xs font-normal italic leading-none tracking-wide text-gray-500 uppercase"
+				class="m-0 text-xs font-normal uppercase italic leading-none tracking-wide text-[var(--sl-color-gray-3)]"
 			>
 				{metaLine}
 			</p>
@@ -93,7 +93,7 @@ const metaLine = metaParts.join(', ');
 				hasArmorBadge && (
 					<li>
 						<span
-							class="inline-flex h-6 min-w-6 items-center justify-center border border-gray-300 text-xs"
+							class="inline-flex h-6 min-w-6 items-center justify-center border border-[var(--sl-color-hairline-light)] text-xs"
 							title="Armor"
 						>
 							{armorAbbrev[monster.armor]}
@@ -114,7 +114,7 @@ const metaLine = metaParts.join(', ');
 			{
 				showSpeed && (
 					<li>
-						<span class="text-gray-600">
+						<span class="text-[var(--sl-color-gray-3)]">
 							{SPEED_MODE_LABEL[monster.movement.mode]} {monster.movement.speed}
 						</span>
 					</li>

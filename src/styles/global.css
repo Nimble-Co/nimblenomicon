@@ -8,6 +8,14 @@ html {
 	overflow-x: clip;
 }
 
+html[data-theme='light'] {
+	color-scheme: light;
+}
+
+html[data-theme='dark'] {
+	color-scheme: dark;
+}
+
 @import '@astrojs/starlight-tailwind';
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities);
@@ -80,7 +88,7 @@ html {
 
 /*
  * Unlayered overrides win over Starlight + Tailwind layers so we can set exact brand colors.
- * Light mode only — dark theme left on defaults until it is designed.
+ * Light and dark `:root[data-theme]` blocks mirror each other where components depend on them.
  */
 :root[data-theme='light'] {
 	--sl-site-title-color: var(--color-gray-900);
@@ -92,6 +100,18 @@ html {
 	--sl-color-hairline-light: #e8e8e8;
 	--sl-color-hairline: #dedede;
 	--sl-color-hairline-shade: #e0e0e0;
+	--sl-color-backdrop-overlay: hsla(225, 12%, 28%, 0.55);
+
+	/* Core Rules book sidebar (see SidebarSublist) */
+	--nimble-book-panel: #ffffff;
+	--nimble-book-border: #e0e0e0;
+	--nimble-book-chapter-fg: #4a4a4a;
+	--nimble-book-link: #525252;
+	--nimble-book-link-hover: #252b42;
+	--nimble-book-gold: #e2b41b;
+	--nimble-book-link-current: #e2b41b;
+	--nimble-book-caret-open: #ffffff;
+	--nimble-book-hover-overlay: rgb(0 0 0 / 0.04);
 }
 
 /* Mobile drawer: Starlight uses --sl-color-black here; keep it aligned with the sidebar surface. */
@@ -114,11 +134,78 @@ html {
 	}
 }
 
-/* Header site title + logo — theme-driven (not accent color). */
+/*
+ * Dark mode — warm navy-tinted surfaces (mirrors light #252b42 + gold accent story).
+ * Contrast targets: body text vs bg ≥ 4.5:1 (AA); UI chrome vs adjacent surfaces ≥ 3:1 where applicable.
+ */
 :root[data-theme='dark'] {
 	--sl-site-title-color: var(--sl-color-text);
-	--nimble-search-trigger-bg: #2e2e2e;
-	--nimble-search-trigger-fg: #b5b5b5;
+	--sl-color-bg: #13151c;
+	--sl-color-bg-nav: #1a1d27;
+	--sl-color-bg-sidebar: #161922;
+	--sl-color-text: #e6e8f0;
+	--sl-color-bg-inline-code: #1f232e;
+	--sl-color-hairline-light: #2c3140;
+	--sl-color-hairline: #242833;
+	--sl-color-hairline-shade: #0e1015;
+	--sl-color-backdrop-overlay: hsla(222, 18%, 6%, 0.72);
+
+	--nimble-search-trigger-bg: #252a36;
+	--nimble-search-trigger-fg: #c8cdd9;
+
+	--nimble-book-panel: #1a1f2a;
+	--nimble-book-border: #2e3545;
+	--nimble-book-chapter-fg: #b4bccf;
+	--nimble-book-link: #c5cad8;
+	--nimble-book-link-hover: #eef0f7;
+	--nimble-book-gold: #e2b41b;
+	--nimble-book-link-current: #fcd34d;
+	/* Caret on open summary (gold bar): keep light glyph for contrast */
+	--nimble-book-caret-open: #ffffff;
+	--nimble-book-hover-overlay: rgb(255 255 255 / 0.06);
+}
+
+/* Mobile drawer: match sidebar surface */
+:root[data-theme='dark'] nav.sidebar .sidebar-pane {
+	background-color: #161922;
+}
+
+/* Core Rules book: slightly elevated panel */
+:root[data-theme='dark'] nav.sidebar:has(.nimble-book-shell) .sidebar-pane {
+	background-color: #181c26;
+}
+
+@media (min-width: 50rem) {
+	:root[data-theme='dark'] nav.sidebar:has(.nimble-book-shell) .sidebar-pane {
+		border-inline-end: none;
+		box-shadow:
+			4px 0 28px rgb(0 0 0 / 0.4),
+			1px 0 0 rgb(255 255 255 / 0.05);
+	}
+}
+
+/* Header site title + logo — theme-driven (not accent color). */
+
+/*
+ * Raster SVG marks use dark fills (#2A2526, #757575, …). In dark mode, map them to light glyphs
+ * so icons stay perceivable (WCAG 1.4.11 non-text contrast) without maintaining duplicate assets.
+ */
+:root[data-theme='dark'] a.site-title--nimble img,
+:root[data-theme='dark'] .home-landing__book,
+:root[data-theme='dark'] .home-landing__tile-img,
+:root[data-theme='dark'] .nimble-section-brand__icon {
+	filter: brightness(0) invert(1);
+	opacity: 0.9;
+}
+
+@media print {
+	a.site-title img,
+	.home-landing__book,
+	.home-landing__tile-img,
+	.nimble-section-brand__icon {
+		filter: none;
+		opacity: 1;
+	}
 }
 
 a.site-title {
@@ -265,6 +352,37 @@ body {
 	font-weight: 700;
 }
 
+:root[data-theme='dark']
+	nav.sidebar:not(:has(.nimble-book-shell))
+	a[aria-current='page'],
+:root[data-theme='dark']
+	nav.sidebar:not(:has(.nimble-book-shell))
+	a[aria-current='page']:hover,
+:root[data-theme='dark']
+	nav.sidebar:not(:has(.nimble-book-shell))
+	a[aria-current='page']:focus {
+	color: #0c0d10;
+	background-color: #e2b41b;
+}
+
+/* Book nav: active subsection — gold text on dark panel (accent-300 if higher contrast needed). */
+:root[data-theme='dark']
+	nav.sidebar
+	.nimble-book-section
+	a[aria-current='page'],
+:root[data-theme='dark']
+	nav.sidebar
+	.nimble-book-section
+	a[aria-current='page']:hover,
+:root[data-theme='dark']
+	nav.sidebar
+	.nimble-book-section
+	a[aria-current='page']:focus {
+	color: #fcd34d !important;
+	background-color: transparent !important;
+	font-weight: 700;
+}
+
 /* Sidebar + mobile drawer: no link underlines (Tailwind preflight / defaults win otherwise). */
 nav.sidebar a,
 nav.sidebar a:visited,
@@ -288,4 +406,11 @@ nav.sidebar a:focus-visible {
 :root[data-theme='light'] .starlight-aside.starlight-aside--caution,
 :root[data-theme='light'] .starlight-aside.starlight-aside--danger {
 	background-color: #e5e5e5;
+}
+
+:root[data-theme='dark'] .starlight-aside.starlight-aside--note,
+:root[data-theme='dark'] .starlight-aside.starlight-aside--tip,
+:root[data-theme='dark'] .starlight-aside.starlight-aside--caution,
+:root[data-theme='dark'] .starlight-aside.starlight-aside--danger {
+	background-color: #1c2028;
 }

@@ -18,7 +18,7 @@ const monstersInFamily = monsters.filter((m) => m.family?.id === familySlug);
 
 {
 	family && (
-		<section class="flex flex-col items-stretch gap-2 border-double border-4 border-gray-300 bg-surface p-2 rounded-md">
+		<section class="flex flex-col items-stretch gap-2 rounded-md border-4 border-double border-[var(--sl-color-hairline-light)] bg-surface p-2 text-[var(--sl-color-text)]">
 			<h3>{family.name}</h3>
 
 			{family.abilities.map((ability) => (
