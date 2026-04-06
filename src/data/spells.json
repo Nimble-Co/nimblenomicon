@@ -325,7 +325,7 @@
 		"name": "Eye of the Storm",
 		"castingTime": "2 Actions",
 		"target": "aoe",
-		"description": "**Reach:** 3. **Damage:** 4d4+10 bludgeoning to enemies within Reach. You may place surviving creatures anywhere within 1 space of the storm’s Reach on a failed STR save. **Upcast:** +1 Reach.",
+		"description": "**Reach:** 3. **Damage:** 4d4+10 bludgeoning to enemies within Reach. You may place surviving creatures anywhere within 1 space of the storm's Reach on a failed STR save. **Upcast:** +1 Reach.",
 		"tier": 4,
 		"source": "core-rules"
 	},

@@ -1,17 +1,17 @@
 # Contributing to Nimblenomicon
 
-We’re glad you’re here. **Nimblenomicon** is in **Phase 0** right now (early, exploratory, still taking shape). Think of this repo as living documentation that will grow with the project.
+We're glad you're here. **Nimblenomicon** is in **Phase 0** right now (early, exploratory, still taking shape). Think of this repo as living documentation that will grow with the project.
 
 ## Phase 0: PRs and issues on pause
 
-For the moment, we’re **not taking pull requests or GitHub issues**. We’re not trying to shut out community involvement. We just don’t have the **bandwidth** right now to review PRs and work through issues the way we’d want to. This is also very much **work in progress**. You’ll run into rough edges and bugs, and that’s expected while we’re still building. We’re iterating internally rather than turning every quirk into a tracked issue.
+For the moment, we're **not taking pull requests or GitHub issues**. We're not trying to shut out community involvement. We just don't have the **bandwidth** right now to review PRs and work through issues the way we'd want to. This is also very much **work in progress**. You'll run into rough edges and bugs, and that's expected while we're still building. We're iterating internally rather than turning every quirk into a tracked issue.
 
-Once **Phase 1** ships and we can make room for that kind of collaboration, we plan to open up PRs and issues. We’ll update this page when we do.
+Once **Phase 1** ships and we can make room for that kind of collaboration, we plan to open up PRs and issues. We'll update this page when we do.
 
-In the meantime, we’d love to hear from you here:
+In the meantime, we'd love to hear from you here:
 
 - **Discord:** https://discord.com/channels/1163603714565734400/1483596090929451128 (say hi, swap ideas, chat with the team and community)
-- **GitHub Discussions:** questions, suggestions, and threads. Peek at existing topics first so we don’t duplicate conversations.
+- **GitHub Discussions:** questions, suggestions, and threads. Peek at existing topics first so we don't duplicate conversations.
 
 Thanks for your patience while we focus on getting Phase 1 out the door.
 
@@ -46,7 +46,7 @@ There are no project test or lint scripts in `package.json` yet. If we add them 
 When bumping Starlight (and often `astro`):
 
 1. Note the **previous and new** `@astrojs/starlight` version in your changelog or PR description.
-2. Search the repo for **deep imports** into Starlight’s package (these can break on upgrades):
+2. Search the repo for **deep imports** into Starlight's package (these can break on upgrades):
 
    ```bash
    grep -r 'node_modules/@astrojs/starlight' src
@@ -59,9 +59,9 @@ When bumping Starlight (and often `astro`):
 
 ## Code of Conduct
 
-Be kind and constructive in **GitHub Discussions** and **Discord**. We’re all building something together, and respectful collaboration goes a long way.
+Be kind and constructive in **GitHub Discussions** and **Discord**. We're all building something together, and respectful collaboration goes a long way.
 
-If something’s fuzzy, just ask. A quick question beats a quiet guess.
+If something's fuzzy, just ask. A quick question beats a quiet guess.
 
 ## Not sure where to post?
 

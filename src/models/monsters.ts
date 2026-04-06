@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
 import rawMonsters from '../data/monsters.json';
-import { slugifyEntityId } from '../lib/slugifyEntityId';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 import {
 	creatureArmorTierSchema,
 	creatureMovementSchema,

@@ -1,6 +1,6 @@
 /**
  * Maps model rows to markdown lines / table props for generic doc components.
- * Keeps domain-specific formatting out of `src/components/ui/*`.
+ * Keeps domain-specific formatting out of generic doc components under `src/components/`.
  */
 
 import {
@@ -21,7 +21,7 @@ import {
 	magicalItems,
 	type MagicalItemData,
 } from '../models/magical-items';
-import { compareReferenceRowsByName } from '../utils/reference-index-sort';
+import { compareReferenceRowsByName } from './reference-index-sort';
 import { optionalVariantRules } from '../models/optional-variant-rules';
 import { saveTypes } from '../models/save-types';
 import { sizes } from '../models/sizes';

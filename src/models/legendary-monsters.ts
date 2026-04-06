@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
 import rawLegendaryMonsters from '../data/legendary-monsters.json';
-import { slugifyEntityId } from '../lib/slugifyEntityId';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 import {
 	creatureArmorTierSchema,
 	creatureMovementSchema,

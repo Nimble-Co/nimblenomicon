@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
 import rawMonsterKinds from '../data/monster-kinds.json';
-import { slugifyEntityId } from '../lib/slugifyEntityId';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const monsterKindSchema = z
 	.object({

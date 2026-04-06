@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
 import rawSpellSchools from '../data/spell-schools.json';
-import { slugifyEntityId } from '../lib/slugifyEntityId';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const spellSchoolSchema = z
 	.object({

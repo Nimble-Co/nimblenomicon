@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
 import rawMonsterFamilies from '../data/monster-families.json';
-import { slugifyEntityId } from '../lib/slugifyEntityId';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const namedBlockSchema = z
 	.object({

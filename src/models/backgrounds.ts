@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
 import rawBackgrounds from '../data/backgrounds.json';
-import { slugifyEntityId } from '../lib/slugifyEntityId';
+import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const backgroundRowSchema = z.preprocess(
 	(raw) => {

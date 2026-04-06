@@ -48,7 +48,7 @@ html[data-theme='dark'] {
 	--color-accent-900: #4a3d03;
 	--color-accent-950: #292205;
 
-	/* Warm neutrals — monotonic (each step darker than the last) for Starlight’s `--sl-color-gray-*` mapping. */
+	/* Warm neutrals — monotonic (each step darker than the last) for Starlight's `--sl-color-gray-*` mapping. */
 	--color-gray-50: #faf9f8;
 	--color-gray-100: #f3f2f0;
 	--color-gray-200: #e8e6e3;
@@ -249,7 +249,7 @@ body {
 
 /*
  * Header search trigger — wide pill, no border, sans placeholder styling.
- * Overrides Starlight’s layered `button[data-open-modal]` rules (unlayered).
+ * Overrides Starlight's layered `button[data-open-modal]` rules (unlayered).
  */
 .header button[data-open-modal] {
 	font-family: var(--nimble-search-trigger-font);
@@ -282,7 +282,7 @@ body {
 	/*
 	 * `1fr | auto | 1fr` + a wide search min-width let the center column paint past its track
 	 * (100vw ignores header padding / menu offset). `auto | minmax(0,1fr) | auto` reserves full
-	 * width for the wordmark and right chrome; the search only uses space that’s actually left.
+	 * width for the wordmark and right chrome; the search only uses space that's actually left.
 	 */
 	header.header > div.header {
 		display: grid;

@@ -55,7 +55,7 @@ These preferences come from ongoing Core Rules work. Agents should follow them w
 - **`castingTime`** is a **string** (e.g. `1 Action`, `2 Actions`, `24 hours`, `Casting Time: 1 minute`). Do not split into numeric actions plus a separate casting note.
 - **`target`** remains a structured enum.
 - **`utility`** is a **boolean**. School comes only from **`schoolId`**; do not duplicate a separate school display name on each row.
-- **Tempest’s Command** is a **Lightning** school spell (including under utility); it is **not** its own school id.
+- **Tempest's Command** is a **Lightning** school spell (including under utility); it is **not** its own school id.
 - **`spells.json`** should stay a **flat array** suitable for Pages CMS list editing (not a wrapper-only shape that breaks the list editor).
 - Spell school intro rows: store a **short school name** (e.g. Fire); add the word **Spells** in MDX for headings and list labels.
 

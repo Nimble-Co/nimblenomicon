@@ -55,7 +55,7 @@
 		"kind": "standard",
 		"name": "Eyes of the Street",
 		"subtitle": "_(Uncommon)_",
-		"description": "A pair of goggles covered in muck that you can’t ever clean off completely. While wearing them, you can look at a rat or a pigeon to gain the ability to see and hear through its senses for 10 minutes. Once you use this ability, you must whisper a secret to the goggles before you can use them again. That secret always seems to become a local rumor before too long…."
+		"description": "A pair of goggles covered in muck that you can't ever clean off completely. While wearing them, you can look at a rat or a pigeon to gain the ability to see and hear through its senses for 10 minutes. Once you use this ability, you must whisper a secret to the goggles before you can use them again. That secret always seems to become a local rumor before too long…."
 	},
 	{
 		"kind": "standard",
@@ -67,13 +67,13 @@
 		"kind": "standard",
 		"name": "Resolute Fangs, Golden Bastion",
 		"subtitle": "_(Legendary Shield)_",
-		"description": "+8 Armor. **Reaction:** When you reduce damage from a melee attack with this shield, it may Grapple the attacker regardless of its size (escape DC 20 STR, max 1 creature). **Action:** Speak this shield’s command word to make it immovable, fixed in place, until it is spoken again."
+		"description": "+8 Armor. **Reaction:** When you reduce damage from a melee attack with this shield, it may Grapple the attacker regardless of its size (escape DC 20 STR, max 1 creature). **Action:** Speak this shield's command word to make it immovable, fixed in place, until it is spoken again."
 	},
 	{
 		"kind": "standard",
 		"name": "Key of Doors",
 		"subtitle": "_(Very Rare)_",
-		"description": "Insert this key into any locked door to open it, not to the room beyond, but to any doorway you’ve previously walked through while holding this item."
+		"description": "Insert this key into any locked door to open it, not to the room beyond, but to any doorway you've previously walked through while holding this item."
 	},
 	{
 		"kind": "standard",
@@ -97,7 +97,7 @@
 		"kind": "standard",
 		"name": "Phoenix Helm",
 		"subtitle": "_(Legendary)_",
-		"description": "If you die while wearing this golden helm, your body explodes in flames and hot ash. You rise anew from the ashes... (see pg. 19 of the _GM’s Guide_ for more)."
+		"description": "If you die while wearing this golden helm, your body explodes in flames and hot ash. You rise anew from the ashes... (see pg. 19 of the _GM's Guide_ for more)."
 	},
 	{
 		"kind": "standard",
@@ -155,7 +155,7 @@
 	},
 	{
 		"kind": "wand",
-		"name": "Elderwyrm’s Majesty",
+		"name": "Elderwyrm's Majesty",
 		"subtitle": "_(Legendary wand, Tier 9 (1 charge))_",
 		"description": "This wand can cast Dragonform, turning into the type of dragon that last charged it.\n\n**Recharge:** Give an ancient dragon a gift it truly desires."
 	},
