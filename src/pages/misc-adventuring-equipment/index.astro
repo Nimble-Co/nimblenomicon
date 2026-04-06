@@ -8,6 +8,10 @@ import {
 const rows = [...miscAdventuringEquipment].sort(
 	compareMiscAdventuringEquipmentRowsForListing,
 );
+
+const idxCell =
+	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
+const idxHead = `${idxCell} font-semibold`;
 ---
 
 <StarlightPage
@@ -22,21 +26,21 @@ const rows = [...miscAdventuringEquipment].sort(
 	hasSidebar={false}
 >
 	<div class="sl-markdown-content not-content">
-		<table class="misc-gear-index__table">
+		<table class="w-full border-collapse">
 			<thead>
 				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Cost</th>
+					<th class={idxHead} scope="col">Name</th>
+					<th class={idxHead} scope="col">Cost</th>
 				</tr>
 			</thead>
 			<tbody>
 				{
 					rows.map((row) => (
 						<tr>
-							<th scope="row">
+							<th class={idxCell} scope="row">
 								<a href={`./${row.id}/`}>{row.name}</a>
 							</th>
-							<td>{row.cost}</td>
+							<td class={idxCell}>{row.cost}</td>
 						</tr>
 					))
 				}
@@ -44,20 +48,3 @@ const rows = [...miscAdventuringEquipment].sort(
 		</table>
 	</div>
 </StarlightPage>
-
-<style>
-	.misc-gear-index__table {
-		width: 100%;
-		border-collapse: collapse;
-	}
-	.misc-gear-index__table th,
-	.misc-gear-index__table td {
-		text-align: start;
-		padding: 0.35rem 0.75rem 0.35rem 0;
-		border-bottom: 1px solid var(--sl-color-hairline);
-		vertical-align: top;
-	}
-	.misc-gear-index__table thead th {
-		font-weight: 600;
-	}
-</style>

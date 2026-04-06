@@ -11,6 +11,10 @@ const rows = [...ancestries].sort(compareAncestryRowsForListing);
 function sectionLabel(section: (typeof rows)[number]['section']): string {
 	return section === 'common' ? 'Common' : 'Exotic';
 }
+
+const idxCell =
+	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
+const idxHead = `${idxCell} font-semibold`;
 ---
 
 <StarlightPage
@@ -25,23 +29,23 @@ function sectionLabel(section: (typeof rows)[number]['section']): string {
 	hasSidebar={false}
 >
 	<div class="sl-markdown-content not-content">
-		<table class="ancestries-index__table">
+		<table class="w-full border-collapse">
 			<thead>
 				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Section</th>
-					<th scope="col">Size</th>
+					<th class={idxHead} scope="col">Name</th>
+					<th class={idxHead} scope="col">Section</th>
+					<th class={idxHead} scope="col">Size</th>
 				</tr>
 			</thead>
 			<tbody>
 				{
 					rows.map((row) => (
 						<tr>
-							<th scope="row">
+							<th class={idxCell} scope="row">
 								<a href={`./${row.id}/`}>{row.name}</a>
 							</th>
-							<td>{sectionLabel(row.section)}</td>
-							<td>{formatAncestrySize(row.size)}</td>
+							<td class={idxCell}>{sectionLabel(row.section)}</td>
+							<td class={idxCell}>{formatAncestrySize(row.size)}</td>
 						</tr>
 					))
 				}
@@ -49,20 +53,3 @@ function sectionLabel(section: (typeof rows)[number]['section']): string {
 		</table>
 	</div>
 </StarlightPage>
-
-<style>
-	.ancestries-index__table {
-		width: 100%;
-		border-collapse: collapse;
-	}
-	.ancestries-index__table th,
-	.ancestries-index__table td {
-		text-align: start;
-		padding: 0.35rem 0.75rem 0.35rem 0;
-		border-bottom: 1px solid var(--sl-color-hairline);
-		vertical-align: top;
-	}
-	.ancestries-index__table thead th {
-		font-weight: 600;
-	}
-</style>

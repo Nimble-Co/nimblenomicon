@@ -7,6 +7,10 @@ import {
 } from '../../models/armor';
 
 const rows = [...armorRows].sort(compareArmorRowsForListing);
+
+const idxCell =
+	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
+const idxHead = `${idxCell} font-semibold`;
 ---
 
 <StarlightPage
@@ -21,25 +25,25 @@ const rows = [...armorRows].sort(compareArmorRowsForListing);
 	hasSidebar={false}
 >
 	<div class="sl-markdown-content not-content">
-		<table class="armor-index__table">
+		<table class="w-full border-collapse">
 			<thead>
 				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Section</th>
-					<th scope="col">Armor</th>
-					<th scope="col">Cost</th>
+					<th class={idxHead} scope="col">Name</th>
+					<th class={idxHead} scope="col">Section</th>
+					<th class={idxHead} scope="col">Armor</th>
+					<th class={idxHead} scope="col">Cost</th>
 				</tr>
 			</thead>
 			<tbody>
 				{
 					rows.map((row) => (
 						<tr>
-							<th scope="row">
+							<th class={idxCell} scope="row">
 								<a href={`./${row.id}/`}>{row.name}</a>
 							</th>
-							<td>{formatArmorCategoryLabel(row.category)}</td>
-							<td>{row.armor}</td>
-							<td>{row.cost}</td>
+							<td class={idxCell}>{formatArmorCategoryLabel(row.category)}</td>
+							<td class={idxCell}>{row.armor}</td>
+							<td class={idxCell}>{row.cost}</td>
 						</tr>
 					))
 				}
@@ -47,20 +51,3 @@ const rows = [...armorRows].sort(compareArmorRowsForListing);
 		</table>
 	</div>
 </StarlightPage>
-
-<style>
-	.armor-index__table {
-		width: 100%;
-		border-collapse: collapse;
-	}
-	.armor-index__table th,
-	.armor-index__table td {
-		text-align: start;
-		padding: 0.35rem 0.75rem 0.35rem 0;
-		border-bottom: 1px solid var(--sl-color-hairline);
-		vertical-align: top;
-	}
-	.armor-index__table thead th {
-		font-weight: 600;
-	}
-</style>

@@ -15,20 +15,14 @@ const dir = Astro.locals.starlightRoute?.dir ?? 'ltr';
 const isRtl = dir === 'rtl';
 ---
 
-<p class="detail-page-back print:hidden" dir={dir}>
+<p class="m-0 mb-4 print:hidden" dir={dir}>
 	<a
-		class="detail-page-back__link text-fg-muted hover:text-fg inline-flex items-center gap-2 text-sm no-underline"
+		class="text-fg-muted hover:text-fg inline-flex items-center gap-2 text-sm no-underline"
 		href={href}
 	>
-		<span class="detail-page-back__icon shrink-0" aria-hidden="true">
+		<span class="shrink-0" aria-hidden="true">
 			<Icon name={isRtl ? 'right-arrow' : 'left-arrow'} size="1.25rem" />
 		</span>
 		<span>{label}</span>
 	</a>
 </p>
-
-<style>
-	.detail-page-back {
-		margin: 0 0 1rem;
-	}
-</style>

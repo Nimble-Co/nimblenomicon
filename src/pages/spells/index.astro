@@ -17,6 +17,10 @@ function compareSpellRowsForListing(a: SpellData, b: SpellData): number {
 
 const spellSchoolShortName = (schoolId: string) =>
 	spellSchools.find((school) => school.id === schoolId)?.name ?? schoolId;
+
+const idxCell =
+	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
+const idxHead = `${idxCell} font-semibold`;
 ---
 
 <StarlightPage
@@ -31,27 +35,27 @@ const spellSchoolShortName = (schoolId: string) =>
 	hasSidebar={false}
 >
 	<div class="sl-markdown-content not-content">
-		<table class="spells-index__table">
+		<table class="w-full border-collapse">
 			<thead>
 				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">School</th>
-					<th scope="col">Tier</th>
-					<th scope="col">Utility</th>
-					<th scope="col">Secret</th>
+					<th class={idxHead} scope="col">Name</th>
+					<th class={idxHead} scope="col">School</th>
+					<th class={idxHead} scope="col">Tier</th>
+					<th class={idxHead} scope="col">Utility</th>
+					<th class={idxHead} scope="col">Secret</th>
 				</tr>
 			</thead>
 			<tbody>
 				{
 					spells.sort(compareSpellRowsForListing).map((spell) => (
 						<tr>
-							<th scope="row">
+							<th class={idxCell} scope="row">
 								<a href={`/spells/${spell.id}/`}>{spell.name}</a>
 							</th>
-							<td>{spellSchoolShortName(spell.schoolId)}</td>
-							<td>{spell.tierLabel}</td>
-							<td>{spell.utility ? 'Utility' : ''}</td>
-							<td>{spell.secret ? 'Secret' : ''}</td>
+							<td class={idxCell}>{spellSchoolShortName(spell.schoolId)}</td>
+							<td class={idxCell}>{spell.tierLabel}</td>
+							<td class={idxCell}>{spell.utility ? 'Utility' : ''}</td>
+							<td class={idxCell}>{spell.secret ? 'Secret' : ''}</td>
 						</tr>
 					))
 				}
@@ -59,20 +63,3 @@ const spellSchoolShortName = (schoolId: string) =>
 		</table>
 	</div>
 </StarlightPage>
-
-<style>
-	.spells-index__table {
-		width: 100%;
-		border-collapse: collapse;
-	}
-	.spells-index__table th,
-	.spells-index__table td {
-		text-align: start;
-		padding: 0.35rem 0.75rem 0.35rem 0;
-		border-bottom: 1px solid var(--sl-color-hairline);
-		vertical-align: top;
-	}
-	.spells-index__table thead th {
-		font-weight: 600;
-	}
-</style>

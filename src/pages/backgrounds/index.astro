@@ -6,6 +6,10 @@ import {
 } from '../../models/backgrounds';
 
 const rows = [...backgrounds].sort(compareBackgroundRowsForListing);
+
+const idxCell =
+	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
+const idxHead = `${idxCell} font-semibold`;
 ---
 
 <StarlightPage
@@ -20,17 +24,17 @@ const rows = [...backgrounds].sort(compareBackgroundRowsForListing);
 	hasSidebar={false}
 >
 	<div class="sl-markdown-content not-content">
-		<table class="backgrounds-index__table">
+		<table class="w-full border-collapse">
 			<thead>
 				<tr>
-					<th scope="col">Name</th>
+					<th class={idxHead} scope="col">Name</th>
 				</tr>
 			</thead>
 			<tbody>
 				{
 					rows.map((row) => (
 						<tr>
-							<th scope="row">
+							<th class={idxCell} scope="row">
 								<a href={`/backgrounds/${row.id}/`}>{row.name}</a>
 							</th>
 						</tr>
@@ -40,20 +44,3 @@ const rows = [...backgrounds].sort(compareBackgroundRowsForListing);
 		</table>
 	</div>
 </StarlightPage>
-
-<style>
-	.backgrounds-index__table {
-		width: 100%;
-		border-collapse: collapse;
-	}
-	.backgrounds-index__table th,
-	.backgrounds-index__table td {
-		text-align: start;
-		padding: 0.35rem 0.75rem 0.35rem 0;
-		border-bottom: 1px solid var(--sl-color-hairline);
-		vertical-align: top;
-	}
-	.backgrounds-index__table thead th {
-		font-weight: 600;
-	}
-</style>

@@ -6,6 +6,10 @@ import {
 } from '../../models/languages';
 
 const rows = [...languages].sort(compareLanguageRowsForListing);
+
+const idxCell =
+	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
+const idxHead = `${idxCell} font-semibold`;
 ---
 
 <StarlightPage
@@ -20,17 +24,17 @@ const rows = [...languages].sort(compareLanguageRowsForListing);
 	hasSidebar={false}
 >
 	<div class="sl-markdown-content not-content">
-		<table class="languages-index__table">
+		<table class="w-full border-collapse">
 			<thead>
 				<tr>
-					<th scope="col">Name</th>
+					<th class={idxHead} scope="col">Name</th>
 				</tr>
 			</thead>
 			<tbody>
 				{
 					rows.map((row) => (
 						<tr>
-							<th scope="row">
+							<th class={idxCell} scope="row">
 								<a href={`./${row.id}/`}>{row.name}</a>
 							</th>
 						</tr>
@@ -40,20 +44,3 @@ const rows = [...languages].sort(compareLanguageRowsForListing);
 		</table>
 	</div>
 </StarlightPage>
-
-<style>
-	.languages-index__table {
-		width: 100%;
-		border-collapse: collapse;
-	}
-	.languages-index__table th,
-	.languages-index__table td {
-		text-align: start;
-		padding: 0.35rem 0.75rem 0.35rem 0;
-		border-bottom: 1px solid var(--sl-color-hairline);
-		vertical-align: top;
-	}
-	.languages-index__table thead th {
-		font-weight: 600;
-	}
-</style>
