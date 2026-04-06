@@ -426,9 +426,3 @@ nav.sidebar a:focus-visible {
 :root[data-theme='dark'] .starlight-aside.starlight-aside--danger {
 	background-color: #1c2028;
 }
-
-/* Generic data tables (Core Rules + GMG) — shared layout; borders use theme tokens. */
-.nimble-data-table--wide {
-	width: max-content;
-	min-width: 100%;
-}

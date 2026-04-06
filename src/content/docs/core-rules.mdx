@@ -498,7 +498,7 @@ armorTableSectionsData().map(({ sectionLabel, columns, rows }) => (
 
 <>
 <h3>{sectionLabel}</h3>
-<DataTable variant="core-rules" columns={columns} rows={rows} />
+<DataTable columns={columns} rows={rows} />
 </>
 ))
 }
@@ -533,11 +533,11 @@ Can you reflavor a staff as a greatclub? Sure! A sai instead of a dagger? Of cou
 
 ### Melee Weapons
 
-<DataTable variant="core-rules" {...coreRulesWeaponsTable('melee')} />
+<DataTable {...coreRulesWeaponsTable('melee')} />
 
 ### Ranged Weapons
 
-<DataTable variant="core-rules" {...coreRulesWeaponsTable('ranged')} />
+<DataTable {...coreRulesWeaponsTable('ranged')} />
 
 ## Key Equipment
 
@@ -563,7 +563,7 @@ Costs for mundane items typically range from a few silver pieces to a few gold p
 
 > **Currency is made up of Silver (sp) and Gold pieces (gp).** 10 silver = 1 gold. 1 sp is roughly the cost of a humble meal; 1 gp, a sumptuous feast. Most small towns will have equipment and items worth 50 gp or less. You'll need to adventure to larger towns or cities or find a traveling merchant to purchase more valuable pieces of equipment.
 
-<DataTable variant="core-rules" {...miscAdventuringEquipmentTable()} />
+<DataTable {...miscAdventuringEquipmentTable()} />
 
 ## Magical Items
 
@@ -571,7 +571,7 @@ Though some magical items can be purchased, most cannot. Some special shops may 
 
 ### Typical Costs of Magical Items
 
-<DataTable variant="core-rules" {...magicalItemRaritiesTable()} />
+<DataTable {...magicalItemRaritiesTable()} />
 
 <HeadingBlockList blocks={magicalItemBlocks('standard')} />
 
@@ -583,7 +583,7 @@ Spell scrolls are single-use inscribed magical spells. Casting a spell with a sp
 
 A character must succeed on a **DC 10 Arcana** check to cast it successfully if they do not already know a spell from that school; on a failure, it is wasted. Spell tier and typical price:
 
-<DataTable variant="core-rules" {...spellScrollCostsTable()} />
+<DataTable {...spellScrollCostsTable()} />
 
 ### Wands
 
@@ -591,7 +591,7 @@ Like spell scrolls, these can be used to cast spells without consuming mana and 
 
 Characters not proficient with wands must succeed on a **DC 10+spell tier Arcana** check to successfully cast the spell. Success or failure, the charge is spent. Typical wand prices and examples:
 
-<DataTable variant="core-rules" {...wandCostsTable()} />
+<DataTable {...wandCostsTable()} />
 
 <HeadingBlockList blocks={magicalItemBlocks('wand')} />
 

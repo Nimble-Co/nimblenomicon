@@ -59,6 +59,7 @@ export type DocTableColumn = {
 	rowHeader?: boolean;
 	markdown?: boolean;
 	cellClass?: string;
+	align?: 'start' | 'center' | 'end';
 };
 
 export type MarkdownLineItem = { id?: string; markdown: string };
@@ -213,7 +214,7 @@ const WEAPONS_COLUMNS: DocTableColumn[] = [
 	{ key: 'name', label: 'ITEM', rowHeader: true, markdown: true },
 	{ key: 'damage', label: 'DAMAGE' },
 	{ key: 'properties', label: 'PROPERTIES' },
-	{ key: 'cost', label: 'COST' },
+	{ key: 'cost', label: 'COST', align: 'end' },
 ];
 
 export function weaponsTableRows(
@@ -240,7 +241,7 @@ export function coreRulesWeaponsTable(category: 'melee' | 'ranged'): {
 const ARMOR_COLUMNS: DocTableColumn[] = [
 	{ key: 'name', label: 'ITEM', rowHeader: true, markdown: true },
 	{ key: 'armor', label: 'ARMOR' },
-	{ key: 'cost', label: 'COST' },
+	{ key: 'cost', label: 'COST', align: 'end' },
 ];
 
 export function armorTableSectionsData(): {
@@ -267,7 +268,7 @@ export function armorTableSectionsData(): {
 const MISC_EQUIP_COLUMNS: DocTableColumn[] = [
 	{ key: 'name', label: 'ITEM', rowHeader: true, markdown: true },
 	{ key: 'description', label: 'PROPERTIES', markdown: true },
-	{ key: 'cost', label: 'COST' },
+	{ key: 'cost', label: 'COST', align: 'end' },
 ];
 
 export function miscAdventuringEquipmentTable(): {
@@ -288,7 +289,7 @@ export function miscAdventuringEquipmentTable(): {
 const MAGICAL_RARITY_COLUMNS: DocTableColumn[] = [
 	{ key: 'name', label: 'RARITY' },
 	{ key: 'availability', label: 'TYPICAL AVAILABILITY' },
-	{ key: 'cost', label: 'COST' },
+	{ key: 'cost', label: 'COST', align: 'end' },
 ];
 
 export function magicalItemRaritiesTable(): {
@@ -307,7 +308,7 @@ export function magicalItemRaritiesTable(): {
 
 const SPELL_PRICE_COLUMNS: DocTableColumn[] = [
 	{ key: 'name', label: 'SPELL' },
-	{ key: 'cost', label: 'TYPICAL PRICE' },
+	{ key: 'cost', label: 'TYPICAL PRICE', align: 'end' },
 ];
 
 export function spellScrollCostsTable(): {
@@ -362,7 +363,7 @@ export function chaosMagicTable(): {
 
 const GOLD_BY_LEVEL_COLUMNS: DocTableColumn[] = [
 	{ key: 'level', label: 'Level' },
-	{ key: 'gold', label: 'Gold' },
+	{ key: 'gold', label: 'Gold', align: 'end' },
 ];
 
 export function gmgGoldByLevelTable(): {
@@ -384,21 +385,43 @@ const MONSTER_BUILDER_COLUMNS: DocTableColumn[] = [
 		key: 'hpNoArmor',
 		label: 'HP (no armor)',
 		cellClass: 'whitespace-nowrap',
+		align: 'end',
 	},
-	{ key: 'hpMediumArmor', label: 'HP (M)', cellClass: 'whitespace-nowrap' },
-	{ key: 'hpHeavyArmor', label: 'HP (H)', cellClass: 'whitespace-nowrap' },
+	{
+		key: 'hpMediumArmor',
+		label: 'HP (M)',
+		cellClass: 'whitespace-nowrap',
+		align: 'end',
+	},
+	{
+		key: 'hpHeavyArmor',
+		label: 'HP (H)',
+		cellClass: 'whitespace-nowrap',
+		align: 'end',
+	},
 	{
 		key: 'damagePerRound',
 		label: 'Dmg / round',
 		cellClass: 'whitespace-nowrap',
+		align: 'end',
 	},
 	{
 		key: 'attackSampleDice',
 		label: 'Attack (sample)',
 		cellClass: 'min-w-40 whitespace-normal',
 	},
-	{ key: 'saveDC', label: 'Save DC', cellClass: 'whitespace-nowrap' },
-	{ key: 'crEquivalent', label: 'CR equiv.', cellClass: 'whitespace-nowrap' },
+	{
+		key: 'saveDC',
+		label: 'Save DC',
+		cellClass: 'whitespace-nowrap',
+		align: 'end',
+	},
+	{
+		key: 'crEquivalent',
+		label: 'CR equiv.',
+		cellClass: 'whitespace-nowrap',
+		align: 'end',
+	},
 ];
 
 export function gmgMonsterBuilderTable(): {

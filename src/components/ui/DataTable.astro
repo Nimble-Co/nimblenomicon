@@ -10,14 +10,14 @@ export interface DataTableColumn {
 	markdown?: boolean;
 	/** Extra classes on each body cell in this column. */
 	cellClass?: string;
+	/** Header and cell horizontal alignment (default start). */
+	align?: 'start' | 'center' | 'end';
 }
 
 interface Props {
 	columns: DataTableColumn[];
 	rows: Record<string, unknown>[];
 	ariaLabel?: string;
-	/** Core Rules book tables use italic small-caps header cells. */
-	variant?: 'core-rules' | 'data';
 	wrapClass?: string;
 	tableClass?: string;
 }
@@ -26,10 +26,15 @@ const {
 	columns,
 	rows,
 	ariaLabel,
-	variant = 'data',
 	wrapClass = '',
 	tableClass = '',
 } = Astro.props;
+
+function alignClass(align: DataTableColumn['align'] | undefined): string {
+	if (align === 'end') return 'text-end';
+	if (align === 'center') return 'text-center';
+	return 'text-start';
+}
 
 type Cell = { kind: 'markdown'; html: string } | { kind: 'text'; text: string };
 
@@ -55,15 +60,16 @@ const bodyRows: Cell[][] = await Promise.all(
 ---
 
 <section
-	class:list={['nimble-data-table-wrap', 'overflow-x-auto', 'my-4', wrapClass]}
+	class:list={['overflow-x-auto', 'my-4', wrapClass]}
 	aria-label={ariaLabel}
 >
 	<table
 		class:list={[
-			'nimble-data-table',
 			'w-full',
 			'border-collapse',
 			'text-sm',
+			'text-fg',
+			/* Book-style: borderless, zebra rows, condensed sans from body */
 			tableClass,
 		]}
 	>
@@ -74,23 +80,19 @@ const bodyRows: Cell[][] = await Promise.all(
 						<th
 							scope="col"
 							class:list={[
-								variant === 'core-rules' && 'nimble-data-table__th--core',
-								'border',
-								'border-hairline',
-								'bg-surface-nav',
-								'px-2.5',
+								'border-0',
+								'bg-transparent',
+								'px-3',
 								'py-2',
-								'text-start',
-								'align-top',
+								'align-bottom',
+								'font-bold',
+								'italic',
+								'uppercase',
+								'tracking-wide',
+								alignClass(col.align),
 							]}
 						>
-							{variant === 'core-rules' ? (
-								<strong>
-									<em>{col.label}</em>
-								</strong>
-							) : (
-								col.label
-							)}
+							{col.label}
 						</th>
 					))
 				}
@@ -99,17 +101,20 @@ const bodyRows: Cell[][] = await Promise.all(
 		<tbody>
 			{
 				rows.map((row, ri) => (
-					<tr id={typeof row.id === 'string' ? row.id : undefined}>
+					<tr
+						class:list={['odd:bg-black/[0.045]', 'dark:odd:bg-white/[0.06]']}
+						id={typeof row.id === 'string' ? row.id : undefined}
+					>
 						{columns.map((col, ci) => {
 							const cell = bodyRows[ri]![ci]!;
 							const CellTag = col.rowHeader ? 'th' : 'td';
 							const baseClass = [
-								'border',
-								'border-hairline',
-								'px-2.5',
+								'border-0',
+								'px-3',
 								'py-2',
 								'align-top',
-								'text-start',
+								'font-normal',
+								alignClass(col.align),
 								col.cellClass,
 							];
 							if (cell.kind === 'markdown') {

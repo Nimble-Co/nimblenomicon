@@ -78,7 +78,7 @@ const boonSchema = rawBoonSchema.transform((row): BoonData => {
 export const boons: BoonData[] = z.array(boonSchema).parse(rawBoons);
 
 const BOON_ROLL_COLUMNS = [
-	{ key: 'roll', label: '1d8' },
+	{ key: 'roll', label: '1d8', align: 'end' as const },
 	{ key: 'description', label: 'Temporary Boon' },
 ] as const;
 
