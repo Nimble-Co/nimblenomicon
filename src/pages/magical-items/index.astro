@@ -11,6 +11,19 @@ const rows = [...magicalItems].sort(compareMagicalItemsForListing);
 const idxCell =
 	'border-b border-hairline py-[0.35rem] pe-3 ps-0 text-start align-top';
 const idxHead = `${idxCell} font-semibold`;
+
+function formatSource(source: (typeof rows)[number]['source']): string {
+	return source === 'game-masters-guide' ? "GM's Guide" : 'Core Rules';
+}
+
+function formatRewardCategory(
+	cat: (typeof rows)[number]['adventuringRewardCategory'],
+): string {
+	if (!cat) return '';
+	if (cat === 'release-valve') return 'Release Valve';
+	if (cat === 'story') return 'Story Item';
+	return 'Combat Item';
+}
 ---
 
 <StarlightPage
@@ -30,6 +43,8 @@ const idxHead = `${idxCell} font-semibold`;
 				<tr>
 					<th class={idxHead} scope="col">Name</th>
 					<th class={idxHead} scope="col">Type</th>
+					<th class={idxHead} scope="col">Source</th>
+					<th class={idxHead} scope="col">Adventuring Reward</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -40,6 +55,10 @@ const idxHead = `${idxCell} font-semibold`;
 								<a href={`./${row.id}/`}>{row.name}</a>
 							</th>
 							<td class={idxCell}>{formatMagicalItemKind(row.kind)}</td>
+							<td class={idxCell}>{formatSource(row.source)}</td>
+							<td class={idxCell}>
+								{formatRewardCategory(row.adventuringRewardCategory)}
+							</td>
 						</tr>
 					))
 				}

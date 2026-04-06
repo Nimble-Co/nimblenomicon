@@ -89,15 +89,54 @@
 	},
 	{
 		"kind": "standard",
+		"source": "game-masters-guide",
+		"adventuringRewardCategory": "release-valve",
+		"name": "Gem of Escape",
+		"description": "These magical gems are always crafted in pairs and can have any number of willing creatures magically bound to it. Crush one (1 Action) in case of emergency to instantly teleport ALL who are bound to it to the location of the other gem.\n\n> **Why This is Great.** A party may find the gem on a defeated bad guy. Where is the other gem… who knows? They might use it to hunt down the rest of the bad guys, they might use it to escape a sticky situation. It's up to you as the GM whether they escape to safety or if it's \"out of the frying pan and into the fire!\""
+	},
+	{
+		"kind": "standard",
+		"source": "game-masters-guide",
+		"adventuringRewardCategory": "release-valve",
+		"name": "Glacier in a Bottle",
+		"description": "When poured out (1 Action), it creates a solid form of ice, filling any number of unoccupied consecutive spaces up to 6 spaces away and 2 spaces high. The ice lasts for 1 hour before melting. Extreme heat or damage may cause it to fail prematurely. 1/Safe Rest."
+	},
+	{
+		"kind": "standard",
 		"name": "Pocket Cauldron",
 		"subtitle": "_(Rare)_",
-		"description": "While Safe Resting, use this to brew your choice of 1 potion, to be consumed immediately:\n\n- **Elixir of Futuresight:** This potion grants the drinker a brief, cryptic vision of a future event.\n- **Elixir of Requiem:** This potion allows the drinker to relive a crucial memory from their past.\n- **Elixir of Time:** Once every 100 years, the cauldron can brew a potion that can take the drinker back in time 1 day."
+		"source": "game-masters-guide",
+		"adventuringRewardCategory": "story",
+		"description": "While taking a Safe Rest, use this cauldron to brew a single potion of your choice, which must be consumed immediately:\n\n- **Elixir of Futuresight:** Grants the drinker a brief, cryptic vision of a future event.\n- **Elixir of Requiem:** Allows the drinker to relive a crucial memory from their past.\n- **Elixir of Time:** Once every 100 years, the cauldron can brew a potion that can take the drinker back in time 1 day.\n\n> **Why this is great.** Not only does this allow you as the GM to reach into the world and move things along or mix things up, but it can also help your players develop their backstories, and can even serve as a 'redo' button should that ever become necessary."
 	},
 	{
 		"kind": "standard",
 		"name": "Phoenix Helm",
 		"subtitle": "_(Legendary)_",
-		"description": "If you die while wearing this golden helm, your body explodes in flames and hot ash. You rise anew from the ashes... (see pg. 19 of the _GM's Guide_ for more)."
+		"source": "game-masters-guide",
+		"adventuringRewardCategory": "release-valve",
+		"description": "On Death: You are reborn as a golden fiery phoenix.\nEnemies within 6 spaces take **LVL d10** fire damage\non a failed **DC 10+KEY** DEX save (half on save).\nGain the following stats and abilities:\n\n- Gain a fly speed of 10, 10 Armor, and 10xLVL HP.\n- Creatures that touch you take LVL fire damage.\n- **Fiery Talons.** 1 Action, 1d10+LVL damage.\n\nAfter 10 minutes, this form ends, the helm is no more and you return with 0 HP and all but 1 Wound."
+	},
+	{
+		"kind": "standard",
+		"source": "game-masters-guide",
+		"adventuringRewardCategory": "story",
+		"name": "The Grimoire of Truths",
+		"description": "This sentient magical book possesses an extensive knowledge of the world, past events, people's motivations, and even possible future outcomes. It eagerly converses with its owner, presenting itself as a helpful companion. However, its true goal is to gain their trust, offering just enough useful insight to ultimately lead them into great trouble.\n\n> \"Ah, another mortal thirsting for knowledge.\"\n>\n> \"Power comes at a cost. But then, so does ignorance.\"\n>\n> \"Oh, **that one**? Her smile hides a thousand lies and treacheries.\"\n>\n> \"Would you like the safe, **boring** route, or the one filled with **excitement** and potential doom? I know which one I'd pick.\""
+	},
+	{
+		"kind": "standard",
+		"source": "game-masters-guide",
+		"adventuringRewardCategory": "story",
+		"name": "Hear-ring",
+		"description": "A simple piece of jewelry worn on the ear. While\nworn, wearers can communicate with one another\nno matter the distance. Frequently crafted as a pair,\nsometimes as a larger set.\n\n> **Why this is cool.** How many do you let your party find, just one? Who has the other ones (the bad guys perhaps)? Or do they find a pair? Perhaps they are part of a much larger set and left by the bad guys so they can listen in on the party's plans!"
+	},
+	{
+		"kind": "standard",
+		"source": "game-masters-guide",
+		"adventuringRewardCategory": "combat",
+		"name": "Lumina, Living Sunbeam",
+		"description": "A small, radiant orb of light, about the size of an apple, with a gentle, warm glow that pulses with life and a perpetually cheerful expression. She is a one-time use item that, when activated as an action, will deal **LVL d6** radiant damage to all enemies within 6 spaces and heal allies in the area for the same amount. Until then, she hovers around her owner, spreading warmth and light, and offering encouragement.\n\n> \"I'm here to brighten your journey! And, when the time comes, it's okay… don't be afraid to let me shine.\" —Lumina"
 	},
 	{
 		"kind": "standard",
