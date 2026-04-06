@@ -55,6 +55,214 @@ content:
         options:
           format: mdx
 
+  - name: heroes-data
+    label: Heroes Data
+    type: group
+    items:
+      - name: classes
+        label: Classes
+        type: file
+        path: src/data/classes.json
+        format: json
+        list: true
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: summary
+            label: Core Rules Summary
+            type: string
+            required: true
+            description: One-line blurb for the Core Rules class list.
+          - name: description
+            label: Description
+            type: rich-text
+            required: true
+            options:
+              format: markdown
+          - name: keyStats
+            label: Key Stats
+            type: object
+            list: true
+            required: true
+            fields:
+              - name: stat
+                label: Stat
+                type: string
+                required: true
+          - name: hitDie
+            label: Hit Die
+            type: string
+            required: true
+            description: e.g. d12 (displayed as 1d12).
+          - name: startingHp
+            label: Starting HP
+            type: number
+            required: true
+          - name: saves
+            label: Saves
+            type: object
+            required: true
+            fields:
+              - name: STR
+                label: STR
+                type: number
+                required: true
+              - name: DEX
+                label: DEX
+                type: number
+                required: true
+              - name: INT
+                label: INT
+                type: number
+                required: true
+              - name: WIL
+                label: WIL
+                type: number
+                required: true
+          - name: armor
+            label: Armor
+            type: object
+            list: true
+            required: false
+            description: Empty list means none.
+            fields:
+              - name: name
+                label: Armor Type
+                type: string
+                required: true
+          - name: weapons
+            label: Weapons
+            type: object
+            required: true
+            description: Set exactly one of Stat weapons, Weapon kinds, or Range.
+            fields:
+              - name: type
+                label: Stat Weapons
+                type: string
+                required: false
+                description: e.g. STR or DEX — all weapons using that stat.
+              - name: kind
+                label: Weapon Kinds
+                type: object
+                list: true
+                required: false
+                fields:
+                  - name: name
+                    label: Kind
+                    type: string
+                    required: true
+              - name: range
+                label: Range
+                type: string
+                required: false
+                description: e.g. melee for unarmed-only classes.
+          - name: startingGear
+            label: Starting Gear
+            type: object
+            list: true
+            required: true
+            fields:
+              - name: name
+                label: Item
+                type: string
+                required: true
+          - name: levels
+            label: Class Levels
+            type: object
+            list: true
+            required: true
+            fields:
+              - name: level
+                label: Level
+                type: number
+                required: true
+              - name: abilities
+                label: Abilities
+                type: object
+                list: true
+                required: true
+                fields:
+                  - name: name
+                    label: Name
+                    type: string
+                    required: true
+                  - name: description
+                    label: Description
+                    type: rich-text
+                    required: true
+                    options:
+                      format: markdown
+          - name: abilityLists
+            label: Ability Lists
+            type: object
+            list: true
+            required: false
+            fields:
+              - name: name
+                label: List Name
+                type: string
+                required: true
+              - name: description
+                label: Intro
+                type: rich-text
+                required: true
+                options:
+                  format: markdown
+              - name: items
+                label: Items
+                type: object
+                list: true
+                required: true
+                fields:
+                  - name: name
+                    label: Name
+                    type: string
+                    required: true
+                  - name: description
+                    label: Description
+                    type: rich-text
+                    required: true
+                    options:
+                      format: markdown
+          - name: subclasses
+            label: Subclasses
+            type: object
+            list: true
+            required: true
+            fields:
+              - name: name
+                label: Name
+                type: string
+                required: true
+              - name: levels
+                label: Levels
+                type: object
+                list: true
+                required: true
+                fields:
+                  - name: level
+                    label: Level
+                    type: number
+                    required: true
+                  - name: abilities
+                    label: Abilities
+                    type: object
+                    list: true
+                    required: true
+                    fields:
+                      - name: name
+                        label: Name
+                        type: string
+                        required: true
+                      - name: description
+                        label: Description
+                        type: rich-text
+                        required: true
+                        options:
+                          format: markdown
+
   - name: game-masters-guide-data
     label: Game Master's Guide Data
     type: group
@@ -349,24 +557,6 @@ content:
             type: string
             required: true
             description: Detail page URL slug is generated from this name (kebab-case).
-          - name: description
-            label: Description
-            type: rich-text
-            required: true
-            options:
-              format: markdown
-
-      - name: character-classes
-        label: Classes
-        type: file
-        path: src/data/character-classes.json
-        format: json
-        list: true
-        fields:
-          - name: name
-            label: Name
-            type: string
-            required: true
           - name: description
             label: Description
             type: rich-text
