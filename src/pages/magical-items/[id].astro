@@ -41,7 +41,7 @@ const sourceRef =
 		next: false,
 	}}
 >
-	<PagefindEntityScope type="magical-item">
+	<PagefindEntityScope type="magical-item" name={row.name}>
 		<DetailPageBackToList href="/magical-items/" label="All Magical Items" />
 		<div set:html={await renderMarkdown(bodyMarkdown)} />
 		<DetailPageSourceRef

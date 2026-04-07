@@ -1,9 +1,10 @@
 ---
 export type Props = {
 	type: string;
+	name?: string;
 };
 
-const { type } = Astro.props;
+const { type, name } = Astro.props;
 const typeFilter = `type:${type}`;
 ---
 
@@ -14,6 +15,7 @@ const typeFilter = `type:${type}`;
 />
 
 <div data-pagefind-weight="10">
+	{name && <span class="sr-only">{name}</span>}
 	<slot />
 </div>
 

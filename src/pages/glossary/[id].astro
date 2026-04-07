@@ -28,7 +28,7 @@ const bodyMarkdown = row.description?.trim() ?? '';
 		next: false,
 	}}
 >
-	<PagefindEntityScope type="glossary">
+	<PagefindEntityScope type="glossary" name={row.name}>
 		<DetailPageBackToList href="/glossary/" label="All Glossary" />
 		<div set:html={await renderMarkdown(bodyMarkdown)} />
 		<DetailPageSourceRef

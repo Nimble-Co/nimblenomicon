@@ -33,7 +33,7 @@ const bodyMarkdown =
 		next: false,
 	}}
 >
-	<PagefindEntityScope type="ancestry">
+	<PagefindEntityScope type="ancestry" name={row.name}>
 		<DetailPageBackToList href="/ancestries/" label="All Ancestries" />
 		<div set:html={await renderMarkdown(bodyMarkdown)} />
 		<DetailPageSourceRef

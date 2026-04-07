@@ -48,7 +48,7 @@ const sourceName =
 		next: false,
 	}}
 >
-	<PagefindEntityScope type="spell">
+	<PagefindEntityScope type="spell" name={spell.name}>
 		<DetailPageBackToList href="/spells/" label="All Spells" />
 		<div set:html={await renderMarkdown(bodyMarkdown)} />
 		<DetailPageSourceRef href={sourceHref} sourceName={sourceName} />

@@ -28,7 +28,7 @@ const bodyMarkdown = row.description?.trim() ?? '';
 		next: false,
 	}}
 >
-	<PagefindEntityScope type="background">
+	<PagefindEntityScope type="background" name={row.name}>
 		<DetailPageBackToList href="/backgrounds/" label="All Backgrounds" />
 		<div set:html={await renderMarkdown(bodyMarkdown)} />
 		<DetailPageSourceRef

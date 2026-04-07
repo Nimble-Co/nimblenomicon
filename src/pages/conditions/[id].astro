@@ -28,7 +28,7 @@ const bodyMarkdown = row.description?.trim() ?? '';
 		next: false,
 	}}
 >
-	<PagefindEntityScope type="condition">
+	<PagefindEntityScope type="condition" name={row.name}>
 		<DetailPageBackToList href="/conditions/" label="All Conditions" />
 		<div set:html={await renderMarkdown(bodyMarkdown)} />
 		<DetailPageSourceRef

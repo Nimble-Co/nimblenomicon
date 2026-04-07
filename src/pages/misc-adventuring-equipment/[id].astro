@@ -31,7 +31,7 @@ const bodyMarkdown = miscAdventuringEquipmentDetailMarkdown(row);
 		next: false,
 	}}
 >
-	<PagefindEntityScope type="misc-equipment">
+	<PagefindEntityScope type="misc-equipment" name={row.name}>
 		<DetailPageBackToList
 			href="/misc-adventuring-equipment/"
 			label="All Misc. Adventuring Equipment"

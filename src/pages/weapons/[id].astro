@@ -33,7 +33,7 @@ const bodyMarkdown = weaponDetailMarkdown(row);
 		next: false,
 	}}
 >
-	<PagefindEntityScope type="weapon">
+	<PagefindEntityScope type="weapon" name={row.name}>
 		<DetailPageBackToList href="/weapons/" label="All Weapons" />
 		<div set:html={await renderMarkdown(bodyMarkdown)} />
 		<DetailPageSourceRef

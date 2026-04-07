@@ -33,7 +33,7 @@ const bodyMarkdown = armorDetailMarkdown(row);
 		next: false,
 	}}
 >
-	<PagefindEntityScope type="armor">
+	<PagefindEntityScope type="armor" name={row.name}>
 		<DetailPageBackToList href="/armor/" label="All Armor" />
 		<div set:html={await renderMarkdown(bodyMarkdown)} />
 		<DetailPageSourceRef

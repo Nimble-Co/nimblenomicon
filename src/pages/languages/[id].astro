@@ -28,7 +28,7 @@ const bodyMarkdown = row.description?.trim() ?? '';
 		next: false,
 	}}
 >
-	<PagefindEntityScope type="language">
+	<PagefindEntityScope type="language" name={row.name}>
 		<DetailPageBackToList href="/languages/" label="All Languages" />
 		<div set:html={await renderMarkdown(bodyMarkdown)} />
 		<DetailPageSourceRef

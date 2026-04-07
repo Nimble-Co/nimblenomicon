@@ -41,7 +41,7 @@ const { heroClass } = Astro.props;
 		next: false,
 	}}
 >
-	<PagefindEntityScope type="class">
+	<PagefindEntityScope type="class" name={heroClass.name}>
 		<DetailPageBackToList href="/classes/" label="All Classes" />
 		<HeroClassSheet classId={heroClass.id} />
 		<DetailPageSourceRef href={`/heroes/#${heroClass.id}`} sourceName="Heroes" />
