@@ -3,6 +3,7 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
 import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
 import HeroClassSheet from '../../components/HeroClassSheet.astro';
+import PagefindEntityScope from '../../components/PagefindEntityScope.astro';
 import type { HeroClassData } from '../../models/class';
 import { heroClasses } from '../../models/class';
 
@@ -40,7 +41,9 @@ const { heroClass } = Astro.props;
 		next: false,
 	}}
 >
-	<DetailPageBackToList href="/classes/" label="All Classes" />
-	<HeroClassSheet classId={heroClass.id} />
-	<DetailPageSourceRef href={`/heroes/#${heroClass.id}`} sourceName="Heroes" />
+	<PagefindEntityScope type="class">
+		<DetailPageBackToList href="/classes/" label="All Classes" />
+		<HeroClassSheet classId={heroClass.id} />
+		<DetailPageSourceRef href={`/heroes/#${heroClass.id}`} sourceName="Heroes" />
+	</PagefindEntityScope>
 </StarlightPage>

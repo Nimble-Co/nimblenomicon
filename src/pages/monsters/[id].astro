@@ -2,6 +2,7 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
 import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
+import PagefindEntityScope from '../../components/PagefindEntityScope.astro';
 import LegendaryStatBlock from '../../components/LegendaryStatBlock.astro';
 import MonsterStatBlock from '../../components/MonsterStatBlock.astro';
 import type { LegendaryEntryData } from '../../models/legendary-monsters';
@@ -66,20 +67,22 @@ const description =
 		next: false,
 	}}
 >
-	<DetailPageBackToList href="/monsters/" label="All Monsters" />
-	{
-		variant === 'monster' ? (
-			<MonsterStatBlock
-				monsterId={record.id}
-				showKind={true}
-				showFamilyAbilities={true}
-			/>
-		) : (
-			<LegendaryStatBlock legendaryMonsterId={record.id} />
-		)
-	}
-	<DetailPageSourceRef
-		href={`/game-masters-guide/#${record.id}`}
-		sourceName="Game Master's Guide"
-	/>
+	<PagefindEntityScope type="monster">
+		<DetailPageBackToList href="/monsters/" label="All Monsters" />
+		{
+			variant === 'monster' ? (
+				<MonsterStatBlock
+					monsterId={record.id}
+					showKind={true}
+					showFamilyAbilities={true}
+				/>
+			) : (
+				<LegendaryStatBlock legendaryMonsterId={record.id} />
+			)
+		}
+		<DetailPageSourceRef
+			href={`/game-masters-guide/#${record.id}`}
+			sourceName="Game Master's Guide"
+		/>
+	</PagefindEntityScope>
 </StarlightPage>

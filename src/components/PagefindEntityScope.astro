@@ -1,0 +1,19 @@
+---
+export type Props = {
+	type: string;
+};
+
+const { type } = Astro.props;
+const typeFilter = `type:${type}`;
+---
+
+<span
+	class="sr-only"
+	aria-hidden="true"
+	data-pagefind-filter={typeFilter}
+/>
+
+<div data-pagefind-weight="10">
+	<slot />
+</div>
+

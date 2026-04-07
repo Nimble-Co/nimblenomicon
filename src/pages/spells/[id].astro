@@ -2,6 +2,7 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
 import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
+import PagefindEntityScope from '../../components/PagefindEntityScope.astro';
 import { renderMarkdown } from '../../utils/render-markdown';
 import { spellSchools } from '../../models/spell-schools';
 import { spells, type SpellData } from '../../models/spells';
@@ -47,7 +48,9 @@ const sourceName =
 		next: false,
 	}}
 >
-	<DetailPageBackToList href="/spells/" label="All Spells" />
-	<div set:html={await renderMarkdown(bodyMarkdown)} />
-	<DetailPageSourceRef href={sourceHref} sourceName={sourceName} />
+	<PagefindEntityScope type="spell">
+		<DetailPageBackToList href="/spells/" label="All Spells" />
+		<div set:html={await renderMarkdown(bodyMarkdown)} />
+		<DetailPageSourceRef href={sourceHref} sourceName={sourceName} />
+	</PagefindEntityScope>
 </StarlightPage>
