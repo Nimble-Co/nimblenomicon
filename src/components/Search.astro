@@ -92,10 +92,22 @@ if (project.trailingSlash === 'never')
 				}
 			};
 
+			const clearPagefindQuery = () => {
+				const input = this.querySelector<HTMLInputElement>(
+					'#starlight__search input.pagefind-ui__search-input',
+				);
+				if (!input) return;
+				input.value = '';
+				input.dispatchEvent(new Event('input', { bubbles: true }));
+			};
+
 			const openModal = (event?: MouseEvent) => {
 				dialog.showModal();
 				document.body.toggleAttribute('data-search-modal-open', true);
-				this.querySelector('input')?.focus();
+				clearPagefindQuery();
+				this.querySelector<HTMLInputElement>(
+					'#starlight__search input.pagefind-ui__search-input',
+				)?.focus();
 				event?.stopPropagation();
 				// Defer so the opening click (e.g. home search) can finish bubbling; otherwise
 				// `onClick` runs in the same tick, sees target outside `.dialog-frame`, and closes.
