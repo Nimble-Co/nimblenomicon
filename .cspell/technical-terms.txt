@@ -1,8 +1,9 @@
 # Project, stack, and code-adjacent terms
+Astro
+astrojs
+Avenir
 blockquotes
 borderless
-astrojs
-Astro
 cliffside
 Cpath
 Csvg
@@ -11,6 +12,7 @@ greatclub
 halfling
 hrefs
 longsword
+Maintainership
 MDX
 nimblerpg
 Pagefind
@@ -20,8 +22,7 @@ smithing
 spellcaster
 Starlight
 stonecraft
-Sublist
 sublist
+Sublist
 tailwindcss
 Zod
-Maintainership
