@@ -2969,7 +2969,7 @@
 					},
 					{
 						"name": "Devoted Acolyte",
-						"description": "Learn 2 of the following languages: Celestial, Draconic, Deep Speak, Infernal, or Primordial. Advantage on Lore checks related to those 2 languages."
+						"description": "Learn 2 of the following languages: <a href=\"/languages/celestial/\" class=\"auto-xref\" data-term=\"Celestial\" data-kind=\"language\" data-definition=\"Celestials and priests.\">Celestial</a>, Draconic, Deep Speak, Infernal, or Primordial. Advantage on Lore checks related to those 2 languages."
 					},
 					{
 						"name": "Eldritch Sense",
