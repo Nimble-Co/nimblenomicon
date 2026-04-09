@@ -1,19 +1,19 @@
-import { ancestries } from '../../models/ancestries';
-import { armorRows } from '../../models/armor';
-import { backgrounds } from '../../models/backgrounds';
-import { heroClasses, type HeroClassData } from '../../models/class';
-import { conditions } from '../../models/conditions';
-import { glossary } from '../../models/glossary';
-import { languages } from '../../models/languages';
-import { legendaryMonsters } from '../../models/legendary-monsters';
-import { magicalItems } from '../../models/magical-items';
-import { miscAdventuringEquipment } from '../../models/misc-adventuring-equipment';
-import { monsters } from '../../models/monsters';
-import { spells } from '../../models/spells';
-import { weapons } from '../../models/weapons';
+import { ancestries } from './ancestries';
+import { armorRows } from './armor';
+import { backgrounds } from './backgrounds';
+import { heroClasses, type HeroClassData } from './class';
+import { conditions } from './conditions';
+import { glossary } from './glossary';
+import { languages } from './languages';
+import { legendaryMonsters } from './legendary-monsters';
+import { magicalItems } from './magical-items';
+import { miscAdventuringEquipment } from './misc-adventuring-equipment';
+import { monsters } from './monsters';
+import { spells } from './spells';
+import { weapons } from './weapons';
 
-/** One matchable phrase → entity page (used at build time and serialized for the client). */
-export type TermEntry = {
+/** Metadata for manual `.auto-xref` links and the optional MDX linker script. */
+export type XrefTermEntry = {
 	term: string;
 	href: string;
 	definition: string;
@@ -54,8 +54,8 @@ function monsterDefinition(name: string, level: string, kind?: string): string {
 	return truncateDef(bits.join(' '));
 }
 
-function buildEntries(): TermEntry[] {
-	const out: TermEntry[] = [];
+function buildEntries(): XrefTermEntry[] {
+	const out: XrefTermEntry[] = [];
 
 	for (const s of spells) {
 		out.push({
@@ -204,7 +204,9 @@ function buildEntries(): TermEntry[] {
 }
 
 /** Longest phrase first, then higher priority (spell before weapon when same length). */
-export function sortTermsForMatching(entries: TermEntry[]): TermEntry[] {
+export function sortXrefTermsForMatching(
+	entries: XrefTermEntry[],
+): XrefTermEntry[] {
 	return [...entries].sort((a, b) => {
 		const ld = b.term.length - a.term.length;
 		if (ld !== 0) return ld;
@@ -212,9 +214,9 @@ export function sortTermsForMatching(entries: TermEntry[]): TermEntry[] {
 	});
 }
 
-function dedupeByTerm(entries: TermEntry[]): TermEntry[] {
+function dedupeByTerm(entries: XrefTermEntry[]): XrefTermEntry[] {
 	const seen = new Set<string>();
-	const out: TermEntry[] = [];
+	const out: XrefTermEntry[] = [];
 	for (const e of entries) {
 		const key = e.term;
 		if (seen.has(key)) continue;
@@ -224,7 +226,8 @@ function dedupeByTerm(entries: TermEntry[]): TermEntry[] {
 	return out;
 }
 
-export function buildMatchableTerms(): TermEntry[] {
+/** All entity terms for tooltips / manual links (deduped; first wins on duplicate names). */
+export function buildXrefTermList(): XrefTermEntry[] {
 	const raw = buildEntries();
-	return dedupeByTerm(sortTermsForMatching(raw));
+	return dedupeByTerm(sortXrefTermsForMatching(raw));
 }
