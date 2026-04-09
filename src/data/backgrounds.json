@@ -1,11 +1,11 @@
 [
 	{
 		"name": "Back Out of Retirement",
-		"description": "You've forgotten more than most adventurers these days know! Talk with your GM, what made you come out of retirement?\n\n- **Let's see if I remember how to do this...** You may gain 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a> to use an ability or cast a spell as if you were 1 level higher.\n- **These old bones.** Your age has long since started to show. –1 max Wounds."
+		"description": "You've forgotten more than most adventurers these days know! Talk with your GM, what made you come out of retirement?\n\n- **Let's see if I remember how to do this...** You may gain 1 Wound to use an ability or cast a spell as if you were 1 level higher.\n- **These old bones.** Your age has long since started to show. –1 max Wounds."
 	},
 	{
 		"name": "Devoted Protector",
-		"description": "Choose 1 ally in your party. You can survive +3 max Wounds as long as they are nearby. Whenever they take a <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a>, you do too."
+		"description": "Choose 1 ally in your party. You can survive +3 max Wounds as long as they are nearby. Whenever they take a Wound, you do too."
 	},
 	{
 		"name": "Academy Dropout",
@@ -53,11 +53,11 @@
 	},
 	{
 		"name": "Raised by Goblins",
-		"description": "You speak <a href=\"/monsters/goblin/\" class=\"auto-xref\" data-term=\"Goblin\" data-kind=\"monster\" data-definition=\"Goblin — Level 1/3 monster. Goblins\">Goblin</a> natively (much better than one who has learned it later in life). You automatically notice and can avoid crudely-made traps and have advantage to notice and disarm more sophisticated traps."
+		"description": "You speak Goblin natively (much better than one who has learned it later in life). You automatically notice and can avoid crudely-made traps and have advantage to notice and disarm more sophisticated traps."
 	},
 	{
 		"name": "Change It Up!",
-		"description": "> You can choose any other ancestry to be raised by instead, and exchange the known language and get 1 helpful/iconic ability those people would inculcate (e.g., Dwarves know <a href=\"/languages/dwarvish/\" class=\"auto-xref\" data-term=\"Dwarvish\" data-kind=\"language\" data-definition=\"Dwarves, Gnomes, and Giants.\">Dwarvish</a> and are very good with smithing or stonecraft)."
+		"description": "> You can choose any other ancestry to be raised by instead, and exchange the known language and get 1 helpful/iconic ability those people would inculcate (e.g., Dwarves know Dwarvish and are very good with smithing or stonecraft)."
 	},
 	{
 		"name": "History Buff",
@@ -77,7 +77,7 @@
 	},
 	{
 		"name": "Fearless",
-		"description": "You are immune to the <a href=\"/conditions/frightened/\" class=\"auto-xref\" data-term=\"Frightened\" data-kind=\"condition\" data-definition=\"Disadvantage on rolls when source of fear is nearby; speed halved when moving closer to it.\">Frightened</a> condition. +1 Initiative. –1 Armor."
+		"description": "You are immune to the Frightened condition. +1 Initiative. –1 Armor."
 	},
 	{
 		"name": "So Dumb I'm Smart Sometimes",
@@ -101,6 +101,6 @@
 	},
 	{
 		"name": "Make It Your Own!",
-		"description": "> Remember, backgrounds are just a starting point—you're free to adjust, reimagine, or completely rewrite them to suit your character's story. If you want to know a Utility Spell but don't like the <a href=\"/backgrounds/academy-dropout/\" class=\"auto-xref\" data-term=\"Academy Dropout\" data-kind=\"background\" data-definition=\"School just isn't for everyone! You learn by experience in the _real world_ (or at least that's what you tell yourself). Learn any 1 Utility Spell.\">Academy Dropout</a> flavor, come up with a different reason why your character might know it. Maybe they learned it from a traveling bard or discovered it etched into an ancient relic.\n>\n> Feel free to swap traits, change the flavor text, or blend backgrounds together. <a href=\"/backgrounds/haunted-past/\" class=\"auto-xref\" data-term=\"Haunted Past\" data-kind=\"background\" data-definition=\"You are haunted by voices that occasionally give you cryptic advice. The voices are sometimes VERY helpful. Other times they only want to see you suffer. Advantage against fear.\">Haunted Past</a> might become Blessed by Spirits if your character views their other- worldly voices as guardians rather than tormentors.\n>\n> Work with your GM to ensure any changes align with your game's setting and are balanced with other backgrounds. These are here to inspire creativity—what you build with them is entirely up to you!"
+		"description": "> Remember, backgrounds are just a starting point—you're free to adjust, reimagine, or completely rewrite them to suit your character's story. If you want to know a Utility Spell but don't like the Academy Dropout flavor, come up with a different reason why your character might know it. Maybe they learned it from a traveling bard or discovered it etched into an ancient relic.\n>\n> Feel free to swap traits, change the flavor text, or blend backgrounds together. Haunted Past might become Blessed by Spirits if your character views their other- worldly voices as guardians rather than tormentors.\n>\n> Work with your GM to ensure any changes align with your game's setting and are balanced with other backgrounds. These are here to inspire creativity—what you build with them is entirely up to you!"
 	}
 ]

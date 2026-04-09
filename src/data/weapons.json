@@ -6,7 +6,7 @@
 		"name": "Dagger",
 		"propertyLines": [
 			{
-				"description": "<a href=\"/spells/light/\" class=\"auto-xref\" data-term=\"Light\" data-kind=\"spell\" data-definition=\"Cause an item to brightly glow as a torch with radiant light for as long as you hold it.\">Light</a>"
+				"description": "Light"
 			},
 			{
 				"description": "Thrown 4"
@@ -49,7 +49,7 @@
 		"name": "Short Sword",
 		"propertyLines": [
 			{
-				"description": "<a href=\"/spells/light/\" class=\"auto-xref\" data-term=\"Light\" data-kind=\"spell\" data-definition=\"Cause an item to brightly glow as a torch with radiant light for as long as you hold it.\">Light</a>"
+				"description": "Light"
 			}
 		]
 	},

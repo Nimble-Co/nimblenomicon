@@ -5,7 +5,7 @@
 	},
 	{
 		"name": "Ice",
-		"description": "Spells deal medium damage at long range, with a focus on controlling the battlefield and protecting the spellcaster. Some ice spells have additional effects against <a href=\"/conditions/hampered/\" class=\"auto-xref\" data-term=\"Hampered\" data-kind=\"condition\" data-definition=\"Any creature with their actions or movement reduced (e.g., Dazed, Grappled, Prone, Difficult Terrain).\">Hampered</a> targets."
+		"description": "Spells deal medium damage at long range, with a focus on controlling the battlefield and protecting the spellcaster. Some ice spells have additional effects against Hampered targets."
 	},
 	{
 		"name": "Lightning",

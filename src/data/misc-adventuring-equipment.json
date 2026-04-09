@@ -2,17 +2,17 @@
 	{
 		"cost": "50 gp",
 		"name": "Healing Potion (action)",
-		"description": "<a href=\"/spells/heal/\" class=\"auto-xref\" data-term=\"Heal\" data-kind=\"spell\" data-definition=\"Reach: 1. Heal a creature 1d6+KEY HP. Upcast: Choose one: +1 target, +4 Reach, +1d6 healing. If 5+ mana is spent, you may also heal 1 negative condition (e.g., Blind, Poisoned, 1 Wound). Shepherd only\">Heal</a> 2d4+4 HP."
+		"description": "Heal 2d4+4 HP."
 	},
 	{
 		"cost": "150 gp",
 		"name": "Greater Healing Potion (action)",
-		"description": "<a href=\"/spells/heal/\" class=\"auto-xref\" data-term=\"Heal\" data-kind=\"spell\" data-definition=\"Reach: 1. Heal a creature 1d6+KEY HP. Upcast: Choose one: +1 target, +4 Reach, +1d6 healing. If 5+ mana is spent, you may also heal 1 negative condition (e.g., Blind, Poisoned, 1 Wound). Shepherd only\">Heal</a> 3d6+6 HP."
+		"description": "Heal 3d6+6 HP."
 	},
 	{
 		"cost": "450 gp",
 		"name": "Supreme Healing Potion (action)",
-		"description": "<a href=\"/spells/heal/\" class=\"auto-xref\" data-term=\"Heal\" data-kind=\"spell\" data-definition=\"Reach: 1. Heal a creature 1d6+KEY HP. Upcast: Choose one: +1 target, +4 Reach, +1d6 healing. If 5+ mana is spent, you may also heal 1 negative condition (e.g., Blind, Poisoned, 1 Wound). Shepherd only\">Heal</a> 4d8+8 HP."
+		"description": "Heal 4d8+8 HP."
 	},
 	{
 		"cost": "5 sp",

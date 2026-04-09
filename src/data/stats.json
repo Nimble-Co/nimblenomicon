@@ -2,7 +2,7 @@
 	{
 		"name": "Strength",
 		"stat": "STR",
-		"description": "Your raw physical power and resilience, endurance, and resistance to harm. Affects STR weapon damage, resistance to Wounds, HP recovery, <a href=\"/glossary/concentration/\" class=\"auto-xref\" data-term=\"Concentration\" data-kind=\"glossary\" data-definition=\"Can only Concentrate on 1 thing at a time. DC 10 STR save when crit or lose concentration, see pg. 10.\">Concentration</a>, STR saves, carrying capacity, Grappling, and the Might skill."
+		"description": "Your raw physical power and resilience, endurance, and resistance to harm. Affects STR weapon damage, resistance to Wounds, HP recovery, Concentration, STR saves, carrying capacity, Grappling, and the Might skill."
 	},
 	{
 		"name": "Dexterity",

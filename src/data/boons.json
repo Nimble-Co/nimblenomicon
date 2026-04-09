@@ -7,12 +7,12 @@
 	{
 		"level": "temporary",
 		"roll": 2,
-		"description": "Gain <a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> temp HP"
+		"description": "Gain LVL temp HP"
 	},
 	{
 		"level": "temporary",
 		"roll": 3,
-		"description": "Gain <a href=\"/glossary/key/\" class=\"auto-xref\" data-term=\"KEY\" data-kind=\"glossary\" data-definition=\"Use either of your KEY attributes.\">KEY</a> temp Hit Dice"
+		"description": "Gain KEY temp Hit Dice"
 	},
 	{
 		"level": "temporary",
@@ -37,7 +37,7 @@
 	{
 		"level": "temporary",
 		"roll": 8,
-		"description": "+<a href=\"/glossary/key/\" class=\"auto-xref\" data-term=\"KEY\" data-kind=\"glossary\" data-definition=\"Use either of your KEY attributes.\">KEY</a> mana"
+		"description": "+KEY mana"
 	},
 	{
 		"level": "minor",
@@ -112,7 +112,7 @@
 	{
 		"level": "major",
 		"name": "Good Patient",
-		"description": "Whenever you would receive healing, you heal an additional <a href=\"/glossary/key/\" class=\"auto-xref\" data-term=\"KEY\" data-kind=\"glossary\" data-definition=\"Use either of your KEY attributes.\">KEY</a> HP ."
+		"description": "Whenever you would receive healing, you heal an additional KEY HP ."
 	},
 	{
 		"level": "major",
@@ -122,7 +122,7 @@
 	{
 		"level": "major",
 		"name": "Honorable Protector",
-		"description": "Gain <a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> temp HP whenever you Interpose. Suffer LVL psychic damage whenever an ally within 2 spaces is attacked and you don't Interpose."
+		"description": "Gain LVL temp HP whenever you Interpose. Suffer LVL psychic damage whenever an ally within 2 spaces is attacked and you don't Interpose."
 	},
 	{
 		"level": "major",
@@ -132,12 +132,12 @@
 	{
 		"level": "major",
 		"name": "Natural Talent",
-		"description": "Learn 1 <a href=\"/glossary/cantrip/\" class=\"auto-xref\" data-term=\"Cantrip\" data-kind=\"glossary\" data-definition=\"A basic spell. Costs 0 mana to cast, and their power increases as you level up.\">Cantrip</a> in a school you don't know."
+		"description": "Learn 1 Cantrip in a school you don't know."
 	},
 	{
 		"level": "major",
 		"name": "Resolute",
-		"description": "When pushed, you are pushed 1 space less. Whenever you would be knocked <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>, you can instead be moved back 1 space. 1/turn."
+		"description": "When pushed, you are pushed 1 space less. Whenever you would be knocked Prone, you can instead be moved back 1 space. 1/turn."
 	},
 	{
 		"level": "major",
@@ -147,7 +147,7 @@
 	{
 		"level": "major",
 		"name": "Smart, Not Book Smart",
-		"description": "-<a href=\"/glossary/key/\" class=\"auto-xref\" data-term=\"KEY\" data-kind=\"glossary\" data-definition=\"Use either of your KEY attributes.\">KEY</a> max mana. Gain 1d4 mana whenever you roll Initiative; this expires if unused at the end of combat."
+		"description": "-KEY max mana. Gain 1d4 mana whenever you roll Initiative; this expires if unused at the end of combat."
 	},
 	{
 		"level": "major",
@@ -172,7 +172,7 @@
 	{
 		"level": "major",
 		"name": "Unflinching",
-		"description": "Your focus is unbroken even in the face of danger. Advantage on <a href=\"/glossary/concentration/\" class=\"auto-xref\" data-term=\"Concentration\" data-kind=\"glossary\" data-definition=\"Can only Concentrate on 1 thing at a time. DC 10 STR save when crit or lose concentration, see pg. 10.\">Concentration</a> checks."
+		"description": "Your focus is unbroken even in the face of danger. Advantage on Concentration checks."
 	},
 	{
 		"level": "major",
@@ -222,7 +222,7 @@
 	{
 		"level": "epic",
 		"name": "Epic Stamina",
-		"description": "Rolling 4 or higher on a Hit Die during a Field Rest heals 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a>."
+		"description": "Rolling 4 or higher on a Hit Die during a Field Rest heals 1 Wound."
 	},
 	{
 		"level": "epic",

@@ -40,7 +40,7 @@
 		"abilities": [
 			{
 				"name": "Frenzy",
-				"description": "Advantage against <a href=\"/conditions/bloodied/\" class=\"auto-xref\" data-term=\"Bloodied\" data-kind=\"condition\" data-definition=\"At half HP or less.\">Bloodied</a> creatures."
+				"description": "Advantage against Bloodied creatures."
 			}
 		]
 	},
