@@ -88,6 +88,17 @@ describe('applyAutoXrefToDocument', () => {
 		expect(out).not.toContain('data-term="Armor"');
 	});
 
+	it('does not link inside nimble-full-bleed-hero__callout', () => {
+		const html = `<!DOCTYPE html><html><body><div data-auto-link><div class="nimble-full-bleed-hero__callout not-content"><p>Cast Fireball here.</p></div></div></body></html>`;
+		const out = applyAutoXrefToDocument(
+			html,
+			sampleTerms,
+			'/classes/wizard/',
+			'',
+		);
+		expect(out).not.toContain('class="auto-xref"');
+	});
+
 	it('returns unchanged when no data-auto-link', () => {
 		const html = `<!DOCTYPE html><html><body><p>Fireball</p></body></html>`;
 		const out = applyAutoXrefToDocument(html, sampleTerms, '/', '');

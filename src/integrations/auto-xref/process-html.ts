@@ -6,6 +6,9 @@ import {
 	xrefTermEqualsIgnoreCase,
 } from '../../models/xref-terms';
 
+/** Full-bleed hero callout (all pages using `FullBleedHero`); editorial copy, no auto-links. */
+const SKIP_AUTO_XREF_WITHIN_SELECTOR = '.nimble-full-bleed-hero__callout';
+
 const SKIP_DESCEND_TAGS = new Set([
 	'a',
 	'code',
@@ -144,6 +147,7 @@ function processBlock(
 ): void {
 	const $el = $(el);
 	if ($el.closest('table').length > 0) return;
+	if ($el.closest(SKIP_AUTO_XREF_WITHIN_SELECTOR).length > 0) return;
 
 	const nodes = collectTextNodes(el);
 	for (let k = nodes.length - 1; k >= 0; k--) {

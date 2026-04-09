@@ -74,6 +74,7 @@ These preferences come from ongoing Core Rules work. Agents should follow them w
 - **Scoped prose:** Starlight doc bodies use the `MarkdownContent` override, which wraps markdown in **`data-auto-link`**. Any **custom Astro page or component** that renders `renderMarkdown()` output for user-facing prose must also wrap that output in an element with **`data-auto-link`** (or put it inside a parent that already has it), or the HTML pass will skip it.
 - **Overrides in MDX/HTML:** Use `<span data-no-xref>…</span>` to keep a phrase from being linked. Use `<Reference term="…" kind="…" />` from `@components/Reference.astro` when the same label appears in multiple collections. Use a manual `<a class="auto-xref" href="…" data-term="…" data-definition="…" data-kind="…">…</a>` when auto-linking is wrong or missing. See the README section on cross-links for examples.
 - **Tables:** Prose inside `<table>` is not auto-linked (markdown in table cells is skipped).
+- **Full-bleed hero callout:** Content inside `.nimble-full-bleed-hero__callout` is skipped (see `FullBleedHero.astro`); use manual links there if needed.
 - **Global blocklist:** `GLOBAL_XREF_AUTOLINK_BLOCKLIST` in [`src/models/xref-terms.ts`](src/models/xref-terms.ts) holds terms (case-insensitive) that never get build-time links; add entries there for common false positives. Manual `Reference` / `.auto-xref` still work.
 
 ### Workflow
