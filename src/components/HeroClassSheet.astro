@@ -20,7 +20,7 @@ function abilityHeading(name: string): string {
 	return /[.!?;:]$/.test(t) ? t : `${t}.`;
 }
 
-const flavorHtml = await renderMarkdown(hc.description);
+const flavorHtml = await renderMarkdown(hc.introduction);
 
 const levelsRendered = await Promise.all(
 	hc.levels.map(async (lvl) => ({

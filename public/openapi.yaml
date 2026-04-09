@@ -103,7 +103,7 @@ paths:
     get:
       summary: Get Classes
       operationId: getClasses
-      description: Full class records (Core Rules `summary`, flavor `description`, levels, subclasses). Same JSON as `src/data/classes.json` (top-level array).
+      description: Full class records (Core Rules `description`, flavor `introduction`, levels, subclasses). Same JSON as `src/data/classes.json` (top-level array).
       responses:
         '200':
           description: Array of class records
@@ -492,8 +492,8 @@ components:
     ClassesRecord:
       type: object
       description: >
-        Nimble class row from `classes.json` (includes `summary` for Core Rules,
-        full `description`, progression `levels`, nested `subclasses`, etc.).
+        Nimble class row from `classes.json` (includes `description` for Core Rules,
+        full `introduction`, progression `levels`, nested `subclasses`, etc.).
       additionalProperties: true
     ConditionsItem:
       type: object
