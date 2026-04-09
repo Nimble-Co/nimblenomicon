@@ -1,5 +1,5 @@
 /**
- * One-time (or occasional) helper: insert `<Reference term="…">…</Reference>` into MDX under `src/content/docs/`.
+ * One-time (or occasional) helper: insert `<Reference term="…" />` into MDX under `src/content/docs/`.
  *
  * Run from repo root:
  *   npm run xref:apply-mdx
