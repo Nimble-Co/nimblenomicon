@@ -73,6 +73,76 @@ function skipAngleTag(text: string, start: number): number {
 	return gt === -1 ? start : gt + 1;
 }
 
+/** ATX markdown heading: `#` … `######` then whitespace (CommonMark). */
+function isMarkdownAtxHeadingLine(line: string): boolean {
+	return /^#{1,6}\s/.test(line.trimStart());
+}
+
+function linkLine(
+	line: string,
+	terms: XrefTermEntry[],
+	usedTerms: Set<string>,
+	linksInPara: { n: number },
+): { out: string; changed: boolean } {
+	let i = 0;
+	const segments: string[] = [];
+
+	while (i < line.length) {
+		if (linksInPara.n >= MAX_LINKS_PER_PARAGRAPH) {
+			segments.push(line.slice(i));
+			break;
+		}
+
+		const ch = line[i]!;
+		if (ch === '[') {
+			const after = skipMarkdownLink(line, i);
+			if (after > i) {
+				segments.push(line.slice(i, after));
+				i = after;
+				continue;
+			}
+		}
+		if (ch === '<') {
+			const after = skipAngleTag(line, i);
+			if (after > i) {
+				segments.push(line.slice(i, after));
+				i = after;
+				continue;
+			}
+		}
+
+		const m = findMatchAt(line, i, terms);
+		if (!m) {
+			segments.push(ch);
+			i += 1;
+			continue;
+		}
+
+		const { entry, len } = m;
+		if (usedTerms.has(entry.term)) {
+			segments.push(line.slice(i, i + len));
+			i += len;
+			continue;
+		}
+
+		usedTerms.add(entry.term);
+		linksInPara.n += 1;
+
+		const inner = escapeAttr(entry.term);
+		const def = escapeAttr(entry.definition);
+		const kind = escapeAttr(entry.kind);
+		const href = escapeAttr(entry.href);
+
+		segments.push(
+			`<a href="${href}" class="auto-xref" data-term="${inner}" data-kind="${kind}" data-definition="${def}">${line.slice(i, i + len)}</a>`,
+		);
+		i += len;
+	}
+
+	const out = segments.join('');
+	return { out, changed: out !== line };
+}
+
 function linkParagraph(
 	para: string,
 	terms: XrefTermEntry[],
@@ -82,65 +152,22 @@ function linkParagraph(
 		return { out: para, changed: false };
 	}
 
+	const lines = para.split(/\n/);
 	const usedTerms = new Set<string>();
-	let linksInPara = 0;
-	let i = 0;
-	const segments: string[] = [];
+	const linksInPara = { n: 0 };
+	let anyChanged = false;
 
-	while (i < para.length) {
-		if (linksInPara >= MAX_LINKS_PER_PARAGRAPH) {
-			segments.push(para.slice(i));
-			break;
+	const outLines = lines.map((line) => {
+		if (isMarkdownAtxHeadingLine(line)) {
+			return line;
 		}
+		const { out, changed } = linkLine(line, terms, usedTerms, linksInPara);
+		if (changed) anyChanged = true;
+		return out;
+	});
 
-		const ch = para[i]!;
-		if (ch === '[') {
-			const after = skipMarkdownLink(para, i);
-			if (after > i) {
-				segments.push(para.slice(i, after));
-				i = after;
-				continue;
-			}
-		}
-		if (ch === '<') {
-			const after = skipAngleTag(para, i);
-			if (after > i) {
-				segments.push(para.slice(i, after));
-				i = after;
-				continue;
-			}
-		}
-
-		const m = findMatchAt(para, i, terms);
-		if (!m) {
-			segments.push(ch);
-			i += 1;
-			continue;
-		}
-
-		const { entry, len } = m;
-		if (usedTerms.has(entry.term)) {
-			segments.push(para.slice(i, i + len));
-			i += len;
-			continue;
-		}
-
-		usedTerms.add(entry.term);
-		linksInPara += 1;
-
-		const inner = escapeAttr(entry.term);
-		const def = escapeAttr(entry.definition);
-		const kind = escapeAttr(entry.kind);
-		const href = escapeAttr(entry.href);
-
-		segments.push(
-			`<a href="${href}" class="auto-xref" data-term="${inner}" data-kind="${kind}" data-definition="${def}">${para.slice(i, i + len)}</a>`,
-		);
-		i += len;
-	}
-
-	const out = segments.join('');
-	return { out, changed: out !== para };
+	const out = outLines.join('\n');
+	return { out, changed: anyChanged };
 }
 
 /** Process text outside ``` fenced code blocks only. */
