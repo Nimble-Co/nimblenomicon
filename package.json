@@ -15,6 +15,7 @@
 		"format:check": "prettier --check .",
 		"lint": "npm run lint:js && npm run lint:md",
 		"xref:apply-mdx": "tsx scripts/apply-xref-mdx.ts",
+		"xref:apply-json": "tsx scripts/apply-xref-json.ts",
 		"lint:js": "eslint .",
 		"lint:md": "markdownlint-cli2 \"**/*.md\" \"**/*.mdx\""
 	},

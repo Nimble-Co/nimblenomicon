@@ -1,5 +1,5 @@
 /**
- * Tooltip behavior for build-injected `.auto-xref` links (see `src/integrations/auto-xref/`).
+ * Tooltip behavior for `.auto-xref` links (manual or from xref:apply-* scripts).
  */
 
 const SHOW_DELAY_MS = 200;
