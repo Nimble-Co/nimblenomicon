@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 
 import { STARLIGHT_GLOBAL_SIDEBAR } from './src/config/section-sidebars';
+import { autoXrefIntegration } from './src/integrations/auto-xref/integration';
 
 const owner = process.env.GITHUB_REPOSITORY_OWNER;
 const repo = process.env.GITHUB_REPOSITORY?.split('/')[1];
@@ -18,6 +19,7 @@ export default defineConfig({
 	site,
 	base,
 	integrations: [
+		autoXrefIntegration({ base: base ?? '/' }),
 		starlight({
 			title: 'The Nimblenomicon',
 			head: [
@@ -40,6 +42,7 @@ export default defineConfig({
 				Search: './src/components/Search.astro',
 				Sidebar: './src/components/Sidebar.astro',
 				TwoColumnContent: './src/components/TwoColumnContent.astro',
+				MarkdownContent: './src/components/MarkdownContent.astro',
 				Footer: './src/components/Footer.astro',
 				PageTitle: './src/components/PageTitle.astro',
 				Banner: './src/components/Banner.astro',

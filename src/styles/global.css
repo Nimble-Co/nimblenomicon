@@ -470,3 +470,58 @@ nav.sidebar a:focus-visible {
 :root[data-theme='dark'] .starlight-aside__content a:hover {
 	color: #f0f2f8;
 }
+
+/*
+ * Auto-xref (build-time term links) + shared tooltip (`#auto-xref-tooltip`).
+ */
+a.auto-xref {
+	text-decoration: underline;
+	text-decoration-style: dotted;
+	text-underline-offset: 0.15em;
+	color: var(--color-accent-600);
+	font-weight: 500;
+}
+
+a.auto-xref:hover,
+a.auto-xref:focus-visible {
+	color: var(--color-accent-700);
+}
+
+#auto-xref-tooltip.auto-xref-tooltip {
+	position: fixed;
+	z-index: 200;
+	max-width: min(22rem, calc(100vw - 1.5rem));
+	padding: 0.65rem 0.85rem;
+	border-radius: 0.35rem;
+	border: 1px solid var(--color-hairline);
+	background-color: var(--color-surface);
+	color: var(--color-fg);
+	box-shadow:
+		0 4px 14px rgb(0 0 0 / 0.12),
+		0 0 0 1px rgb(0 0 0 / 0.04);
+	font-size: var(--sl-text-sm);
+	line-height: 1.45;
+	pointer-events: none;
+}
+
+#auto-xref-tooltip.auto-xref-tooltip .auto-xref-tooltip-kind {
+	display: block;
+	font-size: var(--sl-text-xs);
+	text-transform: capitalize;
+	letter-spacing: 0.04em;
+	color: var(--color-fg-muted);
+	margin-bottom: 0.25rem;
+}
+
+#auto-xref-tooltip.auto-xref-tooltip .auto-xref-tooltip-title {
+	display: block;
+	font-family: var(--font-heading);
+	font-weight: 600;
+	margin-bottom: 0.35rem;
+}
+
+#auto-xref-tooltip.auto-xref-tooltip .auto-xref-tooltip-body {
+	display: block;
+	color: var(--color-fg-muted);
+	font-weight: 400;
+}
