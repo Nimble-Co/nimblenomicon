@@ -226,6 +226,43 @@ function dedupeByTerm(entries: XrefTermEntry[]): XrefTermEntry[] {
 	return out;
 }
 
+/** Sorted list of all entity rows (no dedupe) — use for disambiguation and `Reference`. */
+let allReferenceEntriesCache: XrefTermEntry[] | undefined;
+
+export function allReferenceEntries(): XrefTermEntry[] {
+	allReferenceEntriesCache ??= sortXrefTermsForMatching(buildEntries());
+	return allReferenceEntriesCache;
+}
+
+/**
+ * Resolve a display `term` to a single entry. When multiple rows share the same `term`,
+ * pass `kind` (e.g. `language` vs `ancestry`) or the first row in priority order is used
+ * (same as legacy dedupe behavior).
+ */
+export function resolveReferenceEntry(
+	term: string,
+	kind?: string,
+): XrefTermEntry | undefined {
+	const matches = allReferenceEntries().filter((e) => e.term === term);
+	if (matches.length === 0) return undefined;
+	if (matches.length === 1) return matches[0];
+	if (kind !== undefined && kind !== '') {
+		return matches.find((e) => e.kind === kind);
+	}
+	return matches[0];
+}
+
+/** Terms that appear more than once in the catalog (need `kind` on `<Reference />` when ambiguous). */
+export function ambiguousReferenceTerms(): Set<string> {
+	const counts = new Map<string, number>();
+	for (const e of allReferenceEntries()) {
+		counts.set(e.term, (counts.get(e.term) ?? 0) + 1);
+	}
+	return new Set(
+		[...counts.entries()].filter(([, n]) => n > 1).map(([t]) => t),
+	);
+}
+
 /** All entity terms for tooltips / manual links (deduped; first wins on duplicate names). */
 export function buildXrefTermList(): XrefTermEntry[] {
 	const raw = buildEntries();

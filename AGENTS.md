@@ -68,6 +68,11 @@ These preferences come from ongoing Core Rules work. Agents should follow them w
 - **Optional variant rules** may live as a **top-level** content entry if that fits the IA better than nesting only under a group.
 - Former “callout” content: prefer **blockquotes inside markdown `description`** instead of a separate parallel field, when that keeps editing simpler.
 
+### Entity links in docs (`Reference`)
+
+- In MDX, link to spells, classes, glossary entries, and other catalog entities with `<Reference term="…" />` (import `Reference` from `@components/Reference.astro`). Optional **`kind`** (e.g. `language`, `glossary`) disambiguates when the same label appears in more than one collection.
+- The **`npm run xref:apply-mdx`** helper inserts `<Reference />` and the import; JSON `description` strings processed through `renderMarkdown()` still use HTML **`<a class="auto-xref">`** from **`xref:apply-json`** — MDX components do not run inside those strings.
+
 ### Workflow
 
 - **Verify** with `npm run build` after substantive content or schema changes.

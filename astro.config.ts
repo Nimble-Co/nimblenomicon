@@ -1,8 +1,13 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import starlight from '@astrojs/starlight';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 
 import { STARLIGHT_GLOBAL_SIDEBAR } from './src/config/section-sidebars';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const owner = process.env.GITHUB_REPOSITORY_OWNER;
 const repo = process.env.GITHUB_REPOSITORY?.split('/')[1];
@@ -56,5 +61,10 @@ export default defineConfig({
 	],
 	vite: {
 		plugins: [tailwindcss()],
+		resolve: {
+			alias: {
+				'@components': path.resolve(__dirname, 'src/components'),
+			},
+		},
 	},
 });

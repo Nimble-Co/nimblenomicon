@@ -4,11 +4,15 @@
  */
 
 import {
+	ambiguousReferenceTerms,
 	buildXrefTermList,
 	type XrefTermEntry,
 } from '../src/models/xref-terms.ts';
 
 export { buildXrefTermList, type XrefTermEntry };
+
+/** MDX emits `<Reference />`; JSON `description` strings stay HTML `<a class="auto-xref">` (see apply-xref-json). */
+export type XrefEmitFormat = 'mdx-reference' | 'html-anchor';
 
 export const MAX_LINKS_PER_PARAGRAPH = 3;
 
@@ -83,6 +87,8 @@ function linkLine(
 	terms: XrefTermEntry[],
 	usedTerms: Set<string>,
 	linksInPara: { n: number },
+	format: XrefEmitFormat,
+	ambiguousTerms: Set<string> | undefined,
 ): { out: string; changed: boolean } {
 	let i = 0;
 	const segments: string[] = [];
@@ -128,14 +134,25 @@ function linkLine(
 		usedTerms.add(entry.term);
 		linksInPara.n += 1;
 
-		const inner = escapeAttr(entry.term);
-		const def = escapeAttr(entry.definition);
-		const kind = escapeAttr(entry.kind);
-		const href = escapeAttr(entry.href);
+		const matchedText = line.slice(i, i + len);
 
-		segments.push(
-			`<a href="${href}" class="auto-xref" data-term="${inner}" data-kind="${kind}" data-definition="${def}">${line.slice(i, i + len)}</a>`,
-		);
+		if (format === 'mdx-reference') {
+			const inner = escapeAttr(entry.term);
+			const kindAttr =
+				ambiguousTerms?.has(entry.term) === true
+					? ` kind="${escapeAttr(entry.kind)}"`
+					: '';
+			segments.push(`<Reference term="${inner}"${kindAttr} />`);
+		} else {
+			const inner = escapeAttr(entry.term);
+			const def = escapeAttr(entry.definition);
+			const kind = escapeAttr(entry.kind);
+			const href = escapeAttr(entry.href);
+
+			segments.push(
+				`<a href="${href}" class="auto-xref" data-term="${inner}" data-kind="${kind}" data-definition="${def}">${matchedText}</a>`,
+			);
+		}
 		i += len;
 	}
 
@@ -146,9 +163,15 @@ function linkLine(
 function linkParagraph(
 	para: string,
 	terms: XrefTermEntry[],
+	format: XrefEmitFormat,
+	ambiguousTerms: Set<string> | undefined,
 ): { out: string; changed: boolean } {
 	const trimmed = para.trimStart();
-	if (/^import\s/u.test(trimmed) || para.includes('auto-xref')) {
+	if (
+		/^import\s/u.test(trimmed) ||
+		para.includes('auto-xref') ||
+		para.includes('<Reference')
+	) {
 		return { out: para, changed: false };
 	}
 
@@ -161,7 +184,14 @@ function linkParagraph(
 		if (isMarkdownAtxHeadingLine(line)) {
 			return line;
 		}
-		const { out, changed } = linkLine(line, terms, usedTerms, linksInPara);
+		const { out, changed } = linkLine(
+			line,
+			terms,
+			usedTerms,
+			linksInPara,
+			format,
+			ambiguousTerms,
+		);
 		if (changed) anyChanged = true;
 		return out;
 	});
@@ -174,16 +204,25 @@ function linkParagraph(
 export function processBodyWithFences(
 	body: string,
 	terms: XrefTermEntry[],
+	format: XrefEmitFormat = 'html-anchor',
 ): string {
+	const ambiguousTerms =
+		format === 'mdx-reference' ? ambiguousReferenceTerms() : undefined;
+
 	let result = '';
 	let i = 0;
 	while (i < body.length) {
 		const fence = body.indexOf('```', i);
 		if (fence === -1) {
-			result += processBodyPlain(body.slice(i), terms);
+			result += processBodyPlain(body.slice(i), terms, format, ambiguousTerms);
 			break;
 		}
-		result += processBodyPlain(body.slice(i, fence), terms);
+		result += processBodyPlain(
+			body.slice(i, fence),
+			terms,
+			format,
+			ambiguousTerms,
+		);
 		const close = body.indexOf('```', fence + 3);
 		if (close === -1) {
 			result += body.slice(fence);
@@ -195,10 +234,15 @@ export function processBodyWithFences(
 	return result;
 }
 
-function processBodyPlain(body: string, terms: XrefTermEntry[]): string {
+function processBodyPlain(
+	body: string,
+	terms: XrefTermEntry[],
+	format: XrefEmitFormat,
+	ambiguousTerms: Set<string> | undefined,
+): string {
 	const paras = body.split(/\n\n/);
 	const out = paras.map((p) => {
-		const { out: next } = linkParagraph(p, terms);
+		const { out: next } = linkParagraph(p, terms, format, ambiguousTerms);
 		return next;
 	});
 	return out.join('\n\n');

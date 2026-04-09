@@ -1,5 +1,5 @@
 /**
- * One-time (or occasional) helper: insert `.auto-xref` links into MDX under `src/content/docs/`.
+ * One-time (or occasional) helper: insert `<Reference />` components into MDX under `src/content/docs/`.
  *
  * Run from repo root:
  *   npm run xref:apply-mdx
@@ -7,7 +7,9 @@
  *
  * Review diffs and fix wrong targets (duplicate names, context). Re-run only after
  * removing bad links or use --dry-run on a copy — paragraphs that already contain
- * `auto-xref` are left unchanged to avoid double-wrapping.
+ * `auto-xref` or `<Reference` are left unchanged to avoid double-wrapping.
+ *
+ * Adds `import Reference from '@components/Reference.astro';` once per file when needed.
  */
 
 import fs from 'node:fs/promises';
@@ -22,6 +24,35 @@ import {
 const DOCS_ROOT = fileURLToPath(
 	new URL('../src/content/docs', import.meta.url),
 );
+
+const REFERENCE_IMPORT = `import Reference from '@components/Reference.astro';\n`;
+
+function hasReferenceImport(source: string): boolean {
+	return /from\s+['"]@components\/Reference\.astro['"]/.test(source);
+}
+
+/**
+ * Ensures a single import when the body contains `<Reference` and the file does not
+ * already import the component (safe when the script is re-run).
+ */
+function ensureReferenceImport(
+	processedBody: string,
+	frontmatter: string | null,
+): string {
+	const base =
+		frontmatter === null ? processedBody : frontmatter + processedBody;
+
+	if (!processedBody.includes('<Reference')) {
+		return base;
+	}
+	if (hasReferenceImport(base)) {
+		return base;
+	}
+	if (frontmatter !== null) {
+		return frontmatter + REFERENCE_IMPORT + processedBody;
+	}
+	return REFERENCE_IMPORT + processedBody;
+}
 
 function splitFrontmatter(raw: string): {
 	frontmatter: string | null;
@@ -63,9 +94,8 @@ async function main() {
 	for (const file of files) {
 		const raw = await fs.readFile(file, 'utf8');
 		const { frontmatter, body } = splitFrontmatter(raw);
-		const processedBody = processBodyWithFences(body, terms);
-		const next =
-			frontmatter === null ? processedBody : frontmatter + processedBody;
+		const processedBody = processBodyWithFences(body, terms, 'mdx-reference');
+		const next = ensureReferenceImport(processedBody, frontmatter);
 
 		if (next !== raw) {
 			touched += 1;

@@ -1,6 +1,10 @@
 /**
- * One-time (or occasional) helper: insert `.auto-xref` links into markdown strings in
+ * One-time (or occasional) helper: insert `.auto-xref` HTML `<a>` links into markdown strings in
  * all `src/data` JSON files — every string value keyed exactly `description`.
+ *
+ * **Why HTML, not `<Reference />`:** strings in JSON are rendered with `renderMarkdown()` and
+ * are not compiled as MDX, so Astro components in those strings will not run. Use the MDX linker
+ * (`xref:apply-mdx`) for the `Reference` component in `.mdx` docs.
  *
  * Run from repo root:
  *   npm run xref:apply-json
