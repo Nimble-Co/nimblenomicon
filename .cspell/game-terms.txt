@@ -254,6 +254,7 @@ Windstrider
 wyrmling
 
 # Legendary monsters (GMG bestiary)
+AAIIID
 Alaric
 Aranya
 Azriel
@@ -261,6 +262,7 @@ Balor
 BBEG
 Broodmother
 Caerys
+Deathbriar
 debuff
 Draegoth
 Dravok
@@ -269,16 +271,30 @@ FIDDLINESS
 Flamecaller
 Flameheart
 Florindris
+Flunkie
+FOOEEE
+froglin
 Gloomwing
+GREEETOM
+Greenthumb
+GREETOM
 Grimbeak
 handleable
+HEELLLP
 Hexbinder
+Iceforge
+Krog
+KROGG
+lichdom
+Manglemaul
+Merivale
 Mistform
 moreso
 Nalzar
 playtesting
 Psionic
 Quickblade
+Rootbreakers
 rulebook
 Shortsword
 Spiderling
@@ -288,9 +304,11 @@ Stormquill
 Sunscorn
 theorycraft
 Thornblight
+TRAAPPED
 unheroically
 unobtained
 Vael
 Veilwalker
 Vinelash
+warhammer
 weirdnesses

@@ -4,5 +4,7 @@
 		"MD025": false,
 		"MD001": false,
 		"MD026": false,
+		// Repeated subsection titles (e.g. "What's Going On?") under each adventure chapter.
+		"MD024": false,
 	},
 }
