@@ -11,7 +11,7 @@ import {
 
 export { buildXrefTermList, type XrefTermEntry };
 
-/** MDX emits `<Reference term="…" />`; JSON `description` strings stay HTML `<a class="auto-xref">` (see apply-xref-json). */
+/** MDX and JSON linkers emit `<Reference term="…" />`; JSON text is expanded to HTML in `renderMarkdown` (see `reference-expand.ts`). */
 export type XrefEmitFormat = 'mdx-reference' | 'html-anchor';
 
 export const MAX_LINKS_PER_PARAGRAPH = 3;
