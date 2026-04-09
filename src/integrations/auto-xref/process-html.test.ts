@@ -34,6 +34,18 @@ describe('applyAutoXrefToDocument', () => {
 		expect(out).toContain('Cast ');
 	});
 
+	it('matches case-insensitively and keeps source casing inside the anchor', () => {
+		const html = `<!DOCTYPE html><html><body><div data-auto-link><p>cast fireball here</p></div></body></html>`;
+		const out = applyAutoXrefToDocument(
+			html,
+			sampleTerms,
+			'/classes/wizard/',
+			'',
+		);
+		expect(out).toContain('data-term="Fireball"');
+		expect(out).toContain('>fireball<');
+	});
+
 	it('skips [data-no-xref] regions', () => {
 		const html = `<!DOCTYPE html><html><body><div data-auto-link><p><span data-no-xref>Fireball</span> and Fireball.</p></div></body></html>`;
 		const out = applyAutoXrefToDocument(html, sampleTerms, '/', '');

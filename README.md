@@ -102,7 +102,7 @@ The site **auto-links** game terms in prose to detail pages and shows a **shared
   The <span data-no-xref>Dice</span> glossary entry should not link from this paragraph.
   ```
 
-- **Disambiguate** when the same label exists in more than one collection: use the `Reference` component (import from `@components/Reference.astro`). Pass **`term`** (lookup key, case-sensitive) and optional **`kind`** (e.g. `language`, `glossary`, `spell`).
+- **Disambiguate** when the same label exists in more than one collection: use the `Reference` component (import from `@components/Reference.astro`). Pass **`term`** (lookup key; matched case-insensitively to the catalog name) and optional **`kind`** (e.g. `language`, `glossary`, `spell`).
 
   ```mdx
   import Reference from '@components/Reference.astro';

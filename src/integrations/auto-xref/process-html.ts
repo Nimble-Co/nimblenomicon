@@ -1,7 +1,10 @@
 import { load, type CheerioAPI } from 'cheerio';
 import type { AnyNode, Element, Text } from 'domhandler';
 
-import type { XrefTermEntry } from '../../models/xref-terms';
+import {
+	type XrefTermEntry,
+	xrefTermEqualsIgnoreCase,
+} from '../../models/xref-terms';
 
 const SKIP_DESCEND_TAGS = new Set([
 	'a',
@@ -64,6 +67,11 @@ function collectTextNodes(el: Element): Text[] {
 	return out;
 }
 
+function sliceMatchesTermAt(text: string, pos: number, term: string): boolean {
+	if (term.length === 0 || pos + term.length > text.length) return false;
+	return xrefTermEqualsIgnoreCase(text.slice(pos, pos + term.length), term);
+}
+
 function findMatchAt(
 	text: string,
 	pos: number,
@@ -72,7 +80,7 @@ function findMatchAt(
 	for (const entry of terms) {
 		const t = entry.term;
 		if (t.length === 0) continue;
-		if (!text.startsWith(t, pos)) continue;
+		if (!sliceMatchesTermAt(text, pos, t)) continue;
 		if (!wordBoundaryBefore(text, pos)) continue;
 		if (!wordBoundaryAfter(text, pos + t.length)) continue;
 		return { entry, len: t.length };

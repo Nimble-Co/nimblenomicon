@@ -12,6 +12,31 @@ import { monsters } from './monsters';
 import { spells } from './spells';
 import { weapons } from './weapons';
 
+/**
+ * Display terms that must never receive **build-time** auto-links (matched case-insensitively on `term`).
+ * Does not affect manual `<Reference />` or `<a class="auto-xref">`.
+ */
+export const GLOBAL_XREF_AUTOLINK_BLOCKLIST: ReadonlySet<string> = new Set([
+	'dice',
+]);
+
+/** Locale for case-insensitive term matching (build-time links + `Reference` lookup). */
+const XREF_TERM_LOCALE = 'en-US';
+
+/** Compares catalog display strings for auto-link matching and `Reference` resolution. */
+export function xrefTermEqualsIgnoreCase(a: string, b: string): boolean {
+	return (
+		a.trim().toLocaleLowerCase(XREF_TERM_LOCALE) ===
+		b.trim().toLocaleLowerCase(XREF_TERM_LOCALE)
+	);
+}
+
+function isGloballyBlockedFromAutolink(term: string): boolean {
+	return GLOBAL_XREF_AUTOLINK_BLOCKLIST.has(
+		term.trim().toLocaleLowerCase(XREF_TERM_LOCALE),
+	);
+}
+
 /** Metadata for manual `.auto-xref` links and the build-time HTML pass. */
 export type XrefTermEntry = {
 	term: string;
@@ -257,7 +282,9 @@ export function resolveReferenceEntry(
 	term: string,
 	kind?: string,
 ): XrefTermEntry | undefined {
-	const matches = allReferenceEntries().filter((e) => e.term === term);
+	const matches = allReferenceEntries().filter((e) =>
+		xrefTermEqualsIgnoreCase(e.term, term),
+	);
 	if (matches.length === 0) return undefined;
 	if (matches.length === 1) return matches[0];
 	if (kind !== undefined && kind !== '') {
@@ -285,5 +312,7 @@ export function buildXrefTermList(): XrefTermEntry[] {
 
 /** Longest-match rows for the build-time HTML pass (includes optional aliases). */
 export function buildMatchableTerms(): XrefTermEntry[] {
-	return buildXrefTermList();
+	return buildXrefTermList().filter(
+		(e) => !isGloballyBlockedFromAutolink(e.term),
+	);
 }

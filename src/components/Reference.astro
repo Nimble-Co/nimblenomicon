@@ -2,7 +2,7 @@
 import { resolveReferenceEntry } from '../models/xref-terms';
 
 interface Props {
-	/** Display text and lookup key (case-sensitive, matches entity `name`). */
+	/** Display text and lookup key (matches entity `name`; lookup is case-insensitive). */
 	term: string;
 	/** Disambiguate when the same label exists in multiple collections (e.g. `language` vs `ancestry`). */
 	kind?: string;
