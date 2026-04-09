@@ -37,5 +37,8 @@ jobs:
       - name: Lint Markdown and MDX (markdownlint)
         run: npm run lint:md
 
+      - name: Unit tests (Vitest)
+        run: npm test
+
       - name: Production build
         run: npm run build

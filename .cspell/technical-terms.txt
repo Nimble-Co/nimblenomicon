@@ -1,4 +1,6 @@
 # Project, stack, and code-adjacent terms
+blocklist
+domhandler
 Astro
 astrojs
 Avenir

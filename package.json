@@ -14,6 +14,7 @@
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",
 		"lint": "npm run lint:js && npm run lint:md",
+		"test": "vitest run",
 		"lint:js": "eslint .",
 		"lint:md": "markdownlint-cli2 \"**/*.md\" \"**/*.mdx\""
 	},
@@ -24,20 +25,24 @@
 		"@sindresorhus/slugify": "^3.0.0",
 		"@tailwindcss/vite": "^4.1.18",
 		"astro": "^6.0.1",
+		"cheerio": "^1.2.0",
 		"rss-parser": "^3.13.0",
 		"sharp": "^0.34.2",
 		"tailwindcss": "^4.1.18"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.23.0",
+		"@types/node": "^25.5.2",
 		"eslint": "^9.23.0",
 		"eslint-plugin-astro": "^1.3.1",
 		"eslint-plugin-tailwindcss": "^4.0.0-beta.0",
+		"globals": "^17.4.0",
 		"markdownlint-cli2": "^0.17.2",
 		"prettier": "^3.5.3",
 		"prettier-plugin-astro": "^0.14.1",
 		"typescript": "^5.8.2",
 		"typescript-eslint": "^8.28.0",
+		"vitest": "^4.1.4",
 		"yaml": "^2.8.3",
 		"zod": "^4.3.6"
 	}
