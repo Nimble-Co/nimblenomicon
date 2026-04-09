@@ -70,15 +70,16 @@ content:
             label: Name
             type: string
             required: true
-          - name: summary
+          - name: description
             label: Core Rules Summary
             type: string
             required: true
-            description: One-line blurb for the Core Rules class list.
-          - name: description
-            label: Description
+            description: One-line blurb for the Core Rules class list (formerly Summary).
+          - name: introduction
+            label: Introduction
             type: rich-text
             required: true
+            description: Long-form class flavor (formerly Description).
             options:
               format: markdown
           - name: keyStats

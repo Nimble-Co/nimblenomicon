@@ -6,13 +6,13 @@ import { compareReferenceRowsByName } from '../../utils/reference-index-sort';
 
 const columns = [
 	{ id: 'name', label: 'Name' },
-	{ id: 'summary', label: 'Summary' },
+	{ id: 'description', label: 'Summary' },
 ];
 
 const rows = [...heroClasses].sort(compareReferenceRowsByName).map((c) => ({
 	name: c.name,
 	lead: { href: `/classes/${c.id}/`, text: c.name },
-	rest: [c.summary],
+	rest: [c.description],
 }));
 ---
 

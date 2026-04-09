@@ -45,7 +45,7 @@ function spellDefinition(spell: (typeof spells)[number]): string {
 }
 
 function classDefinition(c: HeroClassData): string {
-	return truncateDef(c.summary);
+	return truncateDef(c.description);
 }
 
 function monsterDefinition(name: string, level: string, kind?: string): string {

@@ -114,9 +114,10 @@ const gearRowSchema = z
 const heroClassSchema = z
 	.object({
 		name: z.string().min(1),
-		/** Core Rules one-line blurb (shown in class list on Core Rules). */
-		summary: z.string().min(1),
+		/** Core Rules one-line blurb (shown in class list; formerly `summary`). */
 		description: z.string().min(1),
+		/** Long-form class introduction / flavor (formerly `description`). */
+		introduction: z.string().min(1),
 		keyStats: z.array(keyStatRowSchema).min(1),
 		hitDie: z.string().min(1),
 		startingHp: z.number().int(),

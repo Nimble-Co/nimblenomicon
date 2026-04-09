@@ -109,7 +109,7 @@ export function downtimeBulletLines(): MarkdownLineItem[] {
 
 export function characterClassBulletLines(): MarkdownLineItem[] {
 	return heroClasses.map((c) => ({
-		markdown: `[**${c.name.toUpperCase()}**](/classes/${c.id}). ${c.summary}`,
+		markdown: `[**${c.name.toUpperCase()}**](/classes/${c.id}). ${c.description}`,
 	}));
 }
 
