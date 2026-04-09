@@ -16,6 +16,12 @@ export type XrefEmitFormat = 'mdx-reference' | 'html-anchor';
 
 export const MAX_LINKS_PER_PARAGRAPH = 3;
 
+/**
+ * Catalog terms that must not be auto-linked — too common in prose for the noise to be worth it.
+ * Add sparingly; prefer manual `<Reference />` where a link is wanted.
+ */
+const EXCLUDED_AUTO_XREF_TERMS = new Set(['Dice']);
+
 function escapeAttr(s: string): string {
 	return s
 		.replace(/&/g, '&amp;')
@@ -49,6 +55,7 @@ function findMatchAt(
 		if (!text.startsWith(t, pos)) continue;
 		if (!wordBoundaryBefore(text, pos)) continue;
 		if (!wordBoundaryAfter(text, pos + t.length)) continue;
+		if (EXCLUDED_AUTO_XREF_TERMS.has(entry.term)) continue;
 		return { entry, len: t.length };
 	}
 	return null;

@@ -71,6 +71,7 @@ These preferences come from ongoing Core Rules work. Agents should follow them w
 ### Entity links in docs (`Reference`)
 
 - In MDX, link to spells, classes, glossary entries, and other catalog entities with `<Reference term="…" />` (import `Reference` from `@components/Reference.astro`). **`term`** is both the lookup key and the link text. Optional **`kind`** (e.g. `language`, `glossary`) disambiguates when the same label appears in more than one collection.
+- Markdown `**…**` and `*…*` do not span JSX components. To bold or italicize text that includes `<Reference />`, wrap that span in `<strong>…</strong>` or `<em>…</em>` (`.auto-xref` inherits weight and italic from those parents).
 - The **`npm run xref:apply-mdx`** helper inserts `<Reference />` and the import; JSON `description` strings processed through `renderMarkdown()` still use HTML **`<a class="auto-xref">`** from **`xref:apply-json`** — MDX components do not run inside those strings.
 
 ### Workflow

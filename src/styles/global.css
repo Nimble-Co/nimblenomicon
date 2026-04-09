@@ -482,6 +482,15 @@ a.auto-xref {
 	font-weight: 500;
 }
 
+/* Markdown `**…**` / `*…*` cannot wrap MDX components; wrap `<Reference />` in `<strong>` / `<em>` and inherit. */
+:is(strong, b) a.auto-xref {
+	font-weight: inherit;
+}
+
+:is(em, i) a.auto-xref {
+	font-style: inherit;
+}
+
 a.auto-xref:hover,
 a.auto-xref:focus-visible {
 	color: var(--color-accent-700);

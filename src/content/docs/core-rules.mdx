@@ -4,6 +4,7 @@ description: The core rules of Nimble RPG.
 hidePageTitle: true
 bannerInHero: true
 ---
+import Reference from '@components/Reference.astro';
 
 import manticorHero from '../../assets/manticor.webp';
 import DataTable from '../../components/DataTable.astro';
@@ -69,7 +70,7 @@ At least one player should familiarize themselves with the base rules in this bo
 
 **Respect everyone else's time.** Swift, suboptimal decisions are better than slow, optimal ones. They will tend to be more fun anyway! If you can't decide what to do on your turn, attack and pass. Think when everyone else isn't waiting on you. Also, arrive on time.
 
-**Share the spotlight.** If you've been rolling or talking more than everyone else, call on your party mates to help you; shine the spotlight on them. Sneaky characters shouldn't spend a bunch of time sneaking around a dungeon without the rest of the party. A charismatic hero might be taking the lead in a negotiation (that's fine!), but he may want to call on his Berserker pal for a bit of extra leverage*. “Ragnar, would you like to have a word with this stubborn gentleman while the rest of us step outside?”*
+**Share the spotlight.** If you've been rolling or talking more than everyone else, call on your party mates to help you; shine the spotlight on them. Sneaky characters shouldn't spend a bunch of time sneaking around a dungeon without the rest of the party. A charismatic hero might be taking the lead in a negotiation (that's fine!), but he may want to call on his <Reference term="Berserker" /> pal for a bit of extra leverage*. “Ragnar, would you like to have a word with this stubborn gentleman while the rest of us step outside?”*
 
 **Treat the world realistically.** If you insult (or kill) other characters you come across, expect consequences! If you negotiate and haggle with every merchant, your reputation as penny pinchers will likely become widespread. If you do something foolish in front of a king, expect to be jailed (or worse). If you heal an ally, deal lots of damage, or always use the same tactics, expect the bad guys to catch on and adapt.
 
@@ -92,9 +93,9 @@ At least one player should familiarize themselves with the base rules in this bo
 
 ## Stats
 
-Heroes have 4 stats that impact their effectiveness in various tasks: 2 Key Stats crucial to their class and 2 Secondary Stats. The maximum a hero's stat can typically go is +5 .
+Heroes have 4 stats that impact their effectiveness in various tasks: 2 Key <Reference term="Stats" /> crucial to their class and 2 Secondary Stats. The maximum a hero's stat can typically go is +5 .
 
-> **KEY.** When an ability or spell references “KEY,” use one of your Key Stats. If a stat is listed before a die roll, roll a number of dice equal to the stat. For example, “WIL d8” means that if your WIL is 2, you roll 2d8 (two eight-sided dice).
+> **<Reference term="KEY" />.** When an ability or spell references “KEY,” use one of your Key <Reference term="Stats" />. If a stat is listed before a die roll, roll a number of dice equal to the stat. For example, “WIL d8” means that if your WIL is 2, you roll 2d8 (two eight-sided dice).
 
 <TermParagraphList items={statsParagraphLines()} />
 
@@ -116,10 +117,10 @@ When you want to affect the _world_ (convince an NPC, spot a trap, pick a lock, 
 
 ### Heroes and Saves
 
-- Unless otherwise noted, the DC for effects a hero causes is **10+KEY**.
+- Unless otherwise noted, the DC for effects a hero causes is **10+<Reference term="KEY" />**.
 - When making saves, each hero has 1 advantaged save (+), 1 disadvantaged save (-), and 2 neutral saves.
 
-> **Example.** A Berserker (STR+, INT-) would roll all of his STR saves with advantage and all of his INT saves with disadvantage.
+> **Example.** A <Reference term="Berserker" /> (STR+, INT-) would roll all of his STR saves with advantage and all of his INT saves with disadvantage.
 
 ## Size
 
@@ -133,16 +134,16 @@ If you are ever in a favorable situation, the GM may allow you to roll with adva
 
 If you have multiple instances of advantage or disadvantage, for each one, roll an extra die and remove the lowest (for advantage) or the highest (for disadvantage). Each instance of advantage cancels out one instance of disadvantage before you roll.
 
-> **Example 1.** Greataxe (2d6) with advantage. Roll 1 additional die and remove the lowest. You hit!
+> **Example 1.** <Reference term="Greataxe" /> (2d6) with advantage. Roll 1 additional die and remove the lowest. You hit!
 
-> **Example 2.** Greataxe (2d6) with disadvantage 2. Roll 2 additional dice, remove the 2 highest. If there is a tie, always remove dice from left to right. You miss!
+> **Example 2.** <Reference term="Greataxe" /> (2d6) with disadvantage 2. Roll 2 additional dice, remove the 2 highest. If there is a tie, always remove dice from left to right. You miss!
 
 ## Hit Points & Dying
 
-Hit Points (HP) represent your ability to endure damage. Damage reduces your HP (which can't go below 0). When reduced to 0 HP, gain 1 Wound; you also gain the **Dying** condition until you regain HP. While Dying, actions are limited to 1, Concentration is broken, and you are at risk of further serious harm:
+Hit Points (HP) represent your ability to endure damage. Damage reduces your HP (which can't go below 0). When reduced to 0 HP, gain 1 <Reference term="Wound" />; you also gain the **<Reference term="Dying" />** condition until you regain HP. While Dying, actions are limited to 1, <Reference term="Concentration" /> is broken, and you are at risk of further serious harm:
 
-- Attacking/casting spells causes **1** Wound unless you make a **DC 10 STR save**.
-- Taking damage while Dying causes **2** Wounds; a crit causes **3** instead.
+- Attacking/casting spells causes **1** <Reference term="Wound" /> unless you make a **DC 10 STR save**.
+- Taking damage while <Reference term="Dying" /> causes **2** Wounds; a crit causes **3** instead.
 
 ### Wounds
 
@@ -154,15 +155,15 @@ You die when you have taken 6 Wounds (unless you have an ability that changes th
 
 ### Temporary HP
 
-Some abilities or effects may grant temporary HP (temp HP); these are reduced first when taking damage. Temp HP do not combine: If a hero has temp HP and would gain more, they instead choose which amount to keep. They expire after a Safe Rest.
+Some abilities or effects may grant temporary HP (temp HP); these are reduced first when taking damage. <Reference term="Temp HP" /> do not combine: If a hero has temp HP and would gain more, they instead choose which amount to keep. They expire after a Safe Rest.
 
 ### Hit Dice
 
 Hit Dice (HD) represent your ability to quickly recuperate from minor injuries and are spent to regain HP. Heroes start with a max of 1 Hit Die at level 1, and this limit increases by 1 each time they level up. Hit Dice are recovered during a Safe Rest.
 
-> **Gritty Dying Rules.** Optional rules for a more challenging or “old school” style of game: You can reduce the max number of Wounds heroes have. Any- where from a max of 5 Wounds for slightly harder, all the way down to 1–2 Wounds for a very lethal game!
+> **Gritty <Reference term="Dying" /> Rules.** Optional rules for a more challenging or “old school” style of game: You can reduce the max number of Wounds heroes have. Any- where from a max of 5 Wounds for slightly harder, all the way down to 1–2 Wounds for a very lethal game!
 >
-> You can also have each Wound impose a cumulative –1 penalty to rolls: skill checks, saves, or even ALL rolls! (If you're a real glutton for punishment.)
+> You can also have each <Reference term="Wound" /> impose a cumulative –1 penalty to rolls: skill checks, saves, or even ALL rolls! (If you're a real glutton for punishment.)
 
 ## Speed & Range
 
@@ -181,19 +182,19 @@ Certain abilities, weapons, and spells have a specified Range or Reach, which de
 
 ### Falling & Forced Movement
 
-When a character is forcibly moved but stopped by an obstacle, they take **1d6** bludgeoning damage for every space this movement is shortened. If they hit another creature, both creatures split this damage. Falling inflicts **1d6** bludgeoning damage for every 10 ft. fallen (2 spaces).
+When a character is forcibly moved but stopped by an obstacle, they take **1d6** bludgeoning damage for every space this movement is shortened. If they hit another creature, both creatures split this damage. <Reference term="Falling" /> inflicts **1d6** bludgeoning damage for every 10 ft. fallen (2 spaces).
 
 > **Abstracted Distances.** If preferred, you can use a more abstracted system of distance just as well. Use **Close**, **Midrange**, and **Far**. A move from Midrange can traverse to Close or Far. Close creatures can be affected Reach/Range 4; Midrange, up to 6; beyond that is Far. As always, the GM will adjudicate unclear situations and which creatures are affected by abilities with an area of effect.
 
 ## Concentration
 
-Some activities require Concentration to maintain. A character can only concentrate on one activity at a time. Whenever a character is **crit** while concentrating, they must make a **DC 10 STR save**. Failing this means Concentration is broken and the activity fails. Concentration is automatically broken whenever a character drops to 0 HP or is incapacitated.
+Some activities require <Reference term="Concentration" /> to maintain. A character can only concentrate on one activity at a time. Whenever a character is **crit** while concentrating, they must make a **DC 10 STR save**. Failing this means Concentration is broken and the activity fails. Concentration is automatically broken whenever a character drops to 0 HP or is incapacitated.
 
 ## Cover & Hiding
 
-A creature mostly obscured from line of sight (standing behind a tree, a larger ally, a knocked over table, in poor lighting, etc.) has **Cover** and imposes disadvantage on attacks against them. A creature completely obscured from view has **Full Cover** and cannot typically be targeted by an attack.
+A creature mostly obscured from line of sight (standing behind a tree, a larger ally, a knocked over table, in poor lighting, etc.) has **<Reference term="Cover" />** and imposes disadvantage on attacks against them. A creature completely obscured from view has **Full Cover** and cannot typically be targeted by an attack.
 
-To hide in combat, you must have Cover from the creatures you are attempting to hide from and use an action to make a **DC 15 Stealth** check (if you have Full Cover, you succeed automatically). The first attack you make while hidden is made with advantage, then you are no longer hidden. If this attack kills the enemy and no other enemy can see you, you may remain hidden instead.
+To hide in combat, you must have <Reference term="Cover" /> from the creatures you are attempting to hide from and use an action to make a **DC 15 Stealth** check (if you have Full Cover, you succeed automatically). The first attack you make while hidden is made with advantage, then you are no longer hidden. If this attack kills the enemy and no other enemy can see you, you may remain hidden instead.
 
 > **Monsters Are Smart!** They may catch on to heroes using the same tactics over and over again!
 
@@ -202,11 +203,11 @@ To hide in combat, you must have Cover from the creatures you are attempting to 
 You can attempt to grab another creature provided you are within Reach and have at least 1 arm free (or some other way to grab them). On a failed STR or DEX save (DC 10+STR or DEX), a target:
 
 - your size or smaller, is Grappled.
-- larger than you, you gain the Riding condition.
+- larger than you, you gain the <Reference term="Riding" /> condition.
 
 Forced movement (pushing a grappler away), incapacitation, or spending an action and succeeding on a STR or DEX save can end it.
 
-> **Restrained.** Functions like Grappled, but is caused by objects (e.g., chains, rope, roots) and ignores size restrictions. It can also be ended through any logical means, such as picking a lock or cutting/burning rope.
+> **<Reference term="Restrained" />.** Functions like Grappled, but is caused by objects (e.g., chains, rope, roots) and ignores size restrictions. It can also be ended through any logical means, such as picking a lock or cutting/burning rope.
 
 ## Conditions
 
@@ -214,7 +215,7 @@ Some attacks, traps, spells, or other effects can also inflict conditions—usua
 
 <TermLineList items={conditionBulletLines()} />
 
-> **Other Minor Statuses.** Minor statuses (Smoldering, Charged, Distracted, etc.) do nothing on their own and end whenever combat does. Some spells and abilities have additional effects against such targets.
+> **Other Minor Statuses.** Minor statuses (Smoldering, Charged, <Reference term="Distracted" />, etc.) do nothing on their own and end whenever combat does. Some spells and abilities have additional effects against such targets.
 
 # Combat
 
@@ -246,7 +247,7 @@ Some spells have a greater effect for each additional mana spent on them. A hero
 
 ### Move
 
-A character can move up to their speed (6 spaces, unless otherwise noted). This movement can be broken up with other actions if desired, and a hero can use multiple actions to Move multiple times in one turn. When in **Difficult Terrain**, movement speed is halved. Moving on a climbable surface (trees, a cliffside, certain buildings, etc.) counts as Difficult Terrain.
+A character can move up to their speed (6 spaces, unless otherwise noted). This movement can be broken up with other actions if desired, and a hero can use multiple actions to Move multiple times in one turn. When in **<Reference term="Difficult Terrain" />**, movement speed is halved. Moving on a climbable surface (trees, a cliffside, certain buildings, etc.) counts as Difficult Terrain.
 
 ### Assess
 
@@ -306,7 +307,7 @@ A combat encounter begins when the GM tells the party to “Roll Initiative!” 
 
 Occasionally a party may maneuver themselves so adeptly that their enemy is completely caught off guard. In this case, the GM may grant the party advantage on Initiative, or in extreme cases, they may not need to roll Initiative at all—the GM can allow each Hero to start with all 3 actions!
 
-> **A Note on Surprise.** Merely being hidden or punching first is not sufficient to gain Surprise! If an enemy is on guard or at all aware of your presence, they cannot be surprised.
+> **A Note on <Reference term="Surprise" />.** Merely being hidden or punching first is not sufficient to gain Surprise! If an enemy is on guard or at all aware of your presence, they cannot be surprised.
 
 If the heroes are surprised, they may have to roll with disadvantage. Or, in extreme cases, the heroes may automatically start combat with only 1 action, or the monsters may all go first.
 
@@ -322,17 +323,17 @@ Monsters will typically act last, though some monsters may be fast enough to act
 
 ### Turns, Rounds, & Encounters
 
-A **Turn** is when 1 individual hero or monster group acts. A typical turn takes roughly 6 seconds of “in-world“ time. A **Round** is when all players and monsters have taken a turn acting. An **Encounter** is all of the rounds in a particular combat.
+A **<Reference term="Turn" />** is when 1 individual hero or monster group acts. A typical turn takes roughly 6 seconds of “in-world“ time. A **<Reference term="Round" />** is when all players and monsters have taken a turn acting. An **<Reference term="Encounter" />** is all of the rounds in a particular combat.
 
-> **1/Turn Abilities.** If you perform one on your turn, and can find a way to perform it on another creature's turn, you can do it again (e.g., Sneak Attack combined with Opportunity Attack or Coordinated Strike!).
+> **1/<Reference term="Turn" /> Abilities.** If you perform one on your turn, and can find a way to perform it on another creature's turn, you can do it again (e.g., Sneak <Reference term="Attack" /> combined with Opportunity Attack or Coordinated Strike!).
 >
-> **1/Round Abilities.** These reset whenever your own turn begins (e.g., when you Defend, you cannot do so again until your turn comes back around).
+> **1/<Reference term="Round" /> Abilities.** These reset whenever your own turn begins (e.g., when you Defend, you cannot do so again until your turn comes back around).
 
 ### Acting Over Multiple Turns
 
-For activities that cost more than 1 action, your actions can be spent over multiple turns in combat as long as Concentration is maintained and you do not perform other actions or reactions in the meantime (unless they are free).
+For activities that cost more than 1 action, your actions can be spent over multiple turns in combat as long as <Reference term="Concentration" /> is maintained and you do not perform other actions or reactions in the meantime (unless they are free).
 
-> **Example.** Book, the Mage, wants to cast Glacier Strike (3 actions), but only has 1 action left. He'll spend 1 action on this turn to start casting the spell, and on his next turn spend 2 more to finish casting it. He's taking a risk, though: he can't Defend himself and may need to rely on his party to protect him.
+> **Example.** Book, the <Reference term="Mage" />, wants to cast <Reference term="Glacier Strike" /> (3 actions), but only has 1 action left. He'll spend 1 action on this turn to start casting the spell, and on his next turn spend 2 more to finish casting it. He's taking a risk, though: he can't Defend himself and may need to rely on his party to protect him.
 
 # Resting & Downtime
 
@@ -354,7 +355,7 @@ If you rest for at least 8 hours with food and sleep, take the maximum value for
 
 Safe Rests take place in a safe location designated by your GM, typically lodging at an inn overnight — but could also be at a secret oasis, a well-stocked cabin in the woods, near a sacred shrine, or the like. Camping in the open wilderness or in a dungeon is **not** sufficient for gaining the benefits of a Safe Rest.
 
-After a Safe Rest, heroes recover all of their HP, Hit Dice, mana (and other class-specific resources), and heal 1 Wound. Safe Rests are a great opportunity for downtime activities as well.
+After a Safe Rest, heroes recover all of their HP, Hit Dice, mana (and other class-specific resources), and heal 1 <Reference term="Wound" />. Safe Rests are a great opportunity for downtime activities as well.
 
 > **Rest for HOW Long?!** If your table prefers to largely skip downtime activities and narrate past a week of resting, that's okay too! For a more realistic convalescence time, 1 week per wound recovered may make more sense.
 
@@ -394,11 +395,11 @@ This handy sheet of paper helps you track your stats, abilities, loot, and other
 
 ### 1. Basic Details & Stats
 
-Fill in your character details: Name, Ancestry, Class, Level, Height, and Weight. Fill in the arrow for your advantaged (+) and disadvantaged (-) Saves, and choose a stat array (recommended: place the highest numbers in the KEY stats for your class).
+Fill in your character details: Name, Ancestry, Class, Level, Height, and Weight. Fill in the arrow for your advantaged (+) and disadvantaged (-) Saves, and choose a stat array (recommended: place the highest numbers in the <Reference term="KEY" /> stats for your class).
 
 <TermLineList items={statArrayBulletLines()} />
 
-> **Example.** The Cheat has DEX and INT as their KEY stats. With the Min-Max array, you might put +3 in DEX, +1 in INT, and -1 in WIL and STR. You'd also mark ▲ for DEX saves and ▼ for WIL saves.
+> **Example.** <Reference term="The Cheat" /> has DEX and INT as their <Reference term="KEY" /> stats. With the Min-Max array, you might put +3 in DEX, +1 in INT, and -1 in WIL and STR. You'd also mark ▲ for DEX saves and ▼ for WIL saves.
 
 ### 2. Skill Points
 
@@ -418,7 +419,7 @@ Heroes start at level 1 with the equipment listed for their class and background
 
 ### 5. Languages
 
-All heroes speak Common by default. Each point of INT grants you an additional language known. These languages are typically spoken by:
+All heroes speak <Reference term="Common" /> by default. Each point of INT grants you an additional language known. These languages are typically spoken by:
 
 <TermLineList items={languageBulletLines()} />
 
@@ -434,7 +435,7 @@ Each hero has 10+STR inventory slots for carrying equipment and loot (held, worn
 
 - 1 slot can hold a one-handed weapon, shield, worn armor, stack of javelins, 500 gp, or 2 potions.
 - 2 slots can hold a 2-handed weapon, unworn armor, or similarly bulky items.
-- Small, related items can be grouped into one slot for simplicity (e.g., Camping Supplies: soap, blanket, brush, rations).
+- Small, related items can be grouped into one slot for simplicity (e.g., <Reference term="Camping Supplies" />: soap, blanket, brush, rations).
 
 > **On Ammunition.** In most games, there's no need to track ammo. If you have a quiver, you have enough arrows. Assume the hero collects fired arrows, crafts more, or buys them in town.
 
@@ -442,7 +443,7 @@ Alternatively, your GM may allow you to carry what you want without the bookkeep
 
 ## Leveling Up
 
-The GM may allow you to gain a level (LVL) whenever you complete an appropriately challenging quest or adventure. At level 1, this may be as simple as clearing some angry rats out of a basement or rescuing someone from the woods. Each subsequent level will generally take more effort (and therefore more time). When a hero gains a level:
+The GM may allow you to gain a level (<Reference term="LVL" />) whenever you complete an appropriately challenging quest or adventure. At level 1, this may be as simple as clearing some angry rats out of a basement or rescuing someone from the woods. Each subsequent level will generally take more effort (and therefore more time). When a hero gains a level:
 
 - **HP Increase.** Roll your Hit Die with advantage and increase your max HP by that much.
 - **More Endurance.** Your Hit Die max increases by 1 (it is typically equal to your level).
@@ -513,9 +514,9 @@ armorTableSectionsData().map(({ sectionLabel, columns, rows }) => (
 
 ### Dual Wielding
 
-Heroes may wield 2 Light weapons at the same time. While dual wielding, you may gain advantage on an attack with those weapons, 1/round.
+Heroes may wield 2 <Reference term="Light" /> weapons at the same time. While dual wielding, you may gain advantage on an attack with those weapons, 1/round.
 
-You may dual wield 1-handed weapons without the Light property if your STR is 3 or greater, or 1 weapon without the Light property if your STR is 2. If completely unarmed, fists/feet can be considered dual wielded.
+You may dual wield 1-handed weapons without the <Reference term="Light" /> property if your STR is 3 or greater, or 1 weapon without the Light property if your STR is 2. If completely unarmed, fists/feet can be considered dual wielded.
 
 > **Dual wielding different weapons?** Roll dice for both weapons and choose either result instead (the 1/round limit still applies). Attacking with advantage? Add an extra die for one of the weapons.
 
@@ -529,7 +530,7 @@ Using an improvised weapon (e.g. a chair, a frying pan, a big rock), default to 
 
 ### Customizing Weapons
 
-Can you reflavor a staff as a greatclub? Sure! A sai instead of a dagger? Of course! Could you pay a blacksmith to make your 1d12 Greatmaul deal 2d6 or 3d4 damage instead? Since the dice all add up to 12, it won't break the game; ask your GM! Can a blacksmith make your _Dagger_ deal that much damage? No, sorry!
+Can you reflavor a staff as a greatclub? Sure! A sai instead of a dagger? Of course! Could you pay a blacksmith to make your 1d12 <Reference term="Greatmaul" /> deal 2d6 or 3d4 damage instead? Since the dice all add up to 12, it won't break the game; ask your GM! Can a blacksmith make your _Dagger_ deal that much damage? No, sorry!
 
 ### Melee Weapons
 
@@ -549,7 +550,7 @@ Potions require one action to drink or to administer to an adjacent willing crea
 
 ### Torches & Lanterns
 
-Heroes cannot typically see in the dark. Fighting in the dark imposes the Blinded condition. Heroes can bring a lantern or torch to light their way in the dark as long as they have a hand free (or some other way) to hold it. A torch typically lasts for 1 dungeon (or 1 level of a very large one). A lamp with oil can typically last for 1 entire outing, until your next Safe Rest. Torches and lanterns cast light up to 6 spaces away; beyond this is darkness.
+Heroes cannot typically see in the dark. Fighting in the dark imposes the <Reference term="Blinded" /> condition. Heroes can bring a lantern or torch to light their way in the dark as long as they have a hand free (or some other way) to hold it. A torch typically lasts for 1 dungeon (or 1 level of a very large one). A lamp with oil can typically last for 1 entire outing, until your next Safe Rest. Torches and lanterns cast light up to 6 spaces away; beyond this is darkness.
 
 > **Be Warned.** Denizens of the dark may not appreciate the light and may attack the light bearers first. Certain spells (e.g., Fire, Lightning, and Radiant) may cause flashes of light as well and draw unwanted attention!
 
@@ -603,13 +604,13 @@ Characters not proficient with wands must succeed on a **DC 10+spell tier Arcana
 
 There are 6 main schools of magic. Each school has its own basic spells called cantrips and 9 tiers of progressively more powerful spells that can be unlocked as heroes level up. Heroes can cast any spell from the schools that they know within the tiers they have unlocked.
 
-**Mana.** Powerful tiered spells require mana—a portion of the spellcaster's life force—to fuel them. A spell's mana cost is equal to its tier. See the _Heroes_ book for more info on how different classes gain mana. Cantrips, cost no mana.
+**<Reference term="Mana" />.** Powerful tiered spells require mana—a portion of the spellcaster's life force—to fuel them. A spell's mana cost is equal to its tier. See the _Heroes_ book for more info on how different classes gain mana. Cantrips, cost no mana.
 
 **Upcasting.** You can spend additional mana on tiered spells (up to the tier that you have unlocked) to make them stronger for each additional mana spent.
 
-**Multi-Target/Area of Effect (AoE).** Multi-target/AoE attacks follow special rules to streamline play: they do not miss or crit, and a single roll is applied to all targets. (Ignore (dis)advantage from conditions on individual targets—such as Blinded or Grappled—though anything granting you (dis)advantage still applies to your roll as normal.)
+**Multi-<Reference term="Target" />/Area of Effect (AoE).** Multi-target/AoE attacks follow special rules to streamline play: they do not miss or crit, and a single roll is applied to all targets. (Ignore (dis)advantage from conditions on individual targets—such as <Reference term="Blinded" /> or Grappled—though anything granting you (dis)advantage still applies to your roll as normal.)
 
-> **Save Spells.** A hero's save DC is typically 10+KEY.
+> **Save Spells.** A hero's save DC is typically 10+<Reference term="KEY" />.
 >
 > **Range and Reach.** Just like weapons, spells with “Range” can target creatures from a distance, but are cast with disadvantage if any enemy is adjacent to you. Add 1 die of disadvantage to gain +2 Range (max +6). Spells with “Reach” can't do this, but they are cast as normal even when in melee.
 

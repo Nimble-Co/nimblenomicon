@@ -4,6 +4,7 @@ description: Resources for creating and publishing Nimble-compatible content.
 hidePageTitle: true
 bannerInHero: true
 ---
+import Reference from '@components/Reference.astro';
 
 import manticorHero from '../../assets/manticor.webp';
 import FullBleedHero from '../../components/FullBleedHero.astro';
@@ -39,7 +40,7 @@ Math is inextricably tied to TTRPGs, it's part of the fun! But we should avoid a
 
 Rolling LOTS of dice is fun—sometimes. It can quickly turn into a chore and add slog to the game when required too often. Lots of dice eliminates variability as well, the more dice that are rolled the more likely you'll end up with an average result. A fistful of dice should be special and rare.
 
-Where possible think of creative solutions to more quickly generate high numbers. In the core rules we use LVL, d20s, d100s, dXX, or flat damage (e.g. Condemn deals a flat 30 damage, this could have been 12d4, or 9d6. That would have dealt the same amount of damage, but would have taken much, much longer to accomplish).
+Where possible think of creative solutions to more quickly generate high numbers. In the core rules we use <Reference term="LVL" />, d20s, d100s, dXX, or flat damage (e.g. <Reference term="Condemn" /> deals a flat 30 damage, this could have been 12d4, or 9d6. That would have dealt the same amount of damage, but would have taken much, much longer to accomplish).
 
 > **Exceptions.** Iconic or very large spells (e.g., tier 8 or 9 spells) or abilities that happen rarely (1/Safe Rest) can bend or break this rule of thumb. Cantrips or abilities that could happen multiple times in an encounter or even multiple times each turn should be especially quick to resolve.
 
@@ -52,13 +53,13 @@ Where possible think of creative solutions to more quickly generate high numbers
 
 > Much easier would be something like 2d6+5, 1d12+20, and 1d20+30 respectively. They have a similar average result but resolve much more quickly.
 
-For instance, looks at how the Cheat's Sneak Attack began in development (as much as 10d6 at high levels), to where it ended up in the final version (1d20+20). Much better!
+For instance, looks at how the Cheat's Sneak <Reference term="Attack" /> began in development (as much as 10d6 at high levels), to where it ended up in the final version (1d20+20). Much better!
 
 ## CONDITIONS
 
 **Tracking Game States.** Be very careful with conditions and other game states that need to be tracked. Mechanics like this are really great for video games where the computer can handle the fiddliness, but for a manually resolved TTRPG it can become a big headache. These frequently result in interrupting the Flow as players remind others about the ongoing state, adding friction and slowing play down.
 
-With this in mind, damage over time should be avoided completely. All damage should be resolved as the attack resolves. Conditions that have a visual component like Prone are easier to remember since you can physically knock the miniature over to represent it. Other conditions that cannot be represented visually should be minimized.
+With this in mind, damage over time should be avoided completely. All damage should be resolved as the attack resolves. Conditions that have a visual component like <Reference term="Prone" /> are easier to remember since you can physically knock the miniature over to represent it. Other conditions that cannot be represented visually should be minimized.
 
 Monsters (or heroes) that can apply 1 condition, or temporary conditions that last only a single round, are fine. When there are multiple different conditions to track simultaneously the fun doesn't increase—with more to track,generally the fun **_decreases_**. If something MUST be tracked, make it as easy as possible. For instance see the Hexbinder class, all of their afflictions apply only to a single monster, and other players need not remember any of them!
 
@@ -66,11 +67,11 @@ Monsters (or heroes) that can apply 1 condition, or temporary conditions that la
 
 Play proceeds most quickly when each player can take their turn without interruption and without waiting on anyone else. This is Flow. Actions that interrupt the Flow should ideally be both **_important_** and **_rare_**. Failing that, they should at least happen **_asynchronously_**.
 
-**Important & Rare.** A great example of this is Interposing for a Dying ally. This is both very important, and likely happens only on occasion.
+**Important & Rare.** A great example of this is Interposing for a <Reference term="Dying" /> ally. This is both very important, and likely happens only on occasion.
 
 **Asynchronous.** Defend does technically interrupt the Flow, AND can happen rather commonly (each turn), AND is relatively low impact—the saving grace is that this happens asynchronously, or off turn. A hero choosing to Defend can privately calculate their HP without slowing anyone else down. The GM doesn't care (or even need to know) when a Hero Defends. That's between them and their character sheet.
 
-Any fiddliness, especially if it disrupts the Flow, should happen off-turn whenever possible. See the Oathsworn's Judgment Dice, and the Berserker's “That all you got?!” Those dice are rolled or expended when it's not their turn. No one else needs to wait for those actions to resolve.
+Any fiddliness, especially if it disrupts the Flow, should happen off-turn whenever possible. See the <Reference term="Oathsworn" />'s Judgment Dice, and the <Reference term="Berserker" />'s “That all you got?!” Those dice are rolled or expended when it's not their turn. No one else needs to wait for those actions to resolve.
 
 ## THE WORST OFFENDER
 
@@ -82,7 +83,7 @@ Cantrips and low level spells should NOT require a save or any other feedback fr
 
 ### Old version (Entice cantrip)
 
-> **Entice Cantrip**, _1 Action, Single Target_
+> **<Reference term="Entice" /> <Reference term="Cantrip" />**, _1 Action, Single Target_
 >
 > WIL Save. The target takes 1d6 damage and moves 2 spaces closer to you. Repeat until they save.
 
@@ -90,15 +91,15 @@ Note that this initial version potentially required numerous save rolls AND dama
 
 ### Final version (Entice cantrip)
 
-> **Entice Cantrip**, _1 Action, Single Target_
+> **<Reference term="Entice" /> <Reference term="Cantrip" />**, _1 Action, Single Target_
 >
 > Damage: 1d4 (ignoring armor). On hit: target moves 2 spaces closer to you.
 
-The final version uses a single roll to both determine damage and movement. Instead of a save, a d4 was used as the damage die to put a reasonable limit on how often this can take place (the d4 is most likely to miss when cast multiple times). Similarly, let's take a look at the initial version of Vicious Mockery:
+The final version uses a single roll to both determine damage and movement. Instead of a save, a d4 was used as the damage die to put a reasonable limit on how often this can take place (the d4 is most likely to miss when cast multiple times). Similarly, let's take a look at the initial version of <Reference term="Vicious Mockery" />:
 
 ### Old version (Vicious Mockery)
 
-> **Vicious Mockery Cantrip**, _1 Action, Single Target_
+> **<Reference term="Vicious Mockery" /> <Reference term="Cantrip" />**, _1 Action, Single Target_
 >
 > WIL Save. 1d6 psychic damage. The target's next attack is made with disadvantage. +1d6 damage every 5th level.
 
@@ -106,9 +107,9 @@ Note that this initial version breaks many of the guidelines. It is a low impact
 
 ### Final version (Vicious Mockery)
 
-> **Vicious Mockery Cantrip**, _1 Action, Single Target_
+> **<Reference term="Vicious Mockery" /> <Reference term="Cantrip" />**, _1 Action, Single Target_
 >
-> Damage: 1d4+INT psychic (ignoring armor). On hit: the target is Taunted during their next turn. +2 damage every 5 levels.
+> Damage: 1d4+INT psychic (ignoring armor). On hit: the target is <Reference term="Taunted" /> during their next turn. +2 damage every 5 levels.
 
 The final version of the spell does essentially the same thing (a small amount of damage and a debuff), but does it in a more streamlined, clear, fun, and intuitive way.
 
@@ -142,7 +143,7 @@ The fun comes from how all of these simple pieces interact with each other and h
 
 **Levels 5, 9, 13, & 17.** Secondary Stat increase and a larger boost.
 
-**Levels 18, 19, & 20.** Big feature (LVL 18), Epic Boon (LVL 19), Capstone (LVL 20). Very few people will ever reach levels 10-12, even fewer will reach beyond these levels—but don't let this stop you from really putting in the work to make sure the higher levels remain interesting! Level 20 in particular should be a BIG DREAM type of ability. Something players can think about, theorycraft with, and imagine being awesome using it. It should serve as a motivation to play the class, even if they never reach level 20, it's fun to dream of "how awesome it would be if…"
+**Levels 18, 19, & 20.** Big feature (<Reference term="LVL" /> 18), Epic Boon (LVL 19), Capstone (LVL 20). Very few people will ever reach levels 10-12, even fewer will reach beyond these levels—but don't let this stop you from really putting in the work to make sure the higher levels remain interesting! Level 20 in particular should be a BIG DREAM type of ability. Something players can think about, theorycraft with, and imagine being awesome using it. It should serve as a motivation to play the class, even if they never reach level 20, it's fun to dream of "how awesome it would be if…"
 
 | Level | Feature                                  |
 | ----- | ---------------------------------------- |
@@ -185,7 +186,7 @@ Lean toward "per encounter" and similar abilities, and you can encourage the wis
 
 ## LANE PROTECTION
 
-Be careful not to step on the toes of other classes, maintain the unique mechanics and flavor of each class. No two classes should deal damage the same way, avoid damage the same way, move around the same way, etc. They should all fill a unique role and feel different to play. No class other than the Mage should have access to 3 spell schools and deal damage primarily through spending mana casting spells. No other class should get their damage increased when they are attacked or be able to freely Interpose—that is the domain of the Oathsworn.
+Be careful not to step on the toes of other classes, maintain the unique mechanics and flavor of each class. No two classes should deal damage the same way, avoid damage the same way, move around the same way, etc. They should all fill a unique role and feel different to play. No class other than the <Reference term="Mage" /> should have access to 3 spell schools and deal damage primarily through spending mana casting spells. No other class should get their damage increased when they are attacked or be able to freely Interpose—that is the domain of the <Reference term="Oathsworn" />.
 
 ## RETRAINING
 
@@ -199,7 +200,7 @@ Don't worry about building or balancing classes & subclasses with multi-classing
 
 Avoid overly wordy explanations designed to block "rules lawyers"—those who might exploit technicalities—since this can make the rules harder to read and less enjoyable for most players. Write in a way that's clear and concise, instead of exhaustive detail that tries to cover every possible loophole. Trust the heroes and GM to interpret the rules sensibly, and don't let the fear of rules lawyers bog down your writing with complexity. If you can also prevent rules exploitation without making the text longer or harder to read, that's fine—but never sacrifice readability for it.
 
-Take for example, the Birdfolk ancestry boon was initially worded: "You have a fly speed as long as you are wearing Leather or lighter armor." Compared to how it ended up in the final version: "You have a fly Speed as long as you are wearing armor no heavier than Leather." Both are brief and easy to read, but the second also prevents the GM from having to deal with unfun technicalities ("but I'm wearing Plate AND Leather armor so…").
+Take for example, the <Reference term="Birdfolk" /> ancestry boon was initially worded: "You have a fly speed as long as you are wearing Leather or lighter armor." Compared to how it ended up in the final version: "You have a fly Speed as long as you are wearing armor no heavier than Leather." Both are brief and easy to read, but the second also prevents the GM from having to deal with unfun technicalities ("but I'm wearing Plate AND Leather armor so…").
 
 For an example of a change that was overly wordy and technical, look at the rules for dual wielding. The rules do not go into deep detail about attacking with different sized weapons and multiple instances of disadvantage and other edge cases. A simple example is given, and the GM can adjudicate any edge cases with the rules given.
 
@@ -227,7 +228,7 @@ Be VERY careful handing out shield and wand proficiency. They are VERY good. Lik
 
 ### AVERAGE HERO STATS
 
-| Hero Level | Hero HP | Hero Armor | Effective HP | Damage Per Turn |
+| Hero Level | Hero HP | Hero Armor | Effective HP | Damage Per <Reference term="Turn" /> |
 | ---------- | ------- | ---------- | ------------ | --------------- |
 | 1          | 15      | 5          | 32           | 10              |
 | 2          | 21      | 7          | 45           | 12              |
@@ -254,7 +255,7 @@ Be VERY careful handing out shield and wand proficiency. They are VERY good. Lik
 
 **Effective HP.** The base combat math assumes Heroes, on average, spend 1 action defensively per turn. This number includes the hero's Armor x the average number of rounds in an encounter (see below).
 
-**Damage/Turn.** This assumes 2 actions per turn spent offensively. Some classes will output less damage (but they can aid combat in other useful ways), others could output more if the situation is ideal (AoE abilities, assistance & setup from allies). This need not be a target per se, but if your numbers are very far off you should have a good reason for it.
+**Damage/<Reference term="Turn" />.** This assumes 2 actions per turn spent offensively. Some classes will output less damage (but they can aid combat in other useful ways), others could output more if the situation is ideal (AoE abilities, assistance & setup from allies). This need not be a target per se, but if your numbers are very far off you should have a good reason for it.
 
 **Average Combat Length.** Typical encounter math assumes 3-4 rounds of combat (or, for Legendary encounters, 15 hero turns). If an encounter lasts much longer than that it may start to feel like a slog; much shorter, and players may not have time to see the payoff to their setup and be disappointed. Again, these are not hard rules! Some of the most fun is when we deviate from the average, just make sure you're doing it on purpose and for a good reason.
 
@@ -264,7 +265,7 @@ Monsters should not simply be differently shaped bags of Hit Points. Each differ
 
 In order for a heroic party to be able to have variety in their encounters with a monster group (and to be able to encounter them at varying levels), each monster group should have a fairly wide band of monster levels, for example:
 
-- **Kobolds:** LVL 1/3 to LVL 1
+- **Kobolds:** <Reference term="LVL" /> 1/3 to LVL 1
 - **Goblins:** LVL 1/3 to LVL 2
 - **Bandits:** LVL 1/3 to LVL 4
 - **Snakemen:** LVL 1 to LVL 8
@@ -287,9 +288,9 @@ Monster groups should also have creatures that can fulfill a variety of roles: M
 
 ## DON'T LEAVE THE GM WONDERING WHAT TO DO
 
-Give the GM a hand, make it as easy as possible to run the monster! Monster should always either have 1 action to perform, or 1 clear BEST action to perform. For instance a Troll can use either Claws or Bite. Bite deals far more damage, but it requires a creature to be Prone. Claws can knock Prone. The order of operations is immediately clear, use Claw until someone falls down, then Bite.
+Give the GM a hand, make it as easy as possible to run the monster! Monster should always either have 1 action to perform, or 1 clear BEST action to perform. For instance a <Reference term="Troll" /> can use either Claws or Bite. Bite deals far more damage, but it requires a creature to be <Reference term="Prone" />. Claws can knock Prone. The order of operations is immediately clear, use Claw until someone falls down, then Bite.
 
-Note also that the Troll's 2 attacks use the same die size to make running it easier and smoother for the GM, and one attack's damage is clearly much better than the other (Claw: 1d4+10, Bite 1d4+20). If Claw instead was 6d4 and Bite was 1d4+20, it'd be much less obvious which is stronger.
+Note also that the <Reference term="Troll" />'s 2 attacks use the same die size to make running it easier and smoother for the GM, and one attack's damage is clearly much better than the other (Claw: 1d4+10, Bite 1d4+20). If Claw instead was 6d4 and Bite was 1d4+20, it'd be much less obvious which is stronger.
 
 Monsters that will commonly fight together will ideally all use the same dice (e.g. goblins all use d6s, kobolds all use d4s). This helps prevent the GM from needing to search for lots of different dice at the table. It's a very little thing, but every way we can make the GM's job easier, and remove mental overhead for them, means they have more capacity for strategy, role playing, lobbing insults, jokes, and telling an interesting story.
 
@@ -297,7 +298,7 @@ Monsters that will commonly fight together will ideally all use the same dice (e
 
 Causing effects other than damage is a great way to distinguish between different kinds of monsters, even when they have the same HP and their attacks deal the same amount of average damage. These are by no means exhaustive, but for starters:
 
-- **Automatic.** Hit or miss, some effect happens. Think, a shockwave from a Giant's strike. Even if it misses or a hero Defends, you might still get pushed back or knocked Prone.
+- **Automatic.** Hit or miss, some effect happens. Think, a shockwave from a Giant's strike. Even if it misses or a hero Defends, you might still get pushed back or knocked <Reference term="Prone" />.
 - **On Hit.** An effect even if all of the damage is reduced to 0. Grappled or restrained by a huge bug, snakeman, or plant creature.
 - **On Damage.** What could uniquely happen when blood is drawn, even 1 single point of damage. Think poisoned blades from an assassin, a deathly touch from a wraith.
 - **On Crit/Miss.** What could happen what an monster's attack succeeds wildly? They could knock Prone, Daze, they could even swallow the hero entirely. You could have some other powerful effect, even in place of rolling additional damage.
@@ -355,7 +356,7 @@ Causing effects other than damage is a great way to distinguish between differen
  
  ### TENSION OF BATTLE 
  
- What makes for an interesting battle is **uncertainty**. If the bad guy is clearly winning and the heroes have no hope, it's not as much fun. Likewise if the heroes are clearly always winning and the bad guy has no hope, the excitement dampens. The most fun is where there are moments where it looks like the battle can go either way. At some portions of the fight, the heroes should be winning (typically early on in the fight), only for the bad guy to make a sudden comeback (Bloodied & Last Stand). How exciting! 
+ What makes for an interesting battle is **uncertainty**. If the bad guy is clearly winning and the heroes have no hope, it's not as much fun. Likewise if the heroes are clearly always winning and the bad guy has no hope, the excitement dampens. The most fun is where there are moments where it looks like the battle can go either way. At some portions of the fight, the heroes should be winning (typically early on in the fight), only for the bad guy to make a sudden comeback (<Reference term="Bloodied" /> & Last Stand). How exciting! 
  
  The HP/Damage values on the legendary monster chart in the GMG allow for the heroes to have an edge in the first half of the fight, then for the bad guy's Bloodied effect to shift the tide of battle temporarily. The Last Stand should be a VERY dangerous situation to be in for more than just a few turns. This is when heroes can go all out to clinch a win! 
  
@@ -365,7 +366,7 @@ Causing effects other than damage is a great way to distinguish between differen
  
  The math behind legendary encounters assumes roughly **15 hero turns** to get to the Last Stand. So a party of 3 heroes is expected to each get roughly 5 turns, a party of 5 heroes are expected to get 3 turns each. 
  
- **Legendary Monster HP & Armor.** All other things being equal, it's recommended that a legendary monster have Medium armor. If it is unarmored, make sure you compensate for their 17 survivability in some other way (see Dravok, All-Seeing Tyrant, in the GMG). An entire fight against a Heavily armored enemy can feel frustratingly slow. If they do have Heavy armor make sure you're careful to give some weaknesses that can be taken advantage of, or make it degrade as the fight goes on, or improve to Heavy from a lower armor level. The HP of a legendary monster with Medium Armor uses a multiplier of 80% compared to unarmored, heavy armor uses a multiplier of 60%. So an unarmored monster with 100 HP is roughly equivalent to one with medium armor and 80 HP, and 60 HP with heavy. 
+ **Legendary Monster HP & Armor.** All other things being equal, it's recommended that a legendary monster have Medium armor. If it is unarmored, make sure you compensate for their 17 survivability in some other way (see <Reference term="Dravok, All-Seeing Tyrant" />, in the GMG). An entire fight against a Heavily armored enemy can feel frustratingly slow. If they do have Heavy armor make sure you're careful to give some weaknesses that can be taken advantage of, or make it degrade as the fight goes on, or improve to Heavy from a lower armor level. The HP of a legendary monster with Medium Armor uses a multiplier of 80% compared to unarmored, heavy armor uses a multiplier of 60%. So an unarmored monster with 100 HP is roughly equivalent to one with medium armor and 80 HP, and 60 HP with heavy. 
  
  > **Low Levels.** The legendary monster table in the GMG already accounts for lower levels since heroes tend to have fewer ways to deal with armor then. 
  
@@ -374,7 +375,7 @@ Causing effects other than damage is a great way to distinguish between differen
  
  No need to write everything a legendary monster might say, but giving the GM a few lines to taunt the heroes is good fun. What do they say when they crit a hero? When they drop a hero to 0 HP? When they are bloodied or hit their last stand? Do they negotiate, do they taunt the heroes about releasing an even greater evil with their death? Do they alone have information the heroes desperately want? Egg the heroes on, make it memorable and special to fight legendary creatures. Here's an example from The Vanishing Caravans adventure in the GMG: 
  
- - **Opening Attack:** "You should have taken my offer. Now, I'm afraid I'll have to make this hurt!" 
+ - **Opening <Reference term="Attack" />:** "You should have taken my offer. Now, I'm afraid I'll have to make this hurt!" 
  - **On Crit:** "Oh, did that sting? Good! I want you to remember it." 
  - **Gaining the Upper Hand:** "I'm almost starting to feel bad for you—almost." 
  - **Bloodied:** "You think this is over? I'm just getting warmed up!" 
@@ -409,7 +410,7 @@ You should have loot heroes can both purchase and find. When would you give eith
 
 ## "STRICTLY BETTER" IS STRICTLY WORSE
 
-No item should be strictly better than all others in all situations. A Dagger is sometimes better than a Shortsword (e.g., when you value crits above missing), and vice-versa. Even for equipment that is clearly better, like the Tower Shield is better than a Wooden Buckler. One costs far more than the other, and has a strength requirement to compensate.
+No item should be strictly better than all others in all situations. A <Reference term="Dagger" /> is sometimes better than a Shortsword (e.g., when you value crits above missing), and vice-versa. Even for equipment that is clearly better, like the Tower Shield is better than a <Reference term="Wooden Buckler" />. One costs far more than the other, and has a strength requirement to compensate.
 
 If you design a new shield, it should have some benefits AND drawbacks the existing shields don't have. Take for instance the Tower Shield (Req. 3 STR, +6 Armor), how could we modify this base item?
 
@@ -437,7 +438,7 @@ By designing items with clear trade-offs, we can allow for meaningful decisions 
 
 | Spell tier | Average damage |
 | ---------- | -------------- |
-| Cantrip    | 6              |
+| <Reference term="Cantrip" />    | 6              |
 | Tier 1     | 14             |
 | Tier 2     | 23             |
 | Tier 3     | 33             |
@@ -462,7 +463,7 @@ By designing items with clear trade-offs, we can allow for meaningful decisions 
 >
 > Alternatively, you can create one of the following effects of your choice: Object Creation. You create one object of up to 25,000 GP in value that isn't a magic item. The object can be no more than 300 feet in any dimension, and it appears in an unoccupied space that you can see on the ground.
 >
-> Instant Health. You allow yourself and up to twenty creatures that you can see to regain all Hit Points, and you end all effects on them listed in the Greater Restoration spell. Resistance. You grant up to ten creatures that you can see Resistance to one damage type that you choose. This Resistance is permanent.
+> Instant Health. You allow yourself and up to twenty creatures that you can see to regain all Hit Points, and you end all effects on them listed in the Greater Restoration spell. <Reference term="Resistance" />. You grant up to ten creatures that you can see Resistance to one damage type that you choose. This Resistance is permanent.
 >
 > Spell Immunity. You grant up to ten creatures you can see immunity to a single spell or other magical effect for 8 hours. Sudden Learning. You replace one of your feats with another feat for which you are eligible. You lose all the benefits of the old feat and gain the benefits of the new one. You can't replace a feat that is a prerequisite for any of your other feats or features.
 >
@@ -470,7 +471,7 @@ By designing items with clear trade-offs, we can allow for meaningful decisions 
 >
 > Reshape Reality. You may wish for something not included in any of the other effects. To do so, state your wish to the DM as precisely as possible. The DM has great latitude in ruling what occurs in such an instance; the greater the wish, the greater the likelihood that something goes wrong. This spell might simply fail, the effect you desire might be achieved only in part, or you might suffer an unforeseen consequence as a result of how you worded the wish. For example, wishing that a villain were dead might propel you forward in time to a period when that villain is no longer alive, effectively removing you from the game. Similarly, wishing for a Legendary magic item or an Artifact might instantly transport you to the presence of the item's current owner.
 >
-> If your wish is granted and its effects have consequences for a whole community, region, or world, you are likely to attract powerful foes. If your wish would affect a god, the god's divine servants might instantly intervene to prevent it or to encourage you to craft the wish in a particular way. If your wish would undo the multiverse itself, threaten the City of Sigil, or affect the Lady of Pain in any way, you see an image of her in your mind for a moment; she shakes her head, and your wish fails.
+> If your wish is granted and its effects have consequences for a whole community, region, or world, you are likely to attract powerful foes. If your wish would affect a god, the god's divine servants might instantly intervene to prevent it or to encourage you to craft the wish in a particular way. If your wish would undo the multiverse itself, threaten the City of Sigil, or affect the Lady of <Reference term="Pain" /> in any way, you see an image of her in your mind for a moment; she shakes her head, and your wish fails.
 >
 > The stress of casting Wish to produce any effect other than duplicating another spell weakens you. After enduring that stress, each time you cast a spell until you finish a Long Rest, you take 1d10 Necrotic damage per level of that spell. This damage can't be reduced or prevented in any way. In addition, your Strength score becomes 3 for 2d4 days. For each of those days that you spend resting and doing nothing more than light activity, your remaining recovery time decreases by 2 days.
 >
@@ -520,7 +521,7 @@ Emphasize tight writing, no extra stuff. Full sentences are neither necessary no
 
   > **Avoid Info Dumps.** Unloading of a large amount of exposition all at once, often automatically and without the request of the heroes. MAKE SURE the heroes initiate any information you give them, and spread the information throughout a dungeon.
 
-- **A Combat Encounter.** Each encounter should adjust any numbers. What are the baddies doing be scaled per hero so the GM doesn't need to around). Combat can be the obvious answer, but when the heroes come? (NOT simply standing around). Combat can be the obvious answer, but not necessarily the only answer.
+- **A Combat <Reference term="Encounter" />.** Each encounter should adjust any numbers. What are the baddies doing be scaled per hero so the GM doesn't need to around). Combat can be the obvious answer, but when the heroes come? (NOT simply standing around). Combat can be the obvious answer, but not necessarily the only answer.
 - **NPCs.** To fight (see above), to rescue, negotiate with, buy from, ally with, bamboozle, from another region/quest, to kidnap & ransom, etc.
 - **Dilemmas.** If you take this path, you can't take the other path. If you ally with this faction, you cannot ally with the other, etc.
 - **WEIRD things.** Crystals that produce “anti-light”, cannot ally with the other, etc. hands, Paintings with eyes that follow, Mind controlling fungus, Walls made of reversed gravity…
