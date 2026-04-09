@@ -14,7 +14,11 @@ const kind = monsterKinds.find((k) => k.id === kindSlug);
 {
 	kind && (
 		<>
-			<div class="italic" set:html={await renderMarkdown(kind.description)} />
+			<div
+				class="italic"
+				data-auto-link
+				set:html={await renderMarkdown(kind.description)}
+			/>
 
 			<slot />
 
@@ -28,7 +32,10 @@ const kind = monsterKinds.find((k) => k.id === kindSlug);
 			{kind.sampleEncounters && (
 				<div>
 					<h3>Sample Encounters</h3>
-					<div set:html={await renderMarkdown(kind.sampleEncounters)} />
+					<div
+						data-auto-link
+						set:html={await renderMarkdown(kind.sampleEncounters)}
+					/>
 				</div>
 			)}
 		</>

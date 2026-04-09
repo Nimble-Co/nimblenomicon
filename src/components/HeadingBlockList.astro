@@ -42,8 +42,10 @@ const bodyHtml = await Promise.all(
 				</H>
 				{block.metaLine && <p>{block.metaLine}</p>}
 				{block.flavor && <p>{block.flavor}</p>}
-				{block.subtitleMarkdown?.trim() && <div set:html={subtitleHtml[i]} />}
-				<div set:html={bodyHtml[i]} />
+				{block.subtitleMarkdown?.trim() && (
+					<div data-auto-link set:html={subtitleHtml[i]} />
+				)}
+				<div data-auto-link set:html={bodyHtml[i]} />
 			</section>
 		);
 	})

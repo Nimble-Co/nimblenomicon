@@ -48,6 +48,6 @@ const sourceName =
 	}}
 >
 	<DetailPageBackToList href="/spells/" label="All Spells" />
-	<div set:html={await renderMarkdown(bodyMarkdown)} />
+	<div data-auto-link set:html={await renderMarkdown(bodyMarkdown)} />
 	<DetailPageSourceRef href={sourceHref} sourceName={sourceName} />
 </StarlightPage>

@@ -21,6 +21,6 @@ const htmlByIndex = await Promise.all(
 
 {
 	items.map((item: Item, i: number) => (
-		<Tag id={item.id} set:html={htmlByIndex[i]} />
+		<Tag data-auto-link id={item.id} set:html={htmlByIndex[i]} />
 	))
 }

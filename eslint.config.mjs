@@ -1,6 +1,7 @@
 import eslint from '@eslint/js';
 import eslintPluginAstro from 'eslint-plugin-astro';
 import eslintPluginTailwindcss from 'eslint-plugin-tailwindcss';
+import globals from 'globals';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import tseslint from 'typescript-eslint';
@@ -41,6 +42,12 @@ export default tseslint.config(
 		files: ['**/env.d.ts'],
 		rules: {
 			'@typescript-eslint/triple-slash-reference': 'off',
+		},
+	},
+	{
+		files: ['public/scripts/**/*.js'],
+		languageOptions: {
+			globals: globals.browser,
 		},
 	},
 );

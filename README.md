@@ -87,3 +87,43 @@ Nimblenomicon is based on **Nimble Core Rules 2.0.2** and **Creator's Kit 1.2**.
 
 - [Contributing](CONTRIBUTING.md)
 - [Code of Conduct](CONTRIBUTING.md#code-of-conduct)
+
+---
+
+## Cross-links and tooltips (contributors)
+
+The site **auto-links** game terms in prose to detail pages and shows a **shared tooltip** (hover, keyboard focus, mobile tap-to-preview) on those links. Linking runs **only in production builds** (`npm run build`), not in `npm run dev`. After changing docs, run `npm run build && npm run preview` to see cross-links and tooltips.
+
+### Overrides
+
+- **Do not link a phrase** (keep the text as plain words): wrap it in `<span data-no-xref>…</span>` in MDX.
+
+  ```mdx
+  The <span data-no-xref>Dice</span> glossary entry should not link from this paragraph.
+  ```
+
+- **Disambiguate** when the same label exists in more than one collection: use the `Reference` component (import from `@components/Reference.astro`). Pass **`term`** (lookup key, case-sensitive) and optional **`kind`** (e.g. `language`, `glossary`, `spell`).
+
+  ```mdx
+  import Reference from '@components/Reference.astro';
+
+  <Reference term="Light" kind="spell" />
+  ```
+
+- **Manual link** when auto-linking is wrong or missing: add a normal anchor with **`class="auto-xref"`** and the same `data-*` attributes the build uses:
+
+  ```mdx
+  <a
+  	href="/spells/fireball/"
+  	class="auto-xref"
+  	data-term="Fireball"
+  	data-kind="spell"
+  	data-definition="Short excerpt for the tooltip."
+  >
+  	Fireball
+  </a>
+  ```
+
+Markdown emphasis around a component: wrap the whole phrase in `<strong>` / `<em>` so weight and italic apply to the link text (see [AGENTS.md](AGENTS.md) for details).
+
+For implementation notes (Cheerio pass, `data-auto-link` on custom pages), see [AGENTS.md](AGENTS.md).

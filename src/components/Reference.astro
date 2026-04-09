@@ -1,0 +1,36 @@
+---
+import { resolveReferenceEntry } from '../models/xref-terms';
+
+interface Props {
+	/** Display text and lookup key (case-sensitive, matches entity `name`). */
+	term: string;
+	/** Disambiguate when the same label exists in multiple collections (e.g. `language` vs `ancestry`). */
+	kind?: string;
+}
+
+const { term, kind } = Astro.props;
+
+const entry = resolveReferenceEntry(term, kind);
+
+if (!entry && import.meta.env.DEV) {
+	console.warn(
+		`[Reference] Unresolved term "${term}"${kind !== undefined && kind !== '' ? ` (kind: ${kind})` : ''}`,
+	);
+}
+---
+
+{
+	entry ? (
+		<a
+			href={entry.href}
+			class="auto-xref"
+			data-term={entry.term}
+			data-kind={entry.kind}
+			data-definition={entry.definition}
+		>
+			{term}
+		</a>
+	) : (
+		term
+	)
+}

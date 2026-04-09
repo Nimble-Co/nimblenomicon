@@ -10,14 +10,15 @@ The Nimblenomicon is a static documentation site for the Nimble tabletop RPG, bu
 
 Standard commands from the repo root (see `CONTRIBUTING.md` § Local Development):
 
-| Command                | Purpose                                   |
-| ---------------------- | ----------------------------------------- |
-| `npm run dev`          | Dev server at `localhost:4321`            |
-| `npm run build`        | Production build to `dist/`               |
-| `npm run preview`      | Serve production build locally            |
-| `npm run format`       | Apply Prettier to the repo                |
-| `npm run format:check` | Check formatting (same as CI)             |
-| `npm run lint`         | ESLint (TS/Astro) + markdownlint (md/mdx) |
+| Command                | Purpose                                           |
+| ---------------------- | ------------------------------------------------- |
+| `npm run dev`          | Dev server at `localhost:4321`                    |
+| `npm run build`        | Production build to `dist/`                       |
+| `npm run preview`      | Serve production build locally                    |
+| `npm run format`       | Apply Prettier to the repo                        |
+| `npm run format:check` | Check formatting (same as CI)                     |
+| `npm run lint`         | ESLint (TS/Astro) + markdownlint (md/mdx)         |
+| `npm test`             | Vitest unit tests (auto-xref path + HTML helpers) |
 
 ### Styling (Tailwind v4 + Starlight)
 
@@ -25,8 +26,7 @@ Standard commands from the repo root (see `CONTRIBUTING.md` § Local Development
 
 ### Caveats
 
-- **No test script** exists in `package.json` yet. Do not attempt to run `npm test` — it will fail.
-- **Lint, format, and build** run in CI (`.github/workflows/ci.yml`). Before pushing substantive edits, run `npm run format:check` and `npm run lint` locally. Markdownlint targets repo docs and `src/**`; `.agents/**` and `docs/**` are ignored so agent-skill and ideation markdown does not block the build.
+- **Lint, format, build, and tests** run in CI (`.github/workflows/ci.yml`). Before pushing substantive edits, run `npm run format:check`, `npm run lint`, and `npm test` locally. Markdownlint targets repo docs and `src/**`; `.agents/**` and `docs/**` are ignored so agent-skill and ideation markdown does not block the build.
 - **Search (Pagefind)** only works in production builds. In the dev server, the search bar is present but nonfunctional. To test search: `npm run build && npm run preview`, then use the preview server.
 - The `site` option in `astro.config.ts` is **not set** (it is computed from GitHub environment variables during CI). This causes a harmless `@astrojs/sitemap` warning during local builds. Ignore it.
 - **No environment variables or secrets** are required for local development.
@@ -67,6 +67,13 @@ These preferences come from ongoing Core Rules work. Agents should follow them w
 - **`type: rich-text`** with **`options.format: markdown`** for markdown fragments; keep behavior consistent with site rendering (`renderMarkdown` in MDX).
 - **Optional variant rules** may live as a **top-level** content entry if that fits the IA better than nesting only under a group.
 - Former “callout” content: prefer **blockquotes inside markdown `description`** instead of a separate parallel field, when that keeps editing simpler.
+
+### Entity cross-links (`auto-xref`)
+
+- **Build-time linking:** After `astro build`, the `nimble-auto-xref` integration runs on `dist/**/*.html`, parses HTML with Cheerio, and wraps matching catalog terms in `<a class="auto-xref" href … data-term data-kind data-definition>`. This does **not** run during `npm run dev`; use `npm run build && npm run preview` to verify links and tooltips.
+- **Scoped prose:** Starlight doc bodies use the `MarkdownContent` override, which wraps markdown in **`data-auto-link`**. Any **custom Astro page or component** that renders `renderMarkdown()` output for user-facing prose must also wrap that output in an element with **`data-auto-link`** (or put it inside a parent that already has it), or the HTML pass will skip it.
+- **Overrides in MDX/HTML:** Use `<span data-no-xref>…</span>` to keep a phrase from being linked. Use `<Reference term="…" kind="…" />` from `@components/Reference.astro` when the same label appears in multiple collections. Use a manual `<a class="auto-xref" href="…" data-term="…" data-definition="…" data-kind="…">…</a>` when auto-linking is wrong or missing. See the README section on cross-links for examples.
+- **Tables:** Prose inside `<table>` is not auto-linked (markdown in table cells is skipped).
 
 ### Workflow
 

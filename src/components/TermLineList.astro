@@ -18,6 +18,6 @@ const htmlByIndex = await Promise.all(
 );
 ---
 
-<ul>
+<ul data-auto-link>
 	{items.map((item, i) => <li id={item.id} set:html={htmlByIndex[i]} />)}
 </ul>
