@@ -28,16 +28,19 @@ function getTooltip() {
  */
 function positionTooltip(trigger, tip) {
 	const rect = trigger.getBoundingClientRect();
-	const margin = 8;
+	/** Minimum inset from the viewport edge when clamping position. */
+	const edgeMargin = 8;
+	/** Space between the link and the tooltip (below or above). */
+	const tooltipGap = 3;
 	const tipRect = tip.getBoundingClientRect();
-	let top = rect.bottom + margin;
+	let top = rect.bottom + tooltipGap;
 	let left = rect.left + rect.width / 2 - tipRect.width / 2;
 	left = Math.max(
-		margin,
-		Math.min(left, window.innerWidth - tipRect.width - margin),
+		edgeMargin,
+		Math.min(left, window.innerWidth - tipRect.width - edgeMargin),
 	);
-	if (top + tipRect.height > window.innerHeight - margin) {
-		top = rect.top - tipRect.height - margin;
+	if (top + tipRect.height > window.innerHeight - edgeMargin) {
+		top = rect.top - tipRect.height - tooltipGap;
 	}
 	tip.style.left = `${left}px`;
 	tip.style.top = `${top}px`;
