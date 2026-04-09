@@ -70,7 +70,7 @@ These preferences come from ongoing Core Rules work. Agents should follow them w
 
 ### Entity links in docs (`Reference`)
 
-- In MDX, link to spells, classes, glossary entries, and other catalog entities with `<Reference term="…" />` (import `Reference` from `@components/Reference.astro`). Optional **`kind`** (e.g. `language`, `glossary`) disambiguates when the same label appears in more than one collection.
+- In MDX, link to spells, classes, glossary entries, and other catalog entities with `<Reference term="…">…</Reference>` (import `Reference` from `@components/Reference.astro`). **`term`** is the lookup key only; **children** are the visible label (including styled markup). Optional **`kind`** (e.g. `language`, `glossary`) disambiguates when the same label appears in more than one collection.
 - The **`npm run xref:apply-mdx`** helper inserts `<Reference />` and the import; JSON `description` strings processed through `renderMarkdown()` still use HTML **`<a class="auto-xref">`** from **`xref:apply-json`** — MDX components do not run inside those strings.
 
 ### Workflow

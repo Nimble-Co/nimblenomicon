@@ -11,7 +11,7 @@ import {
 
 export { buildXrefTermList, type XrefTermEntry };
 
-/** MDX emits `<Reference />`; JSON `description` strings stay HTML `<a class="auto-xref">` (see apply-xref-json). */
+/** MDX emits `<Reference term="…">…</Reference>`; JSON `description` strings stay HTML `<a class="auto-xref">` (see apply-xref-json). */
 export type XrefEmitFormat = 'mdx-reference' | 'html-anchor';
 
 export const MAX_LINKS_PER_PARAGRAPH = 3;
@@ -142,7 +142,10 @@ function linkLine(
 				ambiguousTerms?.has(entry.term) === true
 					? ` kind="${escapeAttr(entry.kind)}"`
 					: '';
-			segments.push(`<Reference term="${inner}"${kindAttr} />`);
+			const child = JSON.stringify(matchedText);
+			segments.push(
+				`<Reference term="${inner}"${kindAttr}>{${child}}</Reference>`,
+			);
 		} else {
 			const inner = escapeAttr(entry.term);
 			const def = escapeAttr(entry.definition);
