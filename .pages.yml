@@ -70,13 +70,13 @@ content:
             label: Name
             type: string
             required: true
-          - name: summary
-            label: Core Rules Summary
+          - name: description
+            label: Description
             type: string
             required: true
             description: One-line blurb for the Core Rules class list.
-          - name: description
-            label: Description
+          - name: introduction
+            label: Introduction
             type: rich-text
             required: true
             options:
