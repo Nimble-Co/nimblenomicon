@@ -1,7 +1,7 @@
 [
 	{
 		"name": "Multiclassing",
-		"description": "If your GM wants to allow for additional creativity for experienced players (and potentially broken combos!), when heroes level up, they may choose any class. For example, when a level 4 Berserker levels up, he could pick Commander, and take the level 1 Commander features instead of the level 5 Berserker features. He would have 4 d12 hit dice and a single d10 hit die. A hero gains all the equipment proficiencies of all their classes but should use the advantaged/disadvantaged saves of whichever class has the highest level.\n\n> **“Broken” Can Be Fun!** Planning, building, optimizing, and “breaking” a class build IS the fun for many people. The GM may need to make the game substantially more challenging if multiclassing is allowed. The GM also may veto any particularly overpowered, unfun, or implausible combo for the sake of the story and overall fun of the table. If this happens, well done! Your hero was too powerful for reality."
+		"description": "If your GM wants to allow for additional creativity for experienced players (and potentially broken combos!), when heroes level up, they may choose any class. For example, when a level 4 <a href=\"/classes/berserker/\" class=\"auto-xref\" data-term=\"Berserker\" data-kind=\"class\" data-definition=\"An unstoppable force of wrath and ruin.\">Berserker</a> levels up, he could pick <a href=\"/classes/commander/\" class=\"auto-xref\" data-term=\"Commander\" data-kind=\"class\" data-definition=\"A battlefield tactician, leader, and weapon master.\">Commander</a>, and take the level 1 Commander features instead of the level 5 Berserker features. He would have 4 d12 hit dice and a single d10 hit die. A hero gains all the equipment proficiencies of all their classes but should use the advantaged/disadvantaged saves of whichever class has the highest level.\n\n> **“Broken” Can Be Fun!** Planning, building, optimizing, and “breaking” a class build IS the fun for many people. The GM may need to make the game substantially more challenging if multiclassing is allowed. The GM also may veto any particularly overpowered, unfun, or implausible combo for the sake of the story and overall fun of the table. If this happens, well done! Your hero was too powerful for reality."
 	},
 	{
 		"name": "Small Groups",
@@ -29,7 +29,7 @@
 	},
 	{
 		"name": "Sucker Punch",
-		"description": "A character standing up from Prone gives adjacent enemies the chance to take opportunity attacks (heroes and monsters alike)."
+		"description": "A character standing up from <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a> gives adjacent enemies the chance to take opportunity attacks (heroes and monsters alike)."
 	},
 	{
 		"name": "Playing Dead",
@@ -41,11 +41,11 @@
 	},
 	{
 		"name": "Retreat",
-		"description": "The world is dangerous, and some fights may be unwinnable. Any hero may call for a retreat on their turn. If the party agrees—unless there is a good reason story-wise that a party can't escape (e.g., they are trapped in nets and completely surrounded by a band of nasty kobolds)—the GM allows them to flee. Each hero describes their escape (e.g., casting a spell, using equipment, or making a skill check). Consequences may follow, such as taking damage, suffering a Wound, or failing a quest. If the escape is particularly clever, the GM may allow the party to escape without additional consequence. After all, the shame of retreating is often punishment enough!"
+		"description": "The world is dangerous, and some fights may be unwinnable. Any hero may call for a retreat on their turn. If the party agrees—unless there is a good reason story-wise that a party can't escape (e.g., they are trapped in nets and completely surrounded by a band of nasty kobolds)—the GM allows them to flee. Each hero describes their escape (e.g., casting a spell, using equipment, or making a skill check). Consequences may follow, such as taking damage, suffering a <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a>, or failing a quest. If the escape is particularly clever, the GM may allow the party to escape without additional consequence. After all, the shame of retreating is often punishment enough!"
 	},
 	{
 		"name": "Different Key Stats",
-		"description": "Players can swap KEY or Secondary stats for a class if it makes sense (e.g., DEX and WIL for the Cheat)."
+		"description": "Players can swap <a href=\"/glossary/key/\" class=\"auto-xref\" data-term=\"KEY\" data-kind=\"glossary\" data-definition=\"Use either of your KEY attributes.\">KEY</a> or Secondary stats for a class if it makes sense (e.g., DEX and WIL for the Cheat)."
 	},
 	{
 		"name": "Complex Characters",

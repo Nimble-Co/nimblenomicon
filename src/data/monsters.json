@@ -72,7 +72,7 @@
 			{
 				"name": "Poison Blade",
 				"uses": 2,
-				"description": "1d8+2 On damage: Dazed."
+				"description": "1d8+2 On damage: <a href=\"/conditions/dazed/\" class=\"auto-xref\" data-term=\"Dazed\" data-kind=\"condition\" data-definition=\"Heroes: lose 1 action; monsters: can perform one less action on their next turn.\">Dazed</a>."
 			}
 		],
 		"specialAbilities": [
@@ -199,7 +199,7 @@
 			},
 			{
 				"name": "Blood Boil",
-				"description": "3d6+6 (Range 12) (Bloodied creature)"
+				"description": "3d6+6 (Range 12) (<a href=\"/conditions/bloodied/\" class=\"auto-xref\" data-term=\"Bloodied\" data-kind=\"condition\" data-definition=\"At half HP or less.\">Bloodied</a> creature)"
 			}
 		],
 		"kind": "cultists-and-horrors",
@@ -274,7 +274,7 @@
 		"actions": [
 			{
 				"name": "Feverish Chant",
-				"description": "(Concentration) Reduce all damage done to allies who can hear you to 1."
+				"description": "(<a href=\"/glossary/concentration/\" class=\"auto-xref\" data-term=\"Concentration\" data-kind=\"glossary\" data-definition=\"Can only Concentrate on 1 thing at a time. DC 10 STR save when crit or lose concentration, see pg. 10.\">Concentration</a>) Reduce all damage done to allies who can hear you to 1."
 			},
 			{
 				"name": "Ecstatic Ravings",
@@ -616,7 +616,7 @@
 		"specialAbilities": [
 			{
 				"name": "Illusory Aura",
-				"description": "Attacks against the Duskprowler have Disadvantage 2. Damage suppresses this effect until the end of the next hero's turn."
+				"description": "Attacks against the <a href=\"/monsters/duskprowler/\" class=\"auto-xref\" data-term=\"Duskprowler\" data-kind=\"monster\" data-definition=\"Duskprowler — Level 6 monster. Forest Denizens\">Duskprowler</a> have Disadvantage 2. Damage suppresses this effect until the end of the next hero's turn."
 			}
 		],
 		"kind": "forest-denizens",
@@ -639,13 +639,13 @@
 			},
 			{
 				"name": "Envenom",
-				"description": "1d8+10 Advantage vs Dazed targets."
+				"description": "1d8+10 Advantage vs <a href=\"/conditions/dazed/\" class=\"auto-xref\" data-term=\"Dazed\" data-kind=\"condition\" data-definition=\"Heroes: lose 1 action; monsters: can perform one less action on their next turn.\">Dazed</a> targets."
 			}
 		],
 		"specialAbilities": [
 			{
 				"name": "Flesh to Stone",
-				"description": "Creatures Dazed by the Basilisk remain so for 10 minutes. Dazed 3 times = Petrified."
+				"description": "Creatures <a href=\"/conditions/dazed/\" class=\"auto-xref\" data-term=\"Dazed\" data-kind=\"condition\" data-definition=\"Heroes: lose 1 action; monsters: can perform one less action on their next turn.\">Dazed</a> by the <a href=\"/monsters/basilisk/\" class=\"auto-xref\" data-term=\"Basilisk\" data-kind=\"monster\" data-definition=\"Basilisk — Level 7 monster. Forest Denizens\">Basilisk</a> remain so for 10 minutes. Dazed 3 times = <a href=\"/conditions/petrified/\" class=\"auto-xref\" data-term=\"Petrified\" data-kind=\"condition\" data-definition=\"Incapacitated. You have all the benefits and drawbacks of being a rock! Immune to most damage except from large explosions, picks, or similar tools.\">Petrified</a>."
 			}
 		],
 		"kind": "forest-denizens",
@@ -687,17 +687,17 @@
 		"actions": [
 			{
 				"name": "Slam",
-				"description": "2d6+10 (Reach 3) On damage: Prone."
+				"description": "2d6+10 (Reach 3) On damage: <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>."
 			},
 			{
 				"name": "Stomp",
-				"description": "2d6+20 (Hampered target)"
+				"description": "2d6+20 (<a href=\"/conditions/hampered/\" class=\"auto-xref\" data-term=\"Hampered\" data-kind=\"condition\" data-definition=\"Any creature with their actions or movement reduced (e.g., Dazed, Grappled, Prone, Difficult Terrain).\">Hampered</a> target)"
 			}
 		],
 		"specialAbilities": [
 			{
 				"name": "Enrage",
-				"description": "Attack with advantage when unarmored."
+				"description": "<a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a> with advantage when unarmored."
 			}
 		],
 		"kind": "forest-denizens",
@@ -782,7 +782,7 @@
 			{
 				"name": "Bite & Stab",
 				"uses": 2,
-				"description": "1d6+2 On crit: Prone."
+				"description": "1d6+2 On crit: <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>."
 			}
 		],
 		"specialAbilities": [
@@ -851,7 +851,7 @@
 		"specialAbilities": [
 			{
 				"name": "Frenzy",
-				"description": "Advantage against Bloodied creatures."
+				"description": "Advantage against <a href=\"/conditions/bloodied/\" class=\"auto-xref\" data-term=\"Bloodied\" data-kind=\"condition\" data-definition=\"At half HP or less.\">Bloodied</a> creatures."
 			}
 		],
 		"kind": "hill-and-field",
@@ -934,7 +934,7 @@
 		"specialAbilities": [
 			{
 				"name": "Frenzy",
-				"description": "Advantage against Bloodied creatures."
+				"description": "Advantage against <a href=\"/conditions/bloodied/\" class=\"auto-xref\" data-term=\"Bloodied\" data-kind=\"condition\" data-definition=\"At half HP or less.\">Bloodied</a> creatures."
 			}
 		],
 		"kind": "hill-and-field",
@@ -958,7 +958,7 @@
 			},
 			{
 				"name": "Fly & Drop",
-				"description": "(if grappling) Fly upward 12 and release (6d6 fall damage)."
+				"description": "(if grappling) <a href=\"/spells/fly/\" class=\"auto-xref\" data-term=\"Fly\" data-kind=\"spell\" data-definition=\"Concentration: Up to 10 minutes. Touch a creature, grant a flying speed of 12. Upcast: +1 target.\">Fly</a> upward 12 and release (6d6 fall damage)."
 			}
 		],
 		"kind": "hill-and-field",
@@ -988,7 +988,7 @@
 		"specialAbilities": [
 			{
 				"name": "Burst Forth!",
-				"description": "Combat with a Bulette starts with the heaviest character making a DC 14 DEX save or they are Grappled (escape DC 14) and take 1d12+20 damage (half on save)."
+				"description": "Combat with a <a href=\"/monsters/bulette/\" class=\"auto-xref\" data-term=\"Bulette\" data-kind=\"monster\" data-definition=\"Bulette — Level 10 monster. Hill &amp; Field\">Bulette</a> starts with the heaviest character making a DC 14 DEX save or they are Grappled (escape DC 14) and take 1d12+20 damage (half on save)."
 			}
 		],
 		"kind": "hill-and-field",
@@ -1007,11 +1007,11 @@
 		"actions": [
 			{
 				"name": "Claws",
-				"description": "1d4+10 (Reach 2) On crit: Prone."
+				"description": "1d4+10 (Reach 2) On crit: <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>."
 			},
 			{
 				"name": "Bite",
-				"description": "1d4+20 (A Prone creature)"
+				"description": "1d4+20 (A <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a> creature)"
 			}
 		],
 		"specialAbilities": [
@@ -1070,7 +1070,7 @@
 			},
 			{
 				"name": "Crush & Drop",
-				"description": "20 Fly upward 20 spaces, deal damage to Grappled creatures, then release (10d6 fall damage)."
+				"description": "20 <a href=\"/spells/fly/\" class=\"auto-xref\" data-term=\"Fly\" data-kind=\"spell\" data-definition=\"Concentration: Up to 10 minutes. Touch a creature, grant a flying speed of 12. Upcast: +1 target.\">Fly</a> upward 20 spaces, deal damage to Grappled creatures, then release (10d6 fall damage)."
 			}
 		],
 		"kind": "hill-and-field",
@@ -1108,7 +1108,7 @@
 		"actions": [
 			{
 				"name": "Stab",
-				"description": "1d4+2 (or Sling, Range 8)"
+				"description": "1d4+2 (or <a href=\"/weapons/sling/\" class=\"auto-xref\" data-term=\"Sling\" data-kind=\"weapon\" data-definition=\"Ranged weapon — 1d4+DEX Bludgeoning.\">Sling</a>, Range 8)"
 			}
 		],
 		"kind": "kobolds",
@@ -1128,7 +1128,7 @@
 		"actions": [
 			{
 				"name": "Stab",
-				"description": "1d4+2 (or Sling, Range 8)"
+				"description": "1d4+2 (or <a href=\"/weapons/sling/\" class=\"auto-xref\" data-term=\"Sling\" data-kind=\"weapon\" data-definition=\"Ranged weapon — 1d4+DEX Bludgeoning.\">Sling</a>, Range 8)"
 			}
 		],
 		"specialAbilities": [
@@ -1176,7 +1176,7 @@
 			{
 				"name": "Stab",
 				"uses": 2,
-				"description": "1d4+2 (or Sling, Range 8)"
+				"description": "1d4+2 (or <a href=\"/weapons/sling/\" class=\"auto-xref\" data-term=\"Sling\" data-kind=\"weapon\" data-definition=\"Ranged weapon — 1d4+DEX Bludgeoning.\">Sling</a>, Range 8)"
 			}
 		],
 		"specialAbilities": [
@@ -1209,7 +1209,7 @@
 		"specialAbilities": [
 			{
 				"name": "Trap!",
-				"description": "When an enemy moves adjacent to you or an ally, they trigger one of your traps! (1/encounter each). BEEES! Deal 5d4 damage (doesn't miss). Half as much to ALL adjacent creatures. HIDDEN NET! Restrained (escape DC 10)."
+				"description": "When an enemy moves adjacent to you or an ally, they trigger one of your traps! (1/encounter each). BEEES! Deal 5d4 damage (doesn't miss). Half as much to ALL adjacent creatures. HIDDEN NET! <a href=\"/glossary/restrained/\" class=\"auto-xref\" data-term=\"Restrained\" data-kind=\"glossary\" data-definition=\"Same effect as Grappled, objects Restrain, creatures Grapple. See pg. 10.\">Restrained</a> (escape DC 10)."
 			}
 		],
 		"kind": "kobolds",
@@ -1231,7 +1231,7 @@
 			{
 				"name": "Stab",
 				"uses": 2,
-				"description": "1d4+2 (or Sling, Range 8)"
+				"description": "1d4+2 (or <a href=\"/weapons/sling/\" class=\"auto-xref\" data-term=\"Sling\" data-kind=\"weapon\" data-definition=\"Ranged weapon — 1d4+DEX Bludgeoning.\">Sling</a>, Range 8)"
 			}
 		],
 		"specialAbilities": [
@@ -1376,7 +1376,7 @@
 		"actions": [
 			{
 				"name": "Sickening Claw",
-				"description": "1d4+8 On damage: Dazed."
+				"description": "1d4+8 On damage: <a href=\"/conditions/dazed/\" class=\"auto-xref\" data-term=\"Dazed\" data-kind=\"condition\" data-definition=\"Heroes: lose 1 action; monsters: can perform one less action on their next turn.\">Dazed</a>."
 			}
 		],
 		"kind": "undead",
@@ -1417,7 +1417,7 @@
 			{
 				"name": "Greatclub",
 				"uses": 2,
-				"description": "1d4+8 On crit: Prone."
+				"description": "1d4+8 On crit: <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>."
 			}
 		],
 		"kind": "undead",
@@ -1438,7 +1438,7 @@
 			{
 				"name": "Slam",
 				"uses": 2,
-				"description": "1d4+8 On damage: Dazed."
+				"description": "1d4+8 On damage: <a href=\"/conditions/dazed/\" class=\"auto-xref\" data-term=\"Dazed\" data-kind=\"condition\" data-definition=\"Heroes: lose 1 action; monsters: can perform one less action on their next turn.\">Dazed</a>."
 			}
 		],
 		"kind": "undead",
@@ -1480,7 +1480,7 @@
 			{
 				"name": "Soul Rend",
 				"uses": 2,
-				"description": "1d4+10 (Range 8) On damage: deal 1 Wound."
+				"description": "1d4+10 (Range 8) On damage: deal 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a>."
 			}
 		],
 		"kind": "undead",
@@ -1505,13 +1505,13 @@
 			{
 				"name": "Slam",
 				"uses": 2,
-				"description": "1d4+20 On damage: Dazed."
+				"description": "1d4+20 On damage: <a href=\"/conditions/dazed/\" class=\"auto-xref\" data-term=\"Dazed\" data-kind=\"condition\" data-definition=\"Heroes: lose 1 action; monsters: can perform one less action on their next turn.\">Dazed</a>."
 			}
 		],
 		"specialAbilities": [
 			{
 				"name": "Cursed Gaze",
-				"description": "When crit: DC 20 INT save, or suffer 1 Wound."
+				"description": "When crit: DC 20 INT save, or suffer 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a>."
 			}
 		],
 		"kind": "undead",
@@ -1531,11 +1531,11 @@
 		"actions": [
 			{
 				"name": "Shoot Web",
-				"description": "1d8+2 (Range 6) On hit: Restrained (escape DC 12, or any slashing/fire damage)."
+				"description": "1d8+2 (Range 6) On hit: <a href=\"/glossary/restrained/\" class=\"auto-xref\" data-term=\"Restrained\" data-kind=\"glossary\" data-definition=\"Same effect as Grappled, objects Restrain, creatures Grapple. See pg. 10.\">Restrained</a> (escape DC 12, or any slashing/fire damage)."
 			},
 			{
 				"name": "Bite",
-				"description": "2d8+4 (Hampered target) Poisoned (magical healing ends)."
+				"description": "2d8+4 (<a href=\"/conditions/hampered/\" class=\"auto-xref\" data-term=\"Hampered\" data-kind=\"condition\" data-definition=\"Any creature with their actions or movement reduced (e.g., Dazed, Grappled, Prone, Difficult Terrain).\">Hampered</a> target) <a href=\"/conditions/poisoned/\" class=\"auto-xref\" data-term=\"Poisoned\" data-kind=\"condition\" data-definition=\"Disadvantage on rolls.\">Poisoned</a> (magical healing ends)."
 			}
 		],
 		"kind": "underground",
@@ -1573,11 +1573,11 @@
 		"actions": [
 			{
 				"name": "Shoot Web",
-				"description": "1d8+2 (Range 6) On hit: Restrained (escape DC 12, or any slashing/fire damage)."
+				"description": "1d8+2 (Range 6) On hit: <a href=\"/glossary/restrained/\" class=\"auto-xref\" data-term=\"Restrained\" data-kind=\"glossary\" data-definition=\"Same effect as Grappled, objects Restrain, creatures Grapple. See pg. 10.\">Restrained</a> (escape DC 12, or any slashing/fire damage)."
 			},
 			{
 				"name": "Bite",
-				"description": "3d8+6 (Hampered target) Poisoned (magical healing ends)."
+				"description": "3d8+6 (<a href=\"/conditions/hampered/\" class=\"auto-xref\" data-term=\"Hampered\" data-kind=\"condition\" data-definition=\"Any creature with their actions or movement reduced (e.g., Dazed, Grappled, Prone, Difficult Terrain).\">Hampered</a> target) <a href=\"/conditions/poisoned/\" class=\"auto-xref\" data-term=\"Poisoned\" data-kind=\"condition\" data-definition=\"Disadvantage on rolls.\">Poisoned</a> (magical healing ends)."
 			}
 		],
 		"kind": "underground",
@@ -1626,7 +1626,7 @@
 			},
 			{
 				"name": "Horrifying Wail",
-				"description": "DC 16 WIL save, or creatures within 6 spaces are Frightened and must spend 1 Action moving as far away as possible."
+				"description": "DC 16 WIL save, or creatures within 6 spaces are <a href=\"/conditions/frightened/\" class=\"auto-xref\" data-term=\"Frightened\" data-kind=\"condition\" data-definition=\"Disadvantage on rolls when source of fear is nearby; speed halved when moving closer to it.\">Frightened</a> and must spend 1 Action moving as far away as possible."
 			}
 		],
 		"specialAbilities": [
@@ -1655,7 +1655,7 @@
 		"actions": [
 			{
 				"name": "Crush",
-				"description": "50 Creatures in a 2×6 area take damage on a failed DC 18 DEX save. (Creatures who fail can spend 1 Action to dive out of the way instead of taking this damage. They move half their speed and land Prone.)"
+				"description": "50 Creatures in a 2×6 area take damage on a failed DC 18 DEX save. (Creatures who fail can spend 1 Action to dive out of the way instead of taking this damage. They move half their speed and land <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>.)"
 			},
 			{
 				"name": "Bite/Swallow",

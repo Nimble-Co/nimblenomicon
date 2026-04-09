@@ -17,7 +17,7 @@
 	},
 	{
 		"name": "Blindsight X",
-		"description": "You can sense creatures and obstacles normally within X spaces, ignoring Blinded, darkness, and invisibility."
+		"description": "You can sense creatures and obstacles normally within X spaces, ignoring <a href=\"/conditions/blinded/\" class=\"auto-xref\" data-term=\"Blinded\" data-kind=\"condition\" data-definition=\"Can't see. Attacks against you have advantage, and your attacks have disadvantage.\">Blinded</a>, darkness, and invisibility."
 	},
 	{
 		"name": "Cantrip",
@@ -61,7 +61,7 @@
 	},
 	{
 		"name": "Distracted",
-		"description": "A target is distracted if it is adjacent to or Taunted by an ally, or if it cannot see you."
+		"description": "A target is distracted if it is adjacent to or <a href=\"/conditions/taunted/\" class=\"auto-xref\" data-term=\"Taunted\" data-kind=\"condition\" data-definition=\"Disadvantage on attacks except against the most recent taunter.\">Taunted</a> by an ally, or if it cannot see you."
 	},
 	{
 		"name": "Encounter",
@@ -81,15 +81,15 @@
 	},
 	{
 		"name": "Hampered",
-		"description": "Any creature with their actions or movement reduced (e.g., Dazed, Grappled, Prone, Difficult Terrain)."
+		"description": "Any creature with their actions or movement reduced (e.g., <a href=\"/conditions/dazed/\" class=\"auto-xref\" data-term=\"Dazed\" data-kind=\"condition\" data-definition=\"Heroes: lose 1 action; monsters: can perform one less action on their next turn.\">Dazed</a>, Grappled, <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>, <a href=\"/glossary/difficult-terrain/\" class=\"auto-xref\" data-term=\"Difficult Terrain\" data-kind=\"glossary\" data-definition=\"Speed halved while here. (e.g., moving through the space of an enemy).\">Difficult Terrain</a>)."
 	},
 	{
 		"name": "KEY",
-		"description": "Use either of your KEY attributes."
+		"description": "Use either of your <a href=\"/glossary/key/\" class=\"auto-xref\" data-term=\"KEY\" data-kind=\"glossary\" data-definition=\"Use either of your KEY attributes.\">KEY</a> attributes."
 	},
 	{
 		"name": "Knockback/Push X",
-		"description": "Forcibly move a creature X spaces, ignoring Difficult Terrain. Other creatures or the environment may halt movement prematurely and deal damage. See “Falling & Forced Movement” on page 10."
+		"description": "Forcibly move a creature X spaces, ignoring <a href=\"/glossary/difficult-terrain/\" class=\"auto-xref\" data-term=\"Difficult Terrain\" data-kind=\"glossary\" data-definition=\"Speed halved while here. (e.g., moving through the space of an enemy).\">Difficult Terrain</a>. Other creatures or the environment may halt movement prematurely and deal damage. See “<a href=\"/glossary/falling/\" class=\"auto-xref\" data-term=\"Falling\" data-kind=\"glossary\" data-definition=\"Suffer 1d6 damage per 10 ft. fallen.\">Falling</a> & Forced Movement” on page 10."
 	},
 	{
 		"name": "Line X",
@@ -109,7 +109,7 @@
 	},
 	{
 		"name": "Paralyzed, Stunned, Unconscious",
-		"description": "Incapacitated. Can't do anything. Attacks against you have advantage, and melee attacks that hit, crit."
+		"description": "<a href=\"/conditions/incapacitated/\" class=\"auto-xref\" data-term=\"Incapacitated\" data-kind=\"condition\" data-definition=\"Can't do anything. Attacks against you have advantage, and melee attacks that hit, crit.\">Incapacitated</a>. Can't do anything. Attacks against you have advantage, and melee attacks that hit, crit."
 	},
 	{
 		"name": "Reach X",

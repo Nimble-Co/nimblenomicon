@@ -29,7 +29,7 @@
 	},
 	{
 		"name": "Hampered",
-		"description": "Any creature with their actions or movement reduced (e.g., Dazed, Grappled, Prone, Difficult Terrain)."
+		"description": "Any creature with their actions or movement reduced (e.g., <a href=\"/conditions/dazed/\" class=\"auto-xref\" data-term=\"Dazed\" data-kind=\"condition\" data-definition=\"Heroes: lose 1 action; monsters: can perform one less action on their next turn.\">Dazed</a>, Grappled, <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>, <a href=\"/glossary/difficult-terrain/\" class=\"auto-xref\" data-term=\"Difficult Terrain\" data-kind=\"glossary\" data-definition=\"Speed halved while here. (e.g., moving through the space of an enemy).\">Difficult Terrain</a>)."
 	},
 	{
 		"name": "Incapacitated",
@@ -41,7 +41,7 @@
 	},
 	{
 		"name": "Petrified",
-		"description": "Incapacitated. You have all the benefits and drawbacks of being a rock! Immune to most damage except from large explosions, picks, or similar tools."
+		"description": "<a href=\"/conditions/incapacitated/\" class=\"auto-xref\" data-term=\"Incapacitated\" data-kind=\"condition\" data-definition=\"Can't do anything. Attacks against you have advantage, and melee attacks that hit, crit.\">Incapacitated</a>. You have all the benefits and drawbacks of being a rock! Immune to most damage except from large explosions, picks, or similar tools."
 	},
 	{
 		"name": "Poisoned",

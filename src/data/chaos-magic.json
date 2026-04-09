@@ -7,7 +7,7 @@
 	{
 		"roll": 2,
 		"name": "Backfire",
-		"description": "Suffer 1 Wound. The spell you just cast also targets you (or an enemy if it was a beneficial spell)."
+		"description": "Suffer 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a>. The spell you just cast also targets you (or an enemy if it was a beneficial spell)."
 	},
 	{
 		"roll": 3,
@@ -27,7 +27,7 @@
 	{
 		"roll": 6,
 		"name": "Liquefy Legs",
-		"description": "You fall Prone, cannot stand, and your speed becomes 0 while out of water."
+		"description": "You fall <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>, cannot stand, and your speed becomes 0 while out of water."
 	},
 	{
 		"roll": 7,
@@ -37,7 +37,7 @@
 	{
 		"roll": 8,
 		"name": "Ethereal Cocoon",
-		"description": "You are enveloped in a magical cocoon until the end of your next turn. You fall Prone, are unable to move or speak, and are immune to damage. You must spend all of your Actions casting cantrips at the nearest creature."
+		"description": "You are enveloped in a magical cocoon until the end of your next turn. You fall <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>, are unable to move or speak, and are immune to damage. You must spend all of your Actions casting cantrips at the nearest creature."
 	},
 	{
 		"roll": 9,
@@ -52,7 +52,7 @@
 	{
 		"roll": 11,
 		"name": "Displacement",
-		"description": "Teleport. 1d4: 1. The worst place! (GM's choice) 2. UP! 6 spaces (3d6 falling damage) 3. Player's choice, 6 spaces 4. Player's choice, 12 spaces"
+		"description": "<a href=\"/spells/teleport/\" class=\"auto-xref\" data-term=\"Teleport\" data-kind=\"spell\" data-definition=\"You and up to 10 willing creatures within 2 spaces are instantly teleported to a place of your choice that you have visited before.\">Teleport</a>. 1d4: 1. The worst place! (GM's choice) 2. UP! 6 spaces (3d6 falling damage) 3. Player's choice, 6 spaces 4. Player's choice, 12 spaces"
 	},
 	{
 		"roll": 12,
@@ -77,12 +77,12 @@
 	{
 		"roll": 16,
 		"name": "Embiggen",
-		"description": "Your size is doubled. Gain INT d10 Temp HP and advantage on STR saves instead of disadvantage."
+		"description": "Your size is doubled. Gain INT d10 <a href=\"/glossary/temp-hp/\" class=\"auto-xref\" data-term=\"Temp HP\" data-kind=\"glossary\" data-definition=\"HP that do not replenish, see pg. 9.\">Temp HP</a> and advantage on STR saves instead of disadvantage."
 	},
 	{
 		"roll": 17,
 		"name": "Awakening",
-		"description": "A 3rd eye appears on your forehead. Gain advantage on the Assess action and all attacks."
+		"description": "A 3rd eye appears on your forehead. Gain advantage on the <a href=\"/glossary/assess/\" class=\"auto-xref\" data-term=\"Assess\" data-kind=\"glossary\" data-definition=\"An action to strategically analyze the situation in combat, see pg. 13.\">Assess</a> action and all attacks."
 	},
 	{
 		"roll": 18,

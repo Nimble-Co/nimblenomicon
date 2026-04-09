@@ -115,7 +115,7 @@
 		"subtitle": "_(Legendary)_",
 		"source": "game-masters-guide",
 		"adventuringRewardCategory": "release-valve",
-		"description": "On Death: You are reborn as a golden fiery phoenix.\nEnemies within 6 spaces take **LVL d10** fire damage\non a failed **DC 10+KEY** DEX save (half on save).\nGain the following stats and abilities:\n\n- Gain a fly speed of 10, 10 Armor, and 10xLVL HP.\n- Creatures that touch you take LVL fire damage.\n- **Fiery Talons.** 1 Action, 1d10+LVL damage.\n\nAfter 10 minutes, this form ends, the helm is no more and you return with 0 HP and all but 1 Wound."
+		"description": "On Death: You are reborn as a golden fiery phoenix.\nEnemies within 6 spaces take **<a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> d10** fire damage\non a failed **DC 10+<a href=\"/glossary/key/\" class=\"auto-xref\" data-term=\"KEY\" data-kind=\"glossary\" data-definition=\"Use either of your KEY attributes.\">KEY</a>** DEX save (half on save).\nGain the following stats and abilities:\n\n- Gain a fly speed of 10, 10 Armor, and 10xLVL HP.\n- Creatures that touch you take <a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> fire damage.\n- **Fiery Talons.** 1 Action, 1d10+LVL damage.\n\nAfter 10 minutes, this form ends, the helm is no more and you return with 0 HP and all but 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a>."
 	},
 	{
 		"kind": "standard",
@@ -136,13 +136,13 @@
 		"source": "game-masters-guide",
 		"adventuringRewardCategory": "combat",
 		"name": "Lumina, Living Sunbeam",
-		"description": "A small, radiant orb of light, about the size of an apple, with a gentle, warm glow that pulses with life and a perpetually cheerful expression. She is a one-time use item that, when activated as an action, will deal **LVL d6** radiant damage to all enemies within 6 spaces and heal allies in the area for the same amount. Until then, she hovers around her owner, spreading warmth and light, and offering encouragement.\n\n> \"I'm here to brighten your journey! And, when the time comes, it's okay… don't be afraid to let me shine.\" —Lumina"
+		"description": "A small, radiant orb of light, about the size of an apple, with a gentle, warm glow that pulses with life and a perpetually cheerful expression. She is a one-time use item that, when activated as an action, will deal **<a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> d6** radiant damage to all enemies within 6 spaces and heal allies in the area for the same amount. Until then, she hovers around her owner, spreading warmth and light, and offering encouragement.\n\n> \"I'm here to brighten your journey! And, when the time comes, it's okay… don't be afraid to let me shine.\" —Lumina"
 	},
 	{
 		"kind": "standard",
 		"name": "Ball of Spiders",
 		"subtitle": "_(Uncommon)_",
-		"description": "A black, palm-sized ball with faintly writhing patterns etched into its surface. **Action:** Throw this ball up to 6 spaces. Upon impact, it shatters, releasing a swarm of harmless but horrifyingly realistic spectral spiders that cover a 2x2 area. Creatures in the area must make a WIL save or be Frightened until the end of their next turn. Once used, the ball reforms at the next Safe Rest."
+		"description": "A black, palm-sized ball with faintly writhing patterns etched into its surface. **Action:** Throw this ball up to 6 spaces. Upon impact, it shatters, releasing a swarm of harmless but horrifyingly realistic spectral spiders that cover a 2x2 area. Creatures in the area must make a WIL save or be <a href=\"/conditions/frightened/\" class=\"auto-xref\" data-term=\"Frightened\" data-kind=\"condition\" data-definition=\"Disadvantage on rolls when source of fear is nearby; speed halved when moving closer to it.\">Frightened</a> until the end of their next turn. Once used, the ball reforms at the next Safe Rest."
 	},
 	{
 		"kind": "standard",
@@ -196,12 +196,12 @@
 		"kind": "wand",
 		"name": "Elderwyrm's Majesty",
 		"subtitle": "_(Legendary wand, Tier 9 (1 charge))_",
-		"description": "This wand can cast Dragonform, turning into the type of dragon that last charged it.\n\n**Recharge:** Give an ancient dragon a gift it truly desires."
+		"description": "This wand can cast <a href=\"/spells/dragonform/\" class=\"auto-xref\" data-term=\"Dragonform\" data-kind=\"spell\" data-definition=\"Transform into a Huge dragon. Gain 3 actions, a fly speed of 12, LVL Armor, 10xLVL temp HP, and: - Tooth &amp; Claw. Action: (Reach 2) 1d20+LVL damage (ignoring armor). Inflicts Smoldering. - Immolating Breath. 2 Actions: (Reach: Cone 8). DC 20 DEX save, KEY d20 damage, half on save. Smoldering targets fail. You can maint…\">Dragonform</a>, turning into the type of dragon that last charged it.\n\n**Recharge:** Give an ancient dragon a gift it truly desires."
 	},
 	{
 		"kind": "wand",
 		"name": "Heartwood, Splinter of the Tree of Life",
 		"subtitle": "_(Legendary wand, Tier 9 (1 charge))_",
-		"description": "Cast Redeem with no required components.\n\n**Recharge:** A sacred hymn must be sung over it ceaselessly for 100 years."
+		"description": "Cast <a href=\"/spells/redeem/\" class=\"auto-xref\" data-term=\"Redeem\" data-kind=\"spell\" data-definition=\"Requires: A diamond worth at least 10,000 gp, which this spell consumes. Revive any number of deceased creatures you choose—within 1 mile—that have died in the past year, provided they have not died of old age or been revived with this spell before.\">Redeem</a> with no required components.\n\n**Recharge:** A sacred hymn must be sung over it ceaselessly for 100 years."
 	}
 ]

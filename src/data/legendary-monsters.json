@@ -23,11 +23,11 @@
 				"actions": [
 					{
 						"name": "Move & Smack",
-						"description": "1d8+2. Move 8. On damage: Prone."
+						"description": "1d8+2. Move 8. On damage: <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>."
 					},
 					{
 						"name": "Grab & Throw",
-						"description": "1d8+2. On damage: they are thrown at another hero within 6 spaces. Both make a DC 12 DEX save or take 1d8+2 damage and are knocked Prone, half damage on save."
+						"description": "1d8+2. On damage: they are thrown at another hero within 6 spaces. Both make a DC 12 DEX save or take 1d8+2 damage and are knocked <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>, half damage on save."
 					}
 				]
 			}
@@ -113,13 +113,13 @@
 				"specialAbilities": [
 					{
 						"name": "Brutal",
-						"description": "Treat the highest die rolled as the Primary Die. On crit: knock Prone."
+						"description": "Treat the highest die rolled as the Primary Die. On crit: knock <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>."
 					}
 				],
 				"actions": [
 					{
 						"name": "Savage Screech",
-						"description": "2d6. All enemies within reach 12 suffer damage (ignoring armor). DC 11 WIL save or become Frightened for 1 round.",
+						"description": "2d6. All enemies within reach 12 suffer damage (ignoring armor). DC 11 WIL save or become <a href=\"/conditions/frightened/\" class=\"auto-xref\" data-term=\"Frightened\" data-kind=\"condition\" data-definition=\"Disadvantage on rolls when source of fear is nearby; speed halved when moving closer to it.\">Frightened</a> for 1 round.",
 						"uses": 1
 					},
 					{
@@ -166,7 +166,7 @@
 					},
 					{
 						"name": "Heart Piercer (Rapier)",
-						"description": "2d4+3. Move 8. On crit: Dazed."
+						"description": "2d4+3. Move 8. On crit: <a href=\"/conditions/dazed/\" class=\"auto-xref\" data-term=\"Dazed\" data-kind=\"condition\" data-definition=\"Heroes: lose 1 action; monsters: can perform one less action on their next turn.\">Dazed</a>."
 					}
 				]
 			}
@@ -210,7 +210,7 @@
 					},
 					{
 						"name": "Claw",
-						"description": "1d12+6. Fly 10."
+						"description": "1d12+6. <a href=\"/spells/fly/\" class=\"auto-xref\" data-term=\"Fly\" data-kind=\"spell\" data-definition=\"Concentration: Up to 10 minutes. Touch a creature, grant a flying speed of 12. Upcast: +1 target.\">Fly</a> 10."
 					}
 				]
 			}
@@ -239,7 +239,7 @@
 				"specialAbilities": [
 					{
 						"name": "Tail Swipe",
-						"description": "When dealt slashing or lightning damage: knock a hero within 3 spaces Prone."
+						"description": "When dealt slashing or lightning damage: knock a hero within 3 spaces <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>."
 					},
 					{
 						"name": "Torn Wings",
@@ -249,11 +249,11 @@
 				"actions": [
 					{
 						"name": "Devour",
-						"description": "4d12+6 (Prone creatures only, Reach 2)"
+						"description": "4d12+6 (<a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a> creatures only, Reach 2)"
 					},
 					{
 						"name": "Wing Buffet",
-						"description": "1d12. Fly 8, then land. Cone 8: then DC 14 STR save or also knocked Prone (advantage if behind cover or another hero)."
+						"description": "1d12. <a href=\"/spells/fly/\" class=\"auto-xref\" data-term=\"Fly\" data-kind=\"spell\" data-definition=\"Concentration: Up to 10 minutes. Touch a creature, grant a flying speed of 12. Upcast: +1 target.\">Fly</a> 8, then land. Cone 8: then DC 14 STR save or also knocked <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a> (advantage if behind cover or another hero)."
 					}
 				]
 			}
@@ -281,7 +281,7 @@
 				"specialAbilities": [
 					{
 						"name": "Weave Web",
-						"description": "Creatures she hits are entangled in a sticky web (Dazed)."
+						"description": "Creatures she hits are entangled in a sticky web (<a href=\"/conditions/dazed/\" class=\"auto-xref\" data-term=\"Dazed\" data-kind=\"condition\" data-definition=\"Heroes: lose 1 action; monsters: can perform one less action on their next turn.\">Dazed</a>)."
 					},
 					{
 						"name": "Flammable Webs",
@@ -342,7 +342,7 @@
 					},
 					{
 						"name": "Rend",
-						"description": "1d10+10. Fly 10 before or after attacking. (Reach 2) Up to 2 targets within reach. On hit: Gain Thornblight (suffer 5 damage for each space forcibly moved, magical healing ends)."
+						"description": "1d10+10. <a href=\"/spells/fly/\" class=\"auto-xref\" data-term=\"Fly\" data-kind=\"spell\" data-definition=\"Concentration: Up to 10 minutes. Touch a creature, grant a flying speed of 12. Upcast: +1 target.\">Fly</a> 10 before or after attacking. (Reach 2) Up to 2 targets within reach. On hit: Gain Thornblight (suffer 5 damage for each space forcibly moved, magical healing ends)."
 					},
 					{
 						"name": "Gust",
@@ -418,7 +418,7 @@
 				"specialAbilities": [
 					{
 						"name": "Protect Master!",
-						"description": "Whenever Vael would fail a save or take 20 or more damage, he may sacrifice his Lifebinding Spirit, Bane, instead. He spends his next turn moving up to 6 spaces and summoning Bane."
+						"description": "Whenever Vael would fail a save or take 20 or more damage, he may sacrifice his <a href=\"/spells/lifebinding-spirit/\" class=\"auto-xref\" data-term=\"Lifebinding Spirit\" data-kind=\"spell\" data-definition=\"Summon a spirit companion that follows you and is immune to harm. It lasts until you cast this spell again, take a Safe Rest, or it heals a number of times equal to the mana spent summoning it. Action: It attacks or heals a creature within Reach 4. It attacks for 1d6+WIL radiant damage (ignoring armor), or heals for t…\">Lifebinding Spirit</a>, Bane, instead. He spends his next turn moving up to 6 spaces and summoning Bane."
 					}
 				],
 				"actions": [
@@ -432,7 +432,7 @@
 					},
 					{
 						"name": "Cruelty's Edge",
-						"description": "1d4+2. On hit: DC 14 WIL save or Dazed and Frightened. Then move 6."
+						"description": "1d4+2. On hit: DC 14 WIL save or <a href=\"/conditions/dazed/\" class=\"auto-xref\" data-term=\"Dazed\" data-kind=\"condition\" data-definition=\"Heroes: lose 1 action; monsters: can perform one less action on their next turn.\">Dazed</a> and <a href=\"/conditions/frightened/\" class=\"auto-xref\" data-term=\"Frightened\" data-kind=\"condition\" data-definition=\"Disadvantage on rolls when source of fear is nearby; speed halved when moving closer to it.\">Frightened</a>. Then move 6."
 					}
 				]
 			}
@@ -473,7 +473,7 @@
 					},
 					{
 						"name": "Crushing Stomp",
-						"description": "1d4+20. Move up to 10 spaces. Up to 2 targets along the path. On hit: Prone."
+						"description": "1d4+20. Move up to 10 spaces. Up to 2 targets along the path. On hit: <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>."
 					},
 					{
 						"name": "Beckoning Doom",
@@ -521,7 +521,7 @@
 					},
 					{
 						"name": "Control",
-						"description": "Teleport 8. (Reach 8) DC 15 WIL save, force an enemy to spend one Action to make a weapon attack or cast a cantrip. On save, they attack with disadvantage."
+						"description": "<a href=\"/spells/teleport/\" class=\"auto-xref\" data-term=\"Teleport\" data-kind=\"spell\" data-definition=\"You and up to 10 willing creatures within 2 spaces are instantly teleported to a place of your choice that you have visited before.\">Teleport</a> 8. (Reach 8) DC 15 WIL save, force an enemy to spend one Action to make a weapon attack or cast a cantrip. On save, they attack with disadvantage."
 					}
 				]
 			}
@@ -560,7 +560,7 @@
 				"actions": [
 					{
 						"name": "Eye Ray",
-						"description": "(Range 10) Randomly chosen ray then choose target: 1. Warping Ray: 3d6, On hit: Dazed, exchange places. 2. Petrification Ray: Permanently Dazed, healing ends (3 stacks = Petrified). 3. Terror Ray: 5d10 psychic & Terrified. 4. Gravitation Ray: 2d6, push that many spaces, Prone on 7+. 5. Charm Ray: DC 16 WIL or spend 3 Actions controlled. 6. Death Ray: DC 16 STR or drop to 0 HP."
+						"description": "(Range 10) Randomly chosen ray then choose target: 1. Warping Ray: 3d6, On hit: <a href=\"/conditions/dazed/\" class=\"auto-xref\" data-term=\"Dazed\" data-kind=\"condition\" data-definition=\"Heroes: lose 1 action; monsters: can perform one less action on their next turn.\">Dazed</a>, exchange places. 2. Petrification Ray: Permanently Dazed, healing ends (3 stacks = <a href=\"/conditions/petrified/\" class=\"auto-xref\" data-term=\"Petrified\" data-kind=\"condition\" data-definition=\"Incapacitated. You have all the benefits and drawbacks of being a rock! Immune to most damage except from large explosions, picks, or similar tools.\">Petrified</a>). 3. Terror Ray: 5d10 psychic & Terrified. 4. Gravitation Ray: 2d6, push that many spaces, <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a> on 7+. 5. Charm Ray: DC 16 WIL or spend 3 Actions controlled. 6. Death Ray: DC 16 STR or drop to 0 HP."
 					},
 					{
 						"name": "Terrible Maw",
@@ -640,12 +640,12 @@
 				"actions": [
 					{
 						"name": "Rot Breath",
-						"description": "8d10. Fly 10, then (Cone 8) DC 17 DEX save or necrotic damage, half on save.",
+						"description": "8d10. <a href=\"/spells/fly/\" class=\"auto-xref\" data-term=\"Fly\" data-kind=\"spell\" data-definition=\"Concentration: Up to 10 minutes. Touch a creature, grant a flying speed of 12. Upcast: +1 target.\">Fly</a> 10, then (Cone 8) DC 17 DEX save or necrotic damage, half on save.",
 						"uses": 1
 					},
 					{
 						"name": "Bite",
-						"description": "3d10 (Reach 2) Move 6. On damage: Cruelty's Gift (Healing is halved and Vulnerable to necrotic, healing ends)."
+						"description": "3d10 (Reach 2) Move 6. On damage: Cruelty's Gift (Healing is halved and <a href=\"/glossary/vulnerable/\" class=\"auto-xref\" data-term=\"Vulnerable\" data-kind=\"glossary\" data-definition=\"When a creature is vulnerable to a damage type, that kind of damage ignores its armor; if unarmored, they take double the damage instead.\">Vulnerable</a> to necrotic, healing ends)."
 					},
 					{
 						"name": "Claws",
@@ -685,21 +685,21 @@
 					},
 					{
 						"name": "Sunscorn",
-						"description": "Vulnerable to radiant. After taking radiant damage, use Beguile as a Reaction, they roll with disadvantage."
+						"description": "<a href=\"/glossary/vulnerable/\" class=\"auto-xref\" data-term=\"Vulnerable\" data-kind=\"glossary\" data-definition=\"When a creature is vulnerable to a damage type, that kind of damage ignores its armor; if unarmored, they take double the damage instead.\">Vulnerable</a> to radiant. After taking radiant damage, use Beguile as a Reaction, they roll with disadvantage."
 					}
 				],
 				"actions": [
 					{
 						"name": "Ebonfang",
-						"description": "1d10+15. Your target is considered Bloodied for 1 round. Fly 8 before or after attacking."
+						"description": "1d10+15. Your target is considered <a href=\"/conditions/bloodied/\" class=\"auto-xref\" data-term=\"Bloodied\" data-kind=\"condition\" data-definition=\"At half HP or less.\">Bloodied</a> for 1 round. <a href=\"/spells/fly/\" class=\"auto-xref\" data-term=\"Fly\" data-kind=\"spell\" data-definition=\"Concentration: Up to 10 minutes. Touch a creature, grant a flying speed of 12. Upcast: +1 target.\">Fly</a> 8 before or after attacking."
 					},
 					{
 						"name": "Beguile",
-						"description": "If no creature is Beguiled, Beguile a target on a failed DC 18 WIL save (w/ disadvantage if Bloodied). Beguiled: Dazed. Cannot Defend or allow anyone to Interpose for you. Damage ends."
+						"description": "If no creature is Beguiled, Beguile a target on a failed DC 18 WIL save (w/ disadvantage if <a href=\"/conditions/bloodied/\" class=\"auto-xref\" data-term=\"Bloodied\" data-kind=\"condition\" data-definition=\"At half HP or less.\">Bloodied</a>). Beguiled: <a href=\"/conditions/dazed/\" class=\"auto-xref\" data-term=\"Dazed\" data-kind=\"condition\" data-definition=\"Heroes: lose 1 action; monsters: can perform one less action on their next turn.\">Dazed</a>. Cannot Defend or allow anyone to Interpose for you. Damage ends."
 					},
 					{
 						"name": "Beckon & Bite",
-						"description": "2d10+30. Move a Beguiled creature adjacent to you and bite them. Also deals 1 Wound."
+						"description": "2d10+30. Move a Beguiled creature adjacent to you and bite them. Also deals 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a>."
 					}
 				]
 			}
@@ -727,25 +727,25 @@
 				"specialAbilities": [
 					{
 						"name": "Ravages of Time",
-						"description": "At the beginning of each round, all heroes suffer 1 Wound."
+						"description": "At the beginning of each round, all heroes suffer 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a>."
 					},
 					{
 						"name": "Slipstream",
-						"description": "3/encounter when she would suffer any negative effect she can swap places with a creature of her choice making them the target instead. All heroes recover 1 Wound."
+						"description": "3/encounter when she would suffer any negative effect she can swap places with a creature of her choice making them the target instead. All heroes recover 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a>."
 					}
 				],
 				"actions": [
 					{
 						"name": "Wormhole",
-						"description": "3d20. Teleport 12. Damage to a creature adjacent to where you began or ended."
+						"description": "3d20. <a href=\"/spells/teleport/\" class=\"auto-xref\" data-term=\"Teleport\" data-kind=\"spell\" data-definition=\"You and up to 10 willing creatures within 2 spaces are instantly teleported to a place of your choice that you have visited before.\">Teleport</a> 12. Damage to a creature adjacent to where you began or ended."
 					},
 					{
 						"name": "Immensity",
-						"description": "3d20 (Reach 12) DC 20 STR save (disadvantage if within Reach 4) or damage and Prone. Half on save."
+						"description": "3d20 (Reach 12) DC 20 STR save (disadvantage if within Reach 4) or damage and <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>. Half on save."
 					},
 					{
 						"name": "Glimpse Your End",
-						"description": "DC 20 WIL save or DOOMED: Concentration ends, the next damage roll against you is maximized."
+						"description": "DC 20 WIL save or DOOMED: <a href=\"/glossary/concentration/\" class=\"auto-xref\" data-term=\"Concentration\" data-kind=\"glossary\" data-definition=\"Can only Concentrate on 1 thing at a time. DC 10 STR save when crit or lose concentration, see pg. 10.\">Concentration</a> ends, the next damage roll against you is maximized."
 					},
 					{
 						"name": "Plasma Storm",

@@ -1,7 +1,7 @@
 [
 	{
 		"name": "Berserker",
-		"description": "Wrath and Ruin. The Berserker is destruction. He knows not fatigue nor caution—both surely driven away from him in a relentless fury. Those of barbaric nature are said to eat only the dust of war and drink naught but the blood of those felled by their own hand.\n\nDeath is no stranger, for it is said that even death fears to take a Berserker before his battle Rage is satiated. Once a Berserker has begun to fight, he only grows stronger, fueled by battle-lust and an unending Rage. The deadliest among them is not the well- rested, but those who are pushed to the brink through combat. It matters not what a Berserker takes up, be it axe or sword; flesh will be hewn from bone and heads from shoulders. Many have caved under the Berserker's primal might—sword and spell are but straw in the wake of unbridled Rage. As a Berserker, you can:\n\n- **Become a raging, damage-dealing machine.** Greet death as an old friend and keep on fighting!\n\n- **Increase your damage to unbelievable levels.** The longer a fight goes on, the more your Rage intensifies, allowing you to deal out incredible amounts of brutality.\n\n- **Use your Savage Arsenal.** Choose abilities to crush your foes and laugh in the face of death!",
+		"description": "Wrath and Ruin. The <a href=\"/classes/berserker/\" class=\"auto-xref\" data-term=\"Berserker\" data-kind=\"class\" data-definition=\"An unstoppable force of wrath and ruin.\">Berserker</a> is destruction. He knows not fatigue nor caution—both surely driven away from him in a relentless fury. Those of barbaric nature are said to eat only the dust of war and drink naught but the blood of those felled by their own hand.\n\nDeath is no stranger, for it is said that even death fears to take a <a href=\"/classes/berserker/\" class=\"auto-xref\" data-term=\"Berserker\" data-kind=\"class\" data-definition=\"An unstoppable force of wrath and ruin.\">Berserker</a> before his battle Rage is satiated. Once a Berserker has begun to fight, he only grows stronger, fueled by battle-lust and an unending Rage. The deadliest among them is not the well- rested, but those who are pushed to the brink through combat. It matters not what a Berserker takes up, be it axe or sword; flesh will be hewn from bone and heads from shoulders. Many have caved under the Berserker's primal might—sword and spell are but straw in the wake of unbridled Rage. As a Berserker, you can:\n\n- **Become a raging, damage-dealing machine.** Greet death as an old friend and keep on fighting!\n\n- **Increase your damage to unbelievable levels.** The longer a fight goes on, the more your Rage intensifies, allowing you to deal out incredible amounts of brutality.\n\n- **Use your Savage Arsenal.** Choose abilities to crush your foes and laugh in the face of death!",
 		"keyStats": [
 			{
 				"stat": "STR"
@@ -39,7 +39,7 @@
 				"abilities": [
 					{
 						"name": "Rage",
-						"description": "(1/turn) Action: Roll a Fury Die (1d4) and set it aside. Add it to every STR attack you make. You can have a max of KEY Fury Dice; they are lost when your Rage ends."
+						"description": "(1/turn) Action: Roll a Fury Die (1d4) and set it aside. Add it to every STR attack you make. You can have a max of <a href=\"/glossary/key/\" class=\"auto-xref\" data-term=\"KEY\" data-kind=\"glossary\" data-definition=\"Use either of your KEY attributes.\">KEY</a> Fury Dice; they are lost when your Rage ends."
 					},
 					{
 						"name": "That all you got?!",
@@ -65,7 +65,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Choose a Berserker subclass."
+						"description": "Choose a <a href=\"/classes/berserker/\" class=\"auto-xref\" data-term=\"Berserker\" data-kind=\"class\" data-definition=\"An unstoppable force of wrath and ruin.\">Berserker</a> subclass."
 					},
 					{
 						"name": "Bloodlust",
@@ -78,7 +78,7 @@
 				"abilities": [
 					{
 						"name": "Enduring Rage",
-						"description": "While Dying, you Rage automatically for free at the beginning of your turn, have a max of 2 actions instead of 1, and ignore the STR saves to make attacks."
+						"description": "While <a href=\"/conditions/dying/\" class=\"auto-xref\" data-term=\"Dying\" data-kind=\"condition\" data-definition=\"At 0 HP. Taking damage while dying causes 2 Wounds, a crit causes 3 instead.\">Dying</a>, you Rage automatically for free at the beginning of your turn, have a max of 2 actions instead of 1, and ignore the STR saves to make attacks."
 					},
 					{
 						"name": "Key Stat Increase",
@@ -121,7 +121,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Berserker subclass feature."
+						"description": "Gain your <a href=\"/classes/berserker/\" class=\"auto-xref\" data-term=\"Berserker\" data-kind=\"class\" data-definition=\"An unstoppable force of wrath and ruin.\">Berserker</a> subclass feature."
 					}
 				]
 			},
@@ -165,7 +165,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Berserker subclass feature."
+						"description": "Gain your <a href=\"/classes/berserker/\" class=\"auto-xref\" data-term=\"Berserker\" data-kind=\"class\" data-definition=\"An unstoppable force of wrath and ruin.\">Berserker</a> subclass feature."
 					}
 				]
 			},
@@ -209,7 +209,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Berserker subclass feature."
+						"description": "Gain your <a href=\"/classes/berserker/\" class=\"auto-xref\" data-term=\"Berserker\" data-kind=\"class\" data-definition=\"An unstoppable force of wrath and ruin.\">Berserker</a> subclass feature."
 					}
 				]
 			},
@@ -278,7 +278,7 @@
 					},
 					{
 						"name": "Deathless Rage",
-						"description": "(1/turn) While Dying, you may suffer 1 Wound to gain 1 action."
+						"description": "(1/turn) While <a href=\"/conditions/dying/\" class=\"auto-xref\" data-term=\"Dying\" data-kind=\"condition\" data-definition=\"At 0 HP. Taking damage while dying causes 2 Wounds, a crit causes 3 instead.\">Dying</a>, you may suffer 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a> to gain 1 action."
 					},
 					{
 						"name": "Eager for Battle",
@@ -310,11 +310,11 @@
 					},
 					{
 						"name": "Unstoppable Force",
-						"description": "While Dying and Raging, taking damage causes 1 Wound (instead of 2) and critical hits inflict 2 Wounds (instead of 3)."
+						"description": "While <a href=\"/conditions/dying/\" class=\"auto-xref\" data-term=\"Dying\" data-kind=\"condition\" data-definition=\"At 0 HP. Taking damage while dying causes 2 Wounds, a crit causes 3 instead.\">Dying</a> and Raging, taking damage causes 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a> (instead of 2) and critical hits inflict 2 Wounds (instead of 3)."
 					},
 					{
 						"name": "Whirlwind",
-						"description": "2 actions: Attack ALL targets within your melee weapon's reach."
+						"description": "2 actions: <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a> ALL targets within your melee weapon's reach."
 					},
 					{
 						"name": "You're Next!",
@@ -336,7 +336,7 @@
 							},
 							{
 								"name": "Mountainous Tenacity",
-								"description": "Whenever you expend your Hit Dice to recover HP, for every 10 HP you would recover, you may heal 1 Wound instead."
+								"description": "Whenever you expend your Hit Dice to recover HP, for every 10 HP you would recover, you may heal 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a> instead."
 							}
 						]
 					},
@@ -345,7 +345,7 @@
 						"abilities": [
 							{
 								"name": "Unbreakable",
-								"description": "(1/encounter) While Raging, if you would suffer your last Wound or other negative condition of your choice, you don't."
+								"description": "(1/encounter) While Raging, if you would suffer your last <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a> or other negative condition of your choice, you don't."
 							}
 						]
 					},
@@ -363,7 +363,7 @@
 						"abilities": [
 							{
 								"name": "Mountain's Endurance",
-								"description": "While Dying, if an attack against you would be a crit, the attack is rerolled instead (when-crit abilities, such as Titan's Fury, still trigger)."
+								"description": "While <a href=\"/conditions/dying/\" class=\"auto-xref\" data-term=\"Dying\" data-kind=\"condition\" data-definition=\"At 0 HP. Taking damage while dying causes 2 Wounds, a crit causes 3 instead.\">Dying</a>, if an attack against you would be a crit, the attack is rerolled instead (when-crit abilities, such as Titan's Fury, still trigger)."
 							}
 						]
 					}
@@ -381,7 +381,7 @@
 							},
 							{
 								"name": "Savage Awareness",
-								"description": "Advantage on Perception checks to notice or track down blood. Blindsight 2 while Raging: you ignore the Blinded condition and can see through darkness and Invisibility within that Range."
+								"description": "Advantage on Perception checks to notice or track down blood. Blindsight 2 while Raging: you ignore the <a href=\"/conditions/blinded/\" class=\"auto-xref\" data-term=\"Blinded\" data-kind=\"condition\" data-definition=\"Can't see. Attacks against you have advantage, and your attacks have disadvantage.\">Blinded</a> condition and can see through darkness and Invisibility within that Range."
 							}
 						]
 					},
@@ -390,7 +390,7 @@
 						"abilities": [
 							{
 								"name": "Unstoppable Brutality",
-								"description": "While Raging, you may gain 1 Wound to reroll any attack or save."
+								"description": "While Raging, you may gain 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a> to reroll any attack or save."
 							}
 						]
 					},
@@ -419,7 +419,7 @@
 	},
 	{
 		"name": "The Cheat",
-		"description": "Cloak and dagger… and dagger. The common Cheat doesn't call herself a Cheat, of course—rather, a streetsmart rogue, a survivalist, or a liberator of unused goods. They are masters of stealth, pickpocketing, and smooth talking. Some of the more vicious ilk are masters of death-dealing as well.\n\nCheats can be found in every city and byway under countless different names, but they all believe something similar: It's a cruel, merciless world, and those who aim to survive don't have time for silly things like \"morals\" or \"honor.\" Those are luxuries of the rich and powerful. Honor gets you killed—survival is about taking what you want, when you can. As The Cheat, you can:\n\n- **Break the rules!** You can change the dice you roll to whatever numbers suit you best!\n\n- **Sneak in and backstab** enemies with devastating critical hits. Taking down even huge, heavily-armored foes with a single blow!\n\n- **Fight dirty** with pocket sand, low blows, and vicious blades. When things get out of hand, disappear into the night, and live to cheat another day!",
+		"description": "Cloak and dagger… and dagger. The common Cheat doesn't call herself a Cheat, of course—rather, a streetsmart rogue, a survivalist, or a liberator of unused goods. They are masters of stealth, pickpocketing, and smooth talking. Some of the more vicious ilk are masters of death-dealing as well.\n\nCheats can be found in every city and byway under countless different names, but they all believe something similar: It's a cruel, merciless world, and those who aim to survive don't have time for silly things like \"morals\" or \"honor.\" Those are luxuries of the rich and powerful. Honor gets you killed—survival is about taking what you want, when you can. As <a href=\"/classes/the-cheat/\" class=\"auto-xref\" data-term=\"The Cheat\" data-kind=\"class\" data-definition=\"Sneaky, backstabbing, dirty-fighting rogue.\">The Cheat</a>, you can:\n\n- **Break the rules!** You can change the dice you roll to whatever numbers suit you best!\n\n- **Sneak in and backstab** enemies with devastating critical hits. Taking down even huge, heavily-armored foes with a single blow!\n\n- **Fight dirty** with pocket sand, low blows, and vicious blades. When things get out of hand, disappear into the night, and live to cheat another day!",
 		"keyStats": [
 			{
 				"stat": "DEX"
@@ -468,7 +468,7 @@
 					},
 					{
 						"name": "Vicious Opportunist",
-						"description": "(1/turn) When you hit a Distracted target with a melee attack, you may change the Primary Die roll to whatever you like (changing it to the max value counts as a crit). A target is Distracted if it is adjacent to or Taunted by an ally, or if it cannot see you."
+						"description": "(1/turn) When you hit a <a href=\"/glossary/distracted/\" class=\"auto-xref\" data-term=\"Distracted\" data-kind=\"glossary\" data-definition=\"A target is distracted if it is adjacent to or Taunted by an ally, or if it cannot see you.\">Distracted</a> target with a melee attack, you may change the Primary Die roll to whatever you like (changing it to the max value counts as a crit). A target is Distracted if it is adjacent to or <a href=\"/conditions/taunted/\" class=\"auto-xref\" data-term=\"Taunted\" data-kind=\"condition\" data-definition=\"Disadvantage on attacks except against the most recent taunter.\">Taunted</a> by an ally, or if it cannot see you."
 					}
 				]
 			},
@@ -490,7 +490,7 @@
 					},
 					{
 						"name": "Sneak Attack (2)",
-						"description": "Your Sneak Attack becomes 1d8."
+						"description": "Your Sneak <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a> becomes 1d8."
 					},
 					{
 						"name": "Thieves' Cant",
@@ -516,11 +516,11 @@
 				"abilities": [
 					{
 						"name": "Twist the Blade",
-						"description": "Action: Change one of your Sneak Attack dice to whatever you like."
+						"description": "Action: Change one of your Sneak <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a> dice to whatever you like."
 					},
 					{
 						"name": "Quick Read",
-						"description": "(1/encounter) Gain advantage on an Assess check. (1/day) Gain advantage on an Examination check."
+						"description": "(1/encounter) Gain advantage on an <a href=\"/glossary/assess/\" class=\"auto-xref\" data-term=\"Assess\" data-kind=\"glossary\" data-definition=\"An action to strategically analyze the situation in combat, see pg. 13.\">Assess</a> check. (1/day) Gain advantage on an Examination check."
 					},
 					{
 						"name": "Secondary Stat Increase",
@@ -537,7 +537,7 @@
 					},
 					{
 						"name": "THAT'S Not What Happened!",
-						"description": "(1/Safe Rest) Action: After a Distracted enemy attacks you, you may change the Primary Die roll to whatever you like (changing the die to the minimum value counts as a miss)."
+						"description": "(1/Safe Rest) Action: After a <a href=\"/glossary/distracted/\" class=\"auto-xref\" data-term=\"Distracted\" data-kind=\"glossary\" data-definition=\"A target is distracted if it is adjacent to or Taunted by an ally, or if it cannot see you.\">Distracted</a> enemy attacks you, you may change the Primary Die roll to whatever you like (changing the die to the minimum value counts as a miss)."
 					}
 				]
 			},
@@ -550,7 +550,7 @@
 					},
 					{
 						"name": "Sneak Attack (3)",
-						"description": "Your Sneak Attack becomes 2d8."
+						"description": "Your Sneak <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a> becomes 2d8."
 					}
 				]
 			},
@@ -572,7 +572,7 @@
 				"abilities": [
 					{
 						"name": "Sneak Attack (4)",
-						"description": "Your Sneak Attack becomes 2d10."
+						"description": "Your Sneak <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a> becomes 2d10."
 					},
 					{
 						"name": "Secondary Stat Increase",
@@ -598,7 +598,7 @@
 					},
 					{
 						"name": "Sneak Attack (5)",
-						"description": "Your Sneak Attack becomes 2d12."
+						"description": "Your Sneak <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a> becomes 2d12."
 					}
 				]
 			},
@@ -646,7 +646,7 @@
 					},
 					{
 						"name": "Sneak Attack (6)",
-						"description": "Your Sneak Attack becomes 2d20."
+						"description": "Your Sneak <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a> becomes 2d20."
 					}
 				]
 			},
@@ -668,7 +668,7 @@
 				"abilities": [
 					{
 						"name": "Sneak Attack (7)",
-						"description": "Your Sneak Attack becomes 3d20."
+						"description": "Your Sneak <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a> becomes 3d20."
 					},
 					{
 						"name": "Secondary Stat Increase",
@@ -699,7 +699,7 @@
 				"abilities": [
 					{
 						"name": "Supreme Execution",
-						"description": "+1 to any 2 of your stats. When you attack with a blade, you do not require targets to be Distracted to trigger Vicious Opportunist."
+						"description": "+1 to any 2 of your stats. When you attack with a blade, you do not require targets to be <a href=\"/glossary/distracted/\" class=\"auto-xref\" data-term=\"Distracted\" data-kind=\"glossary\" data-definition=\"A target is distracted if it is adjacent to or Taunted by an ally, or if it cannot see you.\">Distracted</a> to trigger Vicious Opportunist."
 					}
 				]
 			}
@@ -715,7 +715,7 @@
 					},
 					{
 						"name": "Exploit Weakness",
-						"description": "Action: Make a contested INT check against an enemy. If you win, you can use Vicious Opportunist against them, even if they are not Distracted. This lasts for 1 minute or until you use this ability against another target."
+						"description": "Action: Make a contested INT check against an enemy. If you win, you can use Vicious Opportunist against them, even if they are not <a href=\"/glossary/distracted/\" class=\"auto-xref\" data-term=\"Distracted\" data-kind=\"glossary\" data-definition=\"A target is distracted if it is adjacent to or Taunted by an ally, or if it cannot see you.\">Distracted</a>. This lasts for 1 minute or until you use this ability against another target."
 					},
 					{
 						"name": "Feinting Attack",
@@ -723,7 +723,7 @@
 					},
 					{
 						"name": "How'd YOU get here?!",
-						"description": "2 actions: \"Teleport\" up to 4 spaces away, adjacent to a Distracted target, and make a melee attack against them. If you crit, you may \"teleport\" again."
+						"description": "2 actions: \"<a href=\"/spells/teleport/\" class=\"auto-xref\" data-term=\"Teleport\" data-kind=\"spell\" data-definition=\"You and up to 10 willing creatures within 2 spaces are instantly teleported to a place of your choice that you have visited before.\">Teleport</a>\" up to 4 spaces away, adjacent to a <a href=\"/glossary/distracted/\" class=\"auto-xref\" data-term=\"Distracted\" data-kind=\"glossary\" data-definition=\"A target is distracted if it is adjacent to or Taunted by an ally, or if it cannot see you.\">Distracted</a> target, and make a melee attack against them. If you crit, you may \"teleport\" again."
 					},
 					{
 						"name": "I'm Outta Here!",
@@ -761,7 +761,7 @@
 						"abilities": [
 							{
 								"name": "Low Blow",
-								"description": "When you Sneak Attack, you may spend 2 additional actions to Incapacitate your target for their next turn on a failed STR save (DC 10+INT). Save or fail, they are Taunted by you until you drop to 0 HP."
+								"description": "When you Sneak <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a>, you may spend 2 additional actions to Incapacitate your target for their next turn on a failed STR save (DC 10+INT). Save or fail, they are <a href=\"/conditions/taunted/\" class=\"auto-xref\" data-term=\"Taunted\" data-kind=\"condition\" data-definition=\"Disadvantage on attacks except against the most recent taunter.\">Taunted</a> by you until you drop to 0 HP."
 							},
 							{
 								"name": "Sweet Talk",
@@ -774,7 +774,7 @@
 						"abilities": [
 							{
 								"name": "Pocket Sand",
-								"description": "(2/encounter—you've got to collect more sand!) When you Defend against a melee attack, Blind the attacker until the start of their next turn and force them to reroll the attack (Blinded creatures attack with disadvantage)."
+								"description": "(2/encounter—you've got to collect more sand!) When you Defend against a melee attack, Blind the attacker until the start of their next turn and force them to reroll the attack (<a href=\"/conditions/blinded/\" class=\"auto-xref\" data-term=\"Blinded\" data-kind=\"condition\" data-definition=\"Can't see. Attacks against you have advantage, and your attacks have disadvantage.\">Blinded</a> creatures attack with disadvantage)."
 							}
 						]
 					},
@@ -783,7 +783,7 @@
 						"abilities": [
 							{
 								"name": "Escape Plan",
-								"description": "(1/Safe Rest) When you would drop to 0 HP or gain a Wound, you don't. Instead, you turn Invisible for 1 minute or until you attack."
+								"description": "(1/Safe Rest) When you would drop to 0 HP or gain a <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a>, you don't. Instead, you turn <a href=\"/conditions/invisible/\" class=\"auto-xref\" data-term=\"Invisible\" data-kind=\"condition\" data-definition=\"Cannot be seen. Your attacks have advantage, and attacks against you have disadvantage.\">Invisible</a> for 1 minute or until you attack."
 							}
 						]
 					},
@@ -792,7 +792,7 @@
 						"abilities": [
 							{
 								"name": "Heads I Win, Tails You Lose",
-								"description": "(1/encounter) Attacks you make this round don't miss, you crit on 1 less than normally needed, and you gain LVL temp HP."
+								"description": "(1/encounter) Attacks you make this round don't miss, you crit on 1 less than normally needed, and you gain <a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> temp HP."
 							}
 						]
 					}
@@ -806,7 +806,7 @@
 						"abilities": [
 							{
 								"name": "Amidst All This Commotion…",
-								"description": "If a creature dies while you Sneak Attack them, you may turn Invisible until you attack again or until the beginning of your next turn."
+								"description": "If a creature dies while you Sneak <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a> them, you may turn <a href=\"/conditions/invisible/\" class=\"auto-xref\" data-term=\"Invisible\" data-kind=\"condition\" data-definition=\"Cannot be seen. Your attacks have advantage, and attacks against you have disadvantage.\">Invisible</a> until you attack again or until the beginning of your next turn."
 							},
 							{
 								"name": "Leave No Trace",
@@ -819,7 +819,7 @@
 						"abilities": [
 							{
 								"name": "Cunning Strike",
-								"description": "(2/encounter) When you land a Sneak Attack, you may force the target to make a STR save (DC 10+INT). On a failure, instead of rolling your Sneak Attack dice, they deal the maximum amount of damage (if your target saves, regain 1 use)."
+								"description": "(2/encounter) When you land a Sneak <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a>, you may force the target to make a STR save (DC 10+INT). On a failure, instead of rolling your Sneak Attack dice, they deal the maximum amount of damage (if your target saves, regain 1 use)."
 							}
 						]
 					},
@@ -848,7 +848,7 @@
 	},
 	{
 		"name": "Commander",
-		"description": "Soldier… Warrior… Fearless Leader. Among the most skilled soldiers in the world, Commanders are masters of every weapon and form of close combat. A small cohort of soldiers led by a trained Commander is more feared than innumerable legions without one.\n\nAn \"empire\" isn't an Empire until they have their own academy of command: Famed schools where these supremely capable soldiers are trained in battlefield tactics and leadership. Commanders are defined by their:\n\n- **Tactical Commands.** Issue powerful orders to your allies, bolstering their abilities, and coordinate devastating strikes among yourselves. Command the battlefield with precision and skill, turning the tide of any battle in your favor.\n\n- **Weapon Mastery.** Exert mastery over all weapon types, wielding them with deadly efficiency. Your versatility ensures victory against any foe.\n\n- **Strategic Leadership.** Exploit your tactical prowess to outwit and outmaneuver foes, leading your party to triumph through cunning strategy and decisive action.",
+		"description": "Soldier… Warrior… <a href=\"/backgrounds/fearless/\" class=\"auto-xref\" data-term=\"Fearless\" data-kind=\"background\" data-definition=\"You are immune to the Frightened condition. +1 Initiative. –1 Armor.\">Fearless</a> Leader. Among the most skilled soldiers in the world, Commanders are masters of every weapon and form of close combat. A small cohort of soldiers led by a trained <a href=\"/classes/commander/\" class=\"auto-xref\" data-term=\"Commander\" data-kind=\"class\" data-definition=\"A battlefield tactician, leader, and weapon master.\">Commander</a> is more feared than innumerable legions without one.\n\nAn \"empire\" isn't an Empire until they have their own academy of command: Famed schools where these supremely capable soldiers are trained in battlefield tactics and leadership. Commanders are defined by their:\n\n- **Tactical Commands.** Issue powerful orders to your allies, bolstering their abilities, and coordinate devastating strikes among yourselves. Command the battlefield with precision and skill, turning the tide of any battle in your favor.\n\n- **Weapon Mastery.** Exert mastery over all weapon types, wielding them with deadly efficiency. Your versatility ensures victory against any foe.\n\n- **Strategic Leadership.** Exploit your tactical prowess to outwit and outmaneuver foes, leading your party to triumph through cunning strategy and decisive action.",
 		"keyStats": [
 			{
 				"stat": "STR"
@@ -893,7 +893,7 @@
 				"abilities": [
 					{
 						"name": "Coordinated Strike!",
-						"description": "Gain the Coordinated Strike! Commander's Order."
+						"description": "Gain the Coordinated Strike! <a href=\"/classes/commander/\" class=\"auto-xref\" data-term=\"Commander\" data-kind=\"class\" data-definition=\"A battlefield tactician, leader, and weapon master.\">Commander</a>'s Order."
 					}
 				]
 			},
@@ -902,7 +902,7 @@
 				"abilities": [
 					{
 						"name": "Commander's Orders",
-						"description": "Choose 2 Commander's Orders."
+						"description": "Choose 2 <a href=\"/classes/commander/\" class=\"auto-xref\" data-term=\"Commander\" data-kind=\"class\" data-definition=\"A battlefield tactician, leader, and weapon master.\">Commander</a>'s Orders."
 					},
 					{
 						"name": "Field Medic",
@@ -915,7 +915,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Choose a Commander subclass."
+						"description": "Choose a <a href=\"/classes/commander/\" class=\"auto-xref\" data-term=\"Commander\" data-kind=\"class\" data-definition=\"A battlefield tactician, leader, and weapon master.\">Commander</a> subclass."
 					}
 				]
 			},
@@ -967,7 +967,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Commander subclass feature."
+						"description": "Gain your <a href=\"/classes/commander/\" class=\"auto-xref\" data-term=\"Commander\" data-kind=\"class\" data-definition=\"A battlefield tactician, leader, and weapon master.\">Commander</a> subclass feature."
 					}
 				]
 			},
@@ -1019,7 +1019,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Commander subclass feature."
+						"description": "Gain your <a href=\"/classes/commander/\" class=\"auto-xref\" data-term=\"Commander\" data-kind=\"class\" data-definition=\"A battlefield tactician, leader, and weapon master.\">Commander</a> subclass feature."
 					}
 				]
 			},
@@ -1067,7 +1067,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Commander subclass feature."
+						"description": "Gain your <a href=\"/classes/commander/\" class=\"auto-xref\" data-term=\"Commander\" data-kind=\"class\" data-definition=\"A battlefield tactician, leader, and weapon master.\">Commander</a> subclass feature."
 					}
 				]
 			},
@@ -1132,11 +1132,11 @@
 		"abilityLists": [
 			{
 				"name": "Commander's Orders",
-				"description": "Choose Commander's Orders as you level up.",
+				"description": "Choose <a href=\"/classes/commander/\" class=\"auto-xref\" data-term=\"Commander\" data-kind=\"class\" data-definition=\"A battlefield tactician, leader, and weapon master.\">Commander</a>'s Orders as you level up.",
 				"items": [
 					{
 						"name": "Coordinated Strike!",
-						"description": "(1/round) Free action: you and an ally within 6 spaces both immediately make a weapon attack or cast a cantrip for free. You can do this INT times/Safe Rest."
+						"description": "(1/round) <a href=\"/glossary/free/\" class=\"auto-xref\" data-term=\"Free\" data-kind=\"glossary\" data-definition=\"Does not cost an action or any other resource (e.g., mana) unless otherwise stated.\">Free</a> action: you and an ally within 6 spaces both immediately make a weapon attack or cast a cantrip for free. You can do this INT times/Safe Rest."
 					},
 					{
 						"name": "Face Me!",
@@ -1144,7 +1144,7 @@
 					},
 					{
 						"name": "Hold the Line!",
-						"description": "(1/encounter) Reaction (when an ally drops to 0 HP): Command them to continue the fight! Set their HP to 3× your LVL."
+						"description": "(1/encounter) Reaction (when an ally drops to 0 HP): Command them to continue the fight! Set their HP to 3× your <a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a>."
 					},
 					{
 						"name": "I Can Do This ALL DAY!",
@@ -1297,7 +1297,7 @@
 	},
 	{
 		"name": "Hunter",
-		"description": "Respect the forest and her children, and she will bestow upon you many gifts. Long before the first stones of the grand kingdoms had been laid, there was The Wild. We Hunters called groves and fields home, just as the elk and boar still do. We have trained our minds and hearts as much as we have trained with bows.\n\nFor, there is great danger in becoming a Hunter: the intoxicating Thrill of the Hunt that washes over your body when stalking prey. Be warned—do not allow it to settle into your heart. For no true Hunter takes without recognizing what they have first been given: a soul, a meal… warmth, all at a cost—a life. And that should not be taken lightly. Wherever you roam, be it city or glade, mountain or valley, as long as The Wild is tenderly tucked into the depths of your heart, you will always be a Hunter. May your arrows strike true and your bowstrings never break.\n\nHunters are:\n\n- **Relentless Trackers.** As an expert survivalist, you mark your prey, becoming a shadow in pursuit, relentless and precise.\n\n- **Masters of the Wild.** Harness the Thrill of the Hunt to outwit your targets—set decoys, spring traps, and strike with lethal efficiency.\n\n- **Deadly from Afar or Up Close.** Whether you're raining arrows from a distance or closing in for a personal takedown, your prey won't escape your reach.",
+		"description": "Respect the forest and her children, and she will bestow upon you many gifts. Long before the first stones of the grand kingdoms had been laid, there was The Wild. We Hunters called groves and fields home, just as the elk and boar still do. We have trained our minds and hearts as much as we have trained with bows.\n\nFor, there is great danger in becoming a <a href=\"/classes/hunter/\" class=\"auto-xref\" data-term=\"Hunter\" data-kind=\"class\" data-definition=\"Resourceful survivalist, bow master, and skilled tracker.\">Hunter</a>: the intoxicating Thrill of the Hunt that washes over your body when stalking prey. Be warned—do not allow it to settle into your heart. For no true Hunter takes without recognizing what they have first been given: a soul, a meal… warmth, all at a cost—a life. And that should not be taken lightly. Wherever you roam, be it city or glade, mountain or valley, as long as The Wild is tenderly tucked into the depths of your heart, you will always be a Hunter. May your arrows strike true and your bowstrings never break.\n\nHunters are:\n\n- **Relentless Trackers.** As an expert survivalist, you mark your prey, becoming a shadow in pursuit, relentless and precise.\n\n- **Masters of the Wild.** Harness the Thrill of the Hunt to outwit your targets—set decoys, spring traps, and strike with lethal efficiency.\n\n- **Deadly from Afar or Up Close.** Whether you're raining arrows from a distance or closing in for a personal takedown, your prey won't escape your reach.",
 		"keyStats": [
 			{
 				"stat": "DEX"
@@ -1342,7 +1342,7 @@
 				"abilities": [
 					{
 						"name": "Hunter's Mark",
-						"description": "Action: A creature you can see is marked as your quarry for 1 day (or until you mark another creature). It can't be hidden from you, and your attacks against it gain your choice of advantage OR +LVL damage (choose before each attack)."
+						"description": "Action: A creature you can see is marked as your quarry for 1 day (or until you mark another creature). It can't be hidden from you, and your attacks against it gain your choice of advantage OR +<a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> damage (choose before each attack)."
 					},
 					{
 						"name": "Forager",
@@ -1368,7 +1368,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Choose a Hunter subclass."
+						"description": "Choose a <a href=\"/classes/hunter/\" class=\"auto-xref\" data-term=\"Hunter\" data-kind=\"class\" data-definition=\"Resourceful survivalist, bow master, and skilled tracker.\">Hunter</a> subclass."
 					},
 					{
 						"name": "Tracker's Intuition",
@@ -1398,11 +1398,11 @@
 				"abilities": [
 					{
 						"name": "Hunter's Resolve",
-						"description": "Whenever you have no Thrill of the Hunt charges, gain Hunter's Resolve until the end of your turn: treat all creatures as your quarry for the purposes of movement and melee attacks."
+						"description": "Whenever you have no Thrill of the Hunt charges, gain <a href=\"/classes/hunter/\" class=\"auto-xref\" data-term=\"Hunter\" data-kind=\"class\" data-definition=\"Resourceful survivalist, bow master, and skilled tracker.\">Hunter</a>'s Resolve until the end of your turn: treat all creatures as your quarry for the purposes of movement and melee attacks."
 					},
 					{
 						"name": "Final Takedown",
-						"description": "Action: Spend 1 Thrill of the Hunt charge to make a melee attack against your Bloodied quarry. Turn it into a crit and double the damage of your Hunter's Mark. If they survive, they crit you back."
+						"description": "Action: Spend 1 Thrill of the Hunt charge to make a melee attack against your <a href=\"/conditions/bloodied/\" class=\"auto-xref\" data-term=\"Bloodied\" data-kind=\"condition\" data-definition=\"At half HP or less.\">Bloodied</a> quarry. <a href=\"/glossary/turn/\" class=\"auto-xref\" data-term=\"Turn\" data-kind=\"glossary\" data-definition=\"The primary time allotted for an individual hero or monster group to act.\">Turn</a> it into a crit and double the damage of your <a href=\"/classes/hunter/\" class=\"auto-xref\" data-term=\"Hunter\" data-kind=\"class\" data-definition=\"Resourceful survivalist, bow master, and skilled tracker.\">Hunter</a>'s Mark. If they survive, they crit you back."
 					},
 					{
 						"name": "Secondary Stat Increase",
@@ -1415,7 +1415,7 @@
 				"abilities": [
 					{
 						"name": "Versatile Bowmaster",
-						"description": "Whenever you attack with a Longbow, you may roll 2d4 instead of 1d8; or with a Crossbow, 2d8 instead of 4d4."
+						"description": "Whenever you attack with a <a href=\"/weapons/longbow/\" class=\"auto-xref\" data-term=\"Longbow\" data-kind=\"weapon\" data-definition=\"Ranged weapon — 1d8+DEX Piercing.\">Longbow</a>, you may roll 2d4 instead of 1d8; or with a <a href=\"/weapons/crossbow/\" class=\"auto-xref\" data-term=\"Crossbow\" data-kind=\"weapon\" data-definition=\"Ranged weapon — 4d4+DEX Piercing.\">Crossbow</a>, 2d8 instead of 4d4."
 					},
 					{
 						"name": "Thrill of the Hunt (3)",
@@ -1428,7 +1428,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Hunter subclass feature."
+						"description": "Gain your <a href=\"/classes/hunter/\" class=\"auto-xref\" data-term=\"Hunter\" data-kind=\"class\" data-definition=\"Resourceful survivalist, bow master, and skilled tracker.\">Hunter</a> subclass feature."
 					}
 				]
 			},
@@ -1463,7 +1463,7 @@
 				"abilities": [
 					{
 						"name": "Veteran Stalker",
-						"description": "Gain a Thrill of the Hunt charge whenever you are first Bloodied in an encounter and for every Wound you gain."
+						"description": "Gain a Thrill of the Hunt charge whenever you are first <a href=\"/conditions/bloodied/\" class=\"auto-xref\" data-term=\"Bloodied\" data-kind=\"condition\" data-definition=\"At half HP or less.\">Bloodied</a> in an encounter and for every <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a> you gain."
 					},
 					{
 						"name": "Keen Eye, Steady Hand",
@@ -1476,7 +1476,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Hunter subclass feature."
+						"description": "Gain your <a href=\"/classes/hunter/\" class=\"auto-xref\" data-term=\"Hunter\" data-kind=\"class\" data-definition=\"Resourceful survivalist, bow master, and skilled tracker.\">Hunter</a> subclass feature."
 					}
 				]
 			},
@@ -1520,7 +1520,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Hunter subclass feature."
+						"description": "Gain your <a href=\"/classes/hunter/\" class=\"auto-xref\" data-term=\"Hunter\" data-kind=\"class\" data-definition=\"Resourceful survivalist, bow master, and skilled tracker.\">Hunter</a> subclass feature."
 					}
 				]
 			},
@@ -1569,7 +1569,7 @@
 				"abilities": [
 					{
 						"name": "Nemesis",
-						"description": "+1 to any 2 of your stats. Your Hunter's Mark can target any number of creatures simultaneously."
+						"description": "+1 to any 2 of your stats. Your <a href=\"/classes/hunter/\" class=\"auto-xref\" data-term=\"Hunter\" data-kind=\"class\" data-definition=\"Resourceful survivalist, bow master, and skilled tracker.\">Hunter</a>'s Mark can target any number of creatures simultaneously."
 					}
 				]
 			}
@@ -1581,11 +1581,11 @@
 				"items": [
 					{
 						"name": "Addling Arrow",
-						"description": "Action: Attack with a ranged weapon. The next attack the target makes must be against the closest other creature, chosen at random."
+						"description": "Action: <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a> with a ranged weapon. The next attack the target makes must be against the closest other creature, chosen at random."
 					},
 					{
 						"name": "Come Get Some!",
-						"description": "Action: Attack a target. It is Taunted by you until the end of their next turn."
+						"description": "Action: <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a> a target. It is <a href=\"/conditions/taunted/\" class=\"auto-xref\" data-term=\"Taunted\" data-kind=\"condition\" data-definition=\"Disadvantage on attacks except against the most recent taunter.\">Taunted</a> by you until the end of their next turn."
 					},
 					{
 						"name": "Decoy",
@@ -1597,7 +1597,7 @@
 					},
 					{
 						"name": "Grease Trap",
-						"description": "(1/encounter) Reaction (when an enemy moves adjacent to you or an ally within 6 spaces): Target falls Prone, is vulnerable to the next fire damage it takes, and is treated as if it is Smoldering."
+						"description": "(1/encounter) Reaction (when an enemy moves adjacent to you or an ally within 6 spaces): <a href=\"/glossary/target/\" class=\"auto-xref\" data-term=\"Target\" data-kind=\"glossary\" data-definition=\"A selected creature or object. It must be within Range/Reach and able to be sensed.\">Target</a> falls <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>, is vulnerable to the next fire damage it takes, and is treated as if it is Smoldering."
 					},
 					{
 						"name": "Hail of Arrows",
@@ -1605,23 +1605,23 @@
 					},
 					{
 						"name": "Heavy Shot",
-						"description": "(Half range) Action: Attack with a ranged weapon and push your target: 4 spaces for a small creature, 2 for a medium creature, 1 for a large creature."
+						"description": "(Half range) Action: <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a> with a ranged weapon and push your target: 4 spaces for a small creature, 2 for a medium creature, 1 for a large creature."
 					},
 					{
 						"name": "Incendiary Shot",
-						"description": "(Half range) Action: Attack with a ranged weapon, add WIL d8 fire damage."
+						"description": "(Half range) Action: <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a> with a ranged weapon, add WIL d8 fire damage."
 					},
 					{
 						"name": "Multishot",
-						"description": "(Half range) Action: Attack your quarry with a ranged weapon and load an extra projectile. Select a 2nd target within 2 spaces of them to take the same amount of damage."
+						"description": "(Half range) Action: <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a> your quarry with a ranged weapon and load an extra projectile. Select a 2nd target within 2 spaces of them to take the same amount of damage."
 					},
 					{
 						"name": "Pinning Shot",
-						"description": "Spend 3 actions shooting your quarry. They are Restrained until they can escape (DC 10+WIL)."
+						"description": "Spend 3 actions shooting your quarry. They are <a href=\"/glossary/restrained/\" class=\"auto-xref\" data-term=\"Restrained\" data-kind=\"glossary\" data-definition=\"Same effect as Grappled, objects Restrain, creatures Grapple. See pg. 10.\">Restrained</a> until they can escape (DC 10+WIL)."
 					},
 					{
 						"name": "Snare Trap",
-						"description": "(1/encounter) Reaction (when an enemy moves adjacent to you or an ally within 6 spaces): Move them back 1 space, they are Restrained until they can escape (DC 10+WIL)."
+						"description": "(1/encounter) Reaction (when an enemy moves adjacent to you or an ally within 6 spaces): Move them back 1 space, they are <a href=\"/glossary/restrained/\" class=\"auto-xref\" data-term=\"Restrained\" data-kind=\"glossary\" data-definition=\"Same effect as Grappled, objects Restrain, creatures Grapple. See pg. 10.\">Restrained</a> until they can escape (DC 10+WIL)."
 					},
 					{
 						"name": "Sharpshooter",
@@ -1629,11 +1629,11 @@
 					},
 					{
 						"name": "Vital Shot",
-						"description": "(Half Range) Action: Attack your Hampered quarry with a ranged weapon, ignoring their armor or doubling your Hunter's Mark damage bonus if they have none."
+						"description": "(Half Range) Action: <a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a> your <a href=\"/conditions/hampered/\" class=\"auto-xref\" data-term=\"Hampered\" data-kind=\"condition\" data-definition=\"Any creature with their actions or movement reduced (e.g., Dazed, Grappled, Prone, Difficult Terrain).\">Hampered</a> quarry with a ranged weapon, ignoring their armor or doubling your <a href=\"/classes/hunter/\" class=\"auto-xref\" data-term=\"Hunter\" data-kind=\"class\" data-definition=\"Resourceful survivalist, bow master, and skilled tracker.\">Hunter</a>'s Mark damage bonus if they have none."
 					},
 					{
 						"name": "Wild Instinct",
-						"description": "(1/round, costs 0 TotH charges if you have none.) Assess for free, with advantage."
+						"description": "(1/round, costs 0 TotH charges if you have none.) <a href=\"/glossary/assess/\" class=\"auto-xref\" data-term=\"Assess\" data-kind=\"glossary\" data-definition=\"An action to strategically analyze the situation in combat, see pg. 13.\">Assess</a> for free, with advantage."
 					}
 				]
 			}
@@ -1647,7 +1647,7 @@
 						"abilities": [
 							{
 								"name": "Ambusher",
-								"description": "When you roll Initiative, you may use Hunter's Mark for free. Gain advantage on the first attack you make each encounter."
+								"description": "When you roll Initiative, you may use <a href=\"/classes/hunter/\" class=\"auto-xref\" data-term=\"Hunter\" data-kind=\"class\" data-definition=\"Resourceful survivalist, bow master, and skilled tracker.\">Hunter</a>'s Mark for free. Gain advantage on the first attack you make each encounter."
 							},
 							{
 								"name": "Skilled Tracker",
@@ -1713,7 +1713,7 @@
 							},
 							{
 								"name": "Healing Salve",
-								"description": "Action: Heal yourself or an adjacent creature WIL d6 HP. Only you or another experienced Herbalist may administer these, and they expire whenever you Safe Rest."
+								"description": "Action: <a href=\"/spells/heal/\" class=\"auto-xref\" data-term=\"Heal\" data-kind=\"spell\" data-definition=\"Reach: 1. Heal a creature 1d6+KEY HP. Upcast: Choose one: +1 target, +4 Reach, +1d6 healing. If 5+ mana is spent, you may also heal 1 negative condition (e.g., Blind, Poisoned, 1 Wound). Shepherd only\">Heal</a> yourself or an adjacent creature WIL d6 HP. Only you or another experienced Herbalist may administer these, and they expire whenever you Safe Rest."
 							}
 						]
 					},
@@ -1742,7 +1742,7 @@
 	},
 	{
 		"name": "Mage",
-		"description": "Elemental power flows through all things… find it, study it, and harness it. A mage is bestowed their first strand of the Tapestry at birth; however, true mastery eludes those who idly rest upon this innate endowment. Instead, they diligently refine their natural gifts through scholarly pursuit, with tomes and parchments as their companions, alongside the sage counsel of a seasoned mentor or three! Yes, this is the chosen path of those who would wield authority over the elements.\n\nComprehending the tapestry of mana is no trivial endeavor—it will yield its arcane secrets only to the earnest seeker of knowledge. Yet, once the adept learns to discern the subtleties of its intricate patterns as it unfurls and meanders into the ethereal expanse—it is in that moment the apprentice truly ascends to the mantle of mage. What makes a Mage:\n\n- **Spellshaper.** Customize the spells you cast: stretch time, gain extra-dimensional vision, or echo cast multiple spells!\n\n- **Elemental Mastery.** Harness the power of the elements, whether raining down fire from the heavens, freezing enemies in their tracks, or striking with thunderous bolts of lightning.\n\n- **Chaos or Control.** Will you snatch control of the frayed tapestry of mana or lean into the forces of chaos? What awaits you… Diamond Skin? Elemental Entanglement? Liquefy Legs?",
+		"description": "Elemental power flows through all things… find it, study it, and harness it. A mage is bestowed their first strand of the Tapestry at birth; however, true mastery eludes those who idly rest upon this innate endowment. Instead, they diligently refine their natural gifts through scholarly pursuit, with tomes and parchments as their companions, alongside the sage counsel of a seasoned mentor or three! Yes, this is the chosen path of those who would wield authority over the elements.\n\nComprehending the tapestry of mana is no trivial endeavor—it will yield its arcane secrets only to the earnest seeker of knowledge. Yet, once the adept learns to discern the subtleties of its intricate patterns as it unfurls and meanders into the ethereal expanse—it is in that moment the apprentice truly ascends to the mantle of mage. What makes a <a href=\"/classes/mage/\" class=\"auto-xref\" data-term=\"Mage\" data-kind=\"class\" data-definition=\"Wield and shape the elements of fire, ice, and lightning.\">Mage</a>:\n\n- **Spellshaper.** Customize the spells you cast: stretch time, gain extra-dimensional vision, or echo cast multiple spells!\n\n- **Elemental Mastery.** Harness the power of the elements, whether raining down fire from the heavens, freezing enemies in their tracks, or striking with thunderous bolts of lightning.\n\n- **<a href=\"/classes/mage/\" class=\"auto-xref\" data-term=\"Chaos\" data-kind=\"subclass\" data-definition=\"Chaos subclass of Mage.\">Chaos</a> or <a href=\"/classes/mage/\" class=\"auto-xref\" data-term=\"Control\" data-kind=\"subclass\" data-definition=\"Control subclass of Mage.\">Control</a>.** Will you snatch control of the frayed tapestry of mana or lean into the forces of chaos? What awaits you… Diamond Skin? Elemental Entanglement? Liquefy Legs?",
 		"keyStats": [
 			{
 				"stat": "INT"
@@ -1803,7 +1803,7 @@
 				"abilities": [
 					{
 						"name": "Mana and Unlock Tier 1 Spells",
-						"description": "You unlock tier 1 Fire, Ice, and Lightning spells and gain a mana pool. Maximum is always equal to (INT×3)+LVL and recharges on a Safe Rest."
+						"description": "You unlock tier 1 Fire, Ice, and Lightning spells and gain a mana pool. Maximum is always equal to (INT×3)+<a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> and recharges on a Safe Rest."
 					},
 					{
 						"name": "Talented Researcher",
@@ -1816,7 +1816,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Choose a Mage subclass."
+						"description": "Choose a <a href=\"/classes/mage/\" class=\"auto-xref\" data-term=\"Mage\" data-kind=\"class\" data-definition=\"Wield and shape the elements of fire, ice, and lightning.\">Mage</a> subclass."
 					},
 					{
 						"name": "Elemental Mastery",
@@ -1876,7 +1876,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Mage subclass feature."
+						"description": "Gain your <a href=\"/classes/mage/\" class=\"auto-xref\" data-term=\"Mage\" data-kind=\"class\" data-definition=\"Wield and shape the elements of fire, ice, and lightning.\">Mage</a> subclass feature."
 					}
 				]
 			},
@@ -1928,7 +1928,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Mage subclass feature."
+						"description": "Gain your <a href=\"/classes/mage/\" class=\"auto-xref\" data-term=\"Mage\" data-kind=\"class\" data-definition=\"Wield and shape the elements of fire, ice, and lightning.\">Mage</a> subclass feature."
 					}
 				]
 			},
@@ -1976,7 +1976,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Mage subclass feature."
+						"description": "Gain your <a href=\"/classes/mage/\" class=\"auto-xref\" data-term=\"Mage\" data-kind=\"class\" data-definition=\"Wield and shape the elements of fire, ice, and lightning.\">Mage</a> subclass feature."
 					},
 					{
 						"name": "Upgraded Cantrips",
@@ -2091,7 +2091,7 @@
 						"abilities": [
 							{
 								"name": "Force of Chaos",
-								"description": "Whenever you cast a spell, you can choose to spend 1 less mana. Whenever you do this and whenever you crit, Invoke Chaos: Roll on the Chaos Table."
+								"description": "Whenever you cast a spell, you can choose to spend 1 less mana. Whenever you do this and whenever you crit, Invoke <a href=\"/classes/mage/\" class=\"auto-xref\" data-term=\"Chaos\" data-kind=\"subclass\" data-definition=\"Chaos subclass of Mage.\">Chaos</a>: Roll on the Chaos Table."
 							}
 						]
 					},
@@ -2104,7 +2104,7 @@
 							},
 							{
 								"name": "Chaos Lash",
-								"description": "(1/encounter) Reaction (when an enemy moves adjacent to you): They are pushed back 2 spaces, and on a failed WIL save, knocked Prone as well. Invoke Chaos."
+								"description": "(1/encounter) Reaction (when an enemy moves adjacent to you): They are pushed back 2 spaces, and on a failed WIL save, knocked <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a> as well. Invoke <a href=\"/classes/mage/\" class=\"auto-xref\" data-term=\"Chaos\" data-kind=\"subclass\" data-definition=\"Chaos subclass of Mage.\">Chaos</a>."
 							}
 						]
 					},
@@ -2113,7 +2113,7 @@
 						"abilities": [
 							{
 								"name": "Thrive in Chaos",
-								"description": "Whenever you Invoke Chaos, you may roll twice and cause both effects. (1/Safe Rest) You may choose which roll to use instead."
+								"description": "Whenever you Invoke <a href=\"/classes/mage/\" class=\"auto-xref\" data-term=\"Chaos\" data-kind=\"subclass\" data-definition=\"Chaos subclass of Mage.\">Chaos</a>, you may roll twice and cause both effects. (1/Safe Rest) You may choose which roll to use instead."
 							}
 						]
 					},
@@ -2122,7 +2122,7 @@
 						"abilities": [
 							{
 								"name": "Master of Chaos",
-								"description": "Whenever you Invoke Chaos, roll with advantage."
+								"description": "Whenever you Invoke <a href=\"/classes/mage/\" class=\"auto-xref\" data-term=\"Chaos\" data-kind=\"subclass\" data-definition=\"Chaos subclass of Mage.\">Chaos</a>, roll with advantage."
 							}
 						]
 					}
@@ -2136,11 +2136,11 @@
 						"abilities": [
 							{
 								"name": "Force of Will",
-								"description": "(1/round) On your turn, you may Demand Control: Choose 1 option from the Control Table which you haven't chosen yet; resets when you roll Initiative, or when you have chosen all options once."
+								"description": "(1/round) On your turn, you may Demand <a href=\"/classes/mage/\" class=\"auto-xref\" data-term=\"Control\" data-kind=\"subclass\" data-definition=\"Control subclass of Mage.\">Control</a>: Choose 1 option from the Control Table which you haven't chosen yet; resets when you roll Initiative, or when you have chosen all options once."
 							},
 							{
 								"name": "Deny Fate",
-								"description": "Whenever you miss with a spell or an effect you cause is saved against, you MUST Demand Control."
+								"description": "Whenever you miss with a spell or an effect you cause is saved against, you MUST Demand <a href=\"/classes/mage/\" class=\"auto-xref\" data-term=\"Control\" data-kind=\"subclass\" data-definition=\"Control subclass of Mage.\">Control</a>."
 							}
 						]
 					},
@@ -2153,7 +2153,7 @@
 							},
 							{
 								"name": "Nullify",
-								"description": "(1/encounter) Ignore all disadvantage and other negative effects on your next action this turn, then Demand Control."
+								"description": "(1/encounter) Ignore all disadvantage and other negative effects on your next action this turn, then Demand <a href=\"/classes/mage/\" class=\"auto-xref\" data-term=\"Control\" data-kind=\"subclass\" data-definition=\"Control subclass of Mage.\">Control</a>."
 							}
 						]
 					},
@@ -2171,7 +2171,7 @@
 						"abilities": [
 							{
 								"name": "Supreme Control",
-								"description": "Whenever you Demand Control, you may choose to trigger the selected option twice. You may Demand Control as a Reaction."
+								"description": "Whenever you Demand <a href=\"/classes/mage/\" class=\"auto-xref\" data-term=\"Control\" data-kind=\"subclass\" data-definition=\"Control subclass of Mage.\">Control</a>, you may choose to trigger the selected option twice. You may Demand Control as a Reaction."
 							}
 						]
 					}
@@ -2182,7 +2182,7 @@
 	},
 	{
 		"name": "Oathsworn",
-		"description": "I will protect my companions and vanquish evil at all costs. Various orders of these zealous, holy warriors have attained great physical and radiant strength through absolute devotion to a higher power in the form of oaths. Through their strength, both physical and radiant, nothing can sway them from their hunger for justice and their fervent pursuit and hatred of evil.\n\nThe mark of a true Oathsworn, however, is their willingness to lay down their life for their friends. As an Oathsworn, you can:\n\n- **Defend with Devotion.** Shield your allies from harm and channel righteous judgment. The more you face evil, the more potent your strikes become.\n\n- **Divinely Protect.** Stand as a bastion of defense, safeguarding allies even from afar. Your presence brings justice to every corner of the realm.\n\n- **Shine as a Beacon of Virtue.** Mend wounds, discern truth from ill intent, and inspire others to embrace your noble cause with unwavering conviction.",
+		"description": "I will protect my companions and vanquish evil at all costs. Various orders of these zealous, holy warriors have attained great physical and radiant strength through absolute devotion to a higher power in the form of oaths. Through their strength, both physical and radiant, nothing can sway them from their hunger for justice and their fervent pursuit and hatred of evil.\n\nThe mark of a true <a href=\"/classes/oathsworn/\" class=\"auto-xref\" data-term=\"Oathsworn\" data-kind=\"class\" data-definition=\"Faithful guardian, protector, and avenger of the weak.\">Oathsworn</a>, however, is their willingness to lay down their life for their friends. As an Oathsworn, you can:\n\n- **Defend with Devotion.** Shield your allies from harm and channel righteous judgment. The more you face evil, the more potent your strikes become.\n\n- **Divinely Protect.** Stand as a bastion of defense, safeguarding allies even from afar. Your presence brings justice to every corner of the realm.\n\n- **Shine as a Beacon of Virtue.** Mend wounds, discern truth from ill intent, and inspire others to embrace your noble cause with unwavering conviction.",
 		"keyStats": [
 			{
 				"stat": "STR"
@@ -2240,7 +2240,7 @@
 					},
 					{
 						"name": "Lay on Hands",
-						"description": "Gain a magical pool of healing power equal to 5×LVL, recharges on a Safe Rest. Action: Touch a target and spend any amount of remaining healing power to restore that many HP."
+						"description": "Gain a magical pool of healing power equal to 5×<a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a>, recharges on a Safe Rest. Action: Touch a target and spend any amount of remaining healing power to restore that many HP."
 					}
 				]
 			},
@@ -2249,7 +2249,7 @@
 				"abilities": [
 					{
 						"name": "Mana and Radiant Spellcasting",
-						"description": "You know Radiant cantrips, tier 1 Radiant spells, and gain a mana pool equal to WIL + LVL, recharges on a Safe Rest."
+						"description": "You know Radiant cantrips, tier 1 Radiant spells, and gain a mana pool equal to WIL + <a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a>, recharges on a Safe Rest."
 					},
 					{
 						"name": "Zealot",
@@ -2330,7 +2330,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Oathsworn subclass feature."
+						"description": "Gain your <a href=\"/classes/oathsworn/\" class=\"auto-xref\" data-term=\"Oathsworn\" data-kind=\"class\" data-definition=\"Faithful guardian, protector, and avenger of the weak.\">Oathsworn</a> subclass feature."
 					},
 					{
 						"name": "Master of Radiance",
@@ -2390,7 +2390,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Oathsworn subclass feature."
+						"description": "Gain your <a href=\"/classes/oathsworn/\" class=\"auto-xref\" data-term=\"Oathsworn\" data-kind=\"class\" data-definition=\"Faithful guardian, protector, and avenger of the weak.\">Oathsworn</a> subclass feature."
 					},
 					{
 						"name": "Master of Radiance (2)",
@@ -2442,7 +2442,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Oathsworn subclass feature."
+						"description": "Gain your <a href=\"/classes/oathsworn/\" class=\"auto-xref\" data-term=\"Oathsworn\" data-kind=\"class\" data-definition=\"Faithful guardian, protector, and avenger of the weak.\">Oathsworn</a> subclass feature."
 					},
 					{
 						"name": "Upgraded Cantrips",
@@ -2515,7 +2515,7 @@
 				"items": [
 					{
 						"name": "Blinding Aura",
-						"description": "(1/Safe Rest) Action: Enemies in your aura are Blinded until the end of their next turn."
+						"description": "(1/Safe Rest) Action: Enemies in your aura are <a href=\"/conditions/blinded/\" class=\"auto-xref\" data-term=\"Blinded\" data-kind=\"condition\" data-definition=\"Can't see. Attacks against you have advantage, and your attacks have disadvantage.\">Blinded</a> until the end of their next turn."
 					},
 					{
 						"name": "Courage!",
@@ -2543,7 +2543,7 @@
 					},
 					{
 						"name": "Stand Fast, Friends!",
-						"description": "When you roll Initiative, grant allies temp HP equal to your STR+WIL. You and allies within your aura have advantage against fear and effects that would move or knock Prone."
+						"description": "When you roll Initiative, grant allies temp HP equal to your STR+WIL. You and allies within your aura have advantage against fear and effects that would move or knock <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a>."
 					},
 					{
 						"name": "Unstoppable Protector",
@@ -2574,7 +2574,7 @@
 						"abilities": [
 							{
 								"name": "Face Me, Foul Creature!",
-								"description": "When you Interpose, the attacking enemy is also Taunted by you until the end of their next turn."
+								"description": "When you Interpose, the attacking enemy is also <a href=\"/conditions/taunted/\" class=\"auto-xref\" data-term=\"Taunted\" data-kind=\"condition\" data-definition=\"Disadvantage on attacks except against the most recent taunter.\">Taunted</a> by you until the end of their next turn."
 							}
 						]
 					},
@@ -2583,7 +2583,7 @@
 						"abilities": [
 							{
 								"name": "Glorious Reprieve",
-								"description": "You and allies in your aura cannot drop below 1 HP. Whenever this triggers, they gain 1 Wound instead (heroes still die at max Wounds)."
+								"description": "You and allies in your aura cannot drop below 1 HP. Whenever this triggers, they gain 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a> instead (heroes still die at max Wounds)."
 							}
 						]
 					},
@@ -2644,7 +2644,7 @@
 	},
 	{
 		"name": "Shadowmancer",
-		"description": "Totally NOT evil. Why would you even say that? Great power sometimes comes from… horrible places. But what's the alternative, spend our entire lives… STUDYING?! Now that's horrible. Who'd want to waste their lives reading books—learning magic the hard way? Work SMART, not hard. Just scheme up a way to take what you need from someone who won't miss it—ancient horrors don't guard their power nearly as well as you'd think! And if there's power just laying around, it'd be dumb of me to not use it, really.\n\nSo what if I wear black and have to occasionally sacrifice an animal here and there while chanting? Does that automatically mean I'm evil? *Pfft,* hardly! Not every ANCIENT HORROR is the same; that's like saying crow black and spider black are the same. Okay, bad examples, but the point stands. If you're tired of swinging swords around and getting sweaty like a peasant, just summon a horde of shadow minions to do your bidding. They're always eager to serve! As a Shadowmancer:\n\n- **Unspeakable Power Awaits.** Use your cunning to forge pacts with ancient, unfathomable entities, drawing upon their incomprehensible power to crush foes and bend the shadows to your will.\n\n- **Master Shadow Minions.** Summon legions of shadowy minions to overwhelm your adversaries and bolster your magical abilities. Let them swarm your foes, serving as both sword and fodder in your quest for dominance.",
+		"description": "Totally NOT evil. Why would you even say that? Great power sometimes comes from… horrible places. But what's the alternative, spend our entire lives… STUDYING?! Now that's horrible. Who'd want to waste their lives reading books—learning magic the hard way? Work SMART, not hard. Just scheme up a way to take what you need from someone who won't miss it—ancient horrors don't guard their power nearly as well as you'd think! And if there's power just laying around, it'd be dumb of me to not use it, really.\n\nSo what if I wear black and have to occasionally sacrifice an animal here and there while chanting? Does that automatically mean I'm evil? *Pfft,* hardly! Not every ANCIENT HORROR is the same; that's like saying crow black and spider black are the same. Okay, bad examples, but the point stands. If you're tired of swinging swords around and getting sweaty like a peasant, just summon a horde of shadow minions to do your bidding. They're always eager to serve! As a <a href=\"/classes/shadowmancer/\" class=\"auto-xref\" data-term=\"Shadowmancer\" data-kind=\"class\" data-definition=\"Summon hordes of expendable minions.\">Shadowmancer</a>:\n\n- **Unspeakable Power Awaits.** Use your cunning to forge pacts with ancient, unfathomable entities, drawing upon their incomprehensible power to crush foes and bend the shadows to your will.\n\n- **Master Shadow Minions.** Summon legions of shadowy minions to overwhelm your adversaries and bolster your magical abilities. Let them swarm your foes, serving as both sword and fodder in your quest for dominance.",
 		"keyStats": [
 			{
 				"stat": "INT"
@@ -2693,11 +2693,11 @@
 				"abilities": [
 					{
 						"name": "Shadow Blast",
-						"description": "(Necrotic cantrip) Action: (1/turn) Range: 8. Damage: 1d12+KEY. High Levels: +1d12 damage every 5 levels."
+						"description": "(Necrotic cantrip) Action: (1/turn) Range: 8. Damage: 1d12+<a href=\"/glossary/key/\" class=\"auto-xref\" data-term=\"KEY\" data-kind=\"glossary\" data-definition=\"Use either of your KEY attributes.\">KEY</a>. High Levels: +1d12 damage every 5 levels."
 					},
 					{
 						"name": "Summon Shadows",
-						"description": "(Necrotic cantrip) Action: Summon a shadow minion within Reach 1 (max of INT or LVL minions). Action: (1/turn) Command ALL of your minions to move 6 then attack (Reach 1, 1d12 each). High Levels: +1 Reach every 5 levels."
+						"description": "(Necrotic cantrip) Action: Summon a shadow minion within Reach 1 (max of INT or <a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> minions). Action: (1/turn) Command ALL of your minions to move 6 then attack (Reach 1, 1d12 each). High Levels: +1 Reach every 5 levels."
 					}
 				]
 			},
@@ -2771,7 +2771,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Shadowmancer subclass feature."
+						"description": "Gain your <a href=\"/classes/shadowmancer/\" class=\"auto-xref\" data-term=\"Shadowmancer\" data-kind=\"class\" data-definition=\"Summon hordes of expendable minions.\">Shadowmancer</a> subclass feature."
 					},
 					{
 						"name": "Tier 3 Spells",
@@ -2827,7 +2827,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Shadowmancer subclass feature."
+						"description": "Gain your <a href=\"/classes/shadowmancer/\" class=\"auto-xref\" data-term=\"Shadowmancer\" data-kind=\"class\" data-definition=\"Summon hordes of expendable minions.\">Shadowmancer</a> subclass feature."
 					},
 					{
 						"name": "Lesser Invocation (2)",
@@ -2879,7 +2879,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Shadowmancer subclass feature."
+						"description": "Gain your <a href=\"/classes/shadowmancer/\" class=\"auto-xref\" data-term=\"Shadowmancer\" data-kind=\"class\" data-definition=\"Summon hordes of expendable minions.\">Shadowmancer</a> subclass feature."
 					},
 					{
 						"name": "Upgraded Cantrips",
@@ -2968,7 +2968,7 @@
 					},
 					{
 						"name": "Devoted Acolyte",
-						"description": "Learn 2 of the following languages: Celestial, Draconic, Deep Speak, Infernal, or Primordial. Advantage on Lore checks related to those 2 languages."
+						"description": "Learn 2 of the following languages: <a href=\"/ancestries/celestial/\" class=\"auto-xref\" data-term=\"Celestial\" data-kind=\"ancestry\" data-definition=\"Descendants of divine beings, Celestials carry an aura of nobility and grace. Their innate connection to the higher planes allows them to resist the effects of misfortune, standing strong where others may falter. Highborn. Your disadvantaged save is Neutral instead. You know Celestial if your INT isn't negative.\">Celestial</a>, <a href=\"/languages/draconic/\" class=\"auto-xref\" data-term=\"Draconic\" data-kind=\"language\" data-definition=\"Dragons, Dragonborn, and Kobolds.\">Draconic</a>, <a href=\"/languages/deep-speak/\" class=\"auto-xref\" data-term=\"Deep Speak\" data-kind=\"language\" data-definition=\"Underworld dwellers.\">Deep Speak</a>, Infernal, or Primordial. Advantage on Lore checks related to those 2 languages."
 					},
 					{
 						"name": "Eldritch Sense",
@@ -2980,7 +2980,7 @@
 					},
 					{
 						"name": "Knowledge from Beyond",
-						"description": "Whenever you fail an Insight or Arcana check, you may suffer 1 Wound to succeed instead."
+						"description": "Whenever you fail an Insight or Arcana check, you may suffer 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a> to succeed instead."
 					},
 					{
 						"name": "My Favored Pet",
@@ -2998,7 +2998,7 @@
 			},
 			{
 				"name": "Greater Invocations",
-				"description": "Choose Greater Shadow Invocations as you level up.",
+				"description": "Choose <a href=\"/spells/greater-shadow/\" class=\"auto-xref\" data-term=\"Greater Shadow\" data-kind=\"spell\" data-definition=\"Summon a 5d12 Greater Shadow minion (max 1 adjacent to you). When it dies, it explodes into 5 shadow minions (see Summon Shadow). Place them anywhere within 8 spaces. Upcast: +1d12 damage, +1 shadow minion on explosion.\">Greater Shadow</a> Invocations as you level up.",
 				"items": [
 					{
 						"name": "Armor of Shadows",
@@ -3014,11 +3014,11 @@
 					},
 					{
 						"name": "One with Shadows",
-						"description": "Action: When you are in an area of dim light or darkness, you may become Invisible until you move or attack."
+						"description": "Action: When you are in an area of dim light or darkness, you may become <a href=\"/conditions/invisible/\" class=\"auto-xref\" data-term=\"Invisible\" data-kind=\"condition\" data-definition=\"Cannot be seen. Your attacks have advantage, and attacks against you have disadvantage.\">Invisible</a> until you move or attack."
 					},
 					{
 						"name": "Repelling Blast",
-						"description": "When you hit a Medium or smaller creature with Shadow Blast, you can push the creature up to 2 spaces away from yourself."
+						"description": "When you hit a Medium or smaller creature with <a href=\"/spells/shadow-blast/\" class=\"auto-xref\" data-term=\"Shadow Blast\" data-kind=\"spell\" data-definition=\"Range: 8. Damage: 1d12+KEY. 1/round. High Levels: +1d12 every 5 levels.\">Shadow Blast</a>, you can push the creature up to 2 spaces away from yourself."
 					},
 					{
 						"name": "Shadow Magus",
@@ -3026,7 +3026,7 @@
 					},
 					{
 						"name": "Shadow Spear",
-						"description": "Your Shadow Blast can target creatures twice as far away, it ignores cover, and you may attack Prone targets with advantage with it."
+						"description": "Your <a href=\"/spells/shadow-blast/\" class=\"auto-xref\" data-term=\"Shadow Blast\" data-kind=\"spell\" data-definition=\"Range: 8. Damage: 1d12+KEY. 1/round. High Levels: +1d12 every 5 levels.\">Shadow Blast</a> can target creatures twice as far away, it ignores cover, and you may attack <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a> targets with advantage with it."
 					},
 					{
 						"name": "Shadow Rush",
@@ -3042,7 +3042,7 @@
 					},
 					{
 						"name": "Vengeful Blast",
-						"description": "Whenever a minion dies, you may cast Shadow Blast as a reaction (even if you already cast it this turn)."
+						"description": "Whenever a minion dies, you may cast <a href=\"/spells/shadow-blast/\" class=\"auto-xref\" data-term=\"Shadow Blast\" data-kind=\"spell\" data-definition=\"Range: 8. Damage: 1d12+KEY. 1/round. High Levels: +1d12 every 5 levels.\">Shadow Blast</a> as a reaction (even if you already cast it this turn)."
 					}
 				]
 			}
@@ -3056,7 +3056,7 @@
 						"abilities": [
 							{
 								"name": "Master of Nightfrost",
-								"description": "Your Patron grants you knowledge of Ice spells. Gain the ability to breathe underwater. Your shadow minions become beings of nightfrost. Your shadow blast and minions can deal cold or necrotic damage, and whenever they would crit, you gain INT+LVL temp HP."
+								"description": "Your Patron grants you knowledge of Ice spells. Gain the ability to breathe underwater. Your shadow minions become beings of nightfrost. Your shadow blast and minions can deal cold or necrotic damage, and whenever they would crit, you gain INT+<a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> temp HP."
 							}
 						]
 					},
@@ -3065,7 +3065,7 @@
 						"abilities": [
 							{
 								"name": "Shadowfrost",
-								"description": "Your Shadow Blast also Slows. You can cast Cryosleep or Rimeblades without Pilfering Power by expending 10 temp HP. Choose 1 Ice Utility Spell."
+								"description": "Your <a href=\"/spells/shadow-blast/\" class=\"auto-xref\" data-term=\"Shadow Blast\" data-kind=\"spell\" data-definition=\"Range: 8. Damage: 1d12+KEY. 1/round. High Levels: +1d12 every 5 levels.\">Shadow Blast</a> also Slows. You can cast <a href=\"/spells/cryosleep/\" class=\"auto-xref\" data-term=\"Cryosleep\" data-kind=\"spell\" data-definition=\"Reach: 12. Creatures in a 2×2 area within Reach are Dazed. On a failed STR save, they fall asleep instead, becoming Incapacitated until their next two turns have passed, until damaged, or until an ally uses an action to wake them. Upcast: +1 area, +1 turn asleep.\">Cryosleep</a> or <a href=\"/spells/rimeblades/\" class=\"auto-xref\" data-term=\"Rimeblades\" data-kind=\"spell\" data-definition=\"Concentration: Up to 1 minute. Reach: 12. Conjure razor-sharp icy spikes in 5 contiguous spaces within Reach; this area is difficult terrain. Creatures that enter these spaces (or who are in the area when you conjure them) suffer 2d6 damage for each space they touch. Upcast: +1 space, +1 damage.\">Rimeblades</a> without Pilfering Power by expending 10 temp HP. Choose 1 Ice Utility Spell."
 							}
 						]
 					},
@@ -3074,7 +3074,7 @@
 						"abilities": [
 							{
 								"name": "Glacial Resilience",
-								"description": "(1/Safe Rest) Reaction (whenever you are attacked or would gain a condition), gain 10×LVL temp HP and end ALL negative conditions on yourself. At the end of your next turn, any remaining temp HP are lost."
+								"description": "(1/Safe Rest) Reaction (whenever you are attacked or would gain a condition), gain 10×<a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> temp HP and end ALL negative conditions on yourself. At the end of your next turn, any remaining temp HP are lost."
 							}
 						]
 					},
@@ -3097,7 +3097,7 @@
 						"abilities": [
 							{
 								"name": "Draconic Crimson Rite",
-								"description": "Your Patron grants you knowledge of Fire spells. Your shadow minions become flaming dragon wyrmling shadows. Your Shadow Blast and minions can deal fire or necrotic damage and inflict Smoldering whenever they would crit."
+								"description": "Your Patron grants you knowledge of Fire spells. Your shadow minions become flaming dragon wyrmling shadows. Your <a href=\"/spells/shadow-blast/\" class=\"auto-xref\" data-term=\"Shadow Blast\" data-kind=\"spell\" data-definition=\"Range: 8. Damage: 1d12+KEY. 1/round. High Levels: +1d12 every 5 levels.\">Shadow Blast</a> and minions can deal fire or necrotic damage and inflict Smoldering whenever they would crit."
 							}
 						]
 					},
@@ -3106,7 +3106,7 @@
 						"abilities": [
 							{
 								"name": "We'll ALL Burn!",
-								"description": "You may cast Pyroclasm without Pilfering Power by including yourself in the damage. You have advantage on the save. Choose 1 Fire Utility Spell."
+								"description": "You may cast <a href=\"/spells/pyroclasm/\" class=\"auto-xref\" data-term=\"Pyroclasm\" data-kind=\"spell\" data-definition=\"Reach: 3. Others within Reach take 2d20+10 damage (ignoring armor) on a failed DEX save. Half damage on save. Smoldering creatures fail. Upcast: +1 Reach, +2 damage.\">Pyroclasm</a> without Pilfering Power by including yourself in the damage. You have advantage on the save. Choose 1 Fire Utility Spell."
 							}
 						]
 					},
@@ -3124,7 +3124,7 @@
 						"abilities": [
 							{
 								"name": "Enveloped by the Master",
-								"description": "Gain 1d4 Wounds to cast Dragonform."
+								"description": "Gain 1d4 Wounds to cast <a href=\"/spells/dragonform/\" class=\"auto-xref\" data-term=\"Dragonform\" data-kind=\"spell\" data-definition=\"Transform into a Huge dragon. Gain 3 actions, a fly speed of 12, LVL Armor, 10xLVL temp HP, and: - Tooth &amp; Claw. Action: (Reach 2) 1d20+LVL damage (ignoring armor). Inflicts Smoldering. - Immolating Breath. 2 Actions: (Reach: Cone 8). DC 20 DEX save, KEY d20 damage, half on save. Smoldering targets fail. You can maint…\">Dragonform</a>."
 							}
 						]
 					}
@@ -3135,7 +3135,7 @@
 	},
 	{
 		"name": "Shepherd",
-		"description": "Let all who are afflicted come. I will mend thy bones and soothe thy wounds. Thou shalt revere the gifts of life and death, neither of which is ever given or taken. Rather, we are all souls merely journeying between this realm and that of the beyond. But alas, often do these wandering souls find themselves bereft of guidance. Thus falls upon the Shepherd the solemn duty—to be a beacon of light to those ensnared in darkness, and darkness to those who, in hubris, deem themselves to be the light.\n\nFor many, the journey of service is a difficult path—yet, in this task we are not solitary. Our Lifebinding Spirits, the steadfast companions of our faith, are bound beside us, comforting and aiding us in the stewardship we've been given. As a Shepherd, you:\n\n- **Embrace the Balance.** Embody the forces of Life and Death, wielding spells from your chosen domains. As you walk the path of balance, ponder which way the scales shall tip: towards healing or harm?\n\n- **Lead a Faithful Companion.** Summon a Lifebinding spirit to your side, providing invaluable support in battle. Whether bolstering allies with healing or smiting foes with righteous fury, your spirit companion stands ready to aid in the struggle.",
+		"description": "Let all who are afflicted come. I will mend thy bones and soothe thy wounds. Thou shalt revere the gifts of life and death, neither of which is ever given or taken. Rather, we are all souls merely journeying between this realm and that of the beyond. But alas, often do these wandering souls find themselves bereft of guidance. Thus falls upon the <a href=\"/classes/shepherd/\" class=\"auto-xref\" data-term=\"Shepherd\" data-kind=\"class\" data-definition=\"Master life and death. Lead a faithful companion.\">Shepherd</a> the solemn duty—to be a beacon of light to those ensnared in darkness, and darkness to those who, in hubris, deem themselves to be the light.\n\nFor many, the journey of service is a difficult path—yet, in this task we are not solitary. Our Lifebinding Spirits, the steadfast companions of our faith, are bound beside us, comforting and aiding us in the stewardship we've been given. As a <a href=\"/classes/shepherd/\" class=\"auto-xref\" data-term=\"Shepherd\" data-kind=\"class\" data-definition=\"Master life and death. Lead a faithful companion.\">Shepherd</a>, you:\n\n- **Embrace the Balance.** Embody the forces of Life and Death, wielding spells from your chosen domains. As you walk the path of balance, ponder which way the scales shall tip: towards healing or harm?\n\n- **Lead a Faithful Companion.** Summon a Lifebinding spirit to your side, providing invaluable support in battle. Whether bolstering allies with healing or smiting foes with righteous fury, your spirit companion stands ready to aid in the struggle.",
 		"keyStats": [
 			{
 				"stat": "WIL"
@@ -3187,7 +3187,7 @@
 					},
 					{
 						"name": "Searing Light",
-						"description": "(WIL times/Safe Rest) Action: Heal or Inflict grievous injuries: Heal WIL d8 HP to a Dying creature within Reach 6, OR Inflict WIL d8 radiant damage to an undead or Bloodied enemy within Reach 6."
+						"description": "(WIL times/Safe Rest) Action: <a href=\"/spells/heal/\" class=\"auto-xref\" data-term=\"Heal\" data-kind=\"spell\" data-definition=\"Reach: 1. Heal a creature 1d6+KEY HP. Upcast: Choose one: +1 target, +4 Reach, +1d6 healing. If 5+ mana is spent, you may also heal 1 negative condition (e.g., Blind, Poisoned, 1 Wound). Shepherd only\">Heal</a> or Inflict grievous injuries: Heal WIL d8 HP to a <a href=\"/conditions/dying/\" class=\"auto-xref\" data-term=\"Dying\" data-kind=\"condition\" data-definition=\"At 0 HP. Taking damage while dying causes 2 Wounds, a crit causes 3 instead.\">Dying</a> creature within Reach 6, OR Inflict WIL d8 radiant damage to an undead or <a href=\"/conditions/bloodied/\" class=\"auto-xref\" data-term=\"Bloodied\" data-kind=\"condition\" data-definition=\"At half HP or less.\">Bloodied</a> enemy within Reach 6."
 					}
 				]
 			},
@@ -3196,7 +3196,7 @@
 				"abilities": [
 					{
 						"name": "Mana and Unlock Tier 1 Spells",
-						"description": "You unlock tier 1 Radiant and Necrotic spells and gain a mana pool equal to (WIL×3)+LVL, recharges on a Safe Rest."
+						"description": "You unlock tier 1 Radiant and Necrotic spells and gain a mana pool equal to (WIL×3)+<a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a>, recharges on a Safe Rest."
 					},
 					{
 						"name": "Lifebinding Spirit",
@@ -3209,7 +3209,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Choose a Shepherd subclass."
+						"description": "Choose a <a href=\"/classes/shepherd/\" class=\"auto-xref\" data-term=\"Shepherd\" data-kind=\"class\" data-definition=\"Master life and death. Lead a faithful companion.\">Shepherd</a> subclass."
 					},
 					{
 						"name": "Master of Twilight",
@@ -3265,7 +3265,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Shepherd subclass feature."
+						"description": "Gain your <a href=\"/classes/shepherd/\" class=\"auto-xref\" data-term=\"Shepherd\" data-kind=\"class\" data-definition=\"Master life and death. Lead a faithful companion.\">Shepherd</a> subclass feature."
 					}
 				]
 			},
@@ -3313,7 +3313,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Shepherd subclass feature."
+						"description": "Gain your <a href=\"/classes/shepherd/\" class=\"auto-xref\" data-term=\"Shepherd\" data-kind=\"class\" data-definition=\"Master life and death. Lead a faithful companion.\">Shepherd</a> subclass feature."
 					},
 					{
 						"name": "Master of Twilight (3)",
@@ -3361,7 +3361,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Shepherd subclass feature."
+						"description": "Gain your <a href=\"/classes/shepherd/\" class=\"auto-xref\" data-term=\"Shepherd\" data-kind=\"class\" data-definition=\"Master life and death. Lead a faithful companion.\">Shepherd</a> subclass feature."
 					},
 					{
 						"name": "Upgraded Cantrips",
@@ -3387,7 +3387,7 @@
 				"abilities": [
 					{
 						"name": "Revitalizing Blessing",
-						"description": "(1/round) Whenever you roll a 6 or higher on one or more healing die, the target may recover one Wound."
+						"description": "(1/round) Whenever you roll a 6 or higher on one or more healing die, the target may recover one <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a>."
 					},
 					{
 						"name": "Secondary Stat Increase",
@@ -3418,7 +3418,7 @@
 				"abilities": [
 					{
 						"name": "Twilight Sage",
-						"description": "+1 to any 2 of your stats. Your Lifebinding Spirit rolls twice as many dice."
+						"description": "+1 to any 2 of your stats. Your <a href=\"/spells/lifebinding-spirit/\" class=\"auto-xref\" data-term=\"Lifebinding Spirit\" data-kind=\"spell\" data-definition=\"Summon a spirit companion that follows you and is immune to harm. It lasts until you cast this spell again, take a Safe Rest, or it heals a number of times equal to the mana spent summoning it. Action: It attacks or heals a creature within Reach 4. It attacks for 1d6+WIL radiant damage (ignoring armor), or heals for t…\">Lifebinding Spirit</a> rolls twice as many dice."
 					},
 					{
 						"name": "Upgraded Cantrips",
@@ -3434,35 +3434,35 @@
 				"items": [
 					{
 						"name": "Assist Me, My Friend!",
-						"description": "Whenever you make your first melee attack each round, you may add your Lifebinding Spirit's damage to the attack."
+						"description": "Whenever you make your first melee attack each round, you may add your <a href=\"/spells/lifebinding-spirit/\" class=\"auto-xref\" data-term=\"Lifebinding Spirit\" data-kind=\"spell\" data-definition=\"Summon a spirit companion that follows you and is immune to harm. It lasts until you cast this spell again, take a Safe Rest, or it heals a number of times equal to the mana spent summoning it. Action: It attacks or heals a creature within Reach 4. It attacks for 1d6+WIL radiant damage (ignoring armor), or heals for t…\">Lifebinding Spirit</a>'s damage to the attack."
 					},
 					{
 						"name": "Empowered Companion",
-						"description": "Whenever you spend mana to call forth your Lifebinding Spirit, you cast it as if you spent 1 additional mana (ignoring the typical spell tier restrictions). The maximum die size is now a d20."
+						"description": "Whenever you spend mana to call forth your <a href=\"/spells/lifebinding-spirit/\" class=\"auto-xref\" data-term=\"Lifebinding Spirit\" data-kind=\"spell\" data-definition=\"Summon a spirit companion that follows you and is immune to harm. It lasts until you cast this spell again, take a Safe Rest, or it heals a number of times equal to the mana spent summoning it. Action: It attacks or heals a creature within Reach 4. It attacks for 1d6+WIL radiant damage (ignoring armor), or heals for t…\">Lifebinding Spirit</a>, you cast it as if you spent 1 additional mana (ignoring the typical spell tier restrictions). The maximum die size is now a d20."
 					},
 					{
 						"name": "Guiding Spirit",
-						"description": "When your Lifebinding Spirit rolls a 6 or higher on its damage die, the target begins to glow with radiant light. The next attack against that target has advantage."
+						"description": "When your <a href=\"/spells/lifebinding-spirit/\" class=\"auto-xref\" data-term=\"Lifebinding Spirit\" data-kind=\"spell\" data-definition=\"Summon a spirit companion that follows you and is immune to harm. It lasts until you cast this spell again, take a Safe Rest, or it heals a number of times equal to the mana spent summoning it. Action: It attacks or heals a creature within Reach 4. It attacks for 1d6+WIL radiant damage (ignoring armor), or heals for t…\">Lifebinding Spirit</a> rolls a 6 or higher on its damage die, the target begins to glow with radiant light. The next attack against that target has advantage."
 					},
 					{
 						"name": "Hasty Companion",
-						"description": "+4 Reach for your Lifebinding Spirit. It can also act for free when summoned."
+						"description": "+4 Reach for your <a href=\"/spells/lifebinding-spirit/\" class=\"auto-xref\" data-term=\"Lifebinding Spirit\" data-kind=\"spell\" data-definition=\"Summon a spirit companion that follows you and is immune to harm. It lasts until you cast this spell again, take a Safe Rest, or it heals a number of times equal to the mana spent summoning it. Action: It attacks or heals a creature within Reach 4. It attacks for 1d6+WIL radiant damage (ignoring armor), or heals for t…\">Lifebinding Spirit</a>. It can also act for free when summoned."
 					},
 					{
 						"name": "Illuminate Soul",
-						"description": "Action: A creature within 6 spaces begins to glow with radiant light. For 1 Round, attacks against them are made with your choice of advantage or disadvantage. You may do this WIL times per Safe Rest."
+						"description": "Action: A creature within 6 spaces begins to glow with radiant light. For 1 <a href=\"/glossary/round/\" class=\"auto-xref\" data-term=\"Round\" data-kind=\"glossary\" data-definition=\"The time in combat when each Hero and enemy has a chance to act.\">Round</a>, attacks against them are made with your choice of advantage or disadvantage. You may do this WIL times per Safe Rest."
 					},
 					{
 						"name": "Light Bearer",
-						"description": "Regain 1 use of Searing Light when you roll Initiative (this expires if unspent at the end of combat)."
+						"description": "Regain 1 use of Searing <a href=\"/spells/light/\" class=\"auto-xref\" data-term=\"Light\" data-kind=\"spell\" data-definition=\"Cause an item to brightly glow as a torch with radiant light for as long as you hold it.\">Light</a> when you roll Initiative (this expires if unspent at the end of combat)."
 					},
 					{
 						"name": "Not Beyond MY Reach",
-						"description": "You may target creatures who have been dead less than 1 round for healing. For every 10 HP a dead creature is healed this way, you may have them recover 1 Wound instead (you must heal at least 1 Wound to revive them)."
+						"description": "You may target creatures who have been dead less than 1 round for healing. For every 10 HP a dead creature is healed this way, you may have them recover 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a> instead (you must heal at least 1 Wound to revive them)."
 					},
 					{
 						"name": "Vengeful Spirit",
-						"description": "Action: Your Lifebinding Spirit sacrifices itself to transform into a swirling vortex of radiant light that damages all enemies within 3 spaces of you, ignoring armor and cover. This lasts for a number of rounds equal to the healing charges left on the Lifebinding Spirit."
+						"description": "Action: Your <a href=\"/spells/lifebinding-spirit/\" class=\"auto-xref\" data-term=\"Lifebinding Spirit\" data-kind=\"spell\" data-definition=\"Summon a spirit companion that follows you and is immune to harm. It lasts until you cast this spell again, take a Safe Rest, or it heals a number of times equal to the mana spent summoning it. Action: It attacks or heals a creature within Reach 4. It attacks for 1d6+WIL radiant damage (ignoring armor), or heals for t…\">Lifebinding Spirit</a> sacrifices itself to transform into a swirling vortex of radiant light that damages all enemies within 3 spaces of you, ignoring armor and cover. This lasts for a number of rounds equal to the healing charges left on the Lifebinding Spirit."
 					}
 				]
 			}
@@ -3476,11 +3476,11 @@
 						"abilities": [
 							{
 								"name": "Soul Reaper",
-								"description": "When you use Searing Light to harm an enemy, make a 2nd enemy within range take the same amount of damage (ignoring armor)."
+								"description": "When you use Searing <a href=\"/spells/light/\" class=\"auto-xref\" data-term=\"Light\" data-kind=\"spell\" data-definition=\"Cause an item to brightly glow as a torch with radiant light for as long as you hold it.\">Light</a> to harm an enemy, make a 2nd enemy within range take the same amount of damage (ignoring armor)."
 							},
 							{
 								"name": "Harbinger of Decay",
-								"description": "Vibrant colors and lovely smells are suppressed near you. Foods spoil more rapidly in your presence, and you frequently awaken to flies wherever you lodge. You may have your Lifebinding Spirit shift into a deathly version of itself (a zombie dog, a devious imp, etc.) and have its damage type become necrotic."
+								"description": "Vibrant colors and lovely smells are suppressed near you. Foods spoil more rapidly in your presence, and you frequently awaken to flies wherever you lodge. You may have your <a href=\"/spells/lifebinding-spirit/\" class=\"auto-xref\" data-term=\"Lifebinding Spirit\" data-kind=\"spell\" data-definition=\"Summon a spirit companion that follows you and is immune to harm. It lasts until you cast this spell again, take a Safe Rest, or it heals a number of times equal to the mana spent summoning it. Action: It attacks or heals a creature within Reach 4. It attacks for 1d6+WIL radiant damage (ignoring armor), or heals for t…\">Lifebinding Spirit</a> shift into a deathly version of itself (a zombie dog, a devious imp, etc.) and have its damage type become necrotic."
 							}
 						]
 					},
@@ -3489,7 +3489,7 @@
 						"abilities": [
 							{
 								"name": "Veilwalker's Blessing",
-								"description": "(1/Safe Rest) Reaction (when you would drop to 0 HP): Drop to 1 HP instead and force an enemy within 6 spaces to make a STR save. On a failure, they become Bloodied, or if they are already Bloodied, they drop to 0 HP."
+								"description": "(1/Safe Rest) Reaction (when you would drop to 0 HP): Drop to 1 HP instead and force an enemy within 6 spaces to make a STR save. On a failure, they become <a href=\"/conditions/bloodied/\" class=\"auto-xref\" data-term=\"Bloodied\" data-kind=\"condition\" data-definition=\"At half HP or less.\">Bloodied</a>, or if they are already Bloodied, they drop to 0 HP."
 							}
 						]
 					},
@@ -3498,7 +3498,7 @@
 						"abilities": [
 							{
 								"name": "Deathbringer's Touch",
-								"description": "Your first melee attack each round against a Bloodied creature is an automatic critical hit. Your Lifebinding Spirit deals additional damage equal to your STR."
+								"description": "Your first melee attack each round against a <a href=\"/conditions/bloodied/\" class=\"auto-xref\" data-term=\"Bloodied\" data-kind=\"condition\" data-definition=\"At half HP or less.\">Bloodied</a> creature is an automatic critical hit. Your <a href=\"/spells/lifebinding-spirit/\" class=\"auto-xref\" data-term=\"Lifebinding Spirit\" data-kind=\"spell\" data-definition=\"Summon a spirit companion that follows you and is immune to harm. It lasts until you cast this spell again, take a Safe Rest, or it heals a number of times equal to the mana spent summoning it. Action: It attacks or heals a creature within Reach 4. It attacks for 1d6+WIL radiant damage (ignoring armor), or heals for t…\">Lifebinding Spirit</a> deals additional damage equal to your STR."
 							}
 						]
 					},
@@ -3521,7 +3521,7 @@
 						"abilities": [
 							{
 								"name": "Merciful Healing",
-								"description": "When an effect caused by you heals a Dying creature, they are healed for twice as much. (1/round) Your Lifebinding Spirit can act for free while you are Dying."
+								"description": "When an effect caused by you heals a <a href=\"/conditions/dying/\" class=\"auto-xref\" data-term=\"Dying\" data-kind=\"condition\" data-definition=\"At 0 HP. Taking damage while dying causes 2 Wounds, a crit causes 3 instead.\">Dying</a> creature, they are healed for twice as much. (1/round) Your <a href=\"/spells/lifebinding-spirit/\" class=\"auto-xref\" data-term=\"Lifebinding Spirit\" data-kind=\"spell\" data-definition=\"Summon a spirit companion that follows you and is immune to harm. It lasts until you cast this spell again, take a Safe Rest, or it heals a number of times equal to the mana spent summoning it. Action: It attacks or heals a creature within Reach 4. It attacks for 1d6+WIL radiant damage (ignoring armor), or heals for t…\">Lifebinding Spirit</a> can act for free while you are Dying."
 							},
 							{
 								"name": "Life is Beautiful",
@@ -3534,7 +3534,7 @@
 						"abilities": [
 							{
 								"name": "Conduit of Light",
-								"description": "When an effect caused by you would heal HP, you may expend 1 use of Searing Light to heal (or damage, ignoring armor) another target within 6 spaces of yourself for the same amount."
+								"description": "When an effect caused by you would heal HP, you may expend 1 use of Searing <a href=\"/spells/light/\" class=\"auto-xref\" data-term=\"Light\" data-kind=\"spell\" data-definition=\"Cause an item to brightly glow as a torch with radiant light for as long as you hold it.\">Light</a> to heal (or damage, ignoring armor) another target within 6 spaces of yourself for the same amount."
 							}
 						]
 					},
@@ -3552,7 +3552,7 @@
 						"abilities": [
 							{
 								"name": "Empowered Conduit",
-								"description": "Your Conduit of Light may target 1 additional creature. Regain 1 charge of Searing Light when you roll Initiative (this expires if unspent at the end of combat)."
+								"description": "Your Conduit of <a href=\"/spells/light/\" class=\"auto-xref\" data-term=\"Light\" data-kind=\"spell\" data-definition=\"Cause an item to brightly glow as a torch with radiant light for as long as you hold it.\">Light</a> may target 1 additional creature. Regain 1 charge of Searing Light when you roll Initiative (this expires if unspent at the end of combat)."
 							}
 						]
 					}
@@ -3563,7 +3563,7 @@
 	},
 	{
 		"name": "Songweaver",
-		"description": "Just TRY and resist my charm… wait—NO, don't! Each Songweaver holds a spark granted to them by a muse at birth; a spark which fuels their creative energy and flows forth in the form of a sharp wit, relentless humor, or moving art.\n\nThe power of a Songweaver's spark is also evident in their powerful sway over others. Songweavers can bolster and infuse courage in their allies, or… make their enemies' brains leak out through their ears. The Songweaver can bring a whole new meaning to verbal abuse! They can even redirect the (often justified) attacks of others, in order to protect their own moneymakers. As a Songweaver, you can:\n\n- **Charm** the hapless people you meet and inspire your allies to reach fantastic new heights of heroism!\n\n- **Use your Lyrical Weaponry** and powerful charisma to dominate enemies and call special friends to aid you in your journeys and battles. You can even redirect attacks away from yourself and make enemies attack their own allies!\n\n- **Control the Battlefield** with a chord of chaos, a rad heroic ballad, or a debilitating rhapsody; make your allies and enemies alike dance to your tune!",
+		"description": "Just TRY and resist my charm… wait—NO, don't! Each <a href=\"/classes/songweaver/\" class=\"auto-xref\" data-term=\"Songweaver\" data-kind=\"class\" data-definition=\"Inspiring presence, sharp wit, sharper tongue.\">Songweaver</a> holds a spark granted to them by a muse at birth; a spark which fuels their creative energy and flows forth in the form of a sharp wit, relentless humor, or moving art.\n\nThe power of a <a href=\"/classes/songweaver/\" class=\"auto-xref\" data-term=\"Songweaver\" data-kind=\"class\" data-definition=\"Inspiring presence, sharp wit, sharper tongue.\">Songweaver</a>'s spark is also evident in their powerful sway over others. Songweavers can bolster and infuse courage in their allies, or… make their enemies' brains leak out through their ears. The Songweaver can bring a whole new meaning to verbal abuse! They can even redirect the (often justified) attacks of others, in order to protect their own moneymakers. As a Songweaver, you can:\n\n- **Charm** the hapless people you meet and inspire your allies to reach fantastic new heights of heroism!\n\n- **Use your Lyrical Weaponry** and powerful charisma to dominate enemies and call special friends to aid you in your journeys and battles. You can even redirect attacks away from yourself and make enemies attack their own allies!\n\n- **<a href=\"/classes/mage/\" class=\"auto-xref\" data-term=\"Control\" data-kind=\"subclass\" data-definition=\"Control subclass of Mage.\">Control</a> the Battlefield** with a chord of chaos, a rad heroic ballad, or a debilitating rhapsody; make your allies and enemies alike dance to your tune!",
 		"keyStats": [
 			{
 				"stat": "WIL"
@@ -3611,11 +3611,11 @@
 				"abilities": [
 					{
 						"name": "Wind Spellcasting",
-						"description": "You know cantrips from the Wind school and 1 other school of your choice. You also know the cantrip Vicious Mockery: (Wind cantrip) Action: Range: 12. Damage: 1d4+INT psychic (ignoring armor). On hit: the target is Taunted during their next turn. High Levels: +2 damage every 5 levels."
+						"description": "You know cantrips from the Wind school and 1 other school of your choice. You also know the cantrip <a href=\"/spells/vicious-mockery/\" class=\"auto-xref\" data-term=\"Vicious Mockery\" data-kind=\"spell\" data-definition=\"Range: 12. Damage: 1d4+INT psychic (ignoring armor). On hit: the target is Taunted during their next turn. High Levels: +2 damage every 5 levels.\">Vicious Mockery</a>: (Wind cantrip) Action: Range: 12. Damage: 1d4+INT psychic (ignoring armor). On hit: the target is <a href=\"/conditions/taunted/\" class=\"auto-xref\" data-term=\"Taunted\" data-kind=\"condition\" data-definition=\"Disadvantage on attacks except against the most recent taunter.\">Taunted</a> during their next turn. High Levels: +2 damage every 5 levels."
 					},
 					{
 						"name": "Songweaver's Inspiration",
-						"description": "(2×WIL times/Safe Rest) Free Reaction: Allow an ally to reroll a single die related to an attack or save (must keep either result)."
+						"description": "(2×WIL times/Safe Rest) <a href=\"/glossary/free/\" class=\"auto-xref\" data-term=\"Free\" data-kind=\"glossary\" data-definition=\"Does not cost an action or any other resource (e.g., mana) unless otherwise stated.\">Free</a> Reaction: Allow an ally to reroll a single die related to an attack or save (must keep either result)."
 					}
 				]
 			},
@@ -3624,7 +3624,7 @@
 				"abilities": [
 					{
 						"name": "Mana and Unlock Tier 1 Spells",
-						"description": "You unlock tier 1 spells in the schools you know and gain a mana pool equal to (INT×3)+LVL, recharges on a Safe Rest."
+						"description": "You unlock tier 1 spells in the schools you know and gain a mana pool equal to (INT×3)+<a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a>, recharges on a Safe Rest."
 					},
 					{
 						"name": "Jack of All Trades",
@@ -3641,11 +3641,11 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Choose a Songweaver subclass."
+						"description": "Choose a <a href=\"/classes/songweaver/\" class=\"auto-xref\" data-term=\"Songweaver\" data-kind=\"class\" data-definition=\"Inspiring presence, sharp wit, sharper tongue.\">Songweaver</a> subclass."
 					},
 					{
 						"name": "Quick Wit",
-						"description": "When you roll Initiative, you may regain 2 spent uses of your Songweaver's Inspiration (these expire at the end of combat if left unused)."
+						"description": "When you roll Initiative, you may regain 2 spent uses of your <a href=\"/classes/songweaver/\" class=\"auto-xref\" data-term=\"Songweaver\" data-kind=\"class\" data-definition=\"Inspiring presence, sharp wit, sharper tongue.\">Songweaver</a>'s Inspiration (these expire at the end of combat if left unused)."
 					},
 					{
 						"name": "Windbag",
@@ -3705,7 +3705,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Songweaver subclass feature."
+						"description": "Gain your <a href=\"/classes/songweaver/\" class=\"auto-xref\" data-term=\"Songweaver\" data-kind=\"class\" data-definition=\"Inspiring presence, sharp wit, sharper tongue.\">Songweaver</a> subclass feature."
 					}
 				]
 			},
@@ -3753,7 +3753,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Songweaver subclass feature."
+						"description": "Gain your <a href=\"/classes/songweaver/\" class=\"auto-xref\" data-term=\"Songweaver\" data-kind=\"class\" data-definition=\"Inspiring presence, sharp wit, sharper tongue.\">Songweaver</a> subclass feature."
 					}
 				]
 			},
@@ -3801,7 +3801,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Songweaver subclass feature."
+						"description": "Gain your <a href=\"/classes/songweaver/\" class=\"auto-xref\" data-term=\"Songweaver\" data-kind=\"class\" data-definition=\"Inspiring presence, sharp wit, sharper tongue.\">Songweaver</a> subclass feature."
 					},
 					{
 						"name": "Upgraded Cantrips",
@@ -3858,7 +3858,7 @@
 				"abilities": [
 					{
 						"name": "I'm So Famous!",
-						"description": "+1 to any 2 of your stats. Your Songweaver's Inspiration cannot fail (your target succeeds)."
+						"description": "+1 to any 2 of your stats. Your <a href=\"/classes/songweaver/\" class=\"auto-xref\" data-term=\"Songweaver\" data-kind=\"class\" data-definition=\"Inspiring presence, sharp wit, sharper tongue.\">Songweaver</a>'s Inspiration cannot fail (your target succeeds)."
 					},
 					{
 						"name": "Upgraded Cantrips",
@@ -3874,11 +3874,11 @@
 				"items": [
 					{
 						"name": "Heroic Ballad",
-						"description": "+2 max Songweaver's Inspiration charges. When used to reroll an ally's attack, your Songweaver's Inspiration also grants them +WIL damage on the attack."
+						"description": "+2 max <a href=\"/classes/songweaver/\" class=\"auto-xref\" data-term=\"Songweaver\" data-kind=\"class\" data-definition=\"Inspiring presence, sharp wit, sharper tongue.\">Songweaver</a>'s Inspiration charges. When used to reroll an ally's attack, your Songweaver's Inspiration also grants them +WIL damage on the attack."
 					},
 					{
 						"name": "Inspiring Anthem",
-						"description": "(1/encounter) Action: Grant all friendly Dying creatures who can hear you 1 HP and 1 action."
+						"description": "(1/encounter) Action: Grant all friendly <a href=\"/conditions/dying/\" class=\"auto-xref\" data-term=\"Dying\" data-kind=\"condition\" data-definition=\"At 0 HP. Taking damage while dying causes 2 Wounds, a crit causes 3 instead.\">Dying</a> creatures who can hear you 1 HP and 1 action."
 					},
 					{
 						"name": "Not My Beautiful Faaace!",
@@ -3886,7 +3886,7 @@
 					},
 					{
 						"name": "Rhapsody of the Normal",
-						"description": "When you roll 4 or more on your Vicious Mockery, you may spend a Songweaver's Inspiration charge to temporarily suppress any special abilities they have until the end of their next turn."
+						"description": "When you roll 4 or more on your <a href=\"/spells/vicious-mockery/\" class=\"auto-xref\" data-term=\"Vicious Mockery\" data-kind=\"spell\" data-definition=\"Range: 12. Damage: 1d4+INT psychic (ignoring armor). On hit: the target is Taunted during their next turn. High Levels: +2 damage every 5 levels.\">Vicious Mockery</a>, you may spend a <a href=\"/classes/songweaver/\" class=\"auto-xref\" data-term=\"Songweaver\" data-kind=\"class\" data-definition=\"Inspiring presence, sharp wit, sharper tongue.\">Songweaver</a>'s Inspiration charge to temporarily suppress any special abilities they have until the end of their next turn."
 					},
 					{
 						"name": "Song of Domination",
@@ -3904,7 +3904,7 @@
 						"abilities": [
 							{
 								"name": "Inspiring Presence",
-								"description": "Whenever you use Songweaver's Inspiration, your allies within 12 spaces who can hear you gain WIL temp HP."
+								"description": "Whenever you use <a href=\"/classes/songweaver/\" class=\"auto-xref\" data-term=\"Songweaver\" data-kind=\"class\" data-definition=\"Inspiring presence, sharp wit, sharper tongue.\">Songweaver</a>'s Inspiration, your allies within 12 spaces who can hear you gain WIL temp HP."
 							}
 						]
 					},
@@ -3913,7 +3913,7 @@
 						"abilities": [
 							{
 								"name": "Unfailing Courage",
-								"description": "Your presence inspires others to feats of heroism and courage heard of only in legend. Your Songweaver's Inspiration allows your target to roll with advantage."
+								"description": "Your presence inspires others to feats of heroism and courage heard of only in legend. Your <a href=\"/classes/songweaver/\" class=\"auto-xref\" data-term=\"Songweaver\" data-kind=\"class\" data-definition=\"Inspiring presence, sharp wit, sharper tongue.\">Songweaver</a>'s Inspiration allows your target to roll with advantage."
 							}
 						]
 					},
@@ -3922,7 +3922,7 @@
 						"abilities": [
 							{
 								"name": "Fire in my Bones",
-								"description": "Your Songweaver's Inspiration also grants your target 1 additional action."
+								"description": "Your <a href=\"/classes/songweaver/\" class=\"auto-xref\" data-term=\"Songweaver\" data-kind=\"class\" data-definition=\"Inspiring presence, sharp wit, sharper tongue.\">Songweaver</a>'s Inspiration also grants your target 1 additional action."
 							}
 						]
 					},
@@ -3931,7 +3931,7 @@
 						"abilities": [
 							{
 								"name": "Chorus of Champions",
-								"description": "(1/encounter) Free Reaction: Give all party members 1 action."
+								"description": "(1/encounter) <a href=\"/glossary/free/\" class=\"auto-xref\" data-term=\"Free\" data-kind=\"glossary\" data-definition=\"Does not cost an action or any other resource (e.g., mana) unless otherwise stated.\">Free</a> Reaction: Give all party members 1 action."
 							}
 						]
 					}
@@ -3945,7 +3945,7 @@
 						"abilities": [
 							{
 								"name": "Opportunistic Snark",
-								"description": "Reaction (when an enemy within Range 12 misses an attack): You may cast Vicious Mockery at them; it deals double damage when cast this way."
+								"description": "Reaction (when an enemy within Range 12 misses an attack): You may cast <a href=\"/spells/vicious-mockery/\" class=\"auto-xref\" data-term=\"Vicious Mockery\" data-kind=\"spell\" data-definition=\"Range: 12. Damage: 1d4+INT psychic (ignoring armor). On hit: the target is Taunted during their next turn. High Levels: +2 damage every 5 levels.\">Vicious Mockery</a> at them; it deals double damage when cast this way."
 							}
 						]
 					},
@@ -3954,7 +3954,7 @@
 						"abilities": [
 							{
 								"name": "Fight Picker",
-								"description": "(1/turn) When an enemy is damaged by your Vicious Mockery, you may have one of your allies Taunt them until the end of the enemy's turn instead."
+								"description": "(1/turn) When an enemy is damaged by your <a href=\"/spells/vicious-mockery/\" class=\"auto-xref\" data-term=\"Vicious Mockery\" data-kind=\"spell\" data-definition=\"Range: 12. Damage: 1d4+INT psychic (ignoring armor). On hit: the target is Taunted during their next turn. High Levels: +2 damage every 5 levels.\">Vicious Mockery</a>, you may have one of your allies Taunt them until the end of the enemy's turn instead."
 							}
 						]
 					},
@@ -3972,7 +3972,7 @@
 						"abilities": [
 							{
 								"name": "Words Like Swords",
-								"description": "Your Vicious Mockery damage becomes 1d6+INT+ WIL."
+								"description": "Your <a href=\"/spells/vicious-mockery/\" class=\"auto-xref\" data-term=\"Vicious Mockery\" data-kind=\"spell\" data-definition=\"Range: 12. Damage: 1d4+INT psychic (ignoring armor). On hit: the target is Taunted during their next turn. High Levels: +2 damage every 5 levels.\">Vicious Mockery</a> damage becomes 1d6+INT+ WIL."
 							}
 						]
 					}
@@ -3983,7 +3983,7 @@
 	},
 	{
 		"name": "Stormshifter",
-		"description": "The trees whisper their excitement, the clouds sing with glee. Rejoice! The Master of Storm & Fang arrives. All who would seek passage through the ancient grove, heed this warning: Do not provoke the forest or its inhabitants. Beseech for passage humbly, even if its guardian is unseen, rest assured that you… are not.\n\nThose who traverse the woodlands may feel the vigilant gaze of a Stormshifter upon them. Legend speaks of an ancient union between mortal and dryad, birthing beings capable of wielding lightning and tempests as others wield blade and shield. This is but half the tale.\n\nWanderers recount encounters with beings, some wise and benevolent, others fearsome, with claws that sparked with lightning and pelts sharp as daggers. They are as one with storm and beast, embodying the serene beauty and raw power of nature's grace. As a Stormshifter, you can:\n\n- **Aid your allies** in whatever role is most needed.\n\n- **Wade into the fray** as a shapeshifted beast ranging from friendly to vicious, indomitable, or HORRIBLE.\n\n- **Cast powerful spells** from a distance to strike down, control, mend, and more.",
+		"description": "The trees whisper their excitement, the clouds sing with glee. Rejoice! The Master of Storm & Fang arrives. All who would seek passage through the ancient grove, heed this warning: Do not provoke the forest or its inhabitants. Beseech for passage humbly, even if its guardian is unseen, rest assured that you… are not.\n\nThose who traverse the woodlands may feel the vigilant gaze of a <a href=\"/classes/stormshifter/\" class=\"auto-xref\" data-term=\"Stormshifter\" data-kind=\"class\" data-definition=\"Master of weather, beast, and nature.\">Stormshifter</a> upon them. Legend speaks of an ancient union between mortal and dryad, birthing beings capable of wielding lightning and tempests as others wield blade and shield. This is but half the tale.\n\nWanderers recount encounters with beings, some wise and benevolent, others fearsome, with claws that sparked with lightning and pelts sharp as daggers. They are as one with storm and beast, embodying the serene beauty and raw power of nature's grace. As a <a href=\"/classes/stormshifter/\" class=\"auto-xref\" data-term=\"Stormshifter\" data-kind=\"class\" data-definition=\"Master of weather, beast, and nature.\">Stormshifter</a>, you can:\n\n- **Aid your allies** in whatever role is most needed.\n\n- **Wade into the fray** as a shapeshifted beast ranging from friendly to vicious, indomitable, or HORRIBLE.\n\n- **Cast powerful spells** from a distance to strike down, control, mend, and more.",
 		"keyStats": [
 			{
 				"stat": "WIL"
@@ -4052,7 +4052,7 @@
 					},
 					{
 						"name": "Mana and Unlock Tier 1 Spells",
-						"description": "You unlock tier 1 Wind and Lightning spells and gain a mana pool equal to (WIL×3)+LVL, recharges on a Safe Rest."
+						"description": "You unlock tier 1 Wind and Lightning spells and gain a mana pool equal to (WIL×3)+<a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a>, recharges on a Safe Rest."
 					}
 				]
 			},
@@ -4061,7 +4061,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Choose a Stormshifter subclass."
+						"description": "Choose a <a href=\"/classes/stormshifter/\" class=\"auto-xref\" data-term=\"Stormshifter\" data-kind=\"class\" data-definition=\"Master of weather, beast, and nature.\">Stormshifter</a> subclass."
 					},
 					{
 						"name": "Direbeast Form (2)",
@@ -4125,7 +4125,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Stormshifter subclass feature."
+						"description": "Gain your <a href=\"/classes/stormshifter/\" class=\"auto-xref\" data-term=\"Stormshifter\" data-kind=\"class\" data-definition=\"Master of weather, beast, and nature.\">Stormshifter</a> subclass feature."
 					},
 					{
 						"name": "Stormcaller (2)",
@@ -4146,7 +4146,7 @@
 					},
 					{
 						"name": "Stormborn",
-						"description": "Gain resistance to lightning damage. (1/day) You may gain advantage on a Naturecraft check or Concentration check."
+						"description": "Gain resistance to lightning damage. (1/day) You may gain advantage on a Naturecraft check or <a href=\"/glossary/concentration/\" class=\"auto-xref\" data-term=\"Concentration\" data-kind=\"glossary\" data-definition=\"Can only Concentrate on 1 thing at a time. DC 10 STR save when crit or lose concentration, see pg. 10.\">Concentration</a> check."
 					}
 				]
 			},
@@ -4185,7 +4185,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Stormshifter subclass feature."
+						"description": "Gain your <a href=\"/classes/stormshifter/\" class=\"auto-xref\" data-term=\"Stormshifter\" data-kind=\"class\" data-definition=\"Master of weather, beast, and nature.\">Stormshifter</a> subclass feature."
 					}
 				]
 			},
@@ -4237,7 +4237,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Stormshifter subclass feature."
+						"description": "Gain your <a href=\"/classes/stormshifter/\" class=\"auto-xref\" data-term=\"Stormshifter\" data-kind=\"class\" data-definition=\"Master of weather, beast, and nature.\">Stormshifter</a> subclass feature."
 					},
 					{
 						"name": "Upgraded Cantrips",
@@ -4310,15 +4310,15 @@
 				"items": [
 					{
 						"name": "Fearsome Beast",
-						"description": "(Large) Transform into any Large beast. Gain DEX+LVL temp HP (until Beastshift ends), the Gore attack, and Fearsome. Gore: Action: 1d6+LVL damage, on hit: Gain LVL temp HP. Fearsome: Whenever you Interpose or Defend, you may spend 1 mana to force them to reroll the attack."
+						"description": "(Large) Transform into any Large beast. Gain DEX+<a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> temp HP (until Beastshift ends), the Gore attack, and Fearsome. Gore: Action: 1d6+LVL damage, on hit: Gain LVL temp HP. Fearsome: Whenever you Interpose or Defend, you may spend 1 mana to force them to reroll the attack."
 					},
 					{
 						"name": "Beast of the Pack",
-						"description": "(Medium) Transform into a Medium beast. Gain +DEX speed, Supercharge, and the Thunderfang attack. Thunderfang: Action: 1d4+LVL piercing damage. Cumulative +1d4 lightning damage on crit or kill. Supercharge: Spend up to WIL mana for +1d8 lightning damage per mana spent on next Thunderfang (you take this damage on a miss)."
+						"description": "(Medium) Transform into a Medium beast. Gain +DEX speed, Supercharge, and the Thunderfang attack. Thunderfang: Action: 1d4+<a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> piercing damage. Cumulative +1d4 lightning damage on crit or kill. Supercharge: Spend up to WIL mana for +1d8 lightning damage per mana spent on next Thunderfang (you take this damage on a miss)."
 					},
 					{
 						"name": "Beast of Nightmares",
-						"description": "(Tiny) Transform into any Tiny beast or insect. Sting: (1/round) Action: Reach 0. 1d4 piercing + 3×LVL acid damage (ignoring armor), on crit: 4×LVL damage. Silent But Deadly: Speed 2. You cannot Defend or Interpose. Attackers cannot target you until you become conspicuous."
+						"description": "(Tiny) Transform into any Tiny beast or insect. Sting: (1/round) Action: Reach 0. 1d4 piercing + 3×<a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> acid damage (ignoring armor), on crit: 4×LVL damage. Silent But Deadly: Speed 2. You cannot Defend or Interpose. Attackers cannot target you until you become conspicuous."
 					}
 				]
 			},
@@ -4340,11 +4340,11 @@
 					},
 					{
 						"name": "Earthwalker",
-						"description": "+2 armor. Can burrow through dirt and unworked rock at half speed (leaving a tunnel behind). Advantage against the Prone condition."
+						"description": "+2 armor. Can burrow through dirt and unworked rock at half speed (leaving a tunnel behind). Advantage against the <a href=\"/conditions/prone/\" class=\"auto-xref\" data-term=\"Prone\" data-kind=\"condition\" data-definition=\"Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.\">Prone</a> condition."
 					},
 					{
 						"name": "Keen Senses",
-						"description": "Advantage on Perception and Assess checks. Unaffected by Blinded."
+						"description": "Advantage on Perception and <a href=\"/glossary/assess/\" class=\"auto-xref\" data-term=\"Assess\" data-kind=\"glossary\" data-definition=\"An action to strategically analyze the situation in combat, see pg. 13.\">Assess</a> checks. Unaffected by <a href=\"/conditions/blinded/\" class=\"auto-xref\" data-term=\"Blinded\" data-kind=\"condition\" data-definition=\"Can't see. Attacks against you have advantage, and your attacks have disadvantage.\">Blinded</a>."
 					},
 					{
 						"name": "Leader of the Pack",
@@ -4439,7 +4439,7 @@
 							},
 							{
 								"name": "Attuned to Nature",
-								"description": "(1/day) Add LVL to any skill check related to nature or weather."
+								"description": "(1/day) Add <a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> to any skill check related to nature or weather."
 							}
 						]
 					},
@@ -4466,7 +4466,7 @@
 						"abilities": [
 							{
 								"name": "Master of Storm",
-								"description": "You can concentrate on 1 lightning spell and 1 wind spell at the same time. (1/Safe Rest) You can cast Ride the Lightning for 0 mana."
+								"description": "You can concentrate on 1 lightning spell and 1 wind spell at the same time. (1/Safe Rest) You can cast <a href=\"/spells/ride-the-lightning/\" class=\"auto-xref\" data-term=\"Ride the Lightning\" data-kind=\"spell\" data-definition=\"Teleport up to 12 spaces away to a spot you can see (if a willing creature is there, swap places with them). Adjacent creatures take d88 damage. Surviving creatures must make a STR save or be hurled back 3 spaces, knocked Prone, and deafened for 1 day. Upcast: +1 DC. Next Closest. If you or an ally is the next closest…\">Ride the Lightning</a> for 0 mana."
 							}
 						]
 					}
@@ -4477,7 +4477,7 @@
 	},
 	{
 		"name": "Zephyr",
-		"description": "A Zephyr dedicates their life to the relentless pursuit of kinetic perfection. They hone their bodies into blurs of motion, training from a young age in remote wilds or mountain monasteries, wielding speed to unleash blows that echo through their foes and slip past attacks like a whispering wind. Speed is both their weapon and shield.\n\nThrough ceaseless training, they harness their inner momentum to achieve feats of supernatural agility, executing every motion with flowing precision. The Zephyr is:\n\n- **Unarmed and Dangerous.** When unarmed and unarmored, you're a relentless force on the battlefield. Absorb blows and deliver devastating strikes, leaving foes in awe of your tenacity and speed.\n\n- **A Graceful Combatant.** Move with unparalleled speed and determination, outpacing your allies and foes alike. Seize the initiative and strike swiftly, ensuring you're always at the forefront of combat. Your reflexes allow you to retaliate with precision and turn enemy strikes into opportunities for devastating counterattacks.",
+		"description": "A <a href=\"/classes/zephyr/\" class=\"auto-xref\" data-term=\"Zephyr\" data-kind=\"class\" data-definition=\"A disciplined martial artist with swift hands and swift feet.\">Zephyr</a> dedicates their life to the relentless pursuit of kinetic perfection. They hone their bodies into blurs of motion, training from a young age in remote wilds or mountain monasteries, wielding speed to unleash blows that echo through their foes and slip past attacks like a whispering wind. Speed is both their weapon and shield.\n\nThrough ceaseless training, they harness their inner momentum to achieve feats of supernatural agility, executing every motion with flowing precision. The <a href=\"/classes/zephyr/\" class=\"auto-xref\" data-term=\"Zephyr\" data-kind=\"class\" data-definition=\"A disciplined martial artist with swift hands and swift feet.\">Zephyr</a> is:\n\n- **Unarmed and Dangerous.** When unarmed and unarmored, you're a relentless force on the battlefield. Absorb blows and deliver devastating strikes, leaving foes in awe of your tenacity and speed.\n\n- **A Graceful Combatant.** Move with unparalleled speed and determination, outpacing your allies and foes alike. Seize the initiative and strike swiftly, ensuring you're always at the forefront of combat. Your reflexes allow you to retaliate with precision and turn enemy strikes into opportunities for devastating counterattacks.",
 		"keyStats": [
 			{
 				"stat": "DEX"
@@ -4516,7 +4516,7 @@
 					},
 					{
 						"name": "Swift Fists",
-						"description": "Your unarmed strikes are not subject to disadvantage imposed by Rushed Attacks, and their damage is 1d4+STR."
+						"description": "Your unarmed strikes are not subject to disadvantage imposed by <a href=\"/glossary/rushed-attacks/\" class=\"auto-xref\" data-term=\"Rushed Attacks\" data-kind=\"glossary\" data-definition=\"Attacking more than once on a turn imposes a cumulative disadvantage penalty (e.g., attacking with a short sword for the third time on a turn, you would roll 3d6 and take the lowest result). See pg. 13.\">Rushed Attacks</a>, and their damage is 1d4+STR."
 					}
 				]
 			},
@@ -4525,11 +4525,11 @@
 				"abilities": [
 					{
 						"name": "Swift Feet",
-						"description": "While unarmored, gain +2 speed and +LVL Initiative."
+						"description": "While unarmored, gain +2 speed and +<a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> Initiative."
 					},
 					{
 						"name": "Burst of Speed",
-						"description": "When you roll Initiative, gain DEX Bursts of Speed. (1/turn) Spend 1 Burst to use for free: Slipstream (Defend, attack misses), Whirling Defense (Defend, apply armor to every attack this round), Swiftstrike (Attack, ignore Rushed Attack disadvantage), or Windstep (Move, ignore difficult terrain)."
+						"description": "When you roll Initiative, gain DEX Bursts of Speed. (1/turn) Spend 1 Burst to use for free: Slipstream (Defend, attack misses), Whirling Defense (Defend, apply armor to every attack this round), Swiftstrike (<a href=\"/glossary/attack/\" class=\"auto-xref\" data-term=\"Attack\" data-kind=\"glossary\" data-definition=\"Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc.\">Attack</a>, ignore Rushed Attack disadvantage), or Windstep (Move, ignore difficult terrain)."
 					}
 				]
 			},
@@ -4538,11 +4538,11 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Choose a Zephyr subclass."
+						"description": "Choose a <a href=\"/classes/zephyr/\" class=\"auto-xref\" data-term=\"Zephyr\" data-kind=\"class\" data-definition=\"A disciplined martial artist with swift hands and swift feet.\">Zephyr</a> subclass."
 					},
 					{
 						"name": "Kinetic Momentum",
-						"description": "Whenever you gain a Wound, gain a Burst of Speed."
+						"description": "Whenever you gain a <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a>, gain a Burst of Speed."
 					},
 					{
 						"name": "Ethereal Projection",
@@ -4555,7 +4555,7 @@
 				"abilities": [
 					{
 						"name": "Unyielding Resolve",
-						"description": "Ignore the first Wound you would suffer each encounter (when-Wounded abilities, such as Kinetic Momentum, still trigger)."
+						"description": "Ignore the first <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a> you would suffer each encounter (when-<a href=\"/conditions/wounded/\" class=\"auto-xref\" data-term=\"Wounded\" data-kind=\"condition\" data-definition=\"Has any Wounds (typically 6 Wounds and a hero is dead).\">Wounded</a> abilities, such as Kinetic Momentum, still trigger)."
 					},
 					{
 						"name": "Key Stat Increase",
@@ -4572,7 +4572,7 @@
 				"abilities": [
 					{
 						"name": "Reverberating Strikes",
-						"description": "You learn to focus your energy and transfer it as an additional concussive force into your foes. Add LVL bludgeoning damage to all of your melee attacks."
+						"description": "You learn to focus your energy and transfer it as an additional concussive force into your foes. Add <a href=\"/glossary/lvl/\" class=\"auto-xref\" data-term=\"LVL\" data-kind=\"glossary\" data-definition=\"Replace this with your Hero's level.\">LVL</a> bludgeoning damage to all of your melee attacks."
 					},
 					{
 						"name": "Secondary Stat Increase",
@@ -4598,7 +4598,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Zephyr subclass feature."
+						"description": "Gain your <a href=\"/classes/zephyr/\" class=\"auto-xref\" data-term=\"Zephyr\" data-kind=\"class\" data-definition=\"A disciplined martial artist with swift hands and swift feet.\">Zephyr</a> subclass feature."
 					}
 				]
 			},
@@ -4646,7 +4646,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Zephyr subclass feature."
+						"description": "Gain your <a href=\"/classes/zephyr/\" class=\"auto-xref\" data-term=\"Zephyr\" data-kind=\"class\" data-definition=\"A disciplined martial artist with swift hands and swift feet.\">Zephyr</a> subclass feature."
 					}
 				]
 			},
@@ -4690,7 +4690,7 @@
 				"abilities": [
 					{
 						"name": "Subclass",
-						"description": "Gain your Zephyr subclass feature."
+						"description": "Gain your <a href=\"/classes/zephyr/\" class=\"auto-xref\" data-term=\"Zephyr\" data-kind=\"class\" data-definition=\"A disciplined martial artist with swift hands and swift feet.\">Zephyr</a> subclass feature."
 					}
 				]
 			},
@@ -4712,7 +4712,7 @@
 				"abilities": [
 					{
 						"name": "Unyielding Resolve (3)",
-						"description": "Ignore the first 3 Wounds you would suffer each encounter. You have advantage on STR saves while Dying."
+						"description": "Ignore the first 3 Wounds you would suffer each encounter. You have advantage on STR saves while <a href=\"/conditions/dying/\" class=\"auto-xref\" data-term=\"Dying\" data-kind=\"condition\" data-definition=\"At 0 HP. Taking damage while dying causes 2 Wounds, a crit causes 3 instead.\">Dying</a>."
 					},
 					{
 						"name": "Secondary Stat Increase",
@@ -4743,7 +4743,7 @@
 				"abilities": [
 					{
 						"name": "Windborne",
-						"description": "+1 to any 2 of your stats. +1 additional burst of speed when you roll Initiative. Permanently gain 1 action (while Dying, you have a max of 2 actions)."
+						"description": "+1 to any 2 of your stats. +1 additional burst of speed when you roll Initiative. Permanently gain 1 action (while <a href=\"/conditions/dying/\" class=\"auto-xref\" data-term=\"Dying\" data-kind=\"condition\" data-definition=\"At 0 HP. Taking damage while dying causes 2 Wounds, a crit causes 3 instead.\">Dying</a>, you have a max of 2 actions)."
 					}
 				]
 			}
@@ -4759,11 +4759,11 @@
 					},
 					{
 						"name": "Blur",
-						"description": "(1/encounter) When you Defend, you may first move up to half your speed away, taking no damage if you are now out of range or have Full Cover."
+						"description": "(1/encounter) When you Defend, you may first move up to half your speed away, taking no damage if you are now out of range or have Full <a href=\"/glossary/cover/\" class=\"auto-xref\" data-term=\"Cover\" data-kind=\"glossary\" data-definition=\"If partially obscured, incoming attacks have disadvantage. If completely obscured, cannot be targeted. See pg. 10.\">Cover</a>."
 					},
 					{
 						"name": "Bodily Discipline",
-						"description": "You may spend 1 action to end any non-Wound condition on yourself."
+						"description": "You may spend 1 action to end any non-<a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a> condition on yourself."
 					},
 					{
 						"name": "Enduring Soul",
@@ -4779,7 +4779,7 @@
 					},
 					{
 						"name": "Mighty Soul",
-						"description": "You cannot be moved against your will. Whenever you would fail a saving throw, you may gain a Wound in order to add your STR to the result you rolled. You may repeat this any number of times."
+						"description": "You cannot be moved against your will. Whenever you would fail a saving throw, you may gain a <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a> in order to add your STR to the result you rolled. You may repeat this any number of times."
 					},
 					{
 						"name": "Quickstrike",
@@ -4809,7 +4809,7 @@
 						"abilities": [
 							{
 								"name": "Exploding Soul",
-								"description": "(1/round) On your turn, you may suffer a Wound. Whenever you gain a Wound, deal STR+Wounds damage to any creatures you choose within 2 spaces (ignoring armor) and give them the Smoldering condition."
+								"description": "(1/round) On your turn, you may suffer a <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a>. Whenever you gain a Wound, deal STR+Wounds damage to any creatures you choose within 2 spaces (ignoring armor) and give them the Smoldering condition."
 							}
 						]
 					},
@@ -4850,7 +4850,7 @@
 						"abilities": [
 							{
 								"name": "Bring the Pain",
-								"description": "(1/round) You may turn any melee attack against you into a crit. Whenever you are crit, reduce the damage by half. The attacker takes the same amount of damage you took (ignoring armor). You may suffer 1 Wound to double the damage the enemy takes."
+								"description": "(1/round) You may turn any melee attack against you into a crit. Whenever you are crit, reduce the damage by half. The attacker takes the same amount of damage you took (ignoring armor). You may suffer 1 <a href=\"/glossary/wound/\" class=\"auto-xref\" data-term=\"Wound\" data-kind=\"glossary\" data-definition=\"A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9.\">Wound</a> to double the damage the enemy takes."
 							}
 						]
 					},
@@ -4868,7 +4868,7 @@
 						"abilities": [
 							{
 								"name": "Pain Sharpens the Mind",
-								"description": "While you are Bloodied, gain advantage on the first attack you make each turn, and on all saves."
+								"description": "While you are <a href=\"/conditions/bloodied/\" class=\"auto-xref\" data-term=\"Bloodied\" data-kind=\"condition\" data-definition=\"At half HP or less.\">Bloodied</a>, gain advantage on the first attack you make each turn, and on all saves."
 							}
 						]
 					},
