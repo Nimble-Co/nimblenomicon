@@ -8,17 +8,14 @@ info:
 
 
     Each collection is available at `GET /api/{collection}` plus a dedicated path per dataset. When
-    the site uses a path prefix (for example GitHub project pages), prefix these paths with that
-    base URL.
+    the site is served under a subpath, prefix these paths with that base path.
 
 
     Discovery: `GET /api/collections` (a bare `GET /api` is not used so static hosting can emit both
     a directory and leaf files under `/api/`).
 servers:
   - url: /
-    description:
-      Relative to the deployed site root (include the repository path segment for GitHub
-      project pages when applicable).
+    description: Relative to the deployed site root (include the subpath when the app is not at `/`).
 paths:
   /api/collections:
     get:

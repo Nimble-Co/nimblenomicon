@@ -10,14 +10,11 @@ import { STARLIGHT_GLOBAL_SIDEBAR } from './src/config/section-sidebars';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const owner = process.env.GITHUB_REPOSITORY_OWNER;
-const repo = process.env.GITHUB_REPOSITORY?.split('/')[1];
-const isUserSite = Boolean(owner && repo && repo === `${owner}.github.io`);
+/** Cloudflare Pages sets `CF_PAGES_URL` during builds. Optional `SITE_URL` for other environments (e.g. CI) that need a canonical origin. */
+const site = process.env.CF_PAGES_URL || process.env.SITE_URL || undefined;
 
-/** GitHub Pages (CI): correct absolute URLs and asset paths. Local dev: defaults. */
-/** Trailing slash on `base` is required so `import.meta.env.BASE_URL` matches Astro/Vite rules; otherwise Starlight can emit broken hrefs like `/repo/core-rules/` on project pages. */
-const site = owner && repo ? `https://${owner}.github.io` : undefined;
-const base = owner && repo ? (isUserSite ? '/' : `/${repo}/`) : undefined;
+/** Served at the site root on Cloudflare Pages. Trailing slash on `base` matches Astro/Vite `import.meta.env.BASE_URL` rules. */
+const base = '/';
 
 /** Resolved base for integrations (matches `import.meta.env.BASE_URL` / trailing-slash rules). */
 const baseForIntegrations = base ?? '/';
