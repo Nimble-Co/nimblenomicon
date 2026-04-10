@@ -1,0 +1,57 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+---
+
+<StarlightPage
+	frontmatter={{
+		title: 'Data search',
+		description:
+			'Search ancestries, classes, spells, monsters, and other Nimble reference data.',
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+	hasSidebar={false}
+>
+	<div class="orama-data-search not-prose max-w-3xl" data-orama-root>
+		<p class="text-fg-muted mb-4 text-pretty">
+			This page searches <strong class="text-fg">structured game data</strong> (JSON-backed
+			reference entries). The site header search still uses Pagefind for documentation
+			pages.
+		</p>
+
+		<label class="block">
+			<span class="sr-only">Search game data</span>
+			<input
+				type="search"
+				name="q"
+				disabled
+				autocomplete="off"
+				data-orama-search-input
+				class="border-hairline bg-surface text-fg focus:ring-accent-500/40 w-full rounded-lg border px-3 py-2 text-base outline-none focus:ring-2"
+				placeholder="Search spells, monsters, classes…"
+			/>
+		</label>
+
+		<p
+			class="text-fg-muted mt-2 min-h-[1.25rem] text-sm"
+			data-orama-search-status
+			aria-live="polite"
+		>
+			Loading search index…
+		</p>
+
+		<div class="sr-only" aria-live="polite" data-orama-search-live></div>
+
+		<div data-orama-search-results></div>
+	</div>
+</StarlightPage>
+
+<script>
+	import { initOramaDataSearch } from '../../scripts/orama-search-ui';
+
+	const root = document.querySelector('[data-orama-root]');
+	if (root instanceof HTMLElement) {
+		initOramaDataSearch(root);
+	}
+</script>
