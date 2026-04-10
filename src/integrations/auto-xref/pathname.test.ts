@@ -15,7 +15,7 @@ describe('htmlRelativeToPathname', () => {
 });
 
 describe('distFileToSelfPathname', () => {
-	it('prefixes base for GitHub Pages project sites', () => {
+	it('prefixes page pathnames with basePrefix when non-empty', () => {
 		expect(
 			distFileToSelfPathname('spells/fireball/index.html', '/nimblenomicon'),
 		).toBe('/nimblenomicon/spells/fireball/');
