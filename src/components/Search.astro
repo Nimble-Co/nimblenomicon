@@ -80,6 +80,7 @@ if (project.trailingSlash === 'always') searchAction += '/';
 			this.mobilePanel = this.querySelector('#ss-mobile-search-panel');
 			this.mobileInput = this.querySelector('#ss-mobile-q');
 			this.desktopInput = this.querySelector('#ss-desktop-q');
+			this.syncQueryFromUrl();
 
 			this.mobileToggle?.addEventListener('click', () => {
 				const open =
@@ -139,6 +140,13 @@ if (project.trailingSlash === 'always') searchAction += '/';
 			}
 			if (this.mobilePanel?.hidden) this.openMobile();
 			else this.mobileInput?.focus();
+		}
+
+		private syncQueryFromUrl() {
+			const query = new URLSearchParams(window.location.search).get('q')?.trim();
+			if (!query) return;
+			if (this.desktopInput) this.desktopInput.value = query;
+			if (this.mobileInput) this.mobileInput.value = query;
 		}
 	}
 

@@ -52,7 +52,7 @@ export function initOramaDataSearch(root: HTMLElement): void {
 	);
 	const liveEl = root.querySelector<HTMLElement>('[data-orama-search-live]');
 
-	if (!input || !resultsEl || !statusEl) return;
+	if (!resultsEl || !statusEl) return;
 
 	let db: ReturnType<typeof create> | undefined;
 	let loading = true;
@@ -78,21 +78,30 @@ export function initOramaDataSearch(root: HTMLElement): void {
 			load(instance, raw);
 			db = instance;
 			loading = false;
-			statusEl.textContent = 'Search game data by name or keyword.';
-			input.disabled = false;
 			const initialQuery = new URLSearchParams(window.location.search).get('q');
 			if (initialQuery && initialQuery.trim().length > 0) {
-				input.value = initialQuery.trim();
-				renderResults(input.value);
+				const query = initialQuery.trim();
+				if (input) {
+					input.disabled = false;
+					input.value = query;
+				}
+				statusEl.textContent = `Showing results for “${query}”.`;
+				renderResults(query);
 			} else {
-				input.focus();
+				if (input) {
+					input.disabled = false;
+					statusEl.textContent = 'Search game data by name or keyword.';
+					input.focus();
+				} else {
+					statusEl.textContent = 'Use the top search bar to search game data.';
+				}
 			}
 		})
 		.catch((err: unknown) => {
 			loading = false;
 			const msg = err instanceof Error ? err.message : 'Unknown error';
 			statusEl.textContent = `Could not load search index: ${msg}`;
-			input.disabled = true;
+			if (input) input.disabled = true;
 		});
 
 	function announce(message: string): void {
@@ -156,6 +165,8 @@ export function initOramaDataSearch(root: HTMLElement): void {
 		resultsEl.innerHTML = parts.join('');
 		announce(`${hits.length} result${hits.length === 1 ? '' : 's'} for ${q}`);
 	}
+
+	if (!input) return;
 
 	const run = debounce(() => {
 		if (loading || !db) return;
