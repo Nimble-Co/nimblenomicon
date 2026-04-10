@@ -67,6 +67,7 @@ Kerrik
 Knockback
 Kolb
 Lich
+Lichling
 Lifebinding
 lockpicking
 Longsword
@@ -166,6 +167,7 @@ Battlebow
 Beastshift
 BEEES
 Briarbanes
+Briarbane
 bulette
 CHAARGE
 Cloaker
@@ -189,11 +191,13 @@ improv
 Kelebek
 lockpicks
 Mindfire
+MEEEEEE
 Nestweaver
 Nooooo
 nums
 Packleader
 Ratrider
+Roderic
 Rootbreaker
 shadowblight
 Shadowtrap
