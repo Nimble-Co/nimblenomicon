@@ -143,7 +143,9 @@ if (project.trailingSlash === 'always') searchAction += '/';
 		}
 
 		private syncQueryFromUrl() {
-			const query = new URLSearchParams(window.location.search).get('q')?.trim();
+			const query = new URLSearchParams(window.location.search)
+				.get('q')
+				?.trim();
 			if (!query) return;
 			if (this.desktopInput) this.desktopInput.value = query;
 			if (this.mobileInput) this.mobileInput.value = query;
