@@ -89,7 +89,7 @@ html[data-theme='dark'] {
 	--nimble-font-body: var(--font-sans);
 	/* Header wordmark — base size for “NIMBLENOMICON”; “THE” is a fraction via em in SiteTitle. */
 	--nimble-site-title-name-size: clamp(0.8125rem, 2.2vw, 1.125rem);
-	/* Search trigger — light pill (Pagefind modal keeps Starlight defaults). */
+	/* Search trigger — light pill used by the header/home Orama inputs. */
 	--nimble-search-trigger-bg: #ebebeb;
 	--nimble-search-trigger-fg: #707070;
 	--nimble-search-trigger-radius: 0.625rem;

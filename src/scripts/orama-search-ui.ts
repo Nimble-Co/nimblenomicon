@@ -80,7 +80,13 @@ export function initOramaDataSearch(root: HTMLElement): void {
 			loading = false;
 			statusEl.textContent = 'Search game data by name or keyword.';
 			input.disabled = false;
-			input.focus();
+			const initialQuery = new URLSearchParams(window.location.search).get('q');
+			if (initialQuery && initialQuery.trim().length > 0) {
+				input.value = initialQuery.trim();
+				renderResults(input.value);
+			} else {
+				input.focus();
+			}
 		})
 		.catch((err: unknown) => {
 			loading = false;
