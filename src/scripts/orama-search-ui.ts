@@ -1,7 +1,6 @@
 import { create, load, search, type RawData } from '@orama/orama';
 import {
 	ORAMA_DATA_SEARCH_TYPE_LABELS,
-	ORAMA_DATA_SEARCH_TYPE_ORDER,
 	type OramaDataSearchType,
 } from '../constants/orama-data-search';
 
@@ -132,35 +131,27 @@ export function initOramaDataSearch(root: HTMLElement): void {
 			return;
 		}
 
-		const byType = new Map<OramaDataSearchType, GameDataDoc[]>();
-		for (const t of ORAMA_DATA_SEARCH_TYPE_ORDER) {
-			byType.set(t, []);
-		}
+		const typeLabel = (t: OramaDataSearchType) =>
+			ORAMA_DATA_SEARCH_TYPE_LABELS[t] ?? t;
+
+		const parts: string[] = [
+			`<ul class="mt-3 list-none divide-y divide-hairline p-0">`,
+		];
 		for (const h of hits) {
 			const doc = h.document;
-			const list = byType.get(doc.type);
-			if (list) list.push(doc);
-		}
-
-		const parts: string[] = [];
-		for (const type of ORAMA_DATA_SEARCH_TYPE_ORDER) {
-			const group = byType.get(type);
-			if (!group || group.length === 0) continue;
-			const label = ORAMA_DATA_SEARCH_TYPE_LABELS[type];
+			const kind = escapeHtml(typeLabel(doc.type));
+			const sub = doc.subtitle ? ` — ${escapeHtml(doc.subtitle)}` : '';
+			const link = doc.href
+				? `<a href="${escapeHtml(doc.href)}" class="text-fg font-medium underline decoration-fg/30 underline-offset-2 hover:decoration-fg">${escapeHtml(doc.title)}</a>${sub}`
+				: `<span class="text-fg font-medium">${escapeHtml(doc.title)}</span>${sub}`;
 			parts.push(
-				`<section class="mt-6 border-t border-hairline pt-4 first:mt-0 first:border-t-0 first:pt-0" aria-labelledby="orama-section-${type}">`,
-				`<h2 class="text-lg font-semibold text-fg" id="orama-section-${type}">${escapeHtml(label)}</h2>`,
-				`<ul class="mt-2 space-y-2 list-none p-0">`,
+				`<li class="flex flex-col gap-0.5 py-2">`,
+				`<div class="text-xs font-medium uppercase tracking-wide text-fg-muted leading-none">${kind}</div>`,
+				`<div class="text-sm leading-snug text-fg-muted">${link}</div>`,
+				`</li>`,
 			);
-			for (const doc of group) {
-				const sub = doc.subtitle ? ` — ${escapeHtml(doc.subtitle)}` : '';
-				const link = doc.href
-					? `<a href="${escapeHtml(doc.href)}" class="text-fg font-medium underline decoration-fg/30 underline-offset-2 hover:decoration-fg">${escapeHtml(doc.title)}</a>${sub}`
-					: `<span class="text-fg font-medium">${escapeHtml(doc.title)}</span>${sub}`;
-				parts.push(`<li class="text-sm text-fg-muted">${link}</li>`);
-			}
-			parts.push('</ul></section>');
 		}
+		parts.push('</ul>');
 
 		resultsEl.innerHTML = parts.join('');
 		announce(`${hits.length} result${hits.length === 1 ? '' : 's'} for ${q}`);
