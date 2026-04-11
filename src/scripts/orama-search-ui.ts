@@ -87,7 +87,9 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 	let activeIndex = -1;
 
 	const getOptionAnchors = (): HTMLAnchorElement[] =>
-		Array.from(panel.querySelectorAll<HTMLAnchorElement>('a.ss-quick-link[href]'));
+		Array.from(
+			panel.querySelectorAll<HTMLAnchorElement>('a.ss-quick-link[href]'),
+		);
 
 	const syncActiveClasses = (): void => {
 		const opts = getOptionAnchors();

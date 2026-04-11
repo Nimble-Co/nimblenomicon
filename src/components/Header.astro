@@ -19,9 +19,7 @@ const isHome = pathNormalized === '/';
 const showSearch = shouldRenderSearch && !isHome;
 ---
 
-<div
-	class="nimble-header-inner h-full min-w-0"
->
+<div class="nimble-header-inner h-full min-w-0">
 	<div
 		class="title-wrapper sl-flex min-w-0 overflow-clip p-1 -m-1 md:justify-self-start md:overflow-visible"
 	>
@@ -30,9 +28,7 @@ const showSearch = shouldRenderSearch && !isHome;
 	<div class="sl-flex min-w-0 flex-1 print:hidden">
 		{showSearch && <Search />}
 	</div>
-	<div
-		class="right-group items-center gap-4 sl-hidden print:hidden md:sl-flex"
-	>
+	<div class="right-group items-center gap-4 sl-hidden print:hidden md:sl-flex">
 		<div class="social-icons sl-flex items-center gap-4">
 			<SocialIcons />
 		</div>

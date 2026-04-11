@@ -102,10 +102,7 @@ const rootClass =
 			'.ss-desktop-form .ss-kbd > kbd:first-of-type',
 		);
 		const desktopInput = document.querySelector('#ss-desktop-q');
-		if (
-			!platformKey ||
-			!/(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)
-		) {
+		if (!platformKey || !/(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
 			return;
 		}
 		platformKey.textContent = '⌘';
