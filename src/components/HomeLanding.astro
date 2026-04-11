@@ -202,27 +202,17 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 
 <script>
 	import { initOramaQuickSearch } from '../scripts/orama-search-ui';
-
-	function wireHomeSearchShortcut() {
-		const input = document.querySelector<HTMLInputElement>('#home-search-q');
-		if (!input) return;
-		window.addEventListener('keydown', (e) => {
-			if ((e.metaKey === true || e.ctrlKey === true) && e.key === 'k') {
-				e.preventDefault();
-				input.focus();
-			}
-		});
-	}
-
-	function wireHomeQuickSearch() {
-		const input = document.querySelector<HTMLInputElement>('#home-search-q');
-		const panel = document.querySelector<HTMLElement>('#home-quick-results');
-		if (input && panel) initOramaQuickSearch({ input, panel });
-	}
+	import { bindSearchPaletteShortcut } from '../scripts/search-keyboard-shortcut';
 
 	function initHomeSearch() {
-		wireHomeSearchShortcut();
-		wireHomeQuickSearch();
+		const input = document.querySelector<HTMLInputElement>('#home-search-q');
+		const panel = document.querySelector<HTMLElement>('#home-quick-results');
+		if (input) {
+			bindSearchPaletteShortcut(() => {
+				input.focus();
+			});
+		}
+		if (input && panel) initOramaQuickSearch({ input, panel });
 	}
 
 	if (document.readyState === 'loading') {

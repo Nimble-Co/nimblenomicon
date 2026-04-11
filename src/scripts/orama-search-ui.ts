@@ -3,6 +3,7 @@ import {
 	ORAMA_DATA_SEARCH_TYPE_LABELS,
 	type OramaDataSearchType,
 } from '../constants/orama-data-search';
+import { escapeHtml } from '../utils/html-escape';
 
 type GameDataDoc = {
 	id: string;
@@ -57,14 +58,6 @@ function debounce<T extends (...args: Parameters<T>) => void>(
 			fn(...args);
 		}, ms);
 	};
-}
-
-function escapeHtml(s: string): string {
-	return s
-		.replace(/&/g, '&amp;')
-		.replace(/</g, '&lt;')
-		.replace(/>/g, '&gt;')
-		.replace(/"/g, '&quot;');
 }
 
 export type OramaQuickSearchOptions = {
