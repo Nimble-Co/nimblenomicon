@@ -8,7 +8,8 @@ import SocialIcons from 'virtual:starlight/components/SocialIcons';
 import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
 
 /**
- * Render the `Search` component if Pagefind is enabled or the default search component has been overridden.
+ * Render the `Search` component when Starlight would show it: Pagefind is on,
+ * or the default search component was replaced (this project overrides Search).
  */
 const shouldRenderSearch =
 	config.pagefind ||

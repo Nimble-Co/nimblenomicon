@@ -2,12 +2,14 @@
 import { Icon } from '@astrojs/starlight/components';
 import project from 'virtual:starlight/project-context';
 import { SEARCH_PLACEHOLDER } from '../config/search';
+import { searchPageUrl } from '../utils/url';
 
 const searchPlaceholder = SEARCH_PLACEHOLDER;
 
-const normalizedBase = import.meta.env.BASE_URL.replace(/\/$/, '');
-let searchAction = `${normalizedBase}/search`;
-if (project.trailingSlash === 'always') searchAction += '/';
+const searchAction = searchPageUrl(
+	import.meta.env.BASE_URL,
+	project.trailingSlash,
+);
 ---
 
 <site-search class={Astro.props.class}>
