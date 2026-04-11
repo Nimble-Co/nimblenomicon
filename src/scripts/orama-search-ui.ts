@@ -84,10 +84,46 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 	const root =
 		input.closest('form') ?? input.parentElement ?? panel.parentElement;
 
+	let activeIndex = -1;
+
+	const getOptionAnchors = (): HTMLAnchorElement[] =>
+		Array.from(panel.querySelectorAll<HTMLAnchorElement>('a.ss-quick-link[href]'));
+
+	const syncActiveClasses = (): void => {
+		const opts = getOptionAnchors();
+		for (const a of opts) {
+			a.classList.remove('ss-quick-link--active');
+			a.removeAttribute('aria-selected');
+		}
+		if (activeIndex < 0 || activeIndex >= opts.length) {
+			activeIndex = -1;
+			input.removeAttribute('aria-activedescendant');
+			return;
+		}
+		const el = opts[activeIndex];
+		el.classList.add('ss-quick-link--active');
+		el.setAttribute('aria-selected', 'true');
+		if (el.id) input.setAttribute('aria-activedescendant', el.id);
+		el.scrollIntoView({ block: 'nearest' });
+	};
+
+	const setActive = (index: number): void => {
+		const opts = getOptionAnchors();
+		if (opts.length === 0) {
+			activeIndex = -1;
+			input.removeAttribute('aria-activedescendant');
+			return;
+		}
+		activeIndex = Math.max(-1, Math.min(index, opts.length - 1));
+		syncActiveClasses();
+	};
+
 	const hide = (): void => {
 		panel.hidden = true;
 		panel.innerHTML = '';
 		input.removeAttribute('aria-expanded');
+		activeIndex = -1;
+		input.removeAttribute('aria-activedescendant');
 	};
 
 	if (panel.id) {
@@ -118,20 +154,25 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 			panel.innerHTML = `<p class="ss-quick-empty px-3 py-2 text-left text-sm text-fg-muted">No results for “${escapeHtml(q)}”.</p>`;
 			panel.hidden = false;
 			input.setAttribute('aria-expanded', 'true');
+			activeIndex = -1;
+			input.removeAttribute('aria-activedescendant');
 			return;
 		}
 
 		const parts: string[] = [
 			`<ul class="ss-quick-list m-0 list-none divide-y divide-hairline p-0 text-left" role="listbox">`,
 		];
+		let optNum = 0;
 		for (const h of hits) {
 			const doc = h.document;
 			const kind = escapeHtml(typeLabel(doc.type));
 			const title = escapeHtml(doc.title);
 			if (doc.href) {
+				const optId = `${panel.id}-opt-${optNum}`;
+				optNum += 1;
 				parts.push(
 					`<li role="presentation">`,
-					`<a role="option" class="ss-quick-link flex flex-col items-start gap-0.5 px-3 py-2 text-left no-underline hover:bg-gray-200/80 dark:hover:bg-gray-800/80" href="${escapeHtml(doc.href)}">`,
+					`<a role="option" id="${escapeHtml(optId)}" class="ss-quick-link flex flex-col items-start gap-0.5 px-3 py-2 text-left no-underline hover:bg-gray-200/80 dark:hover:bg-gray-800/80" href="${escapeHtml(doc.href)}">`,
 					`<span class="text-[0.65rem] font-medium uppercase tracking-wide text-fg-muted leading-none">${kind}</span>`,
 					`<span class="text-sm font-medium text-fg">${title}</span>`,
 					`</a>`,
@@ -150,6 +191,8 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 		panel.innerHTML = parts.join('');
 		panel.hidden = false;
 		input.setAttribute('aria-expanded', 'true');
+		activeIndex = -1;
+		input.removeAttribute('aria-activedescendant');
 	};
 
 	const run = debounce(() => {
@@ -166,6 +209,8 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 				panel.innerHTML = `<p class="ss-quick-empty px-3 py-2 text-left text-sm text-danger">Could not load search.</p>`;
 				panel.hidden = false;
 				input.setAttribute('aria-expanded', 'true');
+				activeIndex = -1;
+				input.removeAttribute('aria-activedescendant');
 			});
 	}, DEBOUNCE_MS);
 
@@ -174,7 +219,50 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 		if (input.value === '') hide();
 	});
 	input.addEventListener('keydown', (e) => {
-		if (e.key === 'Escape') hide();
+		if (e.key === 'Escape') {
+			hide();
+			return;
+		}
+
+		const opts = getOptionAnchors();
+		const panelOpen = !panel.hidden && opts.length > 0;
+
+		if (e.key === 'ArrowDown' && panelOpen) {
+			e.preventDefault();
+			if (activeIndex < opts.length - 1) setActive(activeIndex + 1);
+			else if (activeIndex === -1) setActive(0);
+			return;
+		}
+
+		if (e.key === 'ArrowUp' && panelOpen) {
+			e.preventDefault();
+			if (activeIndex === -1) setActive(opts.length - 1);
+			else setActive(activeIndex - 1);
+			return;
+		}
+
+		if (e.key === 'Enter' && activeIndex >= 0 && panelOpen) {
+			const a = opts[activeIndex];
+			if (a?.href) {
+				e.preventDefault();
+				window.location.assign(a.href);
+			}
+			return;
+		}
+	});
+
+	panel.addEventListener('mouseover', (e) => {
+		if (panel.hidden) return;
+		const t = e.target;
+		if (!(t instanceof Element)) return;
+		const a = t.closest('a.ss-quick-link');
+		if (!a || !panel.contains(a)) return;
+		const opts = getOptionAnchors();
+		const idx = opts.indexOf(a as HTMLAnchorElement);
+		if (idx >= 0) {
+			activeIndex = idx;
+			syncActiveClasses();
+		}
 	});
 
 	const onDocClick = (e: MouseEvent): void => {

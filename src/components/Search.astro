@@ -8,13 +8,19 @@ const searchPlaceholder = SEARCH_PLACEHOLDER;
 const normalizedBase = import.meta.env.BASE_URL.replace(/\/$/, '');
 let searchAction = `${normalizedBase}/search`;
 if (project.trailingSlash === 'always') searchAction += '/';
+
+const rootClass =
+	'flex w-full min-w-0 flex-nowrap items-center gap-2 max-[49.999rem]:group-data-[mobile-search-open=false]:justify-end';
 ---
 
-<site-search class={Astro.props.class} data-mobile-search-open="false">
-	<div class="ss-root">
+<site-search
+	class:list={['group', 'contents', Astro.props.class]}
+	data-mobile-search-open="false"
+>
+	<div class={rootClass}>
 		<button
 			type="button"
-			class="ss-mobile-toggle md:sl-hidden"
+			class="ss-mobile-toggle flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-lg border-0 bg-transparent text-xl text-fg-muted hover:text-fg min-[50rem]:hidden"
 			aria-expanded="false"
 			aria-controls="ss-mobile-search-panel"
 			aria-label={searchPlaceholder}
@@ -23,11 +29,16 @@ if (project.trailingSlash === 'always') searchAction += '/';
 		</button>
 		<div
 			id="ss-mobile-search-panel"
-			class="ss-mobile-panel md:sl-hidden"
+			class="ss-mobile-panel flex min-w-0 flex-1 min-[50rem]:hidden"
 			hidden
 		>
-			<div class="ss-search-field">
-				<form method="get" action={searchAction} class="ss-form" role="search">
+			<div class="ss-search-field relative w-full min-w-0">
+				<form
+					method="get"
+					action={searchAction}
+					class="ss-form flex w-full min-w-0 items-center gap-2 rounded-lg border border-hairline bg-surface-nav px-2 py-1.5 text-fg"
+					role="search"
+				>
 					<label class="sr-only" for="ss-mobile-q">{searchPlaceholder}</label>
 					<input
 						id="ss-mobile-q"
@@ -35,23 +46,25 @@ if (project.trailingSlash === 'always') searchAction += '/';
 						name="q"
 						autocomplete="off"
 						placeholder={searchPlaceholder}
-						class="ss-input"
+						class="ss-input min-w-0 flex-1 border-0 bg-transparent font-inherit text-inherit outline-none placeholder:italic placeholder:text-fg-muted"
 						aria-autocomplete="list"
 					/>
 				</form>
 				<div
 					id="ss-mobile-quick-results"
-					class="ss-quick-panel not-prose"
+					class="ss-quick-panel not-prose absolute left-0 right-0 top-full z-[200] mt-1 max-h-[min(70vh,20rem)] overflow-x-hidden overflow-y-auto rounded-lg border border-hairline bg-surface-nav text-start text-fg shadow-lg [&_a]:focus-visible:outline [&_a]:focus-visible:outline-2 [&_a]:focus-visible:outline-offset-[-2px] [&_a]:focus-visible:outline-accent-500"
 					hidden
 				>
 				</div>
 			</div>
 		</div>
-		<div class="ss-search-field ss-desktop-wrap sl-hidden md:sl-flex">
+		<div
+			class="ss-search-field ss-desktop-wrap relative hidden min-[50rem]:flex w-full min-w-0 max-w-[40rem] flex-1"
+		>
 			<form
 				method="get"
 				action={searchAction}
-				class="ss-form ss-desktop-form"
+				class="ss-form ss-desktop-form flex h-10 w-full min-w-0 items-center gap-2 rounded-lg border border-hairline bg-surface-nav pl-3 pr-2 text-sm text-fg hover:border-gray-300 dark:hover:border-gray-500"
 				role="search"
 			>
 				<Icon name="magnifier" />
@@ -62,16 +75,19 @@ if (project.trailingSlash === 'always') searchAction += '/';
 					name="q"
 					autocomplete="off"
 					placeholder={searchPlaceholder}
-					class="ss-input"
+					class="ss-input min-w-0 flex-1 border-0 bg-transparent font-inherit text-inherit outline-none placeholder:italic placeholder:text-fg-muted"
 					aria-autocomplete="list"
 				/>
-				<kbd class="ss-kbd sl-hidden" aria-hidden="true">
+				<kbd
+					class="ss-kbd ms-auto hidden min-[50rem]:inline-flex items-center gap-0.5 rounded bg-surface-code px-1.5 font-sans text-xs text-fg-muted"
+					aria-hidden="true"
+				>
 					<kbd>{Astro.locals.t('search.ctrlKey')}</kbd><kbd>K</kbd>
 				</kbd>
 			</form>
 			<div
 				id="ss-desktop-quick-results"
-				class="ss-quick-panel not-prose"
+				class="ss-quick-panel not-prose absolute left-0 right-0 top-full z-[200] mt-1 max-h-[min(70vh,20rem)] overflow-x-hidden overflow-y-auto rounded-lg border border-hairline bg-surface-nav text-start text-fg shadow-lg [&_a]:focus-visible:outline [&_a]:focus-visible:outline-2 [&_a]:focus-visible:outline-offset-[-2px] [&_a]:focus-visible:outline-accent-500"
 				hidden
 			>
 			</div>
@@ -79,8 +95,29 @@ if (project.trailingSlash === 'always') searchAction += '/';
 	</div>
 </site-search>
 
+<!-- Inline: ⌘ + aria-keyshortcuts on Apple (see Starlight Search.astro). -->
+<script is:inline>
+	(() => {
+		const platformKey = document.querySelector(
+			'.ss-desktop-form .ss-kbd > kbd:first-of-type',
+		);
+		const desktopInput = document.querySelector('#ss-desktop-q');
+		if (
+			!platformKey ||
+			!/(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)
+		) {
+			return;
+		}
+		platformKey.textContent = '⌘';
+		desktopInput?.setAttribute('aria-keyshortcuts', 'Meta+K');
+	})();
+</script>
+
 <script>
 	import { initOramaQuickSearch } from '../scripts/orama-search-ui';
+
+	const MOBILE_PANEL_ENTER = 'animate-ss-mobile-panel-enter';
+	const MOBILE_PANEL_LEAVE = 'animate-ss-mobile-panel-leave';
 
 	class SiteSearch extends HTMLElement {
 		private onDocClick = (e: MouseEvent) => {
@@ -222,17 +259,20 @@ if (project.trailingSlash === 'always') searchAction += '/';
 
 			const first = this.mobileToggle.getBoundingClientRect();
 
-			this.mobilePanel.classList.remove('ss-mobile-panel--leave');
+			this.mobilePanel.classList.remove(
+				MOBILE_PANEL_LEAVE,
+				'pointer-events-none',
+			);
 			this.setAttribute('data-mobile-search-open', 'true');
 			this.mobilePanel.hidden = false;
 			this.mobileToggle.setAttribute('aria-expanded', 'true');
 
 			if (!this.prefersReducedMotion()) {
-				this.mobilePanel.classList.add('ss-mobile-panel--enter');
+				this.mobilePanel.classList.add(MOBILE_PANEL_ENTER);
 				const onEnterEnd = (e: AnimationEvent): void => {
 					if (e.target !== this.mobilePanel) return;
 					if (e.animationName !== 'ss-mobile-panel-enter') return;
-					this.mobilePanel?.classList.remove('ss-mobile-panel--enter');
+					this.mobilePanel?.classList.remove(MOBILE_PANEL_ENTER);
 					this.mobilePanel?.removeEventListener('animationend', onEnterEnd);
 				};
 				this.mobilePanel.addEventListener('animationend', onEnterEnd);
@@ -255,7 +295,7 @@ if (project.trailingSlash === 'always') searchAction += '/';
 				return;
 			}
 
-			if (this.mobilePanel.classList.contains('ss-mobile-panel--leave')) {
+			if (this.mobilePanel.classList.contains(MOBILE_PANEL_LEAVE)) {
 				return;
 			}
 
@@ -266,21 +306,25 @@ if (project.trailingSlash === 'always') searchAction += '/';
 				this.mobilePanel.hidden = true;
 				this.mobileToggle.setAttribute('aria-expanded', 'false');
 				this.mobilePanel.classList.remove(
-					'ss-mobile-panel--enter',
-					'ss-mobile-panel--leave',
+					MOBILE_PANEL_ENTER,
+					MOBILE_PANEL_LEAVE,
+					'pointer-events-none',
 				);
 				return;
 			}
 
 			this.mobileInput?.blur();
-			this.mobilePanel.classList.remove('ss-mobile-panel--enter');
-			this.mobilePanel.classList.add('ss-mobile-panel--leave');
+			this.mobilePanel.classList.remove(MOBILE_PANEL_ENTER);
+			this.mobilePanel.classList.add(MOBILE_PANEL_LEAVE, 'pointer-events-none');
 
 			let leaveFinished = false;
 			const finishClose = (): void => {
 				if (leaveFinished || !this.mobilePanel || !this.mobileToggle) return;
 				leaveFinished = true;
-				this.mobilePanel.classList.remove('ss-mobile-panel--leave');
+				this.mobilePanel.classList.remove(
+					MOBILE_PANEL_LEAVE,
+					'pointer-events-none',
+				);
 				this.setAttribute('data-mobile-search-open', 'false');
 				this.mobilePanel.hidden = true;
 				this.mobileToggle.setAttribute('aria-expanded', 'false');
@@ -298,7 +342,7 @@ if (project.trailingSlash === 'always') searchAction += '/';
 			window.setTimeout(() => {
 				if (
 					leaveFinished ||
-					!this.mobilePanel?.classList.contains('ss-mobile-panel--leave')
+					!this.mobilePanel?.classList.contains(MOBILE_PANEL_LEAVE)
 				) {
 					return;
 				}
@@ -328,190 +372,3 @@ if (project.trailingSlash === 'always') searchAction += '/';
 
 	customElements.define('site-search', SiteSearch);
 </script>
-
-<style>
-	@layer starlight.core {
-		site-search {
-			display: contents;
-		}
-
-		.ss-root {
-			display: flex;
-			flex-wrap: nowrap;
-			align-items: center;
-			gap: 0.5rem;
-			width: 100%;
-			min-width: 0;
-		}
-
-		@media (max-width: 49.999rem) {
-			site-search[data-mobile-search-open='false'] .ss-root {
-				justify-content: flex-end;
-			}
-		}
-
-		.ss-mobile-toggle {
-			display: flex;
-			flex-shrink: 0;
-			align-items: center;
-			justify-content: center;
-			border: 0;
-			background-color: transparent;
-			color: var(--sl-color-gray-1);
-			cursor: pointer;
-			height: 2.5rem;
-			width: 2.5rem;
-			font-size: var(--sl-text-xl);
-			border-radius: 0.5rem;
-		}
-
-		.ss-mobile-toggle:hover {
-			color: var(--sl-color-white);
-		}
-
-		.ss-mobile-panel {
-			flex: 1 1 auto;
-			min-width: 0;
-		}
-
-		.ss-mobile-panel[hidden] {
-			display: none;
-		}
-
-		@keyframes ss-mobile-panel-enter {
-			from {
-				opacity: 0;
-				transform: translateX(0.75rem);
-			}
-			to {
-				opacity: 1;
-				transform: translateX(0);
-			}
-		}
-
-		@keyframes ss-mobile-panel-leave {
-			from {
-				opacity: 1;
-				transform: translateX(0);
-			}
-			to {
-				opacity: 0;
-				transform: translateX(0.5rem);
-			}
-		}
-
-		.ss-mobile-panel.ss-mobile-panel--enter {
-			animation: ss-mobile-panel-enter 0.25s ease forwards;
-		}
-
-		.ss-mobile-panel.ss-mobile-panel--leave {
-			animation: ss-mobile-panel-leave 0.25s ease forwards;
-			pointer-events: none;
-		}
-
-		.ss-search-field {
-			position: relative;
-			width: 100%;
-			min-width: 0;
-		}
-
-		.ss-desktop-wrap {
-			flex: 1 1 auto;
-			max-width: 40rem;
-		}
-
-		.ss-form {
-			display: flex;
-			align-items: center;
-			gap: 0.5rem;
-			width: 100%;
-			min-width: 0;
-		}
-
-		.ss-desktop-form {
-			border: 1px solid var(--sl-color-gray-5);
-			border-radius: 0.5rem;
-			padding-inline-start: 0.75rem;
-			padding-inline-end: 0.5rem;
-			background-color: var(--sl-color-black);
-			color: var(--sl-color-gray-2);
-			font-size: var(--sl-text-sm);
-			height: 2.5rem;
-		}
-
-		.ss-desktop-form:hover {
-			border-color: var(--sl-color-gray-2);
-			color: var(--sl-color-white);
-		}
-
-		.ss-input {
-			flex: 1;
-			min-width: 0;
-			border: 0;
-			background: transparent;
-			color: inherit;
-			font: inherit;
-			outline: none;
-		}
-
-		.ss-input::placeholder {
-			color: var(--sl-color-gray-3);
-			font-style: italic;
-		}
-
-		.ss-mobile-panel .ss-form {
-			border: 1px solid var(--sl-color-gray-5);
-			border-radius: 0.5rem;
-			padding: 0.35rem 0.5rem;
-			background-color: var(--sl-color-black);
-		}
-
-		.ss-quick-panel {
-			position: absolute;
-			z-index: 200;
-			top: 100%;
-			left: 0;
-			right: 0;
-			margin-top: 0.25rem;
-			max-height: min(70vh, 20rem);
-			overflow-x: hidden;
-			overflow-y: auto;
-			border-radius: 0.5rem;
-			border: 1px solid var(--sl-color-gray-5);
-			background-color: var(--sl-color-black);
-			color: var(--sl-color-gray-2);
-			text-align: start;
-			box-shadow:
-				0 0.25rem 0.5rem rgb(0 0 0 / 35%),
-				0 0.75rem 1.5rem rgb(0 0 0 / 25%);
-		}
-
-		.ss-quick-panel:not([hidden]) {
-			display: block;
-		}
-
-		.ss-quick-panel .ss-quick-link:focus-visible {
-			outline: 2px solid var(--sl-color-accent-high, #e2b41b);
-			outline-offset: -2px;
-		}
-
-		.ss-kbd {
-			border-radius: 0.25rem;
-			font-size: var(--sl-text-2xs);
-			gap: 0.25em;
-			padding-inline: 0.375rem;
-			background-color: var(--sl-color-gray-6);
-			margin-inline-start: auto;
-		}
-
-		.ss-kbd kbd {
-			font-family: var(--__sl-font);
-		}
-
-		@media (min-width: 50rem) {
-			.ss-desktop-form > :last-child {
-				margin-inline-start: auto;
-			}
-		}
-	}
-</style>
