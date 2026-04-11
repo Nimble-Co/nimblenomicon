@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import type { XrefTermEntry } from '../../models/xref-terms';
-import { applyAutoXrefToDocument } from './process-html';
+import { applyAutoXrefToDocument } from '../../../src/integrations/auto-xref/process-html';
+import type { XrefTermEntry } from '../../../src/models/xref-terms';
 
 const sampleTerms: XrefTermEntry[] = [
 	{
