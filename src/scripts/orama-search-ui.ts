@@ -15,7 +15,35 @@ type GameDataDoc = {
 
 const INDEX_URL = '/orama-data-search.json';
 const SEARCH_LIMIT = 80;
+const QUICK_SEARCH_LIMIT = 10;
 const DEBOUNCE_MS = 200;
+
+const ORAMA_SCHEMA = {
+	id: 'string',
+	type: 'string',
+	title: 'string',
+	content: 'string',
+	href: 'string',
+	subtitle: 'string',
+} as const;
+
+export type OramaDataSearchDb = ReturnType<typeof create>;
+
+let dbPromise: Promise<OramaDataSearchDb> | undefined;
+
+export function getOramaDataSearchDb(): Promise<OramaDataSearchDb> {
+	if (!dbPromise) {
+		dbPromise = (async () => {
+			const r = await fetch(INDEX_URL);
+			if (!r.ok) throw new Error(`Failed to load index (${r.status})`);
+			const raw = (await r.json()) as RawData;
+			const instance = create({ schema: ORAMA_SCHEMA });
+			load(instance, raw);
+			return instance;
+		})();
+	}
+	return dbPromise;
+}
 
 function debounce<T extends (...args: Parameters<T>) => void>(
 	fn: T,
@@ -39,6 +67,125 @@ function escapeHtml(s: string): string {
 		.replace(/"/g, '&quot;');
 }
 
+export type OramaQuickSearchOptions = {
+	input: HTMLInputElement;
+	panel: HTMLElement;
+	/** Max hits (default 10). */
+	limit?: number;
+};
+
+/**
+ * Typeahead under a search input: debounced Orama query, compact link list, dismiss on
+ * click-outside / Escape. Form submit (Enter) is unchanged.
+ */
+export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
+	const { input, panel } = options;
+	const limit = options.limit ?? QUICK_SEARCH_LIMIT;
+	const root =
+		input.closest('form') ?? input.parentElement ?? panel.parentElement;
+
+	const hide = (): void => {
+		panel.hidden = true;
+		panel.innerHTML = '';
+		input.removeAttribute('aria-expanded');
+	};
+
+	if (panel.id) {
+		input.setAttribute('aria-controls', panel.id);
+	}
+
+	const renderQuick = (term: string, db: OramaDataSearchDb): void => {
+		const q = term.trim();
+		if (q.length === 0) {
+			hide();
+			return;
+		}
+
+		const res = search(db, {
+			term: q,
+			limit,
+			properties: ['title', 'content', 'subtitle'],
+		});
+
+		const hits = res.hits.filter(Boolean) as {
+			document: GameDataDoc;
+		}[];
+
+		const typeLabel = (t: OramaDataSearchType) =>
+			ORAMA_DATA_SEARCH_TYPE_LABELS[t] ?? t;
+
+		if (hits.length === 0) {
+			panel.innerHTML = `<p class="ss-quick-empty px-3 py-2 text-left text-sm text-fg-muted">No results for “${escapeHtml(q)}”.</p>`;
+			panel.hidden = false;
+			input.setAttribute('aria-expanded', 'true');
+			return;
+		}
+
+		const parts: string[] = [
+			`<ul class="ss-quick-list m-0 list-none divide-y divide-hairline p-0 text-left" role="listbox">`,
+		];
+		for (const h of hits) {
+			const doc = h.document;
+			const kind = escapeHtml(typeLabel(doc.type));
+			const title = escapeHtml(doc.title);
+			if (doc.href) {
+				parts.push(
+					`<li role="presentation">`,
+					`<a role="option" class="ss-quick-link flex flex-col items-start gap-0.5 px-3 py-2 text-left no-underline hover:bg-gray-200/80 dark:hover:bg-gray-800/80" href="${escapeHtml(doc.href)}">`,
+					`<span class="text-[0.65rem] font-medium uppercase tracking-wide text-fg-muted leading-none">${kind}</span>`,
+					`<span class="text-sm font-medium text-fg">${title}</span>`,
+					`</a>`,
+					`</li>`,
+				);
+			} else {
+				parts.push(
+					`<li role="presentation" class="px-3 py-2 text-left">`,
+					`<span class="text-[0.65rem] font-medium uppercase tracking-wide text-fg-muted">${kind}</span>`,
+					`<span class="mt-0.5 block text-sm font-medium text-fg">${title}</span>`,
+					`</li>`,
+				);
+			}
+		}
+		parts.push('</ul>');
+		panel.innerHTML = parts.join('');
+		panel.hidden = false;
+		input.setAttribute('aria-expanded', 'true');
+	};
+
+	const run = debounce(() => {
+		const q = input.value;
+		if (q.trim().length === 0) {
+			hide();
+			return;
+		}
+		getOramaDataSearchDb()
+			.then((db) => {
+				renderQuick(q, db);
+			})
+			.catch(() => {
+				panel.innerHTML = `<p class="ss-quick-empty px-3 py-2 text-left text-sm text-danger">Could not load search.</p>`;
+				panel.hidden = false;
+				input.setAttribute('aria-expanded', 'true');
+			});
+	}, DEBOUNCE_MS);
+
+	input.addEventListener('input', run);
+	input.addEventListener('search', () => {
+		if (input.value === '') hide();
+	});
+	input.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape') hide();
+	});
+
+	const onDocClick = (e: MouseEvent): void => {
+		if (panel.hidden) return;
+		const t = e.target as Node | null;
+		if (!t || !root || root.contains(t)) return;
+		hide();
+	};
+	document.addEventListener('click', onDocClick, true);
+}
+
 export function initOramaDataSearch(root: HTMLElement): void {
 	const input = root.querySelector<HTMLInputElement>(
 		'[data-orama-search-input]',
@@ -53,55 +200,10 @@ export function initOramaDataSearch(root: HTMLElement): void {
 
 	if (!resultsEl || !statusEl) return;
 
-	let db: ReturnType<typeof create> | undefined;
+	let db: OramaDataSearchDb | undefined;
 	let loading = true;
 
 	statusEl.textContent = 'Loading search index…';
-
-	fetch(INDEX_URL)
-		.then((r) => {
-			if (!r.ok) throw new Error(`Failed to load index (${r.status})`);
-			return r.json() as Promise<RawData>;
-		})
-		.then((raw: RawData) => {
-			const instance = create({
-				schema: {
-					id: 'string',
-					type: 'string',
-					title: 'string',
-					content: 'string',
-					href: 'string',
-					subtitle: 'string',
-				},
-			});
-			load(instance, raw);
-			db = instance;
-			loading = false;
-			const initialQuery = new URLSearchParams(window.location.search).get('q');
-			if (initialQuery && initialQuery.trim().length > 0) {
-				const query = initialQuery.trim();
-				if (input) {
-					input.disabled = false;
-					input.value = query;
-				}
-				statusEl.textContent = `Showing results for “${query}”.`;
-				renderResults(query);
-			} else {
-				if (input) {
-					input.disabled = false;
-					statusEl.textContent = 'Search game data by name or keyword.';
-					input.focus();
-				} else {
-					statusEl.textContent = 'Use the top search bar to search game data.';
-				}
-			}
-		})
-		.catch((err: unknown) => {
-			loading = false;
-			const msg = err instanceof Error ? err.message : 'Unknown error';
-			statusEl.textContent = `Could not load search index: ${msg}`;
-			if (input) input.disabled = true;
-		});
 
 	function announce(message: string): void {
 		if (liveEl) liveEl.textContent = message;
@@ -156,6 +258,36 @@ export function initOramaDataSearch(root: HTMLElement): void {
 		resultsEl.innerHTML = parts.join('');
 		announce(`${hits.length} result${hits.length === 1 ? '' : 's'} for ${q}`);
 	}
+
+	getOramaDataSearchDb()
+		.then((instance) => {
+			db = instance;
+			loading = false;
+			const initialQuery = new URLSearchParams(window.location.search).get('q');
+			if (initialQuery && initialQuery.trim().length > 0) {
+				const query = initialQuery.trim();
+				if (input) {
+					input.disabled = false;
+					input.value = query;
+				}
+				statusEl.textContent = `Showing results for “${query}”.`;
+				renderResults(query);
+			} else {
+				if (input) {
+					input.disabled = false;
+					statusEl.textContent = 'Search game data by name or keyword.';
+					input.focus();
+				} else {
+					statusEl.textContent = 'Use the top search bar to search game data.';
+				}
+			}
+		})
+		.catch((err: unknown) => {
+			loading = false;
+			const msg = err instanceof Error ? err.message : 'Unknown error';
+			statusEl.textContent = `Could not load search index: ${msg}`;
+			if (input) input.disabled = true;
+		});
 
 	if (!input) return;
 

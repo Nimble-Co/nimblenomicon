@@ -53,35 +53,44 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 			</div>
 		</div>
 
-		<form
-			method="get"
-			action={searchAction}
-			class="box-border flex w-full items-center gap-[0.65rem] rounded-full border border-hairline bg-surface-nav py-[0.65rem] pl-4 pr-4 text-left font-inherit text-fg focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-accent-500"
-			role="search"
-		>
-			<label class="sr-only" for="home-search-q">{SEARCH_PLACEHOLDER}</label>
-			<svg
-				class="pointer-events-none shrink-0 text-fg-muted opacity-85 dark:opacity-100"
-				width="20"
-				height="20"
-				viewBox="0 0 24 24"
-				aria-hidden="true"
+		<div class="relative w-full">
+			<form
+				method="get"
+				action={searchAction}
+				class="box-border flex w-full items-center gap-[0.65rem] rounded-full border border-hairline bg-surface-nav py-[0.65rem] pl-4 pr-4 text-left font-inherit text-fg focus-within:outline-2 focus-within:outline-offset-0 focus-within:outline-accent-500"
+				role="search"
 			>
-				<path
-					fill="currentColor"
-					d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-				></path>
-			</svg>
-			<input
-				id="home-search-q"
-				type="search"
-				name="q"
-				autocomplete="off"
-				placeholder={SEARCH_PLACEHOLDER}
-				aria-keyshortcuts="Control+K"
-				class="min-w-0 flex-1 border-0 bg-transparent font-sans text-[0.9375rem] text-fg italic outline-none placeholder:text-fg-muted placeholder:italic"
-			/>
-		</form>
+				<label class="sr-only" for="home-search-q">{SEARCH_PLACEHOLDER}</label>
+				<svg
+					class="pointer-events-none shrink-0 text-fg-muted opacity-85 dark:opacity-100"
+					width="20"
+					height="20"
+					viewBox="0 0 24 24"
+					aria-hidden="true"
+				>
+					<path
+						fill="currentColor"
+						d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+					></path>
+				</svg>
+				<input
+					id="home-search-q"
+					type="search"
+					name="q"
+					autocomplete="off"
+					placeholder={SEARCH_PLACEHOLDER}
+					aria-autocomplete="list"
+					aria-keyshortcuts="Control+K"
+					class="min-w-0 flex-1 border-0 bg-transparent font-sans text-[0.9375rem] text-fg italic outline-none placeholder:text-fg-muted placeholder:italic"
+				/>
+			</form>
+			<div
+				id="home-quick-results"
+				class="orama-home-quick not-prose absolute top-full left-0 right-0 z-[200] mt-1 max-h-[min(70vh,20rem)] overflow-x-hidden overflow-y-auto rounded-lg border border-hairline bg-surface-nav text-left text-fg shadow-lg"
+				hidden
+			>
+			</div>
+		</div>
 
 		<ul
 			class="m-0 grid w-full list-none grid-cols-2 gap-x-3 gap-y-[0.65rem] p-0"
@@ -192,6 +201,8 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 </section>
 
 <script>
+	import { initOramaQuickSearch } from '../scripts/orama-search-ui';
+
 	function wireHomeSearchShortcut() {
 		const input = document.querySelector<HTMLInputElement>('#home-search-q');
 		if (!input) return;
@@ -203,9 +214,27 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 		});
 	}
 
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', wireHomeSearchShortcut);
-	} else {
+	function wireHomeQuickSearch() {
+		const input = document.querySelector<HTMLInputElement>('#home-search-q');
+		const panel = document.querySelector<HTMLElement>('#home-quick-results');
+		if (input && panel) initOramaQuickSearch({ input, panel });
+	}
+
+	function initHomeSearch() {
 		wireHomeSearchShortcut();
+		wireHomeQuickSearch();
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initHomeSearch);
+	} else {
+		initHomeSearch();
 	}
 </script>
+
+<style>
+	.orama-home-quick .ss-quick-link:focus-visible {
+		outline: 2px solid var(--color-accent-500);
+		outline-offset: -2px;
+	}
+</style>

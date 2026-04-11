@@ -10,7 +10,7 @@ let searchAction = `${normalizedBase}/search`;
 if (project.trailingSlash === 'always') searchAction += '/';
 ---
 
-<site-search class={Astro.props.class}>
+<site-search class={Astro.props.class} data-mobile-search-open="false">
 	<div class="ss-root">
 		<button
 			type="button"
@@ -26,42 +26,62 @@ if (project.trailingSlash === 'always') searchAction += '/';
 			class="ss-mobile-panel md:sl-hidden"
 			hidden
 		>
-			<form method="get" action={searchAction} class="ss-form" role="search">
-				<label class="sr-only" for="ss-mobile-q">{searchPlaceholder}</label>
+			<div class="ss-search-field">
+				<form method="get" action={searchAction} class="ss-form" role="search">
+					<label class="sr-only" for="ss-mobile-q">{searchPlaceholder}</label>
+					<input
+						id="ss-mobile-q"
+						type="search"
+						name="q"
+						autocomplete="off"
+						placeholder={searchPlaceholder}
+						class="ss-input"
+						aria-autocomplete="list"
+					/>
+				</form>
+				<div
+					id="ss-mobile-quick-results"
+					class="ss-quick-panel not-prose"
+					hidden
+				>
+				</div>
+			</div>
+		</div>
+		<div class="ss-search-field ss-desktop-wrap sl-hidden md:sl-flex">
+			<form
+				method="get"
+				action={searchAction}
+				class="ss-form ss-desktop-form"
+				role="search"
+			>
+				<Icon name="magnifier" />
+				<label class="sr-only" for="ss-desktop-q">{searchPlaceholder}</label>
 				<input
-					id="ss-mobile-q"
+					id="ss-desktop-q"
 					type="search"
 					name="q"
 					autocomplete="off"
 					placeholder={searchPlaceholder}
 					class="ss-input"
+					aria-autocomplete="list"
 				/>
+				<kbd class="ss-kbd sl-hidden" aria-hidden="true">
+					<kbd>{Astro.locals.t('search.ctrlKey')}</kbd><kbd>K</kbd>
+				</kbd>
 			</form>
+			<div
+				id="ss-desktop-quick-results"
+				class="ss-quick-panel not-prose"
+				hidden
+			>
+			</div>
 		</div>
-		<form
-			method="get"
-			action={searchAction}
-			class="ss-form ss-desktop-form sl-hidden md:sl-flex"
-			role="search"
-		>
-			<Icon name="magnifier" />
-			<label class="sr-only" for="ss-desktop-q">{searchPlaceholder}</label>
-			<input
-				id="ss-desktop-q"
-				type="search"
-				name="q"
-				autocomplete="off"
-				placeholder={searchPlaceholder}
-				class="ss-input"
-			/>
-			<kbd class="ss-kbd sl-hidden" aria-hidden="true">
-				<kbd>{Astro.locals.t('search.ctrlKey')}</kbd><kbd>K</kbd>
-			</kbd>
-		</form>
 	</div>
 </site-search>
 
 <script>
+	import { initOramaQuickSearch } from '../scripts/orama-search-ui';
+
 	class SiteSearch extends HTMLElement {
 		private onDocClick = (e: MouseEvent) => {
 			if (!this.mobilePanel || this.mobilePanel.hidden) return;
@@ -110,6 +130,22 @@ if (project.trailingSlash === 'always') searchAction += '/';
 
 		connectedCallback() {
 			document.addEventListener('click', this.onDocClick, true);
+
+			const mobileInput = this.querySelector<HTMLInputElement>('#ss-mobile-q');
+			const mobilePanel = this.querySelector<HTMLElement>(
+				'#ss-mobile-quick-results',
+			);
+			const desktopInput =
+				this.querySelector<HTMLInputElement>('#ss-desktop-q');
+			const desktopPanel = this.querySelector<HTMLElement>(
+				'#ss-desktop-quick-results',
+			);
+			if (mobileInput && mobilePanel) {
+				initOramaQuickSearch({ input: mobileInput, panel: mobilePanel });
+			}
+			if (desktopInput && desktopPanel) {
+				initOramaQuickSearch({ input: desktopInput, panel: desktopPanel });
+			}
 		}
 
 		disconnectedCallback() {
@@ -120,17 +156,155 @@ if (project.trailingSlash === 'always') searchAction += '/';
 			return window.matchMedia('(min-width: 50rem)').matches;
 		}
 
-		private openMobile() {
-			if (!this.mobilePanel || !this.mobileToggle) return;
-			this.mobilePanel.hidden = false;
-			this.mobileToggle.setAttribute('aria-expanded', 'true');
-			queueMicrotask(() => this.mobileInput?.focus());
+		private prefersReducedMotion(): boolean {
+			return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 		}
 
-		private closeMobile() {
+		private clearMobileToggleMotionStyles(): void {
+			if (!this.mobileToggle) return;
+			this.mobileToggle.style.transition = '';
+			this.mobileToggle.style.transform = '';
+		}
+
+		private runMobileToggleOpenFlip(first: DOMRect): void {
+			const btn = this.mobileToggle!;
+			requestAnimationFrame(() => {
+				const last = btn.getBoundingClientRect();
+				const dx = first.left - last.left;
+				const dy = first.top - last.top;
+				if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) {
+					return;
+				}
+				btn.style.transition = 'none';
+				btn.style.transform = `translate(${dx}px, ${dy}px)`;
+				requestAnimationFrame(() => {
+					btn.style.transition = 'transform 0.25s ease';
+					btn.style.transform = '';
+					const done = (e: TransitionEvent): void => {
+						if (e.propertyName !== 'transform') return;
+						btn.removeEventListener('transitionend', done);
+						this.clearMobileToggleMotionStyles();
+					};
+					btn.addEventListener('transitionend', done);
+				});
+			});
+		}
+
+		private runMobileToggleCloseFlip(first: DOMRect): void {
+			const btn = this.mobileToggle!;
+			requestAnimationFrame(() => {
+				const last = btn.getBoundingClientRect();
+				const dx = first.left - last.left;
+				const dy = first.top - last.top;
+				if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) {
+					this.clearMobileToggleMotionStyles();
+					return;
+				}
+				btn.style.transition = 'none';
+				btn.style.transform = `translate(${dx}px, ${dy}px)`;
+				requestAnimationFrame(() => {
+					btn.style.transition = 'transform 0.25s ease';
+					btn.style.transform = '';
+					btn.addEventListener(
+						'transitionend',
+						(e: TransitionEvent) => {
+							if (e.propertyName !== 'transform') return;
+							this.clearMobileToggleMotionStyles();
+						},
+						{ once: true },
+					);
+				});
+			});
+		}
+
+		private openMobile(): void {
 			if (!this.mobilePanel || !this.mobileToggle) return;
-			this.mobilePanel.hidden = true;
-			this.mobileToggle.setAttribute('aria-expanded', 'false');
+
+			const first = this.mobileToggle.getBoundingClientRect();
+
+			this.mobilePanel.classList.remove('ss-mobile-panel--leave');
+			this.setAttribute('data-mobile-search-open', 'true');
+			this.mobilePanel.hidden = false;
+			this.mobileToggle.setAttribute('aria-expanded', 'true');
+
+			if (!this.prefersReducedMotion()) {
+				this.mobilePanel.classList.add('ss-mobile-panel--enter');
+				const onEnterEnd = (e: AnimationEvent): void => {
+					if (e.target !== this.mobilePanel) return;
+					if (e.animationName !== 'ss-mobile-panel-enter') return;
+					this.mobilePanel?.classList.remove('ss-mobile-panel--enter');
+					this.mobilePanel?.removeEventListener('animationend', onEnterEnd);
+				};
+				this.mobilePanel.addEventListener('animationend', onEnterEnd);
+			}
+
+			if (this.prefersReducedMotion()) {
+				queueMicrotask(() => this.mobileInput?.focus());
+				return;
+			}
+
+			queueMicrotask(() => this.mobileInput?.focus());
+			this.runMobileToggleOpenFlip(first);
+		}
+
+		private closeMobile(): void {
+			if (!this.mobilePanel || !this.mobileToggle) return;
+
+			if (this.mobilePanel.hidden) {
+				this.setAttribute('data-mobile-search-open', 'false');
+				return;
+			}
+
+			if (this.mobilePanel.classList.contains('ss-mobile-panel--leave')) {
+				return;
+			}
+
+			const first = this.mobileToggle.getBoundingClientRect();
+
+			if (this.prefersReducedMotion()) {
+				this.setAttribute('data-mobile-search-open', 'false');
+				this.mobilePanel.hidden = true;
+				this.mobileToggle.setAttribute('aria-expanded', 'false');
+				this.mobilePanel.classList.remove(
+					'ss-mobile-panel--enter',
+					'ss-mobile-panel--leave',
+				);
+				return;
+			}
+
+			this.mobileInput?.blur();
+			this.mobilePanel.classList.remove('ss-mobile-panel--enter');
+			this.mobilePanel.classList.add('ss-mobile-panel--leave');
+
+			let leaveFinished = false;
+			const finishClose = (): void => {
+				if (leaveFinished || !this.mobilePanel || !this.mobileToggle) return;
+				leaveFinished = true;
+				this.mobilePanel.classList.remove('ss-mobile-panel--leave');
+				this.setAttribute('data-mobile-search-open', 'false');
+				this.mobilePanel.hidden = true;
+				this.mobileToggle.setAttribute('aria-expanded', 'false');
+				this.runMobileToggleCloseFlip(first);
+			};
+
+			const onLeaveEnd = (e: AnimationEvent): void => {
+				if (e.target !== this.mobilePanel) return;
+				if (e.animationName !== 'ss-mobile-panel-leave') return;
+				this.mobilePanel?.removeEventListener('animationend', onLeaveEnd);
+				finishClose();
+			};
+			this.mobilePanel.addEventListener('animationend', onLeaveEnd);
+
+			window.setTimeout(() => {
+				if (
+					leaveFinished ||
+					!this.mobilePanel?.classList.contains('ss-mobile-panel--leave')
+				) {
+					return;
+				}
+				this.mobilePanel.removeEventListener('animationend', onLeaveEnd);
+				finishClose();
+			}, 400);
 		}
 
 		private focusSearch() {
@@ -163,15 +337,22 @@ if (project.trailingSlash === 'always') searchAction += '/';
 
 		.ss-root {
 			display: flex;
-			flex-wrap: wrap;
+			flex-wrap: nowrap;
 			align-items: center;
 			gap: 0.5rem;
 			width: 100%;
 			min-width: 0;
 		}
 
+		@media (max-width: 49.999rem) {
+			site-search[data-mobile-search-open='false'] .ss-root {
+				justify-content: flex-end;
+			}
+		}
+
 		.ss-mobile-toggle {
 			display: flex;
+			flex-shrink: 0;
 			align-items: center;
 			justify-content: center;
 			border: 0;
@@ -189,12 +370,54 @@ if (project.trailingSlash === 'always') searchAction += '/';
 		}
 
 		.ss-mobile-panel {
-			flex: 1 1 100%;
+			flex: 1 1 auto;
 			min-width: 0;
 		}
 
 		.ss-mobile-panel[hidden] {
 			display: none;
+		}
+
+		@keyframes ss-mobile-panel-enter {
+			from {
+				opacity: 0;
+				transform: translateX(0.75rem);
+			}
+			to {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+
+		@keyframes ss-mobile-panel-leave {
+			from {
+				opacity: 1;
+				transform: translateX(0);
+			}
+			to {
+				opacity: 0;
+				transform: translateX(0.5rem);
+			}
+		}
+
+		.ss-mobile-panel.ss-mobile-panel--enter {
+			animation: ss-mobile-panel-enter 0.25s ease forwards;
+		}
+
+		.ss-mobile-panel.ss-mobile-panel--leave {
+			animation: ss-mobile-panel-leave 0.25s ease forwards;
+			pointer-events: none;
+		}
+
+		.ss-search-field {
+			position: relative;
+			width: 100%;
+			min-width: 0;
+		}
+
+		.ss-desktop-wrap {
+			flex: 1 1 auto;
+			max-width: 40rem;
 		}
 
 		.ss-form {
@@ -214,7 +437,6 @@ if (project.trailingSlash === 'always') searchAction += '/';
 			color: var(--sl-color-gray-2);
 			font-size: var(--sl-text-sm);
 			height: 2.5rem;
-			max-width: 40rem;
 		}
 
 		.ss-desktop-form:hover {
@@ -242,6 +464,35 @@ if (project.trailingSlash === 'always') searchAction += '/';
 			border-radius: 0.5rem;
 			padding: 0.35rem 0.5rem;
 			background-color: var(--sl-color-black);
+		}
+
+		.ss-quick-panel {
+			position: absolute;
+			z-index: 200;
+			top: 100%;
+			left: 0;
+			right: 0;
+			margin-top: 0.25rem;
+			max-height: min(70vh, 20rem);
+			overflow-x: hidden;
+			overflow-y: auto;
+			border-radius: 0.5rem;
+			border: 1px solid var(--sl-color-gray-5);
+			background-color: var(--sl-color-black);
+			color: var(--sl-color-gray-2);
+			text-align: start;
+			box-shadow:
+				0 0.25rem 0.5rem rgb(0 0 0 / 35%),
+				0 0.75rem 1.5rem rgb(0 0 0 / 25%);
+		}
+
+		.ss-quick-panel:not([hidden]) {
+			display: block;
+		}
+
+		.ss-quick-panel .ss-quick-link:focus-visible {
+			outline: 2px solid var(--sl-color-accent-high, #e2b41b);
+			outline-offset: -2px;
 		}
 
 		.ss-kbd {
