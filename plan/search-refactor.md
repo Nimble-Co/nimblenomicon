@@ -13,13 +13,13 @@ Improve structure and reduce duplication for Orama search **without** adding `@a
 ## Steps
 
 1. **Shared keyboard shortcut**
-  Add a small module (e.g. `src/scripts/wire-search-shortcut.ts`) that registers Ctrl/Cmd+K to focus a given `HTMLInputElement`. Use it from `HomeLanding.astro` and from the site-search custom element implementation so shortcut logic is not duplicated.
+   Add a small module (e.g. `src/scripts/wire-search-shortcut.ts`) that registers Ctrl/Cmd+K to focus a given `HTMLInputElement`. Use it from `HomeLanding.astro` and from the site-search custom element implementation so shortcut logic is not duplicated.
 2. **Move `SiteSearch` custom element out of Search.astro**
-  Relocate the `site-search` class + `customElements.define` to `src/scripts/site-search-element.ts` (imports `initOramaQuickSearch`). Keep the Astro file to markup + minimal script that imports the module for side effects. Preserves existing mobile animation and panel behavior.
+   Relocate the `site-search` class + `customElements.define` to `src/scripts/site-search-element.ts` (imports `initOramaQuickSearch`). Keep the Astro file to markup + minimal script that imports the module for side effects. Preserves existing mobile animation and panel behavior.
 3. **Keep Orama UI in `orama-search-ui.ts`**
-  Optional light cleanup only if it stays obviously safe: ensure exports remain stable for `initOramaQuickSearch` and `initOramaDataSearch`. Avoid large behavioral edits in one pass.
+   Optional light cleanup only if it stays obviously safe: ensure exports remain stable for `initOramaQuickSearch` and `initOramaDataSearch`. Avoid large behavioral edits in one pass.
 4. **Verify**
-  Run `npm run format:check`, `npm run lint`, `npm test`, and `npm run build` from repo root.
+   Run `npm run format:check`, `npm run lint`, `npm test`, and `npm run build` from repo root.
 
 ## Risk notes
 
