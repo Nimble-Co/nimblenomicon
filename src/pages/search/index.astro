@@ -14,9 +14,12 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 	}}
 	hasSidebar={false}
 >
-	<div class="orama-data-search not-prose max-w-3xl" data-orama-root>
+	<div
+		class="orama-data-search not-content not-prose flex max-w-3xl flex-col gap-4"
+		data-orama-root
+	>
 		<p
-			class="text-fg-muted min-h-[1.25rem] text-sm"
+			class="text-fg-muted m-0 min-h-[1.25rem] text-sm leading-snug"
 			data-orama-search-status
 			aria-live="polite"
 		>
@@ -24,7 +27,7 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 		</p>
 
 		<div
-			class="mt-4 hidden w-full min-w-0"
+			class="hidden w-full min-w-0"
 			data-orama-type-filter-bar
 			role="toolbar"
 			aria-label="Filter by data type"
@@ -33,7 +36,7 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 
 		<div class="sr-only" aria-live="polite" data-orama-search-live></div>
 
-		<div data-orama-search-results></div>
+		<div class="m-0" data-orama-search-results></div>
 	</div>
 </StarlightPage>
 

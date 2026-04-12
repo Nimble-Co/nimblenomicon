@@ -623,6 +623,11 @@ a.auto-xref:focus-visible {
 }
 
 /* `/search/` type filter toolbar — fixed-height pills (no stretch / mixed padding drift). */
+[data-orama-type-filter-bar] [data-orama-type-filter-primary] {
+	display: flex;
+	align-items: center;
+}
+
 [data-orama-type-filter-bar] .orama-type-filter-pill,
 [data-orama-type-filter-bar] [data-orama-type-more-toggle] {
 	box-sizing: border-box;
@@ -635,6 +640,7 @@ a.auto-xref:focus-visible {
 	justify-content: center;
 	line-height: 1;
 	white-space: nowrap;
+	vertical-align: middle;
 }
 
 [data-orama-type-filter-bar] .orama-type-filter-pill[data-pressed='true'] {
