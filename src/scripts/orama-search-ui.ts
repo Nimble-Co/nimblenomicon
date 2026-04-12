@@ -395,33 +395,27 @@ export function initOramaDataSearch(root: HTMLElement): void {
 				(activeType === null && (v === '' || v === null)) ||
 				(activeType !== null && v === activeType);
 			btn.setAttribute('aria-pressed', pressed ? 'true' : 'false');
+			btn.setAttribute('data-pressed', pressed ? 'true' : 'false');
+		}
 
-			const inMoreMenu = Boolean(btn.closest('[data-orama-type-more-panel]'));
-			if (inMoreMenu) {
-				btn.classList.remove(
-					'border-hairline',
-					'border-accent-500',
-					'bg-accent-50',
-					'dark:bg-accent-950/35',
+		const refs = typeFilterLayoutRefs;
+		if (refs?.moreBtn) {
+			const holds =
+				activeType !== null &&
+				refs.typeBtns.some(
+					(b) =>
+						refs.morePanel.contains(b) &&
+						b.getAttribute('data-orama-type-filter') === activeType,
 				);
-				btn.classList.toggle('bg-gray-100', pressed);
-				btn.classList.toggle('dark:bg-gray-800/80', pressed);
-				btn.classList.toggle('font-medium', pressed);
-			} else {
-				btn.classList.remove('bg-gray-100', 'dark:bg-gray-800/80');
-				btn.classList.toggle('border-hairline', !pressed);
-				btn.classList.toggle('border-accent-500', pressed);
-				btn.classList.toggle('bg-accent-50', pressed);
-				btn.classList.toggle('dark:bg-accent-950/35', pressed);
-				btn.classList.toggle('font-medium', pressed);
-			}
+			if (holds) refs.moreBtn.setAttribute('data-more-holds-selection', '');
+			else refs.moreBtn.removeAttribute('data-more-holds-selection');
 		}
 	}
 
 	const TYPE_FILTER_PILL_CLASS =
-		'inline-flex shrink-0 items-center rounded-full border border-hairline bg-surface px-3 py-1.5 text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
+		'orama-type-filter-pill inline-flex shrink-0 items-center justify-center rounded-full border border-hairline bg-surface px-3 py-1.5 text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
 	const TYPE_FILTER_MENUITEM_CLASS =
-		'flex w-full min-w-[10rem] items-center rounded-none border-0 bg-transparent px-3 py-2.5 text-left text-sm text-fg hover:bg-gray-100 dark:hover:bg-gray-800/80';
+		'orama-type-filter-menu-item flex w-full min-w-[10rem] items-center rounded-none border-0 bg-transparent px-3 py-2.5 text-left text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
 
 	let typeFilterLayoutRefs: {
 		primaryRow: HTMLElement;
@@ -541,20 +535,20 @@ export function initOramaDataSearch(root: HTMLElement): void {
 		bar.classList.add('block');
 
 		const outer = document.createElement('div');
-		outer.className = 'flex min-w-0 items-center gap-2';
+		outer.className = 'flex min-w-0 items-stretch gap-2';
 
 		const primaryRow = document.createElement('div');
 		primaryRow.className =
-			'flex min-w-0 flex-1 flex-nowrap items-center gap-2 overflow-hidden';
+			'flex min-w-0 flex-1 flex-nowrap items-stretch gap-2 overflow-hidden';
 		primaryRow.setAttribute('data-orama-type-filter-primary', '');
 
 		const moreWrap = document.createElement('div');
-		moreWrap.className = 'relative hidden shrink-0 self-center';
+		moreWrap.className = 'relative hidden shrink-0 self-stretch';
 		moreWrap.setAttribute('data-orama-type-filter-more-wrap', '');
 
 		const moreBtn = document.createElement('button');
 		moreBtn.type = 'button';
-		moreBtn.className = `${TYPE_FILTER_PILL_CLASS} gap-1`;
+		moreBtn.className = `${TYPE_FILTER_PILL_CLASS} h-full gap-1`;
 		moreBtn.setAttribute('data-orama-type-more-toggle', '');
 		moreBtn.setAttribute('aria-expanded', 'false');
 		moreBtn.setAttribute('aria-haspopup', 'true');

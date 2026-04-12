@@ -621,3 +621,46 @@ a.auto-xref:focus-visible {
 	color: var(--color-fg-muted);
 	font-weight: 400;
 }
+
+/* `/search/` type filter toolbar — pills share one height; pressed states (incl. overflow menu). */
+[data-orama-type-filter-bar] .orama-type-filter-pill,
+[data-orama-type-filter-bar] [data-orama-type-more-toggle] {
+	box-sizing: border-box;
+	min-height: 2.25rem;
+	align-items: center;
+	line-height: 1.25;
+}
+
+[data-orama-type-filter-bar] .orama-type-filter-pill[data-pressed='true'] {
+	border-color: var(--color-accent-500);
+	background-color: var(--color-accent-50);
+	font-weight: 600;
+}
+
+html[data-theme='dark']
+	[data-orama-type-filter-bar]
+	.orama-type-filter-pill[data-pressed='true'] {
+	background-color: color-mix(
+		in srgb,
+		var(--color-accent-950) 35%,
+		transparent
+	);
+}
+
+[data-orama-type-filter-bar]
+	[data-orama-type-more-toggle][data-more-holds-selection] {
+	border-color: var(--color-accent-500);
+	font-weight: 600;
+}
+
+[data-orama-type-more-panel] [data-orama-type-filter][data-pressed='true'] {
+	background-color: var(--color-gray-100);
+	font-weight: 600;
+	box-shadow: inset 3px 0 0 0 var(--color-accent-500);
+}
+
+html[data-theme='dark']
+	[data-orama-type-more-panel]
+	[data-orama-type-filter][data-pressed='true'] {
+	background-color: rgb(46 44 41 / 0.85);
+}
