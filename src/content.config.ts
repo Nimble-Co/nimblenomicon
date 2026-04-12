@@ -2,6 +2,15 @@ import { defineCollection } from 'astro:content';
 import { docsLoader } from '@astrojs/starlight/loaders';
 import { docsSchema } from '@astrojs/starlight/schema';
 import { z } from 'astro/zod';
+import { nimbleNewsAtomLoader } from './content/loaders/nimble-news-atom';
+
+const nimbleNewsEntrySchema = z.object({
+	id: z.string(),
+	url: z.string().url(),
+	title: z.string(),
+	publishedIso: z.string(),
+	imageUrl: z.string().url().optional(),
+});
 
 export const collections = {
 	docs: defineCollection({
@@ -14,5 +23,9 @@ export const collections = {
 				bannerInHero: z.boolean().optional(),
 			}),
 		}),
+	}),
+	news: defineCollection({
+		loader: nimbleNewsAtomLoader(),
+		schema: nimbleNewsEntrySchema,
 	}),
 };

@@ -1,14 +1,23 @@
 ---
+import { getCollection } from 'astro:content';
 import bookIcon from '../assets/nimblenomicon_icon.svg';
 import bookIconRaw from '../assets/nimblenomicon_icon.svg?raw';
 import { HOME_REFERENCE_LINKS } from '../config/home-reference-links';
 import { SEARCH_PLACEHOLDER } from '../config/search';
 import { SECTION_KEYS, SECTION_METADATA } from '../config/section-sidebars';
-import { formatNewsDate, getLatestNimbleNews } from '../utils/nimble-news';
+import { formatNewsDate } from '../utils/nimble-news';
 import { searchPageUrl } from '../utils/url';
 import project from 'virtual:starlight/project-context';
 
-const newsItems = await getLatestNimbleNews(3);
+const newsEntries = await getCollection('news');
+const newsItems = [...newsEntries]
+	.sort(
+		(a, b) =>
+			new Date(b.data.publishedIso).getTime() -
+			new Date(a.data.publishedIso).getTime(),
+	)
+	.slice(0, 3)
+	.map((e) => e.data);
 const searchAction = searchPageUrl(
 	import.meta.env.BASE_URL,
 	project.trailingSlash,
