@@ -10,13 +10,19 @@ const searchAction = searchPageUrl(
 	import.meta.env.BASE_URL,
 	project.trailingSlash,
 );
+
+const rootClass =
+	'flex w-full min-w-0 flex-nowrap items-center gap-2 max-[49.999rem]:group-data-[mobile-search-open=false]:justify-end';
 ---
 
-<site-search class={Astro.props.class}>
-	<div class="ss-root">
+<site-search
+	class:list={['group', 'contents', Astro.props.class]}
+	data-mobile-search-open="false"
+>
+	<div class={rootClass}>
 		<button
 			type="button"
-			class="ss-mobile-toggle md:sl-hidden"
+			class="ss-mobile-toggle flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-lg border-0 bg-transparent text-xl text-fg-muted hover:text-fg min-[50rem]:hidden"
 			aria-expanded="false"
 			aria-controls="ss-mobile-search-panel"
 			aria-label={searchPlaceholder}
@@ -25,244 +31,87 @@ const searchAction = searchPageUrl(
 		</button>
 		<div
 			id="ss-mobile-search-panel"
-			class="ss-mobile-panel md:sl-hidden"
+			class="ss-mobile-panel flex min-w-0 flex-1 min-[50rem]:hidden"
 			hidden
 		>
-			<form method="get" action={searchAction} class="ss-form" role="search">
-				<label class="sr-only" for="ss-mobile-q">{searchPlaceholder}</label>
+			<div class="ss-search-field relative w-full min-w-0">
+				<form
+					method="get"
+					action={searchAction}
+					class="ss-form flex w-full min-w-0 items-center gap-2 rounded-lg border border-hairline bg-surface-nav px-2 py-1.5 text-fg"
+					role="search"
+				>
+					<label class="sr-only" for="ss-mobile-q">{searchPlaceholder}</label>
+					<input
+						id="ss-mobile-q"
+						type="search"
+						name="q"
+						autocomplete="off"
+						placeholder={searchPlaceholder}
+						class="ss-input min-w-0 flex-1 border-0 bg-transparent font-inherit text-inherit outline-none placeholder:italic placeholder:text-fg-muted"
+						aria-autocomplete="list"
+					/>
+				</form>
+				<div
+					id="ss-mobile-quick-results"
+					class="ss-quick-panel not-prose absolute left-0 right-0 top-full z-[200] mt-1 max-h-[min(70vh,20rem)] overflow-x-hidden overflow-y-auto rounded-lg border border-hairline bg-surface-nav text-start text-fg shadow-lg [&_a]:focus-visible:outline [&_a]:focus-visible:outline-2 [&_a]:focus-visible:outline-offset-[-2px] [&_a]:focus-visible:outline-accent-500"
+					hidden
+				>
+				</div>
+			</div>
+		</div>
+		<div
+			class="ss-search-field ss-desktop-wrap relative hidden min-[50rem]:flex w-full min-w-0 max-w-[40rem] flex-1"
+		>
+			<form
+				method="get"
+				action={searchAction}
+				class="ss-form ss-desktop-form flex h-10 w-full min-w-0 items-center gap-2 rounded-lg border border-hairline bg-surface-nav pl-3 pr-2 text-sm text-fg hover:border-gray-300 dark:hover:border-gray-500"
+				role="search"
+			>
+				<Icon name="magnifier" />
+				<label class="sr-only" for="ss-desktop-q">{searchPlaceholder}</label>
 				<input
-					id="ss-mobile-q"
+					id="ss-desktop-q"
 					type="search"
 					name="q"
 					autocomplete="off"
 					placeholder={searchPlaceholder}
-					class="ss-input"
+					class="ss-input min-w-0 flex-1 border-0 bg-transparent font-inherit text-inherit outline-none placeholder:italic placeholder:text-fg-muted"
+					aria-autocomplete="list"
 				/>
+				<kbd
+					class="ss-kbd ms-auto hidden min-[50rem]:inline-flex items-center gap-0.5 rounded bg-surface-code px-1.5 font-sans text-xs text-fg-muted"
+					aria-hidden="true"
+				>
+					<kbd>{Astro.locals.t('search.ctrlKey')}</kbd><kbd>K</kbd>
+				</kbd>
 			</form>
+			<div
+				id="ss-desktop-quick-results"
+				class="ss-quick-panel not-prose absolute left-0 right-0 top-full z-[200] mt-1 max-h-[min(70vh,20rem)] overflow-x-hidden overflow-y-auto rounded-lg border border-hairline bg-surface-nav text-start text-fg shadow-lg [&_a]:focus-visible:outline [&_a]:focus-visible:outline-2 [&_a]:focus-visible:outline-offset-[-2px] [&_a]:focus-visible:outline-accent-500"
+				hidden
+			>
+			</div>
 		</div>
-		<form
-			method="get"
-			action={searchAction}
-			class="ss-form ss-desktop-form sl-hidden md:sl-flex"
-			role="search"
-		>
-			<Icon name="magnifier" />
-			<label class="sr-only" for="ss-desktop-q">{searchPlaceholder}</label>
-			<input
-				id="ss-desktop-q"
-				type="search"
-				name="q"
-				autocomplete="off"
-				placeholder={searchPlaceholder}
-				class="ss-input"
-			/>
-			<kbd class="ss-kbd sl-hidden" aria-hidden="true">
-				<kbd>{Astro.locals.t('search.ctrlKey')}</kbd><kbd>K</kbd>
-			</kbd>
-		</form>
 	</div>
 </site-search>
 
-<script>
-	class SiteSearch extends HTMLElement {
-		private onDocClick = (e: MouseEvent) => {
-			if (!this.mobilePanel || this.mobilePanel.hidden) return;
-			if (this.contains(e.target as Node)) return;
-			this.closeMobile();
-		};
-
-		private mobileToggle: HTMLButtonElement | null = null;
-		private mobilePanel: HTMLElement | null = null;
-		private mobileInput: HTMLInputElement | null = null;
-		private desktopInput: HTMLInputElement | null = null;
-
-		constructor() {
-			super();
-			this.mobileToggle = this.querySelector('.ss-mobile-toggle');
-			this.mobilePanel = this.querySelector('#ss-mobile-search-panel');
-			this.mobileInput = this.querySelector('#ss-mobile-q');
-			this.desktopInput = this.querySelector('#ss-desktop-q');
-			this.syncQueryFromUrl();
-
-			this.mobileToggle?.addEventListener('click', () => {
-				const open =
-					this.mobileToggle?.getAttribute('aria-expanded') === 'true';
-				if (open) this.closeMobile();
-				else this.openMobile();
-			});
-
-			window.addEventListener('keydown', (e) => {
-				if ((e.metaKey === true || e.ctrlKey === true) && e.key === 'k') {
-					e.preventDefault();
-					this.focusSearch();
-				}
-			});
-
-			this.addEventListener('keydown', (e) => {
-				if (
-					e.key === 'Escape' &&
-					this.mobilePanel &&
-					!this.mobilePanel.hidden
-				) {
-					e.stopPropagation();
-					this.closeMobile();
-				}
-			});
+<!-- Inline: ⌘ + aria-keyshortcuts on Apple (see Starlight Search.astro). -->
+<script is:inline>
+	(() => {
+		const platformKey = document.querySelector(
+			'.ss-desktop-form .ss-kbd > kbd:first-of-type',
+		);
+		const desktopInput = document.querySelector('#ss-desktop-q');
+		if (!platformKey || !/(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			return;
 		}
-
-		connectedCallback() {
-			document.addEventListener('click', this.onDocClick, true);
-		}
-
-		disconnectedCallback() {
-			document.removeEventListener('click', this.onDocClick, true);
-		}
-
-		private isWide(): boolean {
-			return window.matchMedia('(min-width: 50rem)').matches;
-		}
-
-		private openMobile() {
-			if (!this.mobilePanel || !this.mobileToggle) return;
-			this.mobilePanel.hidden = false;
-			this.mobileToggle.setAttribute('aria-expanded', 'true');
-			queueMicrotask(() => this.mobileInput?.focus());
-		}
-
-		private closeMobile() {
-			if (!this.mobilePanel || !this.mobileToggle) return;
-			this.mobilePanel.hidden = true;
-			this.mobileToggle.setAttribute('aria-expanded', 'false');
-		}
-
-		private focusSearch() {
-			if (this.isWide()) {
-				this.desktopInput?.focus();
-				return;
-			}
-			if (this.mobilePanel?.hidden) this.openMobile();
-			else this.mobileInput?.focus();
-		}
-
-		private syncQueryFromUrl() {
-			const query = new URLSearchParams(window.location.search)
-				.get('q')
-				?.trim();
-			if (!query) return;
-			if (this.desktopInput) this.desktopInput.value = query;
-			if (this.mobileInput) this.mobileInput.value = query;
-		}
-	}
-
-	customElements.define('site-search', SiteSearch);
+		platformKey.textContent = '⌘';
+		desktopInput?.setAttribute('aria-keyshortcuts', 'Meta+K');
+	})();
 </script>
 
-<style>
-	@layer starlight.core {
-		site-search {
-			display: contents;
-		}
-
-		.ss-root {
-			display: flex;
-			flex-wrap: wrap;
-			align-items: center;
-			gap: 0.5rem;
-			width: 100%;
-			min-width: 0;
-		}
-
-		.ss-mobile-toggle {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			border: 0;
-			background-color: transparent;
-			color: var(--sl-color-gray-1);
-			cursor: pointer;
-			height: 2.5rem;
-			width: 2.5rem;
-			font-size: var(--sl-text-xl);
-			border-radius: 0.5rem;
-		}
-
-		.ss-mobile-toggle:hover {
-			color: var(--sl-color-white);
-		}
-
-		.ss-mobile-panel {
-			flex: 1 1 100%;
-			min-width: 0;
-		}
-
-		.ss-mobile-panel[hidden] {
-			display: none;
-		}
-
-		.ss-form {
-			display: flex;
-			align-items: center;
-			gap: 0.5rem;
-			width: 100%;
-			min-width: 0;
-		}
-
-		.ss-desktop-form {
-			border: 1px solid var(--sl-color-gray-5);
-			border-radius: 0.5rem;
-			padding-inline-start: 0.75rem;
-			padding-inline-end: 0.5rem;
-			background-color: var(--sl-color-black);
-			color: var(--sl-color-gray-2);
-			font-size: var(--sl-text-sm);
-			height: 2.5rem;
-			max-width: 40rem;
-		}
-
-		.ss-desktop-form:hover {
-			border-color: var(--sl-color-gray-2);
-			color: var(--sl-color-white);
-		}
-
-		.ss-input {
-			flex: 1;
-			min-width: 0;
-			border: 0;
-			background: transparent;
-			color: inherit;
-			font: inherit;
-			outline: none;
-		}
-
-		.ss-input::placeholder {
-			color: var(--sl-color-gray-3);
-			font-style: italic;
-		}
-
-		.ss-mobile-panel .ss-form {
-			border: 1px solid var(--sl-color-gray-5);
-			border-radius: 0.5rem;
-			padding: 0.35rem 0.5rem;
-			background-color: var(--sl-color-black);
-		}
-
-		.ss-kbd {
-			border-radius: 0.25rem;
-			font-size: var(--sl-text-2xs);
-			gap: 0.25em;
-			padding-inline: 0.375rem;
-			background-color: var(--sl-color-gray-6);
-			margin-inline-start: auto;
-		}
-
-		.ss-kbd kbd {
-			font-family: var(--__sl-font);
-		}
-
-		@media (min-width: 50rem) {
-			.ss-desktop-form > :last-child {
-				margin-inline-start: auto;
-			}
-		}
-	}
-</style>
+<script>
+	import '../scripts/site-search-element';
+</script>
