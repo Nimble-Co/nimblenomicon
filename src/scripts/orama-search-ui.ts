@@ -267,6 +267,12 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 		}
 	});
 
+	panel.addEventListener('mouseleave', () => {
+		if (panel.hidden) return;
+		activeIndex = -1;
+		syncActiveClasses();
+	});
+
 	const onDocClick = (e: MouseEvent): void => {
 		if (panel.hidden) return;
 		const t = e.target as Node | null;
