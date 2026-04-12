@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
 	buildMatchableTerms,
 	GLOBAL_XREF_AUTOLINK_BLOCKLIST,
-} from './xref-terms';
+} from '../../src/models/xref-terms';
 
 describe('GLOBAL_XREF_AUTOLINK_BLOCKLIST', () => {
 	it('excludes blocked terms from buildMatchableTerms (case-insensitive)', () => {

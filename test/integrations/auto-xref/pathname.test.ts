@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
 
-import { distFileToSelfPathname, htmlRelativeToPathname } from './pathname';
+import {
+	distFileToSelfPathname,
+	htmlRelativeToPathname,
+} from '../../../src/integrations/auto-xref/pathname';
 
 describe('htmlRelativeToPathname', () => {
 	it('maps index.html under a segment to a trailing-slash path', () => {

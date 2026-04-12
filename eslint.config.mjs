@@ -1,6 +1,7 @@
 import eslint from '@eslint/js';
 import eslintPluginAstro from 'eslint-plugin-astro';
 import eslintPluginTailwindcss from 'eslint-plugin-tailwindcss';
+import vitestPlugin from 'eslint-plugin-vitest';
 import globals from 'globals';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
@@ -42,6 +43,18 @@ export default tseslint.config(
 		files: ['**/env.d.ts'],
 		rules: {
 			'@typescript-eslint/triple-slash-reference': 'off',
+		},
+	},
+	{
+		files: ['test/**/*.test.ts'],
+		plugins: { vitest: vitestPlugin },
+		rules: {
+			...vitestPlugin.configs.recommended.rules,
+		},
+		languageOptions: {
+			globals: {
+				...vitestPlugin.configs.env.languageOptions.globals,
+			},
 		},
 	},
 	{

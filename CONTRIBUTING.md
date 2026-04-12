@@ -36,10 +36,13 @@ The site is an **Astro** + **Starlight** documentation app at the **repository r
 
 Other useful commands:
 
+- `npm run format` / `npm run format:check` — Prettier
+- `npm run lint` — ESLint (TS/Astro) + markdownlint (md/mdx)
+- `npm test` / `npm run test:watch` — Vitest (specs live under `test/**/*.test.ts`, not in `src/`)
 - `npm run build` — production build to `dist/`
 - `npm run preview` — serve the built site locally
 
-There are no project test or lint scripts in `package.json` yet. If we add them later, this section will list them.
+**CI:** On pull requests and pushes to `main`, [`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs format check, lint, unit tests, and production build. To require a green CI before merging into `main`, enable **branch protection** in the GitHub repository settings and add the required status check for the `ci` job (workflow name alone does not block merges).
 
 ## Upgrading `@astrojs/starlight`
 
