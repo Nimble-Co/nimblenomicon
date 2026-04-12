@@ -23,6 +23,14 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 			Loading search index…
 		</p>
 
+		<div
+			class="mt-4 hidden flex-wrap gap-2"
+			data-orama-type-filter-bar
+			role="toolbar"
+			aria-label="Filter by data type"
+		>
+		</div>
+
 		<div class="sr-only" aria-live="polite" data-orama-search-live></div>
 
 		<div data-orama-search-results></div>
