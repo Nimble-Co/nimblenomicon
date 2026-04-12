@@ -1,4 +1,5 @@
 # Project, stack, and code-adjacent terms
+activedescendant
 blocklist
 domhandler
 Astro
