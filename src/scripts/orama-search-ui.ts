@@ -413,7 +413,7 @@ export function initOramaDataSearch(root: HTMLElement): void {
 	}
 
 	const TYPE_FILTER_PILL_CLASS =
-		'orama-type-filter-pill inline-flex shrink-0 items-center justify-center rounded-full border border-hairline bg-surface px-3 py-1.5 text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
+		'orama-type-filter-pill shrink-0 rounded-full border border-hairline bg-surface text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
 	const TYPE_FILTER_MENUITEM_CLASS =
 		'orama-type-filter-menu-item flex w-full min-w-[10rem] items-center rounded-none border-0 bg-transparent px-3 py-2.5 text-left text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
 
@@ -535,20 +535,20 @@ export function initOramaDataSearch(root: HTMLElement): void {
 		bar.classList.add('block');
 
 		const outer = document.createElement('div');
-		outer.className = 'flex min-w-0 items-stretch gap-2';
+		outer.className = 'flex min-w-0 items-center gap-2';
 
 		const primaryRow = document.createElement('div');
 		primaryRow.className =
-			'flex min-w-0 flex-1 flex-nowrap items-stretch gap-2 overflow-hidden';
+			'flex min-w-0 flex-1 flex-nowrap items-center gap-2 overflow-hidden';
 		primaryRow.setAttribute('data-orama-type-filter-primary', '');
 
 		const moreWrap = document.createElement('div');
-		moreWrap.className = 'relative hidden shrink-0 self-stretch';
+		moreWrap.className = 'relative hidden shrink-0';
 		moreWrap.setAttribute('data-orama-type-filter-more-wrap', '');
 
 		const moreBtn = document.createElement('button');
 		moreBtn.type = 'button';
-		moreBtn.className = `${TYPE_FILTER_PILL_CLASS} h-full gap-1`;
+		moreBtn.className = `${TYPE_FILTER_PILL_CLASS} gap-1`;
 		moreBtn.setAttribute('data-orama-type-more-toggle', '');
 		moreBtn.setAttribute('aria-expanded', 'false');
 		moreBtn.setAttribute('aria-haspopup', 'true');
