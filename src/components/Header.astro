@@ -8,7 +8,8 @@ import SocialIcons from 'virtual:starlight/components/SocialIcons';
 import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
 
 /**
- * Render the `Search` component if Pagefind is enabled or the default search component has been overridden.
+ * Render the `Search` component when Starlight would show it: Pagefind is off in
+ * `astro.config.ts`, but the default search component is replaced with our Orama UI.
  */
 const shouldRenderSearch =
 	config.pagefind ||
