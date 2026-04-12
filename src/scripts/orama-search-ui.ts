@@ -403,23 +403,229 @@ export function initOramaDataSearch(root: HTMLElement): void {
 		}
 	}
 
+	const TYPE_FILTER_PILL_CLASS =
+		'inline-flex shrink-0 items-center rounded-full border border-hairline bg-surface px-3 py-1.5 text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
+	const TYPE_FILTER_MENUITEM_CLASS =
+		'flex w-full min-w-[10rem] items-center rounded-md border border-transparent px-3 py-2 text-left text-sm text-fg hover:bg-gray-100 dark:hover:bg-gray-800/80';
+
+	let typeFilterLayoutRefs: {
+		primaryRow: HTMLElement;
+		moreWrap: HTMLElement;
+		moreBtn: HTMLButtonElement;
+		morePanel: HTMLElement;
+		allBtn: HTMLButtonElement;
+		typeBtns: HTMLButtonElement[];
+	} | null = null;
+	let typeFilterMoreOpen = false;
+	let typeFilterLayoutObserver: ResizeObserver | undefined;
+
+	function setTypeFilterMoreOpen(open: boolean): void {
+		typeFilterMoreOpen = open;
+		const refs = typeFilterLayoutRefs;
+		if (!refs) return;
+		refs.moreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+		refs.morePanel.classList.toggle('hidden', !open);
+		refs.morePanel.setAttribute('aria-hidden', open ? 'false' : 'true');
+	}
+
+	function closeTypeFilterMore(): void {
+		setTypeFilterMoreOpen(false);
+	}
+
+	function syncTypeFilterChipPresentation(): void {
+		const refs = typeFilterLayoutRefs;
+		if (!refs) return;
+		const { morePanel, typeBtns } = refs;
+		for (const b of typeBtns) {
+			if (morePanel.contains(b)) {
+				b.className = TYPE_FILTER_MENUITEM_CLASS;
+				b.setAttribute('role', 'menuitem');
+			} else {
+				b.className = TYPE_FILTER_PILL_CLASS;
+				b.removeAttribute('role');
+			}
+		}
+	}
+
+	function layoutTypeFilterOverflow(): void {
+		const refs = typeFilterLayoutRefs;
+		const bar = typeFilterBarEl;
+		if (!refs || !bar) return;
+
+		const { primaryRow, moreWrap, morePanel, allBtn, typeBtns } = refs;
+		const gapPx = 8;
+		const barWidth = bar.getBoundingClientRect().width;
+		if (barWidth <= 0) return;
+
+		// Try everything in one row without "More".
+		moreWrap.classList.add('hidden');
+		moreWrap.classList.remove('flex');
+		primaryRow.replaceChildren(allBtn, ...typeBtns);
+		morePanel.replaceChildren();
+		syncTypeFilterChipPresentation();
+
+		const rowGap = gapPx;
+		const sumPrimaryWidth = (): number => {
+			let w = 0;
+			for (const el of primaryRow.children) {
+				w += (el as HTMLElement).offsetWidth;
+			}
+			w += Math.max(0, primaryRow.children.length - 1) * rowGap;
+			return w;
+		};
+
+		if (sumPrimaryWidth() <= barWidth + 0.5) {
+			closeTypeFilterMore();
+			return;
+		}
+
+		moreWrap.classList.remove('hidden');
+		moreWrap.classList.add('flex');
+
+		let low = 0;
+		let high = typeBtns.length;
+		let best = 0;
+		while (low <= high) {
+			const mid = Math.floor((low + high) / 2);
+			primaryRow.replaceChildren(allBtn, ...typeBtns.slice(0, mid));
+			morePanel.replaceChildren(...typeBtns.slice(mid));
+			syncTypeFilterChipPresentation();
+			void primaryRow.offsetWidth;
+			void moreWrap.offsetWidth;
+			const primaryW = sumPrimaryWidth();
+			const moreW = moreWrap.offsetWidth;
+			if (primaryW + gapPx + moreW <= barWidth + 0.5) {
+				best = mid;
+				low = mid + 1;
+			} else {
+				high = mid - 1;
+			}
+		}
+
+		primaryRow.replaceChildren(allBtn, ...typeBtns.slice(0, best));
+		morePanel.replaceChildren(...typeBtns.slice(best));
+		syncTypeFilterChipPresentation();
+
+		closeTypeFilterMore();
+	}
+
+	function scheduleTypeFilterLayout(): void {
+		requestAnimationFrame(() => layoutTypeFilterOverflow());
+	}
+
 	function renderTypeFilterBar(): void {
 		if (!typeFilterBarEl) return;
-		const baseBtn =
-			'inline-flex shrink-0 items-center rounded-full border border-hairline bg-surface px-3 py-1.5 text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
-		const parts: string[] = [
-			`<button type="button" class="${baseBtn}" data-orama-type-filter="" aria-pressed="false">All types</button>`,
-		];
+
+		typeFilterLayoutObserver?.disconnect();
+		closeTypeFilterMore();
+
+		const bar = typeFilterBarEl;
+		bar.classList.remove('hidden');
+		bar.classList.add('block');
+
+		const outer = document.createElement('div');
+		outer.className = 'flex min-w-0 items-stretch gap-2';
+
+		const primaryRow = document.createElement('div');
+		primaryRow.className =
+			'flex min-w-0 flex-1 flex-nowrap items-center gap-2 overflow-hidden';
+		primaryRow.setAttribute('data-orama-type-filter-primary', '');
+
+		const moreWrap = document.createElement('div');
+		moreWrap.className = 'relative hidden shrink-0 self-center';
+		moreWrap.setAttribute('data-orama-type-filter-more-wrap', '');
+
+		const moreBtn = document.createElement('button');
+		moreBtn.type = 'button';
+		moreBtn.className = `${TYPE_FILTER_PILL_CLASS} gap-1`;
+		moreBtn.setAttribute('data-orama-type-more-toggle', '');
+		moreBtn.setAttribute('aria-expanded', 'false');
+		moreBtn.setAttribute('aria-haspopup', 'true');
+		const morePanelId = `orama-type-more-${Math.random().toString(36).slice(2, 9)}`;
+		moreBtn.setAttribute('aria-controls', morePanelId);
+		moreBtn.innerHTML = `<span>More</span><span class="text-fg-muted" aria-hidden="true">▾</span>`;
+
+		const morePanel = document.createElement('div');
+		morePanel.id = morePanelId;
+		morePanel.className =
+			'border-hairline bg-surface absolute top-full right-0 z-50 mt-1 hidden min-w-[11rem] flex-col gap-0.5 rounded-lg border p-1 shadow-lg';
+		morePanel.setAttribute('role', 'menu');
+		morePanel.setAttribute('aria-hidden', 'true');
+
+		const allBtn = document.createElement('button');
+		allBtn.type = 'button';
+		allBtn.className = TYPE_FILTER_PILL_CLASS;
+		allBtn.setAttribute('data-orama-type-filter', '');
+		allBtn.setAttribute('aria-pressed', 'false');
+		allBtn.textContent = 'All types';
+
+		const typeBtns: HTMLButtonElement[] = [];
 		for (const t of ORAMA_DATA_SEARCH_TYPE_ORDER) {
-			const label = escapeHtml(typeFilterLabel(t));
-			parts.push(
-				`<button type="button" class="${baseBtn}" data-orama-type-filter="${escapeHtml(t)}" aria-pressed="false">${label}</button>`,
-			);
+			const b = document.createElement('button');
+			b.type = 'button';
+			b.className = TYPE_FILTER_PILL_CLASS;
+			b.setAttribute('data-orama-type-filter', t);
+			b.setAttribute('aria-pressed', 'false');
+			b.textContent = typeFilterLabel(t);
+			typeBtns.push(b);
 		}
-		typeFilterBarEl.innerHTML = parts.join('');
-		typeFilterBarEl.classList.remove('hidden');
-		typeFilterBarEl.classList.add('flex');
+
+		moreWrap.append(moreBtn, morePanel);
+		outer.append(primaryRow, moreWrap);
+		bar.replaceChildren(outer);
+
+		typeFilterLayoutRefs = {
+			primaryRow,
+			moreWrap,
+			moreBtn,
+			morePanel,
+			allBtn,
+			typeBtns,
+		};
+
+		moreBtn.addEventListener('click', (e) => {
+			e.preventDefault();
+			e.stopPropagation();
+			setTypeFilterMoreOpen(!typeFilterMoreOpen);
+		});
+
+		typeFilterLayoutObserver = new ResizeObserver(() =>
+			scheduleTypeFilterLayout(),
+		);
+		typeFilterLayoutObserver.observe(bar);
+
+		ensureTypeFilterBarGlobalListeners(bar);
+
 		syncTypeFilterButtonState();
+		scheduleTypeFilterLayout();
+	}
+
+	let typeFilterBarGlobalListenersBound = false;
+
+	function ensureTypeFilterBarGlobalListeners(bar: HTMLElement): void {
+		if (typeFilterBarGlobalListenersBound) return;
+		typeFilterBarGlobalListenersBound = true;
+
+		document.addEventListener(
+			'click',
+			(e) => {
+				if (!typeFilterMoreOpen) return;
+				const refs = typeFilterLayoutRefs;
+				if (!refs) return;
+				const t = e.target as Node | null;
+				if (t && refs.moreWrap.contains(t)) return;
+				closeTypeFilterMore();
+			},
+			true,
+		);
+
+		bar.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && typeFilterMoreOpen) {
+				e.stopPropagation();
+				closeTypeFilterMore();
+				typeFilterLayoutRefs?.moreBtn.focus();
+			}
+		});
 	}
 
 	function renderResults(term: string): void {
@@ -539,6 +745,7 @@ export function initOramaDataSearch(root: HTMLElement): void {
 		typeFilterBarEl.addEventListener('click', (e) => {
 			const t = e.target;
 			if (!(t instanceof Element)) return;
+			if (t.closest('[data-orama-type-more-toggle]')) return;
 			const btn = t.closest<HTMLButtonElement>('[data-orama-type-filter]');
 			if (!btn || !typeFilterBarEl.contains(btn)) return;
 			const raw = btn.getAttribute('data-orama-type-filter')?.trim() ?? '';
@@ -550,6 +757,7 @@ export function initOramaDataSearch(root: HTMLElement): void {
 						: null;
 			if (raw.length > 0 && nextType === null) return;
 			activeType = nextType;
+			closeTypeFilterMore();
 			const q = (
 				input?.value ??
 				new URLSearchParams(window.location.search).get('q') ??

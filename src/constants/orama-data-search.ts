@@ -1,17 +1,18 @@
 /**
  * Shared labels and ordering for the Orama game-data search index and `/search/` UI.
+ * Order is player-facing priority (common lookups first).
  */
 export const ORAMA_DATA_SEARCH_TYPE_ORDER = [
-	'ancestry',
+	'monster',
+	'spell',
 	'class',
+	'weapon',
+	'ancestry',
 	'background',
+	'armor',
 	'equipment',
 	'magic-item',
-	'weapon',
-	'spell',
 	'glossary',
-	'monster',
-	'armor',
 	'language',
 ] as const;
 
