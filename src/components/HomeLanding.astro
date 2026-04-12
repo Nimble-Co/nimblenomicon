@@ -210,7 +210,12 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 		const input = document.querySelector<HTMLInputElement>('#home-search-q');
 		const panel = document.querySelector<HTMLElement>('#home-quick-results');
 		if (input && panel) initOramaQuickSearch({ input, panel });
-		if (input) wireSearchShortcut(() => input.focus());
+		if (input) {
+			wireSearchShortcut(() => {
+				input.focus();
+				input.select();
+			});
+		}
 	}
 
 	if (document.readyState === 'loading') {

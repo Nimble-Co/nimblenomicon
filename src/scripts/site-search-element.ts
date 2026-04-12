@@ -228,13 +228,23 @@ class SiteSearch extends HTMLElement {
 		}, 400);
 	}
 
+	private focusSearchInput(input: HTMLInputElement | null): void {
+		if (!input) return;
+		input.focus();
+		input.select();
+	}
+
 	private focusSearch() {
 		if (this.isWide()) {
-			this.desktopInput?.focus();
+			this.focusSearchInput(this.desktopInput);
 			return;
 		}
-		if (this.mobilePanel?.hidden) this.openMobile();
-		else this.mobileInput?.focus();
+		if (this.mobilePanel?.hidden) {
+			this.openMobile();
+			queueMicrotask(() => this.mobileInput?.select());
+			return;
+		}
+		this.focusSearchInput(this.mobileInput);
 	}
 
 	private syncQueryFromUrl() {
