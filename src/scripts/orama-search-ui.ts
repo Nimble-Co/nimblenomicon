@@ -395,18 +395,33 @@ export function initOramaDataSearch(root: HTMLElement): void {
 				(activeType === null && (v === '' || v === null)) ||
 				(activeType !== null && v === activeType);
 			btn.setAttribute('aria-pressed', pressed ? 'true' : 'false');
-			btn.classList.toggle('border-hairline', !pressed);
-			btn.classList.toggle('border-accent-500', pressed);
-			btn.classList.toggle('bg-accent-50', pressed);
-			btn.classList.toggle('dark:bg-accent-950/35', pressed);
-			btn.classList.toggle('font-medium', pressed);
+
+			const inMoreMenu = Boolean(btn.closest('[data-orama-type-more-panel]'));
+			if (inMoreMenu) {
+				btn.classList.remove(
+					'border-hairline',
+					'border-accent-500',
+					'bg-accent-50',
+					'dark:bg-accent-950/35',
+				);
+				btn.classList.toggle('bg-gray-100', pressed);
+				btn.classList.toggle('dark:bg-gray-800/80', pressed);
+				btn.classList.toggle('font-medium', pressed);
+			} else {
+				btn.classList.remove('bg-gray-100', 'dark:bg-gray-800/80');
+				btn.classList.toggle('border-hairline', !pressed);
+				btn.classList.toggle('border-accent-500', pressed);
+				btn.classList.toggle('bg-accent-50', pressed);
+				btn.classList.toggle('dark:bg-accent-950/35', pressed);
+				btn.classList.toggle('font-medium', pressed);
+			}
 		}
 	}
 
 	const TYPE_FILTER_PILL_CLASS =
 		'inline-flex shrink-0 items-center rounded-full border border-hairline bg-surface px-3 py-1.5 text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
 	const TYPE_FILTER_MENUITEM_CLASS =
-		'flex w-full min-w-[10rem] items-center rounded-md border border-transparent px-3 py-2 text-left text-sm text-fg hover:bg-gray-100 dark:hover:bg-gray-800/80';
+		'flex w-full min-w-[10rem] items-center rounded-none border-0 bg-transparent px-3 py-2.5 text-left text-sm text-fg hover:bg-gray-100 dark:hover:bg-gray-800/80';
 
 	let typeFilterLayoutRefs: {
 		primaryRow: HTMLElement;
@@ -476,6 +491,7 @@ export function initOramaDataSearch(root: HTMLElement): void {
 
 		if (sumPrimaryWidth() <= barWidth + 0.5) {
 			closeTypeFilterMore();
+			syncTypeFilterButtonState();
 			return;
 		}
 
@@ -507,6 +523,7 @@ export function initOramaDataSearch(root: HTMLElement): void {
 		syncTypeFilterChipPresentation();
 
 		closeTypeFilterMore();
+		syncTypeFilterButtonState();
 	}
 
 	function scheduleTypeFilterLayout(): void {
@@ -524,7 +541,7 @@ export function initOramaDataSearch(root: HTMLElement): void {
 		bar.classList.add('block');
 
 		const outer = document.createElement('div');
-		outer.className = 'flex min-w-0 items-stretch gap-2';
+		outer.className = 'flex min-w-0 items-center gap-2';
 
 		const primaryRow = document.createElement('div');
 		primaryRow.className =
@@ -547,8 +564,9 @@ export function initOramaDataSearch(root: HTMLElement): void {
 
 		const morePanel = document.createElement('div');
 		morePanel.id = morePanelId;
+		morePanel.setAttribute('data-orama-type-more-panel', '');
 		morePanel.className =
-			'border-hairline bg-surface absolute top-full right-0 z-50 mt-1 hidden min-w-[11rem] flex-col gap-0.5 rounded-lg border p-1 shadow-lg';
+			'border-hairline bg-surface absolute top-full right-0 z-50 mt-1 hidden min-w-[11rem] flex-col divide-y divide-hairline overflow-hidden rounded-lg border py-0 shadow-lg';
 		morePanel.setAttribute('role', 'menu');
 		morePanel.setAttribute('aria-hidden', 'true');
 
@@ -557,7 +575,7 @@ export function initOramaDataSearch(root: HTMLElement): void {
 		allBtn.className = TYPE_FILTER_PILL_CLASS;
 		allBtn.setAttribute('data-orama-type-filter', '');
 		allBtn.setAttribute('aria-pressed', 'false');
-		allBtn.textContent = 'All types';
+		allBtn.textContent = 'All';
 
 		const typeBtns: HTMLButtonElement[] = [];
 		for (const t of ORAMA_DATA_SEARCH_TYPE_ORDER) {
