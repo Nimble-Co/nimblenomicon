@@ -10,15 +10,18 @@ The Nimblenomicon is a static documentation site for the Nimble tabletop RPG, bu
 
 Standard commands from the repo root (see `CONTRIBUTING.md` § Local Development):
 
-| Command                | Purpose                                           |
-| ---------------------- | ------------------------------------------------- |
-| `npm run dev`          | Dev server at `localhost:4321`                    |
-| `npm run build`        | Production build to `dist/`                       |
-| `npm run preview`      | Serve production build locally                    |
-| `npm run format`       | Apply Prettier to the repo                        |
-| `npm run format:check` | Check formatting (same as CI)                     |
-| `npm run lint`         | ESLint (TS/Astro) + markdownlint (md/mdx)         |
-| `npm test`             | Vitest unit tests (auto-xref path + HTML helpers) |
+| Command                | Purpose                                      |
+| ---------------------- | -------------------------------------------- |
+| `npm run dev`          | Dev server at `localhost:4321`               |
+| `npm run build`        | Production build to `dist/`                  |
+| `npm run preview`      | Serve production build locally               |
+| `npm run format`       | Apply Prettier to the repo                   |
+| `npm run format:check` | Check formatting (same as CI)                |
+| `npm run lint`         | ESLint (TS/Astro) + markdownlint (md/mdx)    |
+| `npm test`             | Vitest unit tests (`test/**/*.test.ts` only) |
+| `npm run test:watch`   | Vitest in watch mode (local development)     |
+
+Place **unit test files** only under [`test/`](test/) at the repo root (e.g. `test/models/foo.test.ts`), not co-located in `src/`. Specs import production code from `src/` via relative paths.
 
 ### Styling (Tailwind v4 + Starlight)
 
