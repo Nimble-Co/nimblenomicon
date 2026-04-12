@@ -1,8 +1,3 @@
-import Parser from 'rss-parser';
-
-const ATOM_URL = 'https://nimblerpg.com/blogs/news.atom';
-const ALLOWED_ARTICLE_HOST = 'nimblerpg.com';
-
 const IMG_SRC_RE = /<img[^>]+src=["']([^"']+)["']/i;
 
 /** `property` or `name` first, then `content` (Shopify / common CMS orderings) */
@@ -10,8 +5,6 @@ const META_PROP_CONTENT_RE =
 	/<meta\s+[^>]*(?:property|name)=["']([^"']+)["'][^>]*content=["']([^"']+)["'][^>]*>/gi;
 const META_CONTENT_PROP_RE =
 	/<meta\s+[^>]*content=["']([^"']+)["'][^>]*(?:property|name)=["']([^"']+)["'][^>]*>/gi;
-
-const FETCH_TIMEOUT_MS = 15_000;
 
 export type NimbleNewsItem = {
 	url: string;
@@ -92,117 +85,6 @@ export function extractHeroImageFromArticleHtml(
 		if (val) return resolveAgainstBase(baseUrl, val);
 	}
 	return undefined;
-}
-
-async function fetchHeroImageFromArticlePage(
-	articleUrl: string,
-): Promise<string | undefined> {
-	let hostname: string;
-	try {
-		hostname = new URL(articleUrl).hostname;
-	} catch {
-		return undefined;
-	}
-	if (hostname !== ALLOWED_ARTICLE_HOST) return undefined;
-
-	try {
-		const res = await fetch(articleUrl, {
-			headers: {
-				'User-Agent':
-					'Nimblenomicon/1.0 (https://github.com/nimble-rpg/nimblenomicon)',
-				Accept: 'text/html,application/xhtml+xml;q=0.9,*/*;q=0.8',
-			},
-			signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
-		});
-		if (!res.ok) {
-			if (import.meta.env.DEV) {
-				console.warn(
-					`[nimble-news] Article fetch failed: ${articleUrl} (${res.status})`,
-				);
-			}
-			return undefined;
-		}
-		const html = await res.text();
-		return extractHeroImageFromArticleHtml(html, articleUrl);
-	} catch (err) {
-		if (import.meta.env.DEV) {
-			console.warn(`[nimble-news] Article fetch error: ${articleUrl}`, err);
-		}
-		return undefined;
-	}
-}
-
-function publishedToIso(item: { isoDate?: string; pubDate?: string }): string {
-	if (item.isoDate) return item.isoDate;
-	if (item.pubDate) {
-		const d = new Date(item.pubDate);
-		if (!Number.isNaN(d.getTime())) return d.toISOString();
-	}
-	return new Date(0).toISOString();
-}
-
-const parser = new Parser();
-
-type PreliminaryEntry = Omit<NimbleNewsItem, 'imageUrl'> & {
-	atomHtml?: string;
-};
-
-export async function getLatestNimbleNews(
-	limit: number,
-): Promise<NimbleNewsItem[]> {
-	try {
-		const res = await fetch(ATOM_URL, {
-			headers: {
-				'User-Agent':
-					'Nimblenomicon/1.0 (https://github.com/nimble-rpg/nimblenomicon)',
-				Accept: 'application/atom+xml, application/xml, text/xml, */*',
-			},
-		});
-		if (!res.ok) {
-			if (import.meta.env.DEV) {
-				console.warn(
-					`[nimble-news] Feed request failed: ${res.status} ${res.statusText}`,
-				);
-			}
-			return [];
-		}
-		const xml = await res.text();
-		const feed = await parser.parseString(xml);
-		const preliminary: PreliminaryEntry[] = [];
-		for (const raw of feed.items) {
-			if (preliminary.length >= limit) break;
-			const link = raw.link?.trim();
-			const title = raw.title?.trim();
-			if (!link || !title) continue;
-			const extra = raw as Record<string, string | undefined>;
-			const atomContent = raw.content ?? extra['content:encoded'];
-			preliminary.push({
-				url: link,
-				title,
-				publishedIso: publishedToIso(raw),
-				...(typeof atomContent === 'string' ? { atomHtml: atomContent } : {}),
-			});
-		}
-
-		const items: NimbleNewsItem[] = await Promise.all(
-			preliminary.map(async ({ atomHtml, ...rest }) => {
-				const fromPage = await fetchHeroImageFromArticlePage(rest.url);
-				const fromAtom = extractFirstImageSrc(atomHtml);
-				const imageUrl = fromPage ?? fromAtom;
-				return {
-					...rest,
-					...(imageUrl ? { imageUrl } : {}),
-				};
-			}),
-		);
-
-		return items;
-	} catch (err) {
-		if (import.meta.env.DEV) {
-			console.warn('[nimble-news] Failed to load or parse feed:', err);
-		}
-		return [];
-	}
 }
 
 export function formatNewsDate(iso: string): string {

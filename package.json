@@ -7,8 +7,9 @@
 	},
 	"scripts": {
 		"build:orama-index": "tsx scripts/build-orama-index.ts",
-		"prebuild": "npm run build:orama-index",
-		"predev": "npm run build:orama-index",
+		"sync:nimble-news": "tsx scripts/sync-nimble-news.ts",
+		"prebuild": "npm run sync:nimble-news && npm run build:orama-index",
+		"predev": "npm run sync:nimble-news && npm run build:orama-index",
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build",
@@ -31,7 +32,6 @@
 		"@tailwindcss/vite": "^4.1.18",
 		"astro": "^6.0.1",
 		"cheerio": "^1.2.0",
-		"rss-parser": "^3.13.0",
 		"sharp": "^0.34.2",
 		"tailwindcss": "^4.1.18"
 	},
@@ -46,6 +46,7 @@
 		"markdownlint-cli2": "^0.17.2",
 		"prettier": "^3.5.3",
 		"prettier-plugin-astro": "^0.14.1",
+		"rss-parser": "^3.13.0",
 		"tsx": "^4.21.0",
 		"typescript": "^5.8.2",
 		"typescript-eslint": "^8.28.0",
