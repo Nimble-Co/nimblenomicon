@@ -34,11 +34,11 @@ jobs:
       - name: Lint TypeScript and Astro (ESLint, including Tailwind class rules)
         run: npm run lint:js
 
-      - name: Lint Markdown and MDX (markdownlint)
-        run: npm run lint:md
-
       - name: Unit tests (Vitest)
         run: npm test
+
+      - name: Lint Markdown and MDX (markdownlint)
+        run: npm run lint:md
 
       - name: Production build
         run: npm run build
