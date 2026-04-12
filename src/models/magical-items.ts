@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
-import rawMagicalItems from '../data/magical-items.json';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const magicalItemSourceSchema = z
 	.enum(['core-rules', 'game-masters-guide'])
@@ -74,7 +74,7 @@ export const magicalItems: MagicalItemData[] = z
 			}
 		}),
 	)
-	.parse(rawMagicalItems);
+	.parse(readNimbleGameJson('magical-items'));
 
 /** Index column label for item kind. */
 export function formatMagicalItemKind(kind: MagicalItemData['kind']): string {

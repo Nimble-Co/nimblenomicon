@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import raw from '../data/gmg-gold-by-level.json';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const rowSchema = z
 	.object({
@@ -12,4 +12,4 @@ export type GmgGoldByLevelRow = z.infer<typeof rowSchema>;
 
 export const gmgGoldByLevel: GmgGoldByLevelRow[] = z
 	.array(rowSchema)
-	.parse(raw);
+	.parse(readNimbleGameJson('gmg-gold-by-level'));

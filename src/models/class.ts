@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
-import rawClasses from '../data/classes.json';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 import { namedAbilityBlockSchema } from './creature-stat-shared';
 
 const classLevelRowSchema = z
@@ -163,7 +163,7 @@ export type HeroClassData = z.infer<typeof heroClassSchema>;
 
 export const heroClasses: HeroClassData[] = z
 	.array(heroClassSchema)
-	.parse(rawClasses);
+	.parse(readNimbleGameJson('classes'));
 
 export function getHeroClassById(classId: string): HeroClassData | undefined {
 	return heroClasses.find((c) => c.id === classId);

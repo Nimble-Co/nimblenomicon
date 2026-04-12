@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
-import rawBackgrounds from '../data/backgrounds.json';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const backgroundRowSchema = z.preprocess(
 	(raw) => {
@@ -39,7 +39,7 @@ export const backgrounds: BackgroundRowData[] = z
 			}
 		}
 	})
-	.parse(rawBackgrounds);
+	.parse(readNimbleGameJson('backgrounds'));
 
 /** Root-absolute path to a background detail page. */
 export function backgroundDetailHrefFromCoreRules(id: string): string {

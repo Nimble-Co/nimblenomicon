@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
-import rawArmor from '../data/armor.json';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const armorCategorySchema = z.enum([
 	'cloth',
@@ -50,7 +50,7 @@ export const armorRows: ArmorRowData[] = z
 			}
 		}
 	})
-	.parse(rawArmor);
+	.parse(readNimbleGameJson('armor'));
 
 /** Section order and labels for the Core Rules armor tables. */
 export const armorTableSections: { category: ArmorCategory; label: string }[] =

@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import rawDowntimeActivities from '../data/downtime-activities.json';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const downtimeActivitySchema = z
 	.object({
@@ -11,4 +11,4 @@ const downtimeActivitySchema = z
 export type DowntimeActivityData = z.infer<typeof downtimeActivitySchema>;
 export const downtimeActivities: DowntimeActivityData[] = z
 	.array(downtimeActivitySchema)
-	.parse(rawDowntimeActivities);
+	.parse(readNimbleGameJson('downtime-activities'));

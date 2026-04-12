@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
-import rawMonsterFamilies from '../data/monster-families.json';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const namedBlockSchema = z
 	.object({
@@ -23,4 +23,4 @@ const monsterFamilySchema = z
 export type MonsterFamilyData = z.infer<typeof monsterFamilySchema>;
 export const monsterFamilies: MonsterFamilyData[] = z
 	.array(monsterFamilySchema)
-	.parse(rawMonsterFamilies);
+	.parse(readNimbleGameJson('monster-families'));

@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import rawSaveTypes from '../data/save-types.json';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const saveTypeSchema = z
 	.object({
@@ -11,4 +11,4 @@ const saveTypeSchema = z
 export type SaveTypeData = z.infer<typeof saveTypeSchema>;
 export const saveTypes: SaveTypeData[] = z
 	.array(saveTypeSchema)
-	.parse(rawSaveTypes);
+	.parse(readNimbleGameJson('save-types'));

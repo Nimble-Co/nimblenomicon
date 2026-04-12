@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import rawSpellScrollCosts from '../data/spell-scroll-costs.json';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const spellScrollCostSchema = z
 	.object({
@@ -11,4 +11,4 @@ const spellScrollCostSchema = z
 export type SpellScrollCostData = z.infer<typeof spellScrollCostSchema>;
 export const spellScrollCosts: SpellScrollCostData[] = z
 	.array(spellScrollCostSchema)
-	.parse(rawSpellScrollCosts);
+	.parse(readNimbleGameJson('spell-scroll-costs'));

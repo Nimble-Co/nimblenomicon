@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import raw from '../data/chaos-magic.json';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const chaosRowSchema = z
 	.object({
@@ -29,4 +29,4 @@ export const chaosMagicRows: ChaosMagicRow[] = z
 			}
 		}),
 	)
-	.parse(raw);
+	.parse(readNimbleGameJson('chaos-magic'));

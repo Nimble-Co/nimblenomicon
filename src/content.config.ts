@@ -2,6 +2,7 @@ import { defineCollection } from 'astro:content';
 import { docsLoader } from '@astrojs/starlight/loaders';
 import { docsSchema } from '@astrojs/starlight/schema';
 import { z } from 'astro/zod';
+import { nimbleJsonGameDataLoader } from './content/loaders/nimble-json-game-data';
 import { nimbleNewsAtomLoader } from './content/loaders/nimble-news-atom';
 
 const nimbleNewsEntrySchema = z.object({
@@ -27,5 +28,10 @@ export const collections = {
 	news: defineCollection({
 		loader: nimbleNewsAtomLoader(),
 		schema: nimbleNewsEntrySchema,
+	}),
+	/** One entry per JSON file under `src/data/` (validated at runtime via Zod in `src/models/`). */
+	nimbleGameData: defineCollection({
+		loader: nimbleJsonGameDataLoader(),
+		schema: z.unknown(),
 	}),
 };

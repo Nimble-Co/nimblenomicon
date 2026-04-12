@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
-import rawLanguages from '../data/languages.json';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const languageRowSchema = z.preprocess(
 	(raw) => {
@@ -39,7 +39,7 @@ export const languages: LanguageData[] = z
 			}
 		}
 	})
-	.parse(rawLanguages);
+	.parse(readNimbleGameJson('languages'));
 
 /** Root-absolute path to a language detail page. */
 export function languageDetailHrefFromCoreRules(id: string): string {

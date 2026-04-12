@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import rawAdventuringMotivations from '../data/adventuring-motivations.json';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const adventuringMotivationSchema = z
 	.object({
@@ -13,4 +13,4 @@ export type AdventuringMotivationData = z.infer<
 >;
 export const adventuringMotivations: AdventuringMotivationData[] = z
 	.array(adventuringMotivationSchema)
-	.parse(rawAdventuringMotivations);
+	.parse(readNimbleGameJson('adventuring-motivations'));

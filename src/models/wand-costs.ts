@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import rawWandCosts from '../data/wand-costs.json';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const wandCostSchema = z
 	.object({
@@ -11,4 +11,4 @@ const wandCostSchema = z
 export type WandCostData = z.infer<typeof wandCostSchema>;
 export const wandCosts: WandCostData[] = z
 	.array(wandCostSchema)
-	.parse(rawWandCosts);
+	.parse(readNimbleGameJson('wand-costs'));

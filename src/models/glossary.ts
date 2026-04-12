@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
-import rawGlossary from '../data/glossary.json';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const glossaryEntryRowSchema = z.preprocess(
 	(raw) => {
@@ -39,7 +39,7 @@ export const glossary: GlossaryEntryData[] = z
 			}
 		}
 	})
-	.parse(rawGlossary);
+	.parse(readNimbleGameJson('glossary'));
 
 /** Root-absolute path to a glossary detail page. */
 export function glossaryDetailHrefFromCoreRules(id: string): string {

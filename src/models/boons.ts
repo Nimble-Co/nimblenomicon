@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
-import rawBoons from '../data/boons.json';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const rawBoonSchema = z
 	.object({
@@ -75,7 +75,9 @@ const boonSchema = rawBoonSchema.transform((row): BoonData => {
 	};
 });
 
-export const boons: BoonData[] = z.array(boonSchema).parse(rawBoons);
+export const boons: BoonData[] = z
+	.array(boonSchema)
+	.parse(readNimbleGameJson('boons'));
 
 const BOON_ROLL_COLUMNS = [
 	{ key: 'roll', label: '1d8', align: 'end' as const },

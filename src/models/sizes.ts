@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import rawSizes from '../data/sizes.json';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const sizeSchema = z
 	.object({
@@ -8,4 +8,6 @@ const sizeSchema = z
 	})
 	.strict();
 export type SizeData = z.infer<typeof sizeSchema>;
-export const sizes: SizeData[] = z.array(sizeSchema).parse(rawSizes);
+export const sizes: SizeData[] = z
+	.array(sizeSchema)
+	.parse(readNimbleGameJson('sizes'));

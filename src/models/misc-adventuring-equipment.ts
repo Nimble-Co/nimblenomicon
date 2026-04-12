@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
-import rawMiscAdventuringEquipment from '../data/misc-adventuring-equipment.json';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const miscAdventuringEquipmentRowSchema = z.preprocess(
 	(raw) => {
@@ -42,7 +42,7 @@ export const miscAdventuringEquipment: MiscAdventuringEquipmentRowData[] = z
 			}
 		}
 	})
-	.parse(rawMiscAdventuringEquipment);
+	.parse(readNimbleGameJson('misc-adventuring-equipment'));
 
 /** Markdown body for a detail page. */
 export function miscAdventuringEquipmentDetailMarkdown(
