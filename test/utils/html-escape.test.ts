@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { escapeHtml } from './html-escape';
+import { escapeHtml } from '../../src/utils/html-escape';
 
 describe('escapeHtml', () => {
 	it('escapes ampersands and angle brackets', () => {
