@@ -1,8 +1,8 @@
 import { defineCollection } from 'astro:content';
 import { docsLoader } from '@astrojs/starlight/loaders';
 import { docsSchema } from '@astrojs/starlight/schema';
-import { file } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { nimbleNewsAtomLoader } from './content/loaders/nimble-news-atom';
 
 const nimbleNewsEntrySchema = z.object({
 	id: z.string(),
@@ -25,7 +25,7 @@ export const collections = {
 		}),
 	}),
 	news: defineCollection({
-		loader: file('src/data/nimble-news.json'),
+		loader: nimbleNewsAtomLoader(),
 		schema: nimbleNewsEntrySchema,
 	}),
 };
