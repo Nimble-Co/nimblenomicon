@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { normalizeBaseUrl, searchPageUrl } from './url';
+import { normalizeBaseUrl, searchPageUrl } from '../../src/utils/url';
 
 describe('normalizeBaseUrl', () => {
 	it('strips a single trailing slash', () => {
