@@ -194,15 +194,12 @@ export function emptySearchFiltersState(): SearchFiltersState {
 	};
 }
 
-/** Fresh filter state for a type (spell defaults “utility spells” to on). */
+/** Fresh filter state for a type (all dimensions start unfiltered). */
 export function initialFiltersForType(
 	type: OramaDataSearchType,
 ): SearchFiltersState {
-	const s = emptySearchFiltersState();
-	if (type === 'spell') {
-		s.utility = true;
-	}
-	return s;
+	void type;
+	return emptySearchFiltersState();
 }
 
 function splitCommaList(raw: string | null): string[] {
@@ -240,11 +237,7 @@ export function parseSearchFiltersFromParams(
 		const v = params.get(key);
 		switch (key) {
 			case 'utility': {
-				if (type === 'spell' && (v == null || v === '')) {
-					out.utility = true;
-				} else {
-					out.utility = parseTriState(v);
-				}
+				out.utility = parseTriState(v);
 				break;
 			}
 			case 'secret': {
@@ -422,8 +415,7 @@ export function hasAnyActiveFilters(
 	for (const key of keys) {
 		switch (key) {
 			case 'utility':
-				// Default for spells is “utility spells” on; only “non-utility” is an extra filter.
-				if (filters.utility === false) return true;
+				if (filters.utility !== null) return true;
 				break;
 			case 'secret':
 				if (filters.secret !== null) return true;

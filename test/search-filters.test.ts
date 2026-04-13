@@ -49,15 +49,19 @@ describe('search-filters URL helpers', () => {
 		expect(hasAnyActiveFilters('spell', s)).toBe(true);
 	});
 
-	it('defaults spell utility to yes when URL omits utility', () => {
+	it('defaults spell utility to unfiltered when URL omits utility', () => {
 		const params = new URLSearchParams();
 		params.set('type', 'spell');
 		const parsed = parseSearchFiltersFromParams('spell', params);
-		expect(parsed.utility).toBe(true);
+		expect(parsed.utility).toBeNull();
 	});
 
-	it('hasAnyActiveFilters is false for spell with only default utility', () => {
+	it('hasAnyActiveFilters reflects spell utility when not default', () => {
 		const s = initialFiltersForType('spell');
+		expect(hasAnyActiveFilters('spell', s)).toBe(false);
+		s.utility = true;
+		expect(hasAnyActiveFilters('spell', s)).toBe(true);
+		s.utility = null;
 		expect(hasAnyActiveFilters('spell', s)).toBe(false);
 		s.utility = false;
 		expect(hasAnyActiveFilters('spell', s)).toBe(true);

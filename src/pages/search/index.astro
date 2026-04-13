@@ -19,7 +19,13 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 </StarlightPage>
 
 <style is:global>
-	main .content-panel:first-child:not(:has(.sl-container > *)) {
+	/*
+	 * `hidePageTitle: true` still leaves an empty Starlight `content-panel` above the slot.
+	 * `:first-child` is brittle (other nodes can precede the first panel); `:has(.sl-container > *)`
+	 * stays true when Starlight leaves empty wrappers. Hide any main-level panel that does not
+	 * contain the search island root — scoped so this only applies when the Orama UI is present.
+	 */
+	main:has([data-orama-root]) > .content-panel:not(:has([data-orama-root])) {
 		display: none;
 	}
 </style>

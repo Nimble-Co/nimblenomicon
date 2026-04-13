@@ -6,7 +6,6 @@
 		ORAMA_DATA_SEARCH_TYPE_ORDER,
 		type OramaDataSearchType,
 	} from '../constants/orama-data-search';
-	import { SEARCH_PLACEHOLDER } from '../config/search';
 	import {
 		ANCESTRY_SECTION_OPTIONS,
 		ARMOR_CATEGORY_OPTIONS,
@@ -78,7 +77,6 @@
 	let collapsedTypeOpen = $state(false);
 
 	let results = $state<GameDataDoc[]>([]);
-	let queryInputEl: HTMLInputElement | undefined = $state();
 	let secondaryWrapEl: HTMLDivElement | undefined = $state();
 	let collapsedTypeWrapEl: HTMLDivElement | undefined = $state();
 
@@ -208,8 +206,17 @@
 		}, DEBOUNCE_MS);
 	}
 
-	function onQueryInput() {
+	function onNavQueryInput(e: Event) {
+		const t = e.currentTarget;
+		if (!(t instanceof HTMLInputElement)) return;
+		query = t.value;
 		scheduleQueryCommit();
+	}
+
+	function onNavQuerySearch(e: Event) {
+		const t = e.currentTarget;
+		if (!(t instanceof HTMLInputElement)) return;
+		if (t.value === '') onQuerySearchClear();
 	}
 
 	function onQuerySearchClear() {
@@ -295,7 +302,10 @@
 
 	function onUtilityChange(checked: boolean) {
 		if (activeType !== 'spell') return;
-		void commitFiltersAndUrl({ ...activeFilters, utility: checked }, null);
+		void commitFiltersAndUrl(
+			{ ...activeFilters, utility: checked ? true : null },
+			null,
+		);
 	}
 
 	function onSecretChange(checked: boolean) {
@@ -335,10 +345,36 @@
 	const typeLabel = (t: OramaDataSearchType) =>
 		ORAMA_DATA_SEARCH_TYPE_LABELS[t] ?? t;
 
+	function headerSearchInputs(): HTMLInputElement[] {
+		const out: HTMLInputElement[] = [];
+		const d = document.querySelector<HTMLInputElement>('#ss-desktop-q');
+		const m = document.querySelector<HTMLInputElement>('#ss-mobile-q');
+		if (d) out.push(d);
+		if (m) out.push(m);
+		return out;
+	}
+
+	function focusHeaderSearchIfEmpty(q: string) {
+		if (q.length > 0) return;
+		queueMicrotask(() => {
+			const wide = window.matchMedia('(min-width: 50rem)').matches;
+			const el = wide
+				? document.querySelector<HTMLInputElement>('#ss-desktop-q')
+				: document.querySelector<HTMLInputElement>('#ss-mobile-q');
+			el?.focus();
+		});
+	}
+
 	onMount(() => {
 		window.addEventListener('popstate', applyFromLocation);
 		document.addEventListener('click', onDocClickCollapseType, true);
 		document.addEventListener('click', onDocClickFilterDetails, true);
+
+		const navInputs = headerSearchInputs();
+		for (const el of navInputs) {
+			el.addEventListener('input', onNavQueryInput);
+			el.addEventListener('search', onNavQuerySearch);
+		}
 
 		getOramaDataSearchDb()
 			.then((instance) => {
@@ -351,9 +387,7 @@
 				activeType = type;
 				activeFilters = filters;
 				refreshResults();
-				queueMicrotask(() => {
-					if (q.length === 0) queryInputEl?.focus();
-				});
+				focusHeaderSearchIfEmpty(q);
 			})
 			.catch((err: unknown) => {
 				loading = false;
@@ -366,6 +400,10 @@
 			window.removeEventListener('popstate', applyFromLocation);
 			document.removeEventListener('click', onDocClickCollapseType, true);
 			document.removeEventListener('click', onDocClickFilterDetails, true);
+			for (const el of navInputs) {
+				el.removeEventListener('input', onNavQueryInput);
+				el.removeEventListener('search', onNavQuerySearch);
+			}
 			if (debounceTimer) clearTimeout(debounceTimer);
 		};
 	});
@@ -375,26 +413,6 @@
 	class="orama-data-search not-content not-prose flex max-w-3xl flex-col gap-4"
 	data-orama-root
 >
-	<label class="flex flex-col gap-2">
-		<span class="sr-only">{SEARCH_PLACEHOLDER}</span>
-		<input
-			bind:this={queryInputEl}
-			type="search"
-			name="q"
-			autocomplete="off"
-			placeholder={SEARCH_PLACEHOLDER}
-			class="w-full rounded-lg border border-hairline bg-surface px-3 py-2 text-fg outline-none focus:ring-2 focus:ring-accent-500/30 disabled:opacity-60"
-			data-orama-search-input
-			disabled={loading || loadError !== null}
-			bind:value={query}
-			oninput={onQueryInput}
-			onsearch={(e) => {
-				const t = e.currentTarget as HTMLInputElement;
-				if (t.value === '') onQuerySearchClear();
-			}}
-		/>
-	</label>
-
 	{#if activeType === null}
 		<div
 			class="flex flex-wrap gap-2"
@@ -716,7 +734,7 @@
 								<input
 									type="checkbox"
 									class="border-hairline shrink-0 rounded text-accent-600 focus:ring-2 focus:ring-accent-500/30"
-									checked={activeFilters.utility !== false}
+									checked={activeFilters.utility === true}
 									onchange={(e) => onUtilityChange(e.currentTarget.checked)}
 								/>
 								<span>Utility spells</span>
