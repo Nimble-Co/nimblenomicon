@@ -35,3 +35,35 @@ export function pressedPillClass(isOn: boolean): string {
 		? `${TYPE_FILTER_PILL_CLASS} ${TYPE_FILTER_PILL_ACTIVE_CLASS}`
 		: TYPE_FILTER_PILL_CLASS;
 }
+
+/** `<summary>` for multi-select filter `<details>` dropdowns */
+export const FILTER_DROPDOWN_SUMMARY_CLASS = `${TYPE_FILTER_PILL_CLASS} flex cursor-pointer list-none items-center justify-between gap-2 py-2 pr-3 pl-3 [&::-webkit-details-marker]:hidden`;
+
+/** Floating panel under filter dropdowns */
+export const FILTER_DROPDOWN_PANEL_CLASS =
+	'border-hairline bg-surface absolute left-0 top-full z-[60] mt-1 flex max-h-[min(70vh,20rem)] min-w-[12rem] flex-col overflow-hidden rounded-lg border shadow-lg';
+
+export const FILTER_DROPDOWN_SCROLL_CLASS =
+	'min-h-0 flex-1 overflow-y-auto overflow-x-hidden py-2';
+
+export const FILTER_CHECKBOX_ROW_CLASS =
+	'flex cursor-pointer items-center gap-2.5 px-3 py-1.5 text-sm text-fg hover:bg-gray-100 dark:hover:bg-gray-800/80';
+
+export const FILTER_CHECKBOX_INPUT_CLASS =
+	'border-hairline shrink-0 rounded text-accent-600 focus:ring-2 focus:ring-accent-500/30';
+
+export const FILTER_DROPDOWN_CLEAR_FOOTER_CLASS =
+	'shrink-0 border-t border-hairline bg-surface px-2 py-2';
+
+export const FILTER_DROPDOWN_CLEAR_BUTTON_CLASS =
+	'w-full rounded-md px-2 py-1.5 text-left text-sm text-fg-muted transition-colors hover:bg-gray-100 hover:text-fg dark:hover:bg-gray-800/80';
+
+export const FILTER_MULTI_LABEL_CLASS =
+	'text-[0.65rem] font-medium uppercase tracking-wide text-fg-muted';
+
+export const FILTER_MULTI_VALUE_CLASS =
+	'max-w-[11rem] truncate text-sm text-fg';
+
+/** Spell-only: utility / secret row */
+export const FILTER_INLINE_CHECKBOX_LABEL_CLASS =
+	'shrink-0 flex cursor-pointer items-center gap-2 text-sm text-fg';
