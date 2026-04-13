@@ -1,4 +1,5 @@
 ---
+import OramaDataSearch from '@components/OramaDataSearch.svelte';
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 ---
 
@@ -14,35 +15,8 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 	}}
 	hasSidebar={false}
 >
-	<div
-		class="orama-data-search not-content not-prose flex max-w-3xl flex-col gap-4"
-		data-orama-root
-	>
-		<div class="hidden w-full min-w-0" data-orama-toolbar-row>
-			<div
-				class="min-w-0 shrink-0"
-				data-orama-type-filter-bar
-				role="toolbar"
-				aria-label="Filter by data type"
-			>
-			</div>
-			<div class="hidden min-w-0 flex-1" data-orama-secondary-wrap></div>
-		</div>
-
-		<div class="sr-only" aria-live="polite" data-orama-search-live></div>
-
-		<div class="m-0" data-orama-search-results></div>
-	</div>
+	<OramaDataSearch client:load />
 </StarlightPage>
-
-<script>
-	import { initOramaDataSearch } from '../../scripts/orama-search-ui';
-
-	const root = document.querySelector('[data-orama-root]');
-	if (root instanceof HTMLElement) {
-		initOramaDataSearch(root);
-	}
-</script>
 
 <style is:global>
 	main .content-panel:first-child:not(:has(.sl-container > *)) {
