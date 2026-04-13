@@ -4,20 +4,54 @@ import {
 	ORAMA_DATA_SEARCH_TYPE_ORDER,
 	type OramaDataSearchType,
 } from '../constants/orama-data-search';
+import {
+	applySearchFiltersToParams,
+	buildOramaWhereForFilters,
+	clearMultiFilterDim,
+	documentMatchesFilters,
+	emptySearchFiltersState,
+	initialFiltersForType,
+	filterKeysForType,
+	hasAnyActiveFilters,
+	parseSearchFiltersFromParams,
+	setMultiFilterValue,
+	stripSearchFilterParamsNotForType,
+	type MultiSelectFilterDim,
+	type SearchFiltersState,
+	type SearchableGameDataDoc,
+} from '../models/search-filters';
+import {
+	patchSearchFiltersState,
+	renderCollapsedTypeDropdown,
+	renderSecondaryFilters,
+	typeFilterLabel,
+	type RenderSecondaryFiltersOptions,
+} from './orama-search-toolbar';
 
-type GameDataDoc = {
-	id: string;
-	type: OramaDataSearchType;
-	title: string;
-	content: string;
-	href: string;
-	subtitle: string;
-};
+type GameDataDoc = SearchableGameDataDoc;
 
 const INDEX_URL = '/orama-data-search.json';
 const SEARCH_LIMIT = 80;
+/** When filters are active, retrieve more hits before post-filter (class key stats). */
+const SEARCH_LIMIT_FILTERED = 500;
+/** No query + “All” types: show this many random docs from a larger pool. */
+const BROWSE_RANDOM_COUNT = 50;
+const BROWSE_RANDOM_POOL = 500;
 const QUICK_SEARCH_LIMIT = 10;
 const DEBOUNCE_MS = 200;
+
+const ORAMA_TOOLBAR_ROW_LAYOUT_CLASSES = [
+	'flex',
+	'flex-wrap',
+	'items-center',
+	'gap-2',
+] as const;
+const ORAMA_SECONDARY_WRAP_LAYOUT_CLASSES = [
+	'flex',
+	'flex-wrap',
+	'items-center',
+	'gap-2',
+] as const;
 
 const ORAMA_DATA_SEARCH_TYPES = new Set<string>(ORAMA_DATA_SEARCH_TYPE_ORDER);
 
@@ -32,10 +66,13 @@ function parseTypeFromSearchParams(
 function readSearchPageParams(): {
 	q: string;
 	type: OramaDataSearchType | null;
+	filters: SearchFiltersState;
 } {
 	const params = new URLSearchParams(window.location.search);
 	const q = params.get('q')?.trim() ?? '';
-	return { q, type: parseTypeFromSearchParams(params) };
+	const type = parseTypeFromSearchParams(params);
+	const filters = parseSearchFiltersFromParams(type, params);
+	return { q, type, filters };
 }
 
 function stripInvalidTypeFromUrl(): void {
@@ -52,6 +89,7 @@ function stripInvalidTypeFromUrl(): void {
 function setSearchPageUrl(
 	q: string,
 	type: OramaDataSearchType | null,
+	filters: SearchFiltersState,
 	options?: { replace?: boolean },
 ): void {
 	const params = new URLSearchParams(window.location.search);
@@ -59,6 +97,8 @@ function setSearchPageUrl(
 	else params.delete('q');
 	if (type) params.set('type', type);
 	else params.delete('type');
+	stripSearchFilterParamsNotForType(params, type);
+	applySearchFiltersToParams(type, filters, params);
 	const query = params.toString();
 	const next = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
 	if (
@@ -68,6 +108,7 @@ function setSearchPageUrl(
 		const method = options?.replace ? 'replaceState' : 'pushState';
 		window.history[method]({}, '', next);
 	}
+	dispatchSearchUrlUpdated();
 }
 
 const ORAMA_SCHEMA = {
@@ -77,7 +118,38 @@ const ORAMA_SCHEMA = {
 	content: 'string',
 	href: 'string',
 	subtitle: 'string',
+	spellTier: 'string',
+	spellSchool: 'string',
+	spellTarget: 'string',
+	spellUtility: 'string',
+	spellSecret: 'string',
+	monsterLevel: 'string',
+	monsterFamily: 'string',
+	monsterKind: 'string',
+	monsterArmor: 'string',
+	monsterSpeed: 'string',
+	monsterSize: 'string',
+	monsterMinion: 'string',
+	monsterLegendary: 'string',
+	classKeyStats: 'string',
+	classHitDie: 'string',
+	weaponCategory: 'string',
+	ancestrySection: 'string',
+	ancestrySize: 'string',
+	armorCategory: 'string',
+	magicKind: 'string',
+	magicSource: 'string',
+	magicReward: 'string',
 } as const;
+
+export const SEARCH_URL_UPDATE_EVENT = 'nimble-search-url-update';
+
+let searchToolbarOutsideClickBound = false;
+let filterDetailsOutsideClickBound = false;
+
+function dispatchSearchUrlUpdated(): void {
+	window.dispatchEvent(new CustomEvent(SEARCH_URL_UPDATE_EVENT));
+}
 
 export type OramaDataSearchDb = ReturnType<typeof create>;
 
@@ -95,6 +167,15 @@ export function getOramaDataSearchDb(): Promise<OramaDataSearchDb> {
 		})();
 	}
 	return dbPromise;
+}
+
+function shuffleBrowseDocs<T>(items: T[]): T[] {
+	const a = items.slice();
+	for (let i = a.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[a[i], a[j]] = [a[j]!, a[i]!];
+	}
+	return a;
 }
 
 function debounce<T extends (...args: Parameters<T>) => void>(
@@ -341,47 +422,29 @@ export function initOramaDataSearch(root: HTMLElement): void {
 	const resultsEl = root.querySelector<HTMLElement>(
 		'[data-orama-search-results]',
 	);
-	const statusEl = root.querySelector<HTMLElement>(
-		'[data-orama-search-status]',
-	);
 	const liveEl = root.querySelector<HTMLElement>('[data-orama-search-live]');
 	const typeFilterBarEl = root.querySelector<HTMLElement>(
 		'[data-orama-type-filter-bar]',
 	);
 
-	if (!resultsEl || !statusEl) return;
+	if (!resultsEl) return;
 
 	let db: OramaDataSearchDb | undefined;
 	let loading = true;
 	let activeType: OramaDataSearchType | null = null;
+	let activeFilters: SearchFiltersState = emptySearchFiltersState();
+	/** After checkbox change, re-open the same `<details>` dropdown (see `renderSecondaryFilters`). */
+	let pendingOpenFilterDropdown: MultiSelectFilterDim | null = null;
 
-	statusEl.textContent = 'Loading search index…';
+	const secondaryWrapEl = root.querySelector<HTMLElement>(
+		'[data-orama-secondary-wrap]',
+	);
+	const toolbarRowEl = root.querySelector<HTMLElement>(
+		'[data-orama-toolbar-row]',
+	);
 
 	function announce(message: string): void {
 		if (liveEl) liveEl.textContent = message;
-	}
-
-	function typeFilterLabel(t: OramaDataSearchType): string {
-		return ORAMA_DATA_SEARCH_TYPE_LABELS[t] ?? t;
-	}
-
-	function updateStatusLine(q: string, type: OramaDataSearchType | null): void {
-		const typePhrase = type ? typeFilterLabel(type) : null;
-		if (q.length > 0) {
-			statusEl.textContent = typePhrase
-				? `Showing ${typePhrase.toLowerCase()} results for “${q}”.`
-				: `Showing results for “${q}”.`;
-			return;
-		}
-		if (typePhrase) {
-			statusEl.textContent = `Showing ${typePhrase.toLowerCase()} entries (add a search term to narrow further).`;
-			return;
-		}
-		if (input) {
-			statusEl.textContent = 'Search game data by name or keyword.';
-		} else {
-			statusEl.textContent = 'Use the top search bar to search game data.';
-		}
 	}
 
 	function syncTypeFilterButtonState(): void {
@@ -397,285 +460,160 @@ export function initOramaDataSearch(root: HTMLElement): void {
 			btn.setAttribute('aria-pressed', pressed ? 'true' : 'false');
 			btn.setAttribute('data-pressed', pressed ? 'true' : 'false');
 		}
-
-		const refs = typeFilterLayoutRefs;
-		if (refs?.moreBtn) {
-			const holds =
-				activeType !== null &&
-				refs.typeBtns.some(
-					(b) =>
-						refs.morePanel.contains(b) &&
-						b.getAttribute('data-orama-type-filter') === activeType,
-				);
-			if (holds) refs.moreBtn.setAttribute('data-more-holds-selection', '');
-			else refs.moreBtn.removeAttribute('data-more-holds-selection');
-		}
 	}
 
-	const TYPE_FILTER_PILL_CLASS =
-		'orama-type-filter-pill shrink-0 rounded-full border border-hairline bg-surface text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
-	const TYPE_FILTER_MENUITEM_CLASS =
-		'orama-type-filter-menu-item flex w-full min-w-[10rem] items-center rounded-none border-0 bg-transparent px-3 py-2.5 text-left text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
-
-	let typeFilterLayoutRefs: {
-		primaryRow: HTMLElement;
-		moreWrap: HTMLElement;
-		moreBtn: HTMLButtonElement;
-		morePanel: HTMLElement;
-		allBtn: HTMLButtonElement;
-		typeBtns: HTMLButtonElement[];
+	let collapsedTypeDropdownOpen = false;
+	let collapsedTypeRefs: {
+		wrap: HTMLElement;
+		toggleBtn: HTMLButtonElement;
+		panel: HTMLElement;
 	} | null = null;
-	let typeFilterMoreOpen = false;
-	let typeFilterLayoutObserver: ResizeObserver | undefined;
 
-	function setTypeFilterMoreOpen(open: boolean): void {
-		typeFilterMoreOpen = open;
-		const refs = typeFilterLayoutRefs;
-		if (!refs) return;
-		refs.moreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-		refs.morePanel.classList.toggle('hidden', !open);
-		refs.morePanel.setAttribute('aria-hidden', open ? 'false' : 'true');
+	function setCollapsedTypeDropdownOpen(open: boolean): void {
+		collapsedTypeDropdownOpen = open;
+		if (!collapsedTypeRefs) return;
+		collapsedTypeRefs.toggleBtn.setAttribute(
+			'aria-expanded',
+			open ? 'true' : 'false',
+		);
+		collapsedTypeRefs.panel.classList.toggle('hidden', !open);
+		collapsedTypeRefs.panel.setAttribute(
+			'aria-hidden',
+			open ? 'false' : 'true',
+		);
 	}
 
-	function closeTypeFilterMore(): void {
-		setTypeFilterMoreOpen(false);
+	function closeCollapsedTypeDropdown(): void {
+		setCollapsedTypeDropdownOpen(false);
 	}
 
-	function syncTypeFilterChipPresentation(): void {
-		const refs = typeFilterLayoutRefs;
-		if (!refs) return;
-		const { morePanel, typeBtns } = refs;
-		for (const b of typeBtns) {
-			if (morePanel.contains(b)) {
-				b.className = TYPE_FILTER_MENUITEM_CLASS;
-				b.setAttribute('role', 'menuitem');
-			} else {
-				b.className = TYPE_FILTER_PILL_CLASS;
-				b.removeAttribute('role');
-			}
-		}
-	}
+	function renderSearchChrome(): void {
+		if (!typeFilterBarEl) return;
 
-	function layoutTypeFilterOverflow(): void {
-		const refs = typeFilterLayoutRefs;
+		const reopenFilterDropdown = pendingOpenFilterDropdown;
+		pendingOpenFilterDropdown = null;
+
+		closeCollapsedTypeDropdown();
+		collapsedTypeRefs = null;
+
 		const bar = typeFilterBarEl;
-		if (!refs || !bar) return;
 
-		const { primaryRow, moreWrap, morePanel, allBtn, typeBtns } = refs;
-		const gapPx = 8;
-		const barWidth = bar.getBoundingClientRect().width;
-		if (barWidth <= 0) return;
-
-		// Try everything in one row without "More".
-		moreWrap.classList.add('hidden');
-		moreWrap.classList.remove('flex');
-		primaryRow.replaceChildren(allBtn, ...typeBtns);
-		morePanel.replaceChildren();
-		syncTypeFilterChipPresentation();
-
-		const rowGap = gapPx;
-		const sumPrimaryWidth = (): number => {
-			let w = 0;
-			for (const el of primaryRow.children) {
-				w += (el as HTMLElement).offsetWidth;
+		if (activeType === null) {
+			toolbarRowEl?.classList.add('hidden');
+			for (const c of ORAMA_TOOLBAR_ROW_LAYOUT_CLASSES) {
+				toolbarRowEl?.classList.remove(c);
 			}
-			w += Math.max(0, primaryRow.children.length - 1) * rowGap;
-			return w;
-		};
-
-		if (sumPrimaryWidth() <= barWidth + 0.5) {
-			closeTypeFilterMore();
+			bar.replaceChildren();
+			if (secondaryWrapEl) {
+				secondaryWrapEl.classList.add('hidden');
+				for (const c of ORAMA_SECONDARY_WRAP_LAYOUT_CLASSES) {
+					secondaryWrapEl.classList.remove(c);
+				}
+				secondaryWrapEl.innerHTML = '';
+			}
 			syncTypeFilterButtonState();
 			return;
 		}
 
-		moreWrap.classList.remove('hidden');
-		moreWrap.classList.add('flex');
-
-		let low = 0;
-		let high = typeBtns.length;
-		let best = 0;
-		while (low <= high) {
-			const mid = Math.floor((low + high) / 2);
-			primaryRow.replaceChildren(allBtn, ...typeBtns.slice(0, mid));
-			morePanel.replaceChildren(...typeBtns.slice(mid));
-			syncTypeFilterChipPresentation();
-			void primaryRow.offsetWidth;
-			void moreWrap.offsetWidth;
-			const primaryW = sumPrimaryWidth();
-			const moreW = moreWrap.offsetWidth;
-			if (primaryW + gapPx + moreW <= barWidth + 0.5) {
-				best = mid;
-				low = mid + 1;
-			} else {
-				high = mid - 1;
-			}
+		toolbarRowEl?.classList.remove('hidden');
+		for (const c of ORAMA_TOOLBAR_ROW_LAYOUT_CLASSES) {
+			toolbarRowEl?.classList.add(c);
 		}
-
-		primaryRow.replaceChildren(allBtn, ...typeBtns.slice(0, best));
-		morePanel.replaceChildren(...typeBtns.slice(best));
-		syncTypeFilterChipPresentation();
-
-		closeTypeFilterMore();
-		syncTypeFilterButtonState();
-	}
-
-	function scheduleTypeFilterLayout(): void {
-		requestAnimationFrame(() => layoutTypeFilterOverflow());
-	}
-
-	function renderTypeFilterBar(): void {
-		if (!typeFilterBarEl) return;
-
-		typeFilterLayoutObserver?.disconnect();
-		closeTypeFilterMore();
-
-		const bar = typeFilterBarEl;
 		bar.classList.remove('hidden');
 		bar.classList.add('block');
 
-		const outer = document.createElement('div');
-		outer.className = 'flex min-w-0 items-center gap-2';
-
-		const primaryRow = document.createElement('div');
-		primaryRow.className =
-			'flex min-w-0 flex-1 flex-nowrap items-center gap-2 overflow-hidden';
-		primaryRow.setAttribute('data-orama-type-filter-primary', '');
-
-		const moreWrap = document.createElement('div');
-		moreWrap.className = 'relative hidden shrink-0';
-		moreWrap.setAttribute('data-orama-type-filter-more-wrap', '');
-
-		const moreBtn = document.createElement('button');
-		moreBtn.type = 'button';
-		moreBtn.className = `${TYPE_FILTER_PILL_CLASS} gap-1`;
-		moreBtn.setAttribute('data-orama-type-more-toggle', '');
-		moreBtn.setAttribute('aria-expanded', 'false');
-		moreBtn.setAttribute('aria-haspopup', 'true');
-		const morePanelId = `orama-type-more-${Math.random().toString(36).slice(2, 9)}`;
-		moreBtn.setAttribute('aria-controls', morePanelId);
-		moreBtn.innerHTML = `<span>More</span><span class="text-fg-muted" aria-hidden="true">▾</span>`;
-
-		const morePanel = document.createElement('div');
-		morePanel.id = morePanelId;
-		morePanel.setAttribute('data-orama-type-more-panel', '');
-		morePanel.className =
-			'border-hairline bg-surface absolute top-full right-0 z-50 mt-1 hidden min-w-[11rem] flex-col divide-y divide-hairline overflow-hidden rounded-lg border py-0 shadow-lg';
-		morePanel.setAttribute('role', 'menu');
-		morePanel.setAttribute('aria-hidden', 'true');
-
-		const allBtn = document.createElement('button');
-		allBtn.type = 'button';
-		allBtn.className = TYPE_FILTER_PILL_CLASS;
-		allBtn.setAttribute('data-orama-type-filter', '');
-		allBtn.setAttribute('aria-pressed', 'false');
-		allBtn.textContent = 'All';
-
-		const typeBtns: HTMLButtonElement[] = [];
-		for (const t of ORAMA_DATA_SEARCH_TYPE_ORDER) {
-			const b = document.createElement('button');
-			b.type = 'button';
-			b.className = TYPE_FILTER_PILL_CLASS;
-			b.setAttribute('data-orama-type-filter', t);
-			b.setAttribute('aria-pressed', 'false');
-			b.textContent = typeFilterLabel(t);
-			typeBtns.push(b);
-		}
-
-		moreWrap.append(moreBtn, morePanel);
-		outer.append(primaryRow, moreWrap);
+		const { outer, refs } = renderCollapsedTypeDropdown(activeType);
+		collapsedTypeRefs = refs;
 		bar.replaceChildren(outer);
-
-		typeFilterLayoutRefs = {
-			primaryRow,
-			moreWrap,
-			moreBtn,
-			morePanel,
-			allBtn,
-			typeBtns,
-		};
-
-		moreBtn.addEventListener('click', (e) => {
+		refs.toggleBtn.addEventListener('click', (e) => {
 			e.preventDefault();
 			e.stopPropagation();
-			setTypeFilterMoreOpen(!typeFilterMoreOpen);
+			setCollapsedTypeDropdownOpen(!collapsedTypeDropdownOpen);
 		});
 
-		typeFilterLayoutObserver = new ResizeObserver(() =>
-			scheduleTypeFilterLayout(),
-		);
-		typeFilterLayoutObserver.observe(bar);
-
-		ensureTypeFilterBarGlobalListeners(bar);
+		if (secondaryWrapEl) {
+			if (filterKeysForType(activeType).length > 0) {
+				secondaryWrapEl.classList.remove('hidden');
+				for (const c of ORAMA_SECONDARY_WRAP_LAYOUT_CLASSES) {
+					secondaryWrapEl.classList.add(c);
+				}
+				const secondaryOpts: RenderSecondaryFiltersOptions | undefined =
+					reopenFilterDropdown !== null
+						? { openDropdownDim: reopenFilterDropdown }
+						: undefined;
+				secondaryWrapEl.replaceChildren(
+					renderSecondaryFilters(activeType, activeFilters, secondaryOpts),
+				);
+			} else {
+				secondaryWrapEl.classList.add('hidden');
+				for (const c of ORAMA_SECONDARY_WRAP_LAYOUT_CLASSES) {
+					secondaryWrapEl.classList.remove(c);
+				}
+				secondaryWrapEl.innerHTML = '';
+			}
+		}
 
 		syncTypeFilterButtonState();
-		scheduleTypeFilterLayout();
-	}
-
-	let typeFilterBarGlobalListenersBound = false;
-
-	function ensureTypeFilterBarGlobalListeners(bar: HTMLElement): void {
-		if (typeFilterBarGlobalListenersBound) return;
-		typeFilterBarGlobalListenersBound = true;
-
-		document.addEventListener(
-			'click',
-			(e) => {
-				if (!typeFilterMoreOpen) return;
-				const refs = typeFilterLayoutRefs;
-				if (!refs) return;
-				const t = e.target as Node | null;
-				if (t && refs.moreWrap.contains(t)) return;
-				closeTypeFilterMore();
-			},
-			true,
-		);
-
-		bar.addEventListener('keydown', (e) => {
-			if (e.key === 'Escape' && typeFilterMoreOpen) {
-				e.stopPropagation();
-				closeTypeFilterMore();
-				typeFilterLayoutRefs?.moreBtn.focus();
-			}
-		});
 	}
 
 	function renderResults(term: string): void {
 		if (!db) return;
 		const q = term.trim();
-		const typeWhere = activeType ? { type: activeType } : undefined;
 
-		if (q.length === 0 && !activeType) {
-			resultsEl.innerHTML = '';
-			announce('');
-			return;
+		const browseAllTypes = q.length === 0 && !activeType;
+
+		let docs: GameDataDoc[];
+
+		if (browseAllTypes) {
+			const res = search(db, { limit: BROWSE_RANDOM_POOL });
+			const pool = res.hits
+				.filter(Boolean)
+				.map((h) => h.document as GameDataDoc);
+			docs = shuffleBrowseDocs(pool).slice(0, BROWSE_RANDOM_COUNT);
+		} else {
+			const filters = activeFilters;
+			const fetchLimit =
+				activeType !== null &&
+				(hasAnyActiveFilters(activeType, filters) ||
+					(activeType === 'class' && filters.stat.length > 0))
+					? SEARCH_LIMIT_FILTERED
+					: SEARCH_LIMIT;
+
+			const builtWhere = buildOramaWhereForFilters(activeType, filters);
+			const whereClause =
+				activeType !== null ? (builtWhere ?? { type: activeType }) : undefined;
+
+			const res =
+				q.length > 0
+					? search(db, {
+							term: q,
+							limit: fetchLimit,
+							properties: ['title', 'content', 'subtitle'],
+							...(whereClause ? { where: whereClause as never } : {}),
+						})
+					: search(db, {
+							limit: fetchLimit,
+							...(whereClause ? { where: whereClause as never } : {}),
+						});
+
+			docs = res.hits.filter(Boolean).map((h) => h.document as GameDataDoc);
+			if (activeType !== null) {
+				docs = docs.filter((doc) =>
+					documentMatchesFilters(doc, activeType, filters),
+				);
+			}
+			docs = docs.slice(0, SEARCH_LIMIT);
 		}
 
-		const res =
-			q.length > 0
-				? search(db, {
-						term: q,
-						limit: SEARCH_LIMIT,
-						properties: ['title', 'content', 'subtitle'],
-						...(typeWhere ? { where: typeWhere } : {}),
-					})
-				: search(db, {
-						limit: SEARCH_LIMIT,
-						...(typeWhere ? { where: typeWhere } : {}),
-					});
-
-		const hits = res.hits.filter(Boolean) as {
-			document: GameDataDoc;
-		}[];
-
-		const emptyMsg =
-			q.length > 0
+		const emptyMsg = browseAllTypes
+			? 'No entries in the index.'
+			: q.length > 0
 				? activeType
 					? `No ${typeFilterLabel(activeType).toLowerCase()} results for “${escapeHtml(q)}”.`
 					: `No results for “${escapeHtml(q)}”.`
 				: `No ${typeFilterLabel(activeType!).toLowerCase()} entries in the index.`;
 
-		if (hits.length === 0) {
+		if (docs.length === 0) {
 			resultsEl.innerHTML = `<p class="text-fg-muted mt-4">${emptyMsg}</p>`;
 			announce(emptyMsg.replace(/<[^>]+>/g, ''));
 			return;
@@ -687,8 +625,7 @@ export function initOramaDataSearch(root: HTMLElement): void {
 		const parts: string[] = [
 			`<ul class="mt-3 list-none divide-y divide-hairline p-0">`,
 		];
-		for (const h of hits) {
-			const doc = h.document;
+		for (const doc of docs) {
 			const kind = escapeHtml(typeLabel(doc.type));
 			const sub = doc.subtitle ? ` — ${escapeHtml(doc.subtitle)}` : '';
 			const link = doc.href
@@ -704,26 +641,30 @@ export function initOramaDataSearch(root: HTMLElement): void {
 		parts.push('</ul>');
 
 		resultsEl.innerHTML = parts.join('');
-		if (q.length > 0) {
-			announce(`${hits.length} result${hits.length === 1 ? '' : 's'} for ${q}`);
+		if (browseAllTypes) {
+			announce(
+				`${docs.length} sample ${docs.length === 1 ? 'entry' : 'entries'}`,
+			);
+		} else if (q.length > 0) {
+			announce(`${docs.length} result${docs.length === 1 ? '' : 's'} for ${q}`);
 		} else if (activeType) {
 			const kind = typeFilterLabel(activeType);
 			announce(
-				`${hits.length} ${kind} ${hits.length === 1 ? 'entry' : 'entries'}`,
+				`${docs.length} ${kind} ${docs.length === 1 ? 'entry' : 'entries'}`,
 			);
 		} else {
-			announce(`${hits.length} result${hits.length === 1 ? '' : 's'}`);
+			announce(`${docs.length} result${docs.length === 1 ? '' : 's'}`);
 		}
 	}
 
 	function applyFromLocation(): void {
-		const { q, type } = readSearchPageParams();
+		const { q, type, filters } = readSearchPageParams();
 		activeType = type;
+		activeFilters = filters;
 		if (input && q.length > 0) {
 			input.value = q;
 		}
-		updateStatusLine(q, activeType);
-		syncTypeFilterButtonState();
+		renderSearchChrome();
 		if (db) renderResults(q);
 	}
 
@@ -732,9 +673,10 @@ export function initOramaDataSearch(root: HTMLElement): void {
 			db = instance;
 			loading = false;
 			stripInvalidTypeFromUrl();
-			const { q, type } = readSearchPageParams();
+			const { q, type, filters } = readSearchPageParams();
 			activeType = type;
-			renderTypeFilterBar();
+			activeFilters = filters;
+			renderSearchChrome();
 			if (input) {
 				input.disabled = false;
 				if (q.length > 0) {
@@ -743,21 +685,182 @@ export function initOramaDataSearch(root: HTMLElement): void {
 					input.focus();
 				}
 			}
-			updateStatusLine(q, activeType);
 			renderResults(q);
 		})
 		.catch((err: unknown) => {
 			loading = false;
 			const msg = err instanceof Error ? err.message : 'Unknown error';
-			statusEl.textContent = `Could not load search index: ${msg}`;
+			announce(`Could not load search index: ${msg}`);
 			if (input) input.disabled = true;
 		});
+
+	if (!searchToolbarOutsideClickBound) {
+		searchToolbarOutsideClickBound = true;
+		document.addEventListener(
+			'click',
+			(e) => {
+				if (!collapsedTypeRefs || !collapsedTypeDropdownOpen) return;
+				const t = e.target as Node | null;
+				if (t && collapsedTypeRefs.wrap.contains(t)) return;
+				closeCollapsedTypeDropdown();
+			},
+			true,
+		);
+	}
+
+	const secondaryWrapForDetails = secondaryWrapEl;
+	if (secondaryWrapForDetails && !filterDetailsOutsideClickBound) {
+		filterDetailsOutsideClickBound = true;
+		document.addEventListener(
+			'click',
+			(e) => {
+				const raw = e.target;
+				if (!(raw instanceof Node)) return;
+				const el =
+					raw.nodeType === Node.ELEMENT_NODE
+						? (raw as Element)
+						: raw.parentElement;
+				if (!el) return;
+				if (secondaryWrapForDetails.contains(el)) {
+					const inside = el.closest('details');
+					if (inside && secondaryWrapForDetails.contains(inside)) {
+						return;
+					}
+				}
+				for (const d of secondaryWrapForDetails.querySelectorAll('details')) {
+					d.open = false;
+				}
+			},
+			true,
+		);
+	}
+
+	if (secondaryWrapEl) {
+		secondaryWrapEl.addEventListener('change', (e) => {
+			const t = e.target;
+			if (!(t instanceof HTMLInputElement)) return;
+			if (
+				t.type === 'checkbox' &&
+				t.hasAttribute('data-orama-filter-utility-binary')
+			) {
+				if (activeType !== 'spell') return;
+				activeFilters = { ...activeFilters, utility: t.checked };
+				const q = (
+					input?.value ??
+					new URLSearchParams(window.location.search).get('q') ??
+					''
+				).trim();
+				setSearchPageUrl(q, activeType, activeFilters, { replace: true });
+				renderSearchChrome();
+				if (!loading && db) renderResults(q);
+				return;
+			}
+			if (
+				t.type === 'checkbox' &&
+				t.hasAttribute('data-orama-filter-secret-binary')
+			) {
+				if (activeType !== 'spell') return;
+				activeFilters = {
+					...activeFilters,
+					secret: t.checked ? true : null,
+				};
+				const q = (
+					input?.value ??
+					new URLSearchParams(window.location.search).get('q') ??
+					''
+				).trim();
+				setSearchPageUrl(q, activeType, activeFilters, { replace: true });
+				renderSearchChrome();
+				if (!loading && db) renderResults(q);
+				return;
+			}
+			if (t.type !== 'checkbox' || !t.hasAttribute('data-orama-filter-multi'))
+				return;
+			if (activeType === null) return;
+			const dim = t.getAttribute(
+				'data-orama-filter-dim',
+			) as MultiSelectFilterDim | null;
+			const value = t.getAttribute('data-orama-filter-value') ?? '';
+			if (!dim) return;
+			pendingOpenFilterDropdown = dim;
+			activeFilters = setMultiFilterValue(activeFilters, dim, value, t.checked);
+			const q = (
+				input?.value ??
+				new URLSearchParams(window.location.search).get('q') ??
+				''
+			).trim();
+			setSearchPageUrl(q, activeType, activeFilters, { replace: true });
+			renderSearchChrome();
+			if (!loading && db) renderResults(q);
+		});
+
+		secondaryWrapEl.addEventListener('click', (e) => {
+			const t = e.target;
+			if (!(t instanceof Element)) return;
+			const clearDimEl = t.closest<HTMLElement>(
+				'[data-orama-filter-clear-dim]',
+			);
+			if (clearDimEl && activeType !== null) {
+				const dim = clearDimEl.getAttribute(
+					'data-orama-filter-clear-dim',
+				) as MultiSelectFilterDim | null;
+				if (!dim) return;
+				e.preventDefault();
+				pendingOpenFilterDropdown = dim;
+				activeFilters = clearMultiFilterDim(activeFilters, dim);
+				const q = (
+					input?.value ??
+					new URLSearchParams(window.location.search).get('q') ??
+					''
+				).trim();
+				setSearchPageUrl(q, activeType, activeFilters, { replace: true });
+				renderSearchChrome();
+				if (!loading && db) renderResults(q);
+				return;
+			}
+			if (t.closest('[data-orama-clear-filters]')) {
+				activeFilters =
+					activeType !== null
+						? initialFiltersForType(activeType)
+						: emptySearchFiltersState();
+				const q = (
+					input?.value ??
+					new URLSearchParams(window.location.search).get('q') ??
+					''
+				).trim();
+				setSearchPageUrl(q, activeType, activeFilters, { replace: true });
+				renderSearchChrome();
+				if (!loading && db) renderResults(q);
+				return;
+			}
+			const tri = t.closest<HTMLElement>('[data-orama-filter-tri]');
+			if (tri && activeType !== null) {
+				const dim = tri.getAttribute('data-orama-filter-dim') as
+					| 'minion'
+					| 'legendary'
+					| null;
+				if (!dim) return;
+				activeFilters = patchSearchFiltersState(activeFilters, {
+					kind: 'toggle-tri',
+					dim,
+				});
+				const q = (
+					input?.value ??
+					new URLSearchParams(window.location.search).get('q') ??
+					''
+				).trim();
+				setSearchPageUrl(q, activeType, activeFilters, { replace: true });
+				renderSearchChrome();
+				if (!loading && db) renderResults(q);
+			}
+		});
+	}
 
 	if (typeFilterBarEl) {
 		typeFilterBarEl.addEventListener('click', (e) => {
 			const t = e.target;
 			if (!(t instanceof Element)) return;
-			if (t.closest('[data-orama-type-more-toggle]')) return;
+			if (t.closest('[data-orama-collapsed-type-toggle]')) return;
 			const btn = t.closest<HTMLButtonElement>('[data-orama-type-filter]');
 			if (!btn || !typeFilterBarEl.contains(btn)) return;
 			const raw = btn.getAttribute('data-orama-type-filter')?.trim() ?? '';
@@ -769,15 +872,18 @@ export function initOramaDataSearch(root: HTMLElement): void {
 						: null;
 			if (raw.length > 0 && nextType === null) return;
 			activeType = nextType;
-			closeTypeFilterMore();
+			activeFilters =
+				nextType !== null
+					? initialFiltersForType(nextType)
+					: emptySearchFiltersState();
+			closeCollapsedTypeDropdown();
 			const q = (
 				input?.value ??
 				new URLSearchParams(window.location.search).get('q') ??
 				''
 			).trim();
-			setSearchPageUrl(q, activeType, { replace: false });
-			updateStatusLine(q, activeType);
-			syncTypeFilterButtonState();
+			setSearchPageUrl(q, activeType, activeFilters, { replace: false });
+			renderSearchChrome();
 			if (!loading && db) renderResults(q);
 		});
 	}
@@ -792,8 +898,7 @@ export function initOramaDataSearch(root: HTMLElement): void {
 	const run = debounce(() => {
 		if (loading || !db) return;
 		const q = input.value.trim();
-		setSearchPageUrl(q, activeType, { replace: true });
-		updateStatusLine(q, activeType);
+		setSearchPageUrl(q, activeType, activeFilters, { replace: true });
 		syncTypeFilterButtonState();
 		renderResults(input.value);
 	}, DEBOUNCE_MS);
@@ -801,8 +906,7 @@ export function initOramaDataSearch(root: HTMLElement): void {
 	input.addEventListener('input', run);
 	input.addEventListener('search', () => {
 		if (input.value === '') {
-			setSearchPageUrl('', activeType, { replace: true });
-			updateStatusLine('', activeType);
+			setSearchPageUrl('', activeType, activeFilters, { replace: true });
 			syncTypeFilterButtonState();
 			renderResults('');
 		}

@@ -43,7 +43,19 @@ import { monsters, type MonsterData } from '../src/models/monsters';
 import { spells, type SpellData } from '../src/models/spells';
 import { spellSchools } from '../src/models/spell-schools';
 import { weapons, weaponDetailHrefFromCoreRules } from '../src/models/weapons';
-import type { OramaDataSearchType } from '../src/constants/orama-data-search';
+import {
+	emptyOramaFilterFields,
+	spellFilterFields,
+	monsterFilterFields,
+	legendaryMonsterFilterFields,
+	classFilterFields,
+	weaponFilterFields,
+	ancestryFilterFields,
+	armorFilterFields,
+	magicItemFilterFields,
+	type OramaFilterFields,
+	type SearchableGameDataDoc,
+} from '../src/models/search-filters';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = join(__dirname, '../public/orama-data-search.json');
@@ -115,27 +127,38 @@ function monsterSearchContent(m: MonsterData): string {
 	);
 }
 
-type OramaGameDataDoc = {
-	id: string;
-	type: OramaDataSearchType;
-	title: string;
-	content: string;
-	href: string;
-	subtitle: string;
-};
+type OramaGameDataDoc = SearchableGameDataDoc;
+
+function mergeDoc(
+	base: Omit<OramaGameDataDoc, keyof OramaFilterFields>,
+	filterPatch: Partial<OramaFilterFields>,
+): OramaGameDataDoc {
+	return {
+		...base,
+		...emptyOramaFilterFields(),
+		...filterPatch,
+	};
+}
 
 function buildDocs(): OramaGameDataDoc[] {
 	const docs: OramaGameDataDoc[] = [];
 
 	for (const a of ancestries) {
-		docs.push({
-			id: `ancestry:${a.id}`,
-			type: 'ancestry',
-			title: a.name,
-			subtitle: `${a.section} · ${formatAncestrySize(a.size)}`,
-			href: ancestryDetailHrefFromCoreRules(a.id),
-			content: truncate(joinText(a.name, a.section, a.size, a.flavor, a.trait)),
-		});
+		docs.push(
+			mergeDoc(
+				{
+					id: `ancestry:${a.id}`,
+					type: 'ancestry',
+					title: a.name,
+					subtitle: `${a.section} · ${formatAncestrySize(a.size)}`,
+					href: ancestryDetailHrefFromCoreRules(a.id),
+					content: truncate(
+						joinText(a.name, a.section, a.size, a.flavor, a.trait),
+					),
+				},
+				ancestryFilterFields(a),
+			),
+		);
 	}
 
 	for (const c of heroClasses) {
@@ -156,122 +179,162 @@ function buildDocs(): OramaGameDataDoc[] {
 			levelChunks.push(list.description);
 			levelChunks.push(blocksToText(list.items));
 		}
-		docs.push({
-			id: `class:${c.id}`,
-			type: 'class',
-			title: c.name,
-			subtitle: joinText(c.hitDieLabel, c.keyStatsDisplay) || c.name,
-			href: `/classes/${c.id}/`,
-			content: truncate(
-				joinText(
-					c.name,
-					c.description,
-					c.introduction,
-					c.savesDisplay,
-					c.weaponsDisplay,
-					c.armorDisplay,
-					c.gearDisplay,
-					...levelChunks,
-				),
+		docs.push(
+			mergeDoc(
+				{
+					id: `class:${c.id}`,
+					type: 'class',
+					title: c.name,
+					subtitle: joinText(c.hitDieLabel, c.keyStatsDisplay) || c.name,
+					href: `/classes/${c.id}/`,
+					content: truncate(
+						joinText(
+							c.name,
+							c.description,
+							c.introduction,
+							c.savesDisplay,
+							c.weaponsDisplay,
+							c.armorDisplay,
+							c.gearDisplay,
+							...levelChunks,
+						),
+					),
+				},
+				classFilterFields(c),
 			),
-		});
+		);
 	}
 
 	for (const b of backgrounds) {
-		docs.push({
-			id: `background:${b.id}`,
-			type: 'background',
-			title: b.name,
-			subtitle: '',
-			href: backgroundDetailHrefFromCoreRules(b.id),
-			content: truncate(joinText(b.name, b.description)),
-		});
+		docs.push(
+			mergeDoc(
+				{
+					id: `background:${b.id}`,
+					type: 'background',
+					title: b.name,
+					subtitle: '',
+					href: backgroundDetailHrefFromCoreRules(b.id),
+					content: truncate(joinText(b.name, b.description)),
+				},
+				{},
+			),
+		);
 	}
 
 	for (const row of miscAdventuringEquipment) {
-		docs.push({
-			id: `equipment:${row.id}`,
-			type: 'equipment',
-			title: row.name,
-			subtitle: row.cost,
-			href: miscAdventuringEquipmentDetailHrefFromCoreRules(row.id),
-			content: truncate(joinText(row.name, row.cost, row.description)),
-		});
+		docs.push(
+			mergeDoc(
+				{
+					id: `equipment:${row.id}`,
+					type: 'equipment',
+					title: row.name,
+					subtitle: row.cost,
+					href: miscAdventuringEquipmentDetailHrefFromCoreRules(row.id),
+					content: truncate(joinText(row.name, row.cost, row.description)),
+				},
+				{},
+			),
+		);
 	}
 
 	for (const item of magicalItems) {
-		docs.push({
-			id: `magic-item:${item.id}`,
-			type: 'magic-item',
-			title: item.name,
-			subtitle: item.subtitle?.trim() ?? formatMagicalItemKind(item.kind),
-			href: magicalItemDetailHrefFromCoreRules(item.id),
-			content: truncate(
-				joinText(item.name, item.subtitle, item.description, item.source),
+		docs.push(
+			mergeDoc(
+				{
+					id: `magic-item:${item.id}`,
+					type: 'magic-item',
+					title: item.name,
+					subtitle: item.subtitle?.trim() ?? formatMagicalItemKind(item.kind),
+					href: magicalItemDetailHrefFromCoreRules(item.id),
+					content: truncate(
+						joinText(item.name, item.subtitle, item.description, item.source),
+					),
+				},
+				magicItemFilterFields(item),
 			),
-		});
+		);
 	}
 
 	for (const w of weapons) {
 		const props = w.propertyLines.map((p) => p.description).join(', ');
-		docs.push({
-			id: `weapon:${w.id}`,
-			type: 'weapon',
-			title: w.name,
-			subtitle: joinText(w.damage, w.cost),
-			href: weaponDetailHrefFromCoreRules(w.id),
-			content: truncate(
-				joinText(
-					w.name,
-					w.category,
-					w.damage,
-					w.cost,
-					props ? `Properties: ${props}` : '',
-				),
+		docs.push(
+			mergeDoc(
+				{
+					id: `weapon:${w.id}`,
+					type: 'weapon',
+					title: w.name,
+					subtitle: joinText(w.damage, w.cost),
+					href: weaponDetailHrefFromCoreRules(w.id),
+					content: truncate(
+						joinText(
+							w.name,
+							w.category,
+							w.damage,
+							w.cost,
+							props ? `Properties: ${props}` : '',
+						),
+					),
+				},
+				weaponFilterFields(w),
 			),
-		});
+		);
 	}
 
 	for (const spell of spells) {
-		docs.push({
-			id: `spell:${spell.id}`,
-			type: 'spell',
-			title: spell.name,
-			subtitle: spellSubtitle(spell),
-			href: `/spells/${spell.id}/`,
-			content: truncate(
-				joinText(
-					spell.name,
-					spellSchoolName(spell.schoolId),
-					spell.tierLabel,
-					spell.castingTime,
-					spell.targetLabel,
-					spell.description,
-				),
+		docs.push(
+			mergeDoc(
+				{
+					id: `spell:${spell.id}`,
+					type: 'spell',
+					title: spell.name,
+					subtitle: spellSubtitle(spell),
+					href: `/spells/${spell.id}/`,
+					content: truncate(
+						joinText(
+							spell.name,
+							spellSchoolName(spell.schoolId),
+							spell.tierLabel,
+							spell.castingTime,
+							spell.targetLabel,
+							spell.description,
+						),
+					),
+				},
+				spellFilterFields(spell),
 			),
-		});
+		);
 	}
 
 	for (const g of glossary) {
-		docs.push({
-			id: `glossary:${g.id}`,
-			type: 'glossary',
-			title: g.name,
-			subtitle: '',
-			href: glossaryDetailHrefFromCoreRules(g.id),
-			content: truncate(joinText(g.name, g.description)),
-		});
+		docs.push(
+			mergeDoc(
+				{
+					id: `glossary:${g.id}`,
+					type: 'glossary',
+					title: g.name,
+					subtitle: '',
+					href: glossaryDetailHrefFromCoreRules(g.id),
+					content: truncate(joinText(g.name, g.description)),
+				},
+				{},
+			),
+		);
 	}
 
 	for (const m of monsters) {
-		docs.push({
-			id: `monster:${m.id}`,
-			type: 'monster',
-			title: m.name,
-			subtitle: `Level ${m.level}`,
-			href: `/monsters/${m.id}/`,
-			content: monsterSearchContent(m),
-		});
+		docs.push(
+			mergeDoc(
+				{
+					id: `monster:${m.id}`,
+					type: 'monster',
+					title: m.name,
+					subtitle: `Level ${m.level}`,
+					href: `/monsters/${m.id}/`,
+					content: monsterSearchContent(m),
+				},
+				monsterFilterFields(m),
+			),
+		);
 	}
 
 	for (const leg of legendaryMonsters) {
@@ -283,54 +346,69 @@ function buildDocs(): OramaGameDataDoc[] {
 				c.actions.map((a) => `${a.name}: ${a.description}`).join('\n'),
 			);
 		}
-		docs.push({
-			id: `monster:${leg.id}`,
-			type: 'monster',
-			title: leg.name,
-			subtitle: `Level ${leg.level} · Legendary`,
-			href: `/monsters/${leg.id}/`,
-			content: truncate(
-				joinText(
-					leg.name,
-					leg.creatureType,
-					`Level ${leg.level}`,
-					leg.actionsIntro,
-					leg.bloodied,
-					leg.lastStand,
-					leg.notes,
-					...creatureParts,
-				),
+		docs.push(
+			mergeDoc(
+				{
+					id: `monster:${leg.id}`,
+					type: 'monster',
+					title: leg.name,
+					subtitle: `Level ${leg.level} · Legendary`,
+					href: `/monsters/${leg.id}/`,
+					content: truncate(
+						joinText(
+							leg.name,
+							leg.creatureType,
+							`Level ${leg.level}`,
+							leg.actionsIntro,
+							leg.bloodied,
+							leg.lastStand,
+							leg.notes,
+							...creatureParts,
+						),
+					),
+				},
+				legendaryMonsterFilterFields(leg),
 			),
-		});
+		);
 	}
 
 	for (const row of armorRows) {
-		docs.push({
-			id: `armor:${row.id}`,
-			type: 'armor',
-			title: row.name,
-			subtitle: formatArmorCategoryLabel(row.category),
-			href: armorDetailHrefFromCoreRules(row.id),
-			content: truncate(
-				joinText(
-					row.name,
-					formatArmorCategoryLabel(row.category),
-					row.armor,
-					row.cost,
-				),
+		docs.push(
+			mergeDoc(
+				{
+					id: `armor:${row.id}`,
+					type: 'armor',
+					title: row.name,
+					subtitle: formatArmorCategoryLabel(row.category),
+					href: armorDetailHrefFromCoreRules(row.id),
+					content: truncate(
+						joinText(
+							row.name,
+							formatArmorCategoryLabel(row.category),
+							row.armor,
+							row.cost,
+						),
+					),
+				},
+				armorFilterFields(row),
 			),
-		});
+		);
 	}
 
 	for (const lang of languages) {
-		docs.push({
-			id: `language:${lang.id}`,
-			type: 'language',
-			title: lang.name,
-			subtitle: '',
-			href: languageDetailHrefFromCoreRules(lang.id),
-			content: truncate(joinText(lang.name, lang.description)),
-		});
+		docs.push(
+			mergeDoc(
+				{
+					id: `language:${lang.id}`,
+					type: 'language',
+					title: lang.name,
+					subtitle: '',
+					href: languageDetailHrefFromCoreRules(lang.id),
+					content: truncate(joinText(lang.name, lang.description)),
+				},
+				{},
+			),
+		);
 	}
 
 	return docs;
@@ -346,6 +424,28 @@ function main(): void {
 			content: 'string',
 			href: 'string',
 			subtitle: 'string',
+			spellTier: 'string',
+			spellSchool: 'string',
+			spellTarget: 'string',
+			spellUtility: 'string',
+			spellSecret: 'string',
+			monsterLevel: 'string',
+			monsterFamily: 'string',
+			monsterKind: 'string',
+			monsterArmor: 'string',
+			monsterSpeed: 'string',
+			monsterSize: 'string',
+			monsterMinion: 'string',
+			monsterLegendary: 'string',
+			classKeyStats: 'string',
+			classHitDie: 'string',
+			weaponCategory: 'string',
+			ancestrySection: 'string',
+			ancestrySize: 'string',
+			armorCategory: 'string',
+			magicKind: 'string',
+			magicSource: 'string',
+			magicReward: 'string',
 		},
 	});
 	insertMultiple(db, docs, 500);
