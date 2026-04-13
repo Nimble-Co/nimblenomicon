@@ -7,12 +7,14 @@ astrojs
 Avenir
 blockquotes
 borderless
+chev
 cliffside
 Cpath
 Csvg
 frontmatter
 greatclub
 halfling
+hitdie
 haspopup
 hrefs
 longsword

@@ -18,10 +18,7 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 		class="orama-data-search not-content not-prose flex max-w-3xl flex-col gap-4"
 		data-orama-root
 	>
-		<div
-			class="hidden w-full min-w-0 flex flex-wrap items-center gap-2"
-			data-orama-toolbar-row
-		>
+		<div class="hidden w-full min-w-0" data-orama-toolbar-row>
 			<div
 				class="min-w-0 shrink-0"
 				data-orama-type-filter-bar
@@ -29,11 +26,7 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 				aria-label="Filter by data type"
 			>
 			</div>
-			<div
-				class="hidden min-w-0 flex-1 flex flex-wrap items-center gap-2"
-				data-orama-secondary-wrap
-			>
-			</div>
+			<div class="hidden min-w-0 flex-1" data-orama-secondary-wrap></div>
 		</div>
 
 		<div class="sr-only" aria-live="polite" data-orama-search-live></div>

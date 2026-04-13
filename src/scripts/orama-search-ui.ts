@@ -7,7 +7,6 @@ import {
 import {
 	applySearchFiltersToParams,
 	buildOramaWhereForFilters,
-	clearAllSearchFilterParams,
 	clearMultiFilterDim,
 	documentMatchesFilters,
 	emptySearchFiltersState,
@@ -40,6 +39,19 @@ const BROWSE_RANDOM_COUNT = 50;
 const BROWSE_RANDOM_POOL = 500;
 const QUICK_SEARCH_LIMIT = 10;
 const DEBOUNCE_MS = 200;
+
+const ORAMA_TOOLBAR_ROW_LAYOUT_CLASSES = [
+	'flex',
+	'flex-wrap',
+	'items-center',
+	'gap-2',
+] as const;
+const ORAMA_SECONDARY_WRAP_LAYOUT_CLASSES = [
+	'flex',
+	'flex-wrap',
+	'items-center',
+	'gap-2',
+] as const;
 
 const ORAMA_DATA_SEARCH_TYPES = new Set<string>(ORAMA_DATA_SEARCH_TYPE_ORDER);
 
@@ -488,9 +500,15 @@ export function initOramaDataSearch(root: HTMLElement): void {
 
 		if (activeType === null) {
 			toolbarRowEl?.classList.add('hidden');
+			for (const c of ORAMA_TOOLBAR_ROW_LAYOUT_CLASSES) {
+				toolbarRowEl?.classList.remove(c);
+			}
 			bar.replaceChildren();
 			if (secondaryWrapEl) {
 				secondaryWrapEl.classList.add('hidden');
+				for (const c of ORAMA_SECONDARY_WRAP_LAYOUT_CLASSES) {
+					secondaryWrapEl.classList.remove(c);
+				}
 				secondaryWrapEl.innerHTML = '';
 			}
 			syncTypeFilterButtonState();
@@ -498,6 +516,9 @@ export function initOramaDataSearch(root: HTMLElement): void {
 		}
 
 		toolbarRowEl?.classList.remove('hidden');
+		for (const c of ORAMA_TOOLBAR_ROW_LAYOUT_CLASSES) {
+			toolbarRowEl?.classList.add(c);
+		}
 		bar.classList.remove('hidden');
 		bar.classList.add('block');
 
@@ -513,6 +534,9 @@ export function initOramaDataSearch(root: HTMLElement): void {
 		if (secondaryWrapEl) {
 			if (filterKeysForType(activeType).length > 0) {
 				secondaryWrapEl.classList.remove('hidden');
+				for (const c of ORAMA_SECONDARY_WRAP_LAYOUT_CLASSES) {
+					secondaryWrapEl.classList.add(c);
+				}
 				const secondaryOpts: RenderSecondaryFiltersOptions | undefined =
 					reopenFilterDropdown !== null
 						? { openDropdownDim: reopenFilterDropdown }
@@ -522,6 +546,9 @@ export function initOramaDataSearch(root: HTMLElement): void {
 				);
 			} else {
 				secondaryWrapEl.classList.add('hidden');
+				for (const c of ORAMA_SECONDARY_WRAP_LAYOUT_CLASSES) {
+					secondaryWrapEl.classList.remove(c);
+				}
 				secondaryWrapEl.innerHTML = '';
 			}
 		}

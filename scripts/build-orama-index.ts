@@ -43,7 +43,6 @@ import { monsters, type MonsterData } from '../src/models/monsters';
 import { spells, type SpellData } from '../src/models/spells';
 import { spellSchools } from '../src/models/spell-schools';
 import { weapons, weaponDetailHrefFromCoreRules } from '../src/models/weapons';
-import type { OramaDataSearchType } from '../src/constants/orama-data-search';
 import {
 	emptyOramaFilterFields,
 	spellFilterFields,
