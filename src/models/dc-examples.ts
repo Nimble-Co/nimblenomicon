@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import rawDcExamples from '../data/dc-examples.json';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const dcExampleSchema = z
 	.object({
@@ -11,4 +11,4 @@ const dcExampleSchema = z
 export type DcExampleData = z.infer<typeof dcExampleSchema>;
 export const dcExamples: DcExampleData[] = z
 	.array(dcExampleSchema)
-	.parse(rawDcExamples);
+	.parse(readNimbleGameJson('dc-examples'));

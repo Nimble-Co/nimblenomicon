@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
-import rawConditions from '../data/conditions.json';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const conditionRowSchema = z.preprocess(
 	(raw) => {
@@ -39,7 +39,7 @@ export const conditions: ConditionData[] = z
 			}
 		}
 	})
-	.parse(rawConditions);
+	.parse(readNimbleGameJson('conditions'));
 
 /** Root-absolute path to a condition detail page. */
 export function conditionDetailHrefFromCoreRules(id: string): string {

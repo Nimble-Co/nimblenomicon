@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import rawMagicalItemRarities from '../data/magical-item-rarities.json';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const magicalItemRaritySchema = z
 	.object({
@@ -12,4 +12,4 @@ const magicalItemRaritySchema = z
 export type MagicalItemRarityData = z.infer<typeof magicalItemRaritySchema>;
 export const magicalItemRarities: MagicalItemRarityData[] = z
 	.array(magicalItemRaritySchema)
-	.parse(rawMagicalItemRarities);
+	.parse(readNimbleGameJson('magical-item-rarities'));

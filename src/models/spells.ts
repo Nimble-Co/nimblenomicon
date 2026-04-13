@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
-import rawSpells from '../data/spells.json';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const spellTargetSchema = z.enum([
 	'single-target',
@@ -48,7 +48,9 @@ const spellsSchema = z
 	});
 
 export type SpellData = z.infer<typeof spellsSchema>;
-export const spells: SpellData[] = z.array(spellsSchema).parse(rawSpells);
+export const spells: SpellData[] = z
+	.array(spellsSchema)
+	.parse(readNimbleGameJson('spells'));
 
 export interface SpellListingFilters {
 	schoolId?: string;

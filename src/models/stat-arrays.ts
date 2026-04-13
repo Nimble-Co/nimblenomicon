@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import rawStatArrays from '../data/stat-arrays.json';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const statArraySchema = z
 	.object({
@@ -11,4 +11,4 @@ const statArraySchema = z
 export type StatArrayData = z.infer<typeof statArraySchema>;
 export const statArrays: StatArrayData[] = z
 	.array(statArraySchema)
-	.parse(rawStatArrays);
+	.parse(readNimbleGameJson('stat-arrays'));

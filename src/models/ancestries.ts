@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
-import rawAncestries from '../data/ancestries.json';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 /** Stored in JSON / CMS; kebab-case matches `.pages.yml` select `name` values. */
 export const ancestrySizeEnum = z.enum([
@@ -63,7 +63,7 @@ export const ancestries: AncestryRowData[] = z
 			}
 		}
 	})
-	.parse(rawAncestries);
+	.parse(readNimbleGameJson('ancestries'));
 
 /** Root-absolute path to an ancestry detail page. */
 export function ancestryDetailHrefFromCoreRules(id: string): string {

@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import rawSpellSchools from '../data/spell-schools.json';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 
 const spellSchoolSchema = z
@@ -16,4 +16,4 @@ const spellSchoolSchema = z
 export type SpellSchoolData = z.infer<typeof spellSchoolSchema>;
 export const spellSchools: SpellSchoolData[] = z
 	.array(spellSchoolSchema)
-	.parse(rawSpellSchools);
+	.parse(readNimbleGameJson('spell-schools'));

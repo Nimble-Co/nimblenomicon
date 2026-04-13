@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import rawWeaponProperties from '../data/weapon-properties.json';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const weaponPropertySchema = z
 	.object({
@@ -12,4 +12,4 @@ export type WeaponPropertyData = z.infer<typeof weaponPropertySchema>;
 
 export const weaponProperties: WeaponPropertyData[] = z
 	.array(weaponPropertySchema)
-	.parse(rawWeaponProperties);
+	.parse(readNimbleGameJson('weapon-properties'));

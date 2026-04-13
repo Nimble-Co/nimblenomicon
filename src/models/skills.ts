@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import rawSkills from '../data/skills.json';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 import { stats } from './stats';
 
 const statCodes = new Set(stats.map((s) => s.stat));
@@ -17,4 +17,6 @@ const skillSchema = z
 	})
 	.strict();
 export type SkillData = z.infer<typeof skillSchema>;
-export const skills: SkillData[] = z.array(skillSchema).parse(rawSkills);
+export const skills: SkillData[] = z
+	.array(skillSchema)
+	.parse(readNimbleGameJson('skills'));

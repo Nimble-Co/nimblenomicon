@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
-import rawWeapons from '../data/weapons.json';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const weaponPropertyLineSchema = z
 	.object({
@@ -49,7 +49,7 @@ export const weapons: WeaponRowData[] = z
 			}
 		}
 	})
-	.parse(rawWeapons);
+	.parse(readNimbleGameJson('weapons'));
 
 /** Human-readable category for tables and meta lines. */
 export function formatWeaponCategory(

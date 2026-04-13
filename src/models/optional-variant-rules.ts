@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import rawOptionalVariantRules from '../data/optional-variant-rules.json';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const optionalVariantRuleSchema = z
 	.object({
@@ -11,4 +11,4 @@ const optionalVariantRuleSchema = z
 export type OptionalVariantRuleData = z.infer<typeof optionalVariantRuleSchema>;
 export const optionalVariantRules: OptionalVariantRuleData[] = z
 	.array(optionalVariantRuleSchema)
-	.parse(rawOptionalVariantRules);
+	.parse(readNimbleGameJson('optional-variant-rules'));

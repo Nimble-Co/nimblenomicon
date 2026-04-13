@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
-import rawLegendaryMonsters from '../data/legendary-monsters.json';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 import {
 	creatureArmorTierSchema,
 	creatureMovementSchema,
@@ -58,7 +58,7 @@ export type LegendaryMonsterData = LegendaryEntryData;
 
 export const legendaryMonsters: LegendaryEntryData[] = z
 	.array(legendaryEntrySchema)
-	.parse(rawLegendaryMonsters)
+	.parse(readNimbleGameJson('legendary-monsters'))
 	.map((row) => ({
 		...row,
 		id: slugifyEntityId(row.name, 'legendary-monster'),

@@ -1,6 +1,6 @@
 import { z } from 'astro/zod';
-import rawMonsterKinds from '../data/monster-kinds.json';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const monsterKindSchema = z
 	.object({
@@ -18,4 +18,4 @@ const monsterKindSchema = z
 export type MonsterKindData = z.infer<typeof monsterKindSchema>;
 export const monsterKinds: MonsterKindData[] = z
 	.array(monsterKindSchema)
-	.parse(rawMonsterKinds);
+	.parse(readNimbleGameJson('monster-kinds'));

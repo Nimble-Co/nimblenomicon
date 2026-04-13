@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import raw from '../data/gmg-monster-builder-levels.json';
+import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const rowSchema = z
 	.object({
@@ -18,4 +18,4 @@ export type GmgMonsterBuilderLevelRow = z.infer<typeof rowSchema>;
 
 export const gmgMonsterBuilderLevels: GmgMonsterBuilderLevelRow[] = z
 	.array(rowSchema)
-	.parse(raw);
+	.parse(readNimbleGameJson('gmg-monster-builder-levels'));
