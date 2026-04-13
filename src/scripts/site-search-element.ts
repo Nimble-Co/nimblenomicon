@@ -1,5 +1,12 @@
-import { initOramaQuickSearch } from './orama-search-ui';
+import {
+	initOramaQuickSearch,
+	SEARCH_URL_UPDATE_EVENT,
+} from './orama-search-ui';
 import { wireSearchShortcut } from './wire-search-shortcut';
+
+function pathnameIsSearchPage(pathname: string): boolean {
+	return /\/search\/?$/.test(pathname);
+}
 
 const MOBILE_PANEL_ENTER = 'animate-ss-mobile-panel-enter';
 const MOBILE_PANEL_LEAVE = 'animate-ss-mobile-panel-leave';
@@ -24,6 +31,11 @@ class SiteSearch extends HTMLElement {
 		this.mobileInput = this.querySelector('#ss-mobile-q');
 		this.desktopInput = this.querySelector('#ss-desktop-q');
 		this.syncQueryFromUrl();
+
+		window.addEventListener('popstate', () => this.syncQueryFromUrl());
+		window.addEventListener(SEARCH_URL_UPDATE_EVENT, () =>
+			this.syncQueryFromUrl(),
+		);
 
 		this.mobileToggle?.addEventListener('click', () => {
 			const open = this.mobileToggle?.getAttribute('aria-expanded') === 'true';
@@ -58,12 +70,19 @@ class SiteSearch extends HTMLElement {
 		if (desktopInput && desktopPanel) {
 			initOramaQuickSearch({ input: desktopInput, panel: desktopPanel });
 		}
+
+		for (const form of this.querySelectorAll<HTMLFormElement>('form.ss-form')) {
+			form.addEventListener('submit', this.onSearchFormSubmit);
+		}
 	}
 
 	disconnectedCallback() {
 		document.removeEventListener('click', this.onDocClick, true);
 		this.removeSearchShortcut?.();
 		this.removeSearchShortcut = undefined;
+		for (const form of this.querySelectorAll<HTMLFormElement>('form.ss-form')) {
+			form.removeEventListener('submit', this.onSearchFormSubmit);
+		}
 	}
 
 	private isWide(): boolean {
@@ -248,11 +267,35 @@ class SiteSearch extends HTMLElement {
 	}
 
 	private syncQueryFromUrl() {
-		const query = new URLSearchParams(window.location.search).get('q')?.trim();
-		if (!query) return;
+		const query =
+			new URLSearchParams(window.location.search).get('q')?.trim() ?? '';
 		if (this.desktopInput) this.desktopInput.value = query;
 		if (this.mobileInput) this.mobileInput.value = query;
 	}
+
+	private onSearchFormSubmit = (e: SubmitEvent): void => {
+		const form = e.target;
+		if (!(form instanceof HTMLFormElement)) return;
+		let actionUrl: URL;
+		try {
+			actionUrl = new URL(form.action, window.location.href);
+		} catch {
+			return;
+		}
+		if (!pathnameIsSearchPage(actionUrl.pathname)) return;
+		e.preventDefault();
+		const params = pathnameIsSearchPage(window.location.pathname)
+			? new URLSearchParams(window.location.search)
+			: new URLSearchParams();
+		const fd = new FormData(form);
+		const qRaw = fd.get('q');
+		const q = typeof qRaw === 'string' ? qRaw.trim() : '';
+		if (q.length > 0) params.set('q', q);
+		else params.delete('q');
+		const path = actionUrl.pathname + (actionUrl.hash ?? '');
+		const qs = params.toString();
+		window.location.assign(`${path}${qs ? `?${qs}` : ''}`);
+	};
 }
 
 customElements.define('site-search', SiteSearch);

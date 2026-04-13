@@ -18,7 +18,7 @@ const movementSchema = creatureMovementSchema.default({
 });
 
 /** Monster level: fractional minion-style tiers or whole levels 1–20. */
-const MONSTER_LEVEL_VALUES = [
+export const MONSTER_LEVEL_VALUES = [
 	'1/4',
 	'1/3',
 	'1/2',
