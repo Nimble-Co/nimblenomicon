@@ -2,6 +2,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import starlight from '@astrojs/starlight';
+import svelte from '@astrojs/svelte';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 
@@ -25,6 +26,7 @@ export default defineConfig({
 	base,
 	integrations: [
 		autoXrefIntegration({ base: baseForIntegrations }),
+		svelte(),
 		starlight({
 			title: 'The Nimblenomicon',
 			pagefind: false,

@@ -1,7 +1,5 @@
-import {
-	initOramaQuickSearch,
-	SEARCH_URL_UPDATE_EVENT,
-} from './orama-search-ui';
+import { initOramaQuickSearch } from './orama-search-ui';
+import { SEARCH_URL_UPDATE_EVENT } from './orama-search-url';
 import { wireSearchShortcut } from './wire-search-shortcut';
 
 function pathnameIsSearchPage(pathname: string): boolean {
