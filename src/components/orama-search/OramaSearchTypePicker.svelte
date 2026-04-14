@@ -60,7 +60,7 @@
 	</div>
 {:else}
 	<div
-		class="flex shrink-0 flex-col gap-1"
+		class="flex shrink-0 flex-col gap-0"
 		data-orama-type-filter-bar
 		role="toolbar"
 		aria-label="Filter by data type"

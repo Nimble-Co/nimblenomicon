@@ -62,7 +62,7 @@ export const FILTER_DROPDOWN_CLEAR_BUTTON_CLASS =
 	'w-full bg-transparent px-2 py-1.5 text-left text-sm text-fg-muted transition-colors hover:text-fg';
 
 export const FILTER_MULTI_LABEL_CLASS =
-	'text-[0.65rem] font-medium uppercase tracking-wide text-fg-muted';
+	'text-[0.65rem] font-medium uppercase leading-none tracking-wide text-fg-muted px-3';
 
 export const FILTER_MULTI_VALUE_CLASS =
 	'max-w-[11rem] truncate text-sm text-fg';

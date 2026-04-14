@@ -50,7 +50,7 @@
 	}
 </script>
 
-<div class="flex shrink-0 flex-col gap-1">
+<div class="flex shrink-0 flex-col">
 	<span class="{FILTER_MULTI_LABEL_CLASS} whitespace-nowrap">{label}</span>
 	<div class="relative min-w-0 shrink-0">
 		<details
