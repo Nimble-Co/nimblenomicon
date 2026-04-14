@@ -7,7 +7,7 @@ import {
 } from '../constants/orama-data-search';
 
 export const TYPE_FILTER_PILL_CLASS =
-	'orama-type-filter-pill shrink-0 rounded-full border border-hairline bg-surface text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
+	'orama-type-filter-pill shrink-0 rounded-lg border-2 border-hairline bg-surface text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
 export const TYPE_FILTER_PILL_ACTIVE_CLASS =
 	'border-accent-500 bg-accent-500/15 text-fg font-medium dark:bg-accent-500/20';
 export const TYPE_FILTER_MENUITEM_CLASS =
