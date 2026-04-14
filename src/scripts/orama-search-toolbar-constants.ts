@@ -7,7 +7,7 @@ import {
 } from '../constants/orama-data-search';
 
 export const TYPE_FILTER_PILL_CLASS =
-	'orama-type-filter-pill shrink-0 rounded-lg border-2 border-hairline bg-surface text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
+	'orama-type-filter-pill shrink-0 rounded-lg border-2 border-hairline-emphasis bg-surface text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
 export const TYPE_FILTER_PILL_ACTIVE_CLASS =
 	'border-accent-500 bg-accent-500/15 text-fg font-medium dark:bg-accent-500/20';
 export const TYPE_FILTER_MENUITEM_CLASS =
@@ -62,7 +62,7 @@ export const FILTER_DROPDOWN_CLEAR_BUTTON_CLASS =
 	'w-full bg-transparent px-2 py-1.5 text-left text-sm text-fg-muted transition-colors hover:text-fg';
 
 export const FILTER_MULTI_LABEL_CLASS =
-	'text-[0.65rem] font-semibold uppercase leading-none tracking-wide text-fg-muted px-3';
+	'text-[0.65rem] font-semibold uppercase leading-none tracking-wide text-fg-muted px-1';
 
 /** Matches label row height so controls without a visible label align with dropdown/type columns */
 export const FILTER_TOOLBAR_LABEL_SPACER_CLASS = `${FILTER_MULTI_LABEL_CLASS} invisible select-none`;

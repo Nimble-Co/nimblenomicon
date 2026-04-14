@@ -76,6 +76,8 @@ html[data-theme='dark'] {
 	--color-fg: var(--sl-color-text);
 	--color-fg-muted: var(--sl-color-gray-3);
 	--color-hairline: var(--sl-color-hairline-light);
+	/* Stronger UI outlines (e.g. search filter pills) — darker than `--color-hairline` */
+	--color-hairline-emphasis: var(--sl-color-gray-5);
 	--color-surface-code: var(--sl-color-bg-inline-code);
 	--color-danger: var(--sl-color-red);
 	/* Beaufort Pro — matches `--nimble-font-heading` in `:root`; for `font-heading` utilities. */
