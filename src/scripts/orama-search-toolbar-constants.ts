@@ -59,7 +59,7 @@ export const FILTER_DROPDOWN_CLEAR_FOOTER_CLASS =
 	'shrink-0 border-t border-hairline bg-surface px-2 py-2';
 
 export const FILTER_DROPDOWN_CLEAR_BUTTON_CLASS =
-	'w-full rounded-md px-2 py-1.5 text-left text-sm text-fg-muted transition-colors hover:bg-gray-100 hover:text-fg dark:hover:bg-gray-800/80';
+	'w-full bg-transparent px-2 py-1.5 text-left text-sm text-fg-muted transition-colors hover:text-fg';
 
 export const FILTER_MULTI_LABEL_CLASS =
 	'text-[0.65rem] font-medium uppercase tracking-wide text-fg-muted';
