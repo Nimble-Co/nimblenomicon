@@ -70,6 +70,10 @@ export const FILTER_TOOLBAR_LABEL_SPACER_CLASS = `${FILTER_MULTI_LABEL_CLASS} in
 export const FILTER_MULTI_VALUE_CLASS =
 	'max-w-[11rem] truncate text-sm text-fg';
 
-/** Spell-only: utility / secret row */
+/** Spell toolbar: utility / secret — chip height matches filter pills */
 export const FILTER_INLINE_CHECKBOX_LABEL_CLASS =
-	'shrink-0 flex cursor-pointer items-center gap-2 text-sm text-fg';
+	'shrink-0 flex h-9 min-h-[2.25rem] cursor-pointer items-center gap-2.5 rounded-lg border-2 border-hairline-emphasis bg-surface px-3 text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
+
+/** Secondary row under a toolbar section label (Options, Traits, …) */
+export const FILTER_TOOLBAR_OPTIONS_ROW_CLASS =
+	'flex min-h-[2.25rem] flex-wrap items-center gap-x-4 gap-y-2';

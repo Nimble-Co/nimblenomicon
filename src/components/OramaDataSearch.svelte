@@ -45,7 +45,9 @@
 		type OramaDataSearchDb,
 	} from '../scripts/orama-search-ui';
 	import {
+		FILTER_MULTI_LABEL_CLASS,
 		FILTER_TOOLBAR_LABEL_SPACER_CLASS,
+		FILTER_TOOLBAR_OPTIONS_ROW_CLASS,
 		pressedPillClass,
 		typeFilterLabel,
 	} from '../scripts/orama-search-toolbar-constants';
@@ -466,7 +468,7 @@
 
 	{#if activeType !== null}
 		<div
-			class="flex w-full min-w-0 flex-wrap items-end gap-4"
+			class="flex w-full min-w-0 flex-wrap items-end gap-x-3 gap-y-3 rounded-xl border border-hairline bg-surface p-3 shadow-sm sm:gap-x-4 sm:p-4"
 			data-orama-toolbar-row
 			data-orama-secondary-wrap
 			data-orama-filter-toolbar
@@ -510,25 +512,33 @@
 							onMultiCheckbox('target', value, checked)}
 						onClear={() => onClearDim('target')}
 					/>
-					<div class="flex shrink-0 flex-col gap-0">
-						<span class={FILTER_TOOLBAR_LABEL_SPACER_CLASS} aria-hidden="true"
-							>&nbsp;</span
+					<div
+						class="flex min-w-0 flex-col gap-1"
+						data-orama-toolbar-spell-options
+					>
+						<span class="{FILTER_MULTI_LABEL_CLASS} whitespace-nowrap"
+							>Options</span
 						>
-						<OramaSearchFilterCheckboxLabel
-							checked={activeFilters.utility === true}
-							text="Utility spells"
-							onChange={onUtilityChange}
-						/>
-					</div>
-					<div class="flex shrink-0 flex-col gap-0">
-						<span class={FILTER_TOOLBAR_LABEL_SPACER_CLASS} aria-hidden="true"
-							>&nbsp;</span
-						>
-						<OramaSearchFilterCheckboxLabel
-							checked={activeFilters.secret === true}
-							text="Secret spells"
-							onChange={onSecretChange}
-						/>
+						<div class={FILTER_TOOLBAR_OPTIONS_ROW_CLASS}>
+							<OramaSearchFilterCheckboxLabel
+								checked={activeFilters.utility === true}
+								text="Utility spells"
+								onChange={onUtilityChange}
+							/>
+							<OramaSearchFilterCheckboxLabel
+								checked={activeFilters.secret === true}
+								text="Secret spells"
+								onChange={onSecretChange}
+							/>
+							<button
+								type="button"
+								class="text-fg-muted hover:text-fg inline-flex shrink-0 bg-transparent px-1 py-0 text-sm font-medium underline decoration-fg/25 underline-offset-2 transition-colors hover:decoration-fg/50"
+								data-orama-clear-filters
+								onclick={onClearAllFilters}
+							>
+								Clear all filters
+							</button>
+						</div>
 					</div>
 				{:else if activeType === 'monster'}
 					{#each MONSTER_FILTER_ROWS as row (row.dim)}
@@ -542,33 +552,30 @@
 							onClear={() => onClearDim(row.dim)}
 						/>
 					{/each}
-					<div class="flex shrink-0 flex-col gap-0">
-						<span class={FILTER_TOOLBAR_LABEL_SPACER_CLASS} aria-hidden="true"
-							>&nbsp;</span
+					<div class="flex min-w-0 flex-col gap-1" data-orama-toolbar-traits>
+						<span class="{FILTER_MULTI_LABEL_CLASS} whitespace-nowrap"
+							>Traits</span
 						>
-						<button
-							type="button"
-							class={pressedPillClass(activeFilters.minion === true)}
-							data-orama-filter-tri
-							data-orama-filter-dim="minion"
-							onclick={() => toggleTri('minion')}
-						>
-							Minion
-						</button>
-					</div>
-					<div class="flex shrink-0 flex-col gap-0">
-						<span class={FILTER_TOOLBAR_LABEL_SPACER_CLASS} aria-hidden="true"
-							>&nbsp;</span
-						>
-						<button
-							type="button"
-							class={pressedPillClass(activeFilters.legendary === true)}
-							data-orama-filter-tri
-							data-orama-filter-dim="legendary"
-							onclick={() => toggleTri('legendary')}
-						>
-							Legendary
-						</button>
+						<div class={FILTER_TOOLBAR_OPTIONS_ROW_CLASS}>
+							<button
+								type="button"
+								class={pressedPillClass(activeFilters.minion === true)}
+								data-orama-filter-tri
+								data-orama-filter-dim="minion"
+								onclick={() => toggleTri('minion')}
+							>
+								Minion
+							</button>
+							<button
+								type="button"
+								class={pressedPillClass(activeFilters.legendary === true)}
+								data-orama-filter-tri
+								data-orama-filter-dim="legendary"
+								onclick={() => toggleTri('legendary')}
+							>
+								Legendary
+							</button>
+						</div>
 					</div>
 				{:else if activeType === 'class'}
 					{#each CLASS_FILTER_ROWS as row (row.dim)}
@@ -628,19 +635,21 @@
 					{/each}
 				{/if}
 
-				<div class="flex shrink-0 flex-col gap-0">
-					<span class={FILTER_TOOLBAR_LABEL_SPACER_CLASS} aria-hidden="true"
-						>&nbsp;</span
-					>
-					<button
-						type="button"
-						class="text-fg-muted hover:text-fg inline-flex shrink-0 self-start bg-transparent px-0 py-1.5 text-sm underline decoration-fg/30 underline-offset-2"
-						data-orama-clear-filters
-						onclick={onClearAllFilters}
-					>
-						Clear all filters
-					</button>
-				</div>
+				{#if activeType !== 'spell'}
+					<div class="flex shrink-0 flex-col gap-0">
+						<span class={FILTER_TOOLBAR_LABEL_SPACER_CLASS} aria-hidden="true"
+							>&nbsp;</span
+						>
+						<button
+							type="button"
+							class="text-fg-muted hover:text-fg inline-flex shrink-0 self-start bg-transparent px-0 py-1.5 text-sm font-medium underline decoration-fg/25 underline-offset-2 transition-colors hover:decoration-fg/50"
+							data-orama-clear-filters
+							onclick={onClearAllFilters}
+						>
+							Clear all filters
+						</button>
+					</div>
+				{/if}
 			{/if}
 		</div>
 	{/if}
