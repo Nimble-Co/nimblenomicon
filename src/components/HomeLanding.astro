@@ -71,7 +71,8 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 					class="box-border flex w-full items-center gap-[0.65rem] rounded-full border border-hairline bg-surface-nav py-[0.65rem] pl-4 pr-4 text-left font-inherit text-fg focus-within:outline-2 focus-within:outline-offset-0 focus-within:outline-accent-500"
 					role="search"
 				>
-					<label class="sr-only" for="home-search-q">{SEARCH_PLACEHOLDER}</label>
+					<label class="sr-only" for="home-search-q">{SEARCH_PLACEHOLDER}</label
+					>
 					<svg
 						class="pointer-events-none shrink-0 text-fg-muted opacity-85 dark:opacity-100"
 						width="20"
@@ -102,11 +103,12 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 				>
 				</div>
 			</div>
-			<p class="m-0 flex w-full items-center justify-center gap-2.5 text-center sm:gap-3">
+			<p
+				class="m-0 flex w-full items-center justify-center gap-2.5 text-center sm:gap-3"
+			>
 				<span
 					class="hidden h-px min-w-[1.5rem] flex-1 max-w-[4.5rem] bg-fg/15 sm:block dark:bg-fg/20"
-					aria-hidden="true"
-				/>
+					aria-hidden="true"></span>
 				<a
 					class="shrink-0 font-heading text-lg font-semibold not-italic leading-snug text-fg no-underline transition-colors duration-75 ease-linear hover:underline hover:decoration-fg/40 hover:underline-offset-[0.2em] focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 motion-reduce:transition-none min-[30rem]:text-xl"
 					href={searchAction}
@@ -115,8 +117,7 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 				</a>
 				<span
 					class="hidden h-px min-w-[1.5rem] flex-1 max-w-[4.5rem] bg-fg/15 sm:block dark:bg-fg/20"
-					aria-hidden="true"
-				/>
+					aria-hidden="true"></span>
 			</p>
 		</div>
 
