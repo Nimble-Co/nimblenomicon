@@ -36,8 +36,11 @@ export function pressedPillClass(isOn: boolean): string {
 		: TYPE_FILTER_PILL_CLASS;
 }
 
-/** `<summary>` for multi-select filter `<details>` dropdowns */
-export const FILTER_DROPDOWN_SUMMARY_CLASS = `${TYPE_FILTER_PILL_CLASS} flex cursor-pointer list-none items-center justify-between gap-2 py-2 pr-3 pl-3 [&::-webkit-details-marker]:hidden`;
+/**
+ * `<summary>` for multi-select filter `<details>` dropdowns (value + chevron only;
+ * the dimension label is rendered beside the pill).
+ */
+export const FILTER_DROPDOWN_SUMMARY_CLASS = `${TYPE_FILTER_PILL_CLASS} flex cursor-pointer list-none items-center justify-between gap-2 py-1.5 pr-3 pl-3 [&::-webkit-details-marker]:hidden`;
 
 /** Floating panel under filter dropdowns */
 export const FILTER_DROPDOWN_PANEL_CLASS =

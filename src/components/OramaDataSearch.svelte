@@ -465,8 +465,11 @@
 
 	{#if activeType !== null}
 		<div
-			class="flex w-full min-w-0 flex-wrap items-center gap-2"
+			class="flex w-full min-w-0 flex-wrap items-end gap-2"
 			data-orama-toolbar-row
+			data-orama-secondary-wrap
+			data-orama-filter-toolbar
+			bind:this={secondaryWrapEl}
 		>
 			<OramaSearchTypePicker
 				mode="collapsed"
@@ -478,151 +481,140 @@
 			/>
 
 			{#if filterKeysForType(activeType).length > 0}
-				<div
-					class="flex min-w-0 flex-1 flex-wrap items-center gap-2"
-					data-orama-secondary-wrap
-					bind:this={secondaryWrapEl}
-				>
-					<div
-						class="flex min-h-0 min-w-0 flex-1 flex-wrap items-center gap-2"
-						data-orama-secondary-inner
+				{#if activeType === 'spell'}
+					<OramaSearchMultiFilterDropdown
+						dim="tier"
+						label="Tier"
+						selectedValues={activeFilters.tier}
+						options={spellTierOptions()}
+						onCheckboxChange={(value, checked) =>
+							onMultiCheckbox('tier', value, checked)}
+						onClear={() => onClearDim('tier')}
+					/>
+					<OramaSearchMultiFilterDropdown
+						dim="school"
+						label="School"
+						selectedValues={activeFilters.school}
+						options={spellSchoolOptions()}
+						onCheckboxChange={(value, checked) =>
+							onMultiCheckbox('school', value, checked)}
+						onClear={() => onClearDim('school')}
+					/>
+					<OramaSearchMultiFilterDropdown
+						dim="target"
+						label="Target"
+						selectedValues={activeFilters.target}
+						options={SPELL_TARGET_FILTER_OPTIONS}
+						onCheckboxChange={(value, checked) =>
+							onMultiCheckbox('target', value, checked)}
+						onClear={() => onClearDim('target')}
+					/>
+					<OramaSearchFilterCheckboxLabel
+						checked={activeFilters.utility === true}
+						text="Utility spells"
+						onChange={onUtilityChange}
+					/>
+					<OramaSearchFilterCheckboxLabel
+						checked={activeFilters.secret === true}
+						text="Secret spells"
+						onChange={onSecretChange}
+					/>
+				{:else if activeType === 'monster'}
+					{#each MONSTER_FILTER_ROWS as row (row.dim)}
+						<OramaSearchMultiFilterDropdown
+							dim={row.dim}
+							label={row.label}
+							selectedValues={activeFilters[row.dim]}
+							options={row.getOpts()}
+							onCheckboxChange={(value, checked) =>
+								onMultiCheckbox(row.dim, value, checked)}
+							onClear={() => onClearDim(row.dim)}
+						/>
+					{/each}
+					<button
+						type="button"
+						class={pressedPillClass(activeFilters.minion === true)}
+						data-orama-filter-tri
+						data-orama-filter-dim="minion"
+						onclick={() => toggleTri('minion')}
 					>
-						{#if activeType === 'spell'}
-							<OramaSearchMultiFilterDropdown
-								dim="tier"
-								label="Tier"
-								selectedValues={activeFilters.tier}
-								options={spellTierOptions()}
-								onCheckboxChange={(value, checked) =>
-									onMultiCheckbox('tier', value, checked)}
-								onClear={() => onClearDim('tier')}
-							/>
-							<OramaSearchMultiFilterDropdown
-								dim="school"
-								label="School"
-								selectedValues={activeFilters.school}
-								options={spellSchoolOptions()}
-								onCheckboxChange={(value, checked) =>
-									onMultiCheckbox('school', value, checked)}
-								onClear={() => onClearDim('school')}
-							/>
-							<OramaSearchMultiFilterDropdown
-								dim="target"
-								label="Target"
-								selectedValues={activeFilters.target}
-								options={SPELL_TARGET_FILTER_OPTIONS}
-								onCheckboxChange={(value, checked) =>
-									onMultiCheckbox('target', value, checked)}
-								onClear={() => onClearDim('target')}
-							/>
-							<OramaSearchFilterCheckboxLabel
-								checked={activeFilters.utility === true}
-								text="Utility spells"
-								onChange={onUtilityChange}
-							/>
-							<OramaSearchFilterCheckboxLabel
-								checked={activeFilters.secret === true}
-								text="Secret spells"
-								onChange={onSecretChange}
-							/>
-						{:else if activeType === 'monster'}
-							{#each MONSTER_FILTER_ROWS as row (row.dim)}
-								<OramaSearchMultiFilterDropdown
-									dim={row.dim}
-									label={row.label}
-									selectedValues={activeFilters[row.dim]}
-									options={row.getOpts()}
-									onCheckboxChange={(value, checked) =>
-										onMultiCheckbox(row.dim, value, checked)}
-									onClear={() => onClearDim(row.dim)}
-								/>
-							{/each}
-							<button
-								type="button"
-								class={pressedPillClass(activeFilters.minion === true)}
-								data-orama-filter-tri
-								data-orama-filter-dim="minion"
-								onclick={() => toggleTri('minion')}
-							>
-								Minion
-							</button>
-							<button
-								type="button"
-								class={pressedPillClass(activeFilters.legendary === true)}
-								data-orama-filter-tri
-								data-orama-filter-dim="legendary"
-								onclick={() => toggleTri('legendary')}
-							>
-								Legendary
-							</button>
-						{:else if activeType === 'class'}
-							{#each CLASS_FILTER_ROWS as row (row.dim)}
-								<OramaSearchMultiFilterDropdown
-									dim={row.dim}
-									label={row.label}
-									selectedValues={activeFilters[row.dim]}
-									options={row.getOpts()}
-									onCheckboxChange={(value, checked) =>
-										onMultiCheckbox(row.dim, value, checked)}
-									onClear={() => onClearDim(row.dim)}
-								/>
-							{/each}
-						{:else if activeType === 'weapon'}
-							<OramaSearchMultiFilterDropdown
-								dim="category"
-								label="Category"
-								selectedValues={activeFilters.category}
-								options={WEAPON_CATEGORY_OPTIONS}
-								onCheckboxChange={(value, checked) =>
-									onMultiCheckbox('category', value, checked)}
-								onClear={() => onClearDim('category')}
-							/>
-						{:else if activeType === 'ancestry'}
-							{#each ANCESTRY_FILTER_ROWS as row (row.dim)}
-								<OramaSearchMultiFilterDropdown
-									dim={row.dim}
-									label={row.label}
-									selectedValues={activeFilters[row.dim]}
-									options={row.getOpts()}
-									onCheckboxChange={(value, checked) =>
-										onMultiCheckbox(row.dim, value, checked)}
-									onClear={() => onClearDim(row.dim)}
-								/>
-							{/each}
-						{:else if activeType === 'armor'}
-							<OramaSearchMultiFilterDropdown
-								dim="category"
-								label="Category"
-								selectedValues={activeFilters.category}
-								options={ARMOR_CATEGORY_OPTIONS}
-								onCheckboxChange={(value, checked) =>
-									onMultiCheckbox('category', value, checked)}
-								onClear={() => onClearDim('category')}
-							/>
-						{:else if activeType === 'magic-item'}
-							{#each MAGIC_ITEM_FILTER_ROWS as row (row.dim)}
-								<OramaSearchMultiFilterDropdown
-									dim={row.dim}
-									label={row.label}
-									selectedValues={activeFilters[row.dim]}
-									options={row.getOpts()}
-									onCheckboxChange={(value, checked) =>
-										onMultiCheckbox(row.dim, value, checked)}
-									onClear={() => onClearDim(row.dim)}
-								/>
-							{/each}
-						{/if}
+						Minion
+					</button>
+					<button
+						type="button"
+						class={pressedPillClass(activeFilters.legendary === true)}
+						data-orama-filter-tri
+						data-orama-filter-dim="legendary"
+						onclick={() => toggleTri('legendary')}
+					>
+						Legendary
+					</button>
+				{:else if activeType === 'class'}
+					{#each CLASS_FILTER_ROWS as row (row.dim)}
+						<OramaSearchMultiFilterDropdown
+							dim={row.dim}
+							label={row.label}
+							selectedValues={activeFilters[row.dim]}
+							options={row.getOpts()}
+							onCheckboxChange={(value, checked) =>
+								onMultiCheckbox(row.dim, value, checked)}
+							onClear={() => onClearDim(row.dim)}
+						/>
+					{/each}
+				{:else if activeType === 'weapon'}
+					<OramaSearchMultiFilterDropdown
+						dim="category"
+						label="Category"
+						selectedValues={activeFilters.category}
+						options={WEAPON_CATEGORY_OPTIONS}
+						onCheckboxChange={(value, checked) =>
+							onMultiCheckbox('category', value, checked)}
+						onClear={() => onClearDim('category')}
+					/>
+				{:else if activeType === 'ancestry'}
+					{#each ANCESTRY_FILTER_ROWS as row (row.dim)}
+						<OramaSearchMultiFilterDropdown
+							dim={row.dim}
+							label={row.label}
+							selectedValues={activeFilters[row.dim]}
+							options={row.getOpts()}
+							onCheckboxChange={(value, checked) =>
+								onMultiCheckbox(row.dim, value, checked)}
+							onClear={() => onClearDim(row.dim)}
+						/>
+					{/each}
+				{:else if activeType === 'armor'}
+					<OramaSearchMultiFilterDropdown
+						dim="category"
+						label="Category"
+						selectedValues={activeFilters.category}
+						options={ARMOR_CATEGORY_OPTIONS}
+						onCheckboxChange={(value, checked) =>
+							onMultiCheckbox('category', value, checked)}
+						onClear={() => onClearDim('category')}
+					/>
+				{:else if activeType === 'magic-item'}
+					{#each MAGIC_ITEM_FILTER_ROWS as row (row.dim)}
+						<OramaSearchMultiFilterDropdown
+							dim={row.dim}
+							label={row.label}
+							selectedValues={activeFilters[row.dim]}
+							options={row.getOpts()}
+							onCheckboxChange={(value, checked) =>
+								onMultiCheckbox(row.dim, value, checked)}
+							onClear={() => onClearDim(row.dim)}
+						/>
+					{/each}
+				{/if}
 
-						<button
-							type="button"
-							class="text-fg-muted hover:text-fg shrink-0 text-sm underline decoration-fg/30 underline-offset-2"
-							data-orama-clear-filters
-							onclick={onClearAllFilters}
-						>
-							Clear all filters
-						</button>
-					</div>
-				</div>
+				<button
+					type="button"
+					class="text-fg-muted hover:text-fg inline-flex shrink-0 bg-transparent px-0 py-1.5 text-sm underline decoration-fg/30 underline-offset-2"
+					data-orama-clear-filters
+					onclick={onClearAllFilters}
+				>
+					Clear all filters
+				</button>
 			{/if}
 		</div>
 	{/if}
