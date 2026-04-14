@@ -34,46 +34,66 @@
 	const summaryText = $derived(
 		multiDropdownSummaryText(selectedValues, options),
 	);
+
+	/** Only one multi-select filter panel open at a time (accordion). */
+	function onFilterDetailsToggle(e: Event) {
+		const el = e.currentTarget;
+		if (!(el instanceof HTMLDetailsElement)) return;
+		if (!el.open) return;
+		const wrap = el.closest('[data-orama-secondary-wrap]');
+		if (!wrap) return;
+		for (const node of wrap.querySelectorAll(
+			'details[data-orama-filter-dropdown]',
+		)) {
+			if (node !== el) (node as HTMLDetailsElement).open = false;
+		}
+	}
 </script>
 
-<div class="relative shrink-0">
-	<details class="group relative" data-orama-filter-dropdown={dim}>
-		<summary class={FILTER_DROPDOWN_SUMMARY_CLASS}>
-			<div class="flex min-w-0 flex-col items-start gap-0 text-left">
-				<span class={FILTER_MULTI_LABEL_CLASS}>{label}</span>
-				<span class={FILTER_MULTI_VALUE_CLASS}>{summaryText}</span>
-			</div>
-			<span class="text-fg-muted shrink-0" aria-hidden="true">▾</span>
-		</summary>
-		<div
-			class={FILTER_DROPDOWN_PANEL_CLASS}
-			role="group"
-			aria-label={label}
-			onclick={(e) => e.stopPropagation()}
+<div class="flex shrink-0 flex-col gap-1">
+	<span class="{FILTER_MULTI_LABEL_CLASS} whitespace-nowrap">{label}</span>
+	<div class="relative min-w-0 shrink-0">
+		<details
+			class="group relative"
+			data-orama-filter-dropdown={dim}
+			ontoggle={onFilterDetailsToggle}
 		>
-			<div class={FILTER_DROPDOWN_SCROLL_CLASS}>
-				{#each options as opt (opt.value)}
-					<label class={FILTER_CHECKBOX_ROW_CLASS}>
-						<input
-							type="checkbox"
-							class={FILTER_CHECKBOX_INPUT_CLASS}
-							checked={selectedValues.includes(opt.value)}
-							onchange={(e) =>
-								onCheckboxChange(opt.value, e.currentTarget.checked)}
-						/>
-						<span>{opt.label}</span>
-					</label>
-				{/each}
-			</div>
-			<div class={FILTER_DROPDOWN_CLEAR_FOOTER_CLASS}>
-				<button
-					type="button"
-					class={FILTER_DROPDOWN_CLEAR_BUTTON_CLASS}
-					onclick={onClear}
+			<summary class={FILTER_DROPDOWN_SUMMARY_CLASS}>
+				<span class="{FILTER_MULTI_VALUE_CLASS} min-w-0 text-left"
+					>{summaryText}</span
 				>
-					Clear
-				</button>
+				<span class="text-fg-muted shrink-0" aria-hidden="true">▾</span>
+			</summary>
+			<div
+				class={FILTER_DROPDOWN_PANEL_CLASS}
+				role="group"
+				aria-label={label}
+				onclick={(e) => e.stopPropagation()}
+			>
+				<div class={FILTER_DROPDOWN_SCROLL_CLASS}>
+					{#each options as opt (opt.value)}
+						<label class={FILTER_CHECKBOX_ROW_CLASS}>
+							<input
+								type="checkbox"
+								class={FILTER_CHECKBOX_INPUT_CLASS}
+								checked={selectedValues.includes(opt.value)}
+								onchange={(e) =>
+									onCheckboxChange(opt.value, e.currentTarget.checked)}
+							/>
+							<span>{opt.label}</span>
+						</label>
+					{/each}
+				</div>
+				<div class={FILTER_DROPDOWN_CLEAR_FOOTER_CLASS}>
+					<button
+						type="button"
+						class={FILTER_DROPDOWN_CLEAR_BUTTON_CLASS}
+						onclick={onClear}
+					>
+						Clear
+					</button>
+				</div>
 			</div>
-		</div>
-	</details>
+		</details>
+	</div>
 </div>

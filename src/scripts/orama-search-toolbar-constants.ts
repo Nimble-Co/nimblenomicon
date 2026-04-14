@@ -7,7 +7,7 @@ import {
 } from '../constants/orama-data-search';
 
 export const TYPE_FILTER_PILL_CLASS =
-	'orama-type-filter-pill shrink-0 rounded-full border border-hairline bg-surface text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
+	'orama-type-filter-pill shrink-0 rounded-lg border-2 border-hairline-emphasis bg-surface text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
 export const TYPE_FILTER_PILL_ACTIVE_CLASS =
 	'border-accent-500 bg-accent-500/15 text-fg font-medium dark:bg-accent-500/20';
 export const TYPE_FILTER_MENUITEM_CLASS =
@@ -36,8 +36,11 @@ export function pressedPillClass(isOn: boolean): string {
 		: TYPE_FILTER_PILL_CLASS;
 }
 
-/** `<summary>` for multi-select filter `<details>` dropdowns */
-export const FILTER_DROPDOWN_SUMMARY_CLASS = `${TYPE_FILTER_PILL_CLASS} flex cursor-pointer list-none items-center justify-between gap-2 py-2 pr-3 pl-3 [&::-webkit-details-marker]:hidden`;
+/**
+ * `<summary>` for multi-select filter `<details>` dropdowns (value + chevron only;
+ * the dimension label is rendered beside the pill).
+ */
+export const FILTER_DROPDOWN_SUMMARY_CLASS = `${TYPE_FILTER_PILL_CLASS} flex cursor-pointer list-none items-center justify-between gap-2 py-1.5 pr-3 pl-3 [&::-webkit-details-marker]:hidden`;
 
 /** Floating panel under filter dropdowns */
 export const FILTER_DROPDOWN_PANEL_CLASS =
@@ -56,14 +59,21 @@ export const FILTER_DROPDOWN_CLEAR_FOOTER_CLASS =
 	'shrink-0 border-t border-hairline bg-surface px-2 py-2';
 
 export const FILTER_DROPDOWN_CLEAR_BUTTON_CLASS =
-	'w-full rounded-md px-2 py-1.5 text-left text-sm text-fg-muted transition-colors hover:bg-gray-100 hover:text-fg dark:hover:bg-gray-800/80';
+	'w-full bg-transparent px-2 py-1.5 text-left text-sm text-fg-muted transition-colors hover:text-fg';
 
 export const FILTER_MULTI_LABEL_CLASS =
-	'text-[0.65rem] font-medium uppercase tracking-wide text-fg-muted';
+	'text-[0.65rem] font-semibold uppercase leading-none tracking-wide text-fg-muted px-1';
+
+/** Matches label row height so controls without a visible label align with dropdown/type columns */
+export const FILTER_TOOLBAR_LABEL_SPACER_CLASS = `${FILTER_MULTI_LABEL_CLASS} invisible select-none`;
 
 export const FILTER_MULTI_VALUE_CLASS =
 	'max-w-[11rem] truncate text-sm text-fg';
 
-/** Spell-only: utility / secret row */
+/** Spell toolbar: utility / secret — chip height matches filter pills */
 export const FILTER_INLINE_CHECKBOX_LABEL_CLASS =
-	'shrink-0 flex cursor-pointer items-center gap-2 text-sm text-fg';
+	'shrink-0 flex h-9 min-h-[2.25rem] cursor-pointer items-center gap-2.5 rounded-lg border-2 border-hairline-emphasis bg-surface px-3 text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
+
+/** Secondary row under a toolbar section label (Options, Traits, …) */
+export const FILTER_TOOLBAR_OPTIONS_ROW_CLASS =
+	'flex min-h-[2.25rem] flex-wrap items-center gap-x-4 gap-y-2';
