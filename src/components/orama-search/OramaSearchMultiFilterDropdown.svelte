@@ -34,12 +34,30 @@
 	const summaryText = $derived(
 		multiDropdownSummaryText(selectedValues, options),
 	);
+
+	/** Only one multi-select filter panel open at a time (accordion). */
+	function onFilterDetailsToggle(e: Event) {
+		const el = e.currentTarget;
+		if (!(el instanceof HTMLDetailsElement)) return;
+		if (!el.open) return;
+		const wrap = el.closest('[data-orama-secondary-wrap]');
+		if (!wrap) return;
+		for (const node of wrap.querySelectorAll(
+			'details[data-orama-filter-dropdown]',
+		)) {
+			if (node !== el) (node as HTMLDetailsElement).open = false;
+		}
+	}
 </script>
 
 <div class="flex shrink-0 flex-col gap-1">
 	<span class="{FILTER_MULTI_LABEL_CLASS} whitespace-nowrap">{label}</span>
 	<div class="relative min-w-0 shrink-0">
-		<details class="group relative" data-orama-filter-dropdown={dim}>
+		<details
+			class="group relative"
+			data-orama-filter-dropdown={dim}
+			ontoggle={onFilterDetailsToggle}
+		>
 			<summary class={FILTER_DROPDOWN_SUMMARY_CLASS}>
 				<span class="{FILTER_MULTI_VALUE_CLASS} min-w-0 text-left"
 					>{summaryText}</span
