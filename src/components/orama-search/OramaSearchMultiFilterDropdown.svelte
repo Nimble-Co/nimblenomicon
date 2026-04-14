@@ -36,10 +36,8 @@
 	);
 </script>
 
-<div class="flex shrink-0 items-end gap-2">
-	<span class="{FILTER_MULTI_LABEL_CLASS} whitespace-nowrap pb-1.5"
-		>{label}</span
-	>
+<div class="flex shrink-0 flex-col gap-1">
+	<span class="{FILTER_MULTI_LABEL_CLASS} whitespace-nowrap">{label}</span>
 	<div class="relative min-w-0 shrink-0">
 		<details class="group relative" data-orama-filter-dropdown={dim}>
 			<summary class={FILTER_DROPDOWN_SUMMARY_CLASS}>

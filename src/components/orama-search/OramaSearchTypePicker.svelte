@@ -60,13 +60,12 @@
 	</div>
 {:else}
 	<div
-		class="flex shrink-0 items-end gap-2"
+		class="flex shrink-0 flex-col gap-1"
 		data-orama-type-filter-bar
 		role="toolbar"
 		aria-label="Filter by data type"
 	>
-		<span class="{FILTER_MULTI_LABEL_CLASS} whitespace-nowrap pb-1.5">Type</span
-		>
+		<span class="{FILTER_MULTI_LABEL_CLASS} whitespace-nowrap">Type</span>
 		<div class="relative shrink-0" bind:this={collapsedTypeWrapEl}>
 			<button
 				type="button"
