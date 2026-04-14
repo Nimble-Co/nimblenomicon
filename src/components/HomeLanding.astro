@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import bookIcon from '../assets/nimblenomicon_icon.svg';
 import bookIconRaw from '../assets/nimblenomicon_icon.svg?raw';
-import { HOME_REFERENCE_LINKS } from '../config/home-reference-links';
 import { SEARCH_PLACEHOLDER } from '../config/search';
 import { SECTION_KEYS, SECTION_METADATA } from '../config/section-sidebars';
 import { formatNewsDate } from '../utils/nimble-news';
@@ -40,7 +39,7 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 ---
 
 <section
-	class="mx-auto flex w-full max-w-none flex-col items-center justify-center gap-[clamp(2rem,5vw,3rem)] px-[max(1rem,env(safe-area-inset-left,0px))] py-8 pb-12 text-center text-fg min-h-[calc(100vh-var(--sl-nav-height)-3rem)]"
+	class="mx-auto flex w-full max-w-none flex-col items-center justify-center gap-[clamp(3rem,8vw,6rem)] px-[max(1rem,env(safe-area-inset-left,0px))] py-8 pb-12 text-center text-fg min-h-[calc(100vh-var(--sl-nav-height)-3rem)]"
 	aria-label="Home"
 >
 	<div
@@ -64,43 +63,62 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 			</div>
 		</div>
 
-		<div class="relative w-full">
-			<form
-				method="get"
-				action={searchAction}
-				class="box-border flex w-full items-center gap-[0.65rem] rounded-full border border-hairline bg-surface-nav py-[0.65rem] pl-4 pr-4 text-left font-inherit text-fg focus-within:outline-2 focus-within:outline-offset-0 focus-within:outline-accent-500"
-				role="search"
-			>
-				<label class="sr-only" for="home-search-q">{SEARCH_PLACEHOLDER}</label>
-				<svg
-					class="pointer-events-none shrink-0 text-fg-muted opacity-85 dark:opacity-100"
-					width="20"
-					height="20"
-					viewBox="0 0 24 24"
-					aria-hidden="true"
+		<div class="flex w-full flex-col items-center gap-3">
+			<div class="relative w-full">
+				<form
+					method="get"
+					action={searchAction}
+					class="box-border flex w-full items-center gap-[0.65rem] rounded-full border border-hairline bg-surface-nav py-[0.65rem] pl-4 pr-4 text-left font-inherit text-fg focus-within:outline-2 focus-within:outline-offset-0 focus-within:outline-accent-500"
+					role="search"
 				>
-					<path
-						fill="currentColor"
-						d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-					></path>
-				</svg>
-				<input
-					id="home-search-q"
-					type="search"
-					name="q"
-					autocomplete="off"
-					placeholder={SEARCH_PLACEHOLDER}
-					aria-autocomplete="list"
-					aria-keyshortcuts="Control+K"
-					class="min-w-0 flex-1 border-0 bg-transparent font-sans text-[0.9375rem] text-fg italic outline-none placeholder:text-fg-muted placeholder:italic"
-				/>
-			</form>
-			<div
-				id="home-quick-results"
-				class="orama-home-quick not-prose absolute top-full left-0 right-0 z-[200] mt-1 max-h-[min(70vh,20rem)] overflow-x-hidden overflow-y-auto rounded-lg border border-hairline bg-surface-nav text-left text-fg shadow-lg"
-				hidden
-			>
+					<label class="sr-only" for="home-search-q">{SEARCH_PLACEHOLDER}</label
+					>
+					<svg
+						class="pointer-events-none shrink-0 text-fg-muted opacity-85 dark:opacity-100"
+						width="20"
+						height="20"
+						viewBox="0 0 24 24"
+						aria-hidden="true"
+					>
+						<path
+							fill="currentColor"
+							d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+						></path>
+					</svg>
+					<input
+						id="home-search-q"
+						type="search"
+						name="q"
+						autocomplete="off"
+						placeholder={SEARCH_PLACEHOLDER}
+						aria-autocomplete="list"
+						aria-keyshortcuts="Control+K"
+						class="min-w-0 flex-1 border-0 bg-transparent font-sans text-[0.9375rem] text-fg italic outline-none placeholder:text-fg-muted placeholder:italic"
+					/>
+				</form>
+				<div
+					id="home-quick-results"
+					class="orama-home-quick not-prose absolute top-full left-0 right-0 z-[200] mt-1 max-h-[min(70vh,20rem)] overflow-x-hidden overflow-y-auto rounded-lg border border-hairline bg-surface-nav text-left text-fg shadow-lg"
+					hidden
+				>
+				</div>
 			</div>
+			<p
+				class="m-0 flex w-full items-center justify-center gap-2.5 text-center sm:gap-3"
+			>
+				<span
+					class="hidden h-px min-w-[1.5rem] flex-1 max-w-[4.5rem] bg-fg/15 sm:block dark:bg-fg/20"
+					aria-hidden="true"></span>
+				<a
+					class="shrink-0 font-heading text-lg font-semibold not-italic leading-snug text-fg no-underline transition-colors duration-75 ease-linear hover:underline hover:decoration-fg/40 hover:underline-offset-[0.2em] focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 motion-reduce:transition-none min-[30rem]:text-xl"
+					href={searchAction}
+				>
+					Browse
+				</a>
+				<span
+					class="hidden h-px min-w-[1.5rem] flex-1 max-w-[4.5rem] bg-fg/15 sm:block dark:bg-fg/20"
+					aria-hidden="true"></span>
+			</p>
 		</div>
 
 		<ul
@@ -127,32 +145,6 @@ const bookNavItems = SECTION_KEYS.map((key) => {
 				))
 			}
 		</ul>
-
-		<nav class="w-full text-center" aria-labelledby="home-ref-heading">
-			<h2
-				class="mb-[0.85rem] mt-0 font-heading text-[clamp(0.7rem,1.8vw,0.8125rem)] font-bold uppercase italic tracking-[0.14em] text-fg-muted"
-				id="home-ref-heading"
-			>
-				Reference
-			</h2>
-			<ul
-				class="m-0 flex list-none flex-wrap items-baseline justify-center gap-x-[0.35rem] gap-y-2 p-0"
-				role="list"
-			>
-				{
-					HOME_REFERENCE_LINKS.map(({ label, href }) => (
-						<li class="inline-flex max-w-full items-baseline not-last:after:pointer-events-none not-last:after:ml-[0.35rem] not-last:after:font-normal not-last:after:text-fg-muted not-last:after:content-['·']">
-							<a
-								class="font-sans text-sm font-bold italic leading-[1.35] tracking-[0.02em] text-fg underline decoration-fg/35 decoration-1 underline-offset-[0.15em] transition-colors duration-75 ease-linear hover:decoration-fg focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 motion-reduce:transition-none min-[30rem]:text-[0.9375rem]"
-								href={href}
-							>
-								{label}
-							</a>
-						</li>
-					))
-				}
-			</ul>
-		</nav>
 	</div>
 
 	{
