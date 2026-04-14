@@ -45,6 +45,7 @@
 		type OramaDataSearchDb,
 	} from '../scripts/orama-search-ui';
 	import {
+		FILTER_TOOLBAR_LABEL_SPACER_CLASS,
 		pressedPillClass,
 		typeFilterLabel,
 	} from '../scripts/orama-search-toolbar-constants';
@@ -451,7 +452,7 @@
 </script>
 
 <div
-	class="orama-data-search not-content not-prose flex max-w-3xl flex-col gap-4"
+	class="orama-data-search not-content not-prose flex max-w-3xl flex-col gap-8"
 	data-orama-root
 >
 	{#if activeType === null}
@@ -509,16 +510,26 @@
 							onMultiCheckbox('target', value, checked)}
 						onClear={() => onClearDim('target')}
 					/>
-					<OramaSearchFilterCheckboxLabel
-						checked={activeFilters.utility === true}
-						text="Utility spells"
-						onChange={onUtilityChange}
-					/>
-					<OramaSearchFilterCheckboxLabel
-						checked={activeFilters.secret === true}
-						text="Secret spells"
-						onChange={onSecretChange}
-					/>
+					<div class="flex shrink-0 flex-col gap-0">
+						<span class={FILTER_TOOLBAR_LABEL_SPACER_CLASS} aria-hidden="true"
+							>&nbsp;</span
+						>
+						<OramaSearchFilterCheckboxLabel
+							checked={activeFilters.utility === true}
+							text="Utility spells"
+							onChange={onUtilityChange}
+						/>
+					</div>
+					<div class="flex shrink-0 flex-col gap-0">
+						<span class={FILTER_TOOLBAR_LABEL_SPACER_CLASS} aria-hidden="true"
+							>&nbsp;</span
+						>
+						<OramaSearchFilterCheckboxLabel
+							checked={activeFilters.secret === true}
+							text="Secret spells"
+							onChange={onSecretChange}
+						/>
+					</div>
 				{:else if activeType === 'monster'}
 					{#each MONSTER_FILTER_ROWS as row (row.dim)}
 						<OramaSearchMultiFilterDropdown
@@ -531,24 +542,34 @@
 							onClear={() => onClearDim(row.dim)}
 						/>
 					{/each}
-					<button
-						type="button"
-						class={pressedPillClass(activeFilters.minion === true)}
-						data-orama-filter-tri
-						data-orama-filter-dim="minion"
-						onclick={() => toggleTri('minion')}
-					>
-						Minion
-					</button>
-					<button
-						type="button"
-						class={pressedPillClass(activeFilters.legendary === true)}
-						data-orama-filter-tri
-						data-orama-filter-dim="legendary"
-						onclick={() => toggleTri('legendary')}
-					>
-						Legendary
-					</button>
+					<div class="flex shrink-0 flex-col gap-0">
+						<span class={FILTER_TOOLBAR_LABEL_SPACER_CLASS} aria-hidden="true"
+							>&nbsp;</span
+						>
+						<button
+							type="button"
+							class={pressedPillClass(activeFilters.minion === true)}
+							data-orama-filter-tri
+							data-orama-filter-dim="minion"
+							onclick={() => toggleTri('minion')}
+						>
+							Minion
+						</button>
+					</div>
+					<div class="flex shrink-0 flex-col gap-0">
+						<span class={FILTER_TOOLBAR_LABEL_SPACER_CLASS} aria-hidden="true"
+							>&nbsp;</span
+						>
+						<button
+							type="button"
+							class={pressedPillClass(activeFilters.legendary === true)}
+							data-orama-filter-tri
+							data-orama-filter-dim="legendary"
+							onclick={() => toggleTri('legendary')}
+						>
+							Legendary
+						</button>
+					</div>
 				{:else if activeType === 'class'}
 					{#each CLASS_FILTER_ROWS as row (row.dim)}
 						<OramaSearchMultiFilterDropdown
@@ -607,14 +628,19 @@
 					{/each}
 				{/if}
 
-				<button
-					type="button"
-					class="text-fg-muted hover:text-fg inline-flex shrink-0 bg-transparent px-0 py-1.5 text-sm underline decoration-fg/30 underline-offset-2"
-					data-orama-clear-filters
-					onclick={onClearAllFilters}
-				>
-					Clear all filters
-				</button>
+				<div class="flex shrink-0 flex-col gap-0">
+					<span class={FILTER_TOOLBAR_LABEL_SPACER_CLASS} aria-hidden="true"
+						>&nbsp;</span
+					>
+					<button
+						type="button"
+						class="text-fg-muted hover:text-fg inline-flex shrink-0 self-start bg-transparent px-0 py-1.5 text-sm underline decoration-fg/30 underline-offset-2"
+						data-orama-clear-filters
+						onclick={onClearAllFilters}
+					>
+						Clear all filters
+					</button>
+				</div>
 			{/if}
 		</div>
 	{/if}

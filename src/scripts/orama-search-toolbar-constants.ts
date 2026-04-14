@@ -64,6 +64,9 @@ export const FILTER_DROPDOWN_CLEAR_BUTTON_CLASS =
 export const FILTER_MULTI_LABEL_CLASS =
 	'text-[0.65rem] font-medium uppercase leading-none tracking-wide text-fg-muted px-3';
 
+/** Matches label row height so controls without a visible label align with dropdown/type columns */
+export const FILTER_TOOLBAR_LABEL_SPACER_CLASS = `${FILTER_MULTI_LABEL_CLASS} invisible select-none`;
+
 export const FILTER_MULTI_VALUE_CLASS =
 	'max-w-[11rem] truncate text-sm text-fg';
 
