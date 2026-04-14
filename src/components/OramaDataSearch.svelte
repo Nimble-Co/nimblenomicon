@@ -468,7 +468,7 @@
 
 	{#if activeType !== null}
 		<div
-			class="flex w-full min-w-0 flex-wrap items-end gap-x-3 gap-y-3 rounded-xl border border-hairline bg-surface p-3 shadow-sm sm:gap-x-4 sm:p-4"
+			class="flex w-full min-w-0 flex-wrap items-end gap-x-3 gap-y-3 border-b border-hairline pb-3 sm:gap-x-4 sm:pb-4"
 			data-orama-toolbar-row
 			data-orama-secondary-wrap
 			data-orama-filter-toolbar
