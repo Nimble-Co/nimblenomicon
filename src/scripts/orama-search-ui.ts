@@ -3,11 +3,13 @@ import {
 	ORAMA_DATA_SEARCH_TYPE_LABELS,
 	type OramaDataSearchType,
 } from '../constants/orama-data-search';
+import { bookLabel, type BookSearchDoc } from '../models/book-search';
 import type { SearchableGameDataDoc } from '../models/search-filters';
 
 type GameDataDoc = SearchableGameDataDoc;
 
 const INDEX_URL = '/orama-data-search.json';
+const BOOKS_INDEX_URL = '/orama-books-search.json';
 const QUICK_SEARCH_LIMIT = 10;
 const DEBOUNCE_MS = 200;
 
@@ -42,9 +44,21 @@ const ORAMA_SCHEMA = {
 	magicReward: 'string',
 } as const;
 
+const BOOKS_SCHEMA = {
+	id: 'string',
+	type: 'string',
+	book: 'string',
+	title: 'string',
+	subtitle: 'string',
+	content: 'string',
+	href: 'string',
+} as const;
+
 export type OramaDataSearchDb = ReturnType<typeof create>;
+export type OramaBooksSearchDb = ReturnType<typeof create>;
 
 let dbPromise: Promise<OramaDataSearchDb> | undefined;
+let booksDbPromise: Promise<OramaBooksSearchDb | null> | undefined;
 
 export function getOramaDataSearchDb(): Promise<OramaDataSearchDb> {
 	if (!dbPromise) {
@@ -58,6 +72,21 @@ export function getOramaDataSearchDb(): Promise<OramaDataSearchDb> {
 		})();
 	}
 	return dbPromise;
+}
+
+export function getOramaBooksSearchDb(): Promise<OramaBooksSearchDb | null> {
+	if (!booksDbPromise) {
+		booksDbPromise = (async () => {
+			const r = await fetch(BOOKS_INDEX_URL);
+			if (r.status === 404) return null;
+			if (!r.ok) return null;
+			const raw = (await r.json()) as RawData;
+			const instance = create({ schema: BOOKS_SCHEMA });
+			load(instance, raw);
+			return instance;
+		})();
+	}
+	return booksDbPromise;
 }
 
 function debounce<T extends (...args: Parameters<T>) => void>(
@@ -147,7 +176,11 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 		input.setAttribute('aria-controls', panel.id);
 	}
 
-	const renderQuick = (term: string, db: OramaDataSearchDb): void => {
+	const renderQuick = (
+		term: string,
+		db: OramaDataSearchDb,
+		booksDb: OramaBooksSearchDb | null,
+	): void => {
 		const q = term.trim();
 		if (q.length === 0) {
 			hide();
@@ -160,12 +193,33 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 			properties: ['title', 'content', 'subtitle'],
 		});
 
-		const hits = res.hits.filter(Boolean) as {
+		const gameHits = res.hits.filter(Boolean) as {
 			document: GameDataDoc;
 		}[];
 
+		let hits: { document: GameDataDoc | BookSearchDoc }[] = gameHits.slice();
+		if (booksDb) {
+			const bRes = search(booksDb, {
+				term: q,
+				limit,
+				properties: ['title', 'content', 'subtitle'],
+			});
+			const bookHits = bRes.hits.filter(Boolean) as {
+				document: BookSearchDoc;
+			}[];
+			const room = Math.max(0, limit - hits.length);
+			if (room > 0) hits = hits.concat(bookHits.slice(0, room));
+		}
+
 		const typeLabel = (t: OramaDataSearchType) =>
 			ORAMA_DATA_SEARCH_TYPE_LABELS[t] ?? t;
+
+		const rowKindLabel = (doc: GameDataDoc | BookSearchDoc): string => {
+			if (doc.type === 'books') {
+				return `Books · ${bookLabel(doc.book)}`;
+			}
+			return typeLabel(doc.type);
+		};
 
 		if (hits.length === 0) {
 			panel.innerHTML = `<p class="ss-quick-empty px-3 py-2 text-left text-sm text-fg-muted">No results for “${escapeHtml(q)}”.</p>`;
@@ -182,8 +236,12 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 		let optNum = 0;
 		for (const h of hits) {
 			const doc = h.document;
-			const kind = escapeHtml(typeLabel(doc.type));
+			const kind = escapeHtml(rowKindLabel(doc));
 			const title = escapeHtml(doc.title);
+			const excerpt =
+				doc.type === 'books' && doc.subtitle
+					? `<span class="mt-0.5 line-clamp-2 text-xs text-fg-muted">${escapeHtml(doc.subtitle)}</span>`
+					: '';
 			if (doc.href) {
 				const optId = `${panel.id}-opt-${optNum}`;
 				optNum += 1;
@@ -192,6 +250,7 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 					`<a role="option" id="${escapeHtml(optId)}" class="ss-quick-link flex flex-col items-start gap-0.5 px-3 py-2 text-left no-underline hover:bg-gray-200/80 dark:hover:bg-gray-800/80" href="${escapeHtml(doc.href)}">`,
 					`<span class="text-[0.65rem] font-medium uppercase tracking-wide text-fg-muted leading-none">${kind}</span>`,
 					`<span class="text-sm font-medium text-fg">${title}</span>`,
+					excerpt,
 					`</a>`,
 					`</li>`,
 				);
@@ -200,6 +259,7 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 					`<li role="presentation" class="px-3 py-2 text-left">`,
 					`<span class="text-[0.65rem] font-medium uppercase tracking-wide text-fg-muted">${kind}</span>`,
 					`<span class="mt-0.5 block text-sm font-medium text-fg">${title}</span>`,
+					excerpt,
 					`</li>`,
 				);
 			}
@@ -218,9 +278,9 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 			hide();
 			return;
 		}
-		getOramaDataSearchDb()
-			.then((db) => {
-				renderQuick(q, db);
+		Promise.all([getOramaDataSearchDb(), getOramaBooksSearchDb()])
+			.then(([db, booksDb]) => {
+				renderQuick(q, db, booksDb);
 			})
 			.catch(() => {
 				panel.innerHTML = `<p class="ss-quick-empty px-3 py-2 text-left text-sm text-danger">Could not load search.</p>`;

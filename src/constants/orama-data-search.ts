@@ -14,6 +14,7 @@ export const ORAMA_DATA_SEARCH_TYPE_ORDER = [
 	'magic-item',
 	'glossary',
 	'language',
+	'books',
 ] as const;
 
 export type OramaDataSearchType = (typeof ORAMA_DATA_SEARCH_TYPE_ORDER)[number];
@@ -33,4 +34,5 @@ export const ORAMA_DATA_SEARCH_TYPE_LABELS: Record<
 	monster: 'Monsters',
 	armor: 'Armor',
 	language: 'Languages',
+	books: 'Books',
 };

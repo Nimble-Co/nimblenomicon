@@ -3,6 +3,7 @@
  * and helpers to populate Orama index fields + build `where` clauses.
  */
 import type { OramaDataSearchType } from '../constants/orama-data-search';
+import type { BookSearchDoc } from './book-search';
 import type { SpellData } from './spells';
 import type { MonsterData } from './monsters';
 import type { LegendaryEntryData } from './legendary-monsters';
@@ -69,6 +70,7 @@ export const SEARCH_FILTER_QUERY_KEYS = [
 	'section',
 	'source',
 	'reward',
+	'book',
 ] as const;
 
 export type SearchFilterQueryKey = (typeof SEARCH_FILTER_QUERY_KEYS)[number];
@@ -97,6 +99,7 @@ const KEYS_BY_TYPE: Record<
 	glossary: [],
 	language: [],
 	background: [],
+	books: ['book'],
 };
 
 export function filterKeysForType(
@@ -125,6 +128,7 @@ export type SearchFiltersState = {
 	section: string[];
 	source: string[];
 	reward: string[];
+	book: string[];
 };
 
 /** Dimensions that use `string[]` multi-select in URL state (checkbox dropdowns in UI). */
@@ -143,7 +147,8 @@ export type MultiSelectFilterDim =
 	| 'category'
 	| 'section'
 	| 'source'
-	| 'reward';
+	| 'reward'
+	| 'book';
 
 /**
  * Set or clear one value in a multi-select dimension (for checkbox `change`, not toggle-click).
@@ -191,6 +196,7 @@ export function emptySearchFiltersState(): SearchFiltersState {
 		section: [],
 		source: [],
 		reward: [],
+		book: [],
 	};
 }
 
@@ -295,6 +301,9 @@ export function parseSearchFiltersFromParams(
 			case 'reward':
 				out.reward = splitCommaList(v);
 				break;
+			case 'book':
+				out.book = splitCommaList(v);
+				break;
 			default:
 				break;
 		}
@@ -384,6 +393,9 @@ export function applySearchFiltersToParams(
 			case 'reward':
 				serialized = serializeCommaList(filters.reward);
 				break;
+			case 'book':
+				serialized = serializeCommaList(filters.book);
+				break;
 			default:
 				break;
 		}
@@ -470,6 +482,9 @@ export function hasAnyActiveFilters(
 				break;
 			case 'reward':
 				if (filters.reward.length > 0) return true;
+				break;
+			case 'book':
+				if (filters.book.length > 0) return true;
 				break;
 			default:
 				break;
@@ -688,6 +703,12 @@ export function buildOramaWhereForFilters(
 			if (o3) parts.push(o3);
 			return parts.length === 1 ? (parts[0] as StringWhere) : { and: parts };
 		}
+		case 'books': {
+			const parts: object[] = [typeWhere];
+			const o = orEq('book', f.book);
+			if (o) parts.push(o);
+			return parts.length === 1 ? (parts[0] as StringWhere) : { and: parts };
+		}
 		default:
 			return typeWhere as StringWhere;
 	}
@@ -709,18 +730,20 @@ export function classKeyStatsRowMatches(
 /** Full Orama document shape including filter columns (see `build-orama-index`). */
 export type SearchableGameDataDoc = {
 	id: string;
-	type: OramaDataSearchType;
+	type: Exclude<OramaDataSearchType, 'books'>;
 	title: string;
 	content: string;
 	href: string;
 	subtitle: string;
 } & OramaFilterFields;
 
+export type SearchResultDoc = SearchableGameDataDoc | BookSearchDoc;
+
 /**
  * Final pass after Orama search (handles class key-stats and keeps logic in one place).
  */
 export function documentMatchesFilters(
-	doc: SearchableGameDataDoc,
+	doc: SearchResultDoc,
 	type: OramaDataSearchType,
 	filters: SearchFiltersState,
 ): boolean {
@@ -774,6 +797,10 @@ export function documentMatchesFilters(
 				inList(doc.magicSource, filters.source) &&
 				inList(doc.magicReward, filters.reward)
 			);
+		case 'books': {
+			const b = doc as BookSearchDoc;
+			return inList(b.book, filters.book);
+		}
 		default:
 			return true;
 	}

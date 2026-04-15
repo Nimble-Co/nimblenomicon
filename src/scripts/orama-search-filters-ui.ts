@@ -37,7 +37,8 @@ export function patchSearchFiltersState(
 			dim === 'category' ||
 			dim === 'section' ||
 			dim === 'source' ||
-			dim === 'reward'
+			dim === 'reward' ||
+			dim === 'book'
 		) {
 			const cur = prev[dim] as string[];
 			(next as SearchFiltersState)[dim] = toggleStringInList(cur, action.value);
