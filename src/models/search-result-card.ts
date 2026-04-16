@@ -10,7 +10,6 @@ export const MAX_DESCRIPTION_MD = 2_500;
 export const MAX_NOTES_MD = 1_200;
 export const MAX_ACTION_MD = 1_200;
 export const MAX_BLOCK_MD = 1_000;
-export const MAX_INTRO_MD = 1_200;
 
 export function truncateCardMd(text: string, max = MAX_DESCRIPTION_MD): string {
 	const t = text.trim();
@@ -99,7 +98,6 @@ const classCardSchema = z.object({
 	armorDisplay: z.string(),
 	gearDisplay: z.string(),
 	descriptionMd: z.string(),
-	introductionMd: z.string(),
 });
 
 const weaponCardSchema = z.object({

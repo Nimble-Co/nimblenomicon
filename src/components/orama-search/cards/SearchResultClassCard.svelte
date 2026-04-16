@@ -54,7 +54,4 @@
 	<div class="mt-2">
 		<MarkdownSnippet markdown={classPayload.descriptionMd} />
 	</div>
-	<div class="mt-2 border-t border-hairline pt-2">
-		<MarkdownSnippet markdown={classPayload.introductionMd} />
-	</div>
 </article>

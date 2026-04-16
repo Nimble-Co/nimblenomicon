@@ -21,7 +21,6 @@ import type { SpellData } from './spells';
 import {
 	MAX_ACTION_MD,
 	MAX_BLOCK_MD,
-	MAX_INTRO_MD,
 	MAX_NOTES_MD,
 	stringifySearchResultCard,
 	truncateCardMd,
@@ -188,7 +187,6 @@ export function buildClassCardPayload(c: HeroClassData): SearchResultCardPayload
 		armorDisplay: c.armorDisplay,
 		gearDisplay: c.gearDisplay,
 		descriptionMd: truncateCardMd(c.description),
-		introductionMd: truncateCardMd(c.introduction, MAX_INTRO_MD),
 	};
 }
 
