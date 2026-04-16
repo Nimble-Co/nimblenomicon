@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR } from '../../../constants/orama-data-search';
+	import { displayClassSearchHitDieLabel } from '../../../models/class';
 	import type { SearchableGameDataDoc } from '../../../models/search-filters';
 	import type { ClassSearchCardPayload } from '../../../models/search-result-card';
 	import MarkdownSnippet from './MarkdownSnippet.svelte';
@@ -35,7 +36,8 @@
 		</h3>
 	</header>
 	<p class="text-fg-muted m-0 mt-1 text-sm">
-		{classPayload.hitDieLabel} · Key stats: {classPayload.keyStatsDisplay}
+		{displayClassSearchHitDieLabel(classPayload.hitDieLabel)} · Key stats:
+		{classPayload.keyStatsDisplay}
 	</p>
 	<dl class="text-fg-muted m-0 mt-2 grid gap-1 text-sm [&_dt]:font-medium">
 		<div class="grid grid-cols-[auto_1fr] gap-x-2 gap-y-1">
