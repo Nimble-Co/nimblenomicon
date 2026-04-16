@@ -37,7 +37,9 @@ describe('searchPageUrl', () => {
 
 describe('dataSearchBrowseUrl', () => {
 	it('appends type query to search path', () => {
-		expect(dataSearchBrowseUrl('/', 'never', 'spell')).toBe('/search?type=spell');
+		expect(dataSearchBrowseUrl('/', 'never', 'spell')).toBe(
+			'/search?type=spell',
+		);
 		expect(dataSearchBrowseUrl('/docs/', 'never', 'class')).toBe(
 			'/docs/search?type=class',
 		);
