@@ -715,6 +715,8 @@ export type SearchableGameDataDoc = {
 	content: string;
 	href: string;
 	subtitle: string;
+	/** JSON string: structured card payload for `/search/` (see `search-result-card.ts`). */
+	cardJson: string;
 } & OramaFilterFields;
 
 /**
