@@ -11,7 +11,9 @@
 
 	interface Props {
 		doc: SearchableGameDataDoc;
-		payload: StandardMonsterSearchCardPayload | LegendaryMonsterSearchCardPayload;
+		payload:
+			| StandardMonsterSearchCardPayload
+			| LegendaryMonsterSearchCardPayload;
 	}
 
 	let { doc, payload }: Props = $props();
@@ -33,8 +35,7 @@
 {#if payload.variant === 'standard'}
 	{@const m = payload}
 	{@const showSize = m.sizeSlug !== 'medium'}
-	{@const showSpeed =
-		m.movementMode !== 'walk' || m.movementSpeed !== 6}
+	{@const showSpeed = m.movementMode !== 'walk' || m.movementSpeed !== 6}
 	{@const hasHp = m.hp !== undefined}
 	{@const hasArmorBadge = Boolean(armorAbbrev[m.armor])}
 	<article
@@ -64,8 +65,8 @@
 					class="text-fg-muted m-0 text-xs font-normal uppercase italic leading-none tracking-wide"
 				>
 					LVL {m.level}{#if m.isMinion}, Minion{/if}{#if showSize}, {sizeLabel(
-						m.sizeSlug,
-					).toUpperCase()}{/if}{#if m.kindName}, {m.kindName}{/if}
+							m.sizeSlug,
+						).toUpperCase()}{/if}{#if m.kindName}, {m.kindName}{/if}
 				</p>
 			</hgroup>
 			<ul
@@ -103,7 +104,10 @@
 		{/each}
 
 		{#each m.specialAbilities as ability (ability.name)}
-			<MonsterAbilityBlock name={ability.name} markdown={ability.descriptionMd} />
+			<MonsterAbilityBlock
+				name={ability.name}
+				markdown={ability.descriptionMd}
+			/>
 		{/each}
 
 		{#if m.actions.length > 0}
@@ -161,7 +165,9 @@
 			{@const showSpeed =
 				solo.movementMode !== 'walk' || solo.movementSpeed !== 6}
 			{@const hasArmorBadge = Boolean(armorAbbrev[solo.armor])}
-			<header class="border-hairline flex items-end justify-between gap-3 border-b pb-2">
+			<header
+				class="border-hairline flex items-end justify-between gap-3 border-b pb-2"
+			>
 				<hgroup class="flex min-w-0 flex-1 flex-wrap items-baseline gap-x-2">
 					<h3 class="m-0 text-xl font-bold leading-none">
 						{#if doc.href}
@@ -178,7 +184,9 @@
 					<p
 						class="text-fg-muted m-0 text-xs font-normal uppercase italic leading-none tracking-wide"
 					>
-						Level {leg.level}, Solo{#if showSize}, {sizeLabel(solo.sizeSlug)}{/if}, {leg.creatureType}
+						Level {leg.level}, Solo{#if showSize}, {sizeLabel(
+								solo.sizeSlug,
+							)}{/if}, {leg.creatureType}
 					</p>
 				</hgroup>
 				<ul
@@ -217,7 +225,10 @@
 			</header>
 
 			{#each solo.specialAbilities as ability (ability.name)}
-				<MonsterAbilityBlock name={ability.name} markdown={ability.descriptionMd} />
+				<MonsterAbilityBlock
+					name={ability.name}
+					markdown={ability.descriptionMd}
+				/>
 			{/each}
 
 			{#if solo.actions.length > 0}
@@ -324,7 +335,8 @@
 							{#if showSpeed}
 								<li>
 									<span class="text-fg-muted">
-										{SPEED_MODE_LABEL[member.movementMode] ?? member.movementMode}
+										{SPEED_MODE_LABEL[member.movementMode] ??
+											member.movementMode}
 										{member.movementSpeed}
 									</span>
 								</li>
@@ -381,7 +393,9 @@
 			>
 				{#if leg.bloodiedMd}
 					<section class="m-0">
-						<h4 class="m-0 text-sm font-bold uppercase tracking-wide">Bloodied</h4>
+						<h4 class="m-0 text-sm font-bold uppercase tracking-wide">
+							Bloodied
+						</h4>
 						<div class="[&_strong]:text-danger [&_p]:m-0">
 							<MarkdownSnippet markdown={leg.bloodiedMd} />
 						</div>

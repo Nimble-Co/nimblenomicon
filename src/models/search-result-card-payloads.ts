@@ -60,7 +60,13 @@ function actionHeading(action: MonsterAction): string {
 	return `${action.name}${uses}${endsSentence ? '' : '.'}`;
 }
 
-const SAVE_LABEL = { str: 'STR', dex: 'DEX', int: 'INT', wil: 'WIL', all: 'ALL' } as const;
+const SAVE_LABEL = {
+	str: 'STR',
+	dex: 'DEX',
+	int: 'INT',
+	wil: 'WIL',
+	all: 'ALL',
+} as const;
 
 function legendarySaveBadges(saves: LegendaryCreatureData['saves']): string[] {
 	if (!saves) return [];
@@ -80,7 +86,9 @@ function legendarySaveBadges(saves: LegendaryCreatureData['saves']): string[] {
 	return out;
 }
 
-export function buildSpellCardPayload(spell: SpellData): SearchResultCardPayload {
+export function buildSpellCardPayload(
+	spell: SpellData,
+): SearchResultCardPayload {
 	return {
 		v: 1,
 		kind: 'spell',
@@ -176,7 +184,9 @@ export function buildLegendaryMonsterCardPayload(
 	};
 }
 
-export function buildClassCardPayload(c: HeroClassData): SearchResultCardPayload {
+export function buildClassCardPayload(
+	c: HeroClassData,
+): SearchResultCardPayload {
 	return {
 		v: 1,
 		kind: 'class',
@@ -190,7 +200,9 @@ export function buildClassCardPayload(c: HeroClassData): SearchResultCardPayload
 	};
 }
 
-export function buildWeaponCardPayload(w: WeaponRowData): SearchResultCardPayload {
+export function buildWeaponCardPayload(
+	w: WeaponRowData,
+): SearchResultCardPayload {
 	return {
 		v: 1,
 		kind: 'weapon',
@@ -201,7 +213,9 @@ export function buildWeaponCardPayload(w: WeaponRowData): SearchResultCardPayloa
 	};
 }
 
-export function buildAncestryCardPayload(a: AncestryRowData): SearchResultCardPayload {
+export function buildAncestryCardPayload(
+	a: AncestryRowData,
+): SearchResultCardPayload {
 	const traitForCard = stripFlavorIsFreeBlockquotesFromMarkdown(a.trait);
 	return {
 		v: 1,
@@ -244,7 +258,9 @@ export function buildMagicItemCardPayload(
 	};
 }
 
-export function buildGlossaryCardPayload(g: GlossaryRowData): SearchResultCardPayload {
+export function buildGlossaryCardPayload(
+	g: GlossaryRowData,
+): SearchResultCardPayload {
 	return {
 		v: 1,
 		kind: 'glossary',
@@ -252,7 +268,9 @@ export function buildGlossaryCardPayload(g: GlossaryRowData): SearchResultCardPa
 	};
 }
 
-export function buildLanguageCardPayload(lang: LanguageRowData): SearchResultCardPayload {
+export function buildLanguageCardPayload(
+	lang: LanguageRowData,
+): SearchResultCardPayload {
 	return {
 		v: 1,
 		kind: 'language',
@@ -270,7 +288,9 @@ export function buildConditionCardPayload(
 	};
 }
 
-export function buildArmorCardPayload(row: ArmorRowData): SearchResultCardPayload {
+export function buildArmorCardPayload(
+	row: ArmorRowData,
+): SearchResultCardPayload {
 	const cat = formatArmorCategoryLabel(row.category);
 	return {
 		v: 1,

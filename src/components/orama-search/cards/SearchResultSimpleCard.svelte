@@ -11,7 +11,9 @@
 
 	let { doc, simple }: Props = $props();
 
-	const typeLabel = $derived(ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR[simple.kind]);
+	const typeLabel = $derived(
+		ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR[simple.kind],
+	);
 </script>
 
 <article

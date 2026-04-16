@@ -167,6 +167,8 @@ export function parseSearchResultCard(
 	}
 }
 
-export function stringifySearchResultCard(payload: SearchResultCardPayload): string {
+export function stringifySearchResultCard(
+	payload: SearchResultCardPayload,
+): string {
 	return JSON.stringify(payload);
 }

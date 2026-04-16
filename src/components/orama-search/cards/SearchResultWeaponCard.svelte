@@ -33,11 +33,16 @@
 			{/if}
 		</h3>
 	</header>
-	<p class="text-fg-muted m-0 mt-1 text-sm italic">{weapon.categoryLabel} weapon</p>
+	<p class="text-fg-muted m-0 mt-1 text-sm italic">
+		{weapon.categoryLabel} weapon
+	</p>
 	<ul
 		class="m-0 mt-2 list-none space-y-1 p-0 text-base font-medium tabular-nums"
 	>
-		<li><span class="text-fg-muted font-normal">Damage</span> {weapon.damage}</li>
+		<li>
+			<span class="text-fg-muted font-normal">Damage</span>
+			{weapon.damage}
+		</li>
 		<li><span class="text-fg-muted font-normal">Cost</span> {weapon.cost}</li>
 	</ul>
 	{#if weapon.properties.length > 0}

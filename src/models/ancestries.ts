@@ -24,7 +24,9 @@ export function formatAncestrySize(size: AncestrySize): string {
 }
 
 /** Title Case section for UI (e.g. search subtitle, meta lines). */
-export function formatAncestrySectionLabel(section: 'common' | 'exotic'): string {
+export function formatAncestrySectionLabel(
+	section: 'common' | 'exotic',
+): string {
 	return section === 'common' ? 'Common' : 'Exotic';
 }
 
