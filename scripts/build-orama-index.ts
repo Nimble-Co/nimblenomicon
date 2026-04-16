@@ -10,6 +10,7 @@ import { create, insertMultiple, save } from '@orama/orama';
 import {
 	ancestries,
 	ancestryDetailHrefFromCoreRules,
+	formatAncestrySectionLabel,
 	formatAncestrySize,
 } from '../src/models/ancestries';
 import {
@@ -47,6 +48,22 @@ import { monsters, type MonsterData } from '../src/models/monsters';
 import { spells, type SpellData } from '../src/models/spells';
 import { spellSchools } from '../src/models/spell-schools';
 import { weapons, weaponDetailHrefFromCoreRules } from '../src/models/weapons';
+import {
+	buildAncestryCardPayload,
+	buildArmorCardPayload,
+	buildBackgroundCardPayload,
+	buildClassCardPayload,
+	buildConditionCardPayload,
+	buildEquipmentCardPayload,
+	buildGlossaryCardPayload,
+	buildLanguageCardPayload,
+	buildLegendaryMonsterCardPayload,
+	buildMagicItemCardPayload,
+	buildSpellCardPayload,
+	buildStandardMonsterCardPayload,
+	buildWeaponCardPayload,
+	stringifySearchResultCard,
+} from '../src/models/search-result-card-payloads';
 import {
 	emptyOramaFilterFields,
 	spellFilterFields,
@@ -154,11 +171,12 @@ function buildDocs(): OramaGameDataDoc[] {
 					id: `ancestry:${a.id}`,
 					type: 'ancestry',
 					title: a.name,
-					subtitle: `${a.section} · ${formatAncestrySize(a.size)}`,
+					subtitle: `${formatAncestrySectionLabel(a.section)} · ${formatAncestrySize(a.size)}`,
 					href: ancestryDetailHrefFromCoreRules(a.id),
 					content: truncate(
 						joinText(a.name, a.section, a.size, a.flavor, a.trait),
 					),
+					cardJson: stringifySearchResultCard(buildAncestryCardPayload(a)),
 				},
 				ancestryFilterFields(a),
 			),
@@ -203,6 +221,7 @@ function buildDocs(): OramaGameDataDoc[] {
 							...levelChunks,
 						),
 					),
+					cardJson: stringifySearchResultCard(buildClassCardPayload(c)),
 				},
 				classFilterFields(c),
 			),
@@ -219,6 +238,7 @@ function buildDocs(): OramaGameDataDoc[] {
 					subtitle: '',
 					href: backgroundDetailHrefFromCoreRules(b.id),
 					content: truncate(joinText(b.name, b.description)),
+					cardJson: stringifySearchResultCard(buildBackgroundCardPayload(b)),
 				},
 				{},
 			),
@@ -235,6 +255,7 @@ function buildDocs(): OramaGameDataDoc[] {
 					subtitle: row.cost,
 					href: miscAdventuringEquipmentDetailHrefFromCoreRules(row.id),
 					content: truncate(joinText(row.name, row.cost, row.description)),
+					cardJson: stringifySearchResultCard(buildEquipmentCardPayload(row)),
 				},
 				{},
 			),
@@ -253,6 +274,7 @@ function buildDocs(): OramaGameDataDoc[] {
 					content: truncate(
 						joinText(item.name, item.subtitle, item.description, item.source),
 					),
+					cardJson: stringifySearchResultCard(buildMagicItemCardPayload(item)),
 				},
 				magicItemFilterFields(item),
 			),
@@ -278,6 +300,7 @@ function buildDocs(): OramaGameDataDoc[] {
 							props ? `Properties: ${props}` : '',
 						),
 					),
+					cardJson: stringifySearchResultCard(buildWeaponCardPayload(w)),
 				},
 				weaponFilterFields(w),
 			),
@@ -303,6 +326,7 @@ function buildDocs(): OramaGameDataDoc[] {
 							spell.description,
 						),
 					),
+					cardJson: stringifySearchResultCard(buildSpellCardPayload(spell)),
 				},
 				spellFilterFields(spell),
 			),
@@ -319,6 +343,7 @@ function buildDocs(): OramaGameDataDoc[] {
 					subtitle: '',
 					href: glossaryDetailHrefFromCoreRules(g.id),
 					content: truncate(joinText(g.name, g.description)),
+					cardJson: stringifySearchResultCard(buildGlossaryCardPayload(g)),
 				},
 				{},
 			),
@@ -335,6 +360,7 @@ function buildDocs(): OramaGameDataDoc[] {
 					subtitle: '',
 					href: conditionDetailHrefFromCoreRules(row.id),
 					content: truncate(joinText(row.name, row.description)),
+					cardJson: stringifySearchResultCard(buildConditionCardPayload(row)),
 				},
 				{},
 			),
@@ -351,6 +377,9 @@ function buildDocs(): OramaGameDataDoc[] {
 					subtitle: `Level ${m.level}`,
 					href: `/monsters/${m.id}/`,
 					content: monsterSearchContent(m),
+					cardJson: stringifySearchResultCard(
+						buildStandardMonsterCardPayload(m),
+					),
 				},
 				monsterFilterFields(m),
 			),
@@ -386,6 +415,9 @@ function buildDocs(): OramaGameDataDoc[] {
 							...creatureParts,
 						),
 					),
+					cardJson: stringifySearchResultCard(
+						buildLegendaryMonsterCardPayload(leg),
+					),
 				},
 				legendaryMonsterFilterFields(leg),
 			),
@@ -409,6 +441,7 @@ function buildDocs(): OramaGameDataDoc[] {
 							row.cost,
 						),
 					),
+					cardJson: stringifySearchResultCard(buildArmorCardPayload(row)),
 				},
 				armorFilterFields(row),
 			),
@@ -425,6 +458,7 @@ function buildDocs(): OramaGameDataDoc[] {
 					subtitle: '',
 					href: languageDetailHrefFromCoreRules(lang.id),
 					content: truncate(joinText(lang.name, lang.description)),
+					cardJson: stringifySearchResultCard(buildLanguageCardPayload(lang)),
 				},
 				{},
 			),
@@ -466,6 +500,7 @@ function main(): void {
 			magicKind: 'string',
 			magicSource: 'string',
 			magicReward: 'string',
+			cardJson: 'string',
 		},
 	});
 	insertMultiple(db, docs, 500);

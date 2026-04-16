@@ -18,6 +18,7 @@ const ORAMA_SCHEMA = {
 	content: 'string',
 	href: 'string',
 	subtitle: 'string',
+	cardJson: 'string',
 	spellTier: 'string',
 	spellSchool: 'string',
 	spellTarget: 'string',
