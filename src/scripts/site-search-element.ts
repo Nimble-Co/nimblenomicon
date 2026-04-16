@@ -1,4 +1,3 @@
-import { initOramaQuickSearch } from './orama-search-ui';
 import { SEARCH_URL_UPDATE_EVENT } from './orama-search-url';
 import { wireSearchShortcut } from './wire-search-shortcut';
 
@@ -53,21 +52,6 @@ class SiteSearch extends HTMLElement {
 
 	connectedCallback() {
 		document.addEventListener('click', this.onDocClick, true);
-
-		const mobileInput = this.querySelector<HTMLInputElement>('#ss-mobile-q');
-		const mobilePanel = this.querySelector<HTMLElement>(
-			'#ss-mobile-quick-results',
-		);
-		const desktopInput = this.querySelector<HTMLInputElement>('#ss-desktop-q');
-		const desktopPanel = this.querySelector<HTMLElement>(
-			'#ss-desktop-quick-results',
-		);
-		if (mobileInput && mobilePanel) {
-			initOramaQuickSearch({ input: mobileInput, panel: mobilePanel });
-		}
-		if (desktopInput && desktopPanel) {
-			initOramaQuickSearch({ input: desktopInput, panel: desktopPanel });
-		}
 
 		for (const form of this.querySelectorAll<HTMLFormElement>('form.ss-form')) {
 			form.addEventListener('submit', this.onSearchFormSubmit);
