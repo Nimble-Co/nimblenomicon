@@ -10,6 +10,7 @@ import { create, insertMultiple, save } from '@orama/orama';
 import {
 	ancestries,
 	ancestryDetailHrefFromCoreRules,
+	formatAncestrySectionLabel,
 	formatAncestrySize,
 } from '../src/models/ancestries';
 import {
@@ -170,7 +171,7 @@ function buildDocs(): OramaGameDataDoc[] {
 					id: `ancestry:${a.id}`,
 					type: 'ancestry',
 					title: a.name,
-					subtitle: `${a.section} · ${formatAncestrySize(a.size)}`,
+					subtitle: `${formatAncestrySectionLabel(a.section)} · ${formatAncestrySize(a.size)}`,
 					href: ancestryDetailHrefFromCoreRules(a.id),
 					content: truncate(
 						joinText(a.name, a.section, a.size, a.flavor, a.trait),

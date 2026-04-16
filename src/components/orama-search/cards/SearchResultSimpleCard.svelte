@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ORAMA_DATA_SEARCH_TYPE_LABELS } from '../../../constants/orama-data-search';
+	import { ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR } from '../../../constants/orama-data-search';
 	import type { SearchableGameDataDoc } from '../../../models/search-filters';
 	import type { SimpleSearchCardPayload } from '../../../models/search-result-card';
 	import MarkdownSnippet from './MarkdownSnippet.svelte';
@@ -11,7 +11,7 @@
 
 	let { doc, simple }: Props = $props();
 
-	const typeLabel = $derived(ORAMA_DATA_SEARCH_TYPE_LABELS[simple.kind]);
+	const typeLabel = $derived(ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR[simple.kind]);
 </script>
 
 <article
@@ -35,7 +35,7 @@
 				{doc.title}
 			{/if}
 		</h3>
-		{#if doc.subtitle}
+		{#if doc.subtitle && simple.kind !== 'magic-item'}
 			<p class="text-fg-muted m-0 mt-0.5 text-sm">{doc.subtitle}</p>
 		{/if}
 	</header>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ORAMA_DATA_SEARCH_TYPE_LABELS } from '../../../constants/orama-data-search';
+	import { ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR } from '../../../constants/orama-data-search';
 	import type { SearchableGameDataDoc } from '../../../models/search-filters';
 	import type { ClassSearchCardPayload } from '../../../models/search-result-card';
 	import MarkdownSnippet from './MarkdownSnippet.svelte';
@@ -18,7 +18,7 @@
 	<div
 		class="text-fg-muted text-xs font-medium uppercase tracking-wide leading-none"
 	>
-		{ORAMA_DATA_SEARCH_TYPE_LABELS.class}
+		{ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR.class}
 	</div>
 	<header class="mt-1">
 		<h3 class="m-0 text-lg font-bold leading-tight">

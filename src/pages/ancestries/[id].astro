@@ -3,7 +3,11 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
 import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
 import { renderMarkdown } from '../../utils/render-markdown';
-import { ancestries, formatAncestrySize } from '../../models/ancestries';
+import {
+	ancestries,
+	formatAncestrySectionLabel,
+	formatAncestrySize,
+} from '../../models/ancestries';
 
 export function getStaticPaths() {
 	return ancestries.map((row) => ({
@@ -14,7 +18,7 @@ export function getStaticPaths() {
 
 const { row } = Astro.props;
 
-const sectionLabel = row.section === 'common' ? 'Common' : 'Exotic';
+const sectionLabel = formatAncestrySectionLabel(row.section);
 const bodyMarkdown =
 	`**(${formatAncestrySize(row.size)})** ${sectionLabel} ancestry.\n\n` +
 	row.flavor +

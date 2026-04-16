@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { stripFlavorIsFreeBlockquotesFromMarkdown } from '../../src/models/search-result-card-payloads';
 import {
 	parseSearchResultCard,
 	searchResultCardSchema,
@@ -65,5 +66,21 @@ describe('searchResultCardSchema', () => {
 			level: '1',
 		});
 		expect(r.success).toBe(false);
+	});
+});
+
+describe('stripFlavorIsFreeBlockquotesFromMarkdown', () => {
+	it('removes Flavor Is Free blockquote paragraph', () => {
+		const md =
+			'**Optimistic.** Reroll dice.\n\n> **Flavor Is Free.** Sidebar text.';
+		expect(stripFlavorIsFreeBlockquotesFromMarkdown(md)).toBe(
+			'**Optimistic.** Reroll dice.',
+		);
+	});
+
+	it('keeps other blockquotes', () => {
+		const md =
+			'**Lithe.** Fast.\n\n> **What About Half-Elves?** Mix ancestries.';
+		expect(stripFlavorIsFreeBlockquotesFromMarkdown(md)).toBe(md);
 	});
 });

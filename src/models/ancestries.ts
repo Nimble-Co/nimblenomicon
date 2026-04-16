@@ -23,6 +23,11 @@ export function formatAncestrySize(size: AncestrySize): string {
 	return ancestrySizeDisplayMap[size];
 }
 
+/** Title Case section for UI (e.g. search subtitle, meta lines). */
+export function formatAncestrySectionLabel(section: 'common' | 'exotic'): string {
+	return section === 'common' ? 'Common' : 'Exotic';
+}
+
 const ancestryRowSchema = z.preprocess(
 	(raw) => {
 		if (!raw || typeof raw !== 'object') return raw;

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ORAMA_DATA_SEARCH_TYPE_LABELS } from '../../../constants/orama-data-search';
+	import { ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR } from '../../../constants/orama-data-search';
 	import type { SearchableGameDataDoc } from '../../../models/search-filters';
 	import type { WeaponSearchCardPayload } from '../../../models/search-result-card';
 
@@ -17,7 +17,7 @@
 	<div
 		class="text-fg-muted text-xs font-medium uppercase tracking-wide leading-none"
 	>
-		{ORAMA_DATA_SEARCH_TYPE_LABELS.weapon}
+		{ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR.weapon}
 	</div>
 	<header class="mt-1">
 		<h3 class="m-0 text-lg font-bold leading-tight">

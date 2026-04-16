@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ORAMA_DATA_SEARCH_TYPE_LABELS } from '../../../constants/orama-data-search';
+	import { ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR } from '../../../constants/orama-data-search';
 	import type { SearchableGameDataDoc } from '../../../models/search-filters';
 	import type {
 		LegendaryMonsterSearchCardPayload,
@@ -7,6 +7,7 @@
 	} from '../../../models/search-result-card';
 	import { sizeLabel } from '../../../models/search-result-card-payloads';
 	import MarkdownSnippet from './MarkdownSnippet.svelte';
+	import MonsterAbilityBlock from './MonsterAbilityBlock.svelte';
 
 	interface Props {
 		doc: SearchableGameDataDoc;
@@ -43,7 +44,7 @@
 		<div
 			class="text-fg-muted mb-1 text-xs font-medium uppercase tracking-wide leading-none"
 		>
-			{ORAMA_DATA_SEARCH_TYPE_LABELS.monster}
+			{ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR.monster}
 		</div>
 		<header class="flex items-end justify-between gap-3">
 			<hgroup class="flex min-w-0 flex-1 flex-wrap items-baseline gap-x-2">
@@ -96,15 +97,13 @@
 				{/if}
 			</ul>
 		</header>
-		{#if m.familyName}
-			<p class="text-fg-muted m-0 mt-1 text-xs">Family: {m.familyName}</p>
-		{/if}
+
+		{#each m.familyAbilities as fa, fi (`family-${fi}-${fa.name}`)}
+			<MonsterAbilityBlock name={fa.name} markdown={fa.descriptionMd} />
+		{/each}
 
 		{#each m.specialAbilities as ability (ability.name)}
-			<section class="mt-2 text-base leading-relaxed">
-				<h4 class="m-0 font-bold">{ability.name}</h4>
-				<MarkdownSnippet markdown={ability.descriptionMd} class="mt-0.5" />
-			</section>
+			<MonsterAbilityBlock name={ability.name} markdown={ability.descriptionMd} />
 		{/each}
 
 		{#if m.actions.length > 0}
@@ -145,15 +144,6 @@
 				<MarkdownSnippet markdown={m.notesMd} />
 			</div>
 		{/if}
-
-		{#if m.loot}
-			<div class="mt-3 text-base leading-relaxed">
-				<h4 class="m-0 text-sm font-bold uppercase tracking-wide">
-					Potential loot
-				</h4>
-				<p class="m-0 mt-1">{m.loot}</p>
-			</div>
-		{/if}
 	</article>
 {:else}
 	{@const leg = payload}
@@ -163,7 +153,7 @@
 		<div
 			class="text-fg-muted mb-1 text-xs font-medium uppercase tracking-wide leading-none"
 		>
-			{ORAMA_DATA_SEARCH_TYPE_LABELS.monster}
+			{ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR.monster}
 		</div>
 		{#if !leg.isTeam && leg.creatures[0]}
 			{@const solo = leg.creatures[0]!}
@@ -227,10 +217,7 @@
 			</header>
 
 			{#each solo.specialAbilities as ability (ability.name)}
-				<section class="mt-2 text-base leading-relaxed">
-					<h4 class="m-0 font-bold">{ability.name}</h4>
-					<MarkdownSnippet markdown={ability.descriptionMd} class="mt-0.5" />
-				</section>
+				<MonsterAbilityBlock name={ability.name} markdown={ability.descriptionMd} />
 			{/each}
 
 			{#if solo.actions.length > 0}
@@ -345,10 +332,10 @@
 						</ul>
 
 						{#each member.specialAbilities as ability (ability.name)}
-							<section class="mt-2 text-base leading-relaxed">
-								<h5 class="m-0 font-bold">{ability.name}</h5>
-								<MarkdownSnippet markdown={ability.descriptionMd} class="mt-0.5" />
-							</section>
+							<MonsterAbilityBlock
+								name={ability.name}
+								markdown={ability.descriptionMd}
+							/>
 						{/each}
 
 						{#if member.actions.length > 0}

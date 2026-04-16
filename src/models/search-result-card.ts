@@ -55,7 +55,8 @@ const standardMonsterCardSchema = z.object({
 	movementSpeed: z.number(),
 	kindName: z.string().optional(),
 	familyName: z.string().optional(),
-	loot: z.string().optional(),
+	/** Family trait blocks: titles like "Goblins: Pack Tactics". */
+	familyAbilities: z.array(namedBlockSchema).default([]),
 	notesMd: z.string().optional(),
 	specialAbilities: z.array(namedBlockSchema),
 	actions: z.array(monsterActionCardSchema),

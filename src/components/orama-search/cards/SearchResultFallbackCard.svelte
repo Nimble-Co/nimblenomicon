@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ORAMA_DATA_SEARCH_TYPE_LABELS } from '../../../constants/orama-data-search';
+	import { ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR } from '../../../constants/orama-data-search';
 	import type { SearchableGameDataDoc } from '../../../models/search-filters';
 
 	interface Props {
@@ -9,7 +9,7 @@
 	let { doc }: Props = $props();
 
 	const typeLabel = $derived(
-		ORAMA_DATA_SEARCH_TYPE_LABELS[doc.type] ?? doc.type,
+		ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR[doc.type] ?? doc.type,
 	);
 </script>
 

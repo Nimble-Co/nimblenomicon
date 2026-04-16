@@ -30,6 +30,22 @@ import {
 import { sizes } from './sizes';
 import { formatWeaponCategory, type WeaponRowData } from './weapons';
 
+/**
+ * "Flavor Is Free" asides live in the same `trait` string as markdown blockquotes, not a separate JSON field.
+ * Drop those paragraphs from search cards; other blockquotes (e.g. Half-Elves note) stay.
+ */
+export function stripFlavorIsFreeBlockquotesFromMarkdown(md: string): string {
+	return md
+		.split(/\n\n+/)
+		.filter((block) => {
+			const t = block.trim();
+			if (!t.startsWith('>')) return true;
+			return !/\bFlavor Is Free\b/i.test(t);
+		})
+		.join('\n\n')
+		.trim();
+}
+
 function spellSchoolName(schoolId: string): string {
 	return spellSchools.find((s) => s.id === schoolId)?.name ?? schoolId;
 }
@@ -82,6 +98,15 @@ export function buildSpellCardPayload(spell: SpellData): SearchResultCardPayload
 export function buildStandardMonsterCardPayload(
 	m: MonsterData,
 ): SearchResultCardPayload {
+	const familyName = m.family?.name;
+	const familyAbilities =
+		m.family && familyName
+			? m.family.abilities.map((a) => ({
+					name: `${familyName}: ${a.name}`,
+					descriptionMd: truncateCardMd(a.description, MAX_BLOCK_MD),
+				}))
+			: [];
+
 	return {
 		v: 1,
 		kind: 'monster',
@@ -94,8 +119,8 @@ export function buildStandardMonsterCardPayload(
 		movementMode: m.movement.mode,
 		movementSpeed: m.movement.speed,
 		kindName: m.kind?.name,
-		familyName: m.family?.name,
-		loot: m.kind?.loot,
+		familyName,
+		familyAbilities,
 		notesMd: m.notes ? truncateCardMd(m.notes, MAX_NOTES_MD) : undefined,
 		specialAbilities: m.specialAbilities.map((a) => ({
 			name: a.name,
@@ -179,11 +204,12 @@ export function buildWeaponCardPayload(w: WeaponRowData): SearchResultCardPayloa
 }
 
 export function buildAncestryCardPayload(a: AncestryRowData): SearchResultCardPayload {
+	const traitForCard = stripFlavorIsFreeBlockquotesFromMarkdown(a.trait);
 	return {
 		v: 1,
 		kind: 'ancestry',
 		excerptMd: truncateCardMd(
-			[a.flavor, a.trait].filter(Boolean).join('\n\n') || a.name,
+			[a.flavor, traitForCard].filter(Boolean).join('\n\n') || a.name,
 		),
 	};
 }
@@ -215,7 +241,7 @@ export function buildMagicItemCardPayload(
 		v: 1,
 		kind: 'magic-item',
 		excerptMd: truncateCardMd(
-			[item.subtitle, item.description, item.source].filter(Boolean).join('\n\n'),
+			[item.subtitle, item.description].filter(Boolean).join('\n\n'),
 		),
 	};
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ORAMA_DATA_SEARCH_TYPE_LABELS } from '../../../constants/orama-data-search';
+	import { ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR } from '../../../constants/orama-data-search';
 	import type { SearchableGameDataDoc } from '../../../models/search-filters';
 	import type { SpellSearchCardPayload } from '../../../models/search-result-card';
 	import MarkdownSnippet from './MarkdownSnippet.svelte';
@@ -19,7 +19,7 @@
 	<div
 		class="text-fg-muted text-xs font-medium uppercase tracking-wide leading-none"
 	>
-		{ORAMA_DATA_SEARCH_TYPE_LABELS.spell}
+		{ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR.spell}
 	</div>
 	<header class="mt-1 flex flex-wrap items-baseline justify-between gap-2">
 		<h3 class="m-0 text-lg font-bold leading-tight">
