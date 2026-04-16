@@ -16,6 +16,10 @@ import {
 	backgrounds,
 	backgroundDetailHrefFromCoreRules,
 } from '../src/models/backgrounds';
+import {
+	conditions,
+	conditionDetailHrefFromCoreRules,
+} from '../src/models/conditions';
 import { heroClasses } from '../src/models/class';
 import {
 	glossary,
@@ -315,6 +319,22 @@ function buildDocs(): OramaGameDataDoc[] {
 					subtitle: '',
 					href: glossaryDetailHrefFromCoreRules(g.id),
 					content: truncate(joinText(g.name, g.description)),
+				},
+				{},
+			),
+		);
+	}
+
+	for (const row of conditions) {
+		docs.push(
+			mergeDoc(
+				{
+					id: `condition:${row.id}`,
+					type: 'condition',
+					title: row.name,
+					subtitle: '',
+					href: conditionDetailHrefFromCoreRules(row.id),
+					content: truncate(joinText(row.name, row.description)),
 				},
 				{},
 			),

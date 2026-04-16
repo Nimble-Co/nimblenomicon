@@ -27,7 +27,7 @@ const bodyMarkdown = row.description?.trim() ?? '';
 		next: false,
 	}}
 >
-	<DetailPageBackToList href="/languages/" label="All Languages" />
+	<DetailPageBackToList searchType="language" label="All Languages" />
 	<div data-auto-link set:html={await renderMarkdown(bodyMarkdown)} />
 	<DetailPageSourceRef
 		href={`/core-rules/#${row.id}`}

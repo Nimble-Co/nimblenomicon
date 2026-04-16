@@ -31,7 +31,7 @@ const bodyMarkdown = miscAdventuringEquipmentDetailMarkdown(row);
 	}}
 >
 	<DetailPageBackToList
-		href="/misc-adventuring-equipment/"
+		searchType="equipment"
 		label="All Misc. Adventuring Equipment"
 	/>
 	<div data-auto-link set:html={await renderMarkdown(bodyMarkdown)} />

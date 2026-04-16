@@ -27,7 +27,7 @@ const bodyMarkdown = row.description?.trim() ?? '';
 		next: false,
 	}}
 >
-	<DetailPageBackToList href="/backgrounds/" label="All Backgrounds" />
+	<DetailPageBackToList searchType="background" label="All Backgrounds" />
 	<div data-auto-link set:html={await renderMarkdown(bodyMarkdown)} />
 	<DetailPageSourceRef
 		href={`/core-rules/#${row.id}`}

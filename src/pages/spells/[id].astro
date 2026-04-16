@@ -47,7 +47,7 @@ const sourceName =
 		next: false,
 	}}
 >
-	<DetailPageBackToList href="/spells/" label="All Spells" />
+	<DetailPageBackToList searchType="spell" label="All Spells" />
 	<div data-auto-link set:html={await renderMarkdown(bodyMarkdown)} />
 	<DetailPageSourceRef href={sourceHref} sourceName={sourceName} />
 </StarlightPage>

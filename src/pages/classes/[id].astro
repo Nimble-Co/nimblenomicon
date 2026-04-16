@@ -40,7 +40,7 @@ const { heroClass } = Astro.props;
 		next: false,
 	}}
 >
-	<DetailPageBackToList href="/classes/" label="All Classes" />
+	<DetailPageBackToList searchType="class" label="All Classes" />
 	<HeroClassSheet classId={heroClass.id} />
 	<DetailPageSourceRef href={`/heroes/#${heroClass.id}`} sourceName="Heroes" />
 </StarlightPage>

@@ -97,6 +97,7 @@ const KEYS_BY_TYPE: Record<
 	glossary: [],
 	language: [],
 	background: [],
+	condition: [],
 };
 
 export function filterKeysForType(
