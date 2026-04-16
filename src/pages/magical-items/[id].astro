@@ -40,7 +40,7 @@ const sourceRef =
 		next: false,
 	}}
 >
-	<DetailPageBackToList href="/magical-items/" label="All Magical Items" />
+	<DetailPageBackToList searchType="magic-item" label="All Magical Items" />
 	<div data-auto-link set:html={await renderMarkdown(bodyMarkdown)} />
 	<DetailPageSourceRef
 		href={sourceRef.href}

@@ -1,6 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
-import { normalizeBaseUrl, searchPageUrl } from '../../src/utils/url';
+import {
+	dataSearchBrowseUrl,
+	normalizeBaseUrl,
+	searchPageUrl,
+} from '../../src/utils/url';
 
 describe('normalizeBaseUrl', () => {
 	it('strips a single trailing slash', () => {
@@ -28,5 +32,28 @@ describe('searchPageUrl', () => {
 	it('does not add a trailing slash for never or ignore', () => {
 		expect(searchPageUrl('/', 'ignore')).toBe('/search');
 		expect(searchPageUrl('/', 'never')).toBe('/search');
+	});
+});
+
+describe('dataSearchBrowseUrl', () => {
+	it('appends type query to search path', () => {
+		expect(dataSearchBrowseUrl('/', 'never', 'spell')).toBe(
+			'/search?type=spell',
+		);
+		expect(dataSearchBrowseUrl('/docs/', 'never', 'class')).toBe(
+			'/docs/search?type=class',
+		);
+	});
+
+	it('appends type after trailing slash when Starlight uses always', () => {
+		expect(dataSearchBrowseUrl('/', 'always', 'monster')).toBe(
+			'/search/?type=monster',
+		);
+	});
+
+	it('encodes magic-item type slug', () => {
+		expect(dataSearchBrowseUrl('/', 'never', 'magic-item')).toBe(
+			'/search?type=magic-item',
+		);
 	});
 });

@@ -4,6 +4,7 @@
  */
 export const ORAMA_DATA_SEARCH_TYPE_ORDER = [
 	'monster',
+	'condition',
 	'spell',
 	'class',
 	'weapon',
@@ -33,4 +34,5 @@ export const ORAMA_DATA_SEARCH_TYPE_LABELS: Record<
 	monster: 'Monsters',
 	armor: 'Armor',
 	language: 'Languages',
+	condition: 'Conditions',
 };
