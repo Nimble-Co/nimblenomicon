@@ -1,7 +1,7 @@
 ---
 import DetailPage from '../../components/DetailPage.astro';
 import { miscAdventuringEquipment } from '../../models/misc-adventuring-equipment';
-import { miscEquipmentDetailPageProps } from '../../utils/detail-page-adapters';
+import { miscEquipmentDetailPageProps } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
 	return miscAdventuringEquipment.map((row) => ({

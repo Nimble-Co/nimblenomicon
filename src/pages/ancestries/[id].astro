@@ -1,7 +1,7 @@
 ---
 import DetailPage from '../../components/DetailPage.astro';
 import { ancestries } from '../../models/ancestries';
-import { ancestryDetailPageProps } from '../../utils/detail-page-adapters';
+import { ancestryDetailPageProps } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
 	return ancestries.map((row) => ({

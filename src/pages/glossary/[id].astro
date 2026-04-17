@@ -1,7 +1,7 @@
 ---
 import DetailPage from '../../components/DetailPage.astro';
 import { glossary } from '../../models/glossary';
-import { glossaryDetailPageProps } from '../../utils/detail-page-adapters';
+import { glossaryDetailPageProps } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
 	return glossary.map((row) => ({

@@ -1,7 +1,7 @@
 ---
 import DetailPage from '../../components/DetailPage.astro';
 import { spells } from '../../models/spells';
-import { spellDetailPageProps } from '../../utils/detail-page-adapters';
+import { spellDetailPageProps } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
 	return spells.map((spell) => ({

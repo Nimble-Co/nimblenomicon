@@ -1,7 +1,7 @@
 ---
 import DetailPage from '../../components/DetailPage.astro';
 import { languages } from '../../models/languages';
-import { languageDetailPageProps } from '../../utils/detail-page-adapters';
+import { languageDetailPageProps } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
 	return languages.map((row) => ({

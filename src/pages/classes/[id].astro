@@ -3,7 +3,7 @@ import DetailPage from '../../components/DetailPage.astro';
 import HeroClassSheet from '../../components/HeroClassSheet.astro';
 import type { HeroClassData } from '../../models/class';
 import { heroClasses } from '../../models/class';
-import { classDetailPageShell } from '../../utils/detail-page-adapters';
+import { classDetailPageShell } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
 	const seen = new Set<string>();

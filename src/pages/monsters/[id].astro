@@ -6,7 +6,7 @@ import type { LegendaryEntryData } from '../../models/legendary-monsters';
 import { legendaryMonsters } from '../../models/legendary-monsters';
 import type { MonsterData } from '../../models/monsters';
 import { monsters } from '../../models/monsters';
-import { monsterDetailPageShell } from '../../utils/detail-page-adapters';
+import { monsterDetailPageShell } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
 	const seen = new Set<string>();

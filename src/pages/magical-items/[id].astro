@@ -1,7 +1,7 @@
 ---
 import DetailPage from '../../components/DetailPage.astro';
 import { magicalItems } from '../../models/magical-items';
-import { magicalItemDetailPageProps } from '../../utils/detail-page-adapters';
+import { magicalItemDetailPageProps } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
 	return magicalItems.map((row) => ({

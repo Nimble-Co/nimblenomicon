@@ -1,7 +1,7 @@
 ---
 import DetailPage from '../../components/DetailPage.astro';
 import { backgrounds } from '../../models/backgrounds';
-import { backgroundDetailPageProps } from '../../utils/detail-page-adapters';
+import { backgroundDetailPageProps } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
 	return backgrounds.map((row) => ({

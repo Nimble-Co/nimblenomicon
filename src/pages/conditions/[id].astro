@@ -1,7 +1,7 @@
 ---
 import DetailPage from '../../components/DetailPage.astro';
 import { conditions } from '../../models/conditions';
-import { conditionDetailPageProps } from '../../utils/detail-page-adapters';
+import { conditionDetailPageProps } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
 	return conditions.map((row) => ({

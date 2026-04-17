@@ -4,7 +4,7 @@ import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
 import NavSidebarPersister from './NavSidebarPersister.astro';
 import SectionSidebarBrand from './SectionSidebarBrand.astro';
 import SidebarSublist from './SidebarSublist.astro';
-import { resolveSectionSidebar } from '../utils/section-sidebar';
+import { resolveSectionSidebar } from '../starlight/section-sidebar';
 
 const { toc } = Astro.locals.starlightRoute;
 /** Starlight prepends a synthetic `#_top` item labeled “Overview”; omit it in the left sidebar. */
