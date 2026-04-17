@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { wireSearchShortcut } from '../../src/scripts/wire-search-shortcut';
+import { wireSearchShortcut } from '../../src/utils/wire-search-shortcut';
 
 describe('wireSearchShortcut', () => {
 	let keydownHandler: ((e: KeyboardEvent) => void) | undefined;

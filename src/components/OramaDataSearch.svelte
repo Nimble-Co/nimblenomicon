@@ -33,23 +33,23 @@
 		filterKeysForType,
 		hasAnyActiveFilters,
 		initialFiltersForType,
+		patchSearchFiltersState,
 		setMultiFilterValue,
 		type MultiSelectFilterDim,
 		type SearchFiltersState,
 		type SearchableGameDataDoc,
 	} from '../models/search-filters';
-	import { patchSearchFiltersState } from '../scripts/orama-search-filters-ui';
 	import {
 		getOramaDataSearchDb,
 		type OramaDataSearchDb,
-	} from '../scripts/orama-search-ui';
+	} from '../utils/orama-search-db';
 	import {
 		FILTER_MULTI_LABEL_CLASS,
 		FILTER_TOOLBAR_LABEL_SPACER_CLASS,
 		FILTER_TOOLBAR_OPTIONS_ROW_CLASS,
 		pressedPillClass,
 		typeFilterLabel,
-	} from '../scripts/orama-search-toolbar-constants';
+	} from './orama-search/toolbar-styles';
 	import OramaSearchFilterCheckboxLabel from './orama-search/OramaSearchFilterCheckboxLabel.svelte';
 	import OramaSearchMultiFilterDropdown from './orama-search/OramaSearchMultiFilterDropdown.svelte';
 	import OramaSearchTypePicker from './orama-search/OramaSearchTypePicker.svelte';
@@ -58,7 +58,7 @@
 		readSearchPageParams,
 		setSearchPageUrl,
 		stripInvalidTypeFromUrl,
-	} from '../scripts/orama-search-url';
+	} from '../utils/orama-search-url';
 
 	type GameDataDoc = SearchableGameDataDoc;
 

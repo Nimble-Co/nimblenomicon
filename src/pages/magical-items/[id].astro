@@ -1,13 +1,7 @@
 ---
-import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
-import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
-import { renderMarkdown } from '../../utils/render-markdown';
-import {
-	formatMagicalItemKind,
-	magicalItemDetailMarkdown,
-	magicalItems,
-} from '../../models/magical-items';
+import DetailPage from '../../components/DetailPage.astro';
+import { magicalItems } from '../../models/magical-items';
+import { magicalItemDetailPageProps } from '../../utils/detail-page-adapters';
 
 export function getStaticPaths() {
 	return magicalItems.map((row) => ({
@@ -17,33 +11,6 @@ export function getStaticPaths() {
 }
 
 const { row } = Astro.props;
-
-const typeLabel = formatMagicalItemKind(row.kind);
-const bodyMarkdown = magicalItemDetailMarkdown(row);
-
-const sourceRef =
-	row.source === 'game-masters-guide'
-		? {
-				href: `/game-masters-guide/#${row.id}`,
-				sourceName: "Game Master's Guide",
-			}
-		: { href: `/core-rules/#${row.id}`, sourceName: 'Core Rules' };
 ---
 
-<StarlightPage
-	hasSidebar={false}
-	frontmatter={{
-		title: row.name,
-		description: `${typeLabel} — ${row.name}.`,
-		tableOfContents: false,
-		prev: false,
-		next: false,
-	}}
->
-	<DetailPageBackToList searchType="magic-item" label="All Magical Items" />
-	<div data-auto-link set:html={await renderMarkdown(bodyMarkdown)} />
-	<DetailPageSourceRef
-		href={sourceRef.href}
-		sourceName={sourceRef.sourceName}
-	/>
-</StarlightPage>
+<DetailPage {...magicalItemDetailPageProps(row)} />

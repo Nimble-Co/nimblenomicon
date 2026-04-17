@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { initOramaQuickSearch } from '../../scripts/orama-search-ui';
+	import { initOramaQuickSearch } from '../../utils/orama-quick-search';
 
 	type Props = {
 		panelId: string;

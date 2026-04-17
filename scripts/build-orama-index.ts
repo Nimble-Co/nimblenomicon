@@ -64,6 +64,7 @@ import {
 	buildWeaponCardPayload,
 	stringifySearchResultCard,
 } from '../src/models/search-result-card-payloads';
+import { ORAMA_DATA_SEARCH_SCHEMA } from '../src/models/orama-schema';
 import {
 	emptyOramaFilterFields,
 	spellFilterFields,
@@ -471,37 +472,7 @@ function buildDocs(): OramaGameDataDoc[] {
 function main(): void {
 	const docs = buildDocs();
 	const db = create({
-		schema: {
-			id: 'string',
-			type: 'string',
-			title: 'string',
-			content: 'string',
-			href: 'string',
-			subtitle: 'string',
-			spellTier: 'string',
-			spellSchool: 'string',
-			spellTarget: 'string',
-			spellUtility: 'string',
-			spellSecret: 'string',
-			monsterLevel: 'string',
-			monsterFamily: 'string',
-			monsterKind: 'string',
-			monsterArmor: 'string',
-			monsterSpeed: 'string',
-			monsterSize: 'string',
-			monsterMinion: 'string',
-			monsterLegendary: 'string',
-			classKeyStats: 'string',
-			classHitDie: 'string',
-			weaponCategory: 'string',
-			ancestrySection: 'string',
-			ancestrySize: 'string',
-			armorCategory: 'string',
-			magicKind: 'string',
-			magicSource: 'string',
-			magicReward: 'string',
-			cardJson: 'string',
-		},
+		schema: ORAMA_DATA_SEARCH_SCHEMA,
 	});
 	insertMultiple(db, docs, 500);
 	const raw = save(db);

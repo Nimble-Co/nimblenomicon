@@ -2,7 +2,7 @@
 	import {
 		FILTER_CHECKBOX_INPUT_CLASS,
 		FILTER_INLINE_CHECKBOX_LABEL_CLASS,
-	} from '../../scripts/orama-search-toolbar-constants';
+	} from './toolbar-styles';
 
 	let {
 		checked,

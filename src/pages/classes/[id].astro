@@ -1,10 +1,9 @@
 ---
-import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
-import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
+import DetailPage from '../../components/DetailPage.astro';
 import HeroClassSheet from '../../components/HeroClassSheet.astro';
 import type { HeroClassData } from '../../models/class';
 import { heroClasses } from '../../models/class';
+import { classDetailPageShell } from '../../utils/detail-page-adapters';
 
 export function getStaticPaths() {
 	const seen = new Set<string>();
@@ -30,17 +29,6 @@ export function getStaticPaths() {
 const { heroClass } = Astro.props;
 ---
 
-<StarlightPage
-	hasSidebar={false}
-	frontmatter={{
-		title: heroClass.name,
-		description: `Hero class — ${heroClass.name}.`,
-		tableOfContents: false,
-		prev: false,
-		next: false,
-	}}
->
-	<DetailPageBackToList searchType="class" label="All Classes" />
+<DetailPage {...classDetailPageShell(heroClass)}>
 	<HeroClassSheet classId={heroClass.id} />
-	<DetailPageSourceRef href={`/heroes/#${heroClass.id}`} sourceName="Heroes" />
-</StarlightPage>
+</DetailPage>
