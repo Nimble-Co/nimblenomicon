@@ -43,7 +43,7 @@
 			aria-pressed="true"
 			onclick={() => onTypeMenuPick('')}
 		>
-			All types
+			All
 		</button>
 		{#each ORAMA_DATA_SEARCH_TYPE_ORDER as t (t)}
 			<button
@@ -102,7 +102,7 @@
 					role="menuitem"
 					onclick={() => onTypeMenuPick('')}
 				>
-					All types
+					All
 				</button>
 				{#each ORAMA_DATA_SEARCH_TYPE_ORDER as t (t)}
 					<button
