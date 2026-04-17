@@ -8,8 +8,9 @@ import {
 
 export const TYPE_FILTER_PILL_CLASS =
 	'orama-type-filter-pill shrink-0 rounded-lg border-2 border-hairline-emphasis bg-surface text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
+/** Stronger than `/15` so the default “All” pill reads as selected on `bg-surface` (primary toolbar has no `data-orama-type-filter-bar` CSS override). */
 export const TYPE_FILTER_PILL_ACTIVE_CLASS =
-	'border-accent-500 bg-accent-500/15 text-fg font-medium dark:bg-accent-500/20';
+	'border-accent-500 bg-accent-50 font-semibold text-fg shadow-[inset_0_0_0_1px_rgba(226,180,27,0.2)] dark:bg-accent-950/45 dark:shadow-none';
 export const TYPE_FILTER_MENUITEM_CLASS =
 	'orama-type-filter-menu-item flex w-full min-w-[10rem] items-center rounded-none border-0 bg-transparent px-3 py-2.5 text-left text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';
 
