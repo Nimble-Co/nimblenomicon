@@ -171,6 +171,16 @@ export function clearMultiFilterDim(
 	return { ...prev, [dim]: [] };
 }
 
+/**
+ * Advance a tri-state filter (monster minion / legendary): unfiltered → true → false → unfiltered.
+ * Checkbox UIs use {@link setMultiFilterValue} instead.
+ */
+export function cycleTriStateFilter(cur: boolean | null): boolean | null {
+	if (cur === null) return true;
+	if (cur === true) return false;
+	return null;
+}
+
 export function emptySearchFiltersState(): SearchFiltersState {
 	return {
 		tier: [],

@@ -3,6 +3,7 @@ import {
 	applySearchFiltersToParams,
 	clearAllSearchFilterParams,
 	clearMultiFilterDim,
+	cycleTriStateFilter,
 	emptySearchFiltersState,
 	hasAnyActiveFilters,
 	initialFiltersForType,
@@ -65,6 +66,12 @@ describe('search-filters URL helpers', () => {
 		expect(hasAnyActiveFilters('spell', s)).toBe(false);
 		s.utility = false;
 		expect(hasAnyActiveFilters('spell', s)).toBe(true);
+	});
+
+	it('cycleTriStateFilter advances minion/legendary tri-state', () => {
+		expect(cycleTriStateFilter(null)).toBe(true);
+		expect(cycleTriStateFilter(true)).toBe(false);
+		expect(cycleTriStateFilter(false)).toBe(null);
 	});
 
 	it('clearMultiFilterDim empties one dimension only', () => {
