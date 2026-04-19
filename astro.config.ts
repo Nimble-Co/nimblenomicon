@@ -20,6 +20,12 @@ const base = '/';
 /** Resolved base for integrations (matches `import.meta.env.BASE_URL` / trailing-slash rules). */
 const baseForIntegrations = base ?? '/';
 
+/** Starlight does not export `./utils/*`; use a non-`@astrojs/*` prefix so Vite does not treat imports as package subpaths. */
+const starlightUtilsRoot = path.resolve(
+	__dirname,
+	'node_modules/@astrojs/starlight/utils',
+);
+
 // https://astro.build/config
 export default defineConfig({
 	site,
@@ -69,9 +75,16 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
 		resolve: {
-			alias: {
-				'@components': path.resolve(__dirname, 'src/components'),
-			},
+			alias: [
+				{
+					find: '@starlight-internal/utils',
+					replacement: starlightUtilsRoot,
+				},
+				{
+					find: '@components',
+					replacement: path.resolve(__dirname, 'src/components'),
+				},
+			],
 		},
 	},
 });

@@ -1,14 +1,14 @@
 import type { StarlightRouteData } from '@astrojs/starlight/route-data';
 import config from 'virtual:starlight/user-config';
-import { formatPath } from '../../node_modules/@astrojs/starlight/utils/format-path.ts';
-import { getPrevNextLinks } from '../../node_modules/@astrojs/starlight/utils/navigation.ts';
-import { ensureLeadingSlash } from '../../node_modules/@astrojs/starlight/utils/path.ts';
+import { formatPath } from '@starlight-internal/utils/format-path';
+import { getPrevNextLinks } from '@starlight-internal/utils/navigation';
+import { ensureLeadingSlash } from '@starlight-internal/utils/path';
 import type {
 	SidebarEntry,
 	SidebarGroup,
 	SidebarLink,
-} from '../../node_modules/@astrojs/starlight/utils/routing/types.ts';
-import { isAbsoluteUrl } from '../../node_modules/@astrojs/starlight/utils/url.ts';
+} from '@starlight-internal/utils/routing/types';
+import { isAbsoluteUrl } from '@starlight-internal/utils/url';
 import {
 	SECTION_SIDEBAR_CONFIG,
 	getSectionKey,

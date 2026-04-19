@@ -4,7 +4,7 @@
 	import {
 		ORAMA_DATA_SEARCH_TYPE_ORDER,
 		type OramaDataSearchType,
-	} from '../constants/orama-data-search';
+	} from '../../constants/orama-data-search';
 	import {
 		ANCESTRY_SECTION_OPTIONS,
 		ARMOR_CATEGORY_OPTIONS,
@@ -24,7 +24,7 @@
 		SPELL_TARGET_FILTER_OPTIONS,
 		WEAPON_CATEGORY_OPTIONS,
 		ancestrySizeOptions,
-	} from '../models/search-filter-options';
+	} from '../../models/search-filter-options';
 	import {
 		buildOramaWhereForFilters,
 		clearMultiFilterDim,
@@ -33,32 +33,32 @@
 		filterKeysForType,
 		hasAnyActiveFilters,
 		initialFiltersForType,
+		patchSearchFiltersState,
 		setMultiFilterValue,
 		type MultiSelectFilterDim,
 		type SearchFiltersState,
 		type SearchableGameDataDoc,
-	} from '../models/search-filters';
-	import { patchSearchFiltersState } from '../scripts/orama-search-filters-ui';
+	} from '../../models/search-filters';
 	import {
 		getOramaDataSearchDb,
 		type OramaDataSearchDb,
-	} from '../scripts/orama-search-ui';
+	} from '../../search/orama-search-db';
 	import {
 		FILTER_MULTI_LABEL_CLASS,
 		FILTER_TOOLBAR_LABEL_SPACER_CLASS,
 		FILTER_TOOLBAR_OPTIONS_ROW_CLASS,
 		pressedPillClass,
 		typeFilterLabel,
-	} from '../scripts/orama-search-toolbar-constants';
-	import OramaSearchFilterCheckboxLabel from './orama-search/OramaSearchFilterCheckboxLabel.svelte';
-	import OramaSearchMultiFilterDropdown from './orama-search/OramaSearchMultiFilterDropdown.svelte';
-	import OramaSearchTypePicker from './orama-search/OramaSearchTypePicker.svelte';
-	import SearchResultCard from './orama-search/cards/SearchResultCard.svelte';
+	} from './toolbar-styles';
+	import OramaSearchFilterCheckboxLabel from './OramaSearchFilterCheckboxLabel.svelte';
+	import OramaSearchMultiFilterDropdown from './OramaSearchMultiFilterDropdown.svelte';
+	import OramaSearchTypePicker from './OramaSearchTypePicker.svelte';
+	import SearchResultCard from './cards/SearchResultCard.svelte';
 	import {
 		readSearchPageParams,
 		setSearchPageUrl,
 		stripInvalidTypeFromUrl,
-	} from '../scripts/orama-search-url';
+	} from '../../search/orama-search-url';
 
 	type GameDataDoc = SearchableGameDataDoc;
 

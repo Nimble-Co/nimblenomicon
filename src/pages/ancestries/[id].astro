@@ -1,13 +1,7 @@
 ---
-import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
-import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
-import { renderMarkdown } from '../../utils/render-markdown';
-import {
-	ancestries,
-	formatAncestrySectionLabel,
-	formatAncestrySize,
-} from '../../models/ancestries';
+import DetailPage from '../../components/DetailPage.astro';
+import { ancestries } from '../../models/ancestries';
+import { ancestryDetailPageProps } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
 	return ancestries.map((row) => ({
@@ -17,29 +11,6 @@ export function getStaticPaths() {
 }
 
 const { row } = Astro.props;
-
-const sectionLabel = formatAncestrySectionLabel(row.section);
-const bodyMarkdown =
-	`**(${formatAncestrySize(row.size)})** ${sectionLabel} ancestry.\n\n` +
-	row.flavor +
-	'\n\n' +
-	row.trait;
 ---
 
-<StarlightPage
-	hasSidebar={false}
-	frontmatter={{
-		title: row.name,
-		description: `${sectionLabel} ancestry — ${row.name}.`,
-		tableOfContents: false,
-		prev: false,
-		next: false,
-	}}
->
-	<DetailPageBackToList searchType="ancestry" label="All Ancestries" />
-	<div data-auto-link set:html={await renderMarkdown(bodyMarkdown)} />
-	<DetailPageSourceRef
-		href={`/core-rules/#${row.id}`}
-		sourceName="Core Rules"
-	/>
-</StarlightPage>
+<DetailPage {...ancestryDetailPageProps(row)} />

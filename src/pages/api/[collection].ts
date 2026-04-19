@@ -2,7 +2,7 @@ import type { APIRoute, GetStaticPaths } from 'astro';
 import {
 	getCollectionData,
 	getCollectionSlugs,
-} from '../../utils/static-api-collections';
+} from '../../docs/static-api-collections';
 
 export const prerender = true;
 

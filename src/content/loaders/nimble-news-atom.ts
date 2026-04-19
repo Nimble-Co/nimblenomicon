@@ -3,7 +3,7 @@ import Parser from 'rss-parser';
 import {
 	extractFirstImageSrc,
 	extractHeroImageFromArticleHtml,
-} from '../../utils/nimble-news';
+} from '../../docs/nimble-news';
 
 const ATOM_URL = 'https://nimblerpg.com/blogs/news.atom';
 const ALLOWED_ARTICLE_HOST = 'nimblerpg.com';
