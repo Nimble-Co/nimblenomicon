@@ -17,12 +17,19 @@ export const collections = {
 	docs: defineCollection({
 		loader: docsLoader(),
 		schema: docsSchema({
-			extend: z.object({
-				/** Hide the default `<h1>` when the page uses a custom title (e.g. on a hero image). */
-				hidePageTitle: z.boolean().optional(),
-				/** Render `banner` inside the hero (see `HeroCallout`) instead of the default top bar. */
-				bannerInHero: z.boolean().optional(),
-			}),
+			extend: ({ image }) =>
+				z.object({
+					/** Hide the default `<h1>` when the page uses a custom title (e.g. on a hero image). */
+					hidePageTitle: z.boolean().optional(),
+					/** Render `banner` inside the hero (see `HeroCallout`) instead of the default top bar. */
+					bannerInHero: z.boolean().optional(),
+					/**
+					 * Optional 1200×630 (or similar) image for Open Graph / Twitter link previews.
+					 * Overrides the site default in `astro.config.ts` when set in frontmatter `head`
+					 * (see AGENTS.md).
+					 */
+					shareImage: image().optional(),
+				}),
 		}),
 	}),
 	news: defineCollection({

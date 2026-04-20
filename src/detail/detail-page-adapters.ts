@@ -2,6 +2,7 @@
  * Props for [`DetailPage.astro`](../components/DetailPage.astro): shell metadata + optional markdown body.
  */
 import type { OramaDataSearchType } from '../constants/orama-data-search';
+import { truncateMetaDescription } from '../utils/seo-meta';
 import type { HeroClassData } from '../models/class';
 import type { LegendaryEntryData } from '../models/legendary-monsters';
 import type { MonsterData } from '../models/monsters';
@@ -74,7 +75,9 @@ export function spellDetailPageProps(
 		spell.source === 'core-rules' ? 'Core Rules' : "Game Master's Guide";
 	return {
 		title: spell.name,
-		description: `${schoolName} school — ${spell.name}.`,
+		description: truncateMetaDescription(
+			`${schoolName} spell (${spell.tierLabel})${spell.castingTime ? `, ${spell.castingTime}` : ''} — ${spell.name}. ${spell.description}`,
+		),
 		backLabel: 'All Spells',
 		searchType: 'spell',
 		sourceHref,
@@ -89,7 +92,9 @@ export function weaponDetailPageProps(
 	const cat = formatWeaponCategory(row.category);
 	return {
 		title: row.name,
-		description: `${cat} weapon — ${row.name}.`,
+		description: truncateMetaDescription(
+			`${cat} weapon — ${row.name}. Damage ${row.damage}. Cost ${row.cost}.`,
+		),
 		backLabel: 'All Weapons',
 		searchType: 'weapon',
 		sourceHref: `/core-rules/#${row.id}`,
@@ -104,7 +109,9 @@ export function armorDetailPageProps(
 	const section = formatArmorCategoryLabel(row.category);
 	return {
 		title: row.name,
-		description: `${section} — ${row.name}.`,
+		description: truncateMetaDescription(
+			`${section} armor — ${row.name}. Armor ${row.armor}. Cost ${row.cost}.`,
+		),
 		backLabel: 'All Armor',
 		searchType: 'armor',
 		sourceHref: `/core-rules/#${row.id}`,
@@ -126,7 +133,9 @@ export function magicalItemDetailPageProps(
 			: { href: `/core-rules/#${row.id}`, sourceName: 'Core Rules' };
 	return {
 		title: row.name,
-		description: `${typeLabel} — ${row.name}.`,
+		description: truncateMetaDescription(
+			`${typeLabel} — ${row.name}. ${[row.subtitle, row.description].filter(Boolean).join(' ')}`,
+		),
 		backLabel: 'All Magical Items',
 		searchType: 'magic-item',
 		sourceHref: sourceRef.href,
@@ -146,7 +155,9 @@ export function ancestryDetailPageProps(
 		row.trait;
 	return {
 		title: row.name,
-		description: `${sectionLabel} ancestry — ${row.name}.`,
+		description: truncateMetaDescription(
+			`${sectionLabel} ancestry — ${row.name}. ${row.flavor} ${row.trait}`,
+		),
 		backLabel: 'All Ancestries',
 		searchType: 'ancestry',
 		sourceHref: `/core-rules/#${row.id}`,
@@ -160,7 +171,9 @@ export function backgroundDetailPageProps(
 ): DetailPageMarkdownProps {
 	return {
 		title: row.name,
-		description: `Character background — ${row.name}.`,
+		description: truncateMetaDescription(
+			`Character background — ${row.name}. ${row.description}`,
+		),
 		backLabel: 'All Backgrounds',
 		searchType: 'background',
 		sourceHref: `/core-rules/#${row.id}`,
@@ -174,7 +187,9 @@ export function conditionDetailPageProps(
 ): DetailPageMarkdownProps {
 	return {
 		title: row.name,
-		description: `Condition — ${row.name}.`,
+		description: truncateMetaDescription(
+			`Condition — ${row.name}. ${row.description}`,
+		),
 		backLabel: 'All Conditions',
 		searchType: 'condition',
 		sourceHref: `/core-rules/#${row.id}`,
@@ -188,7 +203,9 @@ export function glossaryDetailPageProps(
 ): DetailPageMarkdownProps {
 	return {
 		title: row.name,
-		description: `Glossary — ${row.name}.`,
+		description: truncateMetaDescription(
+			`Glossary — ${row.name}. ${row.description}`,
+		),
 		backLabel: 'All Glossary',
 		searchType: 'glossary',
 		sourceHref: `/core-rules/#${row.id}`,
@@ -202,7 +219,9 @@ export function languageDetailPageProps(
 ): DetailPageMarkdownProps {
 	return {
 		title: row.name,
-		description: `Language — ${row.name}.`,
+		description: truncateMetaDescription(
+			`Language — ${row.name}. ${row.description}`,
+		),
 		backLabel: 'All Languages',
 		searchType: 'language',
 		sourceHref: `/core-rules/#${row.id}`,
@@ -216,7 +235,9 @@ export function miscEquipmentDetailPageProps(
 ): DetailPageMarkdownProps {
 	return {
 		title: row.name,
-		description: `Misc adventuring gear — ${row.name}.`,
+		description: truncateMetaDescription(
+			`Misc adventuring gear — ${row.name}. ${row.description}`,
+		),
 		backLabel: 'All Misc. Adventuring Equipment',
 		searchType: 'equipment',
 		sourceHref: `/core-rules/#${row.id}`,
@@ -232,8 +253,30 @@ export function monsterDetailPageShell(
 	const title = record.name;
 	const description =
 		variant === 'monster'
-			? `Monster stat block — ${record.name}.`
-			: `Legendary monster — ${record.name}.`;
+			? truncateMetaDescription(
+					[
+						`Monster — ${record.name}`,
+						record.isMinion
+							? `minion tier ${record.level}`
+							: `level ${record.level}`,
+						record.kind?.name,
+						record.size,
+						record.notes,
+						record.actions[0]?.description,
+					]
+						.filter(Boolean)
+						.join('. '),
+				)
+			: truncateMetaDescription(
+					[
+						`Legendary ${record.creatureType} — ${record.name}`,
+						`level ${record.level}`,
+						record.notes,
+						record.bloodied,
+					]
+						.filter(Boolean)
+						.join('. '),
+				);
 	return {
 		title,
 		description,
@@ -249,7 +292,9 @@ export function classDetailPageShell(
 ): DetailPageShellProps {
 	return {
 		title: heroClass.name,
-		description: `Hero class — ${heroClass.name}.`,
+		description: truncateMetaDescription(
+			`Hero class — ${heroClass.name}. ${heroClass.description}`,
+		),
 		backLabel: 'All Classes',
 		searchType: 'class',
 		sourceHref: `/heroes/#${heroClass.id}`,

@@ -35,6 +35,9 @@ export default defineConfig({
 		svelte(),
 		starlight({
 			title: 'The Nimblenomicon',
+			/** Fallback when a page omits `description` in frontmatter (Starlight merges this into meta + Open Graph). */
+			description:
+				'Nimble tabletop RPG rules reference: core rules, heroes, spells, monsters, and tools — fast search and GM-ready stat blocks.',
 			pagefind: false,
 			head: [
 				{
