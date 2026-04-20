@@ -4,7 +4,7 @@
 import {
 	ORAMA_DATA_SEARCH_TYPE_LABELS,
 	type OramaDataSearchType,
-} from '../constants/orama-data-search';
+} from '../../constants/orama-data-search';
 
 export const TYPE_FILTER_PILL_CLASS =
 	'orama-type-filter-pill shrink-0 rounded-lg border-2 border-hairline-emphasis bg-surface text-sm text-fg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/80';

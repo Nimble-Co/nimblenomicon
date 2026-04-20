@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { getCollectionSlugs } from '../../utils/static-api-collections';
+import { getCollectionSlugs } from '../../docs/static-api-collections';
 
 export const prerender = true;
 

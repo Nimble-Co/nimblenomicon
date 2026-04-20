@@ -9,7 +9,7 @@
 		TYPE_FILTER_PILL_ACTIVE_CLASS,
 		TYPE_FILTER_PILL_CLASS,
 		typeFilterLabel,
-	} from '../../scripts/orama-search-toolbar-constants';
+	} from './toolbar-styles';
 
 	let {
 		mode,

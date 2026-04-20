@@ -1,66 +1,19 @@
-import { create, load, search, type RawData } from '@orama/orama';
+import { search } from '@orama/orama';
 import {
 	ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR,
 	type OramaDataSearchType,
 } from '../constants/orama-data-search';
 import type { SearchableGameDataDoc } from '../models/search-filters';
-import { quickSearchSecondLine } from '../utils/quickSearchSecondLine';
+import { quickSearchSecondLine } from './quickSearchSecondLine';
+import {
+	getOramaDataSearchDb,
+	type OramaDataSearchDb,
+} from './orama-search-db';
 
 type GameDataDoc = SearchableGameDataDoc;
 
-const INDEX_URL = '/orama-data-search.json';
 const QUICK_SEARCH_LIMIT = 10;
 const DEBOUNCE_MS = 200;
-
-const ORAMA_SCHEMA = {
-	id: 'string',
-	type: 'string',
-	title: 'string',
-	content: 'string',
-	href: 'string',
-	subtitle: 'string',
-	cardJson: 'string',
-	spellTier: 'string',
-	spellSchool: 'string',
-	spellTarget: 'string',
-	spellUtility: 'string',
-	spellSecret: 'string',
-	monsterLevel: 'string',
-	monsterFamily: 'string',
-	monsterKind: 'string',
-	monsterArmor: 'string',
-	monsterSpeed: 'string',
-	monsterSize: 'string',
-	monsterMinion: 'string',
-	monsterLegendary: 'string',
-	classKeyStats: 'string',
-	classHitDie: 'string',
-	weaponCategory: 'string',
-	ancestrySection: 'string',
-	ancestrySize: 'string',
-	armorCategory: 'string',
-	magicKind: 'string',
-	magicSource: 'string',
-	magicReward: 'string',
-} as const;
-
-export type OramaDataSearchDb = ReturnType<typeof create>;
-
-let dbPromise: Promise<OramaDataSearchDb> | undefined;
-
-export function getOramaDataSearchDb(): Promise<OramaDataSearchDb> {
-	if (!dbPromise) {
-		dbPromise = (async () => {
-			const r = await fetch(INDEX_URL);
-			if (!r.ok) throw new Error(`Failed to load index (${r.status})`);
-			const raw = (await r.json()) as RawData;
-			const instance = create({ schema: ORAMA_SCHEMA });
-			load(instance, raw);
-			return instance;
-		})();
-	}
-	return dbPromise;
-}
 
 function debounce<T extends (...args: Parameters<T>) => void>(
 	fn: T,
@@ -306,3 +259,5 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 	};
 	document.addEventListener('click', onDocClick, true);
 }
+
+export type { OramaDataSearchDb } from './orama-search-db';

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { wireSearchShortcut } from '../../scripts/wire-search-shortcut';
+	import { wireSearchShortcut } from '../../search/wire-search-shortcut';
 	import OramaQuickSearchBar from './OramaQuickSearchBar.svelte';
 	import OramaQuickSearchDropdown from './OramaQuickSearchDropdown.svelte';
 
