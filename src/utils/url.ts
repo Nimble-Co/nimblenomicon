@@ -2,6 +2,8 @@
  * URL helpers for Astro `base` and Starlight trailing-slash behavior.
  */
 
+import type { OramaDataSearchType } from '../constants/orama-data-search';
+
 /** `import.meta.env.BASE_URL` without a trailing slash (`''` at site root). */
 export function normalizeBaseUrl(baseUrl: string): string {
 	return baseUrl.replace(/\/$/, '');
@@ -20,4 +22,18 @@ export function searchPageUrl(
 	const base = normalizeBaseUrl(baseUrl);
 	const path = `${base}/search`;
 	return trailingSlash === 'always' ? `${path}/` : path;
+}
+
+/**
+ * Game-data search with an optional type filter (`?type=`), e.g. browse-all spells.
+ */
+export function dataSearchBrowseUrl(
+	baseUrl: string,
+	trailingSlash: StarlightTrailingSlash,
+	type: OramaDataSearchType,
+): string {
+	const path = searchPageUrl(baseUrl, trailingSlash);
+	const params = new URLSearchParams();
+	params.set('type', type);
+	return `${path}?${params.toString()}`;
 }

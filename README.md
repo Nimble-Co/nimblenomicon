@@ -4,7 +4,7 @@
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
-> **Early WIP.** This repo is an exploratory workspace. The vision and feature set are still being brainstormed; nothing here is committed road map. See [brainstorm.md](brainstorm.md) for the full idea dump and treat it as living, incomplete documentation.
+> **Early WIP.** This repo is an exploratory workspace. The vision and feature set are still being brainstormed; nothing here is committed road map. See [.agents/brainstorm.md](.agents/brainstorm.md) for the full idea dump and treat it as living, incomplete documentation.
 
 ---
 
@@ -27,11 +27,11 @@ Mockup snapshot:
 
 ## Repo contents
 
-| File / path                         | Purpose                                                                                                                                    |
-| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| [brainstorm.md](brainstorm.md)      | Full brainstorm: detailed feature lists, market research, performance/architecture, accessibility, and UX notes.                           |
-| [@design/mockups/](design/mockups/) | Image mockups and UI sketches for early exploration.                                                                                       |
-| [.app/](.app/)                      | Astro + [Starlight](https://starlight.astro.build) documentation site (Tailwind). See [Documentation site](#documentation-site-app) below. |
+| File / path                                    | Purpose                                                                                                                                    |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| [.agents/brainstorm.md](.agents/brainstorm.md) | Full brainstorm: detailed feature lists, market research, performance/architecture, accessibility, and UX notes.                           |
+| [@design/mockups/](design/mockups/)            | Image mockups and UI sketches for early exploration.                                                                                       |
+| [.app/](.app/)                                 | Astro + [Starlight](https://starlight.astro.build) documentation site (Tailwind). See [Documentation site](#documentation-site-app) below. |
 
 ---
 

@@ -1,0 +1,51 @@
+---
+/**
+ * Shared shell for static game-data detail routes: Starlight page chrome, back link to `/search/`,
+ * optional markdown body (wrapped in `data-auto-link` for build-time xref), or default slot for
+ * custom layouts (e.g. stat blocks).
+ */
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import type { OramaDataSearchType } from '../constants/orama-data-search';
+import { renderMarkdown } from '../docs/render-markdown';
+import DetailPageBackToList from './DetailPageBackToList.astro';
+import DetailPageSourceRef from './DetailPageSourceRef.astro';
+
+export interface Props {
+	title: string;
+	description: string;
+	backLabel: string;
+	searchType: OramaDataSearchType;
+	sourceHref: string;
+	sourceName: string;
+	/** When set, rendered inside `data-auto-link` for the auto-xref HTML pass. Omit for slot-only pages. */
+	bodyMarkdown?: string;
+}
+
+const {
+	title,
+	description,
+	backLabel,
+	searchType,
+	sourceHref,
+	sourceName,
+	bodyMarkdown,
+} = Astro.props;
+
+const useMarkdown = bodyMarkdown !== undefined;
+const bodyHtml = useMarkdown ? await renderMarkdown(bodyMarkdown) : '';
+---
+
+<StarlightPage
+	hasSidebar={false}
+	frontmatter={{
+		title,
+		description,
+		tableOfContents: false,
+		prev: false,
+		next: false,
+	}}
+>
+	<DetailPageBackToList searchType={searchType} label={backLabel} />
+	{useMarkdown ? <div data-auto-link set:html={bodyHtml} /> : <slot />}
+	<DetailPageSourceRef href={sourceHref} sourceName={sourceName} />
+</StarlightPage>

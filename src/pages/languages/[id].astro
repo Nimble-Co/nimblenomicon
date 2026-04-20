@@ -1,9 +1,7 @@
 ---
-import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
-import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
-import { renderMarkdown } from '../../utils/render-markdown';
+import DetailPage from '../../components/DetailPage.astro';
 import { languages } from '../../models/languages';
+import { languageDetailPageProps } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
 	return languages.map((row) => ({
@@ -13,24 +11,6 @@ export function getStaticPaths() {
 }
 
 const { row } = Astro.props;
-
-const bodyMarkdown = row.description?.trim() ?? '';
 ---
 
-<StarlightPage
-	hasSidebar={false}
-	frontmatter={{
-		title: row.name,
-		description: `Language — ${row.name}.`,
-		tableOfContents: false,
-		prev: false,
-		next: false,
-	}}
->
-	<DetailPageBackToList href="/languages/" label="All Languages" />
-	<div data-auto-link set:html={await renderMarkdown(bodyMarkdown)} />
-	<DetailPageSourceRef
-		href={`/core-rules/#${row.id}`}
-		sourceName="Core Rules"
-	/>
-</StarlightPage>
+<DetailPage {...languageDetailPageProps(row)} />

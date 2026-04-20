@@ -1,5 +1,5 @@
 ---
-import { renderMarkdown } from '../utils/render-markdown';
+import { renderMarkdown } from '../docs/render-markdown';
 import { getHeroClassById } from '../models/class';
 
 interface Props {
@@ -66,7 +66,7 @@ const subclassesRendered = await Promise.all(
 
 const statRows: { label: string; value: string }[] = [
 	{ label: 'Key Stats', value: hc.keyStatsDisplay },
-	{ label: 'Hit Die', value: hc.hitDieLabel },
+	{ label: 'Hit Die', value: hc.hitDieNotation },
 	{ label: 'Starting HP', value: String(hc.startingHp) },
 	{ label: 'Saves', value: hc.savesDisplay },
 	{ label: 'Armor', value: hc.armorDisplay },

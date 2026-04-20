@@ -3,7 +3,7 @@
  * Starlight Pagination, but prev/next are computed from the current section's sidebar only.
  */
 import Icon from '../../node_modules/@astrojs/starlight/user-components/Icon.astro';
-import { resolveSectionPagination } from '../utils/section-sidebar';
+import { resolveSectionPagination } from '../starlight/section-sidebar';
 
 const { dir } = Astro.locals.starlightRoute;
 const isRtl = dir === 'rtl';

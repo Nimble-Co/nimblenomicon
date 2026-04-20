@@ -1,17 +1,33 @@
 ---
 /**
- * Back link above detail-page body: arrow + label to the section index (e.g. All Spells → /spells/).
+ * Back link above detail-page body: arrow + label to browse that entity type on /search/.
  */
-import Icon from '../../node_modules/@astrojs/starlight/user-components/Icon.astro';
+import { Icon } from '@astrojs/starlight/components';
+import type { OramaDataSearchType } from '../constants/orama-data-search';
+import { dataSearchBrowseUrl } from '../utils/url';
+import project from 'virtual:starlight/project-context';
 
 export interface Props {
-	href: string;
 	label: string;
+	searchType: OramaDataSearchType;
 }
 
-const { href, label } = Astro.props;
+const { label, searchType } = Astro.props;
 
-const dir = Astro.locals.starlightRoute?.dir ?? 'ltr';
+const href = dataSearchBrowseUrl(
+	import.meta.env.BASE_URL,
+	project.trailingSlash,
+	searchType,
+);
+
+/** `src/pages/*` detail routes are not Starlight content entries; `starlightRoute` may be absent. */
+let dir: 'ltr' | 'rtl' = 'ltr';
+try {
+	const r = Astro.locals.starlightRoute;
+	if (r) dir = r.dir;
+} catch {
+	dir = 'ltr';
+}
 const isRtl = dir === 'rtl';
 ---
 

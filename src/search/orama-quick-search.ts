@@ -1,93 +1,22 @@
-import { create, load, search, type RawData } from '@orama/orama';
+import { search } from '@orama/orama';
 import {
-	ORAMA_DATA_SEARCH_TYPE_LABELS,
+	ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR,
 	type OramaDataSearchType,
 } from '../constants/orama-data-search';
 import { bookLabel, type BookSearchDoc } from '../models/book-search';
 import type { SearchableGameDataDoc } from '../models/search-filters';
+import { quickSearchSecondLine } from './quickSearchSecondLine';
+import {
+	getOramaBooksSearchDb,
+	getOramaDataSearchDb,
+	type OramaBooksSearchDb,
+	type OramaDataSearchDb,
+} from './orama-search-db';
 
 type GameDataDoc = SearchableGameDataDoc;
 
-const INDEX_URL = '/orama-data-search.json';
-const BOOKS_INDEX_URL = '/orama-books-search.json';
 const QUICK_SEARCH_LIMIT = 10;
 const DEBOUNCE_MS = 200;
-
-const ORAMA_SCHEMA = {
-	id: 'string',
-	type: 'string',
-	title: 'string',
-	content: 'string',
-	href: 'string',
-	subtitle: 'string',
-	spellTier: 'string',
-	spellSchool: 'string',
-	spellTarget: 'string',
-	spellUtility: 'string',
-	spellSecret: 'string',
-	monsterLevel: 'string',
-	monsterFamily: 'string',
-	monsterKind: 'string',
-	monsterArmor: 'string',
-	monsterSpeed: 'string',
-	monsterSize: 'string',
-	monsterMinion: 'string',
-	monsterLegendary: 'string',
-	classKeyStats: 'string',
-	classHitDie: 'string',
-	weaponCategory: 'string',
-	ancestrySection: 'string',
-	ancestrySize: 'string',
-	armorCategory: 'string',
-	magicKind: 'string',
-	magicSource: 'string',
-	magicReward: 'string',
-} as const;
-
-const BOOKS_SCHEMA = {
-	id: 'string',
-	type: 'string',
-	book: 'string',
-	title: 'string',
-	subtitle: 'string',
-	content: 'string',
-	href: 'string',
-} as const;
-
-export type OramaDataSearchDb = ReturnType<typeof create>;
-export type OramaBooksSearchDb = ReturnType<typeof create>;
-
-let dbPromise: Promise<OramaDataSearchDb> | undefined;
-let booksDbPromise: Promise<OramaBooksSearchDb | null> | undefined;
-
-export function getOramaDataSearchDb(): Promise<OramaDataSearchDb> {
-	if (!dbPromise) {
-		dbPromise = (async () => {
-			const r = await fetch(INDEX_URL);
-			if (!r.ok) throw new Error(`Failed to load index (${r.status})`);
-			const raw = (await r.json()) as RawData;
-			const instance = create({ schema: ORAMA_SCHEMA });
-			load(instance, raw);
-			return instance;
-		})();
-	}
-	return dbPromise;
-}
-
-export function getOramaBooksSearchDb(): Promise<OramaBooksSearchDb | null> {
-	if (!booksDbPromise) {
-		booksDbPromise = (async () => {
-			const r = await fetch(BOOKS_INDEX_URL);
-			if (r.status === 404) return null;
-			if (!r.ok) return null;
-			const raw = (await r.json()) as RawData;
-			const instance = create({ schema: BOOKS_SCHEMA });
-			load(instance, raw);
-			return instance;
-		})();
-	}
-	return booksDbPromise;
-}
 
 function debounce<T extends (...args: Parameters<T>) => void>(
 	fn: T,
@@ -212,7 +141,7 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 		}
 
 		const typeLabel = (t: OramaDataSearchType) =>
-			ORAMA_DATA_SEARCH_TYPE_LABELS[t] ?? t;
+			ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR[t] ?? t;
 
 		const rowKindLabel = (doc: GameDataDoc | BookSearchDoc): string => {
 			if (doc.type === 'books') {
@@ -238,19 +167,22 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 			const doc = h.document;
 			const kind = escapeHtml(rowKindLabel(doc));
 			const title = escapeHtml(doc.title);
-			const excerpt =
-				doc.type === 'books' && doc.subtitle
-					? `<span class="mt-0.5 line-clamp-2 text-xs text-fg-muted">${escapeHtml(doc.subtitle)}</span>`
+			const descRaw =
+				doc.type === 'books' ? doc.subtitle : quickSearchSecondLine(doc);
+			const desc = escapeHtml(descRaw);
+			const descLine =
+				descRaw !== ''
+					? `<span class="mt-0.5 block w-full text-sm leading-snug text-fg-muted line-clamp-2">${desc}</span>`
 					: '';
 			if (doc.href) {
 				const optId = `${panel.id}-opt-${optNum}`;
 				optNum += 1;
 				parts.push(
 					`<li role="presentation">`,
-					`<a role="option" id="${escapeHtml(optId)}" class="ss-quick-link flex flex-col items-start gap-0.5 px-3 py-2 text-left no-underline hover:bg-gray-200/80 dark:hover:bg-gray-800/80" href="${escapeHtml(doc.href)}">`,
+					`<a role="option" id="${escapeHtml(optId)}" class="ss-quick-link flex flex-col items-start gap-0 px-3 py-2 text-left no-underline hover:bg-gray-200/80 dark:hover:bg-gray-800/80" href="${escapeHtml(doc.href)}">`,
 					`<span class="text-[0.65rem] font-medium uppercase tracking-wide text-fg-muted leading-none">${kind}</span>`,
-					`<span class="text-sm font-medium text-fg">${title}</span>`,
-					excerpt,
+					`<span class="text-sm font-medium leading-tight text-fg">${title}</span>`,
+					descLine,
 					`</a>`,
 					`</li>`,
 				);
@@ -258,8 +190,8 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 				parts.push(
 					`<li role="presentation" class="px-3 py-2 text-left">`,
 					`<span class="text-[0.65rem] font-medium uppercase tracking-wide text-fg-muted">${kind}</span>`,
-					`<span class="mt-0.5 block text-sm font-medium text-fg">${title}</span>`,
-					excerpt,
+					`<span class="mt-0.5 block text-sm font-medium leading-tight text-fg">${title}</span>`,
+					descLine,
 					`</li>`,
 				);
 			}
@@ -356,3 +288,5 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 	};
 	document.addEventListener('click', onDocClick, true);
 }
+
+export type { OramaDataSearchDb } from './orama-search-db';

@@ -11,7 +11,7 @@
 		FILTER_MULTI_LABEL_CLASS,
 		FILTER_MULTI_VALUE_CLASS,
 		multiDropdownSummaryText,
-	} from '../../scripts/orama-search-toolbar-constants';
+	} from './toolbar-styles';
 
 	type Option = { value: string; label: string };
 

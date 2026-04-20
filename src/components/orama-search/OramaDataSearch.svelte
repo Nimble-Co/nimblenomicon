@@ -2,10 +2,9 @@
 	import { search } from '@orama/orama';
 	import { onMount, tick } from 'svelte';
 	import {
-		ORAMA_DATA_SEARCH_TYPE_LABELS,
 		ORAMA_DATA_SEARCH_TYPE_ORDER,
 		type OramaDataSearchType,
-	} from '../constants/orama-data-search';
+	} from '../../constants/orama-data-search';
 	import {
 		ANCESTRY_SECTION_OPTIONS,
 		ARMOR_CATEGORY_OPTIONS,
@@ -26,8 +25,7 @@
 		SPELL_TARGET_FILTER_OPTIONS,
 		WEAPON_CATEGORY_OPTIONS,
 		ancestrySizeOptions,
-	} from '../models/search-filter-options';
-	import { bookLabel } from '../models/book-search';
+	} from '../../models/search-filter-options';
 	import {
 		buildOramaWhereForFilters,
 		clearMultiFilterDim,
@@ -36,34 +34,35 @@
 		filterKeysForType,
 		hasAnyActiveFilters,
 		initialFiltersForType,
+		patchSearchFiltersState,
 		setMultiFilterValue,
 		type MultiSelectFilterDim,
 		type SearchFiltersState,
 		type SearchResultDoc,
 		type SearchableGameDataDoc,
-	} from '../models/search-filters';
-	import { patchSearchFiltersState } from '../scripts/orama-search-filters-ui';
+	} from '../../models/search-filters';
 	import {
 		getOramaBooksSearchDb,
 		getOramaDataSearchDb,
 		type OramaBooksSearchDb,
 		type OramaDataSearchDb,
-	} from '../scripts/orama-search-ui';
+	} from '../../search/orama-search-db';
 	import {
 		FILTER_MULTI_LABEL_CLASS,
 		FILTER_TOOLBAR_LABEL_SPACER_CLASS,
 		FILTER_TOOLBAR_OPTIONS_ROW_CLASS,
 		pressedPillClass,
 		typeFilterLabel,
-	} from '../scripts/orama-search-toolbar-constants';
-	import OramaSearchFilterCheckboxLabel from './orama-search/OramaSearchFilterCheckboxLabel.svelte';
-	import OramaSearchMultiFilterDropdown from './orama-search/OramaSearchMultiFilterDropdown.svelte';
-	import OramaSearchTypePicker from './orama-search/OramaSearchTypePicker.svelte';
+	} from './toolbar-styles';
+	import OramaSearchFilterCheckboxLabel from './OramaSearchFilterCheckboxLabel.svelte';
+	import OramaSearchMultiFilterDropdown from './OramaSearchMultiFilterDropdown.svelte';
+	import OramaSearchTypePicker from './OramaSearchTypePicker.svelte';
+	import SearchResultCard from './cards/SearchResultCard.svelte';
 	import {
 		readSearchPageParams,
 		setSearchPageUrl,
 		stripInvalidTypeFromUrl,
-	} from '../scripts/orama-search-url';
+	} from '../../search/orama-search-url';
 
 	type GameDataDoc = SearchableGameDataDoc;
 
@@ -437,16 +436,6 @@
 		}
 	}
 
-	const typeLabel = (t: OramaDataSearchType) =>
-		ORAMA_DATA_SEARCH_TYPE_LABELS[t] ?? t;
-
-	function resultKindLine(doc: SearchResultDoc): string {
-		if (doc.type === 'books') {
-			return `${typeLabel('books')} · ${bookLabel(doc.book)}`;
-		}
-		return typeLabel(doc.type);
-	}
-
 	function headerSearchInputs(): HTMLInputElement[] {
 		const out: HTMLInputElement[] = [];
 		const d = document.querySelector<HTMLInputElement>('#ss-desktop-q');
@@ -745,40 +734,10 @@
 				{/if}
 			</p>
 		{:else}
-			<ul class="mt-3 list-none divide-y divide-hairline p-0">
+			<ul class="mt-3 list-none space-y-4 p-0">
 				{#each results as doc (doc.id)}
-					<li class="flex flex-col gap-0.5 py-2">
-						<div
-							class="text-xs font-medium uppercase tracking-wide text-fg-muted leading-none"
-						>
-							{resultKindLine(doc)}
-						</div>
-						<div class="text-sm leading-snug text-fg-muted">
-							{#if doc.href}
-								<a
-									href={doc.href}
-									class="text-fg font-medium underline decoration-fg/30 underline-offset-2 hover:decoration-fg"
-								>
-									{doc.title}
-								</a>
-								{#if doc.type === 'books' && doc.subtitle}
-									<p class="mt-1 text-xs leading-snug text-fg-muted">
-										{doc.subtitle}
-									</p>
-								{:else if doc.subtitle}
-									{' — '}{doc.subtitle}
-								{/if}
-							{:else}
-								<span class="text-fg font-medium">{doc.title}</span>
-								{#if doc.type === 'books' && doc.subtitle}
-									<p class="mt-1 text-xs leading-snug text-fg-muted">
-										{doc.subtitle}
-									</p>
-								{:else if doc.subtitle}
-									{' — '}{doc.subtitle}
-								{/if}
-							{/if}
-						</div>
+					<li>
+						<SearchResultCard {doc} />
 					</li>
 				{/each}
 			</ul>

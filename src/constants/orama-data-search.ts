@@ -4,6 +4,7 @@
  */
 export const ORAMA_DATA_SEARCH_TYPE_ORDER = [
 	'monster',
+	'condition',
 	'spell',
 	'class',
 	'weapon',
@@ -34,5 +35,26 @@ export const ORAMA_DATA_SEARCH_TYPE_LABELS: Record<
 	monster: 'Monsters',
 	armor: 'Armor',
 	language: 'Languages',
+	condition: 'Conditions',
+	books: 'Books',
+};
+
+/** Singular labels for per-result cards (title-case, not forced uppercase in CSS). */
+export const ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR: Record<
+	OramaDataSearchType,
+	string
+> = {
+	ancestry: 'Ancestry',
+	class: 'Class',
+	background: 'Background',
+	equipment: 'Equipment',
+	'magic-item': 'Magic item',
+	weapon: 'Weapon',
+	spell: 'Spell',
+	glossary: 'Glossary',
+	monster: 'Monster',
+	armor: 'Armor',
+	language: 'Language',
+	condition: 'Condition',
 	books: 'Books',
 };

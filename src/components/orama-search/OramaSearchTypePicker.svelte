@@ -9,7 +9,7 @@
 		TYPE_FILTER_PILL_ACTIVE_CLASS,
 		TYPE_FILTER_PILL_CLASS,
 		typeFilterLabel,
-	} from '../../scripts/orama-search-toolbar-constants';
+	} from './toolbar-styles';
 
 	let {
 		mode,
@@ -43,7 +43,7 @@
 			aria-pressed="true"
 			onclick={() => onTypeMenuPick('')}
 		>
-			All types
+			All
 		</button>
 		{#each ORAMA_DATA_SEARCH_TYPE_ORDER as t (t)}
 			<button
@@ -102,7 +102,7 @@
 					role="menuitem"
 					onclick={() => onTypeMenuPick('')}
 				>
-					All types
+					All
 				</button>
 				{#each ORAMA_DATA_SEARCH_TYPE_ORDER as t (t)}
 					<button

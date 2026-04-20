@@ -68,9 +68,37 @@ const subclassRowSchema = z
 	})
 	.strict();
 
-function hitDieLabel(hitDie: string): string {
+/** Normalized die only, e.g. `d12` (for label + value rows where the label is "Hit Die"). */
+function hitDieNotation(hitDie: string): string {
 	const trimmed = hitDie.trim().toLowerCase();
-	return trimmed.startsWith('d') ? `1${trimmed}` : trimmed;
+	const m = trimmed.match(/^(?:1)?(d\d+)$/);
+	if (m) {
+		return m[1];
+	}
+	return trimmed;
+}
+
+/** Verbose form for inline search cards and filters, e.g. `d12 hit die`. */
+function hitDieLabel(hitDie: string): string {
+	const notation = hitDieNotation(hitDie);
+	if (/^d\d+$/.test(notation)) {
+		return `${notation} hit die`;
+	}
+	return notation;
+}
+
+/**
+ * Display line for `/search/` class cards from `cardJson.hitDieLabel`.
+ * Normalizes legacy Orama payloads that still store `1d12` before index rebuild.
+ */
+export function displayClassSearchHitDieLabel(hitDieLabel: string): string {
+	const t = hitDieLabel.trim().toLowerCase();
+	if (/^d\d+ hit die$/.test(t)) return t;
+	const m = t.match(/^(?:1)?(d\d+)$/);
+	if (m) {
+		return `${m[1]} hit die`;
+	}
+	return hitDieLabel.trim();
 }
 
 const SAVE_KEYS = ['STR', 'DEX', 'INT', 'WIL'] as const;
@@ -144,6 +172,7 @@ const heroClassSchema = z
 			subclasses,
 			abilityLists,
 			id,
+			hitDieNotation: hitDieNotation(row.hitDie),
 			hitDieLabel: hitDieLabel(row.hitDie),
 			savesDisplay: savesDisplay(row.saves),
 			weaponsDisplay: weaponsDisplay(row.weapons),

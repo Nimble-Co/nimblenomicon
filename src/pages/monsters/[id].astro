@@ -1,13 +1,12 @@
 ---
-import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import DetailPageBackToList from '../../components/DetailPageBackToList.astro';
-import DetailPageSourceRef from '../../components/DetailPageSourceRef.astro';
+import DetailPage from '../../components/DetailPage.astro';
 import LegendaryStatBlock from '../../components/LegendaryStatBlock.astro';
 import MonsterStatBlock from '../../components/MonsterStatBlock.astro';
 import type { LegendaryEntryData } from '../../models/legendary-monsters';
 import { legendaryMonsters } from '../../models/legendary-monsters';
 import type { MonsterData } from '../../models/monsters';
 import { monsters } from '../../models/monsters';
+import { monsterDetailPageShell } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
 	const seen = new Set<string>();
@@ -48,25 +47,9 @@ export function getStaticPaths() {
 }
 
 const { variant, record } = Astro.props;
-
-const title = record.name;
-const description =
-	variant === 'monster'
-		? `Monster stat block — ${record.name}.`
-		: `Legendary monster — ${record.name}.`;
 ---
 
-<StarlightPage
-	hasSidebar={false}
-	frontmatter={{
-		title,
-		description,
-		tableOfContents: false,
-		prev: false,
-		next: false,
-	}}
->
-	<DetailPageBackToList href="/monsters/" label="All Monsters" />
+<DetailPage {...monsterDetailPageShell(variant, record)}>
 	{
 		variant === 'monster' ? (
 			<MonsterStatBlock
@@ -78,8 +61,4 @@ const description =
 			<LegendaryStatBlock legendaryMonsterId={record.id} />
 		)
 	}
-	<DetailPageSourceRef
-		href={`/game-masters-guide/#${record.id}`}
-		sourceName="Game Master's Guide"
-	/>
-</StarlightPage>
+</DetailPage>
