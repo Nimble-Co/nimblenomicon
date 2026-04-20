@@ -5,7 +5,11 @@
 		type SearchResultCardPayload,
 		type SimpleSearchCardPayload,
 	} from '../../../models/search-result-card';
-	import type { SearchableGameDataDoc } from '../../../models/search-filters';
+	import type {
+		SearchResultDoc,
+		SearchableGameDataDoc,
+	} from '../../../models/search-filters';
+	import SearchResultBookCard from './SearchResultBookCard.svelte';
 	import SearchResultClassCard from './SearchResultClassCard.svelte';
 	import SearchResultFallbackCard from './SearchResultFallbackCard.svelte';
 	import SearchResultMonsterCard from './SearchResultMonsterCard.svelte';
@@ -14,12 +18,16 @@
 	import SearchResultWeaponCard from './SearchResultWeaponCard.svelte';
 
 	interface Props {
-		doc: SearchableGameDataDoc;
+		doc: SearchResultDoc;
 	}
 
 	let { doc }: Props = $props();
 
-	const payload = $derived(parseSearchResultCard(doc.cardJson));
+	const gameDoc = $derived(doc as SearchableGameDataDoc);
+
+	const payload = $derived(
+		doc.type === 'books' ? null : parseSearchResultCard(gameDoc.cardJson),
+	);
 
 	const simpleKinds = new Set<string>(SIMPLE_SEARCH_CARD_KINDS);
 
@@ -30,16 +38,18 @@
 	}
 </script>
 
-{#if payload?.kind === 'spell'}
-	<SearchResultSpellCard {doc} spell={payload} />
+{#if doc.type === 'books'}
+	<SearchResultBookCard {doc} />
+{:else if payload?.kind === 'spell'}
+	<SearchResultSpellCard doc={gameDoc} spell={payload} />
 {:else if payload?.kind === 'monster'}
-	<SearchResultMonsterCard {doc} {payload} />
+	<SearchResultMonsterCard doc={gameDoc} {payload} />
 {:else if payload?.kind === 'class'}
-	<SearchResultClassCard {doc} classPayload={payload} />
+	<SearchResultClassCard doc={gameDoc} classPayload={payload} />
 {:else if payload?.kind === 'weapon'}
-	<SearchResultWeaponCard {doc} weapon={payload} />
+	<SearchResultWeaponCard doc={gameDoc} weapon={payload} />
 {:else if payload && isSimplePayload(payload)}
-	<SearchResultSimpleCard {doc} simple={payload} />
+	<SearchResultSimpleCard doc={gameDoc} simple={payload} />
 {:else}
-	<SearchResultFallbackCard {doc} />
+	<SearchResultFallbackCard doc={gameDoc} />
 {/if}

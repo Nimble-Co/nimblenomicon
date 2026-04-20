@@ -8,6 +8,7 @@
 	import {
 		ANCESTRY_SECTION_OPTIONS,
 		ARMOR_CATEGORY_OPTIONS,
+		bookSearchFilterOptions,
 		classHitDieOptions,
 		classKeyStatOptions,
 		MAGIC_ITEM_KIND_OPTIONS,
@@ -37,10 +38,13 @@
 		setMultiFilterValue,
 		type MultiSelectFilterDim,
 		type SearchFiltersState,
+		type SearchResultDoc,
 		type SearchableGameDataDoc,
 	} from '../../models/search-filters';
 	import {
+		getOramaBooksSearchDb,
 		getOramaDataSearchDb,
+		type OramaBooksSearchDb,
 		type OramaDataSearchDb,
 	} from '../../search/orama-search-db';
 	import {
@@ -62,6 +66,8 @@
 
 	type GameDataDoc = SearchableGameDataDoc;
 
+	const BOOK_SEARCH_FILTER_OPTS = bookSearchFilterOptions();
+
 	const SEARCH_LIMIT = 80;
 	const SEARCH_LIMIT_FILTERED = 500;
 	const BROWSE_RANDOM_COUNT = 50;
@@ -74,12 +80,13 @@
 	let activeType = $state<OramaDataSearchType | null>(null);
 	let activeFilters = $state<SearchFiltersState>(emptySearchFiltersState());
 	let db = $state<OramaDataSearchDb | null>(null);
+	let booksDb = $state<OramaBooksSearchDb | null>(null);
 	let loading = $state(true);
 	let loadError = $state<string | null>(null);
 	let liveMessage = $state('');
 	let collapsedTypeOpen = $state(false);
 
-	let results = $state<GameDataDoc[]>([]);
+	let results = $state<SearchResultDoc[]>([]);
 	let secondaryWrapEl: HTMLDivElement | undefined = $state();
 	let collapsedTypeWrapEl: HTMLDivElement | undefined = $state();
 
@@ -143,10 +150,11 @@
 
 	function computeResults(
 		instance: OramaDataSearchDb,
+		booksInstance: OramaBooksSearchDb | null,
 		qRaw: string,
 		type: OramaDataSearchType | null,
 		filters: SearchFiltersState,
-	): GameDataDoc[] {
+	): SearchResultDoc[] {
 		const q = qRaw.trim();
 		const browseAllTypes = q.length === 0 && !type;
 
@@ -156,6 +164,33 @@
 				.filter(Boolean)
 				.map((h) => h.document as GameDataDoc);
 			return shuffleBrowseDocs(pool).slice(0, BROWSE_RANDOM_COUNT);
+		}
+
+		if (type === 'books') {
+			if (!booksInstance) return [];
+			const fetchLimit =
+				hasAnyActiveFilters(type, filters) || filters.book.length > 0
+					? SEARCH_LIMIT_FILTERED
+					: SEARCH_LIMIT;
+			const builtWhere = buildOramaWhereForFilters(type, filters);
+			const whereClause = builtWhere ?? { type: 'books' };
+			const res =
+				q.length > 0
+					? search(booksInstance, {
+							term: q,
+							limit: fetchLimit,
+							properties: ['title', 'content', 'subtitle'],
+							where: whereClause as never,
+						})
+					: search(booksInstance, {
+							limit: fetchLimit,
+							where: whereClause as never,
+						});
+			let docs = res.hits
+				.filter(Boolean)
+				.map((h) => h.document as SearchResultDoc);
+			docs = docs.filter((doc) => documentMatchesFilters(doc, type, filters));
+			return docs.slice(0, SEARCH_LIMIT);
 		}
 
 		const fetchLimit =
@@ -186,13 +221,28 @@
 		if (type !== null) {
 			docs = docs.filter((doc) => documentMatchesFilters(doc, type, filters));
 		}
-		return docs.slice(0, SEARCH_LIMIT);
+		let out: SearchResultDoc[] = docs.slice(0, SEARCH_LIMIT);
+
+		if (type === null && q.length > 0 && booksInstance) {
+			const bRes = search(booksInstance, {
+				term: q,
+				limit: SEARCH_LIMIT,
+				properties: ['title', 'content', 'subtitle'],
+			});
+			const bookDocs = bRes.hits
+				.filter(Boolean)
+				.map((h) => h.document as SearchResultDoc);
+			const room = Math.max(0, SEARCH_LIMIT - out.length);
+			out = out.concat(bookDocs.slice(0, room));
+		}
+
+		return out;
 	}
 
 	function refreshResults() {
 		if (!db) return;
 		const q = query;
-		const docs = computeResults(db, q, activeType, activeFilters);
+		const docs = computeResults(db, booksDb, q, activeType, activeFilters);
 
 		const browseAllTypes = q.trim().length === 0 && !activeType;
 
@@ -417,9 +467,10 @@
 			el.addEventListener('search', onNavQuerySearch);
 		}
 
-		getOramaDataSearchDb()
-			.then((instance) => {
+		Promise.all([getOramaDataSearchDb(), getOramaBooksSearchDb()])
+			.then(([instance, books]) => {
 				db = instance;
+				booksDb = books;
 				loading = false;
 				loadError = null;
 				stripInvalidTypeFromUrl();
@@ -630,6 +681,16 @@
 							onClear={() => onClearDim(row.dim)}
 						/>
 					{/each}
+				{:else if activeType === 'books'}
+					<OramaSearchMultiFilterDropdown
+						dim="book"
+						label="Book"
+						selectedValues={activeFilters.book}
+						options={BOOK_SEARCH_FILTER_OPTS}
+						onCheckboxChange={(value, checked) =>
+							onMultiCheckbox('book', value, checked)}
+						onClear={() => onClearDim('book')}
+					/>
 				{/if}
 
 				{#if activeType !== 'spell'}

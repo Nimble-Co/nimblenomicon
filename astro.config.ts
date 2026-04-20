@@ -7,6 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 
 import { autoXrefIntegration } from './src/integrations/auto-xref/integration';
+import { oramaBooksIndexIntegration } from './src/integrations/orama-books-index/integration';
 import { STARLIGHT_GLOBAL_SIDEBAR } from './src/config/section-sidebars';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -32,6 +33,7 @@ export default defineConfig({
 	base,
 	integrations: [
 		autoXrefIntegration({ base: baseForIntegrations }),
+		oramaBooksIndexIntegration({ base: baseForIntegrations }),
 		svelte(),
 		starlight({
 			title: 'The Nimblenomicon',

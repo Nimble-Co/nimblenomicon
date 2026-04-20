@@ -3,10 +3,13 @@ import {
 	ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR,
 	type OramaDataSearchType,
 } from '../constants/orama-data-search';
+import { bookLabel, type BookSearchDoc } from '../models/book-search';
 import type { SearchableGameDataDoc } from '../models/search-filters';
 import { quickSearchSecondLine } from './quickSearchSecondLine';
 import {
+	getOramaBooksSearchDb,
 	getOramaDataSearchDb,
+	type OramaBooksSearchDb,
 	type OramaDataSearchDb,
 } from './orama-search-db';
 
@@ -102,7 +105,11 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 		input.setAttribute('aria-controls', panel.id);
 	}
 
-	const renderQuick = (term: string, db: OramaDataSearchDb): void => {
+	const renderQuick = (
+		term: string,
+		db: OramaDataSearchDb,
+		booksDb: OramaBooksSearchDb | null,
+	): void => {
 		const q = term.trim();
 		if (q.length === 0) {
 			hide();
@@ -115,12 +122,33 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 			properties: ['title', 'content', 'subtitle'],
 		});
 
-		const hits = res.hits.filter(Boolean) as {
+		const gameHits = res.hits.filter(Boolean) as {
 			document: GameDataDoc;
 		}[];
 
+		let hits: { document: GameDataDoc | BookSearchDoc }[] = gameHits.slice();
+		if (booksDb) {
+			const bRes = search(booksDb, {
+				term: q,
+				limit,
+				properties: ['title', 'content', 'subtitle'],
+			});
+			const bookHits = bRes.hits.filter(Boolean) as {
+				document: BookSearchDoc;
+			}[];
+			const room = Math.max(0, limit - hits.length);
+			if (room > 0) hits = hits.concat(bookHits.slice(0, room));
+		}
+
 		const typeLabel = (t: OramaDataSearchType) =>
 			ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR[t] ?? t;
+
+		const rowKindLabel = (doc: GameDataDoc | BookSearchDoc): string => {
+			if (doc.type === 'books') {
+				return `Books · ${bookLabel(doc.book)}`;
+			}
+			return typeLabel(doc.type);
+		};
 
 		if (hits.length === 0) {
 			panel.innerHTML = `<p class="ss-quick-empty px-3 py-2 text-left text-sm text-fg-muted">No results for “${escapeHtml(q)}”.</p>`;
@@ -137,9 +165,10 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 		let optNum = 0;
 		for (const h of hits) {
 			const doc = h.document;
-			const kind = escapeHtml(typeLabel(doc.type));
+			const kind = escapeHtml(rowKindLabel(doc));
 			const title = escapeHtml(doc.title);
-			const descRaw = quickSearchSecondLine(doc);
+			const descRaw =
+				doc.type === 'books' ? doc.subtitle : quickSearchSecondLine(doc);
 			const desc = escapeHtml(descRaw);
 			const descLine =
 				descRaw !== ''
@@ -181,9 +210,9 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 			hide();
 			return;
 		}
-		getOramaDataSearchDb()
-			.then((db) => {
-				renderQuick(q, db);
+		Promise.all([getOramaDataSearchDb(), getOramaBooksSearchDb()])
+			.then(([db, booksDb]) => {
+				renderQuick(q, db, booksDb);
 			})
 			.catch(() => {
 				panel.innerHTML = `<p class="ss-quick-empty px-3 py-2 text-left text-sm text-danger">Could not load search.</p>`;

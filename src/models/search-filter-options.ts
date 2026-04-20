@@ -1,6 +1,7 @@
 /**
  * Labelled option lists for search filter UI (derived from game data).
  */
+import { BOOK_SEARCH_IDS, bookLabel } from './book-search';
 import { spellSchools } from './spell-schools';
 import { monsterFamilies } from './monster-families';
 import { monsterKinds } from './monster-kinds';
@@ -151,4 +152,8 @@ export function spellTierOptions(): { value: string; label: string }[] {
 		out.push({ value: String(t), label: `Tier ${t}` });
 	}
 	return out;
+}
+
+export function bookSearchFilterOptions(): { value: string; label: string }[] {
+	return BOOK_SEARCH_IDS.map((id) => ({ value: id, label: bookLabel(id) }));
 }

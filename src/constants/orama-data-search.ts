@@ -15,6 +15,7 @@ export const ORAMA_DATA_SEARCH_TYPE_ORDER = [
 	'magic-item',
 	'glossary',
 	'language',
+	'books',
 ] as const;
 
 export type OramaDataSearchType = (typeof ORAMA_DATA_SEARCH_TYPE_ORDER)[number];
@@ -35,6 +36,7 @@ export const ORAMA_DATA_SEARCH_TYPE_LABELS: Record<
 	armor: 'Armor',
 	language: 'Languages',
 	condition: 'Conditions',
+	books: 'Books',
 };
 
 /** Singular labels for per-result cards (title-case, not forced uppercase in CSS). */
@@ -54,4 +56,5 @@ export const ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR: Record<
 	armor: 'Armor',
 	language: 'Language',
 	condition: 'Condition',
+	books: 'Books',
 };
