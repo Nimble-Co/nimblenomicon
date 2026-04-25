@@ -28,12 +28,12 @@
 	import {
 		buildOramaWhereForFilters,
 		clearMultiFilterDim,
+		cycleTriStateFilter,
 		documentMatchesFilters,
 		emptySearchFiltersState,
 		filterKeysForType,
 		hasAnyActiveFilters,
 		initialFiltersForType,
-		patchSearchFiltersState,
 		setMultiFilterValue,
 		type MultiSelectFilterDim,
 		type SearchFiltersState,
@@ -315,11 +315,13 @@
 
 	function toggleTri(dim: 'minion' | 'legendary') {
 		if (activeType === null) return;
-		const next = patchSearchFiltersState(activeFilters, {
-			kind: 'toggle-tri',
-			dim,
-		});
-		void commitFiltersAndUrl(next, null);
+		void commitFiltersAndUrl(
+			{
+				...activeFilters,
+				[dim]: cycleTriStateFilter(activeFilters[dim]),
+			},
+			null,
+		);
 	}
 
 	function onMultiCheckbox(
