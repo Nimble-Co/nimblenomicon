@@ -1,6 +1,7 @@
 import { z } from 'astro/zod';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 import { readNimbleGameJson } from './nimble-game-data-raw';
+import { refineUniqueStringIdsByKey } from './zod-unique-array';
 
 const magicalItemSourceSchema = z
 	.enum(['core-rules', 'game-masters-guide'])
@@ -58,21 +59,9 @@ function injectDerivedIds(raw: unknown): unknown {
 export const magicalItems: MagicalItemData[] = z
 	.preprocess(
 		injectDerivedIds,
-		z.array(magicalItemSchema).superRefine((rows, ctx) => {
-			const seen = new Map<string, number>();
-			for (let i = 0; i < rows.length; i++) {
-				const id = rows[i]!.id;
-				if (seen.has(id)) {
-					ctx.addIssue({
-						code: 'custom',
-						message: `Duplicate magical item id "${id}" (rows ${seen.get(id)} and ${i})`,
-						path: [i, 'id'],
-					});
-				} else {
-					seen.set(id, i);
-				}
-			}
-		}),
+		z
+			.array(magicalItemSchema)
+			.superRefine(refineUniqueStringIdsByKey<MagicalItemData>('magical item')),
 	)
 	.parse(readNimbleGameJson('magical-items'));
 

@@ -1,6 +1,7 @@
 import { z } from 'astro/zod';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 import { readNimbleGameJson } from './nimble-game-data-raw';
+import { refineUniqueStringIdsByKey } from './zod-unique-array';
 
 const conditionRowSchema = z.preprocess(
 	(raw) => {
@@ -24,21 +25,7 @@ export type ConditionData = z.infer<typeof conditionRowSchema>;
 
 export const conditions: ConditionData[] = z
 	.array(conditionRowSchema)
-	.superRefine((rows, ctx) => {
-		const seen = new Map<string, number>();
-		for (let i = 0; i < rows.length; i++) {
-			const id = rows[i]!.id;
-			if (seen.has(id)) {
-				ctx.addIssue({
-					code: 'custom',
-					message: `Duplicate condition id "${id}" (rows ${seen.get(id)} and ${i})`,
-					path: [i, 'id'],
-				});
-			} else {
-				seen.set(id, i);
-			}
-		}
-	})
+	.superRefine(refineUniqueStringIdsByKey<ConditionData>('condition'))
 	.parse(readNimbleGameJson('conditions'));
 
 /** Root-absolute path to a condition detail page. */

@@ -1,6 +1,7 @@
 import { z } from 'astro/zod';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 import { readNimbleGameJson } from './nimble-game-data-raw';
+import { refineUniqueStringIdsByKey } from './zod-unique-array';
 
 const armorCategorySchema = z.enum([
 	'cloth',
@@ -35,21 +36,7 @@ export type ArmorRowData = z.infer<typeof armorRowSchema>;
 
 export const armorRows: ArmorRowData[] = z
 	.array(armorRowSchema)
-	.superRefine((rows, ctx) => {
-		const seen = new Map<string, number>();
-		for (let i = 0; i < rows.length; i++) {
-			const id = rows[i]!.id;
-			if (seen.has(id)) {
-				ctx.addIssue({
-					code: 'custom',
-					message: `Duplicate armor id "${id}" (rows ${seen.get(id)} and ${i})`,
-					path: [i, 'id'],
-				});
-			} else {
-				seen.set(id, i);
-			}
-		}
-	})
+	.superRefine(refineUniqueStringIdsByKey<ArmorRowData>('armor'))
 	.parse(readNimbleGameJson('armor'));
 
 /** Section order and labels for the Core Rules armor tables. */
