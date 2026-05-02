@@ -1,9 +1,6 @@
+import { pathnameIsGameDataSearchPage } from '../utils/url';
 import { SEARCH_URL_UPDATE_EVENT } from './orama-search-url';
 import { wireSearchShortcut } from './wire-search-shortcut';
-
-function pathnameIsSearchPage(pathname: string): boolean {
-	return /\/search\/?$/.test(pathname);
-}
 
 const MOBILE_PANEL_ENTER = 'animate-ss-mobile-panel-enter';
 const MOBILE_PANEL_LEAVE = 'animate-ss-mobile-panel-leave';
@@ -264,9 +261,9 @@ class SiteSearch extends HTMLElement {
 		} catch {
 			return;
 		}
-		if (!pathnameIsSearchPage(actionUrl.pathname)) return;
+		if (!pathnameIsGameDataSearchPage(actionUrl.pathname)) return;
 		e.preventDefault();
-		const params = pathnameIsSearchPage(window.location.pathname)
+		const params = pathnameIsGameDataSearchPage(window.location.pathname)
 			? new URLSearchParams(window.location.search)
 			: new URLSearchParams();
 		const fd = new FormData(form);

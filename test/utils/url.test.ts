@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
 	dataSearchBrowseUrl,
 	normalizeBaseUrl,
+	pathnameIsGameDataSearchPage,
 	searchPageUrl,
 } from '../../src/utils/url';
 
@@ -32,6 +33,25 @@ describe('searchPageUrl', () => {
 	it('does not add a trailing slash for never or ignore', () => {
 		expect(searchPageUrl('/', 'ignore')).toBe('/search');
 		expect(searchPageUrl('/', 'never')).toBe('/search');
+	});
+});
+
+describe('pathnameIsGameDataSearchPage', () => {
+	it('matches /search with or without trailing slash', () => {
+		expect(pathnameIsGameDataSearchPage('/search')).toBe(true);
+		expect(pathnameIsGameDataSearchPage('/search/')).toBe(true);
+	});
+
+	it('matches prefixed base paths', () => {
+		expect(pathnameIsGameDataSearchPage('/docs/search')).toBe(true);
+		expect(pathnameIsGameDataSearchPage('/docs/search/')).toBe(true);
+	});
+
+	it('rejects non-search paths', () => {
+		expect(pathnameIsGameDataSearchPage('/')).toBe(false);
+		expect(pathnameIsGameDataSearchPage('/docs')).toBe(false);
+		expect(pathnameIsGameDataSearchPage('/search/foo')).toBe(false);
+		expect(pathnameIsGameDataSearchPage('/my-search')).toBe(false);
 	});
 });
 
