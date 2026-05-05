@@ -1,182 +1,182 @@
 [
-  {
-    "name": "Advantage X",
-    "description": "Roll X additional dice and drop the X lowest dice (removing dice from the left to right in the case of a tie)."
-  },
-  {
-    "name": "Ally",
-    "description": "A friendly creature, not yourself."
-  },
-  {
-    "name": "Assess",
-    "description": "In combat, choose one option and make a DC 12 skill check that fits the situation: Ask a Question (the GM answers honestly about a weakness, ability, plans, enemies, the environment, or story), Create an Opening (increase the next Primary Die Roll against a target by 1 this round), or Anticipate Danger (reduce all Primary Dice rolled against you by 1 this round). You cannot assess using the same skill more than once in a single encounter."
-  },
-  {
-    "name": "Attack",
-    "description": "Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc."
-  },
-  {
-    "name": "Blindsight X",
-    "description": "You can sense creatures and obstacles normally within X spaces, ignoring Blinded, darkness, and invisibility."
-  },
-  {
-    "name": "Cantrip",
-    "description": "A basic spell. Costs 0 mana to cast, and their power increases as you level up."
-  },
-  {
-    "name": "Climbing",
-    "description": "A creature with a climbing speed can move across vertical surfaces as flat ground."
-  },
-  {
-    "name": "Concentration",
-    "description": "Some activities require Concentration to maintain; you can only concentrate on one activity at a time. When you are crit while concentrating, make a DC 10 STR save—on a failure, Concentration breaks and the activity fails. Concentration also breaks automatically when you drop to 0 HP or are incapacitated."
-  },
-  {
-    "name": "Cone X",
-    "description": "Starts at the character and extends X spaces outward, becoming up to X spaces wide at the farthest edge."
-  },
-  {
-    "name": "Cover",
-    "description": "A creature mostly obscured from line of sight (e.g. behind a tree, a larger ally, a knocked-over table, or in poor lighting) has Cover and imposes disadvantage on attacks against them. A creature completely obscured from view has Full Cover and cannot typically be targeted by an attack."
-  },
-  {
-    "name": "d44, d66, d88",
-    "description": "Roll 2 of the same dice, the leftmost die is the tens place, and the second is the ones. These rolls cannot miss or crit."
-  },
-  {
-    "name": "Darkvision X",
-    "description": "Can see normally in the dark, up to X spaces."
-  },
-  {
-    "name": "Decrement/Increment",
-    "description": "Use a die one size smaller or larger (d4 » d6 » d8 » d10 » d12 » d20)."
-  },
-  {
-    "name": "Difficult Terrain",
-    "description": "Speed halved while here. (e.g., moving through the space of an enemy)."
-  },
-  {
-    "name": "Disadvantage X",
-    "description": "Roll X additional dice and drop the X highest dice."
-  },
-  {
-    "name": "Distracted",
-    "description": "A target is distracted if it is adjacent to or Taunted by an ally, or if it cannot see you."
-  },
-  {
-    "name": "Encounter",
-    "description": "An encounter begins when Initiative is rolled and ends when hostilities do."
-  },
-  {
-    "name": "Falling",
-    "description": "Suffer 1d6 damage per 10 ft. fallen."
-  },
-  {
-    "name": "Field Rest/Safe Rest",
-    "description": "Field Rests (while adventuring) restore HP. Catch Breath: at least 10 minutes; expend Hit Dice one at a time, roll each and add your STR, and regain that many HP. Make Camp: at least 8 hours with food and sleep; take the maximum value for each Hit Die you expend instead of rolling, and add your STR to each as usual. A Safe Rest takes place in a safe location set by the GM (e.g. inn lodging—camping in the open wilderness or in a dungeon does not count). After a Safe Rest, heroes recover all HP, all Hit Dice, mana and other class-specific resources, and heal 1 Wound."
-  },
-  {
-    "name": "Free",
-    "description": "Does not cost an action or any other resource (e.g., mana) unless otherwise stated."
-  },
-  {
-    "name": "Hampered",
-    "description": "Any creature with their actions or movement reduced (e.g., Dazed, Grappled, Prone, Difficult Terrain)."
-  },
-  {
-    "name": "KEY",
-    "description": "Use either of your KEY attributes."
-  },
-  {
-    "name": "Knockback/Push X",
-    "description": "Forcibly move a creature X spaces, ignoring Difficult Terrain. Other creatures or the environment may halt movement prematurely and deal damage. See “Falling & Forced Movement” on page 10."
-  },
-  {
-    "name": "Line X",
-    "description": "A straight line extending up to X spaces in one direction."
-  },
-  {
-    "name": "LVL",
-    "description": "Replace this with your Hero's level."
-  },
-  {
-    "name": "Mana",
-    "description": "Used to fuel spellcasting. See the Heroes book for more info on how classes gain mana."
-  },
-  {
-    "name": "Move X",
-    "description": "Move up to that many spaces."
-  },
-  {
-    "name": "Paralyzed, Stunned, Unconscious",
-    "description": "Incapacitated. Can't do anything. Attacks against you have advantage, and melee attacks that hit, crit."
-  },
-  {
-    "name": "Reach X",
-    "description": "The area within X spaces around a character; forming your choice of a cube or sphere."
-  },
-  {
-    "name": "Range X",
-    "description": "Abilities, weapons, and spells with Range X can affect targets up to X spaces away. If any enemy is adjacent to you, your Ranged attacks are made with disadvantage (Reach attacks are not). You can gain disadvantage 1 to gain +2 Range on any Ranged attack (maximum +6)."
-  },
-  {
-    "name": "Resistance",
-    "description": "Take half as much damage."
-  },
-  {
-    "name": "Restrained",
-    "description": "Functions like Grappled: you cannot move, and attacks against you have advantage. Restrained is usually caused by objects (e.g. chains, rope, roots) rather than a creature grabbing you, and it ignores Grappling size restrictions. It can end through forced movement, incapacitation, or spending an action and succeeding on a STR or DEX save, and also through logical means such as picking a lock or cutting or burning rope."
-  },
-  {
-    "name": "Round",
-    "description": "The time in combat when each Hero and enemy has a chance to act."
-  },
-  {
-    "name": "Rushed Attacks",
-    "description": "A hero may attack more than once on their turn, but each attack after the first is rushed and suffers cumulative disadvantage—increasing the chance to miss and lowering average damage (e.g. on your third attack you might roll three dice and take the lowest). For abilities that trigger a save (e.g. Grappling), enemies roll with increasing advantage instead."
-  },
-  {
-    "name": "Skill Points",
-    "description": "Use them to increase your skills. Start with 4 at level 1 and gain 1 each level."
-  },
-  {
-    "name": "Spellcasting Focus",
-    "description": "Can be used instead of an empty hand to cast spells."
-  },
-  {
-    "name": "Stats",
-    "description": "The core attributes of a character."
-  },
-  {
-    "name": "Surprise",
-    "description": "A side is so caught off guard that the GM may grant the party advantage on Initiative, or in extreme cases forgo rolling Initiative and let each hero start with all 3 actions. Merely being hidden or striking first is not enough—an enemy who is on guard or at all aware of you cannot be surprised. If the heroes are surprised, they may have to roll Initiative with disadvantage, or in extreme cases start combat with only 1 action, or the monsters may all go first."
-  },
-  {
-    "name": "Target",
-    "description": "A selected creature or object. It must be within Range/Reach and able to be sensed."
-  },
-  {
-    "name": "Teleport",
-    "description": "Move instantaneously. Does not provoke opportunity attacks."
-  },
-  {
-    "name": "Temp HP",
-    "description": "Some abilities or effects grant temporary HP; temp HP is lost first when you take damage. If you already have temp HP and would gain more, you choose which amount to keep instead of combining them. Temp HP expire after a Safe Rest."
-  },
-  {
-    "name": "Turn",
-    "description": "The primary time allotted for an individual hero or monster group to act."
-  },
-  {
-    "name": "Unheld",
-    "description": "Not touched, worn, or held by anyone."
-  },
-  {
-    "name": "Vulnerable",
-    "description": "When a creature is vulnerable to a damage type, that kind of damage ignores its armor; if unarmored, they take double the damage instead."
-  },
-  {
-    "name": "Wound",
-    "description": "Wounds are serious injuries and a long-term gauge of how close you are to death. When you are reduced to 0 HP, you gain 1 Wound and the Dying condition until you regain HP. While Dying, attacking or casting spells causes 1 more Wound unless you succeed on a DC 10 STR save; taking damage while Dying causes 2 Wounds (3 on a crit). HP can be recovered quickly, but Wounds usually take much longer to heal (typically 1 per Safe Rest). You die when you have taken 6 Wounds unless an ability changes that."
-  }
+	{
+		"name": "Advantage X",
+		"description": "Roll X additional dice and drop the X lowest dice (removing dice from the left to right in the case of a tie)."
+	},
+	{
+		"name": "Ally",
+		"description": "A friendly creature, not yourself."
+	},
+	{
+		"name": "Assess",
+		"description": "In combat, choose one option and make a DC 12 skill check that fits the situation: Ask a Question (the GM answers honestly about a weakness, ability, plans, enemies, the environment, or story), Create an Opening (increase the next Primary Die Roll against a target by 1 this round), or Anticipate Danger (reduce all Primary Dice rolled against you by 1 this round). You cannot assess using the same skill more than once in a single encounter."
+	},
+	{
+		"name": "Attack",
+		"description": "Any offensive action. Swinging with a weapon, casting a harmful spell, Grappling, etc."
+	},
+	{
+		"name": "Blindsight X",
+		"description": "You can sense creatures and obstacles normally within X spaces, ignoring Blinded, darkness, and invisibility."
+	},
+	{
+		"name": "Cantrip",
+		"description": "A basic spell. Costs 0 mana to cast, and their power increases as you level up."
+	},
+	{
+		"name": "Climbing",
+		"description": "A creature with a climbing speed can move across vertical surfaces as flat ground."
+	},
+	{
+		"name": "Concentration",
+		"description": "Some activities require Concentration to maintain; you can only concentrate on one activity at a time. When you are crit while concentrating, make a DC 10 STR save—on a failure, Concentration breaks and the activity fails. Concentration also breaks automatically when you drop to 0 HP or are incapacitated."
+	},
+	{
+		"name": "Cone X",
+		"description": "Starts at the character and extends X spaces outward, becoming up to X spaces wide at the farthest edge."
+	},
+	{
+		"name": "Cover",
+		"description": "A creature mostly obscured from line of sight (e.g. behind a tree, a larger ally, a knocked-over table, or in poor lighting) has Cover and imposes disadvantage on attacks against them. A creature completely obscured from view has Full Cover and cannot typically be targeted by an attack."
+	},
+	{
+		"name": "d44, d66, d88",
+		"description": "Roll 2 of the same dice, the leftmost die is the tens place, and the second is the ones. These rolls cannot miss or crit."
+	},
+	{
+		"name": "Darkvision X",
+		"description": "Can see normally in the dark, up to X spaces."
+	},
+	{
+		"name": "Decrement/Increment",
+		"description": "Use a die one size smaller or larger (d4 » d6 » d8 » d10 » d12 » d20)."
+	},
+	{
+		"name": "Difficult Terrain",
+		"description": "Speed halved while here. (e.g., moving through the space of an enemy)."
+	},
+	{
+		"name": "Disadvantage X",
+		"description": "Roll X additional dice and drop the X highest dice."
+	},
+	{
+		"name": "Distracted",
+		"description": "A target is distracted if it is adjacent to or Taunted by an ally, or if it cannot see you."
+	},
+	{
+		"name": "Encounter",
+		"description": "An encounter begins when Initiative is rolled and ends when hostilities do."
+	},
+	{
+		"name": "Falling",
+		"description": "Suffer 1d6 damage per 10 ft. fallen."
+	},
+	{
+		"name": "Field Rest/Safe Rest",
+		"description": "Field Rests (while adventuring) restore HP. Catch Breath: at least 10 minutes; expend Hit Dice one at a time, roll each and add your STR, and regain that many HP. Make Camp: at least 8 hours with food and sleep; take the maximum value for each Hit Die you expend instead of rolling, and add your STR to each as usual. A Safe Rest takes place in a safe location set by the GM (e.g. inn lodging—camping in the open wilderness or in a dungeon does not count). After a Safe Rest, heroes recover all HP, all Hit Dice, mana and other class-specific resources, and heal 1 Wound."
+	},
+	{
+		"name": "Free",
+		"description": "Does not cost an action or any other resource (e.g., mana) unless otherwise stated."
+	},
+	{
+		"name": "Hampered",
+		"description": "Any creature with their actions or movement reduced (e.g., Dazed, Grappled, Prone, Difficult Terrain)."
+	},
+	{
+		"name": "KEY",
+		"description": "Use either of your KEY attributes."
+	},
+	{
+		"name": "Knockback/Push X",
+		"description": "Forcibly move a creature X spaces, ignoring Difficult Terrain. Other creatures or the environment may halt movement prematurely and deal damage. See “Falling & Forced Movement” on page 10."
+	},
+	{
+		"name": "Line X",
+		"description": "A straight line extending up to X spaces in one direction."
+	},
+	{
+		"name": "LVL",
+		"description": "Replace this with your Hero's level."
+	},
+	{
+		"name": "Mana",
+		"description": "Used to fuel spellcasting. See the Heroes book for more info on how classes gain mana."
+	},
+	{
+		"name": "Move X",
+		"description": "Move up to that many spaces."
+	},
+	{
+		"name": "Paralyzed, Stunned, Unconscious",
+		"description": "Incapacitated. Can't do anything. Attacks against you have advantage, and melee attacks that hit, crit."
+	},
+	{
+		"name": "Reach X",
+		"description": "The area within X spaces around a character; forming your choice of a cube or sphere."
+	},
+	{
+		"name": "Range X",
+		"description": "Abilities, weapons, and spells with Range X can affect targets up to X spaces away. If any enemy is adjacent to you, your Ranged attacks are made with disadvantage (Reach attacks are not). You can gain disadvantage 1 to gain +2 Range on any Ranged attack (maximum +6)."
+	},
+	{
+		"name": "Resistance",
+		"description": "Take half as much damage."
+	},
+	{
+		"name": "Restrained",
+		"description": "Functions like Grappled: you cannot move, and attacks against you have advantage. Restrained is usually caused by objects (e.g. chains, rope, roots) rather than a creature grabbing you, and it ignores Grappling size restrictions. It can end through forced movement, incapacitation, or spending an action and succeeding on a STR or DEX save, and also through logical means such as picking a lock or cutting or burning rope."
+	},
+	{
+		"name": "Round",
+		"description": "The time in combat when each Hero and enemy has a chance to act."
+	},
+	{
+		"name": "Rushed Attacks",
+		"description": "A hero may attack more than once on their turn, but each attack after the first is rushed and suffers cumulative disadvantage—increasing the chance to miss and lowering average damage (e.g. on your third attack you might roll three dice and take the lowest). For abilities that trigger a save (e.g. Grappling), enemies roll with increasing advantage instead."
+	},
+	{
+		"name": "Skill Points",
+		"description": "Use them to increase your skills. Start with 4 at level 1 and gain 1 each level."
+	},
+	{
+		"name": "Spellcasting Focus",
+		"description": "Can be used instead of an empty hand to cast spells."
+	},
+	{
+		"name": "Stats",
+		"description": "The core attributes of a character."
+	},
+	{
+		"name": "Surprise",
+		"description": "A side is so caught off guard that the GM may grant the party advantage on Initiative, or in extreme cases forgo rolling Initiative and let each hero start with all 3 actions. Merely being hidden or striking first is not enough—an enemy who is on guard or at all aware of you cannot be surprised. If the heroes are surprised, they may have to roll Initiative with disadvantage, or in extreme cases start combat with only 1 action, or the monsters may all go first."
+	},
+	{
+		"name": "Target",
+		"description": "A selected creature or object. It must be within Range/Reach and able to be sensed."
+	},
+	{
+		"name": "Teleport",
+		"description": "Move instantaneously. Does not provoke opportunity attacks."
+	},
+	{
+		"name": "Temp HP",
+		"description": "Some abilities or effects grant temporary HP; temp HP is lost first when you take damage. If you already have temp HP and would gain more, you choose which amount to keep instead of combining them. Temp HP expire after a Safe Rest."
+	},
+	{
+		"name": "Turn",
+		"description": "The primary time allotted for an individual hero or monster group to act."
+	},
+	{
+		"name": "Unheld",
+		"description": "Not touched, worn, or held by anyone."
+	},
+	{
+		"name": "Vulnerable",
+		"description": "When a creature is vulnerable to a damage type, that kind of damage ignores its armor; if unarmored, they take double the damage instead."
+	},
+	{
+		"name": "Wound",
+		"description": "Wounds are serious injuries and a long-term gauge of how close you are to death. When you are reduced to 0 HP, you gain 1 Wound and the Dying condition until you regain HP. While Dying, attacking or casting spells causes 1 more Wound unless you succeed on a DC 10 STR save; taking damage while Dying causes 2 Wounds (3 on a crit). HP can be recovered quickly, but Wounds usually take much longer to heal (typically 1 per Safe Rest). You die when you have taken 6 Wounds unless an ability changes that."
+	}
 ]
