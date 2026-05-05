@@ -1,8 +1,9 @@
 import type { Loader } from 'astro/loaders';
 
-import type { NimbleJsonId } from '../../models/nimble-json-ids';
-import { NIMBLE_JSON_IDS } from '../../models/nimble-json-ids';
-import { nimbleGameDataById } from '../../models/nimble-data-files';
+import {
+	NIMBLE_JSON_IDS,
+	nimbleGameDataById,
+} from '../../models/nimble-data-files';
 
 /**
  * Build-time loader: registers every Nimble JSON dataset as one `nimbleGameData` entry
@@ -14,7 +15,7 @@ export function nimbleJsonGameDataLoader(): Loader {
 		load: async ({ store, parseData, logger }) => {
 			store.clear();
 			for (const id of NIMBLE_JSON_IDS) {
-				const raw = nimbleGameDataById[id as NimbleJsonId];
+				const raw = nimbleGameDataById[id];
 				const data = await parseData({ id, data: raw });
 				store.set({ id, data });
 			}

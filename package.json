@@ -6,7 +6,7 @@
 		"node": ">=20"
 	},
 	"scripts": {
-		"build:orama-index": "tsx scripts/build-orama-index.ts",
+		"build:orama-index": "vite-node scripts/build-orama-index.ts",
 		"prebuild": "npm run build:orama-index",
 		"predev": "npm run build:orama-index",
 		"dev": "astro dev",
@@ -50,6 +50,7 @@
 		"prettier": "^3.5.3",
 		"prettier-plugin-astro": "^0.14.1",
 		"prettier-plugin-svelte": "^3.5.1",
+		"vite-node": "^6.0.0",
 		"tsx": "^4.21.0",
 		"typescript": "^5.8.2",
 		"typescript-eslint": "^8.28.0",

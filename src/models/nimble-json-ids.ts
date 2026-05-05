@@ -1,38 +1,8 @@
-/** Stable ids for `nimbleGameData` content entries (one per JSON file under `src/data/`). */
-export const NIMBLE_JSON_IDS = [
-	'adventuring-motivations',
-	'ancestries',
-	'armor',
-	'backgrounds',
-	'boons',
-	'chaos-magic',
-	'classes',
-	'conditions',
-	'dc-examples',
-	'downtime-activities',
-	'glossary',
-	'gmg-gold-by-level',
-	'gmg-monster-builder-levels',
-	'languages',
-	'legendary-monsters',
-	'magical-item-rarities',
-	'magical-items',
-	'misc-adventuring-equipment',
-	'monster-families',
-	'monster-kinds',
-	'monsters',
-	'optional-variant-rules',
-	'save-types',
-	'sizes',
-	'skills',
-	'spell-schools',
-	'spell-scroll-costs',
-	'spells',
-	'stat-arrays',
-	'stats',
-	'wand-costs',
-	'weapon-properties',
-	'weapons',
-] as const;
+/**
+ * Stable ids for `nimbleGameData` content entries (one per JSON file under
+ * `src/data/`). Derived from the same glob-backed map as `nimbleGameDataById`.
+ */
+export { NIMBLE_JSON_IDS } from './nimble-data-files';
 
-export type NimbleJsonId = (typeof NIMBLE_JSON_IDS)[number];
+/** Dataset slug matching a file stem under `src/data/`. */
+export type NimbleJsonId = string;
