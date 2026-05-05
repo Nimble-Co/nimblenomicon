@@ -9,7 +9,7 @@
 	},
 	{
 		"name": "Assess",
-		"description": "An action to strategically analyze the situation in combat, see pg. 13."
+		"description": "In combat, choose one option and make a DC 12 skill check that fits the situation: Ask a Question (the GM answers honestly about a weakness, ability, plans, enemies, the environment, or story), Create an Opening (increase the next Primary Die Roll against a target by 1 this round), or Anticipate Danger (reduce all Primary Dice rolled against you by 1 this round). You cannot assess using the same skill more than once in a single encounter."
 	},
 	{
 		"name": "Attack",
@@ -29,7 +29,7 @@
 	},
 	{
 		"name": "Concentration",
-		"description": "Can only Concentrate on 1 thing at a time. DC 10 STR save when crit or lose concentration, see pg. 10."
+		"description": "Some activities require Concentration to maintain; you can only concentrate on one activity at a time. When you are crit while concentrating, make a DC 10 STR save—on a failure, Concentration breaks and the activity fails. Concentration also breaks automatically when you drop to 0 HP or are incapacitated."
 	},
 	{
 		"name": "Cone X",
@@ -37,7 +37,7 @@
 	},
 	{
 		"name": "Cover",
-		"description": "If partially obscured, incoming attacks have disadvantage. If completely obscured, cannot be targeted. See pg. 10."
+		"description": "A creature mostly obscured from line of sight (e.g. behind a tree, a larger ally, a knocked-over table, or in poor lighting) has Cover and imposes disadvantage on attacks against them. A creature completely obscured from view has Full Cover and cannot typically be targeted by an attack."
 	},
 	{
 		"name": "d44, d66, d88",
@@ -73,7 +73,7 @@
 	},
 	{
 		"name": "Field Rest/Safe Rest",
-		"description": "Spend time to recover some of your resources, see pg. 16."
+		"description": "Field Rests (while adventuring) restore HP. Catch Breath: at least 10 minutes; expend Hit Dice one at a time, roll each and add your STR, and regain that many HP. Make Camp: at least 8 hours with food and sleep; take the maximum value for each Hit Die you expend instead of rolling, and add your STR to each as usual. A Safe Rest takes place in a safe location set by the GM (e.g. inn lodging—camping in the open wilderness or in a dungeon does not count). After a Safe Rest, heroes recover all HP, all Hit Dice, mana and other class-specific resources, and heal 1 Wound."
 	},
 	{
 		"name": "Free",
@@ -117,7 +117,7 @@
 	},
 	{
 		"name": "Range X",
-		"description": "Ranged attacks are made with disadvantage if ANY enemy is adjacent. Range can be extended, see pg. 10 for more."
+		"description": "Abilities, weapons, and spells with Range X can affect targets up to X spaces away. If any enemy is adjacent to you, your Ranged attacks are made with disadvantage (Reach attacks are not). You can gain disadvantage 1 to gain +2 Range on any Ranged attack (maximum +6)."
 	},
 	{
 		"name": "Resistance",
@@ -125,7 +125,7 @@
 	},
 	{
 		"name": "Restrained",
-		"description": "Same effect as Grappled, objects Restrain, creatures Grapple. See pg. 10."
+		"description": "Functions like Grappled: you cannot move, and attacks against you have advantage. Restrained is usually caused by objects (e.g. chains, rope, roots) rather than a creature grabbing you, and it ignores Grappling size restrictions. It can end through forced movement, incapacitation, or spending an action and succeeding on a STR or DEX save, and also through logical means such as picking a lock or cutting or burning rope."
 	},
 	{
 		"name": "Round",
@@ -133,7 +133,7 @@
 	},
 	{
 		"name": "Rushed Attacks",
-		"description": "Attacking more than once on a turn imposes a cumulative disadvantage penalty (e.g., attacking with a short sword for the third time on a turn, you would roll 3d6 and take the lowest result). See pg. 13."
+		"description": "A hero may attack more than once on their turn, but each attack after the first is rushed and suffers cumulative disadvantage—increasing the chance to miss and lowering average damage (e.g. on your third attack you might roll three dice and take the lowest). For abilities that trigger a save (e.g. Grappling), enemies roll with increasing advantage instead."
 	},
 	{
 		"name": "Skill Points",
@@ -149,7 +149,7 @@
 	},
 	{
 		"name": "Surprise",
-		"description": "When combat starts before all sides are aware, see pg. 15."
+		"description": "A side is so caught off guard that the GM may grant the party advantage on Initiative, or in extreme cases forgo rolling Initiative and let each hero start with all 3 actions. Merely being hidden or striking first is not enough—an enemy who is on guard or at all aware of you cannot be surprised. If the heroes are surprised, they may have to roll Initiative with disadvantage, or in extreme cases start combat with only 1 action, or the monsters may all go first."
 	},
 	{
 		"name": "Target",
@@ -161,7 +161,7 @@
 	},
 	{
 		"name": "Temp HP",
-		"description": "HP that do not replenish, see pg. 9."
+		"description": "Some abilities or effects grant temporary HP; temp HP is lost first when you take damage. If you already have temp HP and would gain more, you choose which amount to keep instead of combining them. Temp HP expire after a Safe Rest."
 	},
 	{
 		"name": "Turn",
@@ -177,6 +177,6 @@
 	},
 	{
 		"name": "Wound",
-		"description": "A measure of how close a hero is to death. Typically 6 and you're dead, see pg. 9."
+		"description": "Wounds are serious injuries and a long-term gauge of how close you are to death. When you are reduced to 0 HP, you gain 1 Wound and the Dying condition until you regain HP. While Dying, attacking or casting spells causes 1 more Wound unless you succeed on a DC 10 STR save; taking damage while Dying causes 2 Wounds (3 on a crit). HP can be recovered quickly, but Wounds usually take much longer to heal (typically 1 per Safe Rest). You die when you have taken 6 Wounds unless an ability changes that."
 	}
 ]
