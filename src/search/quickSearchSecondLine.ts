@@ -4,7 +4,7 @@
  */
 import { marked } from 'marked';
 import { parseSearchResultCard } from '../models/search-result-card';
-import type { SearchableGameDataDoc } from '../models/search-filters';
+import type { SearchableGameDataDoc } from '../models/orama-game-data-index';
 
 function htmlToPlainText(html: string): string {
 	return html

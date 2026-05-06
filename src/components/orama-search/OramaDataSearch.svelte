@@ -25,6 +25,7 @@
 		WEAPON_CATEGORY_OPTIONS,
 		ancestrySizeOptions,
 	} from '../../models/search-filter-options';
+	import type { SearchableGameDataDoc } from '../../models/orama-game-data-index';
 	import {
 		buildOramaWhereForFilters,
 		clearMultiFilterDim,
@@ -37,7 +38,6 @@
 		setMultiFilterValue,
 		type MultiSelectFilterDim,
 		type SearchFiltersState,
-		type SearchableGameDataDoc,
 	} from '../../models/search-filters';
 	import {
 		getOramaDataSearchDb,

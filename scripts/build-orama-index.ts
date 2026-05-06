@@ -64,9 +64,13 @@ import {
 	buildWeaponCardPayload,
 	stringifySearchResultCard,
 } from '../src/models/search-result-card-payloads';
-import { ORAMA_DATA_SEARCH_SCHEMA } from '../src/models/orama-schema';
 import {
+	ORAMA_DATA_SEARCH_SCHEMA,
 	emptyOramaFilterFields,
+	type OramaFilterFields,
+	type SearchableGameDataDoc,
+} from '../src/models/orama-game-data-index';
+import {
 	spellFilterFields,
 	monsterFilterFields,
 	legendaryMonsterFilterFields,
@@ -75,8 +79,6 @@ import {
 	ancestryFilterFields,
 	armorFilterFields,
 	magicItemFilterFields,
-	type OramaFilterFields,
-	type SearchableGameDataDoc,
 } from '../src/models/search-filters';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));

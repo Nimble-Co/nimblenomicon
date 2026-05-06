@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR } from '../../../constants/orama-data-search';
 	import { displayClassSearchHitDieLabel } from '../../../models/class';
-	import type { SearchableGameDataDoc } from '../../../models/search-filters';
+	import type { SearchableGameDataDoc } from '../../../models/orama-game-data-index';
 	import type { ClassSearchCardPayload } from '../../../models/search-result-card';
 	import MarkdownSnippet from './MarkdownSnippet.svelte';
 

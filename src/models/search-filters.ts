@@ -1,6 +1,8 @@
 /**
  * Per-type game data search filters: URL param names, parsing, serialization,
  * and helpers to populate Orama index fields + build `where` clauses.
+ *
+ * Index document shape and Orama schema live in {@link ./orama-game-data-index}.
  */
 import type { OramaDataSearchType } from '../constants/orama-data-search';
 import type { SpellData } from './spells';
@@ -11,42 +13,10 @@ import type { WeaponRowData } from './weapons';
 import type { AncestryRowData } from './ancestries';
 import type { ArmorRowData } from './armor';
 import type { MagicalItemData } from './magical-items';
-
-/** Every extra field stored on each Orama doc (empty string when unused for that row). */
-export const ORAMA_FILTER_FIELD_NAMES = [
-	'spellTier',
-	'spellSchool',
-	'spellTarget',
-	'spellUtility',
-	'spellSecret',
-	'monsterLevel',
-	'monsterFamily',
-	'monsterKind',
-	'monsterArmor',
-	'monsterSpeed',
-	'monsterSize',
-	'monsterMinion',
-	'monsterLegendary',
-	'classKeyStats',
-	'classHitDie',
-	'weaponCategory',
-	'ancestrySection',
-	'ancestrySize',
-	'armorCategory',
-	'magicKind',
-	'magicSource',
-	'magicReward',
-] as const;
-
-export type OramaFilterFieldName = (typeof ORAMA_FILTER_FIELD_NAMES)[number];
-
-export type OramaFilterFields = Record<OramaFilterFieldName, string>;
-
-export function emptyOramaFilterFields(): OramaFilterFields {
-	const o = {} as Record<string, string>;
-	for (const k of ORAMA_FILTER_FIELD_NAMES) o[k] = '';
-	return o as OramaFilterFields;
-}
+import type {
+	OramaFilterFields,
+	SearchableGameDataDoc,
+} from './orama-game-data-index';
 
 /** Query param keys used for filters (not `q` or `type`). */
 export const SEARCH_FILTER_QUERY_KEYS = [
@@ -716,18 +686,6 @@ export function classKeyStatsRowMatches(
 	const set = new Set(classKeyStatsField.split(',').map((s) => s.trim()));
 	return selectedStats.some((s) => set.has(s));
 }
-
-/** Full Orama document shape including filter columns (see `build-orama-index`). */
-export type SearchableGameDataDoc = {
-	id: string;
-	type: OramaDataSearchType;
-	title: string;
-	content: string;
-	href: string;
-	subtitle: string;
-	/** JSON string: structured card payload for `/search/` (see `search-result-card.ts`). */
-	cardJson: string;
-} & OramaFilterFields;
 
 /**
  * Final pass after Orama search (handles class key-stats and keeps logic in one place).
