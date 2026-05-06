@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { SearchableGameDataDoc } from '../../../models/search-filters';
+	import type { SearchableGameDataDoc } from '../../../models/orama-game-data-index';
 	import type { LegendaryMonsterSearchCardPayload } from '../../../models/search-result-card';
 	import { sizeLabel } from '../../../models/search-result-card-payloads';
 	import MonsterAbilityBlock from './MonsterAbilityBlock.svelte';

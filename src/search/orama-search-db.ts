@@ -1,5 +1,5 @@
 import { create, load, type RawData } from '@orama/orama';
-import { ORAMA_DATA_SEARCH_SCHEMA } from '../models/orama-schema';
+import { ORAMA_DATA_SEARCH_SCHEMA } from '../models/orama-game-data-index';
 
 const INDEX_URL = '/orama-data-search.json';
 

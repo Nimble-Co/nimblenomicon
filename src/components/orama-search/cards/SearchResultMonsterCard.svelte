@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { SearchableGameDataDoc } from '../../../models/search-filters';
+	import type { SearchableGameDataDoc } from '../../../models/orama-game-data-index';
 	import type {
 		LegendaryMonsterSearchCardPayload,
 		StandardMonsterSearchCardPayload,

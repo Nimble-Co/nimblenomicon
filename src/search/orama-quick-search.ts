@@ -3,7 +3,7 @@ import {
 	ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR,
 	type OramaDataSearchType,
 } from '../constants/orama-data-search';
-import type { SearchableGameDataDoc } from '../models/search-filters';
+import type { SearchableGameDataDoc } from '../models/orama-game-data-index';
 import { quickSearchSecondLine } from './quickSearchSecondLine';
 import {
 	getOramaDataSearchDb,

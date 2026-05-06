@@ -5,7 +5,7 @@
 		type SearchResultCardPayload,
 		type SimpleSearchCardPayload,
 	} from '../../../models/search-result-card';
-	import type { SearchableGameDataDoc } from '../../../models/search-filters';
+	import type { SearchableGameDataDoc } from '../../../models/orama-game-data-index';
 	import SearchResultClassCard from './SearchResultClassCard.svelte';
 	import SearchResultFallbackCard from './SearchResultFallbackCard.svelte';
 	import SearchResultMonsterCard from './SearchResultMonsterCard.svelte';
