@@ -1,7 +1,7 @@
 /**
  * Orama game-data search index contract: filter columns, serialized schema, and full doc type.
- * Used by `scripts/build-orama-index.ts`, `orama-search-db.ts`, and (via URL helpers in
- * `search-filters.ts`) query/filter behavior.
+ * Used by `build-searchable-game-data-docs.ts`, `scripts/build-orama-index.ts`,
+ * `orama-search-db.ts`, and (via URL helpers in `search-filters.ts`) query/filter behavior.
  */
 import type { OramaDataSearchType } from '../constants/orama-data-search';
 
