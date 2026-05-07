@@ -1,13 +1,14 @@
 ---
 import DetailPage from '../../components/DetailPage.astro';
+import { buildDetailPathsFromRows } from '../../detail/detail-route-runtime';
 import { languages } from '../../models/languages';
 import { languageDetailPageProps } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
-	return languages.map((row) => ({
-		params: { id: row.id },
-		props: { row },
-	}));
+	return buildDetailPathsFromRows(languages, {
+		getId: (row) => row.id,
+		toProps: (row) => ({ row }),
+	});
 }
 
 const { row } = Astro.props;

@@ -1,13 +1,14 @@
 ---
 import DetailPage from '../../components/DetailPage.astro';
+import { buildDetailPathsFromRows } from '../../detail/detail-route-runtime';
 import { weapons } from '../../models/weapons';
 import { weaponDetailPageProps } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
-	return weapons.map((row) => ({
-		params: { id: row.id },
-		props: { row },
-	}));
+	return buildDetailPathsFromRows(weapons, {
+		getId: (row) => row.id,
+		toProps: (row) => ({ row }),
+	});
 }
 
 const { row } = Astro.props;

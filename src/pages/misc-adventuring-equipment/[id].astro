@@ -1,13 +1,14 @@
 ---
 import DetailPage from '../../components/DetailPage.astro';
+import { buildDetailPathsFromRows } from '../../detail/detail-route-runtime';
 import { miscAdventuringEquipment } from '../../models/misc-adventuring-equipment';
 import { miscEquipmentDetailPageProps } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
-	return miscAdventuringEquipment.map((row) => ({
-		params: { id: row.id },
-		props: { row },
-	}));
+	return buildDetailPathsFromRows(miscAdventuringEquipment, {
+		getId: (row) => row.id,
+		toProps: (row) => ({ row }),
+	});
 }
 
 const { row } = Astro.props;

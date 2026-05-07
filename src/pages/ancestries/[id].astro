@@ -1,13 +1,14 @@
 ---
 import DetailPage from '../../components/DetailPage.astro';
+import { buildDetailPathsFromRows } from '../../detail/detail-route-runtime';
 import { ancestries } from '../../models/ancestries';
 import { ancestryDetailPageProps } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
-	return ancestries.map((row) => ({
-		params: { id: row.id },
-		props: { row },
-	}));
+	return buildDetailPathsFromRows(ancestries, {
+		getId: (row) => row.id,
+		toProps: (row) => ({ row }),
+	});
 }
 
 const { row } = Astro.props;

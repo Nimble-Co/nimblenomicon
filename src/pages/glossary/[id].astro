@@ -1,13 +1,14 @@
 ---
 import DetailPage from '../../components/DetailPage.astro';
+import { buildDetailPathsFromRows } from '../../detail/detail-route-runtime';
 import { glossary } from '../../models/glossary';
 import { glossaryDetailPageProps } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
-	return glossary.map((row) => ({
-		params: { id: row.id },
-		props: { row },
-	}));
+	return buildDetailPathsFromRows(glossary, {
+		getId: (row) => row.id,
+		toProps: (row) => ({ row }),
+	});
 }
 
 const { row } = Astro.props;

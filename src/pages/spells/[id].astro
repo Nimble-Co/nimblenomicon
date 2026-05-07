@@ -1,13 +1,14 @@
 ---
 import DetailPage from '../../components/DetailPage.astro';
+import { buildDetailPathsFromRows } from '../../detail/detail-route-runtime';
 import { spells } from '../../models/spells';
 import { spellDetailPageProps } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
-	return spells.map((spell) => ({
-		params: { id: spell.id },
-		props: { spell },
-	}));
+	return buildDetailPathsFromRows(spells, {
+		getId: (spell) => spell.id,
+		toProps: (spell) => ({ spell }),
+	});
 }
 
 const { spell } = Astro.props;
