@@ -2,6 +2,10 @@
 import DetailPage from '../../components/DetailPage.astro';
 import LegendaryStatBlock from '../../components/LegendaryStatBlock.astro';
 import MonsterStatBlock from '../../components/MonsterStatBlock.astro';
+import {
+	assertUniqueDetailIds,
+	buildDetailPaths,
+} from '../../detail/detail-route-runtime';
 import type { LegendaryEntryData } from '../../models/legendary-monsters';
 import { legendaryMonsters } from '../../models/legendary-monsters';
 import type { MonsterData } from '../../models/monsters';
@@ -9,41 +13,36 @@ import { monsters } from '../../models/monsters';
 import { monsterDetailPageShell } from '../../detail/detail-page-adapters';
 
 export function getStaticPaths() {
-	const seen = new Set<string>();
-	const paths: Array<{
-		params: { id: string };
-		props:
-			| { variant: 'monster'; record: MonsterData }
-			| { variant: 'legendary'; record: LegendaryEntryData };
-	}> = [];
+	assertUniqueDetailIds(
+		monsters,
+		(record) => record.id,
+		(id) => `Duplicate monster page id "${id}" within regular monsters.`,
+	);
+	assertUniqueDetailIds(
+		legendaryMonsters,
+		(record) => record.id,
+		(id) => `Duplicate monster page id "${id}" within legendary monsters.`,
+	);
 
-	for (const m of monsters) {
-		if (seen.has(m.id)) {
-			throw new Error(
-				`Duplicate monster page id "${m.id}" within regular monsters.`,
-			);
-		}
-		seen.add(m.id);
-		paths.push({
-			params: { id: m.id },
-			props: { variant: 'monster', record: m },
-		});
-	}
-
-	for (const m of legendaryMonsters) {
-		if (seen.has(m.id)) {
-			throw new Error(
-				`Duplicate monster page id "${m.id}" between regular and legendary monsters.`,
-			);
-		}
-		seen.add(m.id);
-		paths.push({
-			params: { id: m.id },
-			props: { variant: 'legendary', record: m },
-		});
-	}
-
-	return paths;
+	return buildDetailPaths<
+		| { variant: 'monster'; record: MonsterData }
+		| { variant: 'legendary'; record: LegendaryEntryData }
+	>(
+		[
+			...monsters.map((record) => ({
+				id: record.id,
+				props: { variant: 'monster' as const, record },
+			})),
+			...legendaryMonsters.map((record) => ({
+				id: record.id,
+				props: { variant: 'legendary' as const, record },
+			})),
+		],
+		{
+			duplicateIdError: (id) =>
+				`Duplicate monster page id "${id}" between regular and legendary monsters.`,
+		},
+	);
 }
 
 const { variant, record } = Astro.props;
