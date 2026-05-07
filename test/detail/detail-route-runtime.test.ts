@@ -39,10 +39,7 @@ describe('detail-route-runtime', () => {
 	it('asserts uniqueness for a row collection', () => {
 		expect(() =>
 			assertUniqueDetailIds(
-				[
-					{ id: 'shared' },
-					{ id: 'shared' },
-				],
+				[{ id: 'shared' }, { id: 'shared' }],
 				(row) => row.id,
 				(id) => `Duplicate row "${id}".`,
 			),

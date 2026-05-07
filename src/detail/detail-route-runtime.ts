@@ -19,8 +19,7 @@ export function buildDetailPaths<Props>(
 	return entries.map(({ id, props }) => {
 		if (seen.has(id)) {
 			throw new Error(
-				options.duplicateIdError?.(id) ??
-					`Duplicate detail page id "${id}".`,
+				options.duplicateIdError?.(id) ?? `Duplicate detail page id "${id}".`,
 			);
 		}
 		seen.add(id);
