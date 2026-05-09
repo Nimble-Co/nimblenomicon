@@ -37,3 +37,18 @@ export function dataSearchBrowseUrl(
 	params.set('type', type);
 	return `${path}?${params.toString()}`;
 }
+
+/** Core Rules single-page anchor for a JSON entity id (detail `sourceHref`). */
+export function coreRulesDocHref(entityId: string): string {
+	return `/core-rules/#${entityId}`;
+}
+
+/** Game Master's Guide single-page anchor for a JSON entity id. */
+export function gameMastersGuideDocHref(entityId: string): string {
+	return `/game-masters-guide/#${entityId}`;
+}
+
+/** Heroes doc anchor for a class or other entity id. */
+export function heroesDocHref(entityId: string): string {
+	return `/heroes/#${entityId}`;
+}

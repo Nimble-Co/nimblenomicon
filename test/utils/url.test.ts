@@ -1,7 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+	coreRulesDocHref,
 	dataSearchBrowseUrl,
+	gameMastersGuideDocHref,
+	heroesDocHref,
 	normalizeBaseUrl,
 	searchPageUrl,
 } from '../../src/utils/url';
@@ -55,5 +58,16 @@ describe('dataSearchBrowseUrl', () => {
 		expect(dataSearchBrowseUrl('/', 'never', 'magic-item')).toBe(
 			'/search?type=magic-item',
 		);
+	});
+});
+
+describe('doc anchor hrefs', () => {
+	it('builds Core Rules and GMG fragment links', () => {
+		expect(coreRulesDocHref('foo-bar')).toBe('/core-rules/#foo-bar');
+		expect(gameMastersGuideDocHref('baz')).toBe('/game-masters-guide/#baz');
+	});
+
+	it('builds Heroes doc fragment links', () => {
+		expect(heroesDocHref('champion')).toBe('/heroes/#champion');
 	});
 });

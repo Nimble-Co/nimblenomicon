@@ -7,6 +7,19 @@ type BuildDetailPathsOptions = {
 	duplicateIdError?: (id: string) => string;
 };
 
+function markUniqueDetailId(
+	seen: Set<string>,
+	id: string,
+	duplicateIdError?: (id: string) => string,
+): void {
+	if (seen.has(id)) {
+		throw new Error(
+			duplicateIdError?.(id) ?? `Duplicate detail page id "${id}".`,
+		);
+	}
+	seen.add(id);
+}
+
 /**
  * Shared runtime for detail route static path generation.
  * Consolidates duplicate-id enforcement across all [id] routes.
@@ -17,12 +30,7 @@ export function buildDetailPaths<Props>(
 ) {
 	const seen = new Set<string>();
 	return entries.map(({ id, props }) => {
-		if (seen.has(id)) {
-			throw new Error(
-				options.duplicateIdError?.(id) ?? `Duplicate detail page id "${id}".`,
-			);
-		}
-		seen.add(id);
+		markUniqueDetailId(seen, id, options.duplicateIdError);
 		return {
 			params: { id },
 			props,
@@ -42,11 +50,7 @@ export function assertUniqueDetailIds<Row>(
 ) {
 	const seen = new Set<string>();
 	for (const row of rows) {
-		const id = getId(row);
-		if (seen.has(id)) {
-			throw new Error(duplicateIdError(id));
-		}
-		seen.add(id);
+		markUniqueDetailId(seen, getId(row), duplicateIdError);
 	}
 }
 
