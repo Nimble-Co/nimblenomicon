@@ -35,6 +35,11 @@ import {
 	weaponDetailMarkdown,
 	type WeaponRowData,
 } from '../models/weapons';
+import {
+	coreRulesDocHref,
+	gameMastersGuideDocHref,
+	heroesDocHref,
+} from '../utils/url';
 
 export type DetailPageShellProps = {
 	title: string;
@@ -69,7 +74,10 @@ export function spellDetailPageProps(
 		spell.schoolId;
 	const bodyMarkdown =
 		spellMetaMarkdown(spell, schoolName) + '\n\n' + spell.description;
-	const sourceHref = `/${spell.source}/#${spell.id}`;
+	const sourceHref =
+		spell.source === 'core-rules'
+			? coreRulesDocHref(spell.id)
+			: gameMastersGuideDocHref(spell.id);
 	const sourceName =
 		spell.source === 'core-rules' ? 'Core Rules' : "Game Master's Guide";
 	return {
@@ -92,7 +100,7 @@ export function weaponDetailPageProps(
 		description: `${cat} weapon — ${row.name}.`,
 		backLabel: 'All Weapons',
 		searchType: 'weapon',
-		sourceHref: `/core-rules/#${row.id}`,
+		sourceHref: coreRulesDocHref(row.id),
 		sourceName: 'Core Rules',
 		bodyMarkdown: weaponDetailMarkdown(row),
 	};
@@ -107,7 +115,7 @@ export function armorDetailPageProps(
 		description: `${section} — ${row.name}.`,
 		backLabel: 'All Armor',
 		searchType: 'armor',
-		sourceHref: `/core-rules/#${row.id}`,
+		sourceHref: coreRulesDocHref(row.id),
 		sourceName: 'Core Rules',
 		bodyMarkdown: armorDetailMarkdown(row),
 	};
@@ -120,10 +128,10 @@ export function magicalItemDetailPageProps(
 	const sourceRef =
 		row.source === 'game-masters-guide'
 			? {
-					href: `/game-masters-guide/#${row.id}`,
+					href: gameMastersGuideDocHref(row.id),
 					sourceName: "Game Master's Guide",
 				}
-			: { href: `/core-rules/#${row.id}`, sourceName: 'Core Rules' };
+			: { href: coreRulesDocHref(row.id), sourceName: 'Core Rules' };
 	return {
 		title: row.name,
 		description: `${typeLabel} — ${row.name}.`,
@@ -149,7 +157,7 @@ export function ancestryDetailPageProps(
 		description: `${sectionLabel} ancestry — ${row.name}.`,
 		backLabel: 'All Ancestries',
 		searchType: 'ancestry',
-		sourceHref: `/core-rules/#${row.id}`,
+		sourceHref: coreRulesDocHref(row.id),
 		sourceName: 'Core Rules',
 		bodyMarkdown,
 	};
@@ -163,7 +171,7 @@ export function backgroundDetailPageProps(
 		description: `Character background — ${row.name}.`,
 		backLabel: 'All Backgrounds',
 		searchType: 'background',
-		sourceHref: `/core-rules/#${row.id}`,
+		sourceHref: coreRulesDocHref(row.id),
 		sourceName: 'Core Rules',
 		bodyMarkdown: row.description?.trim() ?? '',
 	};
@@ -177,7 +185,7 @@ export function conditionDetailPageProps(
 		description: `Condition — ${row.name}.`,
 		backLabel: 'All Conditions',
 		searchType: 'condition',
-		sourceHref: `/core-rules/#${row.id}`,
+		sourceHref: coreRulesDocHref(row.id),
 		sourceName: 'Core Rules',
 		bodyMarkdown: row.description?.trim() ?? '',
 	};
@@ -191,7 +199,7 @@ export function glossaryDetailPageProps(
 		description: `Glossary — ${row.name}.`,
 		backLabel: 'All Glossary',
 		searchType: 'glossary',
-		sourceHref: `/core-rules/#${row.id}`,
+		sourceHref: coreRulesDocHref(row.id),
 		sourceName: 'Core Rules',
 		bodyMarkdown: row.description?.trim() ?? '',
 	};
@@ -205,7 +213,7 @@ export function languageDetailPageProps(
 		description: `Language — ${row.name}.`,
 		backLabel: 'All Languages',
 		searchType: 'language',
-		sourceHref: `/core-rules/#${row.id}`,
+		sourceHref: coreRulesDocHref(row.id),
 		sourceName: 'Core Rules',
 		bodyMarkdown: row.description?.trim() ?? '',
 	};
@@ -219,7 +227,7 @@ export function miscEquipmentDetailPageProps(
 		description: `Misc adventuring gear — ${row.name}.`,
 		backLabel: 'All Misc. Adventuring Equipment',
 		searchType: 'equipment',
-		sourceHref: `/core-rules/#${row.id}`,
+		sourceHref: coreRulesDocHref(row.id),
 		sourceName: 'Core Rules',
 		bodyMarkdown: miscAdventuringEquipmentDetailMarkdown(row),
 	};
@@ -239,7 +247,7 @@ export function monsterDetailPageShell(
 		description,
 		backLabel: 'All Monsters',
 		searchType: 'monster',
-		sourceHref: `/game-masters-guide/#${record.id}`,
+		sourceHref: gameMastersGuideDocHref(record.id),
 		sourceName: "Game Master's Guide",
 	};
 }
@@ -252,7 +260,7 @@ export function classDetailPageShell(
 		description: `Hero class — ${heroClass.name}.`,
 		backLabel: 'All Classes',
 		searchType: 'class',
-		sourceHref: `/heroes/#${heroClass.id}`,
+		sourceHref: heroesDocHref(heroClass.id),
 		sourceName: 'Heroes',
 	};
 }

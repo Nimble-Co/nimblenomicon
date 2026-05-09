@@ -36,15 +36,22 @@ export function readSearchPageParams(): {
 	return { q, type, filters };
 }
 
+function urlWithCurrentLocationSearchParams(params: URLSearchParams): string {
+	const query = params.toString();
+	return `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
+}
+
 export function stripInvalidTypeFromUrl(): void {
 	const params = new URLSearchParams(window.location.search);
 	const raw = params.get('type')?.trim();
 	if (!raw) return;
 	if (ORAMA_DATA_SEARCH_TYPES.has(raw.toLowerCase())) return;
 	params.delete('type');
-	const query = params.toString();
-	const next = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
-	window.history.replaceState({}, '', next);
+	window.history.replaceState(
+		{},
+		'',
+		urlWithCurrentLocationSearchParams(params),
+	);
 }
 
 function dispatchSearchUrlUpdated(): void {
@@ -64,8 +71,7 @@ export function setSearchPageUrl(
 	else params.delete('type');
 	stripSearchFilterParamsNotForType(params, type);
 	applySearchFiltersToParams(type, filters, params);
-	const query = params.toString();
-	const next = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
+	const next = urlWithCurrentLocationSearchParams(params);
 	if (
 		next !==
 		`${window.location.pathname}${window.location.search}${window.location.hash}`
