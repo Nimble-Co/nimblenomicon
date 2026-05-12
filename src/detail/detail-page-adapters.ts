@@ -20,6 +20,10 @@ import type { ConditionData } from '../models/conditions';
 import type { GlossaryEntryData } from '../models/glossary';
 import type { LanguageData } from '../models/languages';
 import {
+	spellDetailMetaMarkdown,
+	spellSchoolDisplayName,
+} from '../models/catalog-display-text';
+import {
 	formatMagicalItemKind,
 	magicalItemDetailMarkdown,
 	type MagicalItemData,
@@ -28,7 +32,6 @@ import {
 	miscAdventuringEquipmentDetailMarkdown,
 	type MiscAdventuringEquipmentRowData,
 } from '../models/misc-adventuring-equipment';
-import { spellSchools } from '../models/spell-schools';
 import type { SpellData } from '../models/spells';
 import {
 	formatWeaponCategory,
@@ -49,29 +52,15 @@ export type DetailPageMarkdownProps = DetailPageShellProps & {
 	bodyMarkdown: string;
 };
 
-function spellMetaMarkdown(spell: SpellData, schoolName: string): string {
-	const components = [
-		`${schoolName} Spell`,
-		spell.tierLabel,
-		spell.castingTime?.trim(),
-		spell.targetLabel,
-		spell.utility ? 'Utility' : '',
-		spell.secret ? 'Secret' : '',
-	];
-	return `_${components.filter(Boolean).join(', ')}_`;
-}
-
 export function spellDetailPageProps(
 	spell: SpellData,
 ): DetailPageMarkdownProps {
-	const schoolName =
-		spellSchools.find((school) => school.id === spell.schoolId)?.name ??
-		spell.schoolId;
 	const bodyMarkdown =
-		spellMetaMarkdown(spell, schoolName) + '\n\n' + spell.description;
+		spellDetailMetaMarkdown(spell) + '\n\n' + spell.description;
 	const sourceHref = `/${spell.source}/#${spell.id}`;
 	const sourceName =
 		spell.source === 'core-rules' ? 'Core Rules' : "Game Master's Guide";
+	const schoolName = spellSchoolDisplayName(spell.schoolId);
 	return {
 		title: spell.name,
 		description: `${schoolName} school — ${spell.name}.`,
