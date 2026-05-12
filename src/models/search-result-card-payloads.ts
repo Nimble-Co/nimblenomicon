@@ -15,8 +15,8 @@ import type {
 import type { LanguageRowData } from './languages';
 import type { MagicalItemData } from './magical-items';
 import type { MiscAdventuringEquipmentRowData } from './misc-adventuring-equipment';
+import { spellSchoolDisplayName } from './catalog-display-text';
 import type { MonsterData, MonsterAction } from './monsters';
-import { spellSchools } from './spell-schools';
 import type { SpellData } from './spells';
 import {
 	MAX_ACTION_MD,
@@ -43,10 +43,6 @@ export function stripFlavorIsFreeBlockquotesFromMarkdown(md: string): string {
 		})
 		.join('\n\n')
 		.trim();
-}
-
-function spellSchoolName(schoolId: string): string {
-	return spellSchools.find((s) => s.id === schoolId)?.name ?? schoolId;
 }
 
 function sizeLabel(sizeSlug: string): string {
@@ -92,7 +88,7 @@ export function buildSpellCardPayload(
 	return {
 		v: 1,
 		kind: 'spell',
-		schoolName: spellSchoolName(spell.schoolId),
+		schoolName: spellSchoolDisplayName(spell.schoolId),
 		tierLabel: spell.tierLabel,
 		castingTime: spell.castingTime?.trim() || undefined,
 		targetLabel: spell.targetLabel,

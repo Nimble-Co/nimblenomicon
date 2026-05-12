@@ -20,6 +20,7 @@ import {
 } from './armor';
 import { languages, languageDetailHrefFromCoreRules } from './languages';
 import {
+	formatMagicalItemKind,
 	magicalItems,
 	magicalItemDetailHrefFromCoreRules,
 } from './magical-items';
@@ -28,8 +29,11 @@ import {
 	miscAdventuringEquipmentDetailHrefFromCoreRules,
 } from './misc-adventuring-equipment';
 import { monsters, type MonsterData } from './monsters';
-import { spells, type SpellData } from './spells';
-import { spellSchools } from './spell-schools';
+import {
+	spellSchoolDisplayName,
+	spellSearchSubtitle,
+} from './catalog-display-text';
+import { spells } from './spells';
 import { weapons, weaponDetailHrefFromCoreRules } from './weapons';
 import {
 	buildAncestryCardPayload,
@@ -84,24 +88,6 @@ function blocksToText(
 	blocks: readonly { name: string; description: string }[],
 ): string {
 	return blocks.map((b) => `${b.name}. ${b.description}`).join('\n');
-}
-
-function spellSchoolName(schoolId: string): string {
-	return spellSchools.find((s) => s.id === schoolId)?.name ?? schoolId;
-}
-
-function formatMagicalItemKind(kind: 'standard' | 'wand'): string {
-	return kind === 'wand' ? 'Wand' : 'Magic item';
-}
-
-function spellSubtitle(spell: SpellData): string {
-	const parts = [
-		spellSchoolName(spell.schoolId),
-		spell.tierLabel,
-		spell.utility ? 'Utility' : '',
-		spell.secret ? 'Secret' : '',
-	].filter(Boolean);
-	return parts.join(' · ');
 }
 
 function monsterSearchContent(m: MonsterData): string {
@@ -297,12 +283,12 @@ export function buildSearchableGameDataDocs(): SearchableGameDataDoc[] {
 					id: `spell:${spell.id}`,
 					type: 'spell',
 					title: spell.name,
-					subtitle: spellSubtitle(spell),
+					subtitle: spellSearchSubtitle(spell),
 					href: `/spells/${spell.id}/`,
 					content: truncate(
 						joinText(
 							spell.name,
-							spellSchoolName(spell.schoolId),
+							spellSchoolDisplayName(spell.schoolId),
 							spell.tierLabel,
 							spell.castingTime,
 							spell.targetLabel,
