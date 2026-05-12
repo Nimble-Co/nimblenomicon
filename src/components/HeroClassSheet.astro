@@ -1,6 +1,7 @@
 ---
 import { renderMarkdown } from '../docs/render-markdown';
 import { getHeroClassById } from '../models/class';
+import ReverseCornerBox from './ReverseCornerBox.astro';
 
 interface Props {
 	classId: string;
@@ -100,8 +101,8 @@ const statRowGear = statRows[6];
 		set:html={flavorHtml}
 	/>
 
-	<div
-		class="border-b border-hairline bg-surface-code px-3 py-3 text-sm leading-snug sm:px-4"
+	<ReverseCornerBox
+		class="border-b border-hairline px-3 py-3 text-sm leading-snug sm:px-4"
 	>
 		<dl
 			class="m-0 grid max-w-full gap-x-6 gap-y-2 text-sm leading-snug max-sm:grid-cols-[auto_minmax(0,1fr)] sm:grid-cols-[max-content_1fr_max-content_1fr]"
@@ -127,7 +128,7 @@ const statRowGear = statRows[6];
 				)
 			}
 		</dl>
-	</div>
+	</ReverseCornerBox>
 
 	<div class="border-t border-hairline px-3 pb-4 sm:px-4">
 		<h3 class="mt-4 font-heading text-lg font-semibold text-fg">

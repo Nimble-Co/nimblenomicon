@@ -1,0 +1,55 @@
+---
+/**
+ * Decorative frame with inward (reverse) rounded corners via SVG.
+ * Slot content sits above the SVG; use padding via `class`.
+ */
+interface Props {
+	/** SVG path fill (CSS color, e.g. `var(--color-surface-code)`). */
+	background?: string;
+	/** SVG path stroke (CSS color). */
+	border?: string;
+	/** Stroke width in SVG user units (scales with viewBox unless non-scaling-stroke). */
+	borderWidth?: number | string;
+	/** Optional Tailwind shadow utilities on the outer wrapper. */
+	shadowClass?: string;
+	class?: string;
+}
+
+const {
+	background = 'var(--color-surface-code)',
+	border = 'var(--color-hairline-emphasis)',
+	borderWidth = 2,
+	shadowClass,
+	class: className,
+} = Astro.props;
+
+const strokeWidth =
+	typeof borderWidth === 'number'
+		? borderWidth
+		: Number.parseFloat(String(borderWidth)) || 2;
+
+/** Matches inspiration path: 680×200, 20px corner radius. */
+const PATH_D =
+	'M 20,0 L 660,0 A 20,20 0 0 0 680,20 L 680,180 A 20,20 0 0 0 660,200 L 20,200 A 20,20 0 0 0 0,180 L 0,20 A 20,20 0 0 0 20,0 Z';
+---
+
+<div class:list={['relative', shadowClass, className]}>
+	<svg
+		class="pointer-events-none absolute inset-0 z-0 h-full w-full"
+		viewBox="0 0 680 200"
+		preserveAspectRatio="none"
+		xmlns="http://www.w3.org/2000/svg"
+		aria-hidden="true"
+		focusable="false"
+	>
+		<path
+			d={PATH_D}
+			fill={background}
+			stroke={border}
+			stroke-width={strokeWidth}
+			vector-effect="non-scaling-stroke"></path>
+	</svg>
+	<div class="relative z-10 min-h-0">
+		<slot />
+	</div>
+</div>
