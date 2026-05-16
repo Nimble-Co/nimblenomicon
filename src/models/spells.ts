@@ -1,6 +1,7 @@
 import { z } from 'astro/zod';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 import { readNimbleGameJson } from './nimble-game-data-raw';
+import { spellTierDisplayLabel } from './spell-tier-display-label';
 
 const spellTargetSchema = z.enum([
 	'single-target',
@@ -28,7 +29,7 @@ const spellsSchema = z
 	})
 	.strict()
 	.transform((spell) => {
-		const tierLabel = spell.tier === 0 ? 'Cantrip' : `Tier ${spell.tier}`;
+		const tierLabel = spellTierDisplayLabel(spell.tier);
 		const TARGET_LABEL: Record<SpellTarget, string> = {
 			'single-target': 'Single Target',
 			self: 'Self',

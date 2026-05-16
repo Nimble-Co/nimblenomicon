@@ -16,6 +16,19 @@ export const SEARCH_URL_UPDATE_EVENT = 'nimble-search-url-update';
 
 const ORAMA_DATA_SEARCH_TYPES = new Set<string>(ORAMA_DATA_SEARCH_TYPE_ORDER);
 
+function currentBrowserUrl(): string {
+	return `${window.location.pathname}${window.location.search}${window.location.hash}`;
+}
+
+/** Same pathname + optional `?` query + current hash (used when rewriting search URL state). */
+function pathnameWithSearchParams(
+	pathname: string,
+	params: URLSearchParams,
+): string {
+	const query = params.toString();
+	return `${pathname}${query ? `?${query}` : ''}${window.location.hash}`;
+}
+
 export function parseTypeFromSearchParams(
 	params: URLSearchParams,
 ): OramaDataSearchType | null {
@@ -42,8 +55,7 @@ export function stripInvalidTypeFromUrl(): void {
 	if (!raw) return;
 	if (ORAMA_DATA_SEARCH_TYPES.has(raw.toLowerCase())) return;
 	params.delete('type');
-	const query = params.toString();
-	const next = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
+	const next = pathnameWithSearchParams(window.location.pathname, params);
 	window.history.replaceState({}, '', next);
 }
 
@@ -64,12 +76,8 @@ export function setSearchPageUrl(
 	else params.delete('type');
 	stripSearchFilterParamsNotForType(params, type);
 	applySearchFiltersToParams(type, filters, params);
-	const query = params.toString();
-	const next = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
-	if (
-		next !==
-		`${window.location.pathname}${window.location.search}${window.location.hash}`
-	) {
+	const next = pathnameWithSearchParams(window.location.pathname, params);
+	if (next !== currentBrowserUrl()) {
 		const method = options?.replace ? 'replaceState' : 'pushState';
 		window.history[method]({}, '', next);
 	}

@@ -8,6 +8,7 @@ import { monsters } from './monsters';
 import { legendaryMonsters } from './legendary-monsters';
 import { heroClasses } from './class';
 import { MONSTER_LEVEL_VALUES } from './monsters';
+import { spellTierDisplayLabel } from './spell-tier-display-label';
 import type { SpellTarget } from './spells';
 
 export const SPELL_TARGET_FILTER_OPTIONS: {
@@ -144,11 +145,9 @@ export const MAGIC_ITEM_REWARD_OPTIONS: { value: string; label: string }[] = [
 ];
 
 export function spellTierOptions(): { value: string; label: string }[] {
-	const out: { value: string; label: string }[] = [
-		{ value: '0', label: 'Cantrip' },
-	];
-	for (let t = 1; t <= 9; t += 1) {
-		out.push({ value: String(t), label: `Tier ${t}` });
+	const out: { value: string; label: string }[] = [];
+	for (let t = 0; t <= 9; t += 1) {
+		out.push({ value: String(t), label: spellTierDisplayLabel(t) });
 	}
 	return out;
 }
