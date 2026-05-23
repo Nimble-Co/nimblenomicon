@@ -3,6 +3,7 @@
 	import { onMount, tick } from 'svelte';
 	import {
 		ORAMA_DATA_SEARCH_TYPE_ORDER,
+		ORAMA_DATA_SEARCH_TYPE_SET,
 		type OramaDataSearchType,
 	} from '../../constants/orama-data-search';
 	import {
@@ -67,8 +68,6 @@
 	const BROWSE_RANDOM_COUNT = 50;
 	const BROWSE_RANDOM_POOL = 500;
 	const DEBOUNCE_MS = 200;
-
-	const ORAMA_DATA_SEARCH_TYPES = new Set<string>(ORAMA_DATA_SEARCH_TYPE_ORDER);
 
 	let query = $state('');
 	let activeType = $state<OramaDataSearchType | null>(null);
@@ -306,7 +305,7 @@
 		const nextType =
 			raw.length === 0
 				? null
-				: ORAMA_DATA_SEARCH_TYPES.has(raw)
+				: ORAMA_DATA_SEARCH_TYPE_SET.has(raw)
 					? (raw as OramaDataSearchType)
 					: null;
 		if (raw.length > 0 && nextType === null) return;

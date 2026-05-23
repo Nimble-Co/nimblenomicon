@@ -19,6 +19,11 @@ export const ORAMA_DATA_SEARCH_TYPE_ORDER = [
 
 export type OramaDataSearchType = (typeof ORAMA_DATA_SEARCH_TYPE_ORDER)[number];
 
+/** Valid `?type=` slugs and menu values (membership checks for {@link OramaDataSearchType}). */
+export const ORAMA_DATA_SEARCH_TYPE_SET = new Set<string>(
+	ORAMA_DATA_SEARCH_TYPE_ORDER,
+);
+
 export const ORAMA_DATA_SEARCH_TYPE_LABELS: Record<
 	OramaDataSearchType,
 	string
