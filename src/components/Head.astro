@@ -3,13 +3,57 @@
  * Wraps Starlight's default head output and adds favicon links some clients expect:
  * - `rel="icon"` (HTML standard; `shortcut icon` alone can be ignored)
  * - `apple-touch-icon` (iOS / Safari tab switcher)
+ *
+ * Starlight emits Open Graph and Twitter tags from each page's title and description but does not
+ * set `og:image` / `twitter:image`. We add those here, using an optional `shareImage` from docs
+ * frontmatter when present, otherwise `public/og-default.png` (see AGENTS.md).
  */
+import type { ImageMetadata } from 'astro';
 import DefaultHead from '@astrojs/starlight/components/Head.astro';
+import { getImage } from 'astro:assets';
+import config from 'virtual:starlight/user-config';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const faviconHref = base ? `${base}/favicon.png` : '/favicon.png';
+
+const site = Astro.site;
+const route = Astro.locals.starlightRoute;
+const data = route?.entry?.data as
+	| { shareImage?: ImageMetadata; title?: string }
+	| undefined;
+const shareImage = data?.shareImage;
+
+let ogImageUrl: string | undefined;
+let ogImageAlt: string | undefined;
+
+if (site) {
+	if (shareImage) {
+		const optimized = await getImage({ src: shareImage, width: 1200 });
+		const path = optimized.src.startsWith('/')
+			? optimized.src
+			: `/${optimized.src}`;
+		ogImageUrl = new URL(path, site).href;
+		ogImageAlt = `${data?.title ?? config.title} — Nimble tabletop RPG reference`;
+	} else {
+		ogImageUrl = new URL('/og-default.png', site).href;
+		ogImageAlt =
+			'The Nimblenomicon — Nimble tabletop RPG rules reference and tools';
+	}
+}
 ---
 
 <DefaultHead />
 <link rel="icon" href={faviconHref} type="image/png" />
 <link rel="apple-touch-icon" href={faviconHref} />
+{
+	ogImageUrl ? (
+		<>
+			<meta property="og:image" content={ogImageUrl} />
+			<meta property="og:image:width" content="1200" />
+			<meta property="og:image:height" content="630" />
+			<meta property="og:image:alt" content={ogImageAlt} />
+			<meta name="twitter:image" content={ogImageUrl} />
+			<meta name="twitter:image:alt" content={ogImageAlt} />
+		</>
+	) : null
+}
