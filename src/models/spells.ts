@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { spellListingMetaMarkdown } from './catalog-display-text';
 import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const spellTargetSchema = z.enum([
@@ -71,12 +72,7 @@ export function spellsMatching(filters: SpellListingFilters): SpellData[] {
 
 /** Markdown fragment for the heading block body (meta line + description). */
 export function spellListingBodyMarkdown(spell: SpellData): string {
-	const metaParts = [
-		spell.tierLabel,
-		spell.castingTime?.trim(),
-		spell.targetLabel,
-	].filter(Boolean);
-	const meta = metaParts.length > 0 ? `_${metaParts.join(', ')}_` : '';
+	const meta = spellListingMetaMarkdown(spell);
 	const desc = spell.description?.trim();
 	return meta + (desc ? `\n\n${desc}` : '');
 }

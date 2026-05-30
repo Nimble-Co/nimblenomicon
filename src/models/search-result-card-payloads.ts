@@ -5,14 +5,14 @@ import { slugifyEntityId } from '../utils/slugifyEntityId';
 import type { AncestryRowData } from './ancestries';
 import { formatArmorCategoryLabel, type ArmorRowData } from './armor';
 import type { BackgroundRowData } from './backgrounds';
-import type { ConditionRowData } from './conditions';
+import type { ConditionData } from './conditions';
 import type { HeroClassData } from './class';
-import type { GlossaryRowData } from './glossary';
+import type { GlossaryEntryData } from './glossary';
 import type {
 	LegendaryCreatureData,
 	LegendaryEntryData,
 } from './legendary-monsters';
-import type { LanguageRowData } from './languages';
+import type { LanguageData } from './languages';
 import type { MagicalItemData } from './magical-items';
 import type { MiscAdventuringEquipmentRowData } from './misc-adventuring-equipment';
 import { spellSchoolDisplayName } from './catalog-display-text';
@@ -255,7 +255,7 @@ export function buildMagicItemCardPayload(
 }
 
 export function buildGlossaryCardPayload(
-	g: GlossaryRowData,
+	g: GlossaryEntryData,
 ): SearchResultCardPayload {
 	return {
 		v: 1,
@@ -265,7 +265,7 @@ export function buildGlossaryCardPayload(
 }
 
 export function buildLanguageCardPayload(
-	lang: LanguageRowData,
+	lang: LanguageData,
 ): SearchResultCardPayload {
 	return {
 		v: 1,
@@ -275,7 +275,7 @@ export function buildLanguageCardPayload(
 }
 
 export function buildConditionCardPayload(
-	row: ConditionRowData,
+	row: ConditionData,
 ): SearchResultCardPayload {
 	return {
 		v: 1,
