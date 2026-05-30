@@ -19,6 +19,11 @@ export const ORAMA_DATA_SEARCH_TYPE_ORDER = [
 
 export type OramaDataSearchType = (typeof ORAMA_DATA_SEARCH_TYPE_ORDER)[number];
 
+/** Lowercase type slugs accepted in `/search/` URLs and filter state. */
+export const ORAMA_DATA_SEARCH_TYPE_SET = new Set<string>(
+	ORAMA_DATA_SEARCH_TYPE_ORDER,
+);
+
 export const ORAMA_DATA_SEARCH_TYPE_LABELS: Record<
 	OramaDataSearchType,
 	string

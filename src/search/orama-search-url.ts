@@ -8,20 +8,20 @@ import {
 	type SearchFiltersState,
 } from '../models/search-filters';
 import {
-	ORAMA_DATA_SEARCH_TYPE_ORDER,
+	ORAMA_DATA_SEARCH_TYPE_SET,
 	type OramaDataSearchType,
 } from '../constants/orama-data-search';
 
 export const SEARCH_URL_UPDATE_EVENT = 'nimble-search-url-update';
-
-const ORAMA_DATA_SEARCH_TYPES = new Set<string>(ORAMA_DATA_SEARCH_TYPE_ORDER);
 
 export function parseTypeFromSearchParams(
 	params: URLSearchParams,
 ): OramaDataSearchType | null {
 	const raw = params.get('type')?.trim().toLowerCase();
 	if (!raw) return null;
-	return ORAMA_DATA_SEARCH_TYPES.has(raw) ? (raw as OramaDataSearchType) : null;
+	return ORAMA_DATA_SEARCH_TYPE_SET.has(raw)
+		? (raw as OramaDataSearchType)
+		: null;
 }
 
 export function readSearchPageParams(): {
@@ -40,7 +40,7 @@ export function stripInvalidTypeFromUrl(): void {
 	const params = new URLSearchParams(window.location.search);
 	const raw = params.get('type')?.trim();
 	if (!raw) return;
-	if (ORAMA_DATA_SEARCH_TYPES.has(raw.toLowerCase())) return;
+	if (ORAMA_DATA_SEARCH_TYPE_SET.has(raw.toLowerCase())) return;
 	params.delete('type');
 	const query = params.toString();
 	const next = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;

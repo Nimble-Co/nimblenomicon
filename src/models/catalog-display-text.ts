@@ -33,3 +33,40 @@ export function spellDetailMetaMarkdown(spell: SpellData): string {
 	];
 	return `_${components.filter(Boolean).join(', ')}_`;
 }
+
+/** Italic meta line for spell lists grouped by school (no school name in the line). */
+export function spellListingMetaMarkdown(spell: SpellData): string {
+	const metaParts = [
+		spell.tierLabel,
+		spell.castingTime?.trim(),
+		spell.targetLabel,
+	].filter(Boolean);
+	return metaParts.length > 0 ? `_${metaParts.join(', ')}_` : '';
+}
+
+/** Dot-separated subtitle on spell search result cards (school · tier · casting · target). */
+export function spellSearchCardMetaLine(spell: SpellData): string {
+	return joinSpellSearchCardMetaParts({
+		schoolName: spellSchoolDisplayName(spell.schoolId),
+		tierLabel: spell.tierLabel,
+		castingTime: spell.castingTime?.trim(),
+		targetLabel: spell.targetLabel,
+	});
+}
+
+/** Same layout as {@link spellSearchCardMetaLine} from precomputed card payload fields. */
+export function joinSpellSearchCardMetaParts(parts: {
+	schoolName: string;
+	tierLabel: string;
+	castingTime?: string;
+	targetLabel?: string;
+}): string {
+	return [
+		parts.schoolName,
+		parts.tierLabel,
+		parts.castingTime,
+		parts.targetLabel,
+	]
+		.filter(Boolean)
+		.join(' · ');
+}

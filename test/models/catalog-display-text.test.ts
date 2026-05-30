@@ -1,7 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import {
+	joinSpellSearchCardMetaParts,
 	spellDetailMetaMarkdown,
+	spellListingMetaMarkdown,
 	spellSchoolDisplayName,
+	spellSearchCardMetaLine,
 	spellSearchSubtitle,
 } from '../../src/models/catalog-display-text';
 import { spellSchools } from '../../src/models/spell-schools';
@@ -51,5 +54,28 @@ describe('catalog-display-text (spells)', () => {
 		expect(spellDetailMetaMarkdown(s)).toBe(
 			`_${schoolName} Spell, Tier 1, 1 Action, Single Target_`,
 		);
+	});
+
+	it('spellListingMetaMarkdown omits school (lists are grouped by school)', () => {
+		const s = baseSpell({});
+		expect(spellListingMetaMarkdown(s)).toBe(
+			'_Tier 1, 1 Action, Single Target_',
+		);
+	});
+
+	it('spellSearchCardMetaLine matches search card subtitle', () => {
+		const schoolName = spellSchools[0]!.name;
+		const s = baseSpell({});
+		expect(spellSearchCardMetaLine(s)).toBe(
+			`${schoolName} · Tier 1 · 1 Action · Single Target`,
+		);
+		expect(
+			joinSpellSearchCardMetaParts({
+				schoolName,
+				tierLabel: 'Tier 1',
+				castingTime: '1 Action',
+				targetLabel: 'Single Target',
+			}),
+		).toBe(spellSearchCardMetaLine(s));
 	});
 });
