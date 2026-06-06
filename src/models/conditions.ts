@@ -45,11 +45,3 @@ export const conditions: ConditionData[] = z
 export function conditionDetailHrefFromCoreRules(id: string): string {
 	return `/conditions/${id}/`;
 }
-
-/** Sort conditions by name for the index page. */
-export function compareConditionRowsForListing(
-	a: ConditionData,
-	b: ConditionData,
-): number {
-	return a.name.localeCompare(b.name);
-}

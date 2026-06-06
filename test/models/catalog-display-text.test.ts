@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import {
+	formatSpellCardMetaLine,
 	spellDetailMetaMarkdown,
+	spellListingMetaMarkdown,
 	spellSchoolDisplayName,
 	spellSearchSubtitle,
 } from '../../src/models/catalog-display-text';
@@ -51,5 +53,23 @@ describe('catalog-display-text (spells)', () => {
 		expect(spellDetailMetaMarkdown(s)).toBe(
 			`_${schoolName} Spell, Tier 1, 1 Action, Single Target_`,
 		);
+	});
+
+	it('spellListingMetaMarkdown omits school and flags', () => {
+		const s = baseSpell({ utility: true, secret: true });
+		expect(spellListingMetaMarkdown(s)).toBe(
+			'_Tier 1, 1 Action, Single Target_',
+		);
+	});
+
+	it('formatSpellCardMetaLine joins card fields with middle dots', () => {
+		expect(
+			formatSpellCardMetaLine({
+				schoolName: 'Fire',
+				tierLabel: 'Tier 1',
+				castingTime: '1 Action',
+				targetLabel: 'Single Target',
+			}),
+		).toBe('Fire · Tier 1 · 1 Action · Single Target');
 	});
 });

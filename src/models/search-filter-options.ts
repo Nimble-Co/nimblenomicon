@@ -8,23 +8,14 @@ import { monsters } from './monsters';
 import { legendaryMonsters } from './legendary-monsters';
 import { heroClasses } from './class';
 import { MONSTER_LEVEL_VALUES } from './monsters';
-import type { SpellTarget } from './spells';
+import { SPELL_TARGET_LABEL, type SpellTarget } from './spells';
 
 export const SPELL_TARGET_FILTER_OPTIONS: {
 	value: SpellTarget;
 	label: string;
-}[] = [
-	{ value: 'single-target', label: 'Single Target' },
-	{ value: 'self', label: 'Self' },
-	{ value: 'aoe', label: 'AoE' },
-	{ value: 'two-targets', label: '2 Targets' },
-	{ value: 'multi-target', label: 'Multi-target' },
-	{ value: 'single-target-plus', label: 'Single Target+' },
-	{
-		value: 'single-target-or-self',
-		label: 'Single Target/Self',
-	},
-];
+}[] = (Object.entries(SPELL_TARGET_LABEL) as [SpellTarget, string][]).map(
+	([value, label]) => ({ value, label }),
+);
 
 export function spellSchoolOptions(): { value: string; label: string }[] {
 	return spellSchools.map((s) => ({ value: s.id, label: s.name }));

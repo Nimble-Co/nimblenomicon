@@ -10,7 +10,7 @@ import {
 } from './ancestries';
 import { backgrounds, backgroundDetailHrefFromCoreRules } from './backgrounds';
 import { conditions, conditionDetailHrefFromCoreRules } from './conditions';
-import { heroClasses } from './class';
+import { classDetailHref, heroClasses } from './class';
 import { glossary, glossaryDetailHrefFromCoreRules } from './glossary';
 import { legendaryMonsters } from './legendary-monsters';
 import {
@@ -28,12 +28,12 @@ import {
 	miscAdventuringEquipment,
 	miscAdventuringEquipmentDetailHrefFromCoreRules,
 } from './misc-adventuring-equipment';
-import { monsters, type MonsterData } from './monsters';
+import { monsterDetailHref, monsters, type MonsterData } from './monsters';
 import {
 	spellSchoolDisplayName,
 	spellSearchSubtitle,
 } from './catalog-display-text';
-import { spells } from './spells';
+import { spellDetailHref, spells } from './spells';
 import { weapons, weaponDetailHrefFromCoreRules } from './weapons';
 import {
 	buildAncestryCardPayload,
@@ -177,7 +177,7 @@ export function buildSearchableGameDataDocs(): SearchableGameDataDoc[] {
 					type: 'class',
 					title: c.name,
 					subtitle: joinText(c.hitDieLabel, c.keyStatsDisplay) || c.name,
-					href: `/classes/${c.id}/`,
+					href: classDetailHref(c.id),
 					content: truncate(
 						joinText(
 							c.name,
@@ -284,7 +284,7 @@ export function buildSearchableGameDataDocs(): SearchableGameDataDoc[] {
 					type: 'spell',
 					title: spell.name,
 					subtitle: spellSearchSubtitle(spell),
-					href: `/spells/${spell.id}/`,
+					href: spellDetailHref(spell.id),
 					content: truncate(
 						joinText(
 							spell.name,
@@ -344,7 +344,7 @@ export function buildSearchableGameDataDocs(): SearchableGameDataDoc[] {
 					type: 'monster',
 					title: m.name,
 					subtitle: `Level ${m.level}`,
-					href: `/monsters/${m.id}/`,
+					href: monsterDetailHref(m.id),
 					content: monsterSearchContent(m),
 					cardJson: stringifySearchResultCard(
 						buildStandardMonsterCardPayload(m),
@@ -371,7 +371,7 @@ export function buildSearchableGameDataDocs(): SearchableGameDataDoc[] {
 					type: 'monster',
 					title: leg.name,
 					subtitle: `Level ${leg.level} · Legendary`,
-					href: `/monsters/${leg.id}/`,
+					href: monsterDetailHref(leg.id),
 					content: truncate(
 						joinText(
 							leg.name,

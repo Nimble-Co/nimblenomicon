@@ -197,3 +197,7 @@ export const heroClasses: HeroClassData[] = z
 export function getHeroClassById(classId: string): HeroClassData | undefined {
 	return heroClasses.find((c) => c.id === classId);
 }
+
+export function classDetailHref(id: string): string {
+	return `/classes/${id}/`;
+}

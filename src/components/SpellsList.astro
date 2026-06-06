@@ -1,6 +1,7 @@
 ---
 import HeadingBlockList from './HeadingBlockList.astro';
 import {
+	spellDetailHref,
 	spellListingBodyMarkdown,
 	spellsMatching,
 	type SpellListingFilters,
@@ -11,7 +12,7 @@ const filters = Astro.props as SpellListingFilters;
 const blocks = spellsMatching(filters).map((spell) => ({
 	id: spell.id,
 	title: spell.name,
-	href: `/spells/${spell.id}/`,
+	href: spellDetailHref(spell.id),
 	bodyMarkdown: spellListingBodyMarkdown(spell),
 }));
 ---

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR } from '../../../constants/orama-data-search';
+	import { formatSpellCardMetaLine } from '../../../models/catalog-display-text';
 	import type { SearchableGameDataDoc } from '../../../models/orama-game-data-index';
 	import type { SpellSearchCardPayload } from '../../../models/search-result-card';
 	import MarkdownSnippet from './MarkdownSnippet.svelte';
@@ -36,13 +37,7 @@
 		</h3>
 	</header>
 	<p class="text-fg-muted m-0 mt-1 text-xs italic">
-		{spell.schoolName} · {spell.tierLabel}
-		{#if spell.castingTime}
-			· {spell.castingTime}
-		{/if}
-		{#if spell.targetLabel}
-			· {spell.targetLabel}
-		{/if}
+		{formatSpellCardMetaLine(spell)}
 	</p>
 	{#if spell.utility || spell.secret}
 		<p class="m-0 mt-1 flex flex-wrap gap-2 text-xs">

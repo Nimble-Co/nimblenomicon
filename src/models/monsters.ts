@@ -134,3 +134,7 @@ export const monsters: MonsterData[] = z
 export function getMonstersByKindId(kindId: string): MonsterData[] {
 	return monsters.filter((m) => m.kind?.id === kindId);
 }
+
+export function monsterDetailHref(id: string): string {
+	return `/monsters/${id}/`;
+}
