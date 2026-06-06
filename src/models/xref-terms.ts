@@ -1,15 +1,15 @@
 import { ancestries } from './ancestries';
 import { armorRows } from './armor';
 import { backgrounds } from './backgrounds';
-import { heroClasses, type HeroClassData } from './class';
+import { classDetailHref, heroClasses, type HeroClassData } from './class';
 import { conditions } from './conditions';
 import { glossary } from './glossary';
 import { languages } from './languages';
 import { legendaryMonsters } from './legendary-monsters';
 import { magicalItems } from './magical-items';
 import { miscAdventuringEquipment } from './misc-adventuring-equipment';
-import { monsters } from './monsters';
-import { spells } from './spells';
+import { monsterDetailHref, monsters } from './monsters';
+import { spellDetailHref, spells } from './spells';
 import { weapons } from './weapons';
 
 /**
@@ -85,7 +85,7 @@ function buildEntries(): XrefTermEntry[] {
 	for (const s of spells) {
 		out.push({
 			term: s.name,
-			href: `/spells/${s.id}/`,
+			href: spellDetailHref(s.id),
 			definition: spellDefinition(s),
 			kind: 'spell',
 			priority: 100,
@@ -95,7 +95,7 @@ function buildEntries(): XrefTermEntry[] {
 	for (const c of heroClasses) {
 		out.push({
 			term: c.name,
-			href: `/classes/${c.id}/`,
+			href: classDetailHref(c.id),
 			definition: classDefinition(c),
 			kind: 'class',
 			priority: 95,
@@ -103,7 +103,7 @@ function buildEntries(): XrefTermEntry[] {
 		for (const sub of c.subclasses) {
 			out.push({
 				term: sub.name,
-				href: `/classes/${c.id}/`,
+				href: classDetailHref(c.id),
 				definition: truncateDef(`${sub.name} subclass of ${c.name}.`),
 				kind: 'subclass',
 				priority: 94,
@@ -114,7 +114,7 @@ function buildEntries(): XrefTermEntry[] {
 	for (const m of monsters) {
 		out.push({
 			term: m.name,
-			href: `/monsters/${m.id}/`,
+			href: monsterDetailHref(m.id),
 			definition: monsterDefinition(m.name, String(m.level), m.kind?.name),
 			kind: 'monster',
 			priority: 88,
@@ -124,7 +124,7 @@ function buildEntries(): XrefTermEntry[] {
 	for (const m of legendaryMonsters) {
 		out.push({
 			term: m.name,
-			href: `/monsters/${m.id}/`,
+			href: monsterDetailHref(m.id),
 			definition: truncateDef(
 				`${m.name} — Level ${m.level} legendary (${m.creatureType}).`,
 			),

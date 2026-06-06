@@ -45,11 +45,3 @@ export const glossary: GlossaryEntryData[] = z
 export function glossaryDetailHrefFromCoreRules(id: string): string {
 	return `/glossary/${id}/`;
 }
-
-/** Sort glossary entries by name for the index page. */
-export function compareGlossaryRowsForListing(
-	a: GlossaryEntryData,
-	b: GlossaryEntryData,
-): number {
-	return a.name.localeCompare(b.name);
-}

@@ -57,11 +57,3 @@ export function miscAdventuringEquipmentDetailHrefFromCoreRules(
 ): string {
 	return `/misc-adventuring-equipment/${id}/`;
 }
-
-/** Sort by name for the index page. */
-export function compareMiscAdventuringEquipmentRowsForListing(
-	a: MiscAdventuringEquipmentRowData,
-	b: MiscAdventuringEquipmentRowData,
-): number {
-	return a.name.localeCompare(b.name);
-}

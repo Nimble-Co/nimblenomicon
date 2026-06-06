@@ -71,16 +71,3 @@ export function weaponDetailMarkdown(row: WeaponRowData): string {
 export function weaponDetailHrefFromCoreRules(id: string): string {
 	return `/weapons/${id}/`;
 }
-
-/**
- * Sort for the weapons index: melee first, then ranged; within each group, by name.
- */
-export function compareWeaponRowsForListing(
-	a: WeaponRowData,
-	b: WeaponRowData,
-): number {
-	const ord = (c: WeaponRowData['category']) => (c === 'melee' ? 0 : 1);
-	const d = ord(a.category) - ord(b.category);
-	if (d !== 0) return d;
-	return a.name.localeCompare(b.name);
-}
