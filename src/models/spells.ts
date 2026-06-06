@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { spellListingMetaMarkdown } from './catalog-display-text';
 import { readNimbleGameJson } from './nimble-game-data-raw';
 
 const spellTargetSchema = z.enum([
@@ -13,6 +14,16 @@ const spellTargetSchema = z.enum([
 ]);
 
 export type SpellTarget = z.infer<typeof spellTargetSchema>;
+
+export const SPELL_TARGET_LABEL: Record<SpellTarget, string> = {
+	'single-target': 'Single Target',
+	self: 'Self',
+	aoe: 'AoE',
+	'two-targets': '2 Targets',
+	'multi-target': 'Multi-target',
+	'single-target-plus': 'Single Target+',
+	'single-target-or-self': 'Single Target/Self',
+};
 
 const spellsSchema = z
 	.object({
@@ -29,16 +40,9 @@ const spellsSchema = z
 	.strict()
 	.transform((spell) => {
 		const tierLabel = spell.tier === 0 ? 'Cantrip' : `Tier ${spell.tier}`;
-		const TARGET_LABEL: Record<SpellTarget, string> = {
-			'single-target': 'Single Target',
-			self: 'Self',
-			aoe: 'AoE',
-			'two-targets': '2 Targets',
-			'multi-target': 'Multi-target',
-			'single-target-plus': 'Single Target+',
-			'single-target-or-self': 'Single Target/Self',
-		};
-		const targetLabel = spell.target ? TARGET_LABEL[spell.target] : undefined;
+		const targetLabel = spell.target
+			? SPELL_TARGET_LABEL[spell.target]
+			: undefined;
 		return {
 			...spell,
 			id: slugifyEntityId(spell.name, 'spell'),
@@ -51,6 +55,10 @@ export type SpellData = z.infer<typeof spellsSchema>;
 export const spells: SpellData[] = z
 	.array(spellsSchema)
 	.parse(readNimbleGameJson('spells'));
+
+export function spellDetailHref(id: string): string {
+	return `/spells/${id}/`;
+}
 
 export interface SpellListingFilters {
 	schoolId?: string;
@@ -71,12 +79,7 @@ export function spellsMatching(filters: SpellListingFilters): SpellData[] {
 
 /** Markdown fragment for the heading block body (meta line + description). */
 export function spellListingBodyMarkdown(spell: SpellData): string {
-	const metaParts = [
-		spell.tierLabel,
-		spell.castingTime?.trim(),
-		spell.targetLabel,
-	].filter(Boolean);
-	const meta = metaParts.length > 0 ? `_${metaParts.join(', ')}_` : '';
+	const meta = spellListingMetaMarkdown(spell);
 	const desc = spell.description?.trim();
 	return meta + (desc ? `\n\n${desc}` : '');
 }
