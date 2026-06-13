@@ -1,22 +1,22 @@
 /**
  * Build `SearchResultCardPayload` values for `cardJson` during Orama index generation.
  */
-import { slugifyEntityId } from '../utils/slugifyEntityId';
 import type { AncestryRowData } from './ancestries';
 import { formatArmorCategoryLabel, type ArmorRowData } from './armor';
 import type { BackgroundRowData } from './backgrounds';
-import type { ConditionRowData } from './conditions';
+import type { ConditionData } from './conditions';
 import type { HeroClassData } from './class';
-import type { GlossaryRowData } from './glossary';
-import type {
-	LegendaryCreatureData,
-	LegendaryEntryData,
-} from './legendary-monsters';
-import type { LanguageRowData } from './languages';
+import {
+	legendarySaveBadgeStrings,
+	monsterActionHeading,
+} from './creature-stat-display';
+import type { GlossaryEntryData } from './glossary';
+import type { LegendaryEntryData } from './legendary-monsters';
+import type { LanguageData } from './languages';
 import type { MagicalItemData } from './magical-items';
 import type { MiscAdventuringEquipmentRowData } from './misc-adventuring-equipment';
 import { spellSchoolDisplayName } from './catalog-display-text';
-import type { MonsterData, MonsterAction } from './monsters';
+import type { MonsterData } from './monsters';
 import type { SpellData } from './spells';
 import {
 	MAX_ACTION_MD,
@@ -26,7 +26,6 @@ import {
 	truncateCardMd,
 	type SearchResultCardPayload,
 } from './search-result-card';
-import { sizes } from './sizes';
 import { formatWeaponCategory, type WeaponRowData } from './weapons';
 
 /**
@@ -45,41 +44,15 @@ export function stripFlavorIsFreeBlockquotesFromMarkdown(md: string): string {
 		.trim();
 }
 
-function sizeLabel(sizeSlug: string): string {
-	const match = sizes.find((s) => slugifyEntityId(s.name, 'size') === sizeSlug);
-	return match?.name ?? sizeSlug;
-}
-
-function actionHeading(action: MonsterAction): string {
-	const uses = action.uses != null ? ` (${action.uses}x)` : '';
-	const endsSentence = /[.!?;:]$/.test(action.name.trim());
-	return `${action.name}${uses}${endsSentence ? '' : '.'}`;
-}
-
-const SAVE_LABEL = {
-	str: 'STR',
-	dex: 'DEX',
-	int: 'INT',
-	wil: 'WIL',
-	all: 'ALL',
-} as const;
-
-function legendarySaveBadges(saves: LegendaryCreatureData['saves']): string[] {
-	if (!saves) return [];
-	if (typeof saves.all === 'number' && saves.all !== 0) {
-		const n = saves.all;
-		const sign = n > 0 ? '+'.repeat(n) : '-'.repeat(-n);
-		return [`ALL${sign}`];
-	}
-	const order = ['str', 'dex', 'int', 'wil'] as const;
-	const out: string[] = [];
-	for (const k of order) {
-		const v = saves[k];
-		if (typeof v === 'number' && v > 0) {
-			out.push(`${SAVE_LABEL[k]}${'+'.repeat(v)}`);
-		}
-	}
-	return out;
+function buildSimpleExcerptCard(
+	kind: 'background' | 'condition' | 'equipment' | 'glossary' | 'language',
+	description: string,
+): SearchResultCardPayload {
+	return {
+		v: 1,
+		kind,
+		excerptMd: truncateCardMd(description),
+	};
 }
 
 export function buildSpellCardPayload(
@@ -130,7 +103,7 @@ export function buildStandardMonsterCardPayload(
 			descriptionMd: truncateCardMd(a.description, MAX_BLOCK_MD),
 		})),
 		actions: m.actions.map((a) => ({
-			name: actionHeading(a),
+			name: monsterActionHeading(a),
 			uses: a.uses,
 			descriptionMd: truncateCardMd(a.description, MAX_ACTION_MD),
 			joinNext: a.joinNext,
@@ -165,13 +138,13 @@ export function buildLegendaryMonsterCardPayload(
 			armor: c.armor,
 			movementMode: c.movement.mode,
 			movementSpeed: c.movement.speed,
-			saveBadges: legendarySaveBadges(c.saves),
+			saveBadges: legendarySaveBadgeStrings(c.saves),
 			specialAbilities: c.specialAbilities.map((a) => ({
 				name: a.name,
 				descriptionMd: truncateCardMd(a.description, MAX_BLOCK_MD),
 			})),
 			actions: c.actions.map((a) => ({
-				name: actionHeading(a),
+				name: monsterActionHeading(a),
 				uses: a.uses,
 				descriptionMd: truncateCardMd(a.description, MAX_ACTION_MD),
 				joinNext: a.joinNext,
@@ -225,21 +198,13 @@ export function buildAncestryCardPayload(
 export function buildBackgroundCardPayload(
 	b: BackgroundRowData,
 ): SearchResultCardPayload {
-	return {
-		v: 1,
-		kind: 'background',
-		excerptMd: truncateCardMd(b.description),
-	};
+	return buildSimpleExcerptCard('background', b.description);
 }
 
 export function buildEquipmentCardPayload(
 	row: MiscAdventuringEquipmentRowData,
 ): SearchResultCardPayload {
-	return {
-		v: 1,
-		kind: 'equipment',
-		excerptMd: truncateCardMd(row.description),
-	};
+	return buildSimpleExcerptCard('equipment', row.description);
 }
 
 export function buildMagicItemCardPayload(
@@ -255,33 +220,21 @@ export function buildMagicItemCardPayload(
 }
 
 export function buildGlossaryCardPayload(
-	g: GlossaryRowData,
+	g: GlossaryEntryData,
 ): SearchResultCardPayload {
-	return {
-		v: 1,
-		kind: 'glossary',
-		excerptMd: truncateCardMd(g.description),
-	};
+	return buildSimpleExcerptCard('glossary', g.description);
 }
 
 export function buildLanguageCardPayload(
-	lang: LanguageRowData,
+	lang: LanguageData,
 ): SearchResultCardPayload {
-	return {
-		v: 1,
-		kind: 'language',
-		excerptMd: truncateCardMd(lang.description),
-	};
+	return buildSimpleExcerptCard('language', lang.description);
 }
 
 export function buildConditionCardPayload(
-	row: ConditionRowData,
+	row: ConditionData,
 ): SearchResultCardPayload {
-	return {
-		v: 1,
-		kind: 'condition',
-		excerptMd: truncateCardMd(row.description),
-	};
+	return buildSimpleExcerptCard('condition', row.description);
 }
 
 export function buildArmorCardPayload(
@@ -297,4 +250,4 @@ export function buildArmorCardPayload(
 	};
 }
 
-export { stringifySearchResultCard, sizeLabel };
+export { stringifySearchResultCard };

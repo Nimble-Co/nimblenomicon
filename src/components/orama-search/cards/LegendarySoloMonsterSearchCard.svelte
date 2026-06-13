@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { SearchableGameDataDoc } from '../../../models/orama-game-data-index';
 	import type { LegendaryMonsterSearchCardPayload } from '../../../models/search-result-card';
-	import { sizeLabel } from '../../../models/search-result-card-payloads';
+	import { creatureSizeLabel } from '../../../models/creature-stat-display';
 	import MonsterAbilityBlock from './MonsterAbilityBlock.svelte';
 	import MonsterActionsBlock from './MonsterActionsBlock.svelte';
 	import MonsterStatsLine from './MonsterStatsLine.svelte';
@@ -37,7 +37,9 @@
 		<p
 			class="text-fg-muted m-0 text-xs font-normal uppercase italic leading-none tracking-wide"
 		>
-			Level {leg.level}, Solo{#if showSize}, {sizeLabel(solo.sizeSlug)}{/if}, {leg.creatureType}
+			Level {leg.level}, Solo{#if showSize}, {creatureSizeLabel(
+					solo.sizeSlug,
+				)}{/if}, {leg.creatureType}
 		</p>
 	</hgroup>
 	<MonsterStatsLine

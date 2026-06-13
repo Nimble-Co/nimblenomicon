@@ -5,6 +5,9 @@
  * Code that loads these models outside the Vite pipeline (e.g. scripts) should
  * be run with `vite-node` so `import.meta.glob` is transformed.
  */
+
+/** Dataset slug matching a file stem under `src/data/`. */
+export type NimbleJsonId = string;
 const dataModules = import.meta.glob('../data/*.json', {
 	eager: true,
 	import: 'default',
@@ -27,7 +30,7 @@ export const nimbleJsonIds = Object.keys(nimbleGameDataById).sort((a, b) =>
 	a.localeCompare(b),
 );
 
-/** Alias for loaders and legacy imports (`nimble-json-ids`). */
+/** Alias for loaders and legacy imports. */
 export { nimbleJsonIds as NIMBLE_JSON_IDS };
 
 export function getCollectionSlugs(): string[] {

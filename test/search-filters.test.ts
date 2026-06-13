@@ -1,9 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import {
 	applySearchFiltersToParams,
+	classKeyStatsRowMatches,
 	clearAllSearchFilterParams,
 	clearMultiFilterDim,
 	cycleTriStateFilter,
+	documentMatchesClassStatFilter,
 	emptySearchFiltersState,
 	hasAnyActiveFilters,
 	initialFiltersForType,
@@ -91,5 +93,34 @@ describe('search-filters URL helpers', () => {
 		expect(s.tier).toEqual(['1', '2']);
 		s = setMultiFilterValue(s, 'tier', '1', false);
 		expect(s.tier).toEqual(['2']);
+	});
+});
+
+describe('class key-stats post-filter', () => {
+	it('classKeyStatsRowMatches matches any selected stat in comma-separated field', () => {
+		expect(classKeyStatsRowMatches('dex,int', ['str'])).toBe(false);
+		expect(classKeyStatsRowMatches('dex,int', ['dex'])).toBe(true);
+		expect(classKeyStatsRowMatches('dex,int', ['int', 'wil'])).toBe(true);
+		expect(classKeyStatsRowMatches('dex,int', [])).toBe(true);
+	});
+
+	it('documentMatchesClassStatFilter only applies to class docs with active stat filter', () => {
+		const filters = emptySearchFiltersState();
+		filters.stat = ['dex'];
+		const classDoc = {
+			type: 'class' as const,
+			classKeyStats: 'dex,int',
+		};
+		const spellDoc = { type: 'spell' as const, classKeyStats: '' };
+		expect(documentMatchesClassStatFilter(classDoc as never, filters)).toBe(
+			true,
+		);
+		expect(documentMatchesClassStatFilter(spellDoc as never, filters)).toBe(
+			true,
+		);
+		filters.stat = ['str'];
+		expect(documentMatchesClassStatFilter(classDoc as never, filters)).toBe(
+			false,
+		);
 	});
 });

@@ -45,11 +45,3 @@ export const languages: LanguageData[] = z
 export function languageDetailHrefFromCoreRules(id: string): string {
 	return `/languages/${id}/`;
 }
-
-/** Sort languages by name for the index page. */
-export function compareLanguageRowsForListing(
-	a: LanguageData,
-	b: LanguageData,
-): number {
-	return a.name.localeCompare(b.name);
-}
