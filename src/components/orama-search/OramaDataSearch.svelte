@@ -30,7 +30,7 @@
 		buildOramaWhereForFilters,
 		clearMultiFilterDim,
 		cycleTriStateFilter,
-		documentMatchesFilters,
+		documentMatchesClassStatFilter,
 		emptySearchFiltersState,
 		filterKeysForType,
 		hasAnyActiveFilters,
@@ -159,9 +159,7 @@
 		}
 
 		const fetchLimit =
-			type !== null &&
-			(hasAnyActiveFilters(type, filters) ||
-				(type === 'class' && filters.stat.length > 0))
+			type !== null && hasAnyActiveFilters(type, filters)
 				? SEARCH_LIMIT_FILTERED
 				: SEARCH_LIMIT;
 
@@ -183,8 +181,8 @@
 					});
 
 		let docs = res.hits.filter(Boolean).map((h) => h.document as GameDataDoc);
-		if (type !== null) {
-			docs = docs.filter((doc) => documentMatchesFilters(doc, type, filters));
+		if (type === 'class' && filters.stat.length > 0) {
+			docs = docs.filter((doc) => documentMatchesClassStatFilter(doc, filters));
 		}
 		return docs.slice(0, SEARCH_LIMIT);
 	}

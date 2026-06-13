@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { SearchableGameDataDoc } from '../../../models/orama-game-data-index';
 	import type { LegendaryMonsterSearchCardPayload } from '../../../models/search-result-card';
-	import { sizeLabel } from '../../../models/search-result-card-payloads';
+	import { creatureSizeLabel } from '../../../models/creature-stat-display';
 	import { armorAbbrev, SPEED_MODE_LABEL } from './monster-card-constants';
 	import MonsterAbilityBlock from './MonsterAbilityBlock.svelte';
 	import MonsterActionsBlock from './MonsterActionsBlock.svelte';
@@ -57,7 +57,7 @@
 				class="m-0 mt-1 flex list-none flex-wrap items-center gap-x-3 gap-y-1 p-0 text-base font-bold tabular-nums"
 			>
 				{#if showSize}
-					<li class="text-fg-muted">{sizeLabel(member.sizeSlug)}</li>
+					<li class="text-fg-muted">{creatureSizeLabel(member.sizeSlug)}</li>
 				{/if}
 				{#if hasArmorBadge}
 					<li>
