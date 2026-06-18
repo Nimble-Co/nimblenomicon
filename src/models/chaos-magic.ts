@@ -1,5 +1,6 @@
 import { z } from 'astro/zod';
 import { readNimbleGameJson } from './nimble-game-data-raw';
+import { refineUniqueNumericField } from './zod-unique-array';
 
 const chaosRowSchema = z
 	.object({
@@ -14,19 +15,13 @@ export type ChaosMagicRow = z.infer<typeof chaosRowSchema>;
 export const chaosMagicRows: ChaosMagicRow[] = z
 	.array(chaosRowSchema)
 	.pipe(
-		z.array(chaosRowSchema).superRefine((rows, ctx) => {
-			const seen = new Set<number>();
-			for (let i = 0; i < rows.length; i++) {
-				const r = rows[i]!.roll;
-				if (seen.has(r)) {
-					ctx.addIssue({
-						code: 'custom',
-						message: `Duplicate chaos roll ${r}`,
-						path: [i, 'roll'],
-					});
-				}
-				seen.add(r);
-			}
-		}),
+		z
+			.array(chaosRowSchema)
+			.superRefine(
+				refineUniqueNumericField<ChaosMagicRow, 'roll'>(
+					'roll',
+					(r) => `Duplicate chaos roll ${r}`,
+				),
+			),
 	)
 	.parse(readNimbleGameJson('chaos-magic'));

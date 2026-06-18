@@ -1,6 +1,7 @@
 import { z } from 'astro/zod';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 import { readNimbleGameJson } from './nimble-game-data-raw';
+import { refineUniqueStringIdsByKey } from './zod-unique-array';
 
 const miscAdventuringEquipmentRowSchema = z.preprocess(
 	(raw) => {
@@ -27,21 +28,11 @@ export type MiscAdventuringEquipmentRowData = z.infer<
 
 export const miscAdventuringEquipment: MiscAdventuringEquipmentRowData[] = z
 	.array(miscAdventuringEquipmentRowSchema)
-	.superRefine((rows, ctx) => {
-		const seen = new Map<string, number>();
-		for (let i = 0; i < rows.length; i++) {
-			const id = rows[i]!.id;
-			if (seen.has(id)) {
-				ctx.addIssue({
-					code: 'custom',
-					message: `Duplicate misc adventuring equipment id "${id}" (rows ${seen.get(id)} and ${i})`,
-					path: [i, 'id'],
-				});
-			} else {
-				seen.set(id, i);
-			}
-		}
-	})
+	.superRefine(
+		refineUniqueStringIdsByKey<MiscAdventuringEquipmentRowData>(
+			'misc adventuring equipment',
+		),
+	)
 	.parse(readNimbleGameJson('misc-adventuring-equipment'));
 
 /** Markdown body for a detail page. */

@@ -1,6 +1,7 @@
 import { z } from 'astro/zod';
 import { slugifyEntityId } from '../utils/slugifyEntityId';
 import { readNimbleGameJson } from './nimble-game-data-raw';
+import { refineUniqueStringIdsByKey } from './zod-unique-array';
 
 const glossaryEntryRowSchema = z.preprocess(
 	(raw) => {
@@ -24,21 +25,7 @@ export type GlossaryEntryData = z.infer<typeof glossaryEntryRowSchema>;
 
 export const glossary: GlossaryEntryData[] = z
 	.array(glossaryEntryRowSchema)
-	.superRefine((rows, ctx) => {
-		const seen = new Map<string, number>();
-		for (let i = 0; i < rows.length; i++) {
-			const id = rows[i]!.id;
-			if (seen.has(id)) {
-				ctx.addIssue({
-					code: 'custom',
-					message: `Duplicate glossary id "${id}" (rows ${seen.get(id)} and ${i})`,
-					path: [i, 'id'],
-				});
-			} else {
-				seen.set(id, i);
-			}
-		}
-	})
+	.superRefine(refineUniqueStringIdsByKey<GlossaryEntryData>('glossary'))
 	.parse(readNimbleGameJson('glossary'));
 
 /** Root-absolute path to a glossary detail page. */
