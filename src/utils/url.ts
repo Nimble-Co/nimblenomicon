@@ -25,6 +25,15 @@ export function searchPageUrl(
 }
 
 /**
+ * True when `pathname` is the game-data search route (with or without a trailing slash),
+ * e.g. `/search`, `/search/`, `/docs/search`. Use for client-side URL checks where
+ * Starlight’s `trailingSlash` may vary.
+ */
+export function pathnameIsGameDataSearchPage(pathname: string): boolean {
+	return /\/search\/?$/.test(pathname);
+}
+
+/**
  * Game-data search with an optional type filter (`?type=`), e.g. browse-all spells.
  */
 export function dataSearchBrowseUrl(
