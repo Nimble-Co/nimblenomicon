@@ -68,6 +68,17 @@ export function formatArmorCategoryLabel(category: ArmorCategory): string {
 	return found?.label ?? category;
 }
 
+/** Search filter options for armor category (same order as Core Rules tables). */
+export function armorCategoryFilterOptions(): {
+	value: string;
+	label: string;
+}[] {
+	return armorTableSections.map(({ category, label }) => ({
+		value: category,
+		label,
+	}));
+}
+
 /** Markdown body for an armor detail page. */
 export function armorDetailMarkdown(row: ArmorRowData): string {
 	const section = formatArmorCategoryLabel(row.category);

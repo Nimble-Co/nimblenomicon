@@ -30,6 +30,28 @@ export function formatAncestrySectionLabel(
 	return section === 'common' ? 'Common' : 'Exotic';
 }
 
+/** Search filter options for ancestry section (common / exotic). */
+export function ancestrySectionFilterOptions(): {
+	value: string;
+	label: string;
+}[] {
+	return (['common', 'exotic'] as const).map((section) => ({
+		value: section,
+		label: formatAncestrySectionLabel(section),
+	}));
+}
+
+/** Search filter options for ancestry size (from schema + display map). */
+export function ancestrySizeFilterOptions(): {
+	value: string;
+	label: string;
+}[] {
+	return ancestrySizeEnum.options.map((value) => ({
+		value,
+		label: formatAncestrySize(value),
+	}));
+}
+
 const ancestryRowSchema = z.preprocess(
 	(raw) => {
 		if (!raw || typeof raw !== 'object') return raw;
