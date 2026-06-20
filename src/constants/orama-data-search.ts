@@ -19,6 +19,18 @@ export const ORAMA_DATA_SEARCH_TYPE_ORDER = [
 
 export type OramaDataSearchType = (typeof ORAMA_DATA_SEARCH_TYPE_ORDER)[number];
 
+const ORAMA_DATA_SEARCH_TYPE_SET = new Set<string>(
+	ORAMA_DATA_SEARCH_TYPE_ORDER,
+);
+
+/** Type guard for URL params and menu values (`type` query, picker payloads). */
+export function isOramaDataSearchType(raw: string): raw is OramaDataSearchType {
+	return ORAMA_DATA_SEARCH_TYPE_SET.has(raw);
+}
+
+/** Debounce delay shared by full-page and quick Orama search UIs. */
+export const ORAMA_SEARCH_DEBOUNCE_MS = 200;
+
 export const ORAMA_DATA_SEARCH_TYPE_LABELS: Record<
 	OramaDataSearchType,
 	string

@@ -1,6 +1,12 @@
 /**
  * Labelled option lists for search filter UI (derived from game data).
  */
+import {
+	ancestrySectionFilterOptions,
+	ancestrySizeFilterOptions,
+} from './ancestries';
+import { armorCategoryFilterOptions } from './armor';
+import { creatureArmorTierFilterOptions } from './creature-stat-shared';
 import { spellSchools } from './spell-schools';
 import { monsterFamilies } from './monster-families';
 import { monsterKinds } from './monster-kinds';
@@ -45,14 +51,8 @@ export function monsterLevelOptions(): { value: string; label: string }[] {
 	}));
 }
 
-const ARMOR_OPTS = [
-	{ value: 'none', label: 'None' },
-	{ value: 'medium', label: 'Medium' },
-	{ value: 'heavy', label: 'Heavy' },
-] as const;
-
 export function monsterArmorOptions(): { value: string; label: string }[] {
-	return [...ARMOR_OPTS];
+	return creatureArmorTierFilterOptions();
 }
 
 function collectDistinctSpeeds(): string[] {
@@ -105,27 +105,13 @@ export const WEAPON_CATEGORY_OPTIONS: { value: string; label: string }[] = [
 	{ value: 'ranged', label: 'Ranged' },
 ];
 
-export const ANCESTRY_SECTION_OPTIONS: { value: string; label: string }[] = [
-	{ value: 'common', label: 'Common' },
-	{ value: 'exotic', label: 'Exotic' },
-];
+export const ANCESTRY_SECTION_OPTIONS = ancestrySectionFilterOptions();
 
 export function ancestrySizeOptions(): { value: string; label: string }[] {
-	return [
-		{ value: 'small', label: 'Small' },
-		{ value: 'medium', label: 'Medium' },
-		{ value: 'large', label: 'Large' },
-		{ value: 'small-and-medium', label: 'Small and Medium' },
-	];
+	return ancestrySizeFilterOptions();
 }
 
-export const ARMOR_CATEGORY_OPTIONS: { value: string; label: string }[] = [
-	{ value: 'cloth', label: 'Cloth' },
-	{ value: 'leather', label: 'Leather' },
-	{ value: 'plate', label: 'Plate' },
-	{ value: 'mail', label: 'Mail' },
-	{ value: 'shields', label: 'Shields' },
-];
+export const ARMOR_CATEGORY_OPTIONS = armorCategoryFilterOptions();
 
 export const MAGIC_ITEM_KIND_OPTIONS: { value: string; label: string }[] = [
 	{ value: 'standard', label: 'Magic item' },

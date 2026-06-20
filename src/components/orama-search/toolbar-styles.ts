@@ -18,6 +18,21 @@ export function typeFilterLabel(t: OramaDataSearchType): string {
 	return ORAMA_DATA_SEARCH_TYPE_LABELS[t] ?? t;
 }
 
+/** Empty-state copy for full-page search (live region + results panel). */
+export function formatSearchEmptyResultsMessage(
+	q: string,
+	type: OramaDataSearchType | null,
+): string {
+	const trimmed = q.trim();
+	if (trimmed.length === 0 && !type) return 'No entries in the index.';
+	if (trimmed.length > 0) {
+		return type
+			? `No ${typeFilterLabel(type).toLowerCase()} results for “${trimmed}”.`
+			: `No results for “${trimmed}”.`;
+	}
+	return `No ${typeFilterLabel(type!).toLowerCase()} entries in the index.`;
+}
+
 export function multiDropdownSummaryText(
 	list: string[],
 	options: { value: string; label: string }[],

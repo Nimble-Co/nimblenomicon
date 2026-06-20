@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { search } from '@orama/orama';
-	import { onMount, tick } from 'svelte';
+	import { onMount } from 'svelte';
 	import {
-		ORAMA_DATA_SEARCH_TYPE_ORDER,
+		ORAMA_SEARCH_DEBOUNCE_MS,
+		isOramaDataSearchType,
 		type OramaDataSearchType,
 	} from '../../constants/orama-data-search';
 	import {
@@ -47,6 +48,7 @@
 		FILTER_MULTI_LABEL_CLASS,
 		FILTER_TOOLBAR_LABEL_SPACER_CLASS,
 		FILTER_TOOLBAR_OPTIONS_ROW_CLASS,
+		formatSearchEmptyResultsMessage,
 		pressedPillClass,
 		typeFilterLabel,
 	} from './toolbar-styles';
@@ -66,9 +68,8 @@
 	const SEARCH_LIMIT_FILTERED = 500;
 	const BROWSE_RANDOM_COUNT = 50;
 	const BROWSE_RANDOM_POOL = 500;
-	const DEBOUNCE_MS = 200;
 
-	const ORAMA_DATA_SEARCH_TYPES = new Set<string>(ORAMA_DATA_SEARCH_TYPE_ORDER);
+	let openFilterDim = $state<MultiSelectFilterDim | null>(null);
 
 	let query = $state('');
 	let activeType = $state<OramaDataSearchType | null>(null);
@@ -159,9 +160,7 @@
 		}
 
 		const fetchLimit =
-			type !== null &&
-			(hasAnyActiveFilters(type, filters) ||
-				(type === 'class' && filters.stat.length > 0))
+			type !== null && hasAnyActiveFilters(type, filters)
 				? SEARCH_LIMIT_FILTERED
 				: SEARCH_LIMIT;
 
@@ -195,14 +194,7 @@
 		const docs = computeResults(db, q, activeType, activeFilters);
 
 		const browseAllTypes = q.trim().length === 0 && !activeType;
-
-		const emptyMsg = browseAllTypes
-			? 'No entries in the index.'
-			: q.trim().length > 0
-				? activeType
-					? `No ${typeFilterLabel(activeType).toLowerCase()} results for “${q.trim()}”.`
-					: `No results for “${q.trim()}”.`
-				: `No ${typeFilterLabel(activeType!).toLowerCase()} entries in the index.`;
+		const emptyMsg = formatSearchEmptyResultsMessage(q, activeType);
 
 		if (docs.length === 0) {
 			results = [];
@@ -247,7 +239,7 @@
 				replace: true,
 			});
 			refreshResults();
-		}, DEBOUNCE_MS);
+		}, ORAMA_SEARCH_DEBOUNCE_MS);
 	}
 
 	function onNavQueryInput(e: Event) {
@@ -285,7 +277,7 @@
 		if (db) refreshResults();
 	}
 
-	async function commitFiltersAndUrl(
+	function commitFiltersAndUrl(
 		nextFilters: SearchFiltersState,
 		reopenDropdown: MultiSelectFilterDim | null,
 	) {
@@ -293,22 +285,21 @@
 		const q = query.trim();
 		setSearchPageUrl(q, activeType, activeFilters, { replace: true });
 		if (db) refreshResults();
-		await tick();
-		if (reopenDropdown !== null && secondaryWrapEl) {
-			const d = secondaryWrapEl.querySelector<HTMLDetailsElement>(
-				`details[data-orama-filter-dropdown="${reopenDropdown}"]`,
-			);
-			if (d) d.open = true;
+		if (reopenDropdown !== null) {
+			openFilterDim = reopenDropdown;
 		}
+	}
+
+	function onFilterDropdownOpenChange(
+		dim: MultiSelectFilterDim,
+		open: boolean,
+	) {
+		openFilterDim = open ? dim : openFilterDim === dim ? null : openFilterDim;
 	}
 
 	function onTypeMenuPick(raw: string) {
 		const nextType =
-			raw.length === 0
-				? null
-				: ORAMA_DATA_SEARCH_TYPES.has(raw)
-					? (raw as OramaDataSearchType)
-					: null;
+			raw.length === 0 ? null : isOramaDataSearchType(raw) ? raw : null;
 		if (raw.length > 0 && nextType === null) return;
 		selectDataType(nextType);
 	}
@@ -383,9 +374,7 @@
 				return;
 			}
 		}
-		for (const d of wrap.querySelectorAll('details')) {
-			(d as HTMLDetailsElement).open = false;
-		}
+		openFilterDim = null;
 	}
 
 	function headerSearchInputs(): HTMLInputElement[] {
@@ -487,6 +476,8 @@
 					<OramaSearchMultiFilterDropdown
 						dim="tier"
 						label="Tier"
+						open={openFilterDim === 'tier'}
+						onOpenChange={(open) => onFilterDropdownOpenChange('tier', open)}
 						selectedValues={activeFilters.tier}
 						options={spellTierOptions()}
 						onCheckboxChange={(value, checked) =>
@@ -496,6 +487,8 @@
 					<OramaSearchMultiFilterDropdown
 						dim="school"
 						label="School"
+						open={openFilterDim === 'school'}
+						onOpenChange={(open) => onFilterDropdownOpenChange('school', open)}
 						selectedValues={activeFilters.school}
 						options={spellSchoolOptions()}
 						onCheckboxChange={(value, checked) =>
@@ -505,6 +498,8 @@
 					<OramaSearchMultiFilterDropdown
 						dim="target"
 						label="Target"
+						open={openFilterDim === 'target'}
+						onOpenChange={(open) => onFilterDropdownOpenChange('target', open)}
 						selectedValues={activeFilters.target}
 						options={SPELL_TARGET_FILTER_OPTIONS}
 						onCheckboxChange={(value, checked) =>
@@ -544,6 +539,8 @@
 						<OramaSearchMultiFilterDropdown
 							dim={row.dim}
 							label={row.label}
+							open={openFilterDim === row.dim}
+							onOpenChange={(open) => onFilterDropdownOpenChange(row.dim, open)}
 							selectedValues={activeFilters[row.dim]}
 							options={row.getOpts()}
 							onCheckboxChange={(value, checked) =>
@@ -581,6 +578,8 @@
 						<OramaSearchMultiFilterDropdown
 							dim={row.dim}
 							label={row.label}
+							open={openFilterDim === row.dim}
+							onOpenChange={(open) => onFilterDropdownOpenChange(row.dim, open)}
 							selectedValues={activeFilters[row.dim]}
 							options={row.getOpts()}
 							onCheckboxChange={(value, checked) =>
@@ -592,6 +591,9 @@
 					<OramaSearchMultiFilterDropdown
 						dim="category"
 						label="Category"
+						open={openFilterDim === 'category'}
+						onOpenChange={(open) =>
+							onFilterDropdownOpenChange('category', open)}
 						selectedValues={activeFilters.category}
 						options={WEAPON_CATEGORY_OPTIONS}
 						onCheckboxChange={(value, checked) =>
@@ -603,6 +605,8 @@
 						<OramaSearchMultiFilterDropdown
 							dim={row.dim}
 							label={row.label}
+							open={openFilterDim === row.dim}
+							onOpenChange={(open) => onFilterDropdownOpenChange(row.dim, open)}
 							selectedValues={activeFilters[row.dim]}
 							options={row.getOpts()}
 							onCheckboxChange={(value, checked) =>
@@ -614,6 +618,9 @@
 					<OramaSearchMultiFilterDropdown
 						dim="category"
 						label="Category"
+						open={openFilterDim === 'category'}
+						onOpenChange={(open) =>
+							onFilterDropdownOpenChange('category', open)}
 						selectedValues={activeFilters.category}
 						options={ARMOR_CATEGORY_OPTIONS}
 						onCheckboxChange={(value, checked) =>
@@ -625,6 +632,8 @@
 						<OramaSearchMultiFilterDropdown
 							dim={row.dim}
 							label={row.label}
+							open={openFilterDim === row.dim}
+							onOpenChange={(open) => onFilterDropdownOpenChange(row.dim, open)}
 							selectedValues={activeFilters[row.dim]}
 							options={row.getOpts()}
 							onCheckboxChange={(value, checked) =>
@@ -662,17 +671,7 @@
 			<p class="text-danger mt-4">Could not load search index: {loadError}</p>
 		{:else if !loading && results.length === 0}
 			<p class="text-fg-muted mt-4">
-				{#if query.trim().length === 0 && !activeType}
-					No entries in the index.
-				{:else if query.trim().length > 0}
-					{#if activeType}
-						No {typeFilterLabel(activeType).toLowerCase()} results for “{query.trim()}”.
-					{:else}
-						No results for “{query.trim()}”.
-					{/if}
-				{:else if activeType}
-					No {typeFilterLabel(activeType).toLowerCase()} entries in the index.
-				{/if}
+				{formatSearchEmptyResultsMessage(query, activeType)}
 			</p>
 		{:else}
 			<ul class="mt-3 list-none space-y-4 p-0">

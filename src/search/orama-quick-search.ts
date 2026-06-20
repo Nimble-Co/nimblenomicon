@@ -1,5 +1,6 @@
 import { search } from '@orama/orama';
 import {
+	ORAMA_SEARCH_DEBOUNCE_MS,
 	ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR,
 	type OramaDataSearchType,
 } from '../constants/orama-data-search';
@@ -13,7 +14,6 @@ import {
 type GameDataDoc = SearchableGameDataDoc;
 
 const QUICK_SEARCH_LIMIT = 10;
-const DEBOUNCE_MS = 200;
 
 function debounce<T extends (...args: Parameters<T>) => void>(
 	fn: T,
@@ -192,7 +192,7 @@ export function initOramaQuickSearch(options: OramaQuickSearchOptions): void {
 				activeIndex = -1;
 				input.removeAttribute('aria-activedescendant');
 			});
-	}, DEBOUNCE_MS);
+	}, ORAMA_SEARCH_DEBOUNCE_MS);
 
 	input.addEventListener('input', run);
 	input.addEventListener('search', () => {

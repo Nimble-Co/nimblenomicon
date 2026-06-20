@@ -18,6 +18,8 @@
 	let {
 		dim,
 		label,
+		open = false,
+		onOpenChange,
 		selectedValues,
 		options,
 		onCheckboxChange,
@@ -25,6 +27,8 @@
 	}: {
 		dim: MultiSelectFilterDim;
 		label: string;
+		open?: boolean;
+		onOpenChange?: (open: boolean) => void;
 		selectedValues: string[];
 		options: Option[];
 		onCheckboxChange: (value: string, checked: boolean) => void;
@@ -39,14 +43,7 @@
 	function onFilterDetailsToggle(e: Event) {
 		const el = e.currentTarget;
 		if (!(el instanceof HTMLDetailsElement)) return;
-		if (!el.open) return;
-		const wrap = el.closest('[data-orama-secondary-wrap]');
-		if (!wrap) return;
-		for (const node of wrap.querySelectorAll(
-			'details[data-orama-filter-dropdown]',
-		)) {
-			if (node !== el) (node as HTMLDetailsElement).open = false;
-		}
+		onOpenChange?.(el.open);
 	}
 </script>
 
@@ -56,6 +53,7 @@
 		<details
 			class="group relative"
 			data-orama-filter-dropdown={dim}
+			{open}
 			ontoggle={onFilterDetailsToggle}
 		>
 			<summary class={FILTER_DROPDOWN_SUMMARY_CLASS}>

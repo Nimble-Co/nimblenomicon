@@ -17,6 +17,24 @@ export const creatureArmorTierSchema = z.enum(['none', 'medium', 'heavy']);
 
 export type CreatureArmorTier = z.infer<typeof creatureArmorTierSchema>;
 
+/** Title-case armor tier for filters and stat blocks. */
+export function formatCreatureArmorTier(tier: CreatureArmorTier): string {
+	if (tier === 'none') return 'None';
+	if (tier === 'medium') return 'Medium';
+	return 'Heavy';
+}
+
+/** Search filter options for monster armor tier. */
+export function creatureArmorTierFilterOptions(): {
+	value: string;
+	label: string;
+}[] {
+	return creatureArmorTierSchema.options.map((value) => ({
+		value,
+		label: formatCreatureArmorTier(value),
+	}));
+}
+
 /** Walk, fly, burrow, swim — same vocabulary as standard monsters. */
 export const creatureMovementModeSchema = z.enum([
 	'walk',
