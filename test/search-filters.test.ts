@@ -6,7 +6,6 @@ import {
 	cycleTriStateFilter,
 	emptySearchFiltersState,
 	hasAnyActiveFilters,
-	initialFiltersForType,
 	parseSearchFiltersFromParams,
 	setMultiFilterValue,
 } from '../src/models/search-filters';
@@ -58,7 +57,7 @@ describe('search-filters URL helpers', () => {
 	});
 
 	it('hasAnyActiveFilters reflects spell utility when not default', () => {
-		const s = initialFiltersForType('spell');
+		const s = emptySearchFiltersState();
 		expect(hasAnyActiveFilters('spell', s)).toBe(false);
 		s.utility = true;
 		expect(hasAnyActiveFilters('spell', s)).toBe(true);

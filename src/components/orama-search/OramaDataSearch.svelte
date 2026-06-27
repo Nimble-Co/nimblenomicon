@@ -2,7 +2,7 @@
 	import { search } from '@orama/orama';
 	import { onMount, tick } from 'svelte';
 	import {
-		ORAMA_DATA_SEARCH_TYPE_ORDER,
+		isOramaDataSearchType,
 		type OramaDataSearchType,
 	} from '../../constants/orama-data-search';
 	import {
@@ -28,13 +28,12 @@
 	import type { SearchableGameDataDoc } from '../../models/orama-game-data-index';
 	import {
 		buildOramaWhereForFilters,
+		classKeyStatsRowMatches,
 		clearMultiFilterDim,
 		cycleTriStateFilter,
-		documentMatchesFilters,
 		emptySearchFiltersState,
 		filterKeysForType,
 		hasAnyActiveFilters,
-		initialFiltersForType,
 		setMultiFilterValue,
 		type MultiSelectFilterDim,
 		type SearchFiltersState,
@@ -47,6 +46,7 @@
 		FILTER_MULTI_LABEL_CLASS,
 		FILTER_TOOLBAR_LABEL_SPACER_CLASS,
 		FILTER_TOOLBAR_OPTIONS_ROW_CLASS,
+		formatSearchEmptyResultsMessage,
 		pressedPillClass,
 		typeFilterLabel,
 	} from './toolbar-styles';
@@ -68,8 +68,6 @@
 	const BROWSE_RANDOM_POOL = 500;
 	const DEBOUNCE_MS = 200;
 
-	const ORAMA_DATA_SEARCH_TYPES = new Set<string>(ORAMA_DATA_SEARCH_TYPE_ORDER);
-
 	let query = $state('');
 	let activeType = $state<OramaDataSearchType | null>(null);
 	let activeFilters = $state<SearchFiltersState>(emptySearchFiltersState());
@@ -84,6 +82,16 @@
 	let collapsedTypeWrapEl: HTMLDivElement | undefined = $state();
 
 	const typePanelId = `orama-collapsed-type-${Math.random().toString(36).slice(2, 9)}`;
+
+	const SPELL_FILTER_ROWS = [
+		{ dim: 'tier' as const, label: 'Tier', getOpts: spellTierOptions },
+		{ dim: 'school' as const, label: 'School', getOpts: spellSchoolOptions },
+		{
+			dim: 'target' as const,
+			label: 'Target',
+			getOpts: () => SPELL_TARGET_FILTER_OPTIONS,
+		},
+	] as const;
 
 	const MONSTER_FILTER_ROWS = [
 		{ dim: 'level' as const, label: 'Level', getOpts: monsterLevelOptions },
@@ -159,9 +167,7 @@
 		}
 
 		const fetchLimit =
-			type !== null &&
-			(hasAnyActiveFilters(type, filters) ||
-				(type === 'class' && filters.stat.length > 0))
+			type !== null && hasAnyActiveFilters(type, filters)
 				? SEARCH_LIMIT_FILTERED
 				: SEARCH_LIMIT;
 
@@ -183,8 +189,10 @@
 					});
 
 		let docs = res.hits.filter(Boolean).map((h) => h.document as GameDataDoc);
-		if (type !== null) {
-			docs = docs.filter((doc) => documentMatchesFilters(doc, type, filters));
+		if (type === 'class' && filters.stat.length > 0) {
+			docs = docs.filter((doc) =>
+				classKeyStatsRowMatches(doc.classKeyStats, filters.stat),
+			);
 		}
 		return docs.slice(0, SEARCH_LIMIT);
 	}
@@ -196,13 +204,7 @@
 
 		const browseAllTypes = q.trim().length === 0 && !activeType;
 
-		const emptyMsg = browseAllTypes
-			? 'No entries in the index.'
-			: q.trim().length > 0
-				? activeType
-					? `No ${typeFilterLabel(activeType).toLowerCase()} results for “${q.trim()}”.`
-					: `No results for “${q.trim()}”.`
-				: `No ${typeFilterLabel(activeType!).toLowerCase()} entries in the index.`;
+		const emptyMsg = formatSearchEmptyResultsMessage(q, activeType);
 
 		if (docs.length === 0) {
 			results = [];
@@ -275,10 +277,7 @@
 
 	function selectDataType(nextType: OramaDataSearchType | null) {
 		activeType = nextType;
-		activeFilters =
-			nextType !== null
-				? initialFiltersForType(nextType)
-				: emptySearchFiltersState();
+		activeFilters = emptySearchFiltersState();
 		collapsedTypeOpen = false;
 		const q = query.trim();
 		setSearchPageUrl(q, activeType, activeFilters, { replace: false });
@@ -304,11 +303,7 @@
 
 	function onTypeMenuPick(raw: string) {
 		const nextType =
-			raw.length === 0
-				? null
-				: ORAMA_DATA_SEARCH_TYPES.has(raw)
-					? (raw as OramaDataSearchType)
-					: null;
+			raw.length === 0 ? null : isOramaDataSearchType(raw) ? raw : null;
 		if (raw.length > 0 && nextType === null) return;
 		selectDataType(nextType);
 	}
@@ -339,11 +334,7 @@
 	}
 
 	function onClearAllFilters() {
-		const next =
-			activeType !== null
-				? initialFiltersForType(activeType)
-				: emptySearchFiltersState();
-		void commitFiltersAndUrl(next, null);
+		void commitFiltersAndUrl(emptySearchFiltersState(), null);
 	}
 
 	function onUtilityChange(checked: boolean) {
@@ -484,33 +475,17 @@
 
 			{#if filterKeysForType(activeType).length > 0}
 				{#if activeType === 'spell'}
-					<OramaSearchMultiFilterDropdown
-						dim="tier"
-						label="Tier"
-						selectedValues={activeFilters.tier}
-						options={spellTierOptions()}
-						onCheckboxChange={(value, checked) =>
-							onMultiCheckbox('tier', value, checked)}
-						onClear={() => onClearDim('tier')}
-					/>
-					<OramaSearchMultiFilterDropdown
-						dim="school"
-						label="School"
-						selectedValues={activeFilters.school}
-						options={spellSchoolOptions()}
-						onCheckboxChange={(value, checked) =>
-							onMultiCheckbox('school', value, checked)}
-						onClear={() => onClearDim('school')}
-					/>
-					<OramaSearchMultiFilterDropdown
-						dim="target"
-						label="Target"
-						selectedValues={activeFilters.target}
-						options={SPELL_TARGET_FILTER_OPTIONS}
-						onCheckboxChange={(value, checked) =>
-							onMultiCheckbox('target', value, checked)}
-						onClear={() => onClearDim('target')}
-					/>
+					{#each SPELL_FILTER_ROWS as row (row.dim)}
+						<OramaSearchMultiFilterDropdown
+							dim={row.dim}
+							label={row.label}
+							selectedValues={activeFilters[row.dim]}
+							options={row.getOpts()}
+							onCheckboxChange={(value, checked) =>
+								onMultiCheckbox(row.dim, value, checked)}
+							onClear={() => onClearDim(row.dim)}
+						/>
+					{/each}
 					<div
 						class="flex min-w-0 flex-col gap-1"
 						data-orama-toolbar-spell-options
@@ -662,17 +637,7 @@
 			<p class="text-danger mt-4">Could not load search index: {loadError}</p>
 		{:else if !loading && results.length === 0}
 			<p class="text-fg-muted mt-4">
-				{#if query.trim().length === 0 && !activeType}
-					No entries in the index.
-				{:else if query.trim().length > 0}
-					{#if activeType}
-						No {typeFilterLabel(activeType).toLowerCase()} results for “{query.trim()}”.
-					{:else}
-						No results for “{query.trim()}”.
-					{/if}
-				{:else if activeType}
-					No {typeFilterLabel(activeType).toLowerCase()} entries in the index.
-				{/if}
+				{formatSearchEmptyResultsMessage(query, activeType)}
 			</p>
 		{:else}
 			<ul class="mt-3 list-none space-y-4 p-0">

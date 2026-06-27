@@ -13,10 +13,7 @@ import type { WeaponRowData } from './weapons';
 import type { AncestryRowData } from './ancestries';
 import type { ArmorRowData } from './armor';
 import type { MagicalItemData } from './magical-items';
-import type {
-	OramaFilterFields,
-	SearchableGameDataDoc,
-} from './orama-game-data-index';
+import type { OramaFilterFields } from './orama-game-data-index';
 
 /** Query param keys used for filters (not `q` or `type`). */
 export const SEARCH_FILTER_QUERY_KEYS = [
@@ -173,14 +170,6 @@ export function emptySearchFiltersState(): SearchFiltersState {
 		source: [],
 		reward: [],
 	};
-}
-
-/** Fresh filter state for a type (all dimensions start unfiltered). */
-export function initialFiltersForType(
-	type: OramaDataSearchType,
-): SearchFiltersState {
-	void type;
-	return emptySearchFiltersState();
 }
 
 function splitCommaList(raw: string | null): string[] {
@@ -636,7 +625,7 @@ export function buildOramaWhereForFilters(
 			const parts: object[] = [typeWhere];
 			const o = orEq('classHitDie', f.hitdie);
 			if (o) parts.push(o);
-			// `stat` uses comma-separated key stats on the doc; applied in `documentMatchesFilters`.
+			// `stat` uses comma-separated key stats on the doc; applied after Orama search.
 			return parts.length === 1 ? (parts[0] as StringWhere) : { and: parts };
 		}
 		case 'weapon': {
@@ -685,67 +674,4 @@ export function classKeyStatsRowMatches(
 	if (!classKeyStatsField) return false;
 	const set = new Set(classKeyStatsField.split(',').map((s) => s.trim()));
 	return selectedStats.some((s) => set.has(s));
-}
-
-/**
- * Final pass after Orama search (handles class key-stats and keeps logic in one place).
- */
-export function documentMatchesFilters(
-	doc: SearchableGameDataDoc,
-	type: OramaDataSearchType,
-	filters: SearchFiltersState,
-): boolean {
-	if (doc.type !== type) return false;
-
-	const inList = (field: string, selected: string[]) =>
-		selected.length === 0 || selected.includes(field);
-
-	const tri = (field: string, want: boolean | null) =>
-		want === null ||
-		(want === true && field === '1') ||
-		(want === false && field === '0');
-
-	switch (type) {
-		case 'spell':
-			return (
-				inList(doc.spellTier, filters.tier) &&
-				inList(doc.spellSchool, filters.school) &&
-				inList(doc.spellTarget, filters.target) &&
-				tri(doc.spellUtility, filters.utility) &&
-				tri(doc.spellSecret, filters.secret)
-			);
-		case 'monster':
-			return (
-				inList(doc.monsterLevel, filters.level) &&
-				inList(doc.monsterFamily, filters.family) &&
-				inList(doc.monsterKind, filters.kind) &&
-				inList(doc.monsterArmor, filters.armor) &&
-				inList(doc.monsterSpeed, filters.speed) &&
-				inList(doc.monsterSize, filters.size) &&
-				tri(doc.monsterMinion, filters.minion) &&
-				tri(doc.monsterLegendary, filters.legendary)
-			);
-		case 'class':
-			return (
-				inList(doc.classHitDie, filters.hitdie) &&
-				classKeyStatsRowMatches(doc.classKeyStats, filters.stat)
-			);
-		case 'weapon':
-			return inList(doc.weaponCategory, filters.category);
-		case 'ancestry':
-			return (
-				inList(doc.ancestrySection, filters.section) &&
-				inList(doc.ancestrySize, filters.size)
-			);
-		case 'armor':
-			return inList(doc.armorCategory, filters.category);
-		case 'magic-item':
-			return (
-				inList(doc.magicKind, filters.kind) &&
-				inList(doc.magicSource, filters.source) &&
-				inList(doc.magicReward, filters.reward)
-			);
-		default:
-			return true;
-	}
 }
