@@ -52,6 +52,39 @@ export type DetailPageMarkdownProps = DetailPageShellProps & {
 	bodyMarkdown: string;
 };
 
+type CoreRulesRow = {
+	id: string;
+	name: string;
+	description?: string | null | undefined;
+};
+
+function coreRulesAnchorHref(id: string): string {
+	return `/core-rules/#${id}`;
+}
+
+type CoreRulesMarkdownDetailConfig = {
+	searchType: OramaDataSearchType;
+	backLabel: string;
+	descriptionPrefix: string;
+	bodyMarkdown?: string;
+};
+
+/** Shared shell for Core Rules rows with optional custom markdown body. */
+export function coreRulesMarkdownDetailProps(
+	row: CoreRulesRow,
+	config: CoreRulesMarkdownDetailConfig,
+): DetailPageMarkdownProps {
+	return {
+		title: row.name,
+		description: `${config.descriptionPrefix} — ${row.name}.`,
+		backLabel: config.backLabel,
+		searchType: config.searchType,
+		sourceHref: coreRulesAnchorHref(row.id),
+		sourceName: 'Core Rules',
+		bodyMarkdown: config.bodyMarkdown ?? row.description?.trim() ?? '',
+	};
+}
+
 export function spellDetailPageProps(
 	spell: SpellData,
 ): DetailPageMarkdownProps {
@@ -76,30 +109,24 @@ export function weaponDetailPageProps(
 	row: WeaponRowData,
 ): DetailPageMarkdownProps {
 	const cat = formatWeaponCategory(row.category);
-	return {
-		title: row.name,
-		description: `${cat} weapon — ${row.name}.`,
+	return coreRulesMarkdownDetailProps(row, {
+		descriptionPrefix: `${cat} weapon`,
 		backLabel: 'All Weapons',
 		searchType: 'weapon',
-		sourceHref: `/core-rules/#${row.id}`,
-		sourceName: 'Core Rules',
 		bodyMarkdown: weaponDetailMarkdown(row),
-	};
+	});
 }
 
 export function armorDetailPageProps(
 	row: ArmorRowData,
 ): DetailPageMarkdownProps {
 	const section = formatArmorCategoryLabel(row.category);
-	return {
-		title: row.name,
-		description: `${section} — ${row.name}.`,
+	return coreRulesMarkdownDetailProps(row, {
+		descriptionPrefix: section,
 		backLabel: 'All Armor',
 		searchType: 'armor',
-		sourceHref: `/core-rules/#${row.id}`,
-		sourceName: 'Core Rules',
 		bodyMarkdown: armorDetailMarkdown(row),
-	};
+	});
 }
 
 export function magicalItemDetailPageProps(
@@ -112,7 +139,7 @@ export function magicalItemDetailPageProps(
 					href: `/game-masters-guide/#${row.id}`,
 					sourceName: "Game Master's Guide",
 				}
-			: { href: `/core-rules/#${row.id}`, sourceName: 'Core Rules' };
+			: { href: coreRulesAnchorHref(row.id), sourceName: 'Core Rules' };
 	return {
 		title: row.name,
 		description: `${typeLabel} — ${row.name}.`,
@@ -138,7 +165,7 @@ export function ancestryDetailPageProps(
 		description: `${sectionLabel} ancestry — ${row.name}.`,
 		backLabel: 'All Ancestries',
 		searchType: 'ancestry',
-		sourceHref: `/core-rules/#${row.id}`,
+		sourceHref: coreRulesAnchorHref(row.id),
 		sourceName: 'Core Rules',
 		bodyMarkdown,
 	};
@@ -147,71 +174,52 @@ export function ancestryDetailPageProps(
 export function backgroundDetailPageProps(
 	row: BackgroundRowData,
 ): DetailPageMarkdownProps {
-	return {
-		title: row.name,
-		description: `Character background — ${row.name}.`,
+	return coreRulesMarkdownDetailProps(row, {
+		descriptionPrefix: 'Character background',
 		backLabel: 'All Backgrounds',
 		searchType: 'background',
-		sourceHref: `/core-rules/#${row.id}`,
-		sourceName: 'Core Rules',
-		bodyMarkdown: row.description?.trim() ?? '',
-	};
+	});
 }
 
 export function conditionDetailPageProps(
 	row: ConditionData,
 ): DetailPageMarkdownProps {
-	return {
-		title: row.name,
-		description: `Condition — ${row.name}.`,
+	return coreRulesMarkdownDetailProps(row, {
+		descriptionPrefix: 'Condition',
 		backLabel: 'All Conditions',
 		searchType: 'condition',
-		sourceHref: `/core-rules/#${row.id}`,
-		sourceName: 'Core Rules',
-		bodyMarkdown: row.description?.trim() ?? '',
-	};
+	});
 }
 
 export function glossaryDetailPageProps(
 	row: GlossaryEntryData,
 ): DetailPageMarkdownProps {
-	return {
-		title: row.name,
-		description: `Glossary — ${row.name}.`,
+	return coreRulesMarkdownDetailProps(row, {
+		descriptionPrefix: 'Glossary',
 		backLabel: 'All Glossary',
 		searchType: 'glossary',
-		sourceHref: `/core-rules/#${row.id}`,
-		sourceName: 'Core Rules',
-		bodyMarkdown: row.description?.trim() ?? '',
-	};
+	});
 }
 
 export function languageDetailPageProps(
 	row: LanguageData,
 ): DetailPageMarkdownProps {
-	return {
-		title: row.name,
-		description: `Language — ${row.name}.`,
+	return coreRulesMarkdownDetailProps(row, {
+		descriptionPrefix: 'Language',
 		backLabel: 'All Languages',
 		searchType: 'language',
-		sourceHref: `/core-rules/#${row.id}`,
-		sourceName: 'Core Rules',
-		bodyMarkdown: row.description?.trim() ?? '',
-	};
+	});
 }
 
 export function miscEquipmentDetailPageProps(
 	row: MiscAdventuringEquipmentRowData,
 ): DetailPageMarkdownProps {
-	return {
-		title: row.name,
-		description: `Misc adventuring gear — ${row.name}.`,
+	return coreRulesMarkdownDetailProps(row, {
+		descriptionPrefix: 'Misc adventuring gear',
 		backLabel: 'All Misc. Adventuring Equipment',
 		searchType: 'equipment',
-		sourceHref: `/core-rules/#${row.id}`,
-		sourceName: 'Core Rules',
 		bodyMarkdown: miscAdventuringEquipmentDetailMarkdown(row),
-	};
+	});
 }
 
 export function monsterDetailPageShell(

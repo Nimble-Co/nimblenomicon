@@ -19,6 +19,13 @@ export const ORAMA_DATA_SEARCH_TYPE_ORDER = [
 
 export type OramaDataSearchType = (typeof ORAMA_DATA_SEARCH_TYPE_ORDER)[number];
 
+const ORAMA_DATA_SEARCH_TYPES = new Set<string>(ORAMA_DATA_SEARCH_TYPE_ORDER);
+
+/** Type guard for URL params and menu picks (`type` query / data attributes). */
+export function isOramaDataSearchType(raw: string): raw is OramaDataSearchType {
+	return ORAMA_DATA_SEARCH_TYPES.has(raw);
+}
+
 export const ORAMA_DATA_SEARCH_TYPE_LABELS: Record<
 	OramaDataSearchType,
 	string
