@@ -49,6 +49,7 @@
 		FILTER_TOOLBAR_OPTIONS_ROW_CLASS,
 		pressedPillClass,
 		typeFilterLabel,
+		formatOramaSearchEmptyMessage,
 	} from './toolbar-styles';
 	import OramaSearchFilterCheckboxLabel from './OramaSearchFilterCheckboxLabel.svelte';
 	import OramaSearchMultiFilterDropdown from './OramaSearchMultiFilterDropdown.svelte';
@@ -196,13 +197,7 @@
 
 		const browseAllTypes = q.trim().length === 0 && !activeType;
 
-		const emptyMsg = browseAllTypes
-			? 'No entries in the index.'
-			: q.trim().length > 0
-				? activeType
-					? `No ${typeFilterLabel(activeType).toLowerCase()} results for “${q.trim()}”.`
-					: `No results for “${q.trim()}”.`
-				: `No ${typeFilterLabel(activeType!).toLowerCase()} entries in the index.`;
+		const emptyMsg = formatOramaSearchEmptyMessage(q, activeType);
 
 		if (docs.length === 0) {
 			results = [];
@@ -662,17 +657,7 @@
 			<p class="text-danger mt-4">Could not load search index: {loadError}</p>
 		{:else if !loading && results.length === 0}
 			<p class="text-fg-muted mt-4">
-				{#if query.trim().length === 0 && !activeType}
-					No entries in the index.
-				{:else if query.trim().length > 0}
-					{#if activeType}
-						No {typeFilterLabel(activeType).toLowerCase()} results for “{query.trim()}”.
-					{:else}
-						No results for “{query.trim()}”.
-					{/if}
-				{:else if activeType}
-					No {typeFilterLabel(activeType).toLowerCase()} entries in the index.
-				{/if}
+				{formatOramaSearchEmptyMessage(query, activeType)}
 			</p>
 		{:else}
 			<ul class="mt-3 list-none space-y-4 p-0">
