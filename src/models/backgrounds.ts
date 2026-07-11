@@ -45,11 +45,3 @@ export const backgrounds: BackgroundRowData[] = z
 export function backgroundDetailHrefFromCoreRules(id: string): string {
 	return `/backgrounds/${id}/`;
 }
-
-/** Sort backgrounds by name for the index page. */
-export function compareBackgroundRowsForListing(
-	a: BackgroundRowData,
-	b: BackgroundRowData,
-): number {
-	return a.name.localeCompare(b.name);
-}

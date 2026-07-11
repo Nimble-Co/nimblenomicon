@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { SearchableGameDataDoc } from '../../../models/orama-game-data-index';
 	import type { LegendaryMonsterSearchCardPayload } from '../../../models/search-result-card';
-	import { sizeLabel } from '../../../models/search-result-card-payloads';
+	import { sizeLabel } from '../../../models/creature-stat-display';
 	import { armorAbbrev, SPEED_MODE_LABEL } from './monster-card-constants';
 	import MonsterAbilityBlock from './MonsterAbilityBlock.svelte';
 	import MonsterActionsBlock from './MonsterActionsBlock.svelte';

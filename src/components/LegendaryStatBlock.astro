@@ -1,12 +1,14 @@
 ---
 import { renderMarkdown } from '../docs/render-markdown';
-import { slugifyEntityId } from '../utils/slugifyEntityId';
 import {
-	legendaryMonsters,
-	type LegendaryCreatureData,
-} from '../models/legendary-monsters';
-import { sizes } from '../models/sizes';
-import { monsterActionSchema, type MonsterAction } from '../models/monsters';
+	actionHeading,
+	armorAbbrev,
+	legendarySaveBadges,
+	sizeLabel,
+	SPEED_MODE_LABEL,
+} from '../models/creature-stat-display';
+import { legendaryMonsters } from '../models/legendary-monsters';
+import { monsterActionSchema } from '../models/monsters';
 import Ability from './Ability.astro';
 
 interface Props {
@@ -14,58 +16,6 @@ interface Props {
 }
 
 const { legendaryMonsterId } = Astro.props;
-
-function sizeLabel(sizeSlug: string): string {
-	const match = sizes.find((s) => slugifyEntityId(s.name, 'size') === sizeSlug);
-	return match?.name ?? sizeSlug;
-}
-
-function actionHeading(action: MonsterAction): string {
-	const uses = action.uses != null ? ` (${action.uses}x)` : '';
-	const endsSentence = /[.!?;:]$/.test(action.name.trim());
-	return `${action.name}${uses}${endsSentence ? '' : '.'}`;
-}
-
-const SPEED_MODE_LABEL: Record<string, string> = {
-	walk: 'Walk',
-	fly: 'Fly',
-	burrow: 'Burrow',
-	swim: 'Swim',
-};
-
-const armorAbbrev: Record<'none' | 'medium' | 'heavy', string | null> = {
-	none: null,
-	medium: 'M',
-	heavy: 'H',
-};
-
-const SAVE_LABEL: Record<string, string> = {
-	str: 'STR',
-	dex: 'DEX',
-	int: 'INT',
-	wil: 'WIL',
-	all: 'ALL',
-};
-
-function saveBadgeStrings(saves: LegendaryCreatureData['saves']): string[] {
-	if (!saves) return [];
-
-	if (typeof saves.all === 'number' && saves.all !== 0) {
-		const n = saves.all;
-		const sign = n > 0 ? '+'.repeat(n) : '-'.repeat(-n);
-		return [`ALL${sign}`];
-	}
-
-	const order = ['str', 'dex', 'int', 'wil'] as const;
-	const out: string[] = [];
-	for (const k of order) {
-		const v = saves[k];
-		if (typeof v === 'number' && v > 0) {
-			out.push(`${SAVE_LABEL[k]}${'+'.repeat(v)}`);
-		}
-	}
-	return out;
-}
 
 const monster = legendaryMonsters.find((m) => m.id === legendaryMonsterId);
 
@@ -157,7 +107,7 @@ const teamMemberActionHtml: string[][] = isTeam
 								{soloCreature.hp}
 							</span>
 						</li>
-						{saveBadgeStrings(soloCreature.saves).map((badge) => (
+						{legendarySaveBadges(soloCreature.saves).map((badge) => (
 							<li>
 								<span title="Save modifier">
 									<span aria-hidden="true">★</span>
@@ -273,7 +223,7 @@ const teamMemberActionHtml: string[][] = isTeam
 										{member.hp}
 									</span>
 								</li>
-								{saveBadgeStrings(member.saves).map((badge) => (
+								{legendarySaveBadges(member.saves).map((badge) => (
 									<li>
 										<span title="Save modifier">
 											<span aria-hidden="true">★</span>

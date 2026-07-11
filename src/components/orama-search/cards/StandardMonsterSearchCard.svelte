@@ -2,7 +2,7 @@
 	import { ORAMA_DATA_SEARCH_TYPE_LABELS_SINGULAR } from '../../../constants/orama-data-search';
 	import type { SearchableGameDataDoc } from '../../../models/orama-game-data-index';
 	import type { StandardMonsterSearchCardPayload } from '../../../models/search-result-card';
-	import { sizeLabel } from '../../../models/search-result-card-payloads';
+	import { sizeLabel } from '../../../models/creature-stat-display';
 	import MarkdownSnippet from './MarkdownSnippet.svelte';
 	import MonsterAbilityBlock from './MonsterAbilityBlock.svelte';
 	import MonsterActionsBlock from './MonsterActionsBlock.svelte';

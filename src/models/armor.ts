@@ -78,23 +78,3 @@ export function armorDetailMarkdown(row: ArmorRowData): string {
 export function armorDetailHrefFromCoreRules(id: string): string {
 	return `/armor/${id}/`;
 }
-
-const categoryOrder: readonly ArmorCategory[] = [
-	'cloth',
-	'leather',
-	'plate',
-	'mail',
-	'shields',
-];
-
-/** Sort for the index: section order (as in Core Rules), then name. */
-export function compareArmorRowsForListing(
-	a: ArmorRowData,
-	b: ArmorRowData,
-): number {
-	const ai = categoryOrder.indexOf(a.category);
-	const bi = categoryOrder.indexOf(b.category);
-	const d = ai - bi;
-	if (d !== 0) return d;
-	return a.name.localeCompare(b.name);
-}

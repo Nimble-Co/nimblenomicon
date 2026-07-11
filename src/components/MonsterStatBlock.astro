@@ -1,12 +1,12 @@
 ---
 import { renderMarkdown } from '../docs/render-markdown';
-import { slugifyEntityId } from '../utils/slugifyEntityId';
 import {
-	monsters,
-	type MonsterAction,
-	type MonsterData,
-} from '../models/monsters';
-import { sizes } from '../models/sizes';
+	actionHeading,
+	armorAbbrev,
+	sizeLabel,
+	SPEED_MODE_LABEL,
+} from '../models/creature-stat-display';
+import { monsters } from '../models/monsters';
 import Ability from './Ability.astro';
 
 interface Props {
@@ -22,31 +22,6 @@ const {
 	showKind = false,
 	showLoot = false,
 } = Astro.props;
-
-function sizeLabel(sizeSlug: string): string {
-	const match = sizes.find((s) => slugifyEntityId(s.name, 'size') === sizeSlug);
-	return match?.name ?? sizeSlug;
-}
-
-/** Bold action label + optional (Nx); add a sentence-ending period only when the name lacks one. */
-function actionHeading(action: MonsterAction): string {
-	const uses = action.uses != null ? ` (${action.uses}x)` : '';
-	const endsSentence = /[.!?;:]$/.test(action.name.trim());
-	return `${action.name}${uses}${endsSentence ? '' : '.'}`;
-}
-
-const SPEED_MODE_LABEL: Record<MonsterData['movement']['mode'], string> = {
-	walk: 'Walk',
-	fly: 'Fly',
-	burrow: 'Burrow',
-	swim: 'Swim',
-};
-
-const armorAbbrev: Record<MonsterData['armor'], string | null> = {
-	none: null,
-	medium: 'M',
-	heavy: 'H',
-};
 
 const monster = monsters.find((m) => m.id === monsterId);
 
