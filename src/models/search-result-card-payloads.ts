@@ -1,22 +1,19 @@
 /**
  * Build `SearchResultCardPayload` values for `cardJson` during Orama index generation.
  */
-import { slugifyEntityId } from '../utils/slugifyEntityId';
+import { actionHeading, legendarySaveBadges } from './creature-stat-display';
 import type { AncestryRowData } from './ancestries';
 import { formatArmorCategoryLabel, type ArmorRowData } from './armor';
 import type { BackgroundRowData } from './backgrounds';
 import type { ConditionRowData } from './conditions';
 import type { HeroClassData } from './class';
 import type { GlossaryRowData } from './glossary';
-import type {
-	LegendaryCreatureData,
-	LegendaryEntryData,
-} from './legendary-monsters';
+import type { LegendaryEntryData } from './legendary-monsters';
 import type { LanguageRowData } from './languages';
 import type { MagicalItemData } from './magical-items';
 import type { MiscAdventuringEquipmentRowData } from './misc-adventuring-equipment';
 import { spellSchoolDisplayName } from './catalog-display-text';
-import type { MonsterData, MonsterAction } from './monsters';
+import type { MonsterData } from './monsters';
 import type { SpellData } from './spells';
 import {
 	MAX_ACTION_MD,
@@ -26,7 +23,6 @@ import {
 	truncateCardMd,
 	type SearchResultCardPayload,
 } from './search-result-card';
-import { sizes } from './sizes';
 import { formatWeaponCategory, type WeaponRowData } from './weapons';
 
 /**
@@ -45,41 +41,22 @@ export function stripFlavorIsFreeBlockquotesFromMarkdown(md: string): string {
 		.trim();
 }
 
-function sizeLabel(sizeSlug: string): string {
-	const match = sizes.find((s) => slugifyEntityId(s.name, 'size') === sizeSlug);
-	return match?.name ?? sizeSlug;
-}
+type SimpleExcerptCardKind =
+	| 'background'
+	| 'glossary'
+	| 'language'
+	| 'condition'
+	| 'equipment';
 
-function actionHeading(action: MonsterAction): string {
-	const uses = action.uses != null ? ` (${action.uses}x)` : '';
-	const endsSentence = /[.!?;:]$/.test(action.name.trim());
-	return `${action.name}${uses}${endsSentence ? '' : '.'}`;
-}
-
-const SAVE_LABEL = {
-	str: 'STR',
-	dex: 'DEX',
-	int: 'INT',
-	wil: 'WIL',
-	all: 'ALL',
-} as const;
-
-function legendarySaveBadges(saves: LegendaryCreatureData['saves']): string[] {
-	if (!saves) return [];
-	if (typeof saves.all === 'number' && saves.all !== 0) {
-		const n = saves.all;
-		const sign = n > 0 ? '+'.repeat(n) : '-'.repeat(-n);
-		return [`ALL${sign}`];
-	}
-	const order = ['str', 'dex', 'int', 'wil'] as const;
-	const out: string[] = [];
-	for (const k of order) {
-		const v = saves[k];
-		if (typeof v === 'number' && v > 0) {
-			out.push(`${SAVE_LABEL[k]}${'+'.repeat(v)}`);
-		}
-	}
-	return out;
+function buildSimpleExcerptCardPayload(
+	kind: SimpleExcerptCardKind,
+	description: string,
+): SearchResultCardPayload {
+	return {
+		v: 1,
+		kind,
+		excerptMd: truncateCardMd(description),
+	};
 }
 
 export function buildSpellCardPayload(
@@ -225,21 +202,13 @@ export function buildAncestryCardPayload(
 export function buildBackgroundCardPayload(
 	b: BackgroundRowData,
 ): SearchResultCardPayload {
-	return {
-		v: 1,
-		kind: 'background',
-		excerptMd: truncateCardMd(b.description),
-	};
+	return buildSimpleExcerptCardPayload('background', b.description);
 }
 
 export function buildEquipmentCardPayload(
 	row: MiscAdventuringEquipmentRowData,
 ): SearchResultCardPayload {
-	return {
-		v: 1,
-		kind: 'equipment',
-		excerptMd: truncateCardMd(row.description),
-	};
+	return buildSimpleExcerptCardPayload('equipment', row.description);
 }
 
 export function buildMagicItemCardPayload(
@@ -257,31 +226,19 @@ export function buildMagicItemCardPayload(
 export function buildGlossaryCardPayload(
 	g: GlossaryRowData,
 ): SearchResultCardPayload {
-	return {
-		v: 1,
-		kind: 'glossary',
-		excerptMd: truncateCardMd(g.description),
-	};
+	return buildSimpleExcerptCardPayload('glossary', g.description);
 }
 
 export function buildLanguageCardPayload(
 	lang: LanguageRowData,
 ): SearchResultCardPayload {
-	return {
-		v: 1,
-		kind: 'language',
-		excerptMd: truncateCardMd(lang.description),
-	};
+	return buildSimpleExcerptCardPayload('language', lang.description);
 }
 
 export function buildConditionCardPayload(
 	row: ConditionRowData,
 ): SearchResultCardPayload {
-	return {
-		v: 1,
-		kind: 'condition',
-		excerptMd: truncateCardMd(row.description),
-	};
+	return buildSimpleExcerptCardPayload('condition', row.description);
 }
 
 export function buildArmorCardPayload(
@@ -297,4 +254,4 @@ export function buildArmorCardPayload(
 	};
 }
 
-export { stringifySearchResultCard, sizeLabel };
+export { stringifySearchResultCard };
