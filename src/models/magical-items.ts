@@ -96,16 +96,3 @@ export function magicalItemDetailMarkdown(item: MagicalItemData): string {
 export function magicalItemDetailHrefFromCoreRules(id: string): string {
 	return `/magical-items/${id}/`;
 }
-
-/**
- * Sort for the index: standard items first, then wands; within each group, by name.
- */
-export function compareMagicalItemsForListing(
-	a: MagicalItemData,
-	b: MagicalItemData,
-): number {
-	const ord = (k: MagicalItemData['kind']) => (k === 'standard' ? 0 : 1);
-	const d = ord(a.kind) - ord(b.kind);
-	if (d !== 0) return d;
-	return a.name.localeCompare(b.name);
-}

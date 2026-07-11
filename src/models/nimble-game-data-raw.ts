@@ -5,7 +5,3 @@ import { nimbleGameDataById } from './nimble-data-files';
 export function readNimbleGameJson(id: NimbleJsonId): unknown {
 	return nimbleGameDataById[id];
 }
-
-export function loadNimbleGameDataFiles(): Record<NimbleJsonId, unknown> {
-	return { ...nimbleGameDataById };
-}

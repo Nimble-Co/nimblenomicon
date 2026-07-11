@@ -52,6 +52,34 @@ export type DetailPageMarkdownProps = DetailPageShellProps & {
 	bodyMarkdown: string;
 };
 
+type SimpleCoreRulesEntity = {
+	id: string;
+	name: string;
+	description?: string;
+};
+
+type CoreRulesMarkdownDetailConfig = {
+	descriptionPrefix: string;
+	backLabel: string;
+	searchType: OramaDataSearchType;
+};
+
+/** Shared props for Core Rules entities with a single markdown description body. */
+export function coreRulesMarkdownDetailProps(
+	row: SimpleCoreRulesEntity,
+	config: CoreRulesMarkdownDetailConfig,
+): DetailPageMarkdownProps {
+	return {
+		title: row.name,
+		description: `${config.descriptionPrefix} — ${row.name}.`,
+		backLabel: config.backLabel,
+		searchType: config.searchType,
+		sourceHref: `/core-rules/#${row.id}`,
+		sourceName: 'Core Rules',
+		bodyMarkdown: row.description?.trim() ?? '',
+	};
+}
+
 export function spellDetailPageProps(
 	spell: SpellData,
 ): DetailPageMarkdownProps {
@@ -147,57 +175,41 @@ export function ancestryDetailPageProps(
 export function backgroundDetailPageProps(
 	row: BackgroundRowData,
 ): DetailPageMarkdownProps {
-	return {
-		title: row.name,
-		description: `Character background — ${row.name}.`,
+	return coreRulesMarkdownDetailProps(row, {
+		descriptionPrefix: 'Character background',
 		backLabel: 'All Backgrounds',
 		searchType: 'background',
-		sourceHref: `/core-rules/#${row.id}`,
-		sourceName: 'Core Rules',
-		bodyMarkdown: row.description?.trim() ?? '',
-	};
+	});
 }
 
 export function conditionDetailPageProps(
 	row: ConditionData,
 ): DetailPageMarkdownProps {
-	return {
-		title: row.name,
-		description: `Condition — ${row.name}.`,
+	return coreRulesMarkdownDetailProps(row, {
+		descriptionPrefix: 'Condition',
 		backLabel: 'All Conditions',
 		searchType: 'condition',
-		sourceHref: `/core-rules/#${row.id}`,
-		sourceName: 'Core Rules',
-		bodyMarkdown: row.description?.trim() ?? '',
-	};
+	});
 }
 
 export function glossaryDetailPageProps(
 	row: GlossaryEntryData,
 ): DetailPageMarkdownProps {
-	return {
-		title: row.name,
-		description: `Glossary — ${row.name}.`,
+	return coreRulesMarkdownDetailProps(row, {
+		descriptionPrefix: 'Glossary',
 		backLabel: 'All Glossary',
 		searchType: 'glossary',
-		sourceHref: `/core-rules/#${row.id}`,
-		sourceName: 'Core Rules',
-		bodyMarkdown: row.description?.trim() ?? '',
-	};
+	});
 }
 
 export function languageDetailPageProps(
 	row: LanguageData,
 ): DetailPageMarkdownProps {
-	return {
-		title: row.name,
-		description: `Language — ${row.name}.`,
+	return coreRulesMarkdownDetailProps(row, {
+		descriptionPrefix: 'Language',
 		backLabel: 'All Languages',
 		searchType: 'language',
-		sourceHref: `/core-rules/#${row.id}`,
-		sourceName: 'Core Rules',
-		bodyMarkdown: row.description?.trim() ?? '',
-	};
+	});
 }
 
 export function miscEquipmentDetailPageProps(

@@ -76,17 +76,3 @@ export const ancestries: AncestryRowData[] = z
 export function ancestryDetailHrefFromCoreRules(id: string): string {
 	return `/ancestries/${id}/`;
 }
-
-/**
- * Sort key for the ancestry index: common ancestries first (document order), then exotic,
- * then name.
- */
-export function compareAncestryRowsForListing(
-	a: AncestryRowData,
-	b: AncestryRowData,
-): number {
-	const sec = (s: AncestryRowData['section']) => (s === 'common' ? 0 : 1);
-	const d = sec(a.section) - sec(b.section);
-	if (d !== 0) return d;
-	return a.name.localeCompare(b.name);
-}

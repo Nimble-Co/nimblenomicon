@@ -1,16 +1,22 @@
-import { ancestries } from './ancestries';
-import { armorRows } from './armor';
-import { backgrounds } from './backgrounds';
+import { ancestries, ancestryDetailHrefFromCoreRules } from './ancestries';
+import { armorRows, armorDetailHrefFromCoreRules } from './armor';
+import { backgrounds, backgroundDetailHrefFromCoreRules } from './backgrounds';
 import { heroClasses, type HeroClassData } from './class';
-import { conditions } from './conditions';
-import { glossary } from './glossary';
-import { languages } from './languages';
+import { conditions, conditionDetailHrefFromCoreRules } from './conditions';
+import { glossary, glossaryDetailHrefFromCoreRules } from './glossary';
+import { languages, languageDetailHrefFromCoreRules } from './languages';
 import { legendaryMonsters } from './legendary-monsters';
-import { magicalItems } from './magical-items';
-import { miscAdventuringEquipment } from './misc-adventuring-equipment';
+import {
+	magicalItems,
+	magicalItemDetailHrefFromCoreRules,
+} from './magical-items';
+import {
+	miscAdventuringEquipment,
+	miscAdventuringEquipmentDetailHrefFromCoreRules,
+} from './misc-adventuring-equipment';
 import { monsters } from './monsters';
 import { spells } from './spells';
-import { weapons } from './weapons';
+import { weapons, weaponDetailHrefFromCoreRules } from './weapons';
 
 /**
  * Display terms that must never receive **build-time** auto-links (matched case-insensitively on `term`).
@@ -136,7 +142,7 @@ function buildEntries(): XrefTermEntry[] {
 	for (const row of magicalItems) {
 		out.push({
 			term: row.name,
-			href: `/magical-items/${row.id}/`,
+			href: magicalItemDetailHrefFromCoreRules(row.id),
 			definition: truncateDef(row.description),
 			kind: 'magical-item',
 			priority: 82,
@@ -146,7 +152,7 @@ function buildEntries(): XrefTermEntry[] {
 	for (const row of conditions) {
 		out.push({
 			term: row.name,
-			href: `/conditions/${row.id}/`,
+			href: conditionDetailHrefFromCoreRules(row.id),
 			definition: truncateDef(row.description),
 			kind: 'condition',
 			priority: 78,
@@ -156,7 +162,7 @@ function buildEntries(): XrefTermEntry[] {
 	for (const row of glossary) {
 		out.push({
 			term: row.name,
-			href: `/glossary/${row.id}/`,
+			href: glossaryDetailHrefFromCoreRules(row.id),
 			definition: truncateDef(row.description),
 			kind: 'glossary',
 			priority: 76,
@@ -166,7 +172,7 @@ function buildEntries(): XrefTermEntry[] {
 	for (const row of ancestries) {
 		out.push({
 			term: row.name,
-			href: `/ancestries/${row.id}/`,
+			href: ancestryDetailHrefFromCoreRules(row.id),
 			definition: truncateDef(`${row.flavor} ${row.trait}`),
 			kind: 'ancestry',
 			priority: 72,
@@ -176,7 +182,7 @@ function buildEntries(): XrefTermEntry[] {
 	for (const row of backgrounds) {
 		out.push({
 			term: row.name,
-			href: `/backgrounds/${row.id}/`,
+			href: backgroundDetailHrefFromCoreRules(row.id),
 			definition: truncateDef(row.description),
 			kind: 'background',
 			priority: 71,
@@ -186,7 +192,7 @@ function buildEntries(): XrefTermEntry[] {
 	for (const row of languages) {
 		out.push({
 			term: row.name,
-			href: `/languages/${row.id}/`,
+			href: languageDetailHrefFromCoreRules(row.id),
 			definition: truncateDef(row.description),
 			kind: 'language',
 			priority: 70,
@@ -196,7 +202,7 @@ function buildEntries(): XrefTermEntry[] {
 	for (const row of weapons) {
 		out.push({
 			term: row.name,
-			href: `/weapons/${row.id}/`,
+			href: weaponDetailHrefFromCoreRules(row.id),
 			definition: truncateDef(
 				`${row.category === 'melee' ? 'Melee' : 'Ranged'} weapon — ${row.damage}.`,
 			),
@@ -208,7 +214,7 @@ function buildEntries(): XrefTermEntry[] {
 	for (const row of armorRows) {
 		out.push({
 			term: row.name,
-			href: `/armor/${row.id}/`,
+			href: armorDetailHrefFromCoreRules(row.id),
 			definition: truncateDef(`Armor ${row.armor} — ${row.cost}.`),
 			kind: 'armor',
 			priority: 64,
@@ -218,7 +224,7 @@ function buildEntries(): XrefTermEntry[] {
 	for (const row of miscAdventuringEquipment) {
 		out.push({
 			term: row.name,
-			href: `/misc-adventuring-equipment/${row.id}/`,
+			href: miscAdventuringEquipmentDetailHrefFromCoreRules(row.id),
 			definition: truncateDef(row.description),
 			kind: 'misc-gear',
 			priority: 62,

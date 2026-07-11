@@ -6,6 +6,7 @@
 import { adventuringMotivations } from '../models/adventuring-motivations';
 import {
 	ancestries,
+	ancestryDetailHrefFromCoreRules,
 	formatAncestrySize,
 	type AncestryRowData,
 } from '../models/ancestries';
@@ -15,16 +16,25 @@ import {
 	armorTableSections,
 	type ArmorCategory,
 } from '../models/armor';
-import { backgrounds } from '../models/backgrounds';
+import {
+	backgrounds,
+	backgroundDetailHrefFromCoreRules,
+} from '../models/backgrounds';
 import { chaosMagicRows } from '../models/chaos-magic';
 import { heroClasses } from '../models/class';
-import { conditions } from '../models/conditions';
+import {
+	conditions,
+	conditionDetailHrefFromCoreRules,
+} from '../models/conditions';
 import { dcExamples } from '../models/dc-examples';
 import { downtimeActivities } from '../models/downtime-activities';
-import { glossary } from '../models/glossary';
+import { glossary, glossaryDetailHrefFromCoreRules } from '../models/glossary';
 import { gmgGoldByLevel } from '../models/gmg-gold-by-level';
 import { gmgMonsterBuilderLevels } from '../models/gmg-monster-builder-levels';
-import { languages } from '../models/languages';
+import {
+	languages,
+	languageDetailHrefFromCoreRules,
+} from '../models/languages';
 import { magicalItemRarities } from '../models/magical-item-rarities';
 import {
 	magicalItemDetailHrefFromCoreRules,
@@ -97,7 +107,7 @@ export function sizeBulletLines(): MarkdownLineItem[] {
 export function conditionBulletLines(): MarkdownLineItem[] {
 	return conditions.map((c) => ({
 		id: c.id,
-		markdown: `[**${c.name}.**](/conditions/${c.id}/) ${c.description}`,
+		markdown: `[**${c.name}.**](${conditionDetailHrefFromCoreRules(c.id)}) ${c.description}`,
 	}));
 }
 
@@ -122,7 +132,7 @@ export function statArrayBulletLines(): MarkdownLineItem[] {
 export function languageBulletLines(): MarkdownLineItem[] {
 	return languages.map((lang) => ({
 		id: lang.id,
-		markdown: `[**${lang.name}.**](/languages/${lang.id}/) ${lang.description}`,
+		markdown: `[**${lang.name}.**](${languageDetailHrefFromCoreRules(lang.id)}) ${lang.description}`,
 	}));
 }
 
@@ -141,14 +151,14 @@ export function spellSchoolBulletLines(): MarkdownLineItem[] {
 export function glossaryParagraphLines(): MarkdownLineItem[] {
 	return glossary.map((entry) => ({
 		id: entry.id,
-		markdown: `[**${entry.name}.**](/glossary/${entry.id}/) ${entry.description}`,
+		markdown: `[**${entry.name}.**](${glossaryDetailHrefFromCoreRules(entry.id)}) ${entry.description}`,
 	}));
 }
 
 export function backgroundsBlockLines(): MarkdownLineItem[] {
 	return backgrounds.map((segment) => ({
 		id: segment.id,
-		markdown: `[**${segment.name}.**](/backgrounds/${segment.id}/) ${segment.description}`,
+		markdown: `[**${segment.name}.**](${backgroundDetailHrefFromCoreRules(segment.id)}) ${segment.description}`,
 	}));
 }
 
@@ -181,7 +191,7 @@ export function ancestryBlocks(section: 'common' | 'exotic'): {
 	return rows.map((a: AncestryRowData) => ({
 		id: a.id,
 		title: a.name,
-		href: `/ancestries/${a.id}`,
+		href: ancestryDetailHrefFromCoreRules(a.id),
 		metaLine: `(${formatAncestrySize(a.size)})`,
 		flavor: a.flavor,
 		bodyMarkdown: a.trait,
